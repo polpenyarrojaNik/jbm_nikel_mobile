@@ -6,12 +6,14 @@ import '../../../core/exceptions/app_exception.dart';
 
 part 'delete_local_database_controller.freezed.dart';
 
-final deleteLocalDatabaseControllerProvider = StateNotifierProvider.autoDispose<
-  DeleteLocalDatabaseController,
-  DeleteLocalDatabaseControllerState
->(
-  (ref) => DeleteLocalDatabaseController(ref.watch(settingsRepositoryProvider)),
-);
+final deleteLocalDatabaseControllerProvider =
+    StateNotifierProvider.autoDispose<
+      DeleteLocalDatabaseController,
+      DeleteLocalDatabaseControllerState
+    >(
+      (ref) =>
+          DeleteLocalDatabaseController(ref.watch(settingsRepositoryProvider)),
+    );
 
 @freezed
 class DeleteLocalDatabaseControllerState

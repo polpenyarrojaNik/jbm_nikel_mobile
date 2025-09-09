@@ -50,8 +50,11 @@ class ClienteUltimosPreciosPage extends ConsumerWidget {
         onChanged: (searchText) {
           _debouncer.run(() {
             ref
-                .read(clienteUltimosPreciosSearchQueryStateProvider.notifier)
-                .state = searchText;
+                    .read(
+                      clienteUltimosPreciosSearchQueryStateProvider.notifier,
+                    )
+                    .state =
+                searchText;
           });
         },
       ),
@@ -64,30 +67,26 @@ class ClienteUltimosPreciosPage extends ConsumerWidget {
           const Gap(8),
           stateClienteUltimosPreciosListCount.maybeWhen(
             orElse: () => const ProgressIndicatorWidget(),
-            data:
-                (count) => Expanded(
-                  child: ListView.separated(
-                    itemCount: count,
-                    itemBuilder:
-                        (context, i) => ref
-                            .watch(
-                              ClienteUltimosPreciosIndexScreenPaginatedControllerProvider(
-                                clienteId: clienteId,
-                                page: (i ~/ ClienteRepository.pageSize),
-                              ),
-                            )
-                            .maybeWhen(
-                              orElse: () => const ArticuloListShimmer(),
-                              data:
-                                  (ultimosPreciosList) => _UltimosPreciosTile(
-                                    ultimosPrecios:
-                                        ultimosPreciosList[i %
-                                            ClienteRepository.pageSize],
-                                  ),
-                            ),
-                    separatorBuilder: (context, i) => const Divider(),
-                  ),
-                ),
+            data: (count) => Expanded(
+              child: ListView.separated(
+                itemCount: count,
+                itemBuilder: (context, i) => ref
+                    .watch(
+                      ClienteUltimosPreciosIndexScreenPaginatedControllerProvider(
+                        clienteId: clienteId,
+                        page: (i ~/ ClienteRepository.pageSize),
+                      ),
+                    )
+                    .maybeWhen(
+                      orElse: () => const ArticuloListShimmer(),
+                      data: (ultimosPreciosList) => _UltimosPreciosTile(
+                        ultimosPrecios:
+                            ultimosPreciosList[i % ClienteRepository.pageSize],
+                      ),
+                    ),
+                separatorBuilder: (context, i) => const Divider(),
+              ),
+            ),
             error: (e, _) => ErrorMessageWidget(e.toString()),
             loading: () => const ProgressIndicatorWidget(),
           ),

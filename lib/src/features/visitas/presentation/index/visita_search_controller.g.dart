@@ -15,10 +15,9 @@ final visitaIndexScreenControllerProvider =
     AutoDisposeAsyncNotifierProvider<VisitaIndexScreenController, int>.internal(
       VisitaIndexScreenController.new,
       name: r'visitaIndexScreenControllerProvider',
-      debugGetCreateSourceHash:
-          const bool.fromEnvironment('dart.vm.product')
-              ? null
-              : _$visitaIndexScreenControllerHash,
+      debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+          ? null
+          : _$visitaIndexScreenControllerHash,
       dependencies: null,
       allTransitiveDependencies: null,
     );
@@ -106,14 +105,12 @@ class VisitaIndexScreenPaginatedControllerProvider
         () => VisitaIndexScreenPaginatedController()..page = page,
         from: visitaIndexScreenPaginatedControllerProvider,
         name: r'visitaIndexScreenPaginatedControllerProvider',
-        debugGetCreateSourceHash:
-            const bool.fromEnvironment('dart.vm.product')
-                ? null
-                : _$visitaIndexScreenPaginatedControllerHash,
+        debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+            ? null
+            : _$visitaIndexScreenPaginatedControllerHash,
         dependencies: VisitaIndexScreenPaginatedControllerFamily._dependencies,
-        allTransitiveDependencies:
-            VisitaIndexScreenPaginatedControllerFamily
-                ._allTransitiveDependencies,
+        allTransitiveDependencies: VisitaIndexScreenPaginatedControllerFamily
+            ._allTransitiveDependencies,
         page: page,
       );
 

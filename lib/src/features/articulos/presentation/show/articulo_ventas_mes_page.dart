@@ -42,35 +42,31 @@ class ArticuloVentasMesPage extends ConsumerWidget {
           state.maybeWhen(
             orElse: () => const ProgressIndicatorWidget(),
             error: (e, st) => ErrorMessageWidget(e.toString()),
-            data:
-                (articuloVentasMesList) =>
-                    (articuloVentasMesList.isNotEmpty)
-                        ? Expanded(
-                          child: ListView(
-                            children: [
-                              VentasMesDataTable(
-                                articuloVentasMesList: articuloVentasMesList,
-                                showTodos: user?.verTotalVentas ?? false,
-                              ),
-                              const Gap(16),
-                              Container(
-                                height: 420,
-                                padding: const EdgeInsets.symmetric(
-                                  horizontal: 16,
-                                ),
-                                child: GraficaVentasMes(
-                                  articuloVentasMesList: articuloVentasMesList,
-                                ),
-                              ),
-                              const Gap(16),
-                              const LeyendaWidget(),
-                            ],
-                          ),
-                        )
-                        : Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [Text(S.of(context).sinResultados)],
+            data: (articuloVentasMesList) => (articuloVentasMesList.isNotEmpty)
+                ? Expanded(
+                    child: ListView(
+                      children: [
+                        VentasMesDataTable(
+                          articuloVentasMesList: articuloVentasMesList,
+                          showTodos: user?.verTotalVentas ?? false,
                         ),
+                        const Gap(16),
+                        Container(
+                          height: 420,
+                          padding: const EdgeInsets.symmetric(horizontal: 16),
+                          child: GraficaVentasMes(
+                            articuloVentasMesList: articuloVentasMesList,
+                          ),
+                        ),
+                        const Gap(16),
+                        const LeyendaWidget(),
+                      ],
+                    ),
+                  )
+                : Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [Text(S.of(context).sinResultados)],
+                  ),
           ),
         ],
       ),
@@ -193,10 +189,9 @@ class _VentasMesDataTableState extends State<VentasMesDataTable> {
     for (var i = 0; i < articuloVentasMesList.length; i++) {
       dataRows.add(
         DataRow(
-          onLongPress:
-              () => setState(() {
-                selectedRow = i;
-              }),
+          onLongPress: () => setState(() {
+            selectedRow = i;
+          }),
           selected: selectedRow == i,
           cells: [
             DataCell(
@@ -218,8 +213,8 @@ class _VentasMesDataTableState extends State<VentasMesDataTable> {
                       showTodos
                           ? '${numberFormatCantidades(articuloVentasMesList[i].unidadesAnyo)} (${numberFormatCantidades(articuloVentasMesList[i].unidadesAnyoTodos)})'
                           : numberFormatCantidades(
-                            articuloVentasMesList[i].unidadesAnyo,
-                          ),
+                              articuloVentasMesList[i].unidadesAnyo,
+                            ),
                     ),
                   ),
                 ],
@@ -234,8 +229,8 @@ class _VentasMesDataTableState extends State<VentasMesDataTable> {
                       showTodos
                           ? '${numberFormatCantidades(articuloVentasMesList[i].unidadesAnyo_1)} (${numberFormatCantidades(articuloVentasMesList[i].unidadesAnyoTodos_1)})'
                           : numberFormatCantidades(
-                            articuloVentasMesList[i].unidadesAnyo_1,
-                          ),
+                              articuloVentasMesList[i].unidadesAnyo_1,
+                            ),
                       textAlign: TextAlign.right,
                     ),
                   ),
@@ -251,8 +246,8 @@ class _VentasMesDataTableState extends State<VentasMesDataTable> {
                       showTodos
                           ? '${numberFormatCantidades(articuloVentasMesList[i].unidadesAnyo_2)} (${numberFormatCantidades(articuloVentasMesList[i].unidadesAnyoTodos_2)})'
                           : numberFormatCantidades(
-                            articuloVentasMesList[i].unidadesAnyo_2,
-                          ),
+                              articuloVentasMesList[i].unidadesAnyo_2,
+                            ),
                       textAlign: TextAlign.right,
                     ),
                   ),
@@ -268,8 +263,8 @@ class _VentasMesDataTableState extends State<VentasMesDataTable> {
                       showTodos
                           ? '${numberFormatCantidades(articuloVentasMesList[i].unidadesAnyo_3)} (${numberFormatCantidades(articuloVentasMesList[i].unidadesAnyoTodos_3)})'
                           : numberFormatCantidades(
-                            articuloVentasMesList[i].unidadesAnyo_3,
-                          ),
+                              articuloVentasMesList[i].unidadesAnyo_3,
+                            ),
                       textAlign: TextAlign.right,
                     ),
                   ),
@@ -285,8 +280,8 @@ class _VentasMesDataTableState extends State<VentasMesDataTable> {
                       showTodos
                           ? '${numberFormatCantidades(articuloVentasMesList[i].unidadesAnyo_4)} (${numberFormatCantidades(articuloVentasMesList[i].unidadesAnyoTodos_4)})'
                           : numberFormatCantidades(
-                            articuloVentasMesList[i].unidadesAnyo_4,
-                          ),
+                              articuloVentasMesList[i].unidadesAnyo_4,
+                            ),
                       textAlign: TextAlign.right,
                     ),
                   ),
@@ -487,34 +482,29 @@ class _GraficaVentasMesState extends State<GraficaVentasMes> {
                     bottomTitles: AxisTitles(
                       sideTitles: SideTitles(
                         showTitles: true,
-                        getTitlesWidget:
-                            (value, meta) => getTiltlesMeses(
-                              widget.articuloVentasMesList,
-                              value,
-                            ),
+                        getTitlesWidget: (value, meta) => getTiltlesMeses(
+                          widget.articuloVentasMesList,
+                          value,
+                        ),
                       ),
                     ),
                   ),
                   gridData: FlGridData(
                     show: true,
                     drawVerticalLine: false,
-                    getDrawingHorizontalLine:
-                        (value) => const FlLine(
-                          color: Color(0xFFececec),
-                          strokeWidth: 1,
-                        ),
+                    getDrawingHorizontalLine: (value) =>
+                        const FlLine(color: Color(0xFFececec), strokeWidth: 1),
                   ),
-                  barGroups:
-                      dataList.asMap().entries.map((e) {
-                        final index = e.key;
-                        final data = e.value;
-                        return generateBarGroup(
-                          index,
-                          data.color,
-                          data.value,
-                          data.shadowValue,
-                        );
-                      }).toList(),
+                  barGroups: dataList.asMap().entries.map((e) {
+                    final index = e.key;
+                    final data = e.value;
+                    return generateBarGroup(
+                      index,
+                      data.color,
+                      data.value,
+                      data.shadowValue,
+                    );
+                  }).toList(),
                   maxY: getMaxYValue(widget.articuloVentasMesList),
                   minY: 0,
                 ),

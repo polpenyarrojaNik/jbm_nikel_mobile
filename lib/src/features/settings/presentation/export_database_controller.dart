@@ -8,10 +8,11 @@ import '../../../core/exceptions/app_exception.dart';
 
 part 'export_database_controller.freezed.dart';
 
-final exportDatabaseControllerProvider = StateNotifierProvider.autoDispose<
-  ExportDatabaseController,
-  ExportDatabaseControllerState
->((ref) => ExportDatabaseController(ref.watch(settingsRepositoryProvider)));
+final exportDatabaseControllerProvider =
+    StateNotifierProvider.autoDispose<
+      ExportDatabaseController,
+      ExportDatabaseControllerState
+    >((ref) => ExportDatabaseController(ref.watch(settingsRepositoryProvider)));
 
 @freezed
 class ExportDatabaseControllerState with _$ExportDatabaseControllerState {

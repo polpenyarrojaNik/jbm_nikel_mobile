@@ -124,86 +124,70 @@ class _$ClienteDireccionLocalDTOCopyWithImpl<
   }) {
     return _then(
       _value.copyWith(
-            clienteId:
-                null == clienteId
-                    ? _value.clienteId
-                    : clienteId // ignore: cast_nullable_to_non_nullable
-                        as String,
-            direccionId:
-                null == direccionId
-                    ? _value.direccionId
-                    : direccionId // ignore: cast_nullable_to_non_nullable
-                        as String,
-            nombre:
-                null == nombre
-                    ? _value.nombre
-                    : nombre // ignore: cast_nullable_to_non_nullable
-                        as String,
-            direccion1:
-                freezed == direccion1
-                    ? _value.direccion1
-                    : direccion1 // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            direccion2:
-                freezed == direccion2
-                    ? _value.direccion2
-                    : direccion2 // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            codigoPostal:
-                freezed == codigoPostal
-                    ? _value.codigoPostal
-                    : codigoPostal // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            poblacion:
-                freezed == poblacion
-                    ? _value.poblacion
-                    : poblacion // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            provincia:
-                freezed == provincia
-                    ? _value.provincia
-                    : provincia // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            paisId:
-                freezed == paisId
-                    ? _value.paisId
-                    : paisId // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            latitud:
-                null == latitud
-                    ? _value.latitud
-                    : latitud // ignore: cast_nullable_to_non_nullable
-                        as double,
-            longitud:
-                null == longitud
-                    ? _value.longitud
-                    : longitud // ignore: cast_nullable_to_non_nullable
-                        as double,
-            predeterminada:
-                freezed == predeterminada
-                    ? _value.predeterminada
-                    : predeterminada // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            lastUpdated:
-                null == lastUpdated
-                    ? _value.lastUpdated
-                    : lastUpdated // ignore: cast_nullable_to_non_nullable
-                        as DateTime,
-            enviada:
-                null == enviada
-                    ? _value.enviada
-                    : enviada // ignore: cast_nullable_to_non_nullable
-                        as String,
-            tratada:
-                null == tratada
-                    ? _value.tratada
-                    : tratada // ignore: cast_nullable_to_non_nullable
-                        as String,
-            deleted:
-                null == deleted
-                    ? _value.deleted
-                    : deleted // ignore: cast_nullable_to_non_nullable
-                        as String,
+            clienteId: null == clienteId
+                ? _value.clienteId
+                : clienteId // ignore: cast_nullable_to_non_nullable
+                      as String,
+            direccionId: null == direccionId
+                ? _value.direccionId
+                : direccionId // ignore: cast_nullable_to_non_nullable
+                      as String,
+            nombre: null == nombre
+                ? _value.nombre
+                : nombre // ignore: cast_nullable_to_non_nullable
+                      as String,
+            direccion1: freezed == direccion1
+                ? _value.direccion1
+                : direccion1 // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            direccion2: freezed == direccion2
+                ? _value.direccion2
+                : direccion2 // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            codigoPostal: freezed == codigoPostal
+                ? _value.codigoPostal
+                : codigoPostal // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            poblacion: freezed == poblacion
+                ? _value.poblacion
+                : poblacion // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            provincia: freezed == provincia
+                ? _value.provincia
+                : provincia // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            paisId: freezed == paisId
+                ? _value.paisId
+                : paisId // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            latitud: null == latitud
+                ? _value.latitud
+                : latitud // ignore: cast_nullable_to_non_nullable
+                      as double,
+            longitud: null == longitud
+                ? _value.longitud
+                : longitud // ignore: cast_nullable_to_non_nullable
+                      as double,
+            predeterminada: freezed == predeterminada
+                ? _value.predeterminada
+                : predeterminada // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            lastUpdated: null == lastUpdated
+                ? _value.lastUpdated
+                : lastUpdated // ignore: cast_nullable_to_non_nullable
+                      as DateTime,
+            enviada: null == enviada
+                ? _value.enviada
+                : enviada // ignore: cast_nullable_to_non_nullable
+                      as String,
+            tratada: null == tratada
+                ? _value.tratada
+                : tratada // ignore: cast_nullable_to_non_nullable
+                      as String,
+            deleted: null == deleted
+                ? _value.deleted
+                : deleted // ignore: cast_nullable_to_non_nullable
+                      as String,
           )
           as $Val,
     );
@@ -274,86 +258,70 @@ class __$$_ClienteDireccionLocalDTOCopyWithImpl<$Res>
   }) {
     return _then(
       _$_ClienteDireccionLocalDTO(
-        clienteId:
-            null == clienteId
-                ? _value.clienteId
-                : clienteId // ignore: cast_nullable_to_non_nullable
-                    as String,
-        direccionId:
-            null == direccionId
-                ? _value.direccionId
-                : direccionId // ignore: cast_nullable_to_non_nullable
-                    as String,
-        nombre:
-            null == nombre
-                ? _value.nombre
-                : nombre // ignore: cast_nullable_to_non_nullable
-                    as String,
-        direccion1:
-            freezed == direccion1
-                ? _value.direccion1
-                : direccion1 // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        direccion2:
-            freezed == direccion2
-                ? _value.direccion2
-                : direccion2 // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        codigoPostal:
-            freezed == codigoPostal
-                ? _value.codigoPostal
-                : codigoPostal // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        poblacion:
-            freezed == poblacion
-                ? _value.poblacion
-                : poblacion // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        provincia:
-            freezed == provincia
-                ? _value.provincia
-                : provincia // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        paisId:
-            freezed == paisId
-                ? _value.paisId
-                : paisId // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        latitud:
-            null == latitud
-                ? _value.latitud
-                : latitud // ignore: cast_nullable_to_non_nullable
-                    as double,
-        longitud:
-            null == longitud
-                ? _value.longitud
-                : longitud // ignore: cast_nullable_to_non_nullable
-                    as double,
-        predeterminada:
-            freezed == predeterminada
-                ? _value.predeterminada
-                : predeterminada // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        lastUpdated:
-            null == lastUpdated
-                ? _value.lastUpdated
-                : lastUpdated // ignore: cast_nullable_to_non_nullable
-                    as DateTime,
-        enviada:
-            null == enviada
-                ? _value.enviada
-                : enviada // ignore: cast_nullable_to_non_nullable
-                    as String,
-        tratada:
-            null == tratada
-                ? _value.tratada
-                : tratada // ignore: cast_nullable_to_non_nullable
-                    as String,
-        deleted:
-            null == deleted
-                ? _value.deleted
-                : deleted // ignore: cast_nullable_to_non_nullable
-                    as String,
+        clienteId: null == clienteId
+            ? _value.clienteId
+            : clienteId // ignore: cast_nullable_to_non_nullable
+                  as String,
+        direccionId: null == direccionId
+            ? _value.direccionId
+            : direccionId // ignore: cast_nullable_to_non_nullable
+                  as String,
+        nombre: null == nombre
+            ? _value.nombre
+            : nombre // ignore: cast_nullable_to_non_nullable
+                  as String,
+        direccion1: freezed == direccion1
+            ? _value.direccion1
+            : direccion1 // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        direccion2: freezed == direccion2
+            ? _value.direccion2
+            : direccion2 // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        codigoPostal: freezed == codigoPostal
+            ? _value.codigoPostal
+            : codigoPostal // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        poblacion: freezed == poblacion
+            ? _value.poblacion
+            : poblacion // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        provincia: freezed == provincia
+            ? _value.provincia
+            : provincia // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        paisId: freezed == paisId
+            ? _value.paisId
+            : paisId // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        latitud: null == latitud
+            ? _value.latitud
+            : latitud // ignore: cast_nullable_to_non_nullable
+                  as double,
+        longitud: null == longitud
+            ? _value.longitud
+            : longitud // ignore: cast_nullable_to_non_nullable
+                  as double,
+        predeterminada: freezed == predeterminada
+            ? _value.predeterminada
+            : predeterminada // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        lastUpdated: null == lastUpdated
+            ? _value.lastUpdated
+            : lastUpdated // ignore: cast_nullable_to_non_nullable
+                  as DateTime,
+        enviada: null == enviada
+            ? _value.enviada
+            : enviada // ignore: cast_nullable_to_non_nullable
+                  as String,
+        tratada: null == tratada
+            ? _value.tratada
+            : tratada // ignore: cast_nullable_to_non_nullable
+                  as String,
+        deleted: null == deleted
+            ? _value.deleted
+            : deleted // ignore: cast_nullable_to_non_nullable
+                  as String,
       ),
     );
   }

@@ -40,16 +40,12 @@ class ClienteArticulosTopListPage extends ConsumerWidget {
           state.maybeWhen(
             orElse: () => const ProgressIndicatorWidget(),
             error: (e, st) => ErrorMessageWidget(e.toString()),
-            data:
-                (articulosTopList) =>
-                    (articulosTopList.isNotEmpty)
-                        ? ArticulosTopDataTable(
-                          articulosTopList: articulosTopList,
-                        )
-                        : Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [Text(S.of(context).sinResultados)],
-                        ),
+            data: (articulosTopList) => (articulosTopList.isNotEmpty)
+                ? ArticulosTopDataTable(articulosTopList: articulosTopList)
+                : Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [Text(S.of(context).sinResultados)],
+                  ),
           ),
         ],
       ),
@@ -143,10 +139,9 @@ class _ArticulosTopDataTableState extends State<ArticulosTopDataTable> {
     for (var i = 0; i < articulosTopList.length; i++) {
       dataRows.add(
         DataRow(
-          onLongPress:
-              () => setState(() {
-                selectedRow = i;
-              }),
+          onLongPress: () => setState(() {
+            selectedRow = i;
+          }),
           selected: selectedRow == i,
           cells: [
             DataCell(Center(child: Text((i + 1).toString()))),

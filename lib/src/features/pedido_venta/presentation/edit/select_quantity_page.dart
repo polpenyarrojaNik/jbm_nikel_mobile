@@ -146,9 +146,8 @@ class _SelecionarCantidadPageState
           if (articulo != null)
             _ArticuloInfo(
               articulo: articulo!,
-              setArticuloSustitutivo:
-                  (articuloSusititutivoId) =>
-                      setState(() => articuloId = articuloSusititutivoId),
+              setArticuloSustitutivo: (articuloSusititutivoId) =>
+                  setState(() => articuloId = articuloSusititutivoId),
             ),
           if (articuloPrecio != null)
             TotalQuantityWidget(
@@ -268,48 +267,31 @@ class _SelecionarCantidadPageState
                     if (articuloPrecio != null)
                       state.when(
                         initial: () => Container(),
-                        error:
-                            (error, _) => Center(
-                              child: ErrorMessageWidget(error.toString()),
-                            ),
-                        loading:
-                            () => const Center(
-                              child: CircularProgressIndicator(),
-                            ),
-                        data:
-                            (_) =>
-                                (articuloPrecio != null)
-                                    ? _ArticuloPrecioContainer(
-                                      articuloId:
-                                          widget
-                                              .seleccionarCantidadParam
-                                              .articuloId,
-                                      clienteId:
-                                          widget
-                                              .seleccionarCantidadParam
-                                              .clienteId,
-                                      formKey: formKeyArticuloPrecio,
-                                      precio: precio,
-                                      tipoPrecio:
-                                          articuloPrecio!.precio.tipoPrecio,
-                                      precioController: precioController,
-                                      descuento1Controller:
-                                          descuento1Controller,
-                                      descuento2: descuento2,
-                                      descuento3: articuloPrecio!.descuento3,
-                                      setPrecio:
-                                          (value) =>
-                                              setState(() => precio = value),
-                                      setDescuento1:
-                                          (value) => setState(
-                                            () => descuento1 = value,
-                                          ),
-                                      setDescuento2:
-                                          (value) => setState(
-                                            () => descuento2 = value,
-                                          ),
-                                    )
-                                    : Container(),
+                        error: (error, _) =>
+                            Center(child: ErrorMessageWidget(error.toString())),
+                        loading: () =>
+                            const Center(child: CircularProgressIndicator()),
+                        data: (_) => (articuloPrecio != null)
+                            ? _ArticuloPrecioContainer(
+                                articuloId:
+                                    widget.seleccionarCantidadParam.articuloId,
+                                clienteId:
+                                    widget.seleccionarCantidadParam.clienteId,
+                                formKey: formKeyArticuloPrecio,
+                                precio: precio,
+                                tipoPrecio: articuloPrecio!.precio.tipoPrecio,
+                                precioController: precioController,
+                                descuento1Controller: descuento1Controller,
+                                descuento2: descuento2,
+                                descuento3: articuloPrecio!.descuento3,
+                                setPrecio: (value) =>
+                                    setState(() => precio = value),
+                                setDescuento1: (value) =>
+                                    setState(() => descuento1 = value),
+                                setDescuento2: (value) =>
+                                    setState(() => descuento2 = value),
+                              )
+                            : Container(),
                       ),
                   ],
                 ),
@@ -318,16 +300,14 @@ class _SelecionarCantidadPageState
         ],
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed:
-            () =>
-                (articulo != null && cliente != null)
-                    ? navigateToCrearPedido(
-                      context,
-                      articuloPrecio!,
-                      articulo!,
-                      cliente!,
-                    )
-                    : null,
+        onPressed: () => (articulo != null && cliente != null)
+            ? navigateToCrearPedido(
+                context,
+                articuloPrecio!,
+                articulo!,
+                cliente!,
+              )
+            : null,
         child: const Icon(Icons.check),
       ),
     );
@@ -367,10 +347,10 @@ class _SelecionarCantidadPageState
         final linea = PedidoVentaLinea(
           empresaId: widget.seleccionarCantidadParam.pedidoVentaParam.empresaId,
           pedidoId: widget.seleccionarCantidadParam.pedidoVentaParam.pedidoId,
-          pedidoVentaLineaId: (widget.seleccionarCantidadParam.posicionLinea +
-                  1)
-              .toString()
-              .padLeft(3, '0'),
+          pedidoVentaLineaId:
+              (widget.seleccionarCantidadParam.posicionLinea + 1)
+                  .toString()
+                  .padLeft(3, '0'),
           pedidoVentaAppId:
               widget.seleccionarCantidadParam.pedidoVentaParam.pedidoAppId,
           articuloId: articulo.id,
@@ -426,12 +406,9 @@ class _SelecionarCantidadPageState
               addLineaDesdeArticulo: linea,
               isLocal: widget.seleccionarCantidadParam.pedidoVentaParam.isLocal,
             ),
-            predicate:
-                (route) =>
-                    route.settings.name ==
-                    ArticuloListaRoute(
-                      isSearchArticuloForForm: false,
-                    ).routeName,
+            predicate: (route) =>
+                route.settings.name ==
+                ArticuloListaRoute(isSearchArticuloForForm: false).routeName,
           );
         } else {
           if (context.mounted) {
@@ -501,8 +478,9 @@ class _SelecionarCantidadPageState
 
         if (!widget.seleccionarCantidadParam.isUpdatingLinea() ||
             !initialLoadingData) {
-          precio =
-              newArticuloPrecio.precio.precio.amount.toDecimal().toDouble();
+          precio = newArticuloPrecio.precio.precio.amount
+              .toDecimal()
+              .toDouble();
           precioController.text = numberFormatDecimal(
             newArticuloPrecio.precio.precio.amount.toDecimal().toDouble(),
           );
@@ -567,51 +545,47 @@ class _ArticuloInfo extends ConsumerWidget {
                 ),
                 Text(getDescriptionArticuloInLocalLanguage(articulo: articulo)),
                 state.when(
-                  data:
-                      (articuloSustitutivoList) =>
-                          (articuloSustitutivoList.isNotEmpty)
-                              ? Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    S
-                                        .of(context)
-                                        .pedido_edit_selectQuantity_artiuclosSustitutivos,
+                  data: (articuloSustitutivoList) =>
+                      (articuloSustitutivoList.isNotEmpty)
+                      ? Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              S
+                                  .of(context)
+                                  .pedido_edit_selectQuantity_artiuclosSustitutivos,
+                            ),
+                            const Gap(4),
+                            SizedBox(
+                              height: 20,
+                              child: ListView.separated(
+                                shrinkWrap: true,
+                                physics: const NeverScrollableScrollPhysics(),
+                                scrollDirection: Axis.horizontal,
+                                itemBuilder: (context, i) => GestureDetector(
+                                  onTap: () => setArticuloSustitutivo(
+                                    articuloSustitutivoList[i]
+                                        .articuloSustitutivoId,
                                   ),
-                                  const Gap(4),
-                                  SizedBox(
-                                    height: 20,
-                                    child: ListView.separated(
-                                      shrinkWrap: true,
-                                      physics:
-                                          const NeverScrollableScrollPhysics(),
-                                      scrollDirection: Axis.horizontal,
-                                      itemBuilder:
-                                          (context, i) => GestureDetector(
-                                            onTap:
-                                                () => setArticuloSustitutivo(
-                                                  articuloSustitutivoList[i]
-                                                      .articuloSustitutivoId,
-                                                ),
-                                            child: Text(
-                                              articuloSustitutivoList[i]
-                                                  .articuloSustitutivoId,
-                                              style: Theme.of(
-                                                context,
-                                              ).textTheme.bodyMedium?.copyWith(
-                                                decoration:
-                                                    TextDecoration.underline,
-                                              ),
-                                            ),
-                                          ),
-                                      separatorBuilder:
-                                          (context, i) => const Text(','),
-                                      itemCount: articuloSustitutivoList.length,
-                                    ),
+                                  child: Text(
+                                    articuloSustitutivoList[i]
+                                        .articuloSustitutivoId,
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .bodyMedium
+                                        ?.copyWith(
+                                          decoration: TextDecoration.underline,
+                                        ),
                                   ),
-                                ],
-                              )
-                              : Container(),
+                                ),
+                                separatorBuilder: (context, i) =>
+                                    const Text(','),
+                                itemCount: articuloSustitutivoList.length,
+                              ),
+                            ),
+                          ],
+                        )
+                      : Container(),
                   error: (error, _) => ErrorMessageWidget(error.toString()),
                   loading: () => const ProgressIndicatorWidget(),
                 ),
@@ -777,12 +751,10 @@ class _UnitsFormField extends StatelessWidget {
               setUnitsQuantity(0);
             }
           },
-          onTap:
-              () =>
-                  unitsController.selection = TextSelection(
-                    baseOffset: 0,
-                    extentOffset: unitsController.text.length,
-                  ),
+          onTap: () => unitsController.selection = TextSelection(
+            baseOffset: 0,
+            extentOffset: unitsController.text.length,
+          ),
         ),
         const Gap(4),
         Text(
@@ -873,12 +845,10 @@ class _CajaUnitsFormField extends StatelessWidget {
               setUnitCajaQuantity(0);
             }
           },
-          onTap:
-              () =>
-                  cajaController.selection = TextSelection(
-                    baseOffset: 0,
-                    extentOffset: cajaController.text.length,
-                  ),
+          onTap: () => cajaController.selection = TextSelection(
+            baseOffset: 0,
+            extentOffset: cajaController.text.length,
+          ),
         ),
         const Gap(4),
         Text(
@@ -964,12 +934,10 @@ class _SubcajaUnitsFormField extends StatelessWidget {
               setUnitSubcajaQuantity(0);
             }
           },
-          onTap:
-              () =>
-                  subcajaController.selection = TextSelection(
-                    baseOffset: 0,
-                    extentOffset: subcajaController.text.length,
-                  ),
+          onTap: () => subcajaController.selection = TextSelection(
+            baseOffset: 0,
+            extentOffset: subcajaController.text.length,
+          ),
         ),
         const Gap(4),
         Text(
@@ -1055,12 +1023,10 @@ class _PaletUnitsFormField extends StatelessWidget {
               setUnitPaletQuantity(0);
             }
           },
-          onTap:
-              () =>
-                  paletController.selection = TextSelection(
-                    baseOffset: 0,
-                    extentOffset: paletController.text.length,
-                  ),
+          onTap: () => paletController.selection = TextSelection(
+            baseOffset: 0,
+            extentOffset: paletController.text.length,
+          ),
         ),
         const Gap(4),
         Text(
@@ -1159,8 +1125,9 @@ class _ArticuloPrecioContainer extends ConsumerWidget {
                       ),
                       textAlign: TextAlign.right,
                       decoration: InputDecoration(
-                        labelText:
-                            S.of(context).pedido_edit_selectQuantity_precio,
+                        labelText: S
+                            .of(context)
+                            .pedido_edit_selectQuantity_precio,
                         suffix: Text(
                           'x$tipoPrecio',
                           style: Theme.of(context).textTheme.bodySmall,
@@ -1185,12 +1152,10 @@ class _ArticuloPrecioContainer extends ConsumerWidget {
                           setPrecio(0);
                         }
                       },
-                      onTap:
-                          () =>
-                              precioController.selection = TextSelection(
-                                baseOffset: 0,
-                                extentOffset: precioController.text.length,
-                              ),
+                      onTap: () => precioController.selection = TextSelection(
+                        baseOffset: 0,
+                        extentOffset: precioController.text.length,
+                      ),
                     ),
                   ),
                   const Gap(16),
@@ -1202,8 +1167,9 @@ class _ArticuloPrecioContainer extends ConsumerWidget {
                       keyboardType: TextInputType.number,
                       controller: descuento1Controller,
                       decoration: InputDecoration(
-                        labelText:
-                            S.of(context).pedido_edit_selectQuantity_descuneto1,
+                        labelText: S
+                            .of(context)
+                            .pedido_edit_selectQuantity_descuneto1,
                         suffix: Text(
                           '%',
                           style: Theme.of(context).textTheme.bodySmall,
@@ -1229,12 +1195,11 @@ class _ArticuloPrecioContainer extends ConsumerWidget {
                           setDescuento1(0);
                         }
                       },
-                      onTap:
-                          () =>
-                              descuento1Controller.selection = TextSelection(
-                                baseOffset: 0,
-                                extentOffset: descuento1Controller.text.length,
-                              ),
+                      onTap: () =>
+                          descuento1Controller.selection = TextSelection(
+                            baseOffset: 0,
+                            extentOffset: descuento1Controller.text.length,
+                          ),
                     ),
                   ),
                 ],
@@ -1243,14 +1208,12 @@ class _ArticuloPrecioContainer extends ConsumerWidget {
             const Gap(4),
             articuloPrecioValue.maybeWhen(
               orElse: () => Container(),
-              data:
-                  (ultimosPrecios) =>
-                      ultimosPrecios != null
-                          ? Text(
-                            '${S.of(context).pedido_edit_pedidoEdit_ultimoPrecioDeCompra}:  ${formatPrecioYDescuento(precio: ultimosPrecios.precioDivisa, tipoPrecio: ultimosPrecios.tipoPrecio, descuento1: ultimosPrecios.descuento1, descuento2: ultimosPrecios.descuento2, descuento3: ultimosPrecios.descuento3)} (${numberFormatCantidades(ultimosPrecios.cantidad)} ${S.of(context).unidad})',
-                            style: Theme.of(context).textTheme.bodySmall,
-                          )
-                          : Container(),
+              data: (ultimosPrecios) => ultimosPrecios != null
+                  ? Text(
+                      '${S.of(context).pedido_edit_pedidoEdit_ultimoPrecioDeCompra}:  ${formatPrecioYDescuento(precio: ultimosPrecios.precioDivisa, tipoPrecio: ultimosPrecios.tipoPrecio, descuento1: ultimosPrecios.descuento1, descuento2: ultimosPrecios.descuento2, descuento3: ultimosPrecios.descuento3)} (${numberFormatCantidades(ultimosPrecios.cantidad)} ${S.of(context).unidad})',
+                      style: Theme.of(context).textTheme.bodySmall,
+                    )
+                  : Container(),
             ),
           ],
         ),

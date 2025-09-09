@@ -42,24 +42,21 @@ class ClienteVisitasPage extends ConsumerWidget {
           state.maybeWhen(
             orElse: () => const ProgressIndicatorWidget(),
             error: (e, st) => ErrorMessageWidget(e.toString()),
-            data:
-                (clienteVisitasList) =>
-                    (clienteVisitasList.isNotEmpty)
-                        ? Expanded(
-                          child: ListView.separated(
-                            itemBuilder:
-                                (context, i) => ClienteVisitaListaTile(
-                                  visita: clienteVisitasList[i],
-                                  navigatedFromCliente: true,
-                                ),
-                            separatorBuilder: (context, i) => const Divider(),
-                            itemCount: clienteVisitasList.length,
-                          ),
-                        )
-                        : Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [Text(S.of(context).sinResultados)],
-                        ),
+            data: (clienteVisitasList) => (clienteVisitasList.isNotEmpty)
+                ? Expanded(
+                    child: ListView.separated(
+                      itemBuilder: (context, i) => ClienteVisitaListaTile(
+                        visita: clienteVisitasList[i],
+                        navigatedFromCliente: true,
+                      ),
+                      separatorBuilder: (context, i) => const Divider(),
+                      itemCount: clienteVisitasList.length,
+                    ),
+                  )
+                : Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [Text(S.of(context).sinResultados)],
+                  ),
           ),
         ],
       ),
@@ -96,12 +93,11 @@ class ClienteVisitaListaTile extends StatelessWidget {
                   ) !=
                   null)
                 ChipContainer(
-                  text:
-                      getEstadoVisitaLocal(
-                        context,
-                        visita.enviada,
-                        visita.tratada,
-                      )!,
+                  text: getEstadoVisitaLocal(
+                    context,
+                    visita.enviada,
+                    visita.tratada,
+                  )!,
                   color: getColorEstadoVisitaLocal(
                     context,
                     visita.enviada,

@@ -60,42 +60,39 @@ class _CustomSearchAppBarState extends ConsumerState<CustomSearchAppBar> {
     final state = ref.watch(packageInfoProvider);
 
     return AppBar(
-      leading:
-          !widget.isSearchingFirst && widget.scaffoldKey != null
-              ? IconMenuBadge(widget.scaffoldKey!)
-              : null,
-      title:
-          (isSearching)
-              ? SearchListTile(
-                searchTitle: widget.searchTitle,
-                onChanged: widget.onChanged,
-                focusNode: focusNode,
-              )
-              : Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(widget.title),
-                  Row(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      state.maybeWhen(
-                        orElse: () => Container(),
-                        data:
-                            (packageInfo) => Text(
-                              packageInfo.version,
-                              style: Theme.of(context).textTheme.bodySmall,
-                            ),
-                      ),
-                      const Gap(8),
-                      Text(
-                        ref.watch(usuarioNotifierProvider)!.id,
+      leading: !widget.isSearchingFirst && widget.scaffoldKey != null
+          ? IconMenuBadge(widget.scaffoldKey!)
+          : null,
+      title: (isSearching)
+          ? SearchListTile(
+              searchTitle: widget.searchTitle,
+              onChanged: widget.onChanged,
+              focusNode: focusNode,
+            )
+          : Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(widget.title),
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    state.maybeWhen(
+                      orElse: () => Container(),
+                      data: (packageInfo) => Text(
+                        packageInfo.version,
                         style: Theme.of(context).textTheme.bodySmall,
                       ),
-                    ],
-                  ),
-                ],
-              ),
+                    ),
+                    const Gap(8),
+                    Text(
+                      ref.watch(usuarioNotifierProvider)!.id,
+                      style: Theme.of(context).textTheme.bodySmall,
+                    ),
+                  ],
+                ),
+              ],
+            ),
       actions: getListActionButtons(widget.actionButtons),
     );
   }

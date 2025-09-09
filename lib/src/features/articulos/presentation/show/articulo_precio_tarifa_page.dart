@@ -38,24 +38,21 @@ class ArticuloPrecioTarifaPage extends ConsumerWidget {
           state.maybeWhen(
             orElse: () => const ProgressIndicatorWidget(),
             error: (e, st) => ErrorMessageWidget(e.toString()),
-            data:
-                (articuloPrecioTarifaList) =>
-                    (articuloPrecioTarifaList.isNotEmpty)
-                        ? Expanded(
-                          child: ListView.separated(
-                            itemCount: articuloPrecioTarifaList.length,
-                            itemBuilder:
-                                (context, i) => ArticuloPrecioTarifaTile(
-                                  articuloPrecioTarifa:
-                                      articuloPrecioTarifaList[i],
-                                ),
-                            separatorBuilder: (context, i) => const Divider(),
-                          ),
-                        )
-                        : Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [Text(S.of(context).sinResultados)],
-                        ),
+            data: (articuloPrecioTarifaList) =>
+                (articuloPrecioTarifaList.isNotEmpty)
+                ? Expanded(
+                    child: ListView.separated(
+                      itemCount: articuloPrecioTarifaList.length,
+                      itemBuilder: (context, i) => ArticuloPrecioTarifaTile(
+                        articuloPrecioTarifa: articuloPrecioTarifaList[i],
+                      ),
+                      separatorBuilder: (context, i) => const Divider(),
+                    ),
+                  )
+                : Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [Text(S.of(context).sinResultados)],
+                  ),
           ),
         ],
       ),

@@ -25,22 +25,20 @@ class PedidoVentaListaTile extends ConsumerWidget {
         child: Dismissible(
           key: UniqueKey(),
           background: const SliderBackround(),
-          direction:
-              pedidoVenta.borrador
-                  ? DismissDirection.horizontal
-                  : DismissDirection.none,
-          onDismissed:
-              pedidoVenta.borrador
-                  ? (direction) {
-                    ref.read(
-                      deletePedidoVentaProvider(pedidoVenta.pedidoVentaAppId!),
-                    );
-                    ref.invalidate(
-                      pedidoVentaIndexScreenPaginatedControllerProvider,
-                    );
-                    ref.invalidate(pedidoVentaIndexScreenControllerProvider);
-                  }
-                  : null,
+          direction: pedidoVenta.borrador
+              ? DismissDirection.horizontal
+              : DismissDirection.none,
+          onDismissed: pedidoVenta.borrador
+              ? (direction) {
+                  ref.read(
+                    deletePedidoVentaProvider(pedidoVenta.pedidoVentaAppId!),
+                  );
+                  ref.invalidate(
+                    pedidoVentaIndexScreenPaginatedControllerProvider,
+                  );
+                  ref.invalidate(pedidoVentaIndexScreenControllerProvider);
+                }
+              : null,
           child: Container(
             padding: const EdgeInsets.only(right: 16),
             color: Colors.transparent,
@@ -70,12 +68,12 @@ class PedidoVentaListaTile extends ConsumerWidget {
                                 (pedidoVenta.enviada
                                     ? S.of(context).pending
                                     : S.of(context).pedido_index_offline),
-                            style: Theme.of(
-                              context,
-                            ).textTheme.bodySmall?.copyWith(
-                              color:
-                                  Theme.of(context).textTheme.bodyMedium?.color,
-                            ),
+                            style: Theme.of(context).textTheme.bodySmall
+                                ?.copyWith(
+                                  color: Theme.of(
+                                    context,
+                                  ).textTheme.bodyMedium?.color,
+                                ),
                           ),
                           Text(
                             dateFormatter(
@@ -90,11 +88,11 @@ class PedidoVentaListaTile extends ConsumerWidget {
                             ((pedidoVenta.pedidoVentaEstado != null))
                                 ? pedidoVenta.pedidoVentaEstado!.descripcion
                                 : getEstadoPedidoLocal(
-                                  context,
-                                  pedidoVenta.borrador,
-                                  pedidoVenta.enviada,
-                                  pedidoVenta.tratada,
-                                )!,
+                                    context,
+                                    pedidoVenta.borrador,
+                                    pedidoVenta.enviada,
+                                    pedidoVenta.tratada,
+                                  )!,
                             style: Theme.of(context).textTheme.bodySmall,
                           ),
                         ],

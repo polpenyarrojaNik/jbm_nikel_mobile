@@ -92,10 +92,9 @@ class ClienteDireccionEditPageControllerProvider
               ..clienteImpParam = clienteImpParam,
         from: clienteDireccionEditPageControllerProvider,
         name: r'clienteDireccionEditPageControllerProvider',
-        debugGetCreateSourceHash:
-            const bool.fromEnvironment('dart.vm.product')
-                ? null
-                : _$clienteDireccionEditPageControllerHash,
+        debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+            ? null
+            : _$clienteDireccionEditPageControllerHash,
         dependencies: ClienteDireccionEditPageControllerFamily._dependencies,
         allTransitiveDependencies:
             ClienteDireccionEditPageControllerFamily._allTransitiveDependencies,

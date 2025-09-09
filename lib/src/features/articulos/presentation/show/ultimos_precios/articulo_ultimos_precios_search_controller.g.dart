@@ -95,10 +95,9 @@ class ArticuloUltimosPreciosIndexScreenControllerProvider
                ..articuloId = articuloId,
          from: articuloUltimosPreciosIndexScreenControllerProvider,
          name: r'articuloUltimosPreciosIndexScreenControllerProvider',
-         debugGetCreateSourceHash:
-             const bool.fromEnvironment('dart.vm.product')
-                 ? null
-                 : _$articuloUltimosPreciosIndexScreenControllerHash,
+         debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+             ? null
+             : _$articuloUltimosPreciosIndexScreenControllerHash,
          dependencies:
              ArticuloUltimosPreciosIndexScreenControllerFamily._dependencies,
          allTransitiveDependencies:
@@ -265,16 +264,14 @@ class ArticuloUltimosPreciosIndexScreenPaginatedControllerProvider
     required int page,
     required String articuloId,
   }) : this._internal(
-         () =>
-             ArticuloUltimosPreciosIndexScreenPaginatedController()
-               ..page = page
-               ..articuloId = articuloId,
+         () => ArticuloUltimosPreciosIndexScreenPaginatedController()
+           ..page = page
+           ..articuloId = articuloId,
          from: articuloUltimosPreciosIndexScreenPaginatedControllerProvider,
          name: r'articuloUltimosPreciosIndexScreenPaginatedControllerProvider',
-         debugGetCreateSourceHash:
-             const bool.fromEnvironment('dart.vm.product')
-                 ? null
-                 : _$articuloUltimosPreciosIndexScreenPaginatedControllerHash,
+         debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+             ? null
+             : _$articuloUltimosPreciosIndexScreenPaginatedControllerHash,
          dependencies:
              ArticuloUltimosPreciosIndexScreenPaginatedControllerFamily
                  ._dependencies,
@@ -314,10 +311,9 @@ class ArticuloUltimosPreciosIndexScreenPaginatedControllerProvider
       origin: this,
       override:
           ArticuloUltimosPreciosIndexScreenPaginatedControllerProvider._internal(
-            () =>
-                create()
-                  ..page = page
-                  ..articuloId = articuloId,
+            () => create()
+              ..page = page
+              ..articuloId = articuloId,
             from: from,
             name: null,
             dependencies: null,

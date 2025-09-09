@@ -75,23 +75,19 @@ class _ClienteListPageState extends ConsumerState<ClienteListaPage> {
         isSearchingFirst: widget.isSearchClienteForFrom,
         title: S.of(context).cliente_index_titulo,
         searchTitle: S.of(context).cliente_index_buscarClientes,
-        onChanged:
-            (searchText) => _debouncer.run(() {
-              ref
-                  .read(
-                    clienteIndexControllerSearchTextParameterProvider.notifier,
-                  )
-                  .setFilter(searchText);
-            }),
+        onChanged: (searchText) => _debouncer.run(() {
+          ref
+              .read(clienteIndexControllerSearchTextParameterProvider.notifier)
+              .setFilter(searchText);
+        }),
         actionButtons: [
           IconButton(
             onPressed: () => filterClientesPotenciales(),
             icon: Icon(
               Icons.abc,
-              color:
-                  (searchClientesPotenciales)
-                      ? Theme.of(context).colorScheme.surfaceTint
-                      : null,
+              color: (searchClientesPotenciales)
+                  ? Theme.of(context).colorScheme.surfaceTint
+                  : null,
             ),
           ),
           if (!widget.isSearchClienteForFrom)
@@ -102,21 +98,19 @@ class _ClienteListPageState extends ConsumerState<ClienteListaPage> {
         ],
       ),
       body: stateSync.maybeWhen(
-        orElse:
-            () => ClientesListViewWidget(
-              stateSync: stateSync,
-              ref: ref,
-              isSearchClienteForFrom: widget.isSearchClienteForFrom,
-            ),
-        synchronized:
-            () => RefreshIndicator(
-              onRefresh: () => syncCustomerDb(ref),
-              child: ClientesListViewWidget(
-                stateSync: stateSync,
-                ref: ref,
-                isSearchClienteForFrom: widget.isSearchClienteForFrom,
-              ),
-            ),
+        orElse: () => ClientesListViewWidget(
+          stateSync: stateSync,
+          ref: ref,
+          isSearchClienteForFrom: widget.isSearchClienteForFrom,
+        ),
+        synchronized: () => RefreshIndicator(
+          onRefresh: () => syncCustomerDb(ref),
+          child: ClientesListViewWidget(
+            stateSync: stateSync,
+            ref: ref,
+            isSearchClienteForFrom: widget.isSearchClienteForFrom,
+          ),
+        ),
       ),
     );
   }
@@ -174,9 +168,8 @@ class ClientesListViewWidget extends StatelessWidget {
             final stateLastSyncDate = ref.watch(clienteLastSyncDateProvider);
 
             return stateLastSyncDate.when(
-              data:
-                  (fechaUltimaSync) =>
-                      UltimaSyncDateWidget(ultimaSyncDate: fechaUltimaSync),
+              data: (fechaUltimaSync) =>
+                  UltimaSyncDateWidget(ultimaSyncDate: fechaUltimaSync),
               error: (_, stackTrace) => Container(),
               loading: () => const ProgressIndicatorWidget(),
             );
@@ -186,49 +179,38 @@ class ClientesListViewWidget extends StatelessWidget {
         Expanded(
           child: stateClienteListCount.maybeWhen(
             orElse: () => const ProgressIndicatorWidget(),
-            data:
-                (count) => ListView.separated(
-                  separatorBuilder: (context, i) => const Divider(),
-                  shrinkWrap: true,
-                  physics: const AlwaysScrollableScrollPhysics(),
-                  itemCount: count,
-                  itemBuilder:
-                      (context, i) => ref
-                          .watch(
-                            ClienteIndexScreenPaginatedControllerProvider(
-                              page: (i ~/ ClienteRepository.pageSize),
+            data: (count) => ListView.separated(
+              separatorBuilder: (context, i) => const Divider(),
+              shrinkWrap: true,
+              physics: const AlwaysScrollableScrollPhysics(),
+              itemCount: count,
+              itemBuilder: (context, i) => ref
+                  .watch(
+                    ClienteIndexScreenPaginatedControllerProvider(
+                      page: (i ~/ ClienteRepository.pageSize),
+                    ),
+                  )
+                  .maybeWhen(
+                    orElse: () => const ClienteListShimmer(),
+                    data: (clienteList) => GestureDetector(
+                      onTap: () => (!isSearchClienteForFrom)
+                          ? navigateToClienteDetalle(
+                              context: context,
+                              clienteId:
+                                  clienteList[i % ClienteRepository.pageSize]
+                                      .id,
+                            )
+                          : selectClienteForFromPage(
+                              context: context,
+                              cliente:
+                                  clienteList[i % ClienteRepository.pageSize],
                             ),
-                          )
-                          .maybeWhen(
-                            orElse: () => const ClienteListShimmer(),
-                            data:
-                                (clienteList) => GestureDetector(
-                                  onTap:
-                                      () =>
-                                          (!isSearchClienteForFrom)
-                                              ? navigateToClienteDetalle(
-                                                context: context,
-                                                clienteId:
-                                                    clienteList[i %
-                                                            ClienteRepository
-                                                                .pageSize]
-                                                        .id,
-                                              )
-                                              : selectClienteForFromPage(
-                                                context: context,
-                                                cliente:
-                                                    clienteList[i %
-                                                        ClienteRepository
-                                                            .pageSize],
-                                              ),
-                                  child: ClienteListaTile(
-                                    cliente:
-                                        clienteList[i %
-                                            ClienteRepository.pageSize],
-                                  ),
-                                ),
-                          ),
-                ),
+                      child: ClienteListaTile(
+                        cliente: clienteList[i % ClienteRepository.pageSize],
+                      ),
+                    ),
+                  ),
+            ),
           ),
         ),
       ],

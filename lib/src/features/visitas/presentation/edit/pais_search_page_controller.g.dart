@@ -11,19 +11,19 @@ String _$paisSearchPageControllerHash() =>
 
 /// See also [PaisSearchPageController].
 @ProviderFor(PaisSearchPageController)
-final paisSearchPageControllerProvider = AutoDisposeAsyncNotifierProvider<
-  PaisSearchPageController,
-  List<Pais>
->.internal(
-  PaisSearchPageController.new,
-  name: r'paisSearchPageControllerProvider',
-  debugGetCreateSourceHash:
-      const bool.fromEnvironment('dart.vm.product')
+final paisSearchPageControllerProvider =
+    AutoDisposeAsyncNotifierProvider<
+      PaisSearchPageController,
+      List<Pais>
+    >.internal(
+      PaisSearchPageController.new,
+      name: r'paisSearchPageControllerProvider',
+      debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
           ? null
           : _$paisSearchPageControllerHash,
-  dependencies: null,
-  allTransitiveDependencies: null,
-);
+      dependencies: null,
+      allTransitiveDependencies: null,
+    );
 
 typedef _$PaisSearchPageController = AutoDisposeAsyncNotifier<List<Pais>>;
 // ignore_for_file: type=lint

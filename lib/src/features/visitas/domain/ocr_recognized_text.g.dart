@@ -10,10 +10,9 @@ _OcrRecognizedText _$OcrRecognizedTextFromJson(Map<String, dynamic> json) =>
     _OcrRecognizedText(
       json['TEXT'] as String,
       $enumDecode(_$RecognizedTextTypeEnumMap, json['TIPO']),
-      dischargeDate:
-          json['ORDEN_TIPO'] == null
-              ? null
-              : DateTime.parse(json['ORDEN_TIPO'] as String),
+      dischargeDate: json['ORDEN_TIPO'] == null
+          ? null
+          : DateTime.parse(json['ORDEN_TIPO'] as String),
       telfText: json['TELF_TEXT'] as String?,
       emailText: json['EMAIL_TEXT'] as String?,
       websiteText: json['WEBSITE_TEXT'] as String?,

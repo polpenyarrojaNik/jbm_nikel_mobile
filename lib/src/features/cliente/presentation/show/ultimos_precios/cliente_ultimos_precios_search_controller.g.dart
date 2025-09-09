@@ -95,10 +95,9 @@ class ClienteUltimosPreciosIndexScreenControllerProvider
                ..clienteId = clienteId,
          from: clienteUltimosPreciosIndexScreenControllerProvider,
          name: r'clienteUltimosPreciosIndexScreenControllerProvider',
-         debugGetCreateSourceHash:
-             const bool.fromEnvironment('dart.vm.product')
-                 ? null
-                 : _$clienteUltimosPreciosIndexScreenControllerHash,
+         debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+             ? null
+             : _$clienteUltimosPreciosIndexScreenControllerHash,
          dependencies:
              ClienteUltimosPreciosIndexScreenControllerFamily._dependencies,
          allTransitiveDependencies:
@@ -264,19 +263,16 @@ class ClienteUltimosPreciosIndexScreenPaginatedControllerProvider
     required int page,
     required String clienteId,
   }) : this._internal(
-         () =>
-             ClienteUltimosPreciosIndexScreenPaginatedController()
-               ..page = page
-               ..clienteId = clienteId,
+         () => ClienteUltimosPreciosIndexScreenPaginatedController()
+           ..page = page
+           ..clienteId = clienteId,
          from: clienteUltimosPreciosIndexScreenPaginatedControllerProvider,
          name: r'clienteUltimosPreciosIndexScreenPaginatedControllerProvider',
-         debugGetCreateSourceHash:
-             const bool.fromEnvironment('dart.vm.product')
-                 ? null
-                 : _$clienteUltimosPreciosIndexScreenPaginatedControllerHash,
-         dependencies:
-             ClienteUltimosPreciosIndexScreenPaginatedControllerFamily
-                 ._dependencies,
+         debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+             ? null
+             : _$clienteUltimosPreciosIndexScreenPaginatedControllerHash,
+         dependencies: ClienteUltimosPreciosIndexScreenPaginatedControllerFamily
+             ._dependencies,
          allTransitiveDependencies:
              ClienteUltimosPreciosIndexScreenPaginatedControllerFamily
                  ._allTransitiveDependencies,
@@ -313,10 +309,9 @@ class ClienteUltimosPreciosIndexScreenPaginatedControllerProvider
       origin: this,
       override:
           ClienteUltimosPreciosIndexScreenPaginatedControllerProvider._internal(
-            () =>
-                create()
-                  ..page = page
-                  ..clienteId = clienteId,
+            () => create()
+              ..page = page
+              ..clienteId = clienteId,
             from: from,
             name: null,
             dependencies: null,

@@ -40,11 +40,10 @@ class PedidoVentaDetallePage extends ConsumerWidget {
       (_, state) => state.when(
         data: (file) => (file != null) ? OpenFile.open(file.path) : null,
         error: (error) => showToast(error.toString(), context),
-        loading:
-            () => showToast(
-              S.of(context).cliente_show_clienteAdjunto_abriendoArchivo,
-              context,
-            ),
+        loading: () => showToast(
+          S.of(context).cliente_show_clienteAdjunto_abriendoArchivo,
+          context,
+        ),
         initial: () => null,
       ),
     );
@@ -63,65 +62,58 @@ class PedidoVentaDetallePage extends ConsumerWidget {
                 ofertaHaveAttachmentProvider(pedidoLocalParam.pedidoId!),
               );
               return ofertaAdjuntoValue.maybeWhen(
-                orElse:
-                    () => [
-                      const SizedBox(
-                        height: 25,
-                        child: CircularProgressIndicator(strokeWidth: 2.5),
-                      ),
-                    ],
-                data:
-                    (ofertaHaveAttachment) =>
-                        ofertaHaveAttachment
-                            ? [
-                              IconButton(
-                                onPressed:
-                                    () => _donwloadOfertaAttachment(
-                                      ref,
-                                      pedidoLocalParam.pedidoId!,
-                                    ),
-                                icon: const Icon(Icons.picture_as_pdf),
+                orElse: () => [
+                  const SizedBox(
+                    height: 25,
+                    child: CircularProgressIndicator(strokeWidth: 2.5),
+                  ),
+                ],
+                data: (ofertaHaveAttachment) => ofertaHaveAttachment
+                    ? [
+                        IconButton(
+                          onPressed: () => _donwloadOfertaAttachment(
+                            ref,
+                            pedidoLocalParam.pedidoId!,
+                          ),
+                          icon: const Icon(Icons.picture_as_pdf),
+                        ),
+                        if (pedidoVenta.isEditable)
+                          IconButton(
+                            icon: const Icon(Icons.edit),
+                            onPressed: () => context.router.push(
+                              PedidoVentaEditRoute(
+                                pedidoId: pedidoVenta.pedidoVentaId,
+                                empresaId: pedidoVenta.empresaId,
+                                isLocal: false,
                               ),
-                              if (pedidoVenta.isEditable)
-                                IconButton(
-                                  icon: const Icon(Icons.edit),
-                                  onPressed:
-                                      () => context.router.push(
-                                        PedidoVentaEditRoute(
-                                          pedidoId: pedidoVenta.pedidoVentaId,
-                                          empresaId: pedidoVenta.empresaId,
-                                          isLocal: false,
-                                        ),
-                                      ),
-                                ),
-                            ]
-                            : [
-                              IconButton(
-                                icon: const Icon(Icons.edit),
-                                onPressed:
-                                    () => context.router.push(
-                                      PedidoVentaEditRoute(
-                                        pedidoId: pedidoVenta.pedidoVentaId,
-                                        empresaId: pedidoVenta.empresaId,
-                                        isLocal: false,
-                                      ),
-                                    ),
-                              ),
-                            ],
+                            ),
+                          ),
+                      ]
+                    : [
+                        IconButton(
+                          icon: const Icon(Icons.edit),
+                          onPressed: () => context.router.push(
+                            PedidoVentaEditRoute(
+                              pedidoId: pedidoVenta.pedidoVentaId,
+                              empresaId: pedidoVenta.empresaId,
+                              isLocal: false,
+                            ),
+                          ),
+                        ),
+                      ],
               );
             }
             if (pedidoVenta.isEditable) {
               return [
                 IconButton(
                   icon: const Icon(Icons.edit),
-                  onPressed:
-                      () => context.router.push(
-                        PedidoVentaEditRoute(
-                          pedidoAppId: pedidoVenta.pedidoVentaAppId,
-                          empresaId: pedidoVenta.empresaId,
-                          isLocal: true,
-                        ),
-                      ),
+                  onPressed: () => context.router.push(
+                    PedidoVentaEditRoute(
+                      pedidoAppId: pedidoVenta.pedidoVentaAppId,
+                      empresaId: pedidoVenta.empresaId,
+                      isLocal: true,
+                    ),
+                  ),
                 ),
                 IconButton(
                   icon: const Icon(Icons.delete),
@@ -144,35 +136,30 @@ class PedidoVentaDetallePage extends ConsumerWidget {
       ),
       body: AsyncValueWidget<PedidoVenta>(
         value: state,
-        onData:
-            (pedidoVenta) => SingleChildScrollView(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.only(
-                      top: 16.0,
-                      left: 16,
-                      right: 16,
-                    ),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        ClienteInfoContainer(pedidoVenta: pedidoVenta),
-                        const Gap(12),
-                        PedidoVentaInfoContainer(pedidoVenta: pedidoVenta),
-                        if (!pedidoVenta.isLocal) const Gap(12),
-                        if (!pedidoVenta.isLocal)
-                          AlbaranesContainer(
-                            pedidoVentaId: pedidoVenta.pedidoVentaId!,
-                          ),
-                      ],
-                    ),
-                  ),
-                  PedidoVentaLineaContainer(pedidoLocalParam: pedidoLocalParam),
-                ],
+        onData: (pedidoVenta) => SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(top: 16.0, left: 16, right: 16),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    ClienteInfoContainer(pedidoVenta: pedidoVenta),
+                    const Gap(12),
+                    PedidoVentaInfoContainer(pedidoVenta: pedidoVenta),
+                    if (!pedidoVenta.isLocal) const Gap(12),
+                    if (!pedidoVenta.isLocal)
+                      AlbaranesContainer(
+                        pedidoVentaId: pedidoVenta.pedidoVentaId!,
+                      ),
+                  ],
+                ),
               ),
-            ),
+              PedidoVentaLineaContainer(pedidoLocalParam: pedidoLocalParam),
+            ],
+          ),
+        ),
       ),
     );
   }
@@ -204,15 +191,14 @@ class ClienteInfoContainer extends StatelessWidget {
               ),
             ),
             ChipContainer(
-              text:
-                  (pedidoVenta.pedidoVentaEstado != null)
-                      ? pedidoVenta.pedidoVentaEstado!.descripcion
-                      : getEstadoPedidoLocal(
-                        context,
-                        pedidoVenta.enviada,
-                        pedidoVenta.enviada,
-                        pedidoVenta.tratada,
-                      )!,
+              text: (pedidoVenta.pedidoVentaEstado != null)
+                  ? pedidoVenta.pedidoVentaEstado!.descripcion
+                  : getEstadoPedidoLocal(
+                      context,
+                      pedidoVenta.enviada,
+                      pedidoVenta.enviada,
+                      pedidoVenta.tratada,
+                    )!,
               color: pedidoVentaEstadoColor(
                 pedidoVentaEstadoId: pedidoVenta.pedidoVentaEstado?.id,
                 opacidad: 0.25,
@@ -277,29 +263,34 @@ class PedidoVentaInfoContainer extends StatelessWidget {
       children: [
         if (pedidoVenta.pedidoCliente != null)
           ColumnFieldTextDetalle(
-            fieldTitleValue:
-                S.of(context).pedido_show_pedidoVentaDetalle_pedidoCliente,
+            fieldTitleValue: S
+                .of(context)
+                .pedido_show_pedidoVentaDetalle_pedidoCliente,
             value: pedidoVenta.pedidoCliente,
           ),
         if (pedidoVenta.observaciones != null)
           ColumnFieldTextDetalle(
-            fieldTitleValue:
-                S.of(context).pedido_show_pedidoVentaDetalle_remarks,
+            fieldTitleValue: S
+                .of(context)
+                .pedido_show_pedidoVentaDetalle_remarks,
             value: pedidoVenta.observaciones,
           ),
         RowFieldTextDetalle(
-          fieldTitleValue:
-              S.of(context).pedido_show_pedidoVentaDetalle_totalLineas,
+          fieldTitleValue: S
+              .of(context)
+              .pedido_show_pedidoVentaDetalle_totalLineas,
           value: pedidoVenta.totalLineas?.toString(),
         ),
         RowFieldTextDetalle(
-          fieldTitleValue:
-              S.of(context).pedido_show_pedidoVentaDetalle_importePortes,
+          fieldTitleValue: S
+              .of(context)
+              .pedido_show_pedidoVentaDetalle_importePortes,
           value: pedidoVenta.importePortes?.toString(),
         ),
         RowFieldTextDetalle(
-          fieldTitleValue:
-              S.of(context).pedido_show_pedidoVentaDetalle_baseImponible,
+          fieldTitleValue: S
+              .of(context)
+              .pedido_show_pedidoVentaDetalle_baseImponible,
           value: pedidoVenta.baseImponible?.toString(),
         ),
         RowFieldTextDetalle(
@@ -325,75 +316,63 @@ class AlbaranesContainer extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final state = ref.watch(pedidoVentaAlbaranProvider(pedidoVentaId));
     return state.when(
-      data:
-          (albaranes) =>
-              (albaranes.isNotEmpty)
-                  ? Column(
+      data: (albaranes) => (albaranes.isNotEmpty)
+          ? Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  S.of(context).pedido_show_pedidoVentaDetalle_albaranes,
+                  style: Theme.of(context).textTheme.titleSmall!.copyWith(
+                    color: Theme.of(context).textTheme.bodySmall!.color,
+                  ),
+                ),
+                const Gap(4),
+                ListView.separated(
+                  shrinkWrap: true,
+                  physics: const NeverScrollableScrollPhysics(),
+                  itemCount: albaranes.length,
+                  separatorBuilder: (context, i) => const Divider(),
+                  itemBuilder: (context, i) => Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(
-                        S.of(context).pedido_show_pedidoVentaDetalle_albaranes,
-                        style: Theme.of(context).textTheme.titleSmall!.copyWith(
-                          color: Theme.of(context).textTheme.bodySmall!.color,
-                        ),
-                      ),
-                      const Gap(4),
-                      ListView.separated(
-                        shrinkWrap: true,
-                        physics: const NeverScrollableScrollPhysics(),
-                        itemCount: albaranes.length,
-                        separatorBuilder: (context, i) => const Divider(),
-                        itemBuilder:
-                            (context, i) => Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Text(albaranes[i].albaranId),
-                                    Text(
-                                      dateFormatter(
-                                        albaranes[i].fechaAlbaran
-                                            .toLocal()
-                                            .toIso8601String(),
-                                        allDay: true,
-                                      ),
-                                      style:
-                                          Theme.of(context).textTheme.bodySmall,
-                                    ),
-                                  ],
-                                ),
-                                if (albaranes[i].trackId != null ||
-                                    albaranes[i].agencia != null)
-                                  Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      if (albaranes[i].trackId != null)
-                                        SelectableText(
-                                          'Tracking: ${albaranes[i].trackId!}',
-                                          style:
-                                              Theme.of(
-                                                context,
-                                              ).textTheme.bodySmall,
-                                        ),
-                                      if (albaranes[i].agencia != null)
-                                        Text(
-                                          albaranes[i].agencia!,
-                                          style:
-                                              Theme.of(
-                                                context,
-                                              ).textTheme.bodySmall,
-                                        ),
-                                    ],
-                                  ),
-                              ],
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(albaranes[i].albaranId),
+                          Text(
+                            dateFormatter(
+                              albaranes[i].fechaAlbaran
+                                  .toLocal()
+                                  .toIso8601String(),
+                              allDay: true,
                             ),
+                            style: Theme.of(context).textTheme.bodySmall,
+                          ),
+                        ],
                       ),
+                      if (albaranes[i].trackId != null ||
+                          albaranes[i].agencia != null)
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            if (albaranes[i].trackId != null)
+                              SelectableText(
+                                'Tracking: ${albaranes[i].trackId!}',
+                                style: Theme.of(context).textTheme.bodySmall,
+                              ),
+                            if (albaranes[i].agencia != null)
+                              Text(
+                                albaranes[i].agencia!,
+                                style: Theme.of(context).textTheme.bodySmall,
+                              ),
+                          ],
+                        ),
                     ],
-                  )
-                  : Container(),
+                  ),
+                ),
+              ],
+            )
+          : Container(),
       error: (error, _) => ErrorMessageWidget(error.toString()),
       loading: () => const Center(child: CircularProgressIndicator()),
     );
@@ -417,20 +396,17 @@ class PedidoVentaLineaContainer extends ConsumerWidget {
         Padding(
           padding: const EdgeInsets.all(16.0),
           child: state.when(
-            data:
-                (pedidoVentaLineaList) =>
-                    (pedidoVentaLineaList.isEmpty)
-                        ? Center(child: Text(S.of(context).sinResultados))
-                        : ListView.separated(
-                          separatorBuilder: (context, i) => const Divider(),
-                          shrinkWrap: true,
-                          physics: const NeverScrollableScrollPhysics(),
-                          itemBuilder:
-                              (context, i) => PedidoVentaLineaTile(
-                                pedidoVentaLinea: pedidoVentaLineaList[i],
-                              ),
-                          itemCount: pedidoVentaLineaList.length,
-                        ),
+            data: (pedidoVentaLineaList) => (pedidoVentaLineaList.isEmpty)
+                ? Center(child: Text(S.of(context).sinResultados))
+                : ListView.separated(
+                    separatorBuilder: (context, i) => const Divider(),
+                    shrinkWrap: true,
+                    physics: const NeverScrollableScrollPhysics(),
+                    itemBuilder: (context, i) => PedidoVentaLineaTile(
+                      pedidoVentaLinea: pedidoVentaLineaList[i],
+                    ),
+                    itemCount: pedidoVentaLineaList.length,
+                  ),
             error: (e, _) => ErrorMessageWidget(e.toString()),
             loading: () => const ProgressIndicatorWidget(),
           ),

@@ -38,23 +38,20 @@ class ArticuloGrupoNetoPage extends ConsumerWidget {
           state.maybeWhen(
             orElse: () => const ProgressIndicatorWidget(),
             error: (e, st) => ErrorMessageWidget(e.toString()),
-            data:
-                (articuloGrupoNetoList) =>
-                    (articuloGrupoNetoList.isNotEmpty)
-                        ? Expanded(
-                          child: ListView.separated(
-                            itemCount: articuloGrupoNetoList.length,
-                            itemBuilder:
-                                (context, i) => ArticuloGrupoNetoTile(
-                                  articuloGrupoNeto: articuloGrupoNetoList[i],
-                                ),
-                            separatorBuilder: (context, i) => const Divider(),
-                          ),
-                        )
-                        : Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [Text(S.of(context).sinResultados)],
-                        ),
+            data: (articuloGrupoNetoList) => (articuloGrupoNetoList.isNotEmpty)
+                ? Expanded(
+                    child: ListView.separated(
+                      itemCount: articuloGrupoNetoList.length,
+                      itemBuilder: (context, i) => ArticuloGrupoNetoTile(
+                        articuloGrupoNeto: articuloGrupoNetoList[i],
+                      ),
+                      separatorBuilder: (context, i) => const Divider(),
+                    ),
+                  )
+                : Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [Text(S.of(context).sinResultados)],
+                  ),
           ),
         ],
       ),

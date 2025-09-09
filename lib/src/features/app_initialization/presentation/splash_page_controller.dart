@@ -8,10 +8,11 @@ import '../../../core/infrastructure/init_database_service.dart';
 
 part 'splash_page_controller.freezed.dart';
 
-final splashPageControllerProvider = StateNotifierProvider.autoDispose<
-  SplashPageController,
-  SplashControllerState
->((ref) => SplashPageController(ref.watch(initDatabaseServiceProvider)));
+final splashPageControllerProvider =
+    StateNotifierProvider.autoDispose<
+      SplashPageController,
+      SplashControllerState
+    >((ref) => SplashPageController(ref.watch(initDatabaseServiceProvider)));
 
 @freezed
 abstract class SplashControllerState with _$SplashControllerState {
@@ -47,8 +48,8 @@ class SplashPageController extends StateNotifier<SplashControllerState> {
       final existDatabase = await _initDatabaseService.existDatabase();
 
       if (!existDatabase) {
-        final getLastDatabaseSchema =
-            await _initDatabaseService.getSchemaVersionFromPreferences();
+        final getLastDatabaseSchema = await _initDatabaseService
+            .getSchemaVersionFromPreferences();
         state = SplashControllerState.downloadDatabase(
           getLastDatabaseSchema,
           kDatabaseRelease,

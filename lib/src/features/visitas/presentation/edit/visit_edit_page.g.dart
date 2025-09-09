@@ -94,17 +94,15 @@ class VisitEditPageControllerProvider
   /// See also [VisitEditPageController].
   VisitEditPageControllerProvider(String visitaId, bool isLocal, bool isNew)
     : this._internal(
-        () =>
-            VisitEditPageController()
-              ..visitaId = visitaId
-              ..isLocal = isLocal
-              ..isNew = isNew,
+        () => VisitEditPageController()
+          ..visitaId = visitaId
+          ..isLocal = isLocal
+          ..isNew = isNew,
         from: visitEditPageControllerProvider,
         name: r'visitEditPageControllerProvider',
-        debugGetCreateSourceHash:
-            const bool.fromEnvironment('dart.vm.product')
-                ? null
-                : _$visitEditPageControllerHash,
+        debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+            ? null
+            : _$visitEditPageControllerHash,
         dependencies: VisitEditPageControllerFamily._dependencies,
         allTransitiveDependencies:
             VisitEditPageControllerFamily._allTransitiveDependencies,
@@ -141,11 +139,10 @@ class VisitEditPageControllerProvider
     return ProviderOverride(
       origin: this,
       override: VisitEditPageControllerProvider._internal(
-        () =>
-            create()
-              ..visitaId = visitaId
-              ..isLocal = isLocal
-              ..isNew = isNew,
+        () => create()
+          ..visitaId = visitaId
+          ..isLocal = isLocal
+          ..isNew = isNew,
         from: from,
         name: null,
         dependencies: null,
@@ -280,17 +277,15 @@ class SaveFormProvider
   /// See also [SaveForm].
   SaveFormProvider(String visitaId, bool isLocal, bool isNew)
     : this._internal(
-        () =>
-            SaveForm()
-              ..visitaId = visitaId
-              ..isLocal = isLocal
-              ..isNew = isNew,
+        () => SaveForm()
+          ..visitaId = visitaId
+          ..isLocal = isLocal
+          ..isNew = isNew,
         from: saveFormProvider,
         name: r'saveFormProvider',
-        debugGetCreateSourceHash:
-            const bool.fromEnvironment('dart.vm.product')
-                ? null
-                : _$saveFormHash,
+        debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+            ? null
+            : _$saveFormHash,
         dependencies: SaveFormFamily._dependencies,
         allTransitiveDependencies: SaveFormFamily._allTransitiveDependencies,
         visitaId: visitaId,
@@ -326,11 +321,10 @@ class SaveFormProvider
     return ProviderOverride(
       origin: this,
       override: SaveFormProvider._internal(
-        () =>
-            create()
-              ..visitaId = visitaId
-              ..isLocal = isLocal
-              ..isNew = isNew,
+        () => create()
+          ..visitaId = visitaId
+          ..isLocal = isLocal
+          ..isNew = isNew,
         from: from,
         name: null,
         dependencies: null,

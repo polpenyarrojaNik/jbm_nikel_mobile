@@ -38,23 +38,20 @@ class ArticuloRecambioPage extends ConsumerWidget {
           state.maybeWhen(
             orElse: () => const ProgressIndicatorWidget(),
             error: (e, st) => ErrorMessageWidget(e.toString()),
-            data:
-                (articuloRecambioList) =>
-                    (articuloRecambioList.isNotEmpty)
-                        ? Expanded(
-                          child: ListView.separated(
-                            itemCount: articuloRecambioList.length,
-                            itemBuilder:
-                                (context, i) => ArticuloRecambioTile(
-                                  articuloRecambio: articuloRecambioList[i],
-                                ),
-                            separatorBuilder: (context, i) => const Divider(),
-                          ),
-                        )
-                        : Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [Text(S.of(context).sinResultados)],
-                        ),
+            data: (articuloRecambioList) => (articuloRecambioList.isNotEmpty)
+                ? Expanded(
+                    child: ListView.separated(
+                      itemCount: articuloRecambioList.length,
+                      itemBuilder: (context, i) => ArticuloRecambioTile(
+                        articuloRecambio: articuloRecambioList[i],
+                      ),
+                      separatorBuilder: (context, i) => const Divider(),
+                    ),
+                  )
+                : Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [Text(S.of(context).sinResultados)],
+                  ),
           ),
         ],
       ),

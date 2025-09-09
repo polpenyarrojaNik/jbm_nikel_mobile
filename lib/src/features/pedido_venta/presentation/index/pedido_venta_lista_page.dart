@@ -80,31 +80,27 @@ class _PedidoVentaListPageState extends ConsumerState<PedidoVentaListPage> {
         isSearchingFirst: false,
         title: S.of(context).pedido_index_titulo,
         searchTitle: S.of(context).pedido_index_buscarPedidos,
-        onChanged:
-            (searchText) => _debouncer.run(() {
-              ref.read(pedidosSearchQueryStateProvider.notifier).state =
-                  searchText;
-            }),
+        onChanged: (searchText) => _debouncer.run(() {
+          ref.read(pedidosSearchQueryStateProvider.notifier).state = searchText;
+        }),
         actionButtons: [
           IconButton(
             onPressed: () => searchFilterByEstado(),
             icon: Icon(
               Icons.filter_list,
-              color:
-                  (filteredStatus != null)
-                      ? Theme.of(context).colorScheme.surfaceTint
-                      : null,
+              color: (filteredStatus != null)
+                  ? Theme.of(context).colorScheme.surfaceTint
+                  : null,
             ),
           ),
         ],
       ),
       body: stateSync.maybeWhen(
         orElse: () => PedidosListViewWidget(stateSync: stateSync, ref: ref),
-        synchronized:
-            () => RefreshIndicator(
-              onRefresh: () => syncSalesOrderDB(ref),
-              child: PedidosListViewWidget(stateSync: stateSync, ref: ref),
-            ),
+        synchronized: () => RefreshIndicator(
+          onRefresh: () => syncSalesOrderDB(ref),
+          child: PedidosListViewWidget(stateSync: stateSync, ref: ref),
+        ),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () => navigateToCreatePedido(context),
@@ -138,9 +134,8 @@ class _PedidoVentaListPageState extends ConsumerState<PedidoVentaListPage> {
     final filterEstado =
         await showDialog(
               context: context,
-              builder:
-                  (context) =>
-                      PedidoVentaFilterDialog(filteredStatus: filteredStatus),
+              builder: (context) =>
+                  PedidoVentaFilterDialog(filteredStatus: filteredStatus),
             )
             as PedidoVentaEstado?;
 
@@ -177,9 +172,8 @@ class PedidosListViewWidget extends StatelessWidget {
             );
 
             return stateLastSyncDate.when(
-              data:
-                  (fechaUltimaSync) =>
-                      UltimaSyncDateWidget(ultimaSyncDate: fechaUltimaSync),
+              data: (fechaUltimaSync) =>
+                  UltimaSyncDateWidget(ultimaSyncDate: fechaUltimaSync),
               error: (_, stackTrace) => Container(),
               loading: () => const ProgressIndicatorWidget(),
             );
@@ -189,76 +183,69 @@ class PedidosListViewWidget extends StatelessWidget {
         Expanded(
           child: statePedidoVentaCount.maybeWhen(
             orElse: () => const ProgressIndicatorWidget(),
-            data:
-                (count) => ListView.separated(
-                  separatorBuilder: (context, i) => const Divider(),
-                  physics: const AlwaysScrollableScrollPhysics(),
-                  shrinkWrap: true,
-                  itemCount: count,
-                  itemBuilder:
-                      (context, i) => ref
-                          .watch(
-                            PedidoVentaIndexScreenPaginatedControllerProvider(
-                              page: (i ~/ PedidoVentaRepository.pageSize),
-                            ),
-                          )
-                          .maybeWhen(
-                            orElse: () => const PedidoVentaShimmer(),
-                            data:
-                                (pedidoVentaList) =>
-                                    pedidoVentaList.isNotEmpty
-                                        ? PedidoVentaListaTile(
-                                          pedidoVenta:
-                                              pedidoVentaList[i %
+            data: (count) => ListView.separated(
+              separatorBuilder: (context, i) => const Divider(),
+              physics: const AlwaysScrollableScrollPhysics(),
+              shrinkWrap: true,
+              itemCount: count,
+              itemBuilder: (context, i) => ref
+                  .watch(
+                    PedidoVentaIndexScreenPaginatedControllerProvider(
+                      page: (i ~/ PedidoVentaRepository.pageSize),
+                    ),
+                  )
+                  .maybeWhen(
+                    orElse: () => const PedidoVentaShimmer(),
+                    data: (pedidoVentaList) => pedidoVentaList.isNotEmpty
+                        ? PedidoVentaListaTile(
+                            pedidoVenta:
+                                pedidoVentaList[i %
+                                    PedidoVentaRepository.pageSize],
+                            onTap: () =>
+                                (!pedidoVentaList[i %
+                                        PedidoVentaRepository.pageSize]
+                                    .borrador)
+                                ? context.router.push(
+                                    PedidoVentaDetalleRoute(
+                                      pedidoLocalParam: PedidoLocalParam(
+                                        pedidoId:
+                                            pedidoVentaList[i %
+                                                    PedidoVentaRepository
+                                                        .pageSize]
+                                                .pedidoVentaId,
+                                        empresaId:
+                                            pedidoVentaList[i %
+                                                    PedidoVentaRepository
+                                                        .pageSize]
+                                                .empresaId,
+                                        pedidoAppId:
+                                            pedidoVentaList[i %
+                                                    PedidoVentaRepository
+                                                        .pageSize]
+                                                .pedidoVentaAppId,
+                                        isEdit: false,
+                                        tratada:
+                                            pedidoVentaList[i %
+                                                    PedidoVentaRepository
+                                                        .pageSize]
+                                                .tratada,
+                                      ),
+                                    ),
+                                  )
+                                : context.router.push(
+                                    PedidoVentaEditRoute(
+                                      pedidoAppId:
+                                          pedidoVentaList[i %
                                                   PedidoVentaRepository
-                                                      .pageSize],
-                                          onTap:
-                                              () =>
-                                                  (!pedidoVentaList[i %
-                                                              PedidoVentaRepository
-                                                                  .pageSize]
-                                                          .borrador)
-                                                      ? context.router.push(
-                                                        PedidoVentaDetalleRoute(
-                                                          pedidoLocalParam: PedidoLocalParam(
-                                                            pedidoId:
-                                                                pedidoVentaList[i %
-                                                                        PedidoVentaRepository
-                                                                            .pageSize]
-                                                                    .pedidoVentaId,
-                                                            empresaId:
-                                                                pedidoVentaList[i %
-                                                                        PedidoVentaRepository
-                                                                            .pageSize]
-                                                                    .empresaId,
-                                                            pedidoAppId:
-                                                                pedidoVentaList[i %
-                                                                        PedidoVentaRepository
-                                                                            .pageSize]
-                                                                    .pedidoVentaAppId,
-                                                            isEdit: false,
-                                                            tratada:
-                                                                pedidoVentaList[i %
-                                                                        PedidoVentaRepository
-                                                                            .pageSize]
-                                                                    .tratada,
-                                                          ),
-                                                        ),
-                                                      )
-                                                      : context.router.push(
-                                                        PedidoVentaEditRoute(
-                                                          pedidoAppId:
-                                                              pedidoVentaList[i %
-                                                                      PedidoVentaRepository
-                                                                          .pageSize]
-                                                                  .pedidoVentaAppId,
-                                                          isLocal: true,
-                                                        ),
-                                                      ),
-                                        )
-                                        : const SinResultadosWidget(),
-                          ),
-                ),
+                                                      .pageSize]
+                                              .pedidoVentaAppId,
+                                      isLocal: true,
+                                    ),
+                                  ),
+                          )
+                        : const SinResultadosWidget(),
+                  ),
+            ),
           ),
         ),
       ],
@@ -292,19 +279,17 @@ class _PedidoVentaFilterDialogState
     return AlertDialog(
       title: Center(child: Text(S.of(context).pedido_index_filtros)),
       content: state.when(
-        data:
-            (pedidoVentaEstadoList) => FormBuilderRadioGroup(
-              decoration: InputDecoration(
-                labelText: S.of(context).pedido_index_estados,
-                border: InputBorder.none,
-              ),
-              name: 'filter_estados',
-              options: showFieldOption(pedidoVentaEstadoList),
-              initialValue: widget.filteredStatus ?? pedidoVentaEstadoList[0],
-              onChanged:
-                  (newFilterValue) =>
-                      changeFilterValue(filterValue: newFilterValue),
-            ),
+        data: (pedidoVentaEstadoList) => FormBuilderRadioGroup(
+          decoration: InputDecoration(
+            labelText: S.of(context).pedido_index_estados,
+            border: InputBorder.none,
+          ),
+          name: 'filter_estados',
+          options: showFieldOption(pedidoVentaEstadoList),
+          initialValue: widget.filteredStatus ?? pedidoVentaEstadoList[0],
+          onChanged: (newFilterValue) =>
+              changeFilterValue(filterValue: newFilterValue),
+        ),
         error: (err, _) => ErrorMessageWidget(err.toString()),
         loading: () => const ProgressIndicatorWidget(),
       ),

@@ -38,11 +38,10 @@ class CommonAppBar extends ConsumerWidget implements PreferredSizeWidget {
             children: [
               state.maybeWhen(
                 orElse: () => Container(),
-                data:
-                    (packageInfo) => Text(
-                      packageInfo.version,
-                      style: Theme.of(context).textTheme.bodySmall,
-                    ),
+                data: (packageInfo) => Text(
+                  packageInfo.version,
+                  style: Theme.of(context).textTheme.bodySmall,
+                ),
               ),
               const Gap(8),
               Text(

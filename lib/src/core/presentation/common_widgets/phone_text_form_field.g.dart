@@ -11,19 +11,19 @@ String _$phoneTextFormBuilderControllerHash() =>
 
 /// See also [PhoneTextFormBuilderController].
 @ProviderFor(PhoneTextFormBuilderController)
-final phoneTextFormBuilderControllerProvider = AutoDisposeNotifierProvider<
-  PhoneTextFormBuilderController,
-  String?
->.internal(
-  PhoneTextFormBuilderController.new,
-  name: r'phoneTextFormBuilderControllerProvider',
-  debugGetCreateSourceHash:
-      const bool.fromEnvironment('dart.vm.product')
+final phoneTextFormBuilderControllerProvider =
+    AutoDisposeNotifierProvider<
+      PhoneTextFormBuilderController,
+      String?
+    >.internal(
+      PhoneTextFormBuilderController.new,
+      name: r'phoneTextFormBuilderControllerProvider',
+      debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
           ? null
           : _$phoneTextFormBuilderControllerHash,
-  dependencies: null,
-  allTransitiveDependencies: null,
-);
+      dependencies: null,
+      allTransitiveDependencies: null,
+    );
 
 typedef _$PhoneTextFormBuilderController = AutoDisposeNotifier<String?>;
 String _$verifyExistingPhoneHash() =>
@@ -31,19 +31,19 @@ String _$verifyExistingPhoneHash() =>
 
 /// See also [VerifyExistingPhone].
 @ProviderFor(VerifyExistingPhone)
-final verifyExistingPhoneProvider = AutoDisposeNotifierProvider<
-  VerifyExistingPhone,
-  MutationState<Either<AppException, ClienteTelefono?>, String>
->.internal(
-  VerifyExistingPhone.new,
-  name: r'verifyExistingPhoneProvider',
-  debugGetCreateSourceHash:
-      const bool.fromEnvironment('dart.vm.product')
+final verifyExistingPhoneProvider =
+    AutoDisposeNotifierProvider<
+      VerifyExistingPhone,
+      MutationState<Either<AppException, ClienteTelefono?>, String>
+    >.internal(
+      VerifyExistingPhone.new,
+      name: r'verifyExistingPhoneProvider',
+      debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
           ? null
           : _$verifyExistingPhoneHash,
-  dependencies: null,
-  allTransitiveDependencies: null,
-);
+      dependencies: null,
+      allTransitiveDependencies: null,
+    );
 
 typedef _$VerifyExistingPhone =
     AutoDisposeNotifier<

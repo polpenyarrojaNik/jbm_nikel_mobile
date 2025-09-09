@@ -36,33 +36,27 @@ class PedidoVentaLineaTile extends StatelessWidget {
                     children: [
                       Text(
                         pedidoVentaLinea.articuloId,
-                        style:
-                            (!pedidoVentaLinea.isComponente)
-                                ? Theme.of(context).textTheme.titleSmall
-                                : Theme.of(
+                        style: (!pedidoVentaLinea.isComponente)
+                            ? Theme.of(context).textTheme.titleSmall
+                            : Theme.of(context).textTheme.titleSmall?.copyWith(
+                                color: Theme.of(
                                   context,
-                                ).textTheme.titleSmall?.copyWith(
-                                  color:
-                                      Theme.of(
-                                        context,
-                                      ).textTheme.bodySmall?.color,
-                                ),
+                                ).textTheme.bodySmall?.color,
+                              ),
                       ),
                       Row(
                         children: [
                           Text(
                             '${numberFormatCantidades(pedidoVentaLinea.cantidad)} ${S.of(context).unidad}',
-                            style:
-                                (!pedidoVentaLinea.isComponente)
-                                    ? Theme.of(context).textTheme.titleSmall
-                                    : Theme.of(
+                            style: (!pedidoVentaLinea.isComponente)
+                                ? Theme.of(context).textTheme.titleSmall
+                                : Theme.of(
+                                    context,
+                                  ).textTheme.titleSmall?.copyWith(
+                                    color: Theme.of(
                                       context,
-                                    ).textTheme.titleSmall?.copyWith(
-                                      color:
-                                          Theme.of(
-                                            context,
-                                          ).textTheme.bodySmall?.color,
-                                    ),
+                                    ).textTheme.bodySmall?.color,
+                                  ),
                           ),
                         ],
                       ),

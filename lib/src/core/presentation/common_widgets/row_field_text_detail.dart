@@ -24,12 +24,12 @@ class RowFieldTextDetalle extends StatelessWidget {
         ),
         (value is String)
             ? Flexible(
-              child: Text(
-                value as String,
-                style: Theme.of(context).textTheme.bodyMedium!,
-                textAlign: TextAlign.end,
-              ),
-            )
+                child: Text(
+                  value as String,
+                  style: Theme.of(context).textTheme.bodyMedium!,
+                  textAlign: TextAlign.end,
+                ),
+              )
             : value as Widget,
       ],
     );

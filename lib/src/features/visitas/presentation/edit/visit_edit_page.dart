@@ -68,14 +68,13 @@ class VisitEditPageController extends _$VisitEditPageController {
     Visita? visit;
 
     if (!isNew) {
-      visit =
-          isLocal
-              ? await ref
-                  .read(visitaRepositoryProvider)
-                  .getVisitaLocal(visitaAppId: visitaId)
-              : await ref
-                  .read(visitaRepositoryProvider)
-                  .getVisita(visitaId: visitaId);
+      visit = isLocal
+          ? await ref
+                .read(visitaRepositoryProvider)
+                .getVisitaLocal(visitaAppId: visitaId)
+          : await ref
+                .read(visitaRepositoryProvider)
+                .getVisita(visitaId: visitaId);
     }
 
     final provincias = await ref.read(
@@ -154,11 +153,10 @@ class VisitaEditPage extends ConsumerWidget {
 
     ref.listen(saveFormProvider(id, isLocal, isNew), (_, state) {
       state.whenOrNull(
-        error:
-            (error, _) => context.showErrorBar(
-              duration: const Duration(seconds: 5),
-              content: Text(state.error.toString()),
-            ),
+        error: (error, _) => context.showErrorBar(
+          duration: const Duration(seconds: 5),
+          content: Text(state.error.toString()),
+        ),
         data: (result) {
           result.fold(
             (l) => context.showErrorBar(
@@ -188,17 +186,16 @@ class VisitaEditPage extends ConsumerWidget {
     });
     return Scaffold(
       appBar: CommonAppBar(
-        titleText:
-            (isNew
-                ? S.of(context).visitas_edit_visitaEditar_titleNueva
-                : S.of(context).visitas_edit_visitaEditar_titleEditar),
+        titleText: (isNew
+            ? S.of(context).visitas_edit_visitaEditar_titleNueva
+            : S.of(context).visitas_edit_visitaEditar_titleEditar),
         actions: [
           stateSaveForm.isLoading
               ? Container()
               : IconButton(
-                icon: const Icon(Icons.save),
-                onPressed: () => saveForm(context, ref),
-              ),
+                  icon: const Icon(Icons.save),
+                  onPressed: () => saveForm(context, ref),
+                ),
         ],
       ),
       body: SingleChildScrollView(
@@ -214,12 +211,11 @@ class VisitaEditPage extends ConsumerWidget {
                 isNew: isNew,
               );
             },
-            error:
-                (Object error, StackTrace? _) => ErrorMessageWidget(
-                  (error is AppException)
-                      ? error.details.message
-                      : error.toString(),
-                ),
+            error: (Object error, StackTrace? _) => ErrorMessageWidget(
+              (error is AppException)
+                  ? error.details.message
+                  : error.toString(),
+            ),
           ),
         ),
       ),
@@ -247,34 +243,27 @@ class VisitaEditPage extends ConsumerWidget {
         fecha: (formKey.currentState!.value['fecha'] as DateTime).toUtc(),
         cliente: (formKey.currentState!.value['cliente'] as Cliente?),
         isClienteProvisional: isClientePotencial,
-        clienteProvisionalNombre:
-            isClientePotencial
-                ? formKey.currentState!.value['nombre'] as String
-                : null,
-        clienteProvisionalEmail:
-            isClientePotencial
-                ? formKey.currentState!.value['email'] as String?
-                : null,
-        clienteProvisionalTelefono:
-            isClientePotencial
-                ? formKey.currentState!.value['telefono'] as String?
-                : null,
-        clienteProvisionalDireccion1:
-            isClientePotencial
-                ? formKey.currentState!.value['direccion1'] as String?
-                : null,
-        clienteProvisionalDireccion2:
-            isClientePotencial
-                ? formKey.currentState!.value['direccion2'] as String?
-                : null,
-        clienteProvisionalCodigoPostal:
-            isClientePotencial
-                ? formKey.currentState!.value['codigo_postal'] as String?
-                : null,
-        clienteProvisionalPoblacion:
-            isClientePotencial
-                ? formKey.currentState!.value['poblacion'] as String
-                : null,
+        clienteProvisionalNombre: isClientePotencial
+            ? formKey.currentState!.value['nombre'] as String
+            : null,
+        clienteProvisionalEmail: isClientePotencial
+            ? formKey.currentState!.value['email'] as String?
+            : null,
+        clienteProvisionalTelefono: isClientePotencial
+            ? formKey.currentState!.value['telefono'] as String?
+            : null,
+        clienteProvisionalDireccion1: isClientePotencial
+            ? formKey.currentState!.value['direccion1'] as String?
+            : null,
+        clienteProvisionalDireccion2: isClientePotencial
+            ? formKey.currentState!.value['direccion2'] as String?
+            : null,
+        clienteProvisionalCodigoPostal: isClientePotencial
+            ? formKey.currentState!.value['codigo_postal'] as String?
+            : null,
+        clienteProvisionalPoblacion: isClientePotencial
+            ? formKey.currentState!.value['poblacion'] as String
+            : null,
         clienteProvisionalProvincia:
             formKey.currentState!.value['provincia'] as Provincia?,
         clienteProvisionalRegionId:
@@ -412,10 +401,9 @@ class _VisitaFormState extends ConsumerState<_VisitaForm> {
             initialValue:
                 widget.visitaEditScreenData.visita?.isClienteProvisional ??
                 false,
-            onChanged:
-                (value) => setState(() {
-                  isClienteProvisional = !isClienteProvisional;
-                }),
+            onChanged: (value) => setState(() {
+              isClienteProvisional = !isClienteProvisional;
+            }),
           ),
           if (isClienteProvisional)
             _ClienteProvisionalContainer(
@@ -429,13 +417,12 @@ class _VisitaFormState extends ConsumerState<_VisitaForm> {
               visita: widget.visitaEditScreenData.visita,
               readOnly: widget.readOnly,
               formKey: widget.formKey,
-              onSelectedCliente:
-                  (newCliente) => setState(() {
-                    widget.formKey.currentState?.patchValue({
-                      'cliente': newCliente,
-                    });
-                    isClienteLinked = newCliente != null;
-                  }),
+              onSelectedCliente: (newCliente) => setState(() {
+                widget.formKey.currentState?.patchValue({
+                  'cliente': newCliente,
+                });
+                isClienteLinked = newCliente != null;
+              }),
             ),
           FormBuilderDateTimePicker(
             name: 'fecha',
@@ -464,18 +451,17 @@ class _VisitaFormState extends ConsumerState<_VisitaForm> {
                   '${S.of(context).visitas_edit_visitaEditar_contacto} *',
               suffixIcon:
                   !isClienteProvisional &&
-                          (getFormInstantValue<Cliente?>(
-                                    widget.formKey,
-                                    'cliente',
-                                  ) !=
-                                  null ||
-                              widget.visitaEditScreenData.visita?.cliente !=
-                                  null)
-                      ? IconButton(
-                        onPressed: () => onSearch(context),
-                        icon: const Icon(Icons.search),
-                      )
-                      : null,
+                      (getFormInstantValue<Cliente?>(
+                                widget.formKey,
+                                'cliente',
+                              ) !=
+                              null ||
+                          widget.visitaEditScreenData.visita?.cliente != null)
+                  ? IconButton(
+                      onPressed: () => onSearch(context),
+                      icon: const Icon(Icons.search),
+                    )
+                  : null,
             ),
           ),
           FormBuilderTextField(
@@ -538,33 +524,31 @@ class _VisitaFormState extends ConsumerState<_VisitaForm> {
               initialValue: widget.visitaEditScreenData.visita?.sector,
             ),
             stateCompetencia.maybeWhen(
-              data:
-                  (competenciaList) => FormBuilderField<List<VisitaCompetidor>>(
+              data: (competenciaList) =>
+                  FormBuilderField<List<VisitaCompetidor>>(
                     name: 'competencia',
-                    builder:
-                        (competenciaListField) => InputDecorator(
-                          decoration: InputDecoration(
-                            labelText: S.of(context).competencia,
-                            suffixIcon: IconButton(
-                              onPressed:
-                                  () => showVisitaCompetidorListDialog(
-                                    context,
-                                    competenciaFilterList,
-                                    competenciaList,
-                                  ),
-                              icon: const Icon(Icons.arrow_drop_down),
-                            ),
+                    builder: (competenciaListField) => InputDecorator(
+                      decoration: InputDecoration(
+                        labelText: S.of(context).competencia,
+                        suffixIcon: IconButton(
+                          onPressed: () => showVisitaCompetidorListDialog(
+                            context,
+                            competenciaFilterList,
+                            competenciaList,
                           ),
-                          child:
-                              competenciaListField.value != null &&
-                                      competenciaListField.value!.isNotEmpty
-                                  ? Text(
-                                    competenciaListField.value!
-                                        .map((e) => e.descripcion)
-                                        .join(', '),
-                                  )
-                                  : const Text(''),
+                          icon: const Icon(Icons.arrow_drop_down),
                         ),
+                      ),
+                      child:
+                          competenciaListField.value != null &&
+                              competenciaListField.value!.isNotEmpty
+                          ? Text(
+                              competenciaListField.value!
+                                  .map((e) => e.descripcion)
+                                  .join(', '),
+                            )
+                          : const Text(''),
+                    ),
                     initialValue:
                         widget.visitaEditScreenData.visita?.competenciaList,
                   ),
@@ -578,8 +562,9 @@ class _VisitaFormState extends ConsumerState<_VisitaForm> {
               minLines: 4,
               enabled: !widget.readOnly,
               decoration: InputDecoration(
-                labelText:
-                    S.of(context).visitas_edit_visitaEditar_marcasCompetencia,
+                labelText: S
+                    .of(context)
+                    .visitas_edit_visitaEditar_marcasCompetencia,
               ),
               validator: FormBuilderValidators.compose([
                 FormBuilderValidators.maxLength(255, checkNullOrEmpty: false),
@@ -591,10 +576,9 @@ class _VisitaFormState extends ConsumerState<_VisitaForm> {
                 labelText: S.of(context).interesCliente,
                 border: InputBorder.none,
                 suffixIcon: IconButton(
-                  onPressed:
-                      () => widget.formKey.currentState?.patchValue({
-                        'interesCliente': null,
-                      }),
+                  onPressed: () => widget.formKey.currentState?.patchValue({
+                    'interesCliente': null,
+                  }),
                   icon: const Icon(Icons.close),
                 ),
               ),
@@ -660,10 +644,9 @@ class _VisitaFormState extends ConsumerState<_VisitaForm> {
                 labelText: S.of(context).capacidad,
                 border: InputBorder.none,
                 suffixIcon: IconButton(
-                  onPressed:
-                      () => widget.formKey.currentState?.patchValue({
-                        'capacidad': null,
-                      }),
+                  onPressed: () => widget.formKey.currentState?.patchValue({
+                    'capacidad': null,
+                  }),
                   icon: const Icon(Icons.close),
                 ),
               ),
@@ -685,10 +668,9 @@ class _VisitaFormState extends ConsumerState<_VisitaForm> {
                 labelText: S.of(context).frecuenciaPedido,
                 border: InputBorder.none,
                 suffixIcon: IconButton(
-                  onPressed:
-                      () => widget.formKey.currentState?.patchValue({
-                        'frecuenciaPedido': null,
-                      }),
+                  onPressed: () => widget.formKey.currentState?.patchValue({
+                    'frecuenciaPedido': null,
+                  }),
                   icon: const Icon(Icons.close),
                 ),
               ),
@@ -718,11 +700,10 @@ class _VisitaFormState extends ConsumerState<_VisitaForm> {
   ) async {
     final newCompetenciaFilterList = await showDialog<List<VisitaCompetidor>?>(
       context: context,
-      builder:
-          (context) => VisitaCompetidorListFilterDialog(
-            visitCompetitorList: competenciaList,
-            currentVisitCompetitorList: competenciaFilterList,
-          ),
+      builder: (context) => VisitaCompetidorListFilterDialog(
+        visitCompetitorList: competenciaList,
+        currentVisitCompetitorList: competenciaFilterList,
+      ),
     );
 
     if (newCompetenciaFilterList != null) {
@@ -820,11 +801,10 @@ class _ClienteProvisionalContainerState
             ),
             FormBuilderTextField(
               name: 'telefono',
-              initialValue:
-                  widget
-                      .visitaEditScreenData
-                      .visita
-                      ?.clienteProvisionalTelefono,
+              initialValue: widget
+                  .visitaEditScreenData
+                  .visita
+                  ?.clienteProvisionalTelefono,
               enabled: !widget.readOnly,
               keyboardType: TextInputType.phone,
               validator: FormBuilderValidators.compose([
@@ -837,11 +817,10 @@ class _ClienteProvisionalContainerState
             ),
             FormBuilderTextField(
               name: 'direccion1',
-              initialValue:
-                  widget
-                      .visitaEditScreenData
-                      .visita
-                      ?.clienteProvisionalDireccion1,
+              initialValue: widget
+                  .visitaEditScreenData
+                  .visita
+                  ?.clienteProvisionalDireccion1,
               enabled: !widget.readOnly,
               decoration: InputDecoration(
                 labelText:
@@ -854,11 +833,10 @@ class _ClienteProvisionalContainerState
             ),
             FormBuilderTextField(
               name: 'direccion2',
-              initialValue:
-                  widget
-                      .visitaEditScreenData
-                      .visita
-                      ?.clienteProvisionalDireccion2,
+              initialValue: widget
+                  .visitaEditScreenData
+                  .visita
+                  ?.clienteProvisionalDireccion2,
               enabled: !widget.readOnly,
               decoration: InputDecoration(
                 labelText: S.of(context).visitas_edit_visitaEditar_direccion2,
@@ -869,11 +847,10 @@ class _ClienteProvisionalContainerState
             ),
             FormBuilderTextField(
               name: 'codigo_postal',
-              initialValue:
-                  widget
-                      .visitaEditScreenData
-                      .visita
-                      ?.clienteProvisionalCodigoPostal,
+              initialValue: widget
+                  .visitaEditScreenData
+                  .visita
+                  ?.clienteProvisionalCodigoPostal,
               enabled: !widget.readOnly,
               decoration: InputDecoration(
                 labelText: S.of(context).visitas_edit_visitaEditar_codigoPostal,
@@ -884,11 +861,10 @@ class _ClienteProvisionalContainerState
             ),
             FormBuilderTextField(
               name: 'poblacion',
-              initialValue:
-                  widget
-                      .visitaEditScreenData
-                      .visita
-                      ?.clienteProvisionalPoblacion,
+              initialValue: widget
+                  .visitaEditScreenData
+                  .visita
+                  ?.clienteProvisionalPoblacion,
               enabled: !widget.readOnly,
               decoration: InputDecoration(
                 labelText:
@@ -917,11 +893,10 @@ class _ClienteProvisionalContainerState
             ),
             AppFormBuilderSearchableDropdown<Provincia>(
               name: 'provincia',
-              initialValue:
-                  widget
-                      .visitaEditScreenData
-                      .visita
-                      ?.clienteProvisionalProvincia,
+              initialValue: widget
+                  .visitaEditScreenData
+                  .visita
+                  ?.clienteProvisionalProvincia,
               enabled: !widget.readOnly,
               decoration: InputDecoration(
                 labelText: S.of(context).visitas_edit_visitaEditar_provincia,
@@ -929,18 +904,13 @@ class _ClienteProvisionalContainerState
               validator: FormBuilderValidators.compose([
                 FormBuilderValidators.maxLength(60, checkNullOrEmpty: false),
               ]),
-              items:
-                  widget.visitaEditScreenData.provincias
-                      .where(
-                        (provincia) =>
-                            provincia.paisId ==
-                            widget
-                                .formKey
-                                .currentState
-                                ?.instantValue['pais']
-                                ?.id,
-                      )
-                      .toList(),
+              items: widget.visitaEditScreenData.provincias
+                  .where(
+                    (provincia) =>
+                        provincia.paisId ==
+                        widget.formKey.currentState?.instantValue['pais']?.id,
+                  )
+                  .toList(),
               itemAsString: (item) => item.provincia ?? item.provinciaId,
               compareFn: (i, s) => i.provinciaId == s.provinciaId,
             ),
@@ -999,22 +969,20 @@ class SelectClienteWidget extends StatelessWidget {
       onTap: () => navigateToSearchClientes(context),
       child: FormBuilderField<Cliente>(
         name: 'cliente',
-        builder:
-            (clienteField) => InputDecorator(
-              decoration: InputDecoration(
-                labelText: S.of(context).visitas_edit_visitaEditar_cliente,
-                suffixIcon: IconButton(
-                  onPressed: () => onSelectedCliente(null),
-                  icon: const Icon(Icons.close),
-                ),
-              ),
-              child:
-                  clienteField.value != null
-                      ? Text(
-                        '#${clienteField.value?.id ?? 'UN'} ${clienteField.value?.nombreCliente ?? S.of(context).unknownCustomer}',
-                      )
-                      : Container(),
+        builder: (clienteField) => InputDecorator(
+          decoration: InputDecoration(
+            labelText: S.of(context).visitas_edit_visitaEditar_cliente,
+            suffixIcon: IconButton(
+              onPressed: () => onSelectedCliente(null),
+              icon: const Icon(Icons.close),
             ),
+          ),
+          child: clienteField.value != null
+              ? Text(
+                  '#${clienteField.value?.id ?? 'UN'} ${clienteField.value?.nombreCliente ?? S.of(context).unknownCustomer}',
+                )
+              : Container(),
+        ),
         initialValue: visita?.cliente,
       ),
     );
@@ -1147,15 +1115,12 @@ class VisitaMotivoNoVentaFormDropdown extends ConsumerWidget {
       compareFn: (i, s) => i.id == s.id,
       validator:
           !(getFormInstantValue<bool?>(formKey, 'cliente_provisional') ??
-                      false) &&
-                  !(getFormInstantValue<bool?>(formKey, 'pedidoRealizado') ??
-                      false) &&
-                  !(getFormInstantValue<bool?>(formKey, 'ofertaRealizada') ??
-                      false)
-              ? FormBuilderValidators.compose([
-                FormBuilderValidators.required(),
-              ])
-              : null,
+                  false) &&
+              !(getFormInstantValue<bool?>(formKey, 'pedidoRealizado') ??
+                  false) &&
+              !(getFormInstantValue<bool?>(formKey, 'ofertaRealizada') ?? false)
+          ? FormBuilderValidators.compose([FormBuilderValidators.required()])
+          : null,
     );
   }
 }
@@ -1208,56 +1173,50 @@ class _UserAuxListFilterDialogState
                   labelText: S.of(context).search,
                   suffixIcon: IconButton(
                     icon: const Icon(Icons.clear),
-                    onPressed:
-                        () => widget.formKey.currentState?.patchValue({
-                          'search_text': null,
-                        }),
+                    onPressed: () => widget.formKey.currentState?.patchValue({
+                      'search_text': null,
+                    }),
                   ),
                 ),
-                onChanged:
-                    (value) => setState(() {
-                      searchFilterList =
-                          widget.visitCompetitorList
-                              .where(
-                                (e) => e.descripcion.toLowerCase().contains(
-                                  value?.toLowerCase() ?? '',
-                                ),
-                              )
-                              .toList();
-                    }),
+                onChanged: (value) => setState(() {
+                  searchFilterList = widget.visitCompetitorList
+                      .where(
+                        (e) => e.descripcion.toLowerCase().contains(
+                          value?.toLowerCase() ?? '',
+                        ),
+                      )
+                      .toList();
+                }),
               ),
               const Gap(8),
               if (searchFilterList.isNotEmpty)
                 Expanded(
                   child: ListView.separated(
                     shrinkWrap: true,
-                    itemBuilder:
-                        (context, i) => Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(searchFilterList[i].descripcion),
-                            Checkbox(
-                              value: competitorFilterList.contains(
-                                searchFilterList[i],
-                              ),
-                              onChanged: (value) {
-                                setState(() {
-                                  if (value != null &&
-                                      value &&
-                                      searchFilterList.isNotEmpty) {
-                                    competitorFilterList.add(
-                                      searchFilterList[i],
-                                    );
-                                  } else {
-                                    competitorFilterList.remove(
-                                      searchFilterList[i],
-                                    );
-                                  }
-                                });
-                              },
-                            ),
-                          ],
+                    itemBuilder: (context, i) => Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(searchFilterList[i].descripcion),
+                        Checkbox(
+                          value: competitorFilterList.contains(
+                            searchFilterList[i],
+                          ),
+                          onChanged: (value) {
+                            setState(() {
+                              if (value != null &&
+                                  value &&
+                                  searchFilterList.isNotEmpty) {
+                                competitorFilterList.add(searchFilterList[i]);
+                              } else {
+                                competitorFilterList.remove(
+                                  searchFilterList[i],
+                                );
+                              }
+                            });
+                          },
                         ),
+                      ],
+                    ),
                     separatorBuilder: (context, i) => const Divider(),
                     itemCount: searchFilterList.length,
                   ),

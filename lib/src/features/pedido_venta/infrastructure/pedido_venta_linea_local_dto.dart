@@ -56,8 +56,9 @@ abstract class PedidoVentaLineaLocalDTO
       descuento2: pedidoVentaLinea.descuento2,
       descuento3: pedidoVentaLinea.descuento3,
       descuentoProntoPago: pedidoVentaLinea.descuentoProntoPago!,
-      stockDisponibleSN:
-          (pedidoVentaLinea.stockDisponibleSN ?? false) ? 'S' : 'N',
+      stockDisponibleSN: (pedidoVentaLinea.stockDisponibleSN ?? false)
+          ? 'S'
+          : 'N',
       iva: pedidoVentaLinea.iva!,
       pedidoLineaComponenteId: pedidoVentaLinea.pedidoLineaIdComponente,
     );

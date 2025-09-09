@@ -171,17 +171,15 @@ class PedidoVentaTable extends Table {
       text().withLength(max: 60).nullable().named('POBLACION')();
   TextColumn get provincia =>
       text().withLength(max: 50).nullable().named('PROVINCIA')();
-  TextColumn get paisId =>
-      text()
-          .withLength(max: 3)
-          .nullable()
-          .references(PaisTable, #id)
-          .named('PAIS_ID')();
-  TextColumn get divisaId =>
-      text()
-          .withLength(max: 2)
-          .references(DivisaTable, #id)
-          .named('DIVISA_ID')();
+  TextColumn get paisId => text()
+      .withLength(max: 3)
+      .nullable()
+      .references(PaisTable, #id)
+      .named('PAIS_ID')();
+  TextColumn get divisaId => text()
+      .withLength(max: 2)
+      .references(DivisaTable, #id)
+      .named('DIVISA_ID')();
   RealColumn get baseImponible =>
       real().withDefault(const Constant(0.0)).named('BASE_IMPONIBLE')();
   RealColumn get totalLineas =>
@@ -192,11 +190,10 @@ class PedidoVentaTable extends Table {
       real().withDefault(const Constant(0.0)).named('IMPORTE_IVA')();
   RealColumn get total =>
       real().withDefault(const Constant(0.0)).named('TOTAL')();
-  IntColumn get pedidoVentaEstadoId =>
-      integer()
-          .withDefault(const Constant(0))
-          .references(PedidoVentaEstadoTable, #id)
-          .named('ESTADO_PEDIDO_ID')();
+  IntColumn get pedidoVentaEstadoId => integer()
+      .withDefault(const Constant(0))
+      .references(PedidoVentaEstadoTable, #id)
+      .named('ESTADO_PEDIDO_ID')();
   TextColumn get oferta =>
       text().withDefault(const Constant('N')).named('OFERTA_SN')();
   DateTimeColumn get ofertaFechaHasta =>

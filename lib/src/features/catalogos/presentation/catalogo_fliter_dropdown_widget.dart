@@ -28,24 +28,24 @@ class CatalogoFilterDropdownWidget extends ConsumerWidget {
       width: 112,
       child: FormBuilderDropdown(
         decoration: AppDecoration.inputDecorationinFilter(context, labelString),
-        initialValue:
-            isIdioma ? getInitialLanguage(ref, filterList) : filterList[0],
+        initialValue: isIdioma
+            ? getInitialLanguage(ref, filterList)
+            : filterList[0],
         name: dropdownName,
-        items:
-            filterList
-                .map(
-                  (e) => DropdownMenuItem(
-                    value: e,
-                    child: Text(
-                      e.descripcion as String,
-                      style: Theme.of(context).textTheme.bodySmall,
-                      textAlign: TextAlign.center,
-                      overflow: TextOverflow.ellipsis,
-                    ),
-                    onTap: () => setFilter(e),
-                  ),
-                )
-                .toList(),
+        items: filterList
+            .map(
+              (e) => DropdownMenuItem(
+                value: e,
+                child: Text(
+                  e.descripcion as String,
+                  style: Theme.of(context).textTheme.bodySmall,
+                  textAlign: TextAlign.center,
+                  overflow: TextOverflow.ellipsis,
+                ),
+                onTap: () => setFilter(e),
+              ),
+            )
+            .toList(),
       ),
     );
   }

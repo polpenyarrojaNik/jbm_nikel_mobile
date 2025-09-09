@@ -15,16 +15,14 @@ _GeolocationEntityDTO _$GeolocationEntityDTOFromJson(
   city: json['city'] as String?,
   countryCode: json['countryCode'] as String,
   zipCode: json['zipcode'] as String,
-  advinistrativeLevels:
-      json['administrativeLevels'] == null
-          ? null
-          : AdministrativeLevelsDTO.fromJson(
-            json['administrativeLevels'] as Map<String, dynamic>,
-          ),
-  extra:
-      json['extra'] == null
-          ? null
-          : ExtraDTO.fromJson(json['extra'] as Map<String, dynamic>),
+  advinistrativeLevels: json['administrativeLevels'] == null
+      ? null
+      : AdministrativeLevelsDTO.fromJson(
+          json['administrativeLevels'] as Map<String, dynamic>,
+        ),
+  extra: json['extra'] == null
+      ? null
+      : ExtraDTO.fromJson(json['extra'] as Map<String, dynamic>),
 );
 
 Map<String, dynamic> _$GeolocationEntityDTOToJson(

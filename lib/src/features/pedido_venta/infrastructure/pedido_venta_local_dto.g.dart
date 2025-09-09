@@ -25,10 +25,9 @@ _PedidoVentaLocalDTO _$PedidoVentaLocalDTOFromJson(Map<String, dynamic> json) =>
       pedidoCliente: json['PEDIDO_CLIENTE'] as String?,
       observaciones: json['OBSERVACIONES'] as String?,
       oferta: json['OFERTA_SN'] as String,
-      ofertaFechaHasta:
-          json['OFERTA_FECHA_HASTA'] == null
-              ? null
-              : DateTime.parse(json['OFERTA_FECHA_HASTA'] as String),
+      ofertaFechaHasta: json['OFERTA_FECHA_HASTA'] == null
+          ? null
+          : DateTime.parse(json['OFERTA_FECHA_HASTA'] as String),
       fechaAlta: DateTime.parse(json['FECHA_ALTA'] as String),
       iva: (json['IVA'] as num).toDouble(),
       dtoBonificacion: (json['DTO_BONIFICACION'] as num).toDouble(),

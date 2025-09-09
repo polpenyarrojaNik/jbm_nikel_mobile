@@ -707,15 +707,14 @@ class SyncService {
     required String pedidoVentaAppId,
   }) async {
     try {
-      final pedidoVentaLineaLocalListDTO =
-          await (_localDb.select(_localDb.pedidoVentaLineaLocalTable)..where(
-            (tbl) => tbl.pedidoVentaAppId.equals(pedidoVentaAppId),
-          )).get();
+      final pedidoVentaLineaLocalListDTO = await (_localDb.select(
+        _localDb.pedidoVentaLineaLocalTable,
+      )..where((tbl) => tbl.pedidoVentaAppId.equals(pedidoVentaAppId))).get();
 
       final pedidoVentaLocalDTO =
-          await (_localDb.select(_localDb.pedidoVentaLocalTable)..where(
-            (tbl) => tbl.pedidoVentaAppId.equals(pedidoVentaAppId),
-          )).getSingle();
+          await (_localDb.select(_localDb.pedidoVentaLocalTable)
+                ..where((tbl) => tbl.pedidoVentaAppId.equals(pedidoVentaAppId)))
+              .getSingle();
 
       return pedidoVentaLineaLocalListDTO
           .map((e) => e.toDomain(divisaId: pedidoVentaLocalDTO.divisaId!))
@@ -1122,10 +1121,9 @@ class SyncService {
       if (response.statusCode == 200) {
         final data = response.data as Json;
 
-        final convertedDate =
-            (data['data'] as List)
-                .map((pedidoVentaMap) => pedidoVentaMap as Json)
-                .toList();
+        final convertedDate = (data['data'] as List)
+            .map((pedidoVentaMap) => pedidoVentaMap as Json)
+            .toList();
 
         final headers = JBMHeaders.parse(response);
 
@@ -1150,11 +1148,10 @@ class SyncService {
   Future<DateTime?> getLastUpdatedDate({
     required TableInfo<Table, dynamic> tableInfo,
   }) async {
-    final query =
-        await _remoteDb.customSelect(
-          ''' SELECT MAX(LAST_UPDATED) as MAX_DATE FROM ${tableInfo.actualTableName}
+    final query = await _remoteDb.customSelect(
+      ''' SELECT MAX(LAST_UPDATED) as MAX_DATE FROM ${tableInfo.actualTableName}
           ''',
-        ).getSingle();
+    ).getSingle();
 
     return query.data['MAX_DATE'] != null
         ? DateTime.parse(query.data['MAX_DATE'] as String)
@@ -1182,14 +1179,15 @@ class SyncService {
   }
 
   Future<List<VisitaLocalDTO>> getVisitasNoEnviadas() {
-    return (_localDb.select(_localDb.visitaLocalTable)
-      ..where((tbl) => tbl.enviada.equals('N'))).get();
+    return (_localDb.select(
+      _localDb.visitaLocalTable,
+    )..where((tbl) => tbl.enviada.equals('N'))).get();
   }
 
   Future<List<PedidoVentaLocalDTO>> getPedidosNoEnviados() {
-    return (_localDb.select(_localDb.pedidoVentaLocalTable)..where(
-      (tbl) => tbl.enviada.equals('N') & tbl.borrador.equals('N'),
-    )).get();
+    return (_localDb.select(_localDb.pedidoVentaLocalTable)
+          ..where((tbl) => tbl.enviada.equals('N') & tbl.borrador.equals('N')))
+        .get();
   }
 
   Future<PedidoVentaLocalDTO> _remoteCreatePedidos(
@@ -1199,23 +1197,23 @@ class SyncService {
   ) async {
     try {
       final pedidoVentaLocalToJson = pedidoVentaLocalDto.toJson();
-      final pedidoVentaLineasLocalListToJson =
-          pedidoVentaLineaDTOList.map((e) => e.toJson()).toList();
+      final pedidoVentaLineasLocalListToJson = pedidoVentaLineaDTOList
+          .map((e) => e.toJson())
+          .toList();
       pedidoVentaLocalToJson['PEDIDO_VENTA_LINEAS'] =
           pedidoVentaLineasLocalListToJson;
 
-      final requestUri =
-          (_usuario!.test)
-              ? Uri.http(
-                // dotenv.get('URL', fallback: 'localhost:3001')
-                'jbm-api-test.nikel.es:8080',
-                'api/v4/online/pedidos',
-              )
-              : Uri.https(
-                // dotenv.get('URL', fallback: 'localhost:3001')
-                'jbm-api.nikel.es',
-                'api/v4/online/pedidos',
-              );
+      final requestUri = (_usuario!.test)
+          ? Uri.http(
+              // dotenv.get('URL', fallback: 'localhost:3001')
+              'jbm-api-test.nikel.es:8080',
+              'api/v4/online/pedidos',
+            )
+          : Uri.https(
+              // dotenv.get('URL', fallback: 'localhost:3001')
+              'jbm-api.nikel.es',
+              'api/v4/online/pedidos',
+            );
 
       final response = await _dio.postUri(
         requestUri,
@@ -1247,18 +1245,17 @@ class SyncService {
     String provisionalToken,
   ) async {
     try {
-      final requestUri =
-          (_usuario!.test)
-              ? Uri.http(
-                // dotenv.get('URL', fallback: 'localhost:3001')
-                'jbm-api-test.nikel.es:8080',
-                'api/v7/online/visitas',
-              )
-              : Uri.https(
-                // dotenv.get('URL', fallback: 'localhost:3001')
-                'jbm-api.nikel.es',
-                'api/v7/online/visitas',
-              );
+      final requestUri = (_usuario!.test)
+          ? Uri.http(
+              // dotenv.get('URL', fallback: 'localhost:3001')
+              'jbm-api-test.nikel.es:8080',
+              'api/v7/online/visitas',
+            )
+          : Uri.https(
+              // dotenv.get('URL', fallback: 'localhost:3001')
+              'jbm-api.nikel.es',
+              'api/v7/online/visitas',
+            );
 
       final response = await _dio.postUri(
         requestUri,
@@ -1315,8 +1312,9 @@ class SyncService {
   Future<void> checkPedidoVentaTratados() async {
     final pedidosNoTratadosDTO =
         await (_localDb.select(_localDb.pedidoVentaLocalTable)..where(
-          (tbl) => tbl.tratada.equals('N') & tbl.borrador.equals('N'),
-        )).get();
+              (tbl) => tbl.tratada.equals('N') & tbl.borrador.equals('N'),
+            ))
+            .get();
 
     for (var i = 0; i < pedidosNoTratadosDTO.length; i++) {
       final pedidoNoTratado = pedidosNoTratadosDTO[i];
@@ -1333,34 +1331,37 @@ class SyncService {
   }
 
   Future<void> checkVisitasTratadas() async {
-    final visitasNoTratadasDTO =
-        await (_localDb.select(_localDb.visitaLocalTable)
-          ..where((tbl) => tbl.tratada.equals('N'))).get();
+    final visitasNoTratadasDTO = await (_localDb.select(
+      _localDb.visitaLocalTable,
+    )..where((tbl) => tbl.tratada.equals('N'))).get();
 
     for (var i = 0; i < visitasNoTratadasDTO.length; i++) {
       final visitaNoTratada = visitasNoTratadasDTO[i];
 
       final visitaNoTratadaExisitInVisitas =
           await (_remoteDb.select(_remoteDb.visitaTable)..where(
-            (tbl) =>
-                tbl.visitaAppId.equalsNullable(visitaNoTratada.visitaAppId),
-          )).getSingleOrNull();
+                (tbl) =>
+                    tbl.visitaAppId.equalsNullable(visitaNoTratada.visitaAppId),
+              ))
+              .getSingleOrNull();
 
       if (visitaNoTratadaExisitInVisitas != null) {
         await _localDb
             .update(_localDb.visitaLocalTable)
             .write(const local.VisitaLocalTableCompanion(tratada: Value('S')));
         await (_localDb.delete(_localDb.visitaCompetenciaLocalTable)..where(
-          (tbl) => tbl.visitaAppId.equalsNullable(visitaNoTratada.visitaAppId),
-        )).go();
+              (tbl) =>
+                  tbl.visitaAppId.equalsNullable(visitaNoTratada.visitaAppId),
+            ))
+            .go();
       }
     }
   }
 
   Future<void> checkClientesContactosImp() async {
-    final clienteContactoImpListDTO =
-        await (_localDb.select(_localDb.clienteContactoImpTable)
-          ..where((tbl) => tbl.enviado.equals('S'))).get();
+    final clienteContactoImpListDTO = await (_localDb.select(
+      _localDb.clienteContactoImpTable,
+    )..where((tbl) => tbl.enviado.equals('S'))).get();
 
     for (var i = 0; i < clienteContactoImpListDTO.length; i++) {
       final haveBeenTratado = await _checkIfClienteContactoImpHaveBeenTratado(
@@ -1377,9 +1378,9 @@ class SyncService {
   }
 
   Future<void> checkClientesDireccionesImp() async {
-    final clienteDireccionImpListDTO =
-        await (_localDb.select(_localDb.clienteDireccionImpTable)
-          ..where((tbl) => tbl.enviada.equals('S'))).get();
+    final clienteDireccionImpListDTO = await (_localDb.select(
+      _localDb.clienteDireccionImpTable,
+    )..where((tbl) => tbl.enviada.equals('S'))).get();
 
     for (var i = 0; i < clienteDireccionImpListDTO.length; i++) {
       final haveBeenTratado = await _checkIfClienteDireccionImpHaveBeenTratada(
@@ -1388,9 +1389,9 @@ class SyncService {
       );
 
       if (haveBeenTratado) {
-        await (_localDb.delete(_localDb.clienteDireccionImpTable)..where(
-          (tbl) => tbl.id.equals(clienteDireccionImpListDTO[i].id),
-        )).go();
+        await (_localDb.delete(_localDb.clienteDireccionImpTable)
+              ..where((tbl) => tbl.id.equals(clienteDireccionImpListDTO[i].id)))
+            .go();
       }
     }
   }
@@ -1484,18 +1485,17 @@ class SyncService {
     String contactoImpGuid,
   ) async {
     try {
-      final requestUri =
-          (_usuario!.test)
-              ? Uri.http(
-                // dotenv.get('URL', fallback: 'localhost:3001'),
-                'jbm-api-test.nikel.es:8080',
-                'api/v1/sync/clientes/$clienteId/contactos/$contactoImpGuid',
-              )
-              : Uri.https(
-                // dotenv.get('URL', fallback: 'localhost:3001'),
-                'jbm-api.nikel.es',
-                'api/v1/sync/clientes/$clienteId/contactos/$contactoImpGuid',
-              );
+      final requestUri = (_usuario!.test)
+          ? Uri.http(
+              // dotenv.get('URL', fallback: 'localhost:3001'),
+              'jbm-api-test.nikel.es:8080',
+              'api/v1/sync/clientes/$clienteId/contactos/$contactoImpGuid',
+            )
+          : Uri.https(
+              // dotenv.get('URL', fallback: 'localhost:3001'),
+              'jbm-api.nikel.es',
+              'api/v1/sync/clientes/$clienteId/contactos/$contactoImpGuid',
+            );
 
       final response = await _dio.getUri(
         requestUri,
@@ -1525,18 +1525,17 @@ class SyncService {
     String direccionImpGuid,
   ) async {
     try {
-      final requestUri =
-          (_usuario!.test)
-              ? Uri.http(
-                // dotenv.get('URL', fallback: 'localhost:3001'),
-                'jbm-api-test.nikel.es:8080',
-                'api/v1/sync/clientes/$clienteId/direcciones/$direccionImpGuid',
-              )
-              : Uri.https(
-                // dotenv.get('URL', fallback: 'localhost:3001'),
-                'jbm-api.nikel.es',
-                'api/v1/sync/clientes/$clienteId/direcciones/$direccionImpGuid',
-              );
+      final requestUri = (_usuario!.test)
+          ? Uri.http(
+              // dotenv.get('URL', fallback: 'localhost:3001'),
+              'jbm-api-test.nikel.es:8080',
+              'api/v1/sync/clientes/$clienteId/direcciones/$direccionImpGuid',
+            )
+          : Uri.https(
+              // dotenv.get('URL', fallback: 'localhost:3001'),
+              'jbm-api.nikel.es',
+              'api/v1/sync/clientes/$clienteId/direcciones/$direccionImpGuid',
+            );
 
       final response = await _dio.getUri(
         requestUri,
@@ -1563,9 +1562,9 @@ class SyncService {
 
   Future<bool> checkIfPedidosHaSidoImportado(String pedidoVentaAppId) async {
     final pedidoExistInSyncTable =
-        await (_remoteDb.select(_remoteDb.pedidoVentaTable)..where(
-          (tbl) => tbl.pedidoVentaAppId.equals(pedidoVentaAppId),
-        )).getSingleOrNull();
+        await (_remoteDb.select(_remoteDb.pedidoVentaTable)
+              ..where((tbl) => tbl.pedidoVentaAppId.equals(pedidoVentaAppId)))
+            .getSingleOrNull();
 
     if (pedidoExistInSyncTable == null) {
       return checkPedidoImportado(pedidoVentaAppId);
@@ -1576,18 +1575,17 @@ class SyncService {
 
   Future<bool> checkPedidoImportado(String pedidoVentaAppId) async {
     try {
-      final requestUri =
-          (_usuario!.test)
-              ? Uri.http(
-                // dotenv.get('URL', fallback: 'localhost:3001'),
-                'jbm-api-test.nikel.es:8080',
-                'api/v1/sync/pedidos/$pedidoVentaAppId/check',
-              )
-              : Uri.https(
-                // dotenv.get('URL', fallback: 'localhost:3001'),
-                'jbm-api.nikel.es',
-                'api/v1/sync/pedidos/$pedidoVentaAppId/check',
-              );
+      final requestUri = (_usuario!.test)
+          ? Uri.http(
+              // dotenv.get('URL', fallback: 'localhost:3001'),
+              'jbm-api-test.nikel.es:8080',
+              'api/v1/sync/pedidos/$pedidoVentaAppId/check',
+            )
+          : Uri.https(
+              // dotenv.get('URL', fallback: 'localhost:3001'),
+              'jbm-api.nikel.es',
+              'api/v1/sync/pedidos/$pedidoVentaAppId/check',
+            );
 
       final response = await _dio.getUri(
         requestUri,
@@ -1613,9 +1611,9 @@ class SyncService {
   }
 
   Future<void> checkBorradores() async {
-    final borradores =
-        await (_localDb.select(_localDb.pedidoVentaLocalTable)
-          ..where((tbl) => tbl.borrador.equals('S'))).get();
+    final borradores = await (_localDb.select(
+      _localDb.pedidoVentaLocalTable,
+    )..where((tbl) => tbl.borrador.equals('S'))).get();
 
     for (var i = 0; i < borradores.length; i++) {
       if (borradores[i].enviada == 'S' || borradores[i].tratada == 'S') {
@@ -1648,8 +1646,9 @@ class SyncService {
       final logsDtoList = await _localDb.select(_localDb.logTable).get();
       for (var i = 0; i < logsDtoList.length; i++) {
         final responseLogDto = await remotePostLogs(logDto: logsDtoList[i]);
-        await (_localDb.delete(_localDb.logTable)
-          ..where((tbl) => tbl.id.equals(responseLogDto.id!))).go();
+        await (_localDb.delete(
+          _localDb.logTable,
+        )..where((tbl) => tbl.id.equals(responseLogDto.id!))).go();
       }
     } catch (e) {
       log.e(e);
@@ -1657,8 +1656,9 @@ class SyncService {
   }
 
   Future<LogDTO> remotePostLogs({required LogDTO logDto}) async {
-    final requestUri =
-        (_usuario!.test) ? remoteLogTestEndpoint : remoteLogEndpoint;
+    final requestUri = (_usuario!.test)
+        ? remoteLogTestEndpoint
+        : remoteLogEndpoint;
 
     final response = await _dio.postUri(
       requestUri,
@@ -1681,26 +1681,27 @@ class SyncService {
   Future<void> deletePedidosAntiguos() async {
     final monthBeforeDate = DateTime.now().add(const Duration(days: -30));
 
-    final pedidosAntiguosLista =
-        await (_localDb.select(_localDb.pedidoVentaLocalTable)..where(
-          (tbl) => tbl.fechaAlta.isSmallerThanValue(monthBeforeDate),
-        )).get();
+    final pedidosAntiguosLista = await (_localDb.select(
+      _localDb.pedidoVentaLocalTable,
+    )..where((tbl) => tbl.fechaAlta.isSmallerThanValue(monthBeforeDate))).get();
 
     for (var i = 0; i < pedidosAntiguosLista.length; i++) {
       await deletePedidoVentaLineasAntiguas(
         pedidosAntiguosLista[i].pedidoVentaAppId,
       );
       await (_localDb.delete(_localDb.pedidoVentaLocalTable)..where(
-        (tbl) => tbl.pedidoVentaAppId.equals(
-          pedidosAntiguosLista[i].pedidoVentaAppId,
-        ),
-      )).go();
+            (tbl) => tbl.pedidoVentaAppId.equals(
+              pedidosAntiguosLista[i].pedidoVentaAppId,
+            ),
+          ))
+          .go();
     }
   }
 
   Future<void> deletePedidoVentaLineasAntiguas(String pedidoVentaAppId) async {
-    await (_localDb.delete(_localDb.pedidoVentaLineaLocalTable)
-      ..where((tbl) => tbl.pedidoVentaAppId.equals(pedidoVentaAppId))).go();
+    await (_localDb.delete(
+      _localDb.pedidoVentaLineaLocalTable,
+    )..where((tbl) => tbl.pedidoVentaAppId.equals(pedidoVentaAppId))).go();
   }
 
   Future<void> syncCatalogos({required bool isInMainThread}) async {
@@ -1913,18 +1914,17 @@ class SyncService {
     ClienteImpDTO clienteImpDto,
   ) async {
     try {
-      final requestUri =
-          (_usuario!.test)
-              ? Uri.http(
-                // dotenv.get('URL', fallback: 'localhost:3001')
-                'jbm-api-test.nikel.es:8080',
-                'api/v1/online/clientes/${clienteImpDto.clienteId}/sectores',
-              )
-              : Uri.https(
-                // dotenv.get('URL', fallback: 'localhost:3001')
-                'jbm-api.nikel.es',
-                'api/v1/online/clientes/${clienteImpDto.clienteId}/sectores',
-              );
+      final requestUri = (_usuario!.test)
+          ? Uri.http(
+              // dotenv.get('URL', fallback: 'localhost:3001')
+              'jbm-api-test.nikel.es:8080',
+              'api/v1/online/clientes/${clienteImpDto.clienteId}/sectores',
+            )
+          : Uri.https(
+              // dotenv.get('URL', fallback: 'localhost:3001')
+              'jbm-api.nikel.es',
+              'api/v1/online/clientes/${clienteImpDto.clienteId}/sectores',
+            );
 
       log.d('SYNC CLIENTE UPDATE: ${clienteImpDto.toJson()}');
 
@@ -1951,8 +1951,9 @@ class SyncService {
   }
 
   Future<void> _deleteClienteImpByClienteId(String clienteId) async {
-    await (_localDb.delete(_localDb.clienteImpTable)
-      ..where((tbl) => tbl.clienteId.equals(clienteId))).go();
+    await (_localDb.delete(
+      _localDb.clienteImpTable,
+    )..where((tbl) => tbl.clienteId.equals(clienteId))).go();
   }
 
   Future<List<VisitaCompetenciaLocalDTO>> _getVisitaCompetenciaLocalDtoList(
@@ -1962,8 +1963,9 @@ class SyncService {
 
     if (visitaAppId != null) {
       visitaCompetenciaDtoList.addAll(
-        await (_localDb.select(_localDb.visitaCompetenciaLocalTable)
-          ..where((tbl) => tbl.visitaAppId.equalsNullable(visitaAppId))).get(),
+        await (_localDb.select(
+          _localDb.visitaCompetenciaLocalTable,
+        )..where((tbl) => tbl.visitaAppId.equalsNullable(visitaAppId))).get(),
       );
     }
 

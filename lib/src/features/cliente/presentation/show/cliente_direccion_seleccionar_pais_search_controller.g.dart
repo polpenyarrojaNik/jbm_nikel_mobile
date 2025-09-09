@@ -18,10 +18,9 @@ final clienteDireccionSeleccionarPaisPageControllerProvider =
     >.internal(
       ClienteDireccionSeleccionarPaisPageController.new,
       name: r'clienteDireccionSeleccionarPaisPageControllerProvider',
-      debugGetCreateSourceHash:
-          const bool.fromEnvironment('dart.vm.product')
-              ? null
-              : _$clienteDireccionSeleccionarPaisPageControllerHash,
+      debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+          ? null
+          : _$clienteDireccionSeleccionarPaisPageControllerHash,
       dependencies: null,
       allTransitiveDependencies: null,
     );

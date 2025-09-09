@@ -81,8 +81,9 @@ class LogRepository {
   }
 
   Future<LogDTO> remotePostLogs({required LogDTO logDto}) async {
-    final requestUri =
-        (usuario!.test) ? remoteLogTestEndpoint : remoteLogEndpoint;
+    final requestUri = (usuario!.test)
+        ? remoteLogTestEndpoint
+        : remoteLogEndpoint;
 
     final response = await dio.postUri(
       requestUri,
@@ -103,7 +104,8 @@ class LogRepository {
   }
 
   Future<void> deleteLogInLocalDb({required int logId}) async {
-    await (localDb.delete(localDb.logTable)
-      ..where((tbl) => tbl.id.equals(logId))).go();
+    await (localDb.delete(
+      localDb.logTable,
+    )..where((tbl) => tbl.id.equals(logId))).go();
   }
 }

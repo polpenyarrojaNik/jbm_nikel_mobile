@@ -66,11 +66,10 @@ class _ClienteDireccionesListPageState
         isSearchingFirst: false,
         title: S.of(context).cliente_show_clienteDireccion_titulo,
         searchTitle: S.of(context).search,
-        onChanged:
-            (searchText) => _debouncer.run(() {
-              ref.read(customerAddressSearchQueryStateProvider.notifier).state =
-                  searchText;
-            }),
+        onChanged: (searchText) => _debouncer.run(() {
+          ref.read(customerAddressSearchQueryStateProvider.notifier).state =
+              searchText;
+        }),
       ),
       body: Column(
         children: [
@@ -81,31 +80,26 @@ class _ClienteDireccionesListPageState
           state.maybeWhen(
             orElse: () => const ProgressIndicatorWidget(),
             error: (e, st) => ErrorMessageWidget(e.toString()),
-            data:
-                (clienteDireccionList) =>
-                    (clienteDireccionList.isNotEmpty)
-                        ? Expanded(
-                          child: ListView.separated(
-                            itemCount: clienteDireccionList.length,
-                            itemBuilder:
-                                (context, i) => ClienteDireccionTile(
-                                  clienteDireccion: clienteDireccionList[i],
-                                  clienteImpParam: ClienteImpParam(
-                                    widget.clienteId,
-                                    id: clienteDireccionList[i].direccionId,
-                                    impId:
-                                        clienteDireccionList[i]
-                                            .direccionImpGuid,
-                                    clientePais: widget.paisCliente,
-                                  ),
-                                ),
-                            separatorBuilder: (context, i) => const Divider(),
-                          ),
-                        )
-                        : Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [Text(S.of(context).sinResultados)],
+            data: (clienteDireccionList) => (clienteDireccionList.isNotEmpty)
+                ? Expanded(
+                    child: ListView.separated(
+                      itemCount: clienteDireccionList.length,
+                      itemBuilder: (context, i) => ClienteDireccionTile(
+                        clienteDireccion: clienteDireccionList[i],
+                        clienteImpParam: ClienteImpParam(
+                          widget.clienteId,
+                          id: clienteDireccionList[i].direccionId,
+                          impId: clienteDireccionList[i].direccionImpGuid,
+                          clientePais: widget.paisCliente,
                         ),
+                      ),
+                      separatorBuilder: (context, i) => const Divider(),
+                    ),
+                  )
+                : Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [Text(S.of(context).sinResultados)],
+                  ),
           ),
         ],
       ),
@@ -152,14 +146,13 @@ class ClienteDireccionTile extends StatelessWidget {
             children: [
               SizedBox(
                 width: 50,
-                child:
-                    (clienteDireccion.direccionId != null)
-                        ? Text(
-                          (clienteDireccion.direccionId!.length > 3)
-                              ? 'PRV'
-                              : clienteDireccion.direccionId!,
-                        )
-                        : null,
+                child: (clienteDireccion.direccionId != null)
+                    ? Text(
+                        (clienteDireccion.direccionId!.length > 3)
+                            ? 'PRV'
+                            : clienteDireccion.direccionId!,
+                      )
+                    : null,
               ),
               Expanded(
                 child: Column(
@@ -196,11 +189,10 @@ class ClienteDireccionTile extends StatelessWidget {
                               S
                                   .of(context)
                                   .cliente_show_clienteDireccion_hayCambiosDeEnviar,
-                              style: Theme.of(
-                                context,
-                              ).textTheme.bodyMedium?.copyWith(
-                                color: Theme.of(context).colorScheme.error,
-                              ),
+                              style: Theme.of(context).textTheme.bodyMedium
+                                  ?.copyWith(
+                                    color: Theme.of(context).colorScheme.error,
+                                  ),
                             ),
                           ),
                         ],
@@ -234,10 +226,9 @@ class _ClienteDireccionActionButtons extends ConsumerWidget {
       (_, state) {
         state.whenOrNull(
           error: (error, _) {
-            final errorMessage =
-                (error is AppException)
-                    ? error.details.message
-                    : error.toString();
+            final errorMessage = (error is AppException)
+                ? error.details.message
+                : error.toString();
 
             context.showErrorBar(
               content: Text(errorMessage),
@@ -267,26 +258,19 @@ class _ClienteDireccionActionButtons extends ConsumerWidget {
         children: [
           IconButton(
             visualDensity: const VisualDensity(horizontal: -4, vertical: -4),
-            onPressed:
-                () => navigateToEditClienteDireccion(context, clienteImpParam),
+            onPressed: () =>
+                navigateToEditClienteDireccion(context, clienteImpParam),
             icon: const Icon(Icons.edit),
           ),
           const Gap(4),
           deleteDireccionValue.maybeWhen(
             loading: () => const CircularProgressIndicator(strokeWidth: 2.5),
-            orElse:
-                () => IconButton(
-                  visualDensity: const VisualDensity(
-                    horizontal: -4,
-                    vertical: -4,
-                  ),
-                  onPressed:
-                      () => navigateToDeleteClienteDireccion(
-                        ref,
-                        clienteImpParam,
-                      ),
-                  icon: const Icon(Icons.delete_outline),
-                ),
+            orElse: () => IconButton(
+              visualDensity: const VisualDensity(horizontal: -4, vertical: -4),
+              onPressed: () =>
+                  navigateToDeleteClienteDireccion(ref, clienteImpParam),
+              icon: const Icon(Icons.delete_outline),
+            ),
           ),
         ],
       ),
@@ -327,49 +311,42 @@ class _CambiosPendientesDeTramitarListView extends ConsumerWidget {
       clienteDireccionImpListInSyncByClienteProvider(clienteImpParam),
     );
     return cambiosPendientesDeTramitarValue.when(
-      data:
-          (direccionImpList) =>
-              direccionImpList.isEmpty
-                  ? Container()
-                  : GestureDetector(
-                    onTap:
-                        () => showCambiosPendietesDeTramitarAlertDialog(
-                          context,
-                          direccionImpList,
-                        ),
-                    child: Row(
-                      children: [
-                        Icon(
-                          Icons.error,
-                          color: Theme.of(context).colorScheme.error,
-                          size: 14,
-                        ),
-                        const Gap(4),
-                        Flexible(
-                          child: Text(
-                            S
-                                .of(context)
-                                .cliente_show_clienteDireccion_hayCambiosSinTramitar,
-                            style: Theme.of(
-                              context,
-                            ).textTheme.bodyMedium?.copyWith(
-                              color: Theme.of(context).colorScheme.error,
-                            ),
-                          ),
-                        ),
-                      ],
+      data: (direccionImpList) => direccionImpList.isEmpty
+          ? Container()
+          : GestureDetector(
+              onTap: () => showCambiosPendietesDeTramitarAlertDialog(
+                context,
+                direccionImpList,
+              ),
+              child: Row(
+                children: [
+                  Icon(
+                    Icons.error,
+                    color: Theme.of(context).colorScheme.error,
+                    size: 14,
+                  ),
+                  const Gap(4),
+                  Flexible(
+                    child: Text(
+                      S
+                          .of(context)
+                          .cliente_show_clienteDireccion_hayCambiosSinTramitar,
+                      style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                        color: Theme.of(context).colorScheme.error,
+                      ),
                     ),
                   ),
-      error:
-          (error, _) => Text(
-            (error is AppException) ? error.details.message : error.toString(),
-          ),
-      loading:
-          () => const SizedBox(
-            height: 16,
-            width: 16,
-            child: CircularProgressIndicator(strokeWidth: 2.5),
-          ),
+                ],
+              ),
+            ),
+      error: (error, _) => Text(
+        (error is AppException) ? error.details.message : error.toString(),
+      ),
+      loading: () => const SizedBox(
+        height: 16,
+        width: 16,
+        child: CircularProgressIndicator(strokeWidth: 2.5),
+      ),
     );
   }
 
@@ -379,26 +356,24 @@ class _CambiosPendientesDeTramitarListView extends ConsumerWidget {
   ) {
     showDialog(
       context: context,
-      builder:
-          (context) => AlertDialog(
-            title: Text(
-              S
-                  .of(context)
-                  .cliente_show_clienteDireccion_clienteDireccionListPage_cambiosPendientesDeTramitar,
+      builder: (context) => AlertDialog(
+        title: Text(
+          S
+              .of(context)
+              .cliente_show_clienteDireccion_clienteDireccionListPage_cambiosPendientesDeTramitar,
+        ),
+        content: SizedBox(
+          width: double.maxFinite,
+          child: ListView.separated(
+            shrinkWrap: true,
+            itemBuilder: (context, i) => ClienteDireccionImpListTile(
+              clienteDireccionImp: clienteDireccionImpList[i],
             ),
-            content: SizedBox(
-              width: double.maxFinite,
-              child: ListView.separated(
-                shrinkWrap: true,
-                itemBuilder:
-                    (context, i) => ClienteDireccionImpListTile(
-                      clienteDireccionImp: clienteDireccionImpList[i],
-                    ),
-                separatorBuilder: (context, i) => const Divider(),
-                itemCount: clienteDireccionImpList.length,
-              ),
-            ),
+            separatorBuilder: (context, i) => const Divider(),
+            itemCount: clienteDireccionImpList.length,
           ),
+        ),
+      ),
     );
   }
 }

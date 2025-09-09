@@ -60,10 +60,9 @@ abstract class PedidoVentaLineaDTO
       descuento3: descuento3,
       descuentoProntoPago: descuentoProntoPago,
       pedidoLineaIdComponente: pedidoLineaIdComponente,
-      importeLinea:
-          (importeLinea != null)
-              ? importeLinea!.toMoney(currencyId: divisaId)
-              : null,
+      importeLinea: (importeLinea != null)
+          ? importeLinea!.toMoney(currencyId: divisaId)
+          : null,
       iva: iva,
       cantidadPendiente: cantidad - cantidadServida,
       stockDisponible: stockDisponible,

@@ -15,18 +15,17 @@ class ExpedicionListaTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap:
-          () => context.router.push(
-            PedidoVentaDetalleRoute(
-              pedidoLocalParam: PedidoLocalParam(
-                pedidoId: expedicion.pedidoVentaId,
-                empresaId: expedicion.empresaId,
-                pedidoAppId: null,
-                isEdit: false,
-                tratada: expedicion.tratada,
-              ),
-            ),
+      onTap: () => context.router.push(
+        PedidoVentaDetalleRoute(
+          pedidoLocalParam: PedidoLocalParam(
+            pedidoId: expedicion.pedidoVentaId,
+            empresaId: expedicion.empresaId,
+            pedidoAppId: null,
+            isEdit: false,
+            tratada: expedicion.tratada,
           ),
+        ),
+      ),
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
         child: Column(
@@ -64,25 +63,22 @@ class ExpedicionListaTile extends StatelessWidget {
                           Container(
                             padding: const EdgeInsets.symmetric(vertical: 4.0),
                             decoration: BoxDecoration(
-                              color:
-                                  Theme.of(
-                                    context,
-                                  ).colorScheme.primaryContainer,
+                              color: Theme.of(
+                                context,
+                              ).colorScheme.primaryContainer,
                             ),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Text(
                                   S.of(context).commonWidgets_appDrawer_pedidos,
-                                  style: Theme.of(
-                                    context,
-                                  ).textTheme.bodySmall?.copyWith(
-                                    fontSize: 10,
-                                    color:
-                                        Theme.of(
+                                  style: Theme.of(context).textTheme.bodySmall
+                                      ?.copyWith(
+                                        fontSize: 10,
+                                        color: Theme.of(
                                           context,
                                         ).colorScheme.onPrimaryContainer,
-                                  ),
+                                      ),
                                 ),
                               ],
                             ),
@@ -112,14 +108,14 @@ class ExpedicionListaTile extends StatelessWidget {
                                 Text(
                                   ((expedicion.pedidoVentaEstado != null))
                                       ? expedicion
-                                          .pedidoVentaEstado!
-                                          .descripcion
+                                            .pedidoVentaEstado!
+                                            .descripcion
                                       : getEstadoPedidoLocal(
-                                        context,
-                                        false,
-                                        expedicion.enviada,
-                                        expedicion.tratada,
-                                      )!,
+                                          context,
+                                          false,
+                                          expedicion.enviada,
+                                          expedicion.tratada,
+                                        )!,
                                   maxLines: 1,
                                   overflow: TextOverflow.ellipsis,
                                   style: Theme.of(
@@ -153,10 +149,9 @@ class ExpedicionListaTile extends StatelessWidget {
                           Container(
                             padding: const EdgeInsets.symmetric(vertical: 4.0),
                             decoration: BoxDecoration(
-                              color:
-                                  Theme.of(
-                                    context,
-                                  ).colorScheme.primaryContainer,
+                              color: Theme.of(
+                                context,
+                              ).colorScheme.primaryContainer,
                             ),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.center,
@@ -165,15 +160,13 @@ class ExpedicionListaTile extends StatelessWidget {
                                   S
                                       .of(context)
                                       .pedido_show_pedidoVentaDetalle_albaranes,
-                                  style: Theme.of(
-                                    context,
-                                  ).textTheme.bodySmall?.copyWith(
-                                    fontSize: 10,
-                                    color:
-                                        Theme.of(
+                                  style: Theme.of(context).textTheme.bodySmall
+                                      ?.copyWith(
+                                        fontSize: 10,
+                                        color: Theme.of(
                                           context,
                                         ).colorScheme.onPrimaryContainer,
-                                  ),
+                                      ),
                                 ),
                               ],
                             ),

@@ -112,71 +112,58 @@ class _$ClienteContactoLocalDTOCopyWithImpl<
   }) {
     return _then(
       _value.copyWith(
-            clienteId:
-                null == clienteId
-                    ? _value.clienteId
-                    : clienteId // ignore: cast_nullable_to_non_nullable
-                        as String,
-            contactoId:
-                freezed == contactoId
-                    ? _value.contactoId
-                    : contactoId // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            observaciones:
-                freezed == observaciones
-                    ? _value.observaciones
-                    : observaciones // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            nombre:
-                freezed == nombre
-                    ? _value.nombre
-                    : nombre // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            apellido1:
-                freezed == apellido1
-                    ? _value.apellido1
-                    : apellido1 // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            apellido2:
-                freezed == apellido2
-                    ? _value.apellido2
-                    : apellido2 // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            telefono1:
-                freezed == telefono1
-                    ? _value.telefono1
-                    : telefono1 // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            telefono2:
-                freezed == telefono2
-                    ? _value.telefono2
-                    : telefono2 // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            email:
-                freezed == email
-                    ? _value.email
-                    : email // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            lastUpdated:
-                null == lastUpdated
-                    ? _value.lastUpdated
-                    : lastUpdated // ignore: cast_nullable_to_non_nullable
-                        as DateTime,
-            enviado:
-                null == enviado
-                    ? _value.enviado
-                    : enviado // ignore: cast_nullable_to_non_nullable
-                        as String,
-            tratado:
-                null == tratado
-                    ? _value.tratado
-                    : tratado // ignore: cast_nullable_to_non_nullable
-                        as String,
-            deleted:
-                null == deleted
-                    ? _value.deleted
-                    : deleted // ignore: cast_nullable_to_non_nullable
-                        as String,
+            clienteId: null == clienteId
+                ? _value.clienteId
+                : clienteId // ignore: cast_nullable_to_non_nullable
+                      as String,
+            contactoId: freezed == contactoId
+                ? _value.contactoId
+                : contactoId // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            observaciones: freezed == observaciones
+                ? _value.observaciones
+                : observaciones // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            nombre: freezed == nombre
+                ? _value.nombre
+                : nombre // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            apellido1: freezed == apellido1
+                ? _value.apellido1
+                : apellido1 // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            apellido2: freezed == apellido2
+                ? _value.apellido2
+                : apellido2 // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            telefono1: freezed == telefono1
+                ? _value.telefono1
+                : telefono1 // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            telefono2: freezed == telefono2
+                ? _value.telefono2
+                : telefono2 // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            email: freezed == email
+                ? _value.email
+                : email // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            lastUpdated: null == lastUpdated
+                ? _value.lastUpdated
+                : lastUpdated // ignore: cast_nullable_to_non_nullable
+                      as DateTime,
+            enviado: null == enviado
+                ? _value.enviado
+                : enviado // ignore: cast_nullable_to_non_nullable
+                      as String,
+            tratado: null == tratado
+                ? _value.tratado
+                : tratado // ignore: cast_nullable_to_non_nullable
+                      as String,
+            deleted: null == deleted
+                ? _value.deleted
+                : deleted // ignore: cast_nullable_to_non_nullable
+                      as String,
           )
           as $Val,
     );
@@ -238,71 +225,58 @@ class __$$_ClienteContactoLocalDTOCopyWithImpl<$Res>
   }) {
     return _then(
       _$_ClienteContactoLocalDTO(
-        clienteId:
-            null == clienteId
-                ? _value.clienteId
-                : clienteId // ignore: cast_nullable_to_non_nullable
-                    as String,
-        contactoId:
-            freezed == contactoId
-                ? _value.contactoId
-                : contactoId // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        observaciones:
-            freezed == observaciones
-                ? _value.observaciones
-                : observaciones // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        nombre:
-            freezed == nombre
-                ? _value.nombre
-                : nombre // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        apellido1:
-            freezed == apellido1
-                ? _value.apellido1
-                : apellido1 // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        apellido2:
-            freezed == apellido2
-                ? _value.apellido2
-                : apellido2 // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        telefono1:
-            freezed == telefono1
-                ? _value.telefono1
-                : telefono1 // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        telefono2:
-            freezed == telefono2
-                ? _value.telefono2
-                : telefono2 // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        email:
-            freezed == email
-                ? _value.email
-                : email // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        lastUpdated:
-            null == lastUpdated
-                ? _value.lastUpdated
-                : lastUpdated // ignore: cast_nullable_to_non_nullable
-                    as DateTime,
-        enviado:
-            null == enviado
-                ? _value.enviado
-                : enviado // ignore: cast_nullable_to_non_nullable
-                    as String,
-        tratado:
-            null == tratado
-                ? _value.tratado
-                : tratado // ignore: cast_nullable_to_non_nullable
-                    as String,
-        deleted:
-            null == deleted
-                ? _value.deleted
-                : deleted // ignore: cast_nullable_to_non_nullable
-                    as String,
+        clienteId: null == clienteId
+            ? _value.clienteId
+            : clienteId // ignore: cast_nullable_to_non_nullable
+                  as String,
+        contactoId: freezed == contactoId
+            ? _value.contactoId
+            : contactoId // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        observaciones: freezed == observaciones
+            ? _value.observaciones
+            : observaciones // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        nombre: freezed == nombre
+            ? _value.nombre
+            : nombre // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        apellido1: freezed == apellido1
+            ? _value.apellido1
+            : apellido1 // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        apellido2: freezed == apellido2
+            ? _value.apellido2
+            : apellido2 // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        telefono1: freezed == telefono1
+            ? _value.telefono1
+            : telefono1 // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        telefono2: freezed == telefono2
+            ? _value.telefono2
+            : telefono2 // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        email: freezed == email
+            ? _value.email
+            : email // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        lastUpdated: null == lastUpdated
+            ? _value.lastUpdated
+            : lastUpdated // ignore: cast_nullable_to_non_nullable
+                  as DateTime,
+        enviado: null == enviado
+            ? _value.enviado
+            : enviado // ignore: cast_nullable_to_non_nullable
+                  as String,
+        tratado: null == tratado
+            ? _value.tratado
+            : tratado // ignore: cast_nullable_to_non_nullable
+                  as String,
+        deleted: null == deleted
+            ? _value.deleted
+            : deleted // ignore: cast_nullable_to_non_nullable
+                  as String,
       ),
     );
   }

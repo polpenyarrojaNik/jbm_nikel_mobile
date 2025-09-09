@@ -16,10 +16,11 @@ class PedidoVentaAdjuntoState with _$PedidoVentaAdjuntoState {
   const factory PedidoVentaAdjuntoState.error(String failure) = _Error;
 }
 
-final pedidoVentaAdjuntoControllerProvider = StateNotifierProvider.autoDispose<
-  PedidoVentaAdjuntoController,
-  PedidoVentaAdjuntoState
->((ref) => PedidoVentaAdjuntoController(ref));
+final pedidoVentaAdjuntoControllerProvider =
+    StateNotifierProvider.autoDispose<
+      PedidoVentaAdjuntoController,
+      PedidoVentaAdjuntoState
+    >((ref) => PedidoVentaAdjuntoController(ref));
 
 class PedidoVentaAdjuntoController
     extends StateNotifier<PedidoVentaAdjuntoState> {

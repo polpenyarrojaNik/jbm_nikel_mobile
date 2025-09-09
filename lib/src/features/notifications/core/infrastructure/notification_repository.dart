@@ -31,18 +31,17 @@ class NotificationRepository {
 
   Future<List<NotificationList>> getNotificationList() async {
     final notificationList = await _remoteNotificationList(
-      requestUri:
-          (user!.test)
-              ? Uri.http(
-                dotenv.get('URL', fallback: 'localhost:3001'),
-                'api/v1/online/notificacion',
-                {'USER_ID': user!.id},
-              )
-              : Uri.https(
-                dotenv.get('URL', fallback: 'localhost:3001'),
-                'api/v1/online/notificacion',
-                {'USER_ID': user!.id},
-              ),
+      requestUri: (user!.test)
+          ? Uri.http(
+              dotenv.get('URL', fallback: 'localhost:3001'),
+              'api/v1/online/notificacion',
+              {'USER_ID': user!.id},
+            )
+          : Uri.https(
+              dotenv.get('URL', fallback: 'localhost:3001'),
+              'api/v1/online/notificacion',
+              {'USER_ID': user!.id},
+            ),
       jsonDataSelector: (json) => json['data'] as List<dynamic>,
       provisionalToken: user!.provisionalToken,
     );
@@ -52,18 +51,17 @@ class NotificationRepository {
 
   Future<Notificacion> getNotificationById(String id) async {
     final notificationDto = await _remoteNotificationById(
-      requestUri:
-          (user!.test)
-              ? Uri.http(
-                dotenv.get('URL', fallback: 'localhost:3001'),
-                'api/v1/online/notificacion/$id',
-                {'USER_ID': user!.id},
-              )
-              : Uri.https(
-                dotenv.get('URL', fallback: 'localhost:3001'),
-                'api/v1/online/notificacion/$id',
-                {'USER_ID': user!.id},
-              ),
+      requestUri: (user!.test)
+          ? Uri.http(
+              dotenv.get('URL', fallback: 'localhost:3001'),
+              'api/v1/online/notificacion/$id',
+              {'USER_ID': user!.id},
+            )
+          : Uri.https(
+              dotenv.get('URL', fallback: 'localhost:3001'),
+              'api/v1/online/notificacion/$id',
+              {'USER_ID': user!.id},
+            ),
       jsonDataSelector: (json) => json['data'] as Map<String, dynamic>,
       provisionalToken: user!.provisionalToken,
     );
@@ -74,18 +72,17 @@ class NotificationRepository {
   Future<String?> haveNotification() async {
     try {
       final notificationId = await _remoteHaveNotification(
-        requestUri:
-            (user!.test)
-                ? Uri.http(
-                  dotenv.get('URL', fallback: 'localhost:3001'),
-                  'api/v1/online/check_notificacion',
-                  {'USER_ID': user!.id},
-                )
-                : Uri.https(
-                  dotenv.get('URL', fallback: 'localhost:3001'),
-                  'api/v1/online/check_notificacion',
-                  {'USER_ID': user!.id},
-                ),
+        requestUri: (user!.test)
+            ? Uri.http(
+                dotenv.get('URL', fallback: 'localhost:3001'),
+                'api/v1/online/check_notificacion',
+                {'USER_ID': user!.id},
+              )
+            : Uri.https(
+                dotenv.get('URL', fallback: 'localhost:3001'),
+                'api/v1/online/check_notificacion',
+                {'USER_ID': user!.id},
+              ),
         jsonDataSelector: (json) => json['data'] as Map<String, dynamic>,
         provisionalToken: user!.provisionalToken,
       );

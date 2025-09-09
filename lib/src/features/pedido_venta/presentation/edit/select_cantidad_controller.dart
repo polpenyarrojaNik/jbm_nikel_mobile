@@ -6,14 +6,17 @@ import '../../infrastructure/pedido_venta_repository.dart';
 
 part 'select_cantidad_controller.freezed.dart';
 
-final articuloPrecioProvider = StateNotifierProvider.autoDispose<
-  ArticuloPrecioController,
-  ArticuloPrecioControllerState
->((ref) {
-  final pedidoVentaRepository = ref.watch(pedidoVentaRepositoryProvider);
+final articuloPrecioProvider =
+    StateNotifierProvider.autoDispose<
+      ArticuloPrecioController,
+      ArticuloPrecioControllerState
+    >((ref) {
+      final pedidoVentaRepository = ref.watch(pedidoVentaRepositoryProvider);
 
-  return ArticuloPrecioController(pedidoVentaRepository: pedidoVentaRepository);
-});
+      return ArticuloPrecioController(
+        pedidoVentaRepository: pedidoVentaRepository,
+      );
+    });
 
 @freezed
 class ArticuloPrecioControllerState with _$ArticuloPrecioControllerState {

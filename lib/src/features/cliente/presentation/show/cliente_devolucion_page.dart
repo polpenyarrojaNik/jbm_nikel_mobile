@@ -39,28 +39,23 @@ class ClienteDevolucionPage extends ConsumerWidget {
           state.maybeWhen(
             orElse: () => const ProgressIndicatorWidget(),
             error: (e, st) => ErrorMessageWidget(e.toString()),
-            data:
-                (clienteDevolucionList) =>
-                    (clienteDevolucionList.isNotEmpty)
-                        ? Expanded(
-                          child: ListView.separated(
-                            itemBuilder:
-                                (context, i) => Padding(
-                                  padding: const EdgeInsets.symmetric(
-                                    horizontal: 16.0,
-                                  ),
-                                  child: ClienteDevolucionListTile(
-                                    devolucion: clienteDevolucionList[i],
-                                  ),
-                                ),
-                            separatorBuilder: (context, i) => const Divider(),
-                            itemCount: clienteDevolucionList.length,
-                          ),
-                        )
-                        : Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [Text(S.of(context).sinResultados)],
+            data: (clienteDevolucionList) => (clienteDevolucionList.isNotEmpty)
+                ? Expanded(
+                    child: ListView.separated(
+                      itemBuilder: (context, i) => Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                        child: ClienteDevolucionListTile(
+                          devolucion: clienteDevolucionList[i],
                         ),
+                      ),
+                      separatorBuilder: (context, i) => const Divider(),
+                      itemCount: clienteDevolucionList.length,
+                    ),
+                  )
+                : Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [Text(S.of(context).sinResultados)],
+                  ),
           ),
         ],
       ),

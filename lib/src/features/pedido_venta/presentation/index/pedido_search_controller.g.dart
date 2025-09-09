@@ -18,10 +18,9 @@ final pedidoVentaIndexScreenControllerProvider =
     >.internal(
       PedidoVentaIndexScreenController.new,
       name: r'pedidoVentaIndexScreenControllerProvider',
-      debugGetCreateSourceHash:
-          const bool.fromEnvironment('dart.vm.product')
-              ? null
-              : _$pedidoVentaIndexScreenControllerHash,
+      debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+          ? null
+          : _$pedidoVentaIndexScreenControllerHash,
       dependencies: null,
       allTransitiveDependencies: null,
     );
@@ -109,10 +108,9 @@ class PedidoVentaIndexScreenPaginatedControllerProvider
         () => PedidoVentaIndexScreenPaginatedController()..page = page,
         from: pedidoVentaIndexScreenPaginatedControllerProvider,
         name: r'pedidoVentaIndexScreenPaginatedControllerProvider',
-        debugGetCreateSourceHash:
-            const bool.fromEnvironment('dart.vm.product')
-                ? null
-                : _$pedidoVentaIndexScreenPaginatedControllerHash,
+        debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+            ? null
+            : _$pedidoVentaIndexScreenPaginatedControllerHash,
         dependencies:
             PedidoVentaIndexScreenPaginatedControllerFamily._dependencies,
         allTransitiveDependencies:

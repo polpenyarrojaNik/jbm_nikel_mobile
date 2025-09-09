@@ -41,23 +41,20 @@ class ClienteDescuentoPage extends ConsumerWidget {
           state.maybeWhen(
             orElse: () => const ProgressIndicatorWidget(),
             error: (e, st) => ErrorMessageWidget(e.toString()),
-            data:
-                (clienteDescuentoList) =>
-                    (clienteDescuentoList.isNotEmpty)
-                        ? Expanded(
-                          child: ListView.separated(
-                            itemCount: clienteDescuentoList.length,
-                            itemBuilder:
-                                (context, i) => ClienteDescuentoTile(
-                                  clienteDescuento: clienteDescuentoList[i],
-                                ),
-                            separatorBuilder: (context, i) => const Divider(),
-                          ),
-                        )
-                        : Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [Text(S.of(context).sinResultados)],
-                        ),
+            data: (clienteDescuentoList) => (clienteDescuentoList.isNotEmpty)
+                ? Expanded(
+                    child: ListView.separated(
+                      itemCount: clienteDescuentoList.length,
+                      itemBuilder: (context, i) => ClienteDescuentoTile(
+                        clienteDescuento: clienteDescuentoList[i],
+                      ),
+                      separatorBuilder: (context, i) => const Divider(),
+                    ),
+                  )
+                : Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [Text(S.of(context).sinResultados)],
+                  ),
           ),
         ],
       ),

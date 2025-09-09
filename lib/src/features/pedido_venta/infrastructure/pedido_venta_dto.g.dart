@@ -29,10 +29,9 @@ _PedidoVentaDTO _$PedidoVentaDTOFromJson(Map<String, dynamic> json) =>
       total: (json['TOTAL'] as num).toDouble(),
       pedidoVentaEstadoId: (json['ESTADO_PEDIDO_ID'] as num).toInt(),
       oferta: json['OFERTA_SN'] as String,
-      ofertaFechaHasta:
-          json['OFERTA_FECHA_HASTA'] == null
-              ? null
-              : DateTime.parse(json['OFERTA_FECHA_HASTA'] as String),
+      ofertaFechaHasta: json['OFERTA_FECHA_HASTA'] == null
+          ? null
+          : DateTime.parse(json['OFERTA_FECHA_HASTA'] as String),
       pedidoVentaAppId: json['PEDIDO_APP_ID'] as String?,
       iva: (json['IVA'] as num).toDouble(),
       lastUpdated: DateTime.parse(json['LAST_UPDATED'] as String),

@@ -19,10 +19,11 @@ class CatalogoAdjuntoState with _$CatalogoAdjuntoState {
   const factory CatalogoAdjuntoState.error(String failure) = _Error;
 }
 
-final catalogoAdjuntoControllerProvider = StateNotifierProvider.autoDispose<
-  CatalogoAdjuntoController,
-  CatalogoAdjuntoState
->((ref) => CatalogoAdjuntoController(ref));
+final catalogoAdjuntoControllerProvider =
+    StateNotifierProvider.autoDispose<
+      CatalogoAdjuntoController,
+      CatalogoAdjuntoState
+    >((ref) => CatalogoAdjuntoController(ref));
 
 class CatalogoAdjuntoController extends StateNotifier<CatalogoAdjuntoState> {
   final Ref _ref;

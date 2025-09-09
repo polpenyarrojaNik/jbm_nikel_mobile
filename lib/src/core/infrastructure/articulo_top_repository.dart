@@ -27,10 +27,9 @@ class ArticuloTopRepository {
   Future<List<ArticuloTop>> getArticuloTopList({
     required String clienteId,
   }) async {
-    final query =
-        await db
-            .customSelect(
-              '''
+    final query = await db
+        .customSelect(
+          '''
           SELECT estadisticas_articulos_top.ARTICULO_ID
 , ARTICULOS.DESCRIPCION_ES
 ,IFNULL((SELECT SUM (estadisticas_venta.importe)
@@ -49,13 +48,13 @@ FROM estadisticas_articulos_top
 INNER JOIN ARTICULOS ON ARTICULOS.articulo_id = ESTADISTICAS_ARTICULOS_TOP.ARTICULO_ID
 ORDER BY VENTAS_TOTAL DESC
 ''',
-              variables: [Variable(clienteId)],
-              readsFrom: {
-                db.estadisticasArticulosTopTable,
-                db.estadisticasClienteUsuarioVentasTable,
-              },
-            )
-            .get();
+          variables: [Variable(clienteId)],
+          readsFrom: {
+            db.estadisticasArticulosTopTable,
+            db.estadisticasClienteUsuarioVentasTable,
+          },
+        )
+        .get();
 
     return query
         .map((row) => ArticuloTopDTO.fromJson(row.data).toDomain())
@@ -68,14 +67,12 @@ ORDER BY VENTAS_TOTAL DESC
         ..where((t) => t.id.equals(articuloId)));
 
       return await query.asyncMap((row) async {
-        final familiaDTO =
-            await (db.select(db.familiaTable)..where(
-              (t) => t.id.equals(row.familiaId ?? ''),
-            )).getSingleOrNull();
-        final subfamiliaDTO =
-            await (db.select(db.subfamiliaTable)..where(
-              (t) => t.id.equals(row.subfamiliaId ?? ''),
-            )).getSingleOrNull();
+        final familiaDTO = await (db.select(
+          db.familiaTable,
+        )..where((t) => t.id.equals(row.familiaId ?? ''))).getSingleOrNull();
+        final subfamiliaDTO = await (db.select(
+          db.subfamiliaTable,
+        )..where((t) => t.id.equals(row.subfamiliaId ?? ''))).getSingleOrNull();
         return row.toDomain(
           familia: familiaDTO?.toDomain(),
           subfamilia: subfamiliaDTO?.toDomain(),

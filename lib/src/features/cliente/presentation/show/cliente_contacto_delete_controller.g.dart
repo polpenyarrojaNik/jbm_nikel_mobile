@@ -91,10 +91,9 @@ class ClienteContactoDeleteControllerProvider
               ..clienteImpParam = clienteImpParam,
         from: clienteContactoDeleteControllerProvider,
         name: r'clienteContactoDeleteControllerProvider',
-        debugGetCreateSourceHash:
-            const bool.fromEnvironment('dart.vm.product')
-                ? null
-                : _$clienteContactoDeleteControllerHash,
+        debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+            ? null
+            : _$clienteContactoDeleteControllerHash,
         dependencies: ClienteContactoDeleteControllerFamily._dependencies,
         allTransitiveDependencies:
             ClienteContactoDeleteControllerFamily._allTransitiveDependencies,

@@ -56,13 +56,11 @@ class SettingsPage extends ConsumerWidget {
       (_, state) {
         state.maybeWhen(
           orElse: () => null,
-          loading:
-              () => unawaited(
-                showToast(S.of(context).settings_creandoArchivo, context),
-              ),
-          data:
-              (file) =>
-                  enviarDatabase(context: context, usuarioId: usuario!.id),
+          loading: () => unawaited(
+            showToast(S.of(context).settings_creandoArchivo, context),
+          ),
+          data: (file) =>
+              enviarDatabase(context: context, usuarioId: usuario!.id),
           error: (error, _) => unawaited(showToast(error.toString(), context)),
         );
       },
@@ -100,17 +98,16 @@ class SettingsPage extends ConsumerWidget {
                 ],
               ),
             statePackageInfo.when(
-              data:
-                  (packageInfo) => Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      ColumnFieldTextDetalle(
-                        fieldTitleValue: S.of(context).settings_version,
-                        value:
-                            '${packageInfo.version} (${packageInfo.buildNumber})',
-                      ),
-                    ],
+              data: (packageInfo) => Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  ColumnFieldTextDetalle(
+                    fieldTitleValue: S.of(context).settings_version,
+                    value:
+                        '${packageInfo.version} (${packageInfo.buildNumber})',
                   ),
+                ],
+              ),
               error: (e, _) => ErrorMessageWidget(e.toString()),
               loading: () => const ProgressIndicatorWidget(),
             ),
@@ -121,13 +118,13 @@ class SettingsPage extends ConsumerWidget {
             ),
             stateSync.maybeWhen(
               orElse: () => Container(),
-              synchronized:
-                  () => const _ReemplazarArchivoBaseDeDatosLocalButton(),
+              synchronized: () =>
+                  const _ReemplazarArchivoBaseDeDatosLocalButton(),
             ),
             stateSync.maybeWhen(
               orElse: () => Container(),
-              synchronized:
-                  () => _EnviarBaseDeDatosLocalButton(usuarioId: usuario!.id),
+              synchronized: () =>
+                  _EnviarBaseDeDatosLocalButton(usuarioId: usuario!.id),
             ),
             stateSync.maybeWhen(
               orElse: () => Container(),

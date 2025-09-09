@@ -76,11 +76,10 @@ class _ExpedicionListPageListPageState
         isSearchingFirst: false,
         title: S.of(context).commonWidgets_appDrawer_expediciones,
         searchTitle: S.of(context).pedido_index_buscarPedidos,
-        onChanged:
-            (searchText) => _debouncer.run(() {
-              ref.read(expedicionSearchQueryStateProvider.notifier).state =
-                  searchText;
-            }),
+        onChanged: (searchText) => _debouncer.run(() {
+          ref.read(expedicionSearchQueryStateProvider.notifier).state =
+              searchText;
+        }),
         // actionButtons: [
         //   IconButton(
         //     onPressed: () => searchFilterByEstado(),
@@ -93,17 +92,12 @@ class _ExpedicionListPageListPageState
         // ],
       ),
       body: stateSync.maybeWhen(
-        orElse:
-            () =>
-                PedidoExpedicionListViewWidget(stateSync: stateSync, ref: ref),
-        synchronized:
-            () => RefreshIndicator(
-              onRefresh: () => syncSalesOrderDB(ref),
-              child: PedidoExpedicionListViewWidget(
-                stateSync: stateSync,
-                ref: ref,
-              ),
-            ),
+        orElse: () =>
+            PedidoExpedicionListViewWidget(stateSync: stateSync, ref: ref),
+        synchronized: () => RefreshIndicator(
+          onRefresh: () => syncSalesOrderDB(ref),
+          child: PedidoExpedicionListViewWidget(stateSync: stateSync, ref: ref),
+        ),
       ),
     );
   }
@@ -165,9 +159,8 @@ class PedidoExpedicionListViewWidget extends StatelessWidget {
             );
 
             return stateLastSyncDate.when(
-              data:
-                  (fechaUltimaSync) =>
-                      UltimaSyncDateWidget(ultimaSyncDate: fechaUltimaSync),
+              data: (fechaUltimaSync) =>
+                  UltimaSyncDateWidget(ultimaSyncDate: fechaUltimaSync),
               error: (_, stackTrace) => Container(),
               loading: () => const ProgressIndicatorWidget(),
             );
@@ -177,23 +170,18 @@ class PedidoExpedicionListViewWidget extends StatelessWidget {
         Expanded(
           child: statePedidoVentaList.when(
             loading: () => const Center(child: ProgressIndicatorWidget()),
-            error:
-                (error, _) =>
-                    Center(child: ErrorMessageWidget(error.toString())),
-            data:
-                (expedicionList) =>
-                    expedicionList.isNotEmpty
-                        ? ListView.separated(
-                          separatorBuilder: (context, i) => const Divider(),
-                          physics: const AlwaysScrollableScrollPhysics(),
-                          shrinkWrap: true,
-                          itemCount: expedicionList.length,
-                          itemBuilder:
-                              (context, i) => ExpedicionListaTile(
-                                expedicion: expedicionList[i],
-                              ),
-                        )
-                        : const SinResultadosWidget(),
+            error: (error, _) =>
+                Center(child: ErrorMessageWidget(error.toString())),
+            data: (expedicionList) => expedicionList.isNotEmpty
+                ? ListView.separated(
+                    separatorBuilder: (context, i) => const Divider(),
+                    physics: const AlwaysScrollableScrollPhysics(),
+                    shrinkWrap: true,
+                    itemCount: expedicionList.length,
+                    itemBuilder: (context, i) =>
+                        ExpedicionListaTile(expedicion: expedicionList[i]),
+                  )
+                : const SinResultadosWidget(),
           ),
         ),
       ],

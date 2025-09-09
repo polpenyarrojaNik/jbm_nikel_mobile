@@ -12,10 +12,9 @@ _PromoDtoCabDTO _$PromoDtoCabDTOFromJson(Map<String, dynamic> json) =>
       promoDtoId: json['PROMO_DTO_ID'] as String,
       nombre: json['NOMBRE'] as String,
       fechaDesde: DateTime.parse(json['FECHA_DESDE'] as String),
-      fechaHasta:
-          json['FECHA_HASTA'] == null
-              ? null
-              : DateTime.parse(json['FECHA_HASTA'] as String),
+      fechaHasta: json['FECHA_HASTA'] == null
+          ? null
+          : DateTime.parse(json['FECHA_HASTA'] as String),
       divisaId: json['DIVISA_ID'] as String,
       lastUpdated: DateTime.parse(json['LAST_UPDATED'] as String),
       deleted: json['DELETED'] as String? ?? 'N',

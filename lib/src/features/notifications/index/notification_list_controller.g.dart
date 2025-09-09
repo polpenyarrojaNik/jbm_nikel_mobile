@@ -18,10 +18,9 @@ final notificationIndexScreenControllerProvider =
     >.internal(
       NotificationIndexScreenController.new,
       name: r'notificationIndexScreenControllerProvider',
-      debugGetCreateSourceHash:
-          const bool.fromEnvironment('dart.vm.product')
-              ? null
-              : _$notificationIndexScreenControllerHash,
+      debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+          ? null
+          : _$notificationIndexScreenControllerHash,
       dependencies: null,
       allTransitiveDependencies: null,
     );

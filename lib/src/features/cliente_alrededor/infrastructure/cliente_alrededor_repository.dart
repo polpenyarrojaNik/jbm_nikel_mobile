@@ -109,8 +109,9 @@ class ClienteAlrededorRepository {
       );
 
       return await query.map((rows) {
-        final paisDTO =
-            (rows.data['PAIS_ID'] != null) ? PaisDTO.fromJson(rows.data) : null;
+        final paisDTO = (rows.data['PAIS_ID'] != null)
+            ? PaisDTO.fromJson(rows.data)
+            : null;
         final clienteDTO = ClienteDTO.fromJson(rows.data);
 
         final clienteAlerdedorDTO = ClienteAlrededorDTO.fromClienteDTO(
@@ -168,8 +169,9 @@ class ClienteAlrededorRepository {
       );
 
       return await query.asyncMap((rows) async {
-        final paisDTO =
-            (rows.data['PAIS_ID'] != null) ? PaisDTO.fromJson(rows.data) : null;
+        final paisDTO = (rows.data['PAIS_ID'] != null)
+            ? PaisDTO.fromJson(rows.data)
+            : null;
         final clienteDireccionDto = ClienteDireccionDTO.fromJson(rows.data);
 
         final clienteDto = await _getClienteDtoById(

@@ -428,20 +428,18 @@ class $PaisTableTable extends PaisTable
   PaisDTO map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
     return PaisDTO.new(
-      id:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.string,
-            data['${effectivePrefix}PAIS_ID'],
-          )!,
+      id: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}PAIS_ID'],
+      )!,
       isoCode: attachedDatabase.typeMapping.read(
         DriftSqlType.string,
         data['${effectivePrefix}CODIGO_ISO'],
       ),
-      descripcionES:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.string,
-            data['${effectivePrefix}DESCRIPCION_ES'],
-          )!,
+      descripcionES: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}DESCRIPCION_ES'],
+      )!,
       descripcionEN: attachedDatabase.typeMapping.read(
         DriftSqlType.string,
         data['${effectivePrefix}DESCRIPCION_EN'],
@@ -498,16 +496,14 @@ class $PaisTableTable extends PaisTable
         DriftSqlType.string,
         data['${effectivePrefix}DESCRIPCION_EL'],
       ),
-      lastUpdated:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.dateTime,
-            data['${effectivePrefix}LAST_UPDATED'],
-          )!,
-      deleted:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.string,
-            data['${effectivePrefix}DELETED'],
-          )!,
+      lastUpdated: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}LAST_UPDATED'],
+      )!,
+      deleted: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}DELETED'],
+      )!,
     );
   }
 
@@ -1231,16 +1227,14 @@ class $DivisaTableTable extends DivisaTable
   DivisaDTO map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
     return DivisaDTO.new(
-      id:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.string,
-            data['${effectivePrefix}DIVISA_ID'],
-          )!,
-      abv:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.string,
-            data['${effectivePrefix}ABREVIACION'],
-          )!,
+      id: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}DIVISA_ID'],
+      )!,
+      abv: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}ABREVIACION'],
+      )!,
       simbolo: attachedDatabase.typeMapping.read(
         DriftSqlType.string,
         data['${effectivePrefix}SIMBOLO'],
@@ -1249,11 +1243,10 @@ class $DivisaTableTable extends DivisaTable
         DriftSqlType.double,
         data['${effectivePrefix}REDONDEO'],
       ),
-      descripcionES:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.string,
-            data['${effectivePrefix}DESCRIPCION_ES'],
-          )!,
+      descripcionES: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}DESCRIPCION_ES'],
+      )!,
       descripcionEN: attachedDatabase.typeMapping.read(
         DriftSqlType.string,
         data['${effectivePrefix}DESCRIPCION_EN'],
@@ -1310,16 +1303,14 @@ class $DivisaTableTable extends DivisaTable
         DriftSqlType.string,
         data['${effectivePrefix}DESCRIPCION_EL'],
       ),
-      lastUpdated:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.dateTime,
-            data['${effectivePrefix}LAST_UPDATED'],
-          )!,
-      deleted:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.string,
-            data['${effectivePrefix}DELETED'],
-          )!,
+      lastUpdated: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}LAST_UPDATED'],
+      )!,
+      deleted: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}DELETED'],
+      )!,
     );
   }
 
@@ -1989,16 +1980,14 @@ class $PedidoVentaEstadoTableTable extends PedidoVentaEstadoTable
   PedidoVentaEstadoDTO map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
     return PedidoVentaEstadoDTO.new(
-      id:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.int,
-            data['${effectivePrefix}ESTADO_PEDIDO_ID'],
-          )!,
-      descripcionES:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.string,
-            data['${effectivePrefix}DESCRIPCION_ES'],
-          )!,
+      id: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}ESTADO_PEDIDO_ID'],
+      )!,
+      descripcionES: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}DESCRIPCION_ES'],
+      )!,
       descripcionEN: attachedDatabase.typeMapping.read(
         DriftSqlType.string,
         data['${effectivePrefix}DESCRIPCION_EN'],
@@ -2051,16 +2040,14 @@ class $PedidoVentaEstadoTableTable extends PedidoVentaEstadoTable
         DriftSqlType.string,
         data['${effectivePrefix}DESCRIPCION_EL'],
       ),
-      lastUpdated:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.dateTime,
-            data['${effectivePrefix}LAST_UPDATED'],
-          )!,
-      deleted:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.string,
-            data['${effectivePrefix}DELETED'],
-          )!,
+      lastUpdated: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}LAST_UPDATED'],
+      )!,
+      deleted: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}DELETED'],
+      )!,
     );
   }
 
@@ -2869,40 +2856,34 @@ class $PedidoVentaTableTable extends PedidoVentaTable
   PedidoVentaDTO map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
     return PedidoVentaDTO.new(
-      empresaId:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.string,
-            data['${effectivePrefix}EMPRESA_ID'],
-          )!,
-      pedidoVentaId:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.string,
-            data['${effectivePrefix}PEDIDO_ID'],
-          )!,
-      pedidoVentaDate:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.dateTime,
-            data['${effectivePrefix}FECHA_PEDIDO'],
-          )!,
-      tipoVenta:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.string,
-            data['${effectivePrefix}TIPO_VENTA'],
-          )!,
-      clienteId:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.string,
-            data['${effectivePrefix}CLIENTE_ID'],
-          )!,
+      empresaId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}EMPRESA_ID'],
+      )!,
+      pedidoVentaId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}PEDIDO_ID'],
+      )!,
+      pedidoVentaDate: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}FECHA_PEDIDO'],
+      )!,
+      tipoVenta: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}TIPO_VENTA'],
+      )!,
+      clienteId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}CLIENTE_ID'],
+      )!,
       direccionId: attachedDatabase.typeMapping.read(
         DriftSqlType.string,
         data['${effectivePrefix}DIRECCION_ID'],
       ),
-      nombreCliente:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.string,
-            data['${effectivePrefix}NOMRE_CLIENTE'],
-          )!,
+      nombreCliente: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}NOMRE_CLIENTE'],
+      )!,
       direccionEntrga1: attachedDatabase.typeMapping.read(
         DriftSqlType.string,
         data['${effectivePrefix}DIRECCION_ENVIO1'],
@@ -2927,46 +2908,38 @@ class $PedidoVentaTableTable extends PedidoVentaTable
         DriftSqlType.string,
         data['${effectivePrefix}PAIS_ID'],
       ),
-      divisaId:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.string,
-            data['${effectivePrefix}DIVISA_ID'],
-          )!,
-      baseImponible:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.double,
-            data['${effectivePrefix}BASE_IMPONIBLE'],
-          )!,
-      totalLineas:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.double,
-            data['${effectivePrefix}TOTAL_LINEAS'],
-          )!,
-      importePortes:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.double,
-            data['${effectivePrefix}IMPORTE_PORTES'],
-          )!,
-      importeIva:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.double,
-            data['${effectivePrefix}IMPORTE_IVA'],
-          )!,
-      total:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.double,
-            data['${effectivePrefix}TOTAL'],
-          )!,
-      pedidoVentaEstadoId:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.int,
-            data['${effectivePrefix}ESTADO_PEDIDO_ID'],
-          )!,
-      oferta:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.string,
-            data['${effectivePrefix}OFERTA_SN'],
-          )!,
+      divisaId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}DIVISA_ID'],
+      )!,
+      baseImponible: attachedDatabase.typeMapping.read(
+        DriftSqlType.double,
+        data['${effectivePrefix}BASE_IMPONIBLE'],
+      )!,
+      totalLineas: attachedDatabase.typeMapping.read(
+        DriftSqlType.double,
+        data['${effectivePrefix}TOTAL_LINEAS'],
+      )!,
+      importePortes: attachedDatabase.typeMapping.read(
+        DriftSqlType.double,
+        data['${effectivePrefix}IMPORTE_PORTES'],
+      )!,
+      importeIva: attachedDatabase.typeMapping.read(
+        DriftSqlType.double,
+        data['${effectivePrefix}IMPORTE_IVA'],
+      )!,
+      total: attachedDatabase.typeMapping.read(
+        DriftSqlType.double,
+        data['${effectivePrefix}TOTAL'],
+      )!,
+      pedidoVentaEstadoId: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}ESTADO_PEDIDO_ID'],
+      )!,
+      oferta: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}OFERTA_SN'],
+      )!,
       ofertaFechaHasta: attachedDatabase.typeMapping.read(
         DriftSqlType.dateTime,
         data['${effectivePrefix}OFERTA_FECHA_HASTA'],
@@ -2975,21 +2948,18 @@ class $PedidoVentaTableTable extends PedidoVentaTable
         DriftSqlType.string,
         data['${effectivePrefix}PEDIDO_APP_ID'],
       ),
-      iva:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.double,
-            data['${effectivePrefix}IVA'],
-          )!,
-      lastUpdated:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.dateTime,
-            data['${effectivePrefix}LAST_UPDATED'],
-          )!,
-      deleted:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.string,
-            data['${effectivePrefix}DELETED'],
-          )!,
+      iva: attachedDatabase.typeMapping.read(
+        DriftSqlType.double,
+        data['${effectivePrefix}IVA'],
+      )!,
+      lastUpdated: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}LAST_UPDATED'],
+      )!,
+      deleted: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}DELETED'],
+      )!,
     );
   }
 
@@ -3704,61 +3674,50 @@ class $PedidoVentaLineaTableTable extends PedidoVentaLineaTable
   PedidoVentaLineaDTO map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
     return PedidoVentaLineaDTO.new(
-      empresaId:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.string,
-            data['${effectivePrefix}EMPRESA_ID'],
-          )!,
-      pedidoId:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.string,
-            data['${effectivePrefix}PEDIDO_ID'],
-          )!,
-      pedidoVentaLineaId:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.string,
-            data['${effectivePrefix}PEDIDO_LINEA_ID'],
-          )!,
-      articuloId:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.string,
-            data['${effectivePrefix}ARTICULO_ID'],
-          )!,
-      articuloDescription:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.string,
-            data['${effectivePrefix}ARTICULO_DESCRIPCION'],
-          )!,
-      cantidad:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.int,
-            data['${effectivePrefix}CANTIDAD'],
-          )!,
-      precioDivisa:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.double,
-            data['${effectivePrefix}PRECIO_DIVISA'],
-          )!,
-      tipoPrecio:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.int,
-            data['${effectivePrefix}TIPO_PRECIO'],
-          )!,
-      descuento1:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.double,
-            data['${effectivePrefix}DESCUENTO1'],
-          )!,
-      descuento2:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.double,
-            data['${effectivePrefix}DESCUENTO2'],
-          )!,
-      descuento3:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.double,
-            data['${effectivePrefix}DESCUENTO3'],
-          )!,
+      empresaId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}EMPRESA_ID'],
+      )!,
+      pedidoId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}PEDIDO_ID'],
+      )!,
+      pedidoVentaLineaId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}PEDIDO_LINEA_ID'],
+      )!,
+      articuloId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}ARTICULO_ID'],
+      )!,
+      articuloDescription: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}ARTICULO_DESCRIPCION'],
+      )!,
+      cantidad: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}CANTIDAD'],
+      )!,
+      precioDivisa: attachedDatabase.typeMapping.read(
+        DriftSqlType.double,
+        data['${effectivePrefix}PRECIO_DIVISA'],
+      )!,
+      tipoPrecio: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}TIPO_PRECIO'],
+      )!,
+      descuento1: attachedDatabase.typeMapping.read(
+        DriftSqlType.double,
+        data['${effectivePrefix}DESCUENTO1'],
+      )!,
+      descuento2: attachedDatabase.typeMapping.read(
+        DriftSqlType.double,
+        data['${effectivePrefix}DESCUENTO2'],
+      )!,
+      descuento3: attachedDatabase.typeMapping.read(
+        DriftSqlType.double,
+        data['${effectivePrefix}DESCUENTO3'],
+      )!,
       pedidoLineaIdComponente: attachedDatabase.typeMapping.read(
         DriftSqlType.string,
         data['${effectivePrefix}PEDIDO_LINEA_ID_COMPONENTE'],
@@ -3767,21 +3726,18 @@ class $PedidoVentaLineaTableTable extends PedidoVentaLineaTable
         DriftSqlType.double,
         data['${effectivePrefix}TOTAL_LINEA'],
       ),
-      cantidadServida:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.int,
-            data['${effectivePrefix}CANTIDAD_SERVIDA'],
-          )!,
-      lastUpdated:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.dateTime,
-            data['${effectivePrefix}LAST_UPDATED'],
-          )!,
-      deleted:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.string,
-            data['${effectivePrefix}DELETED'],
-          )!,
+      cantidadServida: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}CANTIDAD_SERVIDA'],
+      )!,
+      lastUpdated: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}LAST_UPDATED'],
+      )!,
+      deleted: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}DELETED'],
+      )!,
     );
   }
 
@@ -4434,16 +4390,14 @@ class $PlazoDeCobroTableTable extends PlazoDeCobroTable
   PlazoDeCobroDTO map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
     return PlazoDeCobroDTO.new(
-      id:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.string,
-            data['${effectivePrefix}PLAZO_COBRO_ID'],
-          )!,
-      descripcionES:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.string,
-            data['${effectivePrefix}DESCRIPCION_ES'],
-          )!,
+      id: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}PLAZO_COBRO_ID'],
+      )!,
+      descripcionES: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}DESCRIPCION_ES'],
+      )!,
       descripcionEN: attachedDatabase.typeMapping.read(
         DriftSqlType.string,
         data['${effectivePrefix}DESCRIPCION_EN'],
@@ -4500,16 +4454,14 @@ class $PlazoDeCobroTableTable extends PlazoDeCobroTable
         DriftSqlType.string,
         data['${effectivePrefix}DESCRIPCION_EL'],
       ),
-      lastUpdated:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.dateTime,
-            data['${effectivePrefix}LAST_UPDATED'],
-          )!,
-      deleted:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.string,
-            data['${effectivePrefix}DELETED'],
-          )!,
+      lastUpdated: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}LAST_UPDATED'],
+      )!,
+      deleted: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}DELETED'],
+      )!,
     );
   }
 
@@ -5168,16 +5120,14 @@ class $MetodoDeCobroTableTable extends MetodoDeCobroTable
   MetodoDeCobroDTO map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
     return MetodoDeCobroDTO.new(
-      id:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.string,
-            data['${effectivePrefix}METODO_COBRO_ID'],
-          )!,
-      descripcionES:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.string,
-            data['${effectivePrefix}DESCRIPCION_ES'],
-          )!,
+      id: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}METODO_COBRO_ID'],
+      )!,
+      descripcionES: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}DESCRIPCION_ES'],
+      )!,
       descripcionEN: attachedDatabase.typeMapping.read(
         DriftSqlType.string,
         data['${effectivePrefix}DESCRIPCION_EN'],
@@ -5234,16 +5184,14 @@ class $MetodoDeCobroTableTable extends MetodoDeCobroTable
         DriftSqlType.string,
         data['${effectivePrefix}DESCRIPCION_EL'],
       ),
-      lastUpdated:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.dateTime,
-            data['${effectivePrefix}LAST_UPDATED'],
-          )!,
-      deleted:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.string,
-            data['${effectivePrefix}DELETED'],
-          )!,
+      lastUpdated: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}LAST_UPDATED'],
+      )!,
+      deleted: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}DELETED'],
+      )!,
     );
   }
 
@@ -6863,25 +6811,22 @@ class $ClienteTableTable extends ClienteTable
   ClienteDTO map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
     return ClienteDTO.new(
-      id:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.string,
-            data['${effectivePrefix}CLIENTE_ID'],
-          )!,
-      nombreCliente:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.string,
-            data['${effectivePrefix}NOMBRE'],
-          )!,
+      id: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}CLIENTE_ID'],
+      )!,
+      nombreCliente: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}NOMBRE'],
+      )!,
       nif: attachedDatabase.typeMapping.read(
         DriftSqlType.string,
         data['${effectivePrefix}NIF'],
       ),
-      nombreFiscal:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.string,
-            data['${effectivePrefix}NOMBRE_FISCAL'],
-          )!,
+      nombreFiscal: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}NOMBRE_FISCAL'],
+      )!,
       direccionFiscal1: attachedDatabase.typeMapping.read(
         DriftSqlType.string,
         data['${effectivePrefix}DIRECCION_FISCAL1'],
@@ -6906,66 +6851,54 @@ class $ClienteTableTable extends ClienteTable
         DriftSqlType.string,
         data['${effectivePrefix}PROVINCIA_FISCAL'],
       ),
-      latitudFiscal:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.double,
-            data['${effectivePrefix}LATITUD_FISCAL'],
-          )!,
-      longitudFiscal:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.double,
-            data['${effectivePrefix}LONGITUD_FISCAL'],
-          )!,
-      empresaId:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.string,
-            data['${effectivePrefix}EMPRESA_ID'],
-          )!,
-      iva:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.double,
-            data['${effectivePrefix}IVA'],
-          )!,
-      ventasAnyoActual:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.double,
-            data['${effectivePrefix}VENTAS_ANYO_ACTUAL'],
-          )!,
-      ventasAnyoAnterior:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.double,
-            data['${effectivePrefix}VENTAS_ANYO_ANTERIOR'],
-          )!,
-      ventasHaceDosAnyos:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.double,
-            data['${effectivePrefix}VENTAS_HACE_DOS_ANYOS'],
-          )!,
-      margenAnyoActual:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.double,
-            data['${effectivePrefix}MARGEN_ANYO_ACTUAL'],
-          )!,
-      margenAnyoAnterior:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.double,
-            data['${effectivePrefix}MARGEN_ANYO_ANTERIOR'],
-          )!,
-      margenHaceDosAnyos:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.double,
-            data['${effectivePrefix}MARGEN_HACE_DOS_ANYOS'],
-          )!,
-      porcentajeAbonos:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.double,
-            data['${effectivePrefix}PORCENTAJE_ABONOS'],
-          )!,
-      porcentajeGarantias:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.double,
-            data['${effectivePrefix}PORCENTAJE_GARANTIAS'],
-          )!,
+      latitudFiscal: attachedDatabase.typeMapping.read(
+        DriftSqlType.double,
+        data['${effectivePrefix}LATITUD_FISCAL'],
+      )!,
+      longitudFiscal: attachedDatabase.typeMapping.read(
+        DriftSqlType.double,
+        data['${effectivePrefix}LONGITUD_FISCAL'],
+      )!,
+      empresaId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}EMPRESA_ID'],
+      )!,
+      iva: attachedDatabase.typeMapping.read(
+        DriftSqlType.double,
+        data['${effectivePrefix}IVA'],
+      )!,
+      ventasAnyoActual: attachedDatabase.typeMapping.read(
+        DriftSqlType.double,
+        data['${effectivePrefix}VENTAS_ANYO_ACTUAL'],
+      )!,
+      ventasAnyoAnterior: attachedDatabase.typeMapping.read(
+        DriftSqlType.double,
+        data['${effectivePrefix}VENTAS_ANYO_ANTERIOR'],
+      )!,
+      ventasHaceDosAnyos: attachedDatabase.typeMapping.read(
+        DriftSqlType.double,
+        data['${effectivePrefix}VENTAS_HACE_DOS_ANYOS'],
+      )!,
+      margenAnyoActual: attachedDatabase.typeMapping.read(
+        DriftSqlType.double,
+        data['${effectivePrefix}MARGEN_ANYO_ACTUAL'],
+      )!,
+      margenAnyoAnterior: attachedDatabase.typeMapping.read(
+        DriftSqlType.double,
+        data['${effectivePrefix}MARGEN_ANYO_ANTERIOR'],
+      )!,
+      margenHaceDosAnyos: attachedDatabase.typeMapping.read(
+        DriftSqlType.double,
+        data['${effectivePrefix}MARGEN_HACE_DOS_ANYOS'],
+      )!,
+      porcentajeAbonos: attachedDatabase.typeMapping.read(
+        DriftSqlType.double,
+        data['${effectivePrefix}PORCENTAJE_ABONOS'],
+      )!,
+      porcentajeGarantias: attachedDatabase.typeMapping.read(
+        DriftSqlType.double,
+        data['${effectivePrefix}PORCENTAJE_GARANTIAS'],
+      )!,
       centralCompras: attachedDatabase.typeMapping.read(
         DriftSqlType.string,
         data['${effectivePrefix}CENTRAL_COMPRAS_NOMBRE'],
@@ -6994,11 +6927,10 @@ class $ClienteTableTable extends ClienteTable
         DriftSqlType.string,
         data['${effectivePrefix}DESCUENTO_GENERAL_DESCRIPCION'],
       ),
-      tipoCalculoPrecio:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.string,
-            data['${effectivePrefix}TIPO_CALCULO_PRECIO'],
-          )!,
+      tipoCalculoPrecio: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}TIPO_CALCULO_PRECIO'],
+      )!,
       plazoDeCobroId: attachedDatabase.typeMapping.read(
         DriftSqlType.string,
         data['${effectivePrefix}PLAZO_COBRO_ID'],
@@ -7007,25 +6939,22 @@ class $ClienteTableTable extends ClienteTable
         DriftSqlType.string,
         data['${effectivePrefix}METODO_COBRO_ID'],
       ),
-      descuentoProntoPago:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.double,
-            data['${effectivePrefix}DESCUENTO_PRONTO_PAGO'],
-          )!,
-      riesgoConcedidoInterno:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.double,
-            data['${effectivePrefix}RIESGO_CONCEDIDO_INTERNO'],
-          )!,
+      descuentoProntoPago: attachedDatabase.typeMapping.read(
+        DriftSqlType.double,
+        data['${effectivePrefix}DESCUENTO_PRONTO_PAGO'],
+      )!,
+      riesgoConcedidoInterno: attachedDatabase.typeMapping.read(
+        DriftSqlType.double,
+        data['${effectivePrefix}RIESGO_CONCEDIDO_INTERNO'],
+      )!,
       riesgoConcedidoInternoDate: attachedDatabase.typeMapping.read(
         DriftSqlType.dateTime,
         data['${effectivePrefix}RIESGO_CONCEDIDO_INTERNO_FECHA'],
       ),
-      riesgoConcedidoCoafe:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.double,
-            data['${effectivePrefix}RIESGO_CONCEDIDO_COFACE'],
-          )!,
+      riesgoConcedidoCoafe: attachedDatabase.typeMapping.read(
+        DriftSqlType.double,
+        data['${effectivePrefix}RIESGO_CONCEDIDO_COFACE'],
+      )!,
       riesgoConcedidoCoafeFecha: attachedDatabase.typeMapping.read(
         DriftSqlType.dateTime,
         data['${effectivePrefix}RIESGO_CONCEDIDO_COFACE_FECHA'],
@@ -7126,16 +7055,14 @@ class $ClienteTableTable extends ClienteTable
         DriftSqlType.double,
         data['${effectivePrefix}IMPORTE_PORTES3'],
       ),
-      lastUpdated:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.dateTime,
-            data['${effectivePrefix}LAST_UPDATED'],
-          )!,
-      deleted:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.string,
-            data['${effectivePrefix}DELETED'],
-          )!,
+      lastUpdated: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}LAST_UPDATED'],
+      )!,
+      deleted: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}DELETED'],
+      )!,
     );
   }
 
@@ -8074,26 +8001,22 @@ class $ClienteUsuarioTableTable extends ClienteUsuarioTable
   ClienteUsuarioDTO map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
     return ClienteUsuarioDTO.new(
-      clienteId:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.string,
-            data['${effectivePrefix}CLIENTE_ID'],
-          )!,
-      usuarioId:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.string,
-            data['${effectivePrefix}USUARIO_ID'],
-          )!,
-      lastUpdated:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.dateTime,
-            data['${effectivePrefix}LAST_UPDATED'],
-          )!,
-      deleted:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.string,
-            data['${effectivePrefix}DELETED'],
-          )!,
+      clienteId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}CLIENTE_ID'],
+      )!,
+      usuarioId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}USUARIO_ID'],
+      )!,
+      lastUpdated: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}LAST_UPDATED'],
+      )!,
+      deleted: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}DELETED'],
+      )!,
     );
   }
 
@@ -8352,36 +8275,30 @@ class $ClienteGrupoNetoTableTable extends ClienteGrupoNetoTable
   ClienteGrupoNetoDTO map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
     return ClienteGrupoNetoDTO.new(
-      clienteId:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.string,
-            data['${effectivePrefix}CLIENTE_ID'],
-          )!,
-      grupoNetoId:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.string,
-            data['${effectivePrefix}GRUPO_NETO_ID'],
-          )!,
-      grupoNetoDescripcion:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.string,
-            data['${effectivePrefix}GRUPO_NETO_DESCRIPCION'],
-          )!,
-      dtoAdicional:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.double,
-            data['${effectivePrefix}DTO_ADICIONAL'],
-          )!,
-      lastUpdated:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.dateTime,
-            data['${effectivePrefix}LAST_UPDATED'],
-          )!,
-      deleted:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.string,
-            data['${effectivePrefix}DELETED'],
-          )!,
+      clienteId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}CLIENTE_ID'],
+      )!,
+      grupoNetoId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}GRUPO_NETO_ID'],
+      )!,
+      grupoNetoDescripcion: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}GRUPO_NETO_DESCRIPCION'],
+      )!,
+      dtoAdicional: attachedDatabase.typeMapping.read(
+        DriftSqlType.double,
+        data['${effectivePrefix}DTO_ADICIONAL'],
+      )!,
+      lastUpdated: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}LAST_UPDATED'],
+      )!,
+      deleted: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}DELETED'],
+      )!,
     );
   }
 
@@ -8914,16 +8831,14 @@ class $FamiliaTableTable extends FamiliaTable
   FamiliaDTO map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
     return FamiliaDTO.new(
-      id:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.string,
-            data['${effectivePrefix}FAMILIA_ID'],
-          )!,
-      descripcionES:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.string,
-            data['${effectivePrefix}DESCRIPCION_ES'],
-          )!,
+      id: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}FAMILIA_ID'],
+      )!,
+      descripcionES: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}DESCRIPCION_ES'],
+      )!,
       descripcionEN: attachedDatabase.typeMapping.read(
         DriftSqlType.string,
         data['${effectivePrefix}DESCRIPCION_EN'],
@@ -8980,16 +8895,14 @@ class $FamiliaTableTable extends FamiliaTable
         DriftSqlType.string,
         data['${effectivePrefix}DESCRIPCION_EL'],
       ),
-      lastUpdated:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.dateTime,
-            data['${effectivePrefix}LAST_UPDATED'],
-          )!,
-      deleted:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.string,
-            data['${effectivePrefix}DELETED'],
-          )!,
+      lastUpdated: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}LAST_UPDATED'],
+      )!,
+      deleted: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}DELETED'],
+      )!,
     );
   }
 
@@ -9668,21 +9581,18 @@ class $SubfamiliaTableTable extends SubfamiliaTable
   SubfamiliaDTO map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
     return SubfamiliaDTO.new(
-      id:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.string,
-            data['${effectivePrefix}SUBFAMILIA_ID'],
-          )!,
-      familiaId:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.string,
-            data['${effectivePrefix}FAMILIA_ID'],
-          )!,
-      descripcionES:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.string,
-            data['${effectivePrefix}DESCRIPCION_ES'],
-          )!,
+      id: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}SUBFAMILIA_ID'],
+      )!,
+      familiaId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}FAMILIA_ID'],
+      )!,
+      descripcionES: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}DESCRIPCION_ES'],
+      )!,
       descripcionEN: attachedDatabase.typeMapping.read(
         DriftSqlType.string,
         data['${effectivePrefix}DESCRIPCION_EN'],
@@ -9739,16 +9649,14 @@ class $SubfamiliaTableTable extends SubfamiliaTable
         DriftSqlType.string,
         data['${effectivePrefix}DESCRIPCION_EL'],
       ),
-      lastUpdated:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.dateTime,
-            data['${effectivePrefix}LAST_UPDATED'],
-          )!,
-      deleted:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.string,
-            data['${effectivePrefix}DELETED'],
-          )!,
+      lastUpdated: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}LAST_UPDATED'],
+      )!,
+      deleted: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}DELETED'],
+      )!,
     );
   }
 
@@ -10222,46 +10130,38 @@ class $ClienteDescuentoTableTable extends ClienteDescuentoTable
   ClienteDescuentoDTO map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
     return ClienteDescuentoDTO.new(
-      clienteId:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.string,
-            data['${effectivePrefix}CLIENTE_ID'],
-          )!,
-      articuloId:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.string,
-            data['${effectivePrefix}ARTICULO_ID'],
-          )!,
-      familiaId:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.string,
-            data['${effectivePrefix}FAMILIA_ID'],
-          )!,
-      subfamiliaId:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.string,
-            data['${effectivePrefix}SUBFAMILIA_ID'],
-          )!,
-      cantidadDesde:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.int,
-            data['${effectivePrefix}CANTIDAD_DESDE'],
-          )!,
-      descuento:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.double,
-            data['${effectivePrefix}DESCUENTO'],
-          )!,
-      lastUpdated:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.dateTime,
-            data['${effectivePrefix}LAST_UPDATED'],
-          )!,
-      deleted:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.string,
-            data['${effectivePrefix}DELETED'],
-          )!,
+      clienteId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}CLIENTE_ID'],
+      )!,
+      articuloId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}ARTICULO_ID'],
+      )!,
+      familiaId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}FAMILIA_ID'],
+      )!,
+      subfamiliaId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}SUBFAMILIA_ID'],
+      )!,
+      cantidadDesde: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}CANTIDAD_DESDE'],
+      )!,
+      descuento: attachedDatabase.typeMapping.read(
+        DriftSqlType.double,
+        data['${effectivePrefix}DESCUENTO'],
+      )!,
+      lastUpdated: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}LAST_UPDATED'],
+      )!,
+      deleted: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}DELETED'],
+      )!,
     );
   }
 
@@ -10645,16 +10545,14 @@ class $ClienteContactoTableTable extends ClienteContactoTable
   ClienteContactoDTO map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
     return ClienteContactoDTO.new(
-      clienteId:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.string,
-            data['${effectivePrefix}CLIENTE_ID'],
-          )!,
-      contactoId:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.string,
-            data['${effectivePrefix}CONTACTO_ID'],
-          )!,
+      clienteId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}CLIENTE_ID'],
+      )!,
+      contactoId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}CONTACTO_ID'],
+      )!,
       observaciones: attachedDatabase.typeMapping.read(
         DriftSqlType.string,
         data['${effectivePrefix}OBSERVACIONES'],
@@ -10683,16 +10581,14 @@ class $ClienteContactoTableTable extends ClienteContactoTable
         DriftSqlType.string,
         data['${effectivePrefix}EMAIL'],
       ),
-      lastUpdated:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.dateTime,
-            data['${effectivePrefix}LAST_UPDATED'],
-          )!,
-      deleted:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.string,
-            data['${effectivePrefix}DELETED'],
-          )!,
+      lastUpdated: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}LAST_UPDATED'],
+      )!,
+      deleted: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}DELETED'],
+      )!,
     );
   }
 
@@ -11190,16 +11086,14 @@ class $ClienteDireccionTableTable extends ClienteDireccionTable
   ClienteDireccionDTO map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
     return ClienteDireccionDTO.new(
-      clienteId:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.string,
-            data['${effectivePrefix}CLIENTE_ID'],
-          )!,
-      direccionId:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.string,
-            data['${effectivePrefix}DIRECCION_ID'],
-          )!,
+      clienteId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}CLIENTE_ID'],
+      )!,
+      direccionId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}DIRECCION_ID'],
+      )!,
       nombre: attachedDatabase.typeMapping.read(
         DriftSqlType.string,
         data['${effectivePrefix}NOMBRE'],
@@ -11228,16 +11122,14 @@ class $ClienteDireccionTableTable extends ClienteDireccionTable
         DriftSqlType.string,
         data['${effectivePrefix}PAIS_ID'],
       ),
-      latitud:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.double,
-            data['${effectivePrefix}LATITUD'],
-          )!,
-      longitud:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.double,
-            data['${effectivePrefix}LONGITUD'],
-          )!,
+      latitud: attachedDatabase.typeMapping.read(
+        DriftSqlType.double,
+        data['${effectivePrefix}LATITUD'],
+      )!,
+      longitud: attachedDatabase.typeMapping.read(
+        DriftSqlType.double,
+        data['${effectivePrefix}LONGITUD'],
+      )!,
       predeterminada: attachedDatabase.typeMapping.read(
         DriftSqlType.string,
         data['${effectivePrefix}PREDETERMINADA_SN'],
@@ -11246,16 +11138,14 @@ class $ClienteDireccionTableTable extends ClienteDireccionTable
         DriftSqlType.string,
         data['${effectivePrefix}TELEFONO'],
       ),
-      lastUpdated:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.dateTime,
-            data['${effectivePrefix}LAST_UPDATED'],
-          )!,
-      deleted:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.string,
-            data['${effectivePrefix}DELETED'],
-          )!,
+      lastUpdated: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}LAST_UPDATED'],
+      )!,
+      deleted: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}DELETED'],
+      )!,
     );
   }
 
@@ -11755,16 +11645,14 @@ class $ClientePagoPendienteTableTable extends ClientePagoPendienteTable
   }) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
     return ClientePagoPendienteDTO.new(
-      clienteId:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.string,
-            data['${effectivePrefix}CLIENTE_ID'],
-          )!,
-      efectoId:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.string,
-            data['${effectivePrefix}EFECTO_ID'],
-          )!,
+      clienteId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}CLIENTE_ID'],
+      )!,
+      efectoId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}EFECTO_ID'],
+      )!,
       facutaId: attachedDatabase.typeMapping.read(
         DriftSqlType.string,
         data['${effectivePrefix}FACTURA_ID'],
@@ -11797,16 +11685,14 @@ class $ClientePagoPendienteTableTable extends ClientePagoPendienteTable
         DriftSqlType.string,
         data['${effectivePrefix}VENCIDO_JBM'],
       ),
-      lastUpdated:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.dateTime,
-            data['${effectivePrefix}LAST_UPDATED'],
-          )!,
-      deleted:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.string,
-            data['${effectivePrefix}DELETED'],
-          )!,
+      lastUpdated: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}LAST_UPDATED'],
+      )!,
+      deleted: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}DELETED'],
+      )!,
     );
   }
 
@@ -12193,26 +12079,22 @@ class $ClientePrecioNetoTableTable extends ClientePrecioNetoTable
   ClientePrecioNetoDTO map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
     return ClientePrecioNetoDTO.new(
-      clienteId:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.string,
-            data['${effectivePrefix}CLIENTE_ID'],
-          )!,
-      articuloId:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.string,
-            data['${effectivePrefix}ARTICULO_ID'],
-          )!,
-      cantidadDesde:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.int,
-            data['${effectivePrefix}CANTIDAD_DESDE'],
-          )!,
-      precio:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.double,
-            data['${effectivePrefix}PRECIO'],
-          )!,
+      clienteId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}CLIENTE_ID'],
+      )!,
+      articuloId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}ARTICULO_ID'],
+      )!,
+      cantidadDesde: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}CANTIDAD_DESDE'],
+      )!,
+      precio: attachedDatabase.typeMapping.read(
+        DriftSqlType.double,
+        data['${effectivePrefix}PRECIO'],
+      )!,
       tipoPrecio: attachedDatabase.typeMapping.read(
         DriftSqlType.int,
         data['${effectivePrefix}TIPO_PRECIO'],
@@ -12221,16 +12103,14 @@ class $ClientePrecioNetoTableTable extends ClientePrecioNetoTable
         DriftSqlType.double,
         data['${effectivePrefix}DTO_ADICIONAL'],
       ),
-      lastUpdated:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.dateTime,
-            data['${effectivePrefix}LAST_UPDATED'],
-          )!,
-      deleted:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.string,
-            data['${effectivePrefix}DELETED'],
-          )!,
+      lastUpdated: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}LAST_UPDATED'],
+      )!,
+      deleted: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}DELETED'],
+      )!,
     );
   }
 
@@ -12587,26 +12467,22 @@ class $ClienteRappelTableTable extends ClienteRappelTable
   ClienteRappelDTO map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
     return ClienteRappelDTO.new(
-      clienteId:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.string,
-            data['${effectivePrefix}CLIENTE_ID'],
-          )!,
-      rappelId:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.string,
-            data['${effectivePrefix}RAPPEL_ID'],
-          )!,
-      descripcion:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.string,
-            data['${effectivePrefix}DESCRIPCION'],
-          )!,
-      fechaDesDe:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.dateTime,
-            data['${effectivePrefix}FECHA_DESDE'],
-          )!,
+      clienteId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}CLIENTE_ID'],
+      )!,
+      rappelId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}RAPPEL_ID'],
+      )!,
+      descripcion: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}DESCRIPCION'],
+      )!,
+      fechaDesDe: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}FECHA_DESDE'],
+      )!,
       fechaHasta: attachedDatabase.typeMapping.read(
         DriftSqlType.dateTime,
         data['${effectivePrefix}FECHA_HASTA'],
@@ -12619,16 +12495,14 @@ class $ClienteRappelTableTable extends ClienteRappelTable
         DriftSqlType.string,
         data['${effectivePrefix}FIRMADO'],
       ),
-      lastUpdated:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.dateTime,
-            data['${effectivePrefix}LAST_UPDATED'],
-          )!,
-      deleted:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.string,
-            data['${effectivePrefix}DELETED'],
-          )!,
+      lastUpdated: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}LAST_UPDATED'],
+      )!,
+      deleted: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}DELETED'],
+      )!,
     );
   }
 
@@ -13197,16 +13071,14 @@ class $ClienteEstadoPotencialTableTable extends ClienteEstadoPotencialTable
   }) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
     return ClienteEstadoPotencialDTO.new(
-      id:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.string,
-            data['${effectivePrefix}ESTADO_POTENCIAL_ID'],
-          )!,
-      descripcionES:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.string,
-            data['${effectivePrefix}DESCRIPCION_ES'],
-          )!,
+      id: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}ESTADO_POTENCIAL_ID'],
+      )!,
+      descripcionES: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}DESCRIPCION_ES'],
+      )!,
       descripcionEN: attachedDatabase.typeMapping.read(
         DriftSqlType.string,
         data['${effectivePrefix}DESCRIPCION_EN'],
@@ -13263,16 +13135,14 @@ class $ClienteEstadoPotencialTableTable extends ClienteEstadoPotencialTable
         DriftSqlType.string,
         data['${effectivePrefix}DESCRIPCION_EL'],
       ),
-      lastUpdated:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.dateTime,
-            data['${effectivePrefix}LAST_UPDATED'],
-          )!,
-      deleted:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.string,
-            data['${effectivePrefix}DELETED'],
-          )!,
+      lastUpdated: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}LAST_UPDATED'],
+      )!,
+      deleted: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}DELETED'],
+      )!,
     );
   }
 
@@ -13935,16 +13805,14 @@ class $ClienteTipoPotencialTableTable extends ClienteTipoPotencialTable
   }) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
     return ClienteTipoPotencialDTO.new(
-      id:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.string,
-            data['${effectivePrefix}TIPO_POTENCIAL_ID'],
-          )!,
-      descripcionES:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.string,
-            data['${effectivePrefix}DESCRIPCION_ES'],
-          )!,
+      id: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}TIPO_POTENCIAL_ID'],
+      )!,
+      descripcionES: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}DESCRIPCION_ES'],
+      )!,
       descripcionEN: attachedDatabase.typeMapping.read(
         DriftSqlType.string,
         data['${effectivePrefix}DESCRIPCION_EN'],
@@ -14001,16 +13869,14 @@ class $ClienteTipoPotencialTableTable extends ClienteTipoPotencialTable
         DriftSqlType.string,
         data['${effectivePrefix}DESCRIPCION_EL'],
       ),
-      lastUpdated:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.dateTime,
-            data['${effectivePrefix}LAST_UPDATED'],
-          )!,
-      deleted:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.string,
-            data['${effectivePrefix}DELETED'],
-          )!,
+      lastUpdated: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}LAST_UPDATED'],
+      )!,
+      deleted: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}DELETED'],
+      )!,
     );
   }
 
@@ -14358,21 +14224,18 @@ class $EstadisticasArticulosTopTableTable extends EstadisticasArticulosTopTable
   }) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
     return EstadisitcasArticulosTopDTO.new(
-      articuloId:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.string,
-            data['${effectivePrefix}ARTICULO_ID'],
-          )!,
-      lastUpdated:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.dateTime,
-            data['${effectivePrefix}LAST_UPDATED'],
-          )!,
-      deleted:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.string,
-            data['${effectivePrefix}DELETED'],
-          )!,
+      articuloId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}ARTICULO_ID'],
+      )!,
+      lastUpdated: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}LAST_UPDATED'],
+      )!,
+      deleted: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}DELETED'],
+      )!,
     );
   }
 
@@ -15910,16 +15773,14 @@ class $ArticuloTableTable extends ArticuloTable
   ArticuloDTO map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
     return ArticuloDTO.new(
-      id:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.string,
-            data['${effectivePrefix}ARTICULO_ID'],
-          )!,
-      descripcionES:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.string,
-            data['${effectivePrefix}DESCRIPCION_ES'],
-          )!,
+      id: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}ARTICULO_ID'],
+      )!,
+      descripcionES: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}DESCRIPCION_ES'],
+      )!,
       descripcionEN: attachedDatabase.typeMapping.read(
         DriftSqlType.string,
         data['${effectivePrefix}DESCRIPCION_EN'],
@@ -15984,51 +15845,42 @@ class $ArticuloTableTable extends ArticuloTable
         DriftSqlType.string,
         data['${effectivePrefix}SUBFAMILIA_ID'],
       ),
-      ventaMinimo:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.int,
-            data['${effectivePrefix}VENTA_MINIMO'],
-          )!,
-      ventaMultiplo:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.int,
-            data['${effectivePrefix}VENTA_MULTIPLO'],
-          )!,
-      unidadesSubcaja:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.int,
-            data['${effectivePrefix}UNIDADES_SUBCAJA'],
-          )!,
-      unidadesCaja:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.int,
-            data['${effectivePrefix}UNIDADES_CAJA'],
-          )!,
-      unidadesPalet:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.int,
-            data['${effectivePrefix}UNIDADES_PALET'],
-          )!,
-      activoWeb:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.string,
-            data['${effectivePrefix}ACTIVO_WEB'],
-          )!,
-      activoApp:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.string,
-            data['${effectivePrefix}ACTIVO_APP'],
-          )!,
-      enCatalogo:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.string,
-            data['${effectivePrefix}EN_CATALOGO'],
-          )!,
-      descatalogado:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.string,
-            data['${effectivePrefix}DESCATALOGADO'],
-          )!,
+      ventaMinimo: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}VENTA_MINIMO'],
+      )!,
+      ventaMultiplo: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}VENTA_MULTIPLO'],
+      )!,
+      unidadesSubcaja: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}UNIDADES_SUBCAJA'],
+      )!,
+      unidadesCaja: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}UNIDADES_CAJA'],
+      )!,
+      unidadesPalet: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}UNIDADES_PALET'],
+      )!,
+      activoWeb: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}ACTIVO_WEB'],
+      )!,
+      activoApp: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}ACTIVO_APP'],
+      )!,
+      enCatalogo: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}EN_CATALOGO'],
+      )!,
+      descatalogado: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}DESCATALOGADO'],
+      )!,
       paginaEnCatalgo: attachedDatabase.typeMapping.read(
         DriftSqlType.string,
         data['${effectivePrefix}PAGINA_EN_CATALOGO'],
@@ -16037,26 +15889,22 @@ class $ArticuloTableTable extends ArticuloTable
         DriftSqlType.string,
         data['${effectivePrefix}PAGINA_EN_CATALOGO2'],
       ),
-      pesoKg:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.double,
-            data['${effectivePrefix}PESO_KG'],
-          )!,
-      largoCm:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.double,
-            data['${effectivePrefix}LARGO_CM'],
-          )!,
-      anchoCm:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.double,
-            data['${effectivePrefix}ANCHO_CM'],
-          )!,
-      altoCm:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.double,
-            data['${effectivePrefix}ALTO_CM'],
-          )!,
+      pesoKg: attachedDatabase.typeMapping.read(
+        DriftSqlType.double,
+        data['${effectivePrefix}PESO_KG'],
+      )!,
+      largoCm: attachedDatabase.typeMapping.read(
+        DriftSqlType.double,
+        data['${effectivePrefix}LARGO_CM'],
+      )!,
+      anchoCm: attachedDatabase.typeMapping.read(
+        DriftSqlType.double,
+        data['${effectivePrefix}ANCHO_CM'],
+      )!,
+      altoCm: attachedDatabase.typeMapping.read(
+        DriftSqlType.double,
+        data['${effectivePrefix}ALTO_CM'],
+      )!,
       resumenES: attachedDatabase.typeMapping.read(
         DriftSqlType.string,
         data['${effectivePrefix}RESUMEN_ES'],
@@ -16117,41 +15965,34 @@ class $ArticuloTableTable extends ArticuloTable
         DriftSqlType.string,
         data['${effectivePrefix}RESUMEN_EL'],
       ),
-      stockDisponible:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.int,
-            data['${effectivePrefix}STOCK_DISPONIBLE'],
-          )!,
-      ventasActual:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.double,
-            data['${effectivePrefix}VENTAS_ACTUAL'],
-          )!,
-      ventasAnterior:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.double,
-            data['${effectivePrefix}VENTAS_ANTERIOR'],
-          )!,
-      comprasEntregaCantidad1:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.int,
-            data['${effectivePrefix}COMPRAS_ENTREGA_CANTIDAD_1'],
-          )!,
-      comprasEntregaCantidad2:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.int,
-            data['${effectivePrefix}COMPRAS_ENTREGA_CANTIDAD_2'],
-          )!,
-      comprasEntregaCantidad3:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.int,
-            data['${effectivePrefix}COMPRAS_ENTREGA_CANTIDAD_3'],
-          )!,
-      comprasEntregaCantidadMas3:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.int,
-            data['${effectivePrefix}COMPRAS_ENTREGA_CANTIDAD_MAS_3'],
-          )!,
+      stockDisponible: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}STOCK_DISPONIBLE'],
+      )!,
+      ventasActual: attachedDatabase.typeMapping.read(
+        DriftSqlType.double,
+        data['${effectivePrefix}VENTAS_ACTUAL'],
+      )!,
+      ventasAnterior: attachedDatabase.typeMapping.read(
+        DriftSqlType.double,
+        data['${effectivePrefix}VENTAS_ANTERIOR'],
+      )!,
+      comprasEntregaCantidad1: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}COMPRAS_ENTREGA_CANTIDAD_1'],
+      )!,
+      comprasEntregaCantidad2: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}COMPRAS_ENTREGA_CANTIDAD_2'],
+      )!,
+      comprasEntregaCantidad3: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}COMPRAS_ENTREGA_CANTIDAD_3'],
+      )!,
+      comprasEntregaCantidadMas3: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}COMPRAS_ENTREGA_CANTIDAD_MAS_3'],
+      )!,
       comprasEntregaFecha1: attachedDatabase.typeMapping.read(
         DriftSqlType.dateTime,
         data['${effectivePrefix}COMPRAS_ENTREGA_FECHA_1'],
@@ -16200,16 +16041,14 @@ class $ArticuloTableTable extends ArticuloTable
         DriftSqlType.int,
         data['${effectivePrefix}VENTAS_ORDEN'],
       ),
-      lastUpdated:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.dateTime,
-            data['${effectivePrefix}LAST_UPDATED'],
-          )!,
-      deleted:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.string,
-            data['${effectivePrefix}DELETED'],
-          )!,
+      lastUpdated: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}LAST_UPDATED'],
+      )!,
+      deleted: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}DELETED'],
+      )!,
     );
   }
 
@@ -17531,26 +17370,22 @@ class $ArticuloComponenteTableTable extends ArticuloComponenteTable
   ArticuloComponenteDTO map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
     return ArticuloComponenteDTO.new(
-      articuloId:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.string,
-            data['${effectivePrefix}ARTICULO_ID'],
-          )!,
-      articuloComponenteId:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.string,
-            data['${effectivePrefix}ARTICULO_COMPONENTE_ID'],
-          )!,
-      cantidad:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.int,
-            data['${effectivePrefix}CANTIDAD'],
-          )!,
-      descripcionES:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.string,
-            data['${effectivePrefix}DESCRIPCION_ES'],
-          )!,
+      articuloId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}ARTICULO_ID'],
+      )!,
+      articuloComponenteId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}ARTICULO_COMPONENTE_ID'],
+      )!,
+      cantidad: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}CANTIDAD'],
+      )!,
+      descripcionES: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}DESCRIPCION_ES'],
+      )!,
       descripcionEN: attachedDatabase.typeMapping.read(
         DriftSqlType.string,
         data['${effectivePrefix}DESCRIPCION_EN'],
@@ -17607,16 +17442,14 @@ class $ArticuloComponenteTableTable extends ArticuloComponenteTable
         DriftSqlType.string,
         data['${effectivePrefix}DESCRIPCION_EL'],
       ),
-      lastUpdated:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.dateTime,
-            data['${effectivePrefix}LAST_UPDATED'],
-          )!,
-      deleted:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.string,
-            data['${effectivePrefix}DELETED'],
-          )!,
+      lastUpdated: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}LAST_UPDATED'],
+      )!,
+      deleted: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}DELETED'],
+      )!,
     );
   }
 
@@ -18026,31 +17859,26 @@ class $ArticuloEmpresaIvaTableTable extends ArticuloEmpresaIvaTable
   ArticuloEmpresaIvaDTO map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
     return ArticuloEmpresaIvaDTO.new(
-      articuloId:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.string,
-            data['${effectivePrefix}ARTICULO_ID'],
-          )!,
-      empresaId:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.string,
-            data['${effectivePrefix}EMPRESA_ID'],
-          )!,
-      iva:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.double,
-            data['${effectivePrefix}IVA'],
-          )!,
-      lastUpdated:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.dateTime,
-            data['${effectivePrefix}LAST_UPDATED'],
-          )!,
-      deleted:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.string,
-            data['${effectivePrefix}DELETED'],
-          )!,
+      articuloId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}ARTICULO_ID'],
+      )!,
+      empresaId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}EMPRESA_ID'],
+      )!,
+      iva: attachedDatabase.typeMapping.read(
+        DriftSqlType.double,
+        data['${effectivePrefix}IVA'],
+      )!,
+      lastUpdated: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}LAST_UPDATED'],
+      )!,
+      deleted: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}DELETED'],
+      )!,
     );
   }
 
@@ -18314,36 +18142,30 @@ class $ArticuloRecambioTableTable extends ArticuloRecambioTable
   ArticuloRecambioDTO map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
     return ArticuloRecambioDTO.new(
-      articuloId:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.string,
-            data['${effectivePrefix}ARTICULO_ID'],
-          )!,
-      id:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.string,
-            data['${effectivePrefix}RECAMBIO_ID'],
-          )!,
-      descripcion:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.string,
-            data['${effectivePrefix}DESCRIPCION'],
-          )!,
-      cantidad:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.int,
-            data['${effectivePrefix}CANTIDAD'],
-          )!,
-      lastUpdated:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.dateTime,
-            data['${effectivePrefix}LAST_UPDATED'],
-          )!,
-      deleted:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.string,
-            data['${effectivePrefix}DELETED'],
-          )!,
+      articuloId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}ARTICULO_ID'],
+      )!,
+      id: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}RECAMBIO_ID'],
+      )!,
+      descripcion: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}DESCRIPCION'],
+      )!,
+      cantidad: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}CANTIDAD'],
+      )!,
+      lastUpdated: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}LAST_UPDATED'],
+      )!,
+      deleted: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}DELETED'],
+      )!,
     );
   }
 
@@ -18599,31 +18421,26 @@ class $ArticuloSustitutivoTableTable extends ArticuloSustitutivoTable
   ArticuloSustitutivoDTO map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
     return ArticuloSustitutivoDTO.new(
-      articuloId:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.string,
-            data['${effectivePrefix}ARTICULO_ID'],
-          )!,
-      articuloSustitutivoId:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.string,
-            data['${effectivePrefix}ARTICULO_ID_SUSTITUTIVO'],
-          )!,
-      orden:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.int,
-            data['${effectivePrefix}ORDEN'],
-          )!,
-      lastUpdated:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.dateTime,
-            data['${effectivePrefix}LAST_UPDATED'],
-          )!,
-      deleted:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.string,
-            data['${effectivePrefix}DELETED'],
-          )!,
+      articuloId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}ARTICULO_ID'],
+      )!,
+      articuloSustitutivoId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}ARTICULO_ID_SUSTITUTIVO'],
+      )!,
+      orden: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}ORDEN'],
+      )!,
+      lastUpdated: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}LAST_UPDATED'],
+      )!,
+      deleted: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}DELETED'],
+      )!,
     );
   }
 
@@ -18956,50 +18773,42 @@ class $ArticuloPrecioTarifaTableTable extends ArticuloPrecioTarifaTable
   }) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
     return ArticuloPrecioTarifaDTO.new(
-      articuloId:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.string,
-            data['${effectivePrefix}ARTICULO_ID'],
-          )!,
-      tarifaId:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.string,
-            data['${effectivePrefix}TARIFA_ID'],
-          )!,
+      articuloId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}ARTICULO_ID'],
+      )!,
+      tarifaId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}TARIFA_ID'],
+      )!,
       tarifaDescripcion: attachedDatabase.typeMapping.read(
         DriftSqlType.string,
         data['${effectivePrefix}TARIFA_DESCRIPCION'],
       ),
-      cantidadDesde:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.int,
-            data['${effectivePrefix}CANTIDAD_DESDE'],
-          )!,
-      precio:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.double,
-            data['${effectivePrefix}PRECIO'],
-          )!,
-      divisaId:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.string,
-            data['${effectivePrefix}DIVISA_ID'],
-          )!,
-      tipoPrecio:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.int,
-            data['${effectivePrefix}TIPO_PRECIO'],
-          )!,
-      lastUpdated:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.dateTime,
-            data['${effectivePrefix}LAST_UPDATED'],
-          )!,
-      deleted:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.string,
-            data['${effectivePrefix}DELETED'],
-          )!,
+      cantidadDesde: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}CANTIDAD_DESDE'],
+      )!,
+      precio: attachedDatabase.typeMapping.read(
+        DriftSqlType.double,
+        data['${effectivePrefix}PRECIO'],
+      )!,
+      divisaId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}DIVISA_ID'],
+      )!,
+      tipoPrecio: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}TIPO_PRECIO'],
+      )!,
+      lastUpdated: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}LAST_UPDATED'],
+      )!,
+      deleted: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}DELETED'],
+      )!,
     );
   }
 
@@ -19380,51 +19189,42 @@ class $ArticuloGrupoNetoTableTable extends ArticuloGrupoNetoTable
   ArticuloGrupoNetoDTO map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
     return ArticuloGrupoNetoDTO.new(
-      articuloId:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.string,
-            data['${effectivePrefix}ARTICULO_ID'],
-          )!,
-      grupoNetoId:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.string,
-            data['${effectivePrefix}GRUPO_NETO_ID'],
-          )!,
-      grupoNetoDescripcion:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.string,
-            data['${effectivePrefix}GRUPO_NETO_DESCRIPCION'],
-          )!,
-      cantidadDesde:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.int,
-            data['${effectivePrefix}CANTIDAD_DESDE'],
-          )!,
-      precio:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.double,
-            data['${effectivePrefix}PRECIO'],
-          )!,
-      divisaId:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.string,
-            data['${effectivePrefix}DIVISA_ID'],
-          )!,
-      tipoPrecio:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.int,
-            data['${effectivePrefix}TIPO_PRECIO'],
-          )!,
-      lastUpdated:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.dateTime,
-            data['${effectivePrefix}LAST_UPDATED'],
-          )!,
-      deleted:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.string,
-            data['${effectivePrefix}DELETED'],
-          )!,
+      articuloId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}ARTICULO_ID'],
+      )!,
+      grupoNetoId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}GRUPO_NETO_ID'],
+      )!,
+      grupoNetoDescripcion: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}GRUPO_NETO_DESCRIPCION'],
+      )!,
+      cantidadDesde: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}CANTIDAD_DESDE'],
+      )!,
+      precio: attachedDatabase.typeMapping.read(
+        DriftSqlType.double,
+        data['${effectivePrefix}PRECIO'],
+      )!,
+      divisaId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}DIVISA_ID'],
+      )!,
+      tipoPrecio: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}TIPO_PRECIO'],
+      )!,
+      lastUpdated: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}LAST_UPDATED'],
+      )!,
+      deleted: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}DELETED'],
+      )!,
     );
   }
 
@@ -19797,26 +19597,22 @@ class $EstadisticasClienteUsuarioVentasTableTable
   }) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
     return EstadisticasVentaClienteUsuarioDTO.new(
-      anyo:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.double,
-            data['${effectivePrefix}ANYO'],
-          )!,
-      mes:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.double,
-            data['${effectivePrefix}MES'],
-          )!,
-      clienteId:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.string,
-            data['${effectivePrefix}CLIENTE_ID'],
-          )!,
-      articuloId:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.string,
-            data['${effectivePrefix}ARTICULO_ID'],
-          )!,
+      anyo: attachedDatabase.typeMapping.read(
+        DriftSqlType.double,
+        data['${effectivePrefix}ANYO'],
+      )!,
+      mes: attachedDatabase.typeMapping.read(
+        DriftSqlType.double,
+        data['${effectivePrefix}MES'],
+      )!,
+      clienteId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}CLIENTE_ID'],
+      )!,
+      articuloId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}ARTICULO_ID'],
+      )!,
       unidades: attachedDatabase.typeMapping.read(
         DriftSqlType.double,
         data['${effectivePrefix}UNIDADES'],
@@ -19829,16 +19625,14 @@ class $EstadisticasClienteUsuarioVentasTableTable
         DriftSqlType.double,
         data['${effectivePrefix}COSTE'],
       ),
-      lastUpdated:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.dateTime,
-            data['${effectivePrefix}LAST_UPDATED'],
-          )!,
-      deleted:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.string,
-            data['${effectivePrefix}DELETED'],
-          )!,
+      lastUpdated: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}LAST_UPDATED'],
+      )!,
+      deleted: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}DELETED'],
+      )!,
     );
   }
 
@@ -20293,71 +20087,58 @@ class $EstadisticasUltimosPreciosTableTable
   }) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
     return EstadisticasUltimosPreciosDTO.new(
-      clienteId:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.string,
-            data['${effectivePrefix}CLIENTE_ID'],
-          )!,
-      articuloId:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.string,
-            data['${effectivePrefix}ARTICULO_ID'],
-          )!,
-      linea:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.int,
-            data['${effectivePrefix}LINEA'],
-          )!,
-      cantidad:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.int,
-            data['${effectivePrefix}CANTIDAD'],
-          )!,
-      fecha:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.dateTime,
-            data['${effectivePrefix}FECHA'],
-          )!,
-      precioDivisa:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.double,
-            data['${effectivePrefix}PRECIO_DIVISA'],
-          )!,
-      divisaId:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.string,
-            data['${effectivePrefix}DIVISA_ID'],
-          )!,
-      tipoPrecio:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.int,
-            data['${effectivePrefix}TIPO_PRECIO'],
-          )!,
-      descuento1:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.double,
-            data['${effectivePrefix}DESCUENTO1'],
-          )!,
-      descuento2:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.double,
-            data['${effectivePrefix}DESCUENTO2'],
-          )!,
-      descuento3:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.double,
-            data['${effectivePrefix}DESCUENTO3'],
-          )!,
-      lastUpdated:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.dateTime,
-            data['${effectivePrefix}LAST_UPDATED'],
-          )!,
-      deleted:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.string,
-            data['${effectivePrefix}DELETED'],
-          )!,
+      clienteId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}CLIENTE_ID'],
+      )!,
+      articuloId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}ARTICULO_ID'],
+      )!,
+      linea: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}LINEA'],
+      )!,
+      cantidad: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}CANTIDAD'],
+      )!,
+      fecha: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}FECHA'],
+      )!,
+      precioDivisa: attachedDatabase.typeMapping.read(
+        DriftSqlType.double,
+        data['${effectivePrefix}PRECIO_DIVISA'],
+      )!,
+      divisaId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}DIVISA_ID'],
+      )!,
+      tipoPrecio: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}TIPO_PRECIO'],
+      )!,
+      descuento1: attachedDatabase.typeMapping.read(
+        DriftSqlType.double,
+        data['${effectivePrefix}DESCUENTO1'],
+      )!,
+      descuento2: attachedDatabase.typeMapping.read(
+        DriftSqlType.double,
+        data['${effectivePrefix}DESCUENTO2'],
+      )!,
+      descuento3: attachedDatabase.typeMapping.read(
+        DriftSqlType.double,
+        data['${effectivePrefix}DESCUENTO3'],
+      )!,
+      lastUpdated: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}LAST_UPDATED'],
+      )!,
+      deleted: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}DELETED'],
+      )!,
     );
   }
 
@@ -21174,25 +20955,22 @@ class $VisitaTableTable extends VisitaTable
   VisitaDTO map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
     return VisitaDTO.new(
-      id:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.string,
-            data['${effectivePrefix}VISITA_ID'],
-          )!,
-      fecha:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.dateTime,
-            data['${effectivePrefix}FECHA'],
-          )!,
+      id: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}VISITA_ID'],
+      )!,
+      fecha: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}FECHA'],
+      )!,
       clienteId: attachedDatabase.typeMapping.read(
         DriftSqlType.string,
         data['${effectivePrefix}CLIENTE_ID'],
       ),
-      isClienteProvisional:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.string,
-            data['${effectivePrefix}CLIENTE_POTENCIAL_SN'],
-          )!,
+      isClienteProvisional: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}CLIENTE_POTENCIAL_SN'],
+      )!,
       clienteProvisionalNombre: attachedDatabase.typeMapping.read(
         DriftSqlType.string,
         data['${effectivePrefix}CLIENTE_POTENCIAL_NOMBRE'],
@@ -21209,11 +20987,10 @@ class $VisitaTableTable extends VisitaTable
         DriftSqlType.string,
         data['${effectivePrefix}CLIENTE_POTENCIAL_POBLACION'],
       ),
-      numEmpl:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.string,
-            data['${effectivePrefix}NUM_EMPL'],
-          )!,
+      numEmpl: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}NUM_EMPL'],
+      )!,
       contacto: attachedDatabase.typeMapping.read(
         DriftSqlType.string,
         data['${effectivePrefix}CONTACTO'],
@@ -21230,21 +21007,18 @@ class $VisitaTableTable extends VisitaTable
         DriftSqlType.string,
         data['${effectivePrefix}MARCAS_COMPETENCIA'],
       ),
-      ofertaRealizada:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.string,
-            data['${effectivePrefix}OFERTA_REALIZADA'],
-          )!,
-      interesCliente:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.string,
-            data['${effectivePrefix}INTERES_CLIENTE'],
-          )!,
-      pedidoRealizado:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.string,
-            data['${effectivePrefix}PEDIDO_REALIZADO'],
-          )!,
+      ofertaRealizada: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}OFERTA_REALIZADA'],
+      )!,
+      interesCliente: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}INTERES_CLIENTE'],
+      )!,
+      pedidoRealizado: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}PEDIDO_REALIZADO'],
+      )!,
       codigoMotivoNoInteres: attachedDatabase.typeMapping.read(
         DriftSqlType.int,
         data['${effectivePrefix}CODIGO_MOTIVO_NO_INTERES'],
@@ -21261,45 +21035,38 @@ class $VisitaTableTable extends VisitaTable
         DriftSqlType.int,
         data['${effectivePrefix}CODIGO_COMPETENCIA'],
       ),
-      almacenPropio:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.string,
-            data['${effectivePrefix}ALMACEN_PROPIO'],
-          )!,
-      capacidad:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.string,
-            data['${effectivePrefix}CAPACIDAD'],
-          )!,
-      frecuenciaPedido:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.string,
-            data['${effectivePrefix}FRECUENCIA_PEDIDO'],
-          )!,
-      latitud:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.double,
-            data['${effectivePrefix}LATITUD'],
-          )!,
-      longitud:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.double,
-            data['${effectivePrefix}LONGITUD'],
-          )!,
+      almacenPropio: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}ALMACEN_PROPIO'],
+      )!,
+      capacidad: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}CAPACIDAD'],
+      )!,
+      frecuenciaPedido: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}FRECUENCIA_PEDIDO'],
+      )!,
+      latitud: attachedDatabase.typeMapping.read(
+        DriftSqlType.double,
+        data['${effectivePrefix}LATITUD'],
+      )!,
+      longitud: attachedDatabase.typeMapping.read(
+        DriftSqlType.double,
+        data['${effectivePrefix}LONGITUD'],
+      )!,
       visitaAppId: attachedDatabase.typeMapping.read(
         DriftSqlType.string,
         data['${effectivePrefix}COD_VISITA_APP'],
       ),
-      lastUpdated:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.dateTime,
-            data['${effectivePrefix}LAST_UPDATED'],
-          )!,
-      deleted:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.string,
-            data['${effectivePrefix}DELETED'],
-          )!,
+      lastUpdated: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}LAST_UPDATED'],
+      )!,
+      deleted: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}DELETED'],
+      )!,
     );
   }
 
@@ -21912,26 +21679,22 @@ class $PedidoAlbaranTableTable extends PedidoAlbaranTable
   PedidoAlbaranDTO map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
     return PedidoAlbaranDTO.new(
-      empresaId:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.string,
-            data['${effectivePrefix}EMPRESA_ID'],
-          )!,
-      pedidoVentaId:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.string,
-            data['${effectivePrefix}PEDIDO_ID'],
-          )!,
-      albaranId:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.string,
-            data['${effectivePrefix}ALBARAN_ID'],
-          )!,
-      fechaAlbaran:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.dateTime,
-            data['${effectivePrefix}FECHA_ALBARAN'],
-          )!,
+      empresaId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}EMPRESA_ID'],
+      )!,
+      pedidoVentaId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}PEDIDO_ID'],
+      )!,
+      albaranId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}ALBARAN_ID'],
+      )!,
+      fechaAlbaran: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}FECHA_ALBARAN'],
+      )!,
       agencia: attachedDatabase.typeMapping.read(
         DriftSqlType.string,
         data['${effectivePrefix}AGENCIA'],
@@ -21944,16 +21707,14 @@ class $PedidoAlbaranTableTable extends PedidoAlbaranTable
         DriftSqlType.string,
         data['${effectivePrefix}TRACKING_ESTADO'],
       ),
-      lastUpdated:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.dateTime,
-            data['${effectivePrefix}LAST_UPDATED'],
-          )!,
-      deleted:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.string,
-            data['${effectivePrefix}DELETED'],
-          )!,
+      lastUpdated: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}LAST_UPDATED'],
+      )!,
+      deleted: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}DELETED'],
+      )!,
     );
   }
 
@@ -22314,46 +22075,38 @@ class $DescuentoGeneralTableTable extends DescuentoGeneralTable
   DescuentoGeneralDTO map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
     return DescuentoGeneralDTO.new(
-      descuentoGeneralId:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.string,
-            data['${effectivePrefix}DESCUENTO_GENERAL_ID'],
-          )!,
-      articuloId:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.string,
-            data['${effectivePrefix}ARTICULO_ID'],
-          )!,
-      familiaId:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.string,
-            data['${effectivePrefix}FAMILIA_ID'],
-          )!,
-      subfamiliaId:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.string,
-            data['${effectivePrefix}SUBFAMILIA_ID'],
-          )!,
-      cantidadDesde:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.int,
-            data['${effectivePrefix}CANTIDAD_DESDE'],
-          )!,
-      descuento:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.double,
-            data['${effectivePrefix}DESCUENTO'],
-          )!,
-      lastUpdated:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.dateTime,
-            data['${effectivePrefix}LAST_UPDATED'],
-          )!,
-      deleted:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.string,
-            data['${effectivePrefix}DELETED'],
-          )!,
+      descuentoGeneralId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}DESCUENTO_GENERAL_ID'],
+      )!,
+      articuloId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}ARTICULO_ID'],
+      )!,
+      familiaId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}FAMILIA_ID'],
+      )!,
+      subfamiliaId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}SUBFAMILIA_ID'],
+      )!,
+      cantidadDesde: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}CANTIDAD_DESDE'],
+      )!,
+      descuento: attachedDatabase.typeMapping.read(
+        DriftSqlType.double,
+        data['${effectivePrefix}DESCUENTO'],
+      )!,
+      lastUpdated: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}LAST_UPDATED'],
+      )!,
+      deleted: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}DELETED'],
+      )!,
     );
   }
 
@@ -22887,16 +22640,14 @@ class $DevolucionTipoTableTable extends DevolucionTipoTable
   DevolucionTipoDTO map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
     return DevolucionTipoDTO.new(
-      id:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.string,
-            data['${effectivePrefix}DEVOLUCION_TIPO_ID'],
-          )!,
-      descripcionES:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.string,
-            data['${effectivePrefix}DESCRIPCION_ES'],
-          )!,
+      id: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}DEVOLUCION_TIPO_ID'],
+      )!,
+      descripcionES: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}DESCRIPCION_ES'],
+      )!,
       descripcionEN: attachedDatabase.typeMapping.read(
         DriftSqlType.string,
         data['${effectivePrefix}DESCRIPCION_EN'],
@@ -22949,16 +22700,14 @@ class $DevolucionTipoTableTable extends DevolucionTipoTable
         DriftSqlType.string,
         data['${effectivePrefix}DESCRIPCION_EL'],
       ),
-      lastUpdated:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.dateTime,
-            data['${effectivePrefix}LAST_UPDATED'],
-          )!,
-      deleted:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.string,
-            data['${effectivePrefix}DELETED'],
-          )!,
+      lastUpdated: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}LAST_UPDATED'],
+      )!,
+      deleted: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}DELETED'],
+      )!,
     );
   }
 
@@ -23585,16 +23334,14 @@ class $DevolucionMotivoTableTable extends DevolucionMotivoTable
   DevolucionMotivoDTO map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
     return DevolucionMotivoDTO.new(
-      id:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.string,
-            data['${effectivePrefix}DEVOLUCION_MOTIVO_ID'],
-          )!,
-      descripcionES:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.string,
-            data['${effectivePrefix}DESCRIPCION_ES'],
-          )!,
+      id: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}DEVOLUCION_MOTIVO_ID'],
+      )!,
+      descripcionES: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}DESCRIPCION_ES'],
+      )!,
       descripcionEN: attachedDatabase.typeMapping.read(
         DriftSqlType.string,
         data['${effectivePrefix}DESCRIPCION_EN'],
@@ -23647,16 +23394,14 @@ class $DevolucionMotivoTableTable extends DevolucionMotivoTable
         DriftSqlType.string,
         data['${effectivePrefix}DESCRIPCION_EL'],
       ),
-      lastUpdated:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.dateTime,
-            data['${effectivePrefix}LAST_UPDATED'],
-          )!,
-      deleted:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.string,
-            data['${effectivePrefix}DELETED'],
-          )!,
+      lastUpdated: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}LAST_UPDATED'],
+      )!,
+      deleted: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}DELETED'],
+      )!,
     );
   }
 
@@ -24284,16 +24029,14 @@ class $DevolucionEstadoTableTable extends DevolucionEstadoTable
   DevolucionEstadoDTO map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
     return DevolucionEstadoDTO.new(
-      id:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.string,
-            data['${effectivePrefix}DEVOLUCION_ESTADO_ID'],
-          )!,
-      descripcionES:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.string,
-            data['${effectivePrefix}DESCRIPCION_ES'],
-          )!,
+      id: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}DEVOLUCION_ESTADO_ID'],
+      )!,
+      descripcionES: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}DESCRIPCION_ES'],
+      )!,
       descripcionEN: attachedDatabase.typeMapping.read(
         DriftSqlType.string,
         data['${effectivePrefix}DESCRIPCION_EN'],
@@ -24346,16 +24089,14 @@ class $DevolucionEstadoTableTable extends DevolucionEstadoTable
         DriftSqlType.string,
         data['${effectivePrefix}DESCRIPCION_EL'],
       ),
-      lastUpdated:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.dateTime,
-            data['${effectivePrefix}LAST_UPDATED'],
-          )!,
-      deleted:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.string,
-            data['${effectivePrefix}DELETED'],
-          )!,
+      lastUpdated: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}LAST_UPDATED'],
+      )!,
+      deleted: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}DELETED'],
+      )!,
     );
   }
 
@@ -24839,26 +24580,22 @@ class $DevolucionLineaTableTable extends DevolucionLineaTable
   DevolucionLineaDTO map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
     return DevolucionLineaDTO.new(
-      empresaId:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.string,
-            data['${effectivePrefix}EMPRESA_ID'],
-          )!,
-      devolucionId:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.string,
-            data['${effectivePrefix}DEVOLUCION_ID'],
-          )!,
-      articuloId:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.string,
-            data['${effectivePrefix}ARTICULO_ID'],
-          )!,
-      articuloDescription:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.string,
-            data['${effectivePrefix}ARTICULO_DESCRIPCION'],
-          )!,
+      empresaId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}EMPRESA_ID'],
+      )!,
+      devolucionId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}DEVOLUCION_ID'],
+      )!,
+      articuloId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}ARTICULO_ID'],
+      )!,
+      articuloDescription: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}ARTICULO_DESCRIPCION'],
+      )!,
       cantidadDevolucion: attachedDatabase.typeMapping.read(
         DriftSqlType.double,
         data['${effectivePrefix}CANTIDAD_DEVOLUCION'],
@@ -24875,16 +24612,14 @@ class $DevolucionLineaTableTable extends DevolucionLineaTable
         DriftSqlType.string,
         data['${effectivePrefix}DEVOLUCION_ESTADO_ID'],
       ),
-      lastUpdated:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.dateTime,
-            data['${effectivePrefix}LAST_UPDATED'],
-          )!,
-      deleted:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.string,
-            data['${effectivePrefix}DELETED'],
-          )!,
+      lastUpdated: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}LAST_UPDATED'],
+      )!,
+      deleted: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}DELETED'],
+      )!,
     );
   }
 
@@ -25447,21 +25182,18 @@ class $DevolucionTableTable extends DevolucionTable
   DevolucionDTO map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
     return DevolucionDTO.new(
-      empresaId:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.string,
-            data['${effectivePrefix}EMPRESA_ID'],
-          )!,
-      id:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.string,
-            data['${effectivePrefix}DEVOLUCION_ID'],
-          )!,
-      fechaDevolucion:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.dateTime,
-            data['${effectivePrefix}FECHA_DEVOLUCION'],
-          )!,
+      empresaId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}EMPRESA_ID'],
+      )!,
+      id: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}DEVOLUCION_ID'],
+      )!,
+      fechaDevolucion: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}FECHA_DEVOLUCION'],
+      )!,
       clienteId: attachedDatabase.typeMapping.read(
         DriftSqlType.string,
         data['${effectivePrefix}CLIENTE_ID'],
@@ -25502,31 +25234,26 @@ class $DevolucionTableTable extends DevolucionTable
         DriftSqlType.string,
         data['${effectivePrefix}AGENCIA_TRANSPORTE'],
       ),
-      devolucionEstadoId:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.string,
-            data['${effectivePrefix}DEVOLUCION_ESTADO_ID'],
-          )!,
-      kilosDevolucion:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.double,
-            data['${effectivePrefix}KILOS_DEVOLUCION'],
-          )!,
-      bultos:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.double,
-            data['${effectivePrefix}BULTOS'],
-          )!,
-      lastUpdated:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.dateTime,
-            data['${effectivePrefix}LAST_UPDATED'],
-          )!,
-      deleted:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.string,
-            data['${effectivePrefix}DELETED'],
-          )!,
+      devolucionEstadoId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}DEVOLUCION_ESTADO_ID'],
+      )!,
+      kilosDevolucion: attachedDatabase.typeMapping.read(
+        DriftSqlType.double,
+        data['${effectivePrefix}KILOS_DEVOLUCION'],
+      )!,
+      bultos: attachedDatabase.typeMapping.read(
+        DriftSqlType.double,
+        data['${effectivePrefix}BULTOS'],
+      )!,
+      lastUpdated: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}LAST_UPDATED'],
+      )!,
+      deleted: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}DELETED'],
+      )!,
     );
   }
 
@@ -25938,25 +25665,22 @@ class $ProvinciaTableTable extends ProvinciaTable
         DriftSqlType.string,
         data['${effectivePrefix}REGION_ID'],
       ),
-      provinciaId:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.string,
-            data['${effectivePrefix}PROVINCIA_ID'],
-          )!,
+      provinciaId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}PROVINCIA_ID'],
+      )!,
       provincia: attachedDatabase.typeMapping.read(
         DriftSqlType.string,
         data['${effectivePrefix}PROVINCIA'],
       ),
-      lastUpdated:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.dateTime,
-            data['${effectivePrefix}LAST_UPDATED'],
-          )!,
-      deleted:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.string,
-            data['${effectivePrefix}DELETED'],
-          )!,
+      lastUpdated: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}LAST_UPDATED'],
+      )!,
+      deleted: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}DELETED'],
+      )!,
     );
   }
 
@@ -26375,16 +26099,14 @@ class $VisitaCompetidorTableTable extends VisitaCompetidorTable
   VisitaCompetidorDTO map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
     return VisitaCompetidorDTO.new(
-      id:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.int,
-            data['${effectivePrefix}CODIGO'],
-          )!,
-      descripcionES:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.string,
-            data['${effectivePrefix}DESCRIPCION_ES'],
-          )!,
+      id: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}CODIGO'],
+      )!,
+      descripcionES: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}DESCRIPCION_ES'],
+      )!,
       descripcionEN: attachedDatabase.typeMapping.read(
         DriftSqlType.string,
         data['${effectivePrefix}DESCRIPCION_EN'],
@@ -26421,16 +26143,14 @@ class $VisitaCompetidorTableTable extends VisitaCompetidorTable
         DriftSqlType.string,
         data['${effectivePrefix}DESCRIPCION_PL'],
       ),
-      lastUpdated:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.dateTime,
-            data['${effectivePrefix}LAST_UPDATED'],
-          )!,
-      deleted:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.string,
-            data['${effectivePrefix}DELETED'],
-          )!,
+      lastUpdated: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}LAST_UPDATED'],
+      )!,
+      deleted: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}DELETED'],
+      )!,
     );
   }
 
@@ -26916,16 +26636,14 @@ class $VisitaSectorTableTable extends VisitaSectorTable
   VisitaSectorDTO map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
     return VisitaSectorDTO.new(
-      id:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.int,
-            data['${effectivePrefix}CODIGO'],
-          )!,
-      descripcionES:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.string,
-            data['${effectivePrefix}DESCRIPCION_ES'],
-          )!,
+      id: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}CODIGO'],
+      )!,
+      descripcionES: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}DESCRIPCION_ES'],
+      )!,
       descripcionEN: attachedDatabase.typeMapping.read(
         DriftSqlType.string,
         data['${effectivePrefix}DESCRIPCION_EN'],
@@ -26962,16 +26680,14 @@ class $VisitaSectorTableTable extends VisitaSectorTable
         DriftSqlType.string,
         data['${effectivePrefix}DESCRIPCION_PL'],
       ),
-      lastUpdated:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.dateTime,
-            data['${effectivePrefix}LAST_UPDATED'],
-          )!,
-      deleted:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.string,
-            data['${effectivePrefix}DELETED'],
-          )!,
+      lastUpdated: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}LAST_UPDATED'],
+      )!,
+      deleted: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}DELETED'],
+      )!,
     );
   }
 
@@ -27456,16 +27172,14 @@ class $VisitaMotivoNoVentaTableTable extends VisitaMotivoNoVentaTable
   VisitaMotivoNoVentaDTO map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
     return VisitaMotivoNoVentaDTO.new(
-      id:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.int,
-            data['${effectivePrefix}CODIGO'],
-          )!,
-      descripcionES:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.string,
-            data['${effectivePrefix}DESCRIPCION_ES'],
-          )!,
+      id: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}CODIGO'],
+      )!,
+      descripcionES: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}DESCRIPCION_ES'],
+      )!,
       descripcionEN: attachedDatabase.typeMapping.read(
         DriftSqlType.string,
         data['${effectivePrefix}DESCRIPCION_EN'],
@@ -27502,16 +27216,14 @@ class $VisitaMotivoNoVentaTableTable extends VisitaMotivoNoVentaTable
         DriftSqlType.string,
         data['${effectivePrefix}DESCRIPCION_PL'],
       ),
-      lastUpdated:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.dateTime,
-            data['${effectivePrefix}LAST_UPDATED'],
-          )!,
-      deleted:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.string,
-            data['${effectivePrefix}DELETED'],
-          )!,
+      lastUpdated: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}LAST_UPDATED'],
+      )!,
+      deleted: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}DELETED'],
+      )!,
     );
   }
 
@@ -27812,26 +27524,22 @@ class $VisitaCompetenciaTableTable extends VisitaCompetenciaTable
   VisitaCompetenciaDTO map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
     return VisitaCompetenciaDTO.new(
-      visitaId:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.string,
-            data['${effectivePrefix}COD_VISITA'],
-          )!,
-      codigoCompetencia:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.int,
-            data['${effectivePrefix}CODIGO_COMPETENCIA'],
-          )!,
-      lastUpdated:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.dateTime,
-            data['${effectivePrefix}LAST_UPDATED'],
-          )!,
-      deleted:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.string,
-            data['${effectivePrefix}DELETED'],
-          )!,
+      visitaId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}COD_VISITA'],
+      )!,
+      codigoCompetencia: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}CODIGO_COMPETENCIA'],
+      )!,
+      lastUpdated: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}LAST_UPDATED'],
+      )!,
+      deleted: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}DELETED'],
+      )!,
     );
   }
 
@@ -28316,16 +28024,14 @@ class $TrackingEstadoTableTable extends TrackingEstadoTable
   TrackingEstadoDTO map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
     return TrackingEstadoDTO.new(
-      id:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.string,
-            data['${effectivePrefix}TRACKING_ESTADO'],
-          )!,
-      descripcionES:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.string,
-            data['${effectivePrefix}DESCRIPCION_ES'],
-          )!,
+      id: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}TRACKING_ESTADO'],
+      )!,
+      descripcionES: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}DESCRIPCION_ES'],
+      )!,
       descripcionEN: attachedDatabase.typeMapping.read(
         DriftSqlType.string,
         data['${effectivePrefix}DESCRIPCION_EN'],
@@ -28378,16 +28084,14 @@ class $TrackingEstadoTableTable extends TrackingEstadoTable
         DriftSqlType.string,
         data['${effectivePrefix}DESCRIPCION_EL'],
       ),
-      lastUpdated:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.dateTime,
-            data['${effectivePrefix}LAST_UPDATED'],
-          )!,
-      deleted:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.string,
-            data['${effectivePrefix}DELETED'],
-          )!,
+      lastUpdated: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}LAST_UPDATED'],
+      )!,
+      deleted: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}DELETED'],
+      )!,
     );
   }
 
@@ -28948,21 +28652,18 @@ class $SectorTableTable extends SectorTable
   SectorDTO map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
     return SectorDTO.new(
-      id:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.string,
-            data['${effectivePrefix}sector_id'],
-          )!,
-      altaSN:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.string,
-            data['${effectivePrefix}alta_sn'],
-          )!,
-      descripcionES:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.string,
-            data['${effectivePrefix}descripcion_es'],
-          )!,
+      id: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}sector_id'],
+      )!,
+      altaSN: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}alta_sn'],
+      )!,
+      descripcionES: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}descripcion_es'],
+      )!,
       descripcionEN: attachedDatabase.typeMapping.read(
         DriftSqlType.string,
         data['${effectivePrefix}descripcion_en'],
@@ -28999,16 +28700,14 @@ class $SectorTableTable extends SectorTable
         DriftSqlType.string,
         data['${effectivePrefix}descripcion_pl'],
       ),
-      lastUpdated:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.dateTime,
-            data['${effectivePrefix}last_updated'],
-          )!,
-      deleted:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.string,
-            data['${effectivePrefix}deleted'],
-          )!,
+      lastUpdated: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}last_updated'],
+      )!,
+      deleted: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}deleted'],
+      )!,
     );
   }
 
@@ -29544,21 +29243,18 @@ class $SubsectorTableTable extends SubsectorTable
   SubsectorDTO map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
     return SubsectorDTO.new(
-      sectorId:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.string,
-            data['${effectivePrefix}SECTOR_ID'],
-          )!,
-      subsectorId:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.string,
-            data['${effectivePrefix}SUBSECTOR_ID'],
-          )!,
-      descripcionES:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.string,
-            data['${effectivePrefix}DESCRIPCION_ES'],
-          )!,
+      sectorId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}SECTOR_ID'],
+      )!,
+      subsectorId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}SUBSECTOR_ID'],
+      )!,
+      descripcionES: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}DESCRIPCION_ES'],
+      )!,
       descripcionEN: attachedDatabase.typeMapping.read(
         DriftSqlType.string,
         data['${effectivePrefix}DESCRIPCION_EN'],
@@ -29595,16 +29291,14 @@ class $SubsectorTableTable extends SubsectorTable
         DriftSqlType.string,
         data['${effectivePrefix}DESCRIPCION_PL'],
       ),
-      lastUpdated:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.dateTime,
-            data['${effectivePrefix}LAST_UPDATED'],
-          )!,
-      deleted:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.string,
-            data['${effectivePrefix}DELETED'],
-          )!,
+      lastUpdated: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}LAST_UPDATED'],
+      )!,
+      deleted: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}DELETED'],
+      )!,
     );
   }
 
@@ -30004,45 +29698,38 @@ class $PromoDtoCabTableTable extends PromoDtoCabTable
   PromoDtoCabDTO map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
     return PromoDtoCabDTO.new(
-      empresaId:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.string,
-            data['${effectivePrefix}EMPRESA_ID'],
-          )!,
-      promoDtoId:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.string,
-            data['${effectivePrefix}PROMO_DTO_ID'],
-          )!,
-      nombre:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.string,
-            data['${effectivePrefix}NOMBRE'],
-          )!,
-      fechaDesde:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.dateTime,
-            data['${effectivePrefix}FECHA_DESDE'],
-          )!,
+      empresaId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}EMPRESA_ID'],
+      )!,
+      promoDtoId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}PROMO_DTO_ID'],
+      )!,
+      nombre: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}NOMBRE'],
+      )!,
+      fechaDesde: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}FECHA_DESDE'],
+      )!,
       fechaHasta: attachedDatabase.typeMapping.read(
         DriftSqlType.dateTime,
         data['${effectivePrefix}FECHA_HASTA'],
       ),
-      divisaId:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.string,
-            data['${effectivePrefix}DIVISA_ID'],
-          )!,
-      lastUpdated:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.dateTime,
-            data['${effectivePrefix}LAST_UPDATED'],
-          )!,
-      deleted:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.string,
-            data['${effectivePrefix}DELETED'],
-          )!,
+      divisaId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}DIVISA_ID'],
+      )!,
+      lastUpdated: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}LAST_UPDATED'],
+      )!,
+      deleted: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}DELETED'],
+      )!,
     );
   }
 
@@ -30340,36 +30027,30 @@ class $PromoDtoClienteTableTable extends PromoDtoClienteTable
   PromoDtoClienteDTO map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
     return PromoDtoClienteDTO.new(
-      empresaId:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.string,
-            data['${effectivePrefix}EMPRESA_ID'],
-          )!,
-      promoDtoId:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.string,
-            data['${effectivePrefix}PROMO_DTO_ID'],
-          )!,
-      clienteId:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.string,
-            data['${effectivePrefix}CLIENTE_ID'],
-          )!,
-      tipo:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.string,
-            data['${effectivePrefix}TIPO'],
-          )!,
-      lastUpdated:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.dateTime,
-            data['${effectivePrefix}LAST_UPDATED'],
-          )!,
-      deleted:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.string,
-            data['${effectivePrefix}DELETED'],
-          )!,
+      empresaId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}EMPRESA_ID'],
+      )!,
+      promoDtoId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}PROMO_DTO_ID'],
+      )!,
+      clienteId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}CLIENTE_ID'],
+      )!,
+      tipo: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}TIPO'],
+      )!,
+      lastUpdated: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}LAST_UPDATED'],
+      )!,
+      deleted: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}DELETED'],
+      )!,
     );
   }
 
@@ -30709,50 +30390,42 @@ class $PromoDtoLinTableTable extends PromoDtoLinTable
   PromoDtoLineaDTO map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
     return PromoDtoLineaDTO.new(
-      empresaId:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.string,
-            data['${effectivePrefix}EMPRESA_ID'],
-          )!,
-      promoDtoId:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.string,
-            data['${effectivePrefix}PROMO_DTO_ID'],
-          )!,
-      articuloId:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.string,
-            data['${effectivePrefix}ARTICULO_ID'],
-          )!,
-      cantidadDesde:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.int,
-            data['${effectivePrefix}CANTIDAD_DESDE'],
-          )!,
-      precio:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.double,
-            data['${effectivePrefix}PRECIO'],
-          )!,
+      empresaId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}EMPRESA_ID'],
+      )!,
+      promoDtoId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}PROMO_DTO_ID'],
+      )!,
+      articuloId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}ARTICULO_ID'],
+      )!,
+      cantidadDesde: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}CANTIDAD_DESDE'],
+      )!,
+      precio: attachedDatabase.typeMapping.read(
+        DriftSqlType.double,
+        data['${effectivePrefix}PRECIO'],
+      )!,
       tipoPrecio: attachedDatabase.typeMapping.read(
         DriftSqlType.int,
         data['${effectivePrefix}TIPO_PRECIO'],
       ),
-      dto:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.double,
-            data['${effectivePrefix}DTO'],
-          )!,
-      lastUpdated:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.dateTime,
-            data['${effectivePrefix}LAST_UPDATED'],
-          )!,
-      deleted:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.string,
-            data['${effectivePrefix}DELETED'],
-          )!,
+      dto: attachedDatabase.typeMapping.read(
+        DriftSqlType.double,
+        data['${effectivePrefix}DTO'],
+      )!,
+      lastUpdated: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}LAST_UPDATED'],
+      )!,
+      deleted: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}DELETED'],
+      )!,
     );
   }
 
@@ -31154,12 +30827,10 @@ final class $$PaisTableTableReferences
       );
 
   $$ClienteTableTableProcessedTableManager get clienteTableRefs {
-    final manager = $$ClienteTableTableTableManager(
-      $_db,
-      $_db.clienteTable,
-    ).filter(
-      (f) => f.paisFiscalId.id.sqlEquals($_itemColumn<String>('PAIS_ID')!),
-    );
+    final manager = $$ClienteTableTableTableManager($_db, $_db.clienteTable)
+        .filter(
+          (f) => f.paisFiscalId.id.sqlEquals($_itemColumn<String>('PAIS_ID')!),
+        );
 
     final cache = $_typedResult.readTableOrNull(_clienteTableRefsTable($_db));
     return ProcessedTableManager(
@@ -31681,12 +31352,12 @@ class $$PaisTableTableTableManager
         TableManagerState(
           db: db,
           table: table,
-          createFilteringComposer:
-              () => $$PaisTableTableFilterComposer($db: db, $table: table),
-          createOrderingComposer:
-              () => $$PaisTableTableOrderingComposer($db: db, $table: table),
-          createComputedFieldComposer:
-              () => $$PaisTableTableAnnotationComposer($db: db, $table: table),
+          createFilteringComposer: () =>
+              $$PaisTableTableFilterComposer($db: db, $table: table),
+          createOrderingComposer: () =>
+              $$PaisTableTableOrderingComposer($db: db, $table: table),
+          createComputedFieldComposer: () =>
+              $$PaisTableTableAnnotationComposer($db: db, $table: table),
           updateCompanionCallback:
               ({
                 Value<String> id = const Value.absent(),
@@ -31775,99 +31446,97 @@ class $$PaisTableTableTableManager
                 deleted: deleted,
                 rowid: rowid,
               ),
-          withReferenceMapper:
-              (p0) =>
-                  p0
-                      .map(
-                        (e) => (
-                          e.readTable(table),
-                          $$PaisTableTableReferences(db, table, e),
-                        ),
-                      )
-                      .toList(),
-          prefetchHooksCallback: ({
-            pedidoVentaTableRefs = false,
-            clienteTableRefs = false,
-            clienteDireccionTableRefs = false,
-          }) {
-            return PrefetchHooks(
-              db: db,
-              explicitlyWatchedTables: [
-                if (pedidoVentaTableRefs) db.pedidoVentaTable,
-                if (clienteTableRefs) db.clienteTable,
-                if (clienteDireccionTableRefs) db.clienteDireccionTable,
-              ],
-              addJoins: null,
-              getPrefetchedDataCallback: (items) async {
-                return [
-                  if (pedidoVentaTableRefs)
-                    await $_getPrefetchedData<
-                      PaisDTO,
-                      $PaisTableTable,
-                      PedidoVentaDTO
-                    >(
-                      currentTable: table,
-                      referencedTable: $$PaisTableTableReferences
-                          ._pedidoVentaTableRefsTable(db),
-                      managerFromTypedResult:
-                          (p0) =>
+          withReferenceMapper: (p0) => p0
+              .map(
+                (e) => (
+                  e.readTable(table),
+                  $$PaisTableTableReferences(db, table, e),
+                ),
+              )
+              .toList(),
+          prefetchHooksCallback:
+              ({
+                pedidoVentaTableRefs = false,
+                clienteTableRefs = false,
+                clienteDireccionTableRefs = false,
+              }) {
+                return PrefetchHooks(
+                  db: db,
+                  explicitlyWatchedTables: [
+                    if (pedidoVentaTableRefs) db.pedidoVentaTable,
+                    if (clienteTableRefs) db.clienteTable,
+                    if (clienteDireccionTableRefs) db.clienteDireccionTable,
+                  ],
+                  addJoins: null,
+                  getPrefetchedDataCallback: (items) async {
+                    return [
+                      if (pedidoVentaTableRefs)
+                        await $_getPrefetchedData<
+                          PaisDTO,
+                          $PaisTableTable,
+                          PedidoVentaDTO
+                        >(
+                          currentTable: table,
+                          referencedTable: $$PaisTableTableReferences
+                              ._pedidoVentaTableRefsTable(db),
+                          managerFromTypedResult: (p0) =>
                               $$PaisTableTableReferences(
                                 db,
                                 table,
                                 p0,
                               ).pedidoVentaTableRefs,
-                      referencedItemsForCurrentItem:
-                          (item, referencedItems) =>
-                              referencedItems.where((e) => e.paisId == item.id),
-                      typedResults: items,
-                    ),
-                  if (clienteTableRefs)
-                    await $_getPrefetchedData<
-                      PaisDTO,
-                      $PaisTableTable,
-                      ClienteDTO
-                    >(
-                      currentTable: table,
-                      referencedTable: $$PaisTableTableReferences
-                          ._clienteTableRefsTable(db),
-                      managerFromTypedResult:
-                          (p0) =>
+                          referencedItemsForCurrentItem:
+                              (item, referencedItems) => referencedItems.where(
+                                (e) => e.paisId == item.id,
+                              ),
+                          typedResults: items,
+                        ),
+                      if (clienteTableRefs)
+                        await $_getPrefetchedData<
+                          PaisDTO,
+                          $PaisTableTable,
+                          ClienteDTO
+                        >(
+                          currentTable: table,
+                          referencedTable: $$PaisTableTableReferences
+                              ._clienteTableRefsTable(db),
+                          managerFromTypedResult: (p0) =>
                               $$PaisTableTableReferences(
                                 db,
                                 table,
                                 p0,
                               ).clienteTableRefs,
-                      referencedItemsForCurrentItem:
-                          (item, referencedItems) => referencedItems.where(
-                            (e) => e.paisFiscalId == item.id,
-                          ),
-                      typedResults: items,
-                    ),
-                  if (clienteDireccionTableRefs)
-                    await $_getPrefetchedData<
-                      PaisDTO,
-                      $PaisTableTable,
-                      ClienteDireccionDTO
-                    >(
-                      currentTable: table,
-                      referencedTable: $$PaisTableTableReferences
-                          ._clienteDireccionTableRefsTable(db),
-                      managerFromTypedResult:
-                          (p0) =>
+                          referencedItemsForCurrentItem:
+                              (item, referencedItems) => referencedItems.where(
+                                (e) => e.paisFiscalId == item.id,
+                              ),
+                          typedResults: items,
+                        ),
+                      if (clienteDireccionTableRefs)
+                        await $_getPrefetchedData<
+                          PaisDTO,
+                          $PaisTableTable,
+                          ClienteDireccionDTO
+                        >(
+                          currentTable: table,
+                          referencedTable: $$PaisTableTableReferences
+                              ._clienteDireccionTableRefsTable(db),
+                          managerFromTypedResult: (p0) =>
                               $$PaisTableTableReferences(
                                 db,
                                 table,
                                 p0,
                               ).clienteDireccionTableRefs,
-                      referencedItemsForCurrentItem:
-                          (item, referencedItems) =>
-                              referencedItems.where((e) => e.paisId == item.id),
-                      typedResults: items,
-                    ),
-                ];
+                          referencedItemsForCurrentItem:
+                              (item, referencedItems) => referencedItems.where(
+                                (e) => e.paisId == item.id,
+                              ),
+                          typedResults: items,
+                        ),
+                    ];
+                  },
+                );
               },
-            );
-          },
         ),
       );
 }
@@ -31956,12 +31625,10 @@ final class $$DivisaTableTableReferences
       );
 
   $$PedidoVentaTableTableProcessedTableManager get pedidoVentaTableRefs {
-    final manager = $$PedidoVentaTableTableTableManager(
-      $_db,
-      $_db.pedidoVentaTable,
-    ).filter(
-      (f) => f.divisaId.id.sqlEquals($_itemColumn<String>('DIVISA_ID')!),
-    );
+    final manager =
+        $$PedidoVentaTableTableTableManager($_db, $_db.pedidoVentaTable).filter(
+          (f) => f.divisaId.id.sqlEquals($_itemColumn<String>('DIVISA_ID')!),
+        );
 
     final cache = $_typedResult.readTableOrNull(
       _pedidoVentaTableRefsTable($_db),
@@ -31982,12 +31649,10 @@ final class $$DivisaTableTableReferences
       );
 
   $$ClienteTableTableProcessedTableManager get clienteTableRefs {
-    final manager = $$ClienteTableTableTableManager(
-      $_db,
-      $_db.clienteTable,
-    ).filter(
-      (f) => f.divisaId.id.sqlEquals($_itemColumn<String>('DIVISA_ID')!),
-    );
+    final manager = $$ClienteTableTableTableManager($_db, $_db.clienteTable)
+        .filter(
+          (f) => f.divisaId.id.sqlEquals($_itemColumn<String>('DIVISA_ID')!),
+        );
 
     final cache = $_typedResult.readTableOrNull(_clienteTableRefsTable($_db));
     return ProcessedTableManager(
@@ -32456,13 +32121,12 @@ class $$DivisaTableTableTableManager
         TableManagerState(
           db: db,
           table: table,
-          createFilteringComposer:
-              () => $$DivisaTableTableFilterComposer($db: db, $table: table),
-          createOrderingComposer:
-              () => $$DivisaTableTableOrderingComposer($db: db, $table: table),
-          createComputedFieldComposer:
-              () =>
-                  $$DivisaTableTableAnnotationComposer($db: db, $table: table),
+          createFilteringComposer: () =>
+              $$DivisaTableTableFilterComposer($db: db, $table: table),
+          createOrderingComposer: () =>
+              $$DivisaTableTableOrderingComposer($db: db, $table: table),
+          createComputedFieldComposer: () =>
+              $$DivisaTableTableAnnotationComposer($db: db, $table: table),
           updateCompanionCallback:
               ({
                 Value<String> id = const Value.absent(),
@@ -32559,77 +32223,71 @@ class $$DivisaTableTableTableManager
                 deleted: deleted,
                 rowid: rowid,
               ),
-          withReferenceMapper:
-              (p0) =>
-                  p0
-                      .map(
-                        (e) => (
-                          e.readTable(table),
-                          $$DivisaTableTableReferences(db, table, e),
-                        ),
-                      )
-                      .toList(),
-          prefetchHooksCallback: ({
-            pedidoVentaTableRefs = false,
-            clienteTableRefs = false,
-          }) {
-            return PrefetchHooks(
-              db: db,
-              explicitlyWatchedTables: [
-                if (pedidoVentaTableRefs) db.pedidoVentaTable,
-                if (clienteTableRefs) db.clienteTable,
-              ],
-              addJoins: null,
-              getPrefetchedDataCallback: (items) async {
-                return [
-                  if (pedidoVentaTableRefs)
-                    await $_getPrefetchedData<
-                      DivisaDTO,
-                      $DivisaTableTable,
-                      PedidoVentaDTO
-                    >(
-                      currentTable: table,
-                      referencedTable: $$DivisaTableTableReferences
-                          ._pedidoVentaTableRefsTable(db),
-                      managerFromTypedResult:
-                          (p0) =>
+          withReferenceMapper: (p0) => p0
+              .map(
+                (e) => (
+                  e.readTable(table),
+                  $$DivisaTableTableReferences(db, table, e),
+                ),
+              )
+              .toList(),
+          prefetchHooksCallback:
+              ({pedidoVentaTableRefs = false, clienteTableRefs = false}) {
+                return PrefetchHooks(
+                  db: db,
+                  explicitlyWatchedTables: [
+                    if (pedidoVentaTableRefs) db.pedidoVentaTable,
+                    if (clienteTableRefs) db.clienteTable,
+                  ],
+                  addJoins: null,
+                  getPrefetchedDataCallback: (items) async {
+                    return [
+                      if (pedidoVentaTableRefs)
+                        await $_getPrefetchedData<
+                          DivisaDTO,
+                          $DivisaTableTable,
+                          PedidoVentaDTO
+                        >(
+                          currentTable: table,
+                          referencedTable: $$DivisaTableTableReferences
+                              ._pedidoVentaTableRefsTable(db),
+                          managerFromTypedResult: (p0) =>
                               $$DivisaTableTableReferences(
                                 db,
                                 table,
                                 p0,
                               ).pedidoVentaTableRefs,
-                      referencedItemsForCurrentItem:
-                          (item, referencedItems) => referencedItems.where(
-                            (e) => e.divisaId == item.id,
-                          ),
-                      typedResults: items,
-                    ),
-                  if (clienteTableRefs)
-                    await $_getPrefetchedData<
-                      DivisaDTO,
-                      $DivisaTableTable,
-                      ClienteDTO
-                    >(
-                      currentTable: table,
-                      referencedTable: $$DivisaTableTableReferences
-                          ._clienteTableRefsTable(db),
-                      managerFromTypedResult:
-                          (p0) =>
+                          referencedItemsForCurrentItem:
+                              (item, referencedItems) => referencedItems.where(
+                                (e) => e.divisaId == item.id,
+                              ),
+                          typedResults: items,
+                        ),
+                      if (clienteTableRefs)
+                        await $_getPrefetchedData<
+                          DivisaDTO,
+                          $DivisaTableTable,
+                          ClienteDTO
+                        >(
+                          currentTable: table,
+                          referencedTable: $$DivisaTableTableReferences
+                              ._clienteTableRefsTable(db),
+                          managerFromTypedResult: (p0) =>
                               $$DivisaTableTableReferences(
                                 db,
                                 table,
                                 p0,
                               ).clienteTableRefs,
-                      referencedItemsForCurrentItem:
-                          (item, referencedItems) => referencedItems.where(
-                            (e) => e.divisaId == item.id,
-                          ),
-                      typedResults: items,
-                    ),
-                ];
+                          referencedItemsForCurrentItem:
+                              (item, referencedItems) => referencedItems.where(
+                                (e) => e.divisaId == item.id,
+                              ),
+                          typedResults: items,
+                        ),
+                    ];
+                  },
+                );
               },
-            );
-          },
         ),
       );
 }
@@ -32713,14 +32371,12 @@ final class $$PedidoVentaEstadoTableTableReferences
       );
 
   $$PedidoVentaTableTableProcessedTableManager get pedidoVentaTableRefs {
-    final manager = $$PedidoVentaTableTableTableManager(
-      $_db,
-      $_db.pedidoVentaTable,
-    ).filter(
-      (f) => f.pedidoVentaEstadoId.id.sqlEquals(
-        $_itemColumn<int>('ESTADO_PEDIDO_ID')!,
-      ),
-    );
+    final manager =
+        $$PedidoVentaTableTableTableManager($_db, $_db.pedidoVentaTable).filter(
+          (f) => f.pedidoVentaEstadoId.id.sqlEquals(
+            $_itemColumn<int>('ESTADO_PEDIDO_ID')!,
+          ),
+        );
 
     final cache = $_typedResult.readTableOrNull(
       _pedidoVentaTableRefsTable($_db),
@@ -33084,18 +32740,18 @@ class $$PedidoVentaEstadoTableTableTableManager
         TableManagerState(
           db: db,
           table: table,
-          createFilteringComposer:
-              () => $$PedidoVentaEstadoTableTableFilterComposer(
+          createFilteringComposer: () =>
+              $$PedidoVentaEstadoTableTableFilterComposer(
                 $db: db,
                 $table: table,
               ),
-          createOrderingComposer:
-              () => $$PedidoVentaEstadoTableTableOrderingComposer(
+          createOrderingComposer: () =>
+              $$PedidoVentaEstadoTableTableOrderingComposer(
                 $db: db,
                 $table: table,
               ),
-          createComputedFieldComposer:
-              () => $$PedidoVentaEstadoTableTableAnnotationComposer(
+          createComputedFieldComposer: () =>
+              $$PedidoVentaEstadoTableTableAnnotationComposer(
                 $db: db,
                 $table: table,
               ),
@@ -33175,16 +32831,14 @@ class $$PedidoVentaEstadoTableTableTableManager
                 lastUpdated: lastUpdated,
                 deleted: deleted,
               ),
-          withReferenceMapper:
-              (p0) =>
-                  p0
-                      .map(
-                        (e) => (
-                          e.readTable(table),
-                          $$PedidoVentaEstadoTableTableReferences(db, table, e),
-                        ),
-                      )
-                      .toList(),
+          withReferenceMapper: (p0) => p0
+              .map(
+                (e) => (
+                  e.readTable(table),
+                  $$PedidoVentaEstadoTableTableReferences(db, table, e),
+                ),
+              )
+              .toList(),
           prefetchHooksCallback: ({pedidoVentaTableRefs = false}) {
             return PrefetchHooks(
               db: db,
@@ -33203,15 +32857,14 @@ class $$PedidoVentaEstadoTableTableTableManager
                       currentTable: table,
                       referencedTable: $$PedidoVentaEstadoTableTableReferences
                           ._pedidoVentaTableRefsTable(db),
-                      managerFromTypedResult:
-                          (p0) =>
-                              $$PedidoVentaEstadoTableTableReferences(
-                                db,
-                                table,
-                                p0,
-                              ).pedidoVentaTableRefs,
-                      referencedItemsForCurrentItem:
-                          (item, referencedItems) => referencedItems.where(
+                      managerFromTypedResult: (p0) =>
+                          $$PedidoVentaEstadoTableTableReferences(
+                            db,
+                            table,
+                            p0,
+                          ).pedidoVentaTableRefs,
+                      referencedItemsForCurrentItem: (item, referencedItems) =>
+                          referencedItems.where(
                             (e) => e.pedidoVentaEstadoId == item.id,
                           ),
                       typedResults: items,
@@ -33967,19 +33620,12 @@ class $$PedidoVentaTableTableTableManager
         TableManagerState(
           db: db,
           table: table,
-          createFilteringComposer:
-              () =>
-                  $$PedidoVentaTableTableFilterComposer($db: db, $table: table),
-          createOrderingComposer:
-              () => $$PedidoVentaTableTableOrderingComposer(
-                $db: db,
-                $table: table,
-              ),
-          createComputedFieldComposer:
-              () => $$PedidoVentaTableTableAnnotationComposer(
-                $db: db,
-                $table: table,
-              ),
+          createFilteringComposer: () =>
+              $$PedidoVentaTableTableFilterComposer($db: db, $table: table),
+          createOrderingComposer: () =>
+              $$PedidoVentaTableTableOrderingComposer($db: db, $table: table),
+          createComputedFieldComposer: () =>
+              $$PedidoVentaTableTableAnnotationComposer($db: db, $table: table),
           updateCompanionCallback:
               ({
                 Value<String> empresaId = const Value.absent(),
@@ -34096,89 +33742,92 @@ class $$PedidoVentaTableTableTableManager
                 deleted: deleted,
                 rowid: rowid,
               ),
-          withReferenceMapper:
-              (p0) =>
-                  p0
-                      .map(
-                        (e) => (
-                          e.readTable(table),
-                          $$PedidoVentaTableTableReferences(db, table, e),
-                        ),
-                      )
-                      .toList(),
-          prefetchHooksCallback: ({
-            paisId = false,
-            divisaId = false,
-            pedidoVentaEstadoId = false,
-          }) {
-            return PrefetchHooks(
-              db: db,
-              explicitlyWatchedTables: [],
-              addJoins: <
-                T extends TableManagerState<
-                  dynamic,
-                  dynamic,
-                  dynamic,
-                  dynamic,
-                  dynamic,
-                  dynamic,
-                  dynamic,
-                  dynamic,
-                  dynamic,
-                  dynamic,
-                  dynamic
-                >
-              >(state) {
-                if (paisId) {
-                  state =
-                      state.withJoin(
-                            currentTable: table,
-                            currentColumn: table.paisId,
-                            referencedTable: $$PedidoVentaTableTableReferences
-                                ._paisIdTable(db),
-                            referencedColumn:
-                                $$PedidoVentaTableTableReferences
-                                    ._paisIdTable(db)
-                                    .id,
-                          )
-                          as T;
-                }
-                if (divisaId) {
-                  state =
-                      state.withJoin(
-                            currentTable: table,
-                            currentColumn: table.divisaId,
-                            referencedTable: $$PedidoVentaTableTableReferences
-                                ._divisaIdTable(db),
-                            referencedColumn:
-                                $$PedidoVentaTableTableReferences
-                                    ._divisaIdTable(db)
-                                    .id,
-                          )
-                          as T;
-                }
-                if (pedidoVentaEstadoId) {
-                  state =
-                      state.withJoin(
-                            currentTable: table,
-                            currentColumn: table.pedidoVentaEstadoId,
-                            referencedTable: $$PedidoVentaTableTableReferences
-                                ._pedidoVentaEstadoIdTable(db),
-                            referencedColumn:
-                                $$PedidoVentaTableTableReferences
-                                    ._pedidoVentaEstadoIdTable(db)
-                                    .id,
-                          )
-                          as T;
-                }
+          withReferenceMapper: (p0) => p0
+              .map(
+                (e) => (
+                  e.readTable(table),
+                  $$PedidoVentaTableTableReferences(db, table, e),
+                ),
+              )
+              .toList(),
+          prefetchHooksCallback:
+              ({
+                paisId = false,
+                divisaId = false,
+                pedidoVentaEstadoId = false,
+              }) {
+                return PrefetchHooks(
+                  db: db,
+                  explicitlyWatchedTables: [],
+                  addJoins:
+                      <
+                        T extends TableManagerState<
+                          dynamic,
+                          dynamic,
+                          dynamic,
+                          dynamic,
+                          dynamic,
+                          dynamic,
+                          dynamic,
+                          dynamic,
+                          dynamic,
+                          dynamic,
+                          dynamic
+                        >
+                      >(state) {
+                        if (paisId) {
+                          state =
+                              state.withJoin(
+                                    currentTable: table,
+                                    currentColumn: table.paisId,
+                                    referencedTable:
+                                        $$PedidoVentaTableTableReferences
+                                            ._paisIdTable(db),
+                                    referencedColumn:
+                                        $$PedidoVentaTableTableReferences
+                                            ._paisIdTable(db)
+                                            .id,
+                                  )
+                                  as T;
+                        }
+                        if (divisaId) {
+                          state =
+                              state.withJoin(
+                                    currentTable: table,
+                                    currentColumn: table.divisaId,
+                                    referencedTable:
+                                        $$PedidoVentaTableTableReferences
+                                            ._divisaIdTable(db),
+                                    referencedColumn:
+                                        $$PedidoVentaTableTableReferences
+                                            ._divisaIdTable(db)
+                                            .id,
+                                  )
+                                  as T;
+                        }
+                        if (pedidoVentaEstadoId) {
+                          state =
+                              state.withJoin(
+                                    currentTable: table,
+                                    currentColumn: table.pedidoVentaEstadoId,
+                                    referencedTable:
+                                        $$PedidoVentaTableTableReferences
+                                            ._pedidoVentaEstadoIdTable(db),
+                                    referencedColumn:
+                                        $$PedidoVentaTableTableReferences
+                                            ._pedidoVentaEstadoIdTable(db)
+                                            .id,
+                                  )
+                                  as T;
+                        }
 
-                return state;
+                        return state;
+                      },
+                  getPrefetchedDataCallback: (items) async {
+                    return [];
+                  },
+                );
               },
-              getPrefetchedDataCallback: (items) async {
-                return [];
-              },
-            );
-          },
         ),
       );
 }
@@ -34533,18 +34182,18 @@ class $$PedidoVentaLineaTableTableTableManager
         TableManagerState(
           db: db,
           table: table,
-          createFilteringComposer:
-              () => $$PedidoVentaLineaTableTableFilterComposer(
+          createFilteringComposer: () =>
+              $$PedidoVentaLineaTableTableFilterComposer(
                 $db: db,
                 $table: table,
               ),
-          createOrderingComposer:
-              () => $$PedidoVentaLineaTableTableOrderingComposer(
+          createOrderingComposer: () =>
+              $$PedidoVentaLineaTableTableOrderingComposer(
                 $db: db,
                 $table: table,
               ),
-          createComputedFieldComposer:
-              () => $$PedidoVentaLineaTableTableAnnotationComposer(
+          createComputedFieldComposer: () =>
+              $$PedidoVentaLineaTableTableAnnotationComposer(
                 $db: db,
                 $table: table,
               ),
@@ -34624,16 +34273,9 @@ class $$PedidoVentaLineaTableTableTableManager
                 deleted: deleted,
                 rowid: rowid,
               ),
-          withReferenceMapper:
-              (p0) =>
-                  p0
-                      .map(
-                        (e) => (
-                          e.readTable(table),
-                          BaseReferences(db, table, e),
-                        ),
-                      )
-                      .toList(),
+          withReferenceMapper: (p0) => p0
+              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
+              .toList(),
           prefetchHooksCallback: null,
         ),
       );
@@ -34729,14 +34371,12 @@ final class $$PlazoDeCobroTableTableReferences
       );
 
   $$ClienteTableTableProcessedTableManager get clienteTableRefs {
-    final manager = $$ClienteTableTableTableManager(
-      $_db,
-      $_db.clienteTable,
-    ).filter(
-      (f) => f.plazoDeCobroId.id.sqlEquals(
-        $_itemColumn<String>('PLAZO_COBRO_ID')!,
-      ),
-    );
+    final manager = $$ClienteTableTableTableManager($_db, $_db.clienteTable)
+        .filter(
+          (f) => f.plazoDeCobroId.id.sqlEquals(
+            $_itemColumn<String>('PLAZO_COBRO_ID')!,
+          ),
+        );
 
     final cache = $_typedResult.readTableOrNull(_clienteTableRefsTable($_db));
     return ProcessedTableManager(
@@ -35113,18 +34753,12 @@ class $$PlazoDeCobroTableTableTableManager
         TableManagerState(
           db: db,
           table: table,
-          createFilteringComposer:
-              () => $$PlazoDeCobroTableTableFilterComposer(
-                $db: db,
-                $table: table,
-              ),
-          createOrderingComposer:
-              () => $$PlazoDeCobroTableTableOrderingComposer(
-                $db: db,
-                $table: table,
-              ),
-          createComputedFieldComposer:
-              () => $$PlazoDeCobroTableTableAnnotationComposer(
+          createFilteringComposer: () =>
+              $$PlazoDeCobroTableTableFilterComposer($db: db, $table: table),
+          createOrderingComposer: () =>
+              $$PlazoDeCobroTableTableOrderingComposer($db: db, $table: table),
+          createComputedFieldComposer: () =>
+              $$PlazoDeCobroTableTableAnnotationComposer(
                 $db: db,
                 $table: table,
               ),
@@ -35212,16 +34846,14 @@ class $$PlazoDeCobroTableTableTableManager
                 deleted: deleted,
                 rowid: rowid,
               ),
-          withReferenceMapper:
-              (p0) =>
-                  p0
-                      .map(
-                        (e) => (
-                          e.readTable(table),
-                          $$PlazoDeCobroTableTableReferences(db, table, e),
-                        ),
-                      )
-                      .toList(),
+          withReferenceMapper: (p0) => p0
+              .map(
+                (e) => (
+                  e.readTable(table),
+                  $$PlazoDeCobroTableTableReferences(db, table, e),
+                ),
+              )
+              .toList(),
           prefetchHooksCallback: ({clienteTableRefs = false}) {
             return PrefetchHooks(
               db: db,
@@ -35238,15 +34870,14 @@ class $$PlazoDeCobroTableTableTableManager
                       currentTable: table,
                       referencedTable: $$PlazoDeCobroTableTableReferences
                           ._clienteTableRefsTable(db),
-                      managerFromTypedResult:
-                          (p0) =>
-                              $$PlazoDeCobroTableTableReferences(
-                                db,
-                                table,
-                                p0,
-                              ).clienteTableRefs,
-                      referencedItemsForCurrentItem:
-                          (item, referencedItems) => referencedItems.where(
+                      managerFromTypedResult: (p0) =>
+                          $$PlazoDeCobroTableTableReferences(
+                            db,
+                            table,
+                            p0,
+                          ).clienteTableRefs,
+                      referencedItemsForCurrentItem: (item, referencedItems) =>
+                          referencedItems.where(
                             (e) => e.plazoDeCobroId == item.id,
                           ),
                       typedResults: items,
@@ -35342,14 +34973,12 @@ final class $$MetodoDeCobroTableTableReferences
       );
 
   $$ClienteTableTableProcessedTableManager get clienteTableRefs {
-    final manager = $$ClienteTableTableTableManager(
-      $_db,
-      $_db.clienteTable,
-    ).filter(
-      (f) => f.metodoDeCobroId.id.sqlEquals(
-        $_itemColumn<String>('METODO_COBRO_ID')!,
-      ),
-    );
+    final manager = $$ClienteTableTableTableManager($_db, $_db.clienteTable)
+        .filter(
+          (f) => f.metodoDeCobroId.id.sqlEquals(
+            $_itemColumn<String>('METODO_COBRO_ID')!,
+          ),
+        );
 
     final cache = $_typedResult.readTableOrNull(_clienteTableRefsTable($_db));
     return ProcessedTableManager(
@@ -35372,14 +35001,15 @@ final class $$MetodoDeCobroTableTableReferences
 
   $$ClientePagoPendienteTableTableProcessedTableManager
   get clientePagoPendienteTableRefs {
-    final manager = $$ClientePagoPendienteTableTableTableManager(
-      $_db,
-      $_db.clientePagoPendienteTable,
-    ).filter(
-      (f) => f.metodoDeCobroId.id.sqlEquals(
-        $_itemColumn<String>('METODO_COBRO_ID')!,
-      ),
-    );
+    final manager =
+        $$ClientePagoPendienteTableTableTableManager(
+          $_db,
+          $_db.clientePagoPendienteTable,
+        ).filter(
+          (f) => f.metodoDeCobroId.id.sqlEquals(
+            $_itemColumn<String>('METODO_COBRO_ID')!,
+          ),
+        );
 
     final cache = $_typedResult.readTableOrNull(
       _clientePagoPendienteTableRefsTable($_db),
@@ -35815,18 +35445,12 @@ class $$MetodoDeCobroTableTableTableManager
         TableManagerState(
           db: db,
           table: table,
-          createFilteringComposer:
-              () => $$MetodoDeCobroTableTableFilterComposer(
-                $db: db,
-                $table: table,
-              ),
-          createOrderingComposer:
-              () => $$MetodoDeCobroTableTableOrderingComposer(
-                $db: db,
-                $table: table,
-              ),
-          createComputedFieldComposer:
-              () => $$MetodoDeCobroTableTableAnnotationComposer(
+          createFilteringComposer: () =>
+              $$MetodoDeCobroTableTableFilterComposer($db: db, $table: table),
+          createOrderingComposer: () =>
+              $$MetodoDeCobroTableTableOrderingComposer($db: db, $table: table),
+          createComputedFieldComposer: () =>
+              $$MetodoDeCobroTableTableAnnotationComposer(
                 $db: db,
                 $table: table,
               ),
@@ -35914,77 +35538,75 @@ class $$MetodoDeCobroTableTableTableManager
                 deleted: deleted,
                 rowid: rowid,
               ),
-          withReferenceMapper:
-              (p0) =>
-                  p0
-                      .map(
-                        (e) => (
-                          e.readTable(table),
-                          $$MetodoDeCobroTableTableReferences(db, table, e),
-                        ),
-                      )
-                      .toList(),
-          prefetchHooksCallback: ({
-            clienteTableRefs = false,
-            clientePagoPendienteTableRefs = false,
-          }) {
-            return PrefetchHooks(
-              db: db,
-              explicitlyWatchedTables: [
-                if (clienteTableRefs) db.clienteTable,
-                if (clientePagoPendienteTableRefs) db.clientePagoPendienteTable,
-              ],
-              addJoins: null,
-              getPrefetchedDataCallback: (items) async {
-                return [
-                  if (clienteTableRefs)
-                    await $_getPrefetchedData<
-                      MetodoDeCobroDTO,
-                      $MetodoDeCobroTableTable,
-                      ClienteDTO
-                    >(
-                      currentTable: table,
-                      referencedTable: $$MetodoDeCobroTableTableReferences
-                          ._clienteTableRefsTable(db),
-                      managerFromTypedResult:
-                          (p0) =>
+          withReferenceMapper: (p0) => p0
+              .map(
+                (e) => (
+                  e.readTable(table),
+                  $$MetodoDeCobroTableTableReferences(db, table, e),
+                ),
+              )
+              .toList(),
+          prefetchHooksCallback:
+              ({
+                clienteTableRefs = false,
+                clientePagoPendienteTableRefs = false,
+              }) {
+                return PrefetchHooks(
+                  db: db,
+                  explicitlyWatchedTables: [
+                    if (clienteTableRefs) db.clienteTable,
+                    if (clientePagoPendienteTableRefs)
+                      db.clientePagoPendienteTable,
+                  ],
+                  addJoins: null,
+                  getPrefetchedDataCallback: (items) async {
+                    return [
+                      if (clienteTableRefs)
+                        await $_getPrefetchedData<
+                          MetodoDeCobroDTO,
+                          $MetodoDeCobroTableTable,
+                          ClienteDTO
+                        >(
+                          currentTable: table,
+                          referencedTable: $$MetodoDeCobroTableTableReferences
+                              ._clienteTableRefsTable(db),
+                          managerFromTypedResult: (p0) =>
                               $$MetodoDeCobroTableTableReferences(
                                 db,
                                 table,
                                 p0,
                               ).clienteTableRefs,
-                      referencedItemsForCurrentItem:
-                          (item, referencedItems) => referencedItems.where(
-                            (e) => e.metodoDeCobroId == item.id,
-                          ),
-                      typedResults: items,
-                    ),
-                  if (clientePagoPendienteTableRefs)
-                    await $_getPrefetchedData<
-                      MetodoDeCobroDTO,
-                      $MetodoDeCobroTableTable,
-                      ClientePagoPendienteDTO
-                    >(
-                      currentTable: table,
-                      referencedTable: $$MetodoDeCobroTableTableReferences
-                          ._clientePagoPendienteTableRefsTable(db),
-                      managerFromTypedResult:
-                          (p0) =>
+                          referencedItemsForCurrentItem:
+                              (item, referencedItems) => referencedItems.where(
+                                (e) => e.metodoDeCobroId == item.id,
+                              ),
+                          typedResults: items,
+                        ),
+                      if (clientePagoPendienteTableRefs)
+                        await $_getPrefetchedData<
+                          MetodoDeCobroDTO,
+                          $MetodoDeCobroTableTable,
+                          ClientePagoPendienteDTO
+                        >(
+                          currentTable: table,
+                          referencedTable: $$MetodoDeCobroTableTableReferences
+                              ._clientePagoPendienteTableRefsTable(db),
+                          managerFromTypedResult: (p0) =>
                               $$MetodoDeCobroTableTableReferences(
                                 db,
                                 table,
                                 p0,
                               ).clientePagoPendienteTableRefs,
-                      referencedItemsForCurrentItem:
-                          (item, referencedItems) => referencedItems.where(
-                            (e) => e.metodoDeCobroId == item.id,
-                          ),
-                      typedResults: items,
-                    ),
-                ];
+                          referencedItemsForCurrentItem:
+                              (item, referencedItems) => referencedItems.where(
+                                (e) => e.metodoDeCobroId == item.id,
+                              ),
+                          typedResults: items,
+                        ),
+                    ];
+                  },
+                );
               },
-            );
-          },
         ),
       );
 }
@@ -37436,13 +37058,12 @@ class $$ClienteTableTableTableManager
         TableManagerState(
           db: db,
           table: table,
-          createFilteringComposer:
-              () => $$ClienteTableTableFilterComposer($db: db, $table: table),
-          createOrderingComposer:
-              () => $$ClienteTableTableOrderingComposer($db: db, $table: table),
-          createComputedFieldComposer:
-              () =>
-                  $$ClienteTableTableAnnotationComposer($db: db, $table: table),
+          createFilteringComposer: () =>
+              $$ClienteTableTableFilterComposer($db: db, $table: table),
+          createOrderingComposer: () =>
+              $$ClienteTableTableOrderingComposer($db: db, $table: table),
+          createComputedFieldComposer: () =>
+              $$ClienteTableTableAnnotationComposer($db: db, $table: table),
           updateCompanionCallback:
               ({
                 Value<String> id = const Value.absent(),
@@ -37717,104 +37338,108 @@ class $$ClienteTableTableTableManager
                 deleted: deleted,
                 rowid: rowid,
               ),
-          withReferenceMapper:
-              (p0) =>
-                  p0
-                      .map(
-                        (e) => (
-                          e.readTable(table),
-                          $$ClienteTableTableReferences(db, table, e),
-                        ),
-                      )
-                      .toList(),
-          prefetchHooksCallback: ({
-            paisFiscalId = false,
-            divisaId = false,
-            plazoDeCobroId = false,
-            metodoDeCobroId = false,
-          }) {
-            return PrefetchHooks(
-              db: db,
-              explicitlyWatchedTables: [],
-              addJoins: <
-                T extends TableManagerState<
-                  dynamic,
-                  dynamic,
-                  dynamic,
-                  dynamic,
-                  dynamic,
-                  dynamic,
-                  dynamic,
-                  dynamic,
-                  dynamic,
-                  dynamic,
-                  dynamic
-                >
-              >(state) {
-                if (paisFiscalId) {
-                  state =
-                      state.withJoin(
-                            currentTable: table,
-                            currentColumn: table.paisFiscalId,
-                            referencedTable: $$ClienteTableTableReferences
-                                ._paisFiscalIdTable(db),
-                            referencedColumn:
-                                $$ClienteTableTableReferences
-                                    ._paisFiscalIdTable(db)
-                                    .id,
-                          )
-                          as T;
-                }
-                if (divisaId) {
-                  state =
-                      state.withJoin(
-                            currentTable: table,
-                            currentColumn: table.divisaId,
-                            referencedTable: $$ClienteTableTableReferences
-                                ._divisaIdTable(db),
-                            referencedColumn:
-                                $$ClienteTableTableReferences
-                                    ._divisaIdTable(db)
-                                    .id,
-                          )
-                          as T;
-                }
-                if (plazoDeCobroId) {
-                  state =
-                      state.withJoin(
-                            currentTable: table,
-                            currentColumn: table.plazoDeCobroId,
-                            referencedTable: $$ClienteTableTableReferences
-                                ._plazoDeCobroIdTable(db),
-                            referencedColumn:
-                                $$ClienteTableTableReferences
-                                    ._plazoDeCobroIdTable(db)
-                                    .id,
-                          )
-                          as T;
-                }
-                if (metodoDeCobroId) {
-                  state =
-                      state.withJoin(
-                            currentTable: table,
-                            currentColumn: table.metodoDeCobroId,
-                            referencedTable: $$ClienteTableTableReferences
-                                ._metodoDeCobroIdTable(db),
-                            referencedColumn:
-                                $$ClienteTableTableReferences
-                                    ._metodoDeCobroIdTable(db)
-                                    .id,
-                          )
-                          as T;
-                }
+          withReferenceMapper: (p0) => p0
+              .map(
+                (e) => (
+                  e.readTable(table),
+                  $$ClienteTableTableReferences(db, table, e),
+                ),
+              )
+              .toList(),
+          prefetchHooksCallback:
+              ({
+                paisFiscalId = false,
+                divisaId = false,
+                plazoDeCobroId = false,
+                metodoDeCobroId = false,
+              }) {
+                return PrefetchHooks(
+                  db: db,
+                  explicitlyWatchedTables: [],
+                  addJoins:
+                      <
+                        T extends TableManagerState<
+                          dynamic,
+                          dynamic,
+                          dynamic,
+                          dynamic,
+                          dynamic,
+                          dynamic,
+                          dynamic,
+                          dynamic,
+                          dynamic,
+                          dynamic,
+                          dynamic
+                        >
+                      >(state) {
+                        if (paisFiscalId) {
+                          state =
+                              state.withJoin(
+                                    currentTable: table,
+                                    currentColumn: table.paisFiscalId,
+                                    referencedTable:
+                                        $$ClienteTableTableReferences
+                                            ._paisFiscalIdTable(db),
+                                    referencedColumn:
+                                        $$ClienteTableTableReferences
+                                            ._paisFiscalIdTable(db)
+                                            .id,
+                                  )
+                                  as T;
+                        }
+                        if (divisaId) {
+                          state =
+                              state.withJoin(
+                                    currentTable: table,
+                                    currentColumn: table.divisaId,
+                                    referencedTable:
+                                        $$ClienteTableTableReferences
+                                            ._divisaIdTable(db),
+                                    referencedColumn:
+                                        $$ClienteTableTableReferences
+                                            ._divisaIdTable(db)
+                                            .id,
+                                  )
+                                  as T;
+                        }
+                        if (plazoDeCobroId) {
+                          state =
+                              state.withJoin(
+                                    currentTable: table,
+                                    currentColumn: table.plazoDeCobroId,
+                                    referencedTable:
+                                        $$ClienteTableTableReferences
+                                            ._plazoDeCobroIdTable(db),
+                                    referencedColumn:
+                                        $$ClienteTableTableReferences
+                                            ._plazoDeCobroIdTable(db)
+                                            .id,
+                                  )
+                                  as T;
+                        }
+                        if (metodoDeCobroId) {
+                          state =
+                              state.withJoin(
+                                    currentTable: table,
+                                    currentColumn: table.metodoDeCobroId,
+                                    referencedTable:
+                                        $$ClienteTableTableReferences
+                                            ._metodoDeCobroIdTable(db),
+                                    referencedColumn:
+                                        $$ClienteTableTableReferences
+                                            ._metodoDeCobroIdTable(db)
+                                            .id,
+                                  )
+                                  as T;
+                        }
 
-                return state;
+                        return state;
+                      },
+                  getPrefetchedDataCallback: (items) async {
+                    return [];
+                  },
+                );
               },
-              getPrefetchedDataCallback: (items) async {
-                return [];
-              },
-            );
-          },
         ),
       );
 }
@@ -37968,18 +37593,15 @@ class $$ClienteUsuarioTableTableTableManager
         TableManagerState(
           db: db,
           table: table,
-          createFilteringComposer:
-              () => $$ClienteUsuarioTableTableFilterComposer(
+          createFilteringComposer: () =>
+              $$ClienteUsuarioTableTableFilterComposer($db: db, $table: table),
+          createOrderingComposer: () =>
+              $$ClienteUsuarioTableTableOrderingComposer(
                 $db: db,
                 $table: table,
               ),
-          createOrderingComposer:
-              () => $$ClienteUsuarioTableTableOrderingComposer(
-                $db: db,
-                $table: table,
-              ),
-          createComputedFieldComposer:
-              () => $$ClienteUsuarioTableTableAnnotationComposer(
+          createComputedFieldComposer: () =>
+              $$ClienteUsuarioTableTableAnnotationComposer(
                 $db: db,
                 $table: table,
               ),
@@ -38011,16 +37633,9 @@ class $$ClienteUsuarioTableTableTableManager
                 deleted: deleted,
                 rowid: rowid,
               ),
-          withReferenceMapper:
-              (p0) =>
-                  p0
-                      .map(
-                        (e) => (
-                          e.readTable(table),
-                          BaseReferences(db, table, e),
-                        ),
-                      )
-                      .toList(),
+          withReferenceMapper: (p0) => p0
+              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
+              .toList(),
           prefetchHooksCallback: null,
         ),
       );
@@ -38213,18 +37828,18 @@ class $$ClienteGrupoNetoTableTableTableManager
         TableManagerState(
           db: db,
           table: table,
-          createFilteringComposer:
-              () => $$ClienteGrupoNetoTableTableFilterComposer(
+          createFilteringComposer: () =>
+              $$ClienteGrupoNetoTableTableFilterComposer(
                 $db: db,
                 $table: table,
               ),
-          createOrderingComposer:
-              () => $$ClienteGrupoNetoTableTableOrderingComposer(
+          createOrderingComposer: () =>
+              $$ClienteGrupoNetoTableTableOrderingComposer(
                 $db: db,
                 $table: table,
               ),
-          createComputedFieldComposer:
-              () => $$ClienteGrupoNetoTableTableAnnotationComposer(
+          createComputedFieldComposer: () =>
+              $$ClienteGrupoNetoTableTableAnnotationComposer(
                 $db: db,
                 $table: table,
               ),
@@ -38264,16 +37879,9 @@ class $$ClienteGrupoNetoTableTableTableManager
                 deleted: deleted,
                 rowid: rowid,
               ),
-          withReferenceMapper:
-              (p0) =>
-                  p0
-                      .map(
-                        (e) => (
-                          e.readTable(table),
-                          BaseReferences(db, table, e),
-                        ),
-                      )
-                      .toList(),
+          withReferenceMapper: (p0) => p0
+              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
+              .toList(),
           prefetchHooksCallback: null,
         ),
       );
@@ -38365,12 +37973,13 @@ final class $$FamiliaTableTableReferences
 
   $$ClienteDescuentoTableTableProcessedTableManager
   get clienteDescuentoTableRefs {
-    final manager = $$ClienteDescuentoTableTableTableManager(
-      $_db,
-      $_db.clienteDescuentoTable,
-    ).filter(
-      (f) => f.familiaId.id.sqlEquals($_itemColumn<String>('FAMILIA_ID')!),
-    );
+    final manager =
+        $$ClienteDescuentoTableTableTableManager(
+          $_db,
+          $_db.clienteDescuentoTable,
+        ).filter(
+          (f) => f.familiaId.id.sqlEquals($_itemColumn<String>('FAMILIA_ID')!),
+        );
 
     final cache = $_typedResult.readTableOrNull(
       _clienteDescuentoTableRefsTable($_db),
@@ -38391,12 +38000,10 @@ final class $$FamiliaTableTableReferences
       );
 
   $$ArticuloTableTableProcessedTableManager get articuloTableRefs {
-    final manager = $$ArticuloTableTableTableManager(
-      $_db,
-      $_db.articuloTable,
-    ).filter(
-      (f) => f.familiaId.id.sqlEquals($_itemColumn<String>('FAMILIA_ID')!),
-    );
+    final manager = $$ArticuloTableTableTableManager($_db, $_db.articuloTable)
+        .filter(
+          (f) => f.familiaId.id.sqlEquals($_itemColumn<String>('FAMILIA_ID')!),
+        );
 
     final cache = $_typedResult.readTableOrNull(_articuloTableRefsTable($_db));
     return ProcessedTableManager(
@@ -38828,13 +38435,12 @@ class $$FamiliaTableTableTableManager
         TableManagerState(
           db: db,
           table: table,
-          createFilteringComposer:
-              () => $$FamiliaTableTableFilterComposer($db: db, $table: table),
-          createOrderingComposer:
-              () => $$FamiliaTableTableOrderingComposer($db: db, $table: table),
-          createComputedFieldComposer:
-              () =>
-                  $$FamiliaTableTableAnnotationComposer($db: db, $table: table),
+          createFilteringComposer: () =>
+              $$FamiliaTableTableFilterComposer($db: db, $table: table),
+          createOrderingComposer: () =>
+              $$FamiliaTableTableOrderingComposer($db: db, $table: table),
+          createComputedFieldComposer: () =>
+              $$FamiliaTableTableAnnotationComposer($db: db, $table: table),
           updateCompanionCallback:
               ({
                 Value<String> id = const Value.absent(),
@@ -38919,77 +38525,71 @@ class $$FamiliaTableTableTableManager
                 deleted: deleted,
                 rowid: rowid,
               ),
-          withReferenceMapper:
-              (p0) =>
-                  p0
-                      .map(
-                        (e) => (
-                          e.readTable(table),
-                          $$FamiliaTableTableReferences(db, table, e),
-                        ),
-                      )
-                      .toList(),
-          prefetchHooksCallback: ({
-            clienteDescuentoTableRefs = false,
-            articuloTableRefs = false,
-          }) {
-            return PrefetchHooks(
-              db: db,
-              explicitlyWatchedTables: [
-                if (clienteDescuentoTableRefs) db.clienteDescuentoTable,
-                if (articuloTableRefs) db.articuloTable,
-              ],
-              addJoins: null,
-              getPrefetchedDataCallback: (items) async {
-                return [
-                  if (clienteDescuentoTableRefs)
-                    await $_getPrefetchedData<
-                      FamiliaDTO,
-                      $FamiliaTableTable,
-                      ClienteDescuentoDTO
-                    >(
-                      currentTable: table,
-                      referencedTable: $$FamiliaTableTableReferences
-                          ._clienteDescuentoTableRefsTable(db),
-                      managerFromTypedResult:
-                          (p0) =>
+          withReferenceMapper: (p0) => p0
+              .map(
+                (e) => (
+                  e.readTable(table),
+                  $$FamiliaTableTableReferences(db, table, e),
+                ),
+              )
+              .toList(),
+          prefetchHooksCallback:
+              ({clienteDescuentoTableRefs = false, articuloTableRefs = false}) {
+                return PrefetchHooks(
+                  db: db,
+                  explicitlyWatchedTables: [
+                    if (clienteDescuentoTableRefs) db.clienteDescuentoTable,
+                    if (articuloTableRefs) db.articuloTable,
+                  ],
+                  addJoins: null,
+                  getPrefetchedDataCallback: (items) async {
+                    return [
+                      if (clienteDescuentoTableRefs)
+                        await $_getPrefetchedData<
+                          FamiliaDTO,
+                          $FamiliaTableTable,
+                          ClienteDescuentoDTO
+                        >(
+                          currentTable: table,
+                          referencedTable: $$FamiliaTableTableReferences
+                              ._clienteDescuentoTableRefsTable(db),
+                          managerFromTypedResult: (p0) =>
                               $$FamiliaTableTableReferences(
                                 db,
                                 table,
                                 p0,
                               ).clienteDescuentoTableRefs,
-                      referencedItemsForCurrentItem:
-                          (item, referencedItems) => referencedItems.where(
-                            (e) => e.familiaId == item.id,
-                          ),
-                      typedResults: items,
-                    ),
-                  if (articuloTableRefs)
-                    await $_getPrefetchedData<
-                      FamiliaDTO,
-                      $FamiliaTableTable,
-                      ArticuloDTO
-                    >(
-                      currentTable: table,
-                      referencedTable: $$FamiliaTableTableReferences
-                          ._articuloTableRefsTable(db),
-                      managerFromTypedResult:
-                          (p0) =>
+                          referencedItemsForCurrentItem:
+                              (item, referencedItems) => referencedItems.where(
+                                (e) => e.familiaId == item.id,
+                              ),
+                          typedResults: items,
+                        ),
+                      if (articuloTableRefs)
+                        await $_getPrefetchedData<
+                          FamiliaDTO,
+                          $FamiliaTableTable,
+                          ArticuloDTO
+                        >(
+                          currentTable: table,
+                          referencedTable: $$FamiliaTableTableReferences
+                              ._articuloTableRefsTable(db),
+                          managerFromTypedResult: (p0) =>
                               $$FamiliaTableTableReferences(
                                 db,
                                 table,
                                 p0,
                               ).articuloTableRefs,
-                      referencedItemsForCurrentItem:
-                          (item, referencedItems) => referencedItems.where(
-                            (e) => e.familiaId == item.id,
-                          ),
-                      typedResults: items,
-                    ),
-                ];
+                          referencedItemsForCurrentItem:
+                              (item, referencedItems) => referencedItems.where(
+                                (e) => e.familiaId == item.id,
+                              ),
+                          typedResults: items,
+                        ),
+                    ];
+                  },
+                );
               },
-            );
-          },
         ),
       );
 }
@@ -39086,13 +38686,15 @@ final class $$SubfamiliaTableTableReferences
 
   $$ClienteDescuentoTableTableProcessedTableManager
   get clienteDescuentoTableRefs {
-    final manager = $$ClienteDescuentoTableTableTableManager(
-      $_db,
-      $_db.clienteDescuentoTable,
-    ).filter(
-      (f) =>
-          f.subfamiliaId.id.sqlEquals($_itemColumn<String>('SUBFAMILIA_ID')!),
-    );
+    final manager =
+        $$ClienteDescuentoTableTableTableManager(
+          $_db,
+          $_db.clienteDescuentoTable,
+        ).filter(
+          (f) => f.subfamiliaId.id.sqlEquals(
+            $_itemColumn<String>('SUBFAMILIA_ID')!,
+          ),
+        );
 
     final cache = $_typedResult.readTableOrNull(
       _clienteDescuentoTableRefsTable($_db),
@@ -39113,13 +38715,12 @@ final class $$SubfamiliaTableTableReferences
       );
 
   $$ArticuloTableTableProcessedTableManager get articuloTableRefs {
-    final manager = $$ArticuloTableTableTableManager(
-      $_db,
-      $_db.articuloTable,
-    ).filter(
-      (f) =>
-          f.subfamiliaId.id.sqlEquals($_itemColumn<String>('SUBFAMILIA_ID')!),
-    );
+    final manager = $$ArticuloTableTableTableManager($_db, $_db.articuloTable)
+        .filter(
+          (f) => f.subfamiliaId.id.sqlEquals(
+            $_itemColumn<String>('SUBFAMILIA_ID')!,
+          ),
+        );
 
     final cache = $_typedResult.readTableOrNull(_articuloTableRefsTable($_db));
     return ProcessedTableManager(
@@ -39564,19 +39165,12 @@ class $$SubfamiliaTableTableTableManager
         TableManagerState(
           db: db,
           table: table,
-          createFilteringComposer:
-              () =>
-                  $$SubfamiliaTableTableFilterComposer($db: db, $table: table),
-          createOrderingComposer:
-              () => $$SubfamiliaTableTableOrderingComposer(
-                $db: db,
-                $table: table,
-              ),
-          createComputedFieldComposer:
-              () => $$SubfamiliaTableTableAnnotationComposer(
-                $db: db,
-                $table: table,
-              ),
+          createFilteringComposer: () =>
+              $$SubfamiliaTableTableFilterComposer($db: db, $table: table),
+          createOrderingComposer: () =>
+              $$SubfamiliaTableTableOrderingComposer($db: db, $table: table),
+          createComputedFieldComposer: () =>
+              $$SubfamiliaTableTableAnnotationComposer($db: db, $table: table),
           updateCompanionCallback:
               ({
                 Value<String> id = const Value.absent(),
@@ -39665,77 +39259,71 @@ class $$SubfamiliaTableTableTableManager
                 deleted: deleted,
                 rowid: rowid,
               ),
-          withReferenceMapper:
-              (p0) =>
-                  p0
-                      .map(
-                        (e) => (
-                          e.readTable(table),
-                          $$SubfamiliaTableTableReferences(db, table, e),
-                        ),
-                      )
-                      .toList(),
-          prefetchHooksCallback: ({
-            clienteDescuentoTableRefs = false,
-            articuloTableRefs = false,
-          }) {
-            return PrefetchHooks(
-              db: db,
-              explicitlyWatchedTables: [
-                if (clienteDescuentoTableRefs) db.clienteDescuentoTable,
-                if (articuloTableRefs) db.articuloTable,
-              ],
-              addJoins: null,
-              getPrefetchedDataCallback: (items) async {
-                return [
-                  if (clienteDescuentoTableRefs)
-                    await $_getPrefetchedData<
-                      SubfamiliaDTO,
-                      $SubfamiliaTableTable,
-                      ClienteDescuentoDTO
-                    >(
-                      currentTable: table,
-                      referencedTable: $$SubfamiliaTableTableReferences
-                          ._clienteDescuentoTableRefsTable(db),
-                      managerFromTypedResult:
-                          (p0) =>
+          withReferenceMapper: (p0) => p0
+              .map(
+                (e) => (
+                  e.readTable(table),
+                  $$SubfamiliaTableTableReferences(db, table, e),
+                ),
+              )
+              .toList(),
+          prefetchHooksCallback:
+              ({clienteDescuentoTableRefs = false, articuloTableRefs = false}) {
+                return PrefetchHooks(
+                  db: db,
+                  explicitlyWatchedTables: [
+                    if (clienteDescuentoTableRefs) db.clienteDescuentoTable,
+                    if (articuloTableRefs) db.articuloTable,
+                  ],
+                  addJoins: null,
+                  getPrefetchedDataCallback: (items) async {
+                    return [
+                      if (clienteDescuentoTableRefs)
+                        await $_getPrefetchedData<
+                          SubfamiliaDTO,
+                          $SubfamiliaTableTable,
+                          ClienteDescuentoDTO
+                        >(
+                          currentTable: table,
+                          referencedTable: $$SubfamiliaTableTableReferences
+                              ._clienteDescuentoTableRefsTable(db),
+                          managerFromTypedResult: (p0) =>
                               $$SubfamiliaTableTableReferences(
                                 db,
                                 table,
                                 p0,
                               ).clienteDescuentoTableRefs,
-                      referencedItemsForCurrentItem:
-                          (item, referencedItems) => referencedItems.where(
-                            (e) => e.subfamiliaId == item.id,
-                          ),
-                      typedResults: items,
-                    ),
-                  if (articuloTableRefs)
-                    await $_getPrefetchedData<
-                      SubfamiliaDTO,
-                      $SubfamiliaTableTable,
-                      ArticuloDTO
-                    >(
-                      currentTable: table,
-                      referencedTable: $$SubfamiliaTableTableReferences
-                          ._articuloTableRefsTable(db),
-                      managerFromTypedResult:
-                          (p0) =>
+                          referencedItemsForCurrentItem:
+                              (item, referencedItems) => referencedItems.where(
+                                (e) => e.subfamiliaId == item.id,
+                              ),
+                          typedResults: items,
+                        ),
+                      if (articuloTableRefs)
+                        await $_getPrefetchedData<
+                          SubfamiliaDTO,
+                          $SubfamiliaTableTable,
+                          ArticuloDTO
+                        >(
+                          currentTable: table,
+                          referencedTable: $$SubfamiliaTableTableReferences
+                              ._articuloTableRefsTable(db),
+                          managerFromTypedResult: (p0) =>
                               $$SubfamiliaTableTableReferences(
                                 db,
                                 table,
                                 p0,
                               ).articuloTableRefs,
-                      referencedItemsForCurrentItem:
-                          (item, referencedItems) => referencedItems.where(
-                            (e) => e.subfamiliaId == item.id,
-                          ),
-                      typedResults: items,
-                    ),
-                ];
+                          referencedItemsForCurrentItem:
+                              (item, referencedItems) => referencedItems.where(
+                                (e) => e.subfamiliaId == item.id,
+                              ),
+                          typedResults: items,
+                        ),
+                    ];
+                  },
+                );
               },
-            );
-          },
         ),
       );
 }
@@ -40114,18 +39702,18 @@ class $$ClienteDescuentoTableTableTableManager
         TableManagerState(
           db: db,
           table: table,
-          createFilteringComposer:
-              () => $$ClienteDescuentoTableTableFilterComposer(
+          createFilteringComposer: () =>
+              $$ClienteDescuentoTableTableFilterComposer(
                 $db: db,
                 $table: table,
               ),
-          createOrderingComposer:
-              () => $$ClienteDescuentoTableTableOrderingComposer(
+          createOrderingComposer: () =>
+              $$ClienteDescuentoTableTableOrderingComposer(
                 $db: db,
                 $table: table,
               ),
-          createComputedFieldComposer:
-              () => $$ClienteDescuentoTableTableAnnotationComposer(
+          createComputedFieldComposer: () =>
+              $$ClienteDescuentoTableTableAnnotationComposer(
                 $db: db,
                 $table: table,
               ),
@@ -40173,68 +39761,67 @@ class $$ClienteDescuentoTableTableTableManager
                 deleted: deleted,
                 rowid: rowid,
               ),
-          withReferenceMapper:
-              (p0) =>
-                  p0
-                      .map(
-                        (e) => (
-                          e.readTable(table),
-                          $$ClienteDescuentoTableTableReferences(db, table, e),
-                        ),
-                      )
-                      .toList(),
+          withReferenceMapper: (p0) => p0
+              .map(
+                (e) => (
+                  e.readTable(table),
+                  $$ClienteDescuentoTableTableReferences(db, table, e),
+                ),
+              )
+              .toList(),
           prefetchHooksCallback: ({familiaId = false, subfamiliaId = false}) {
             return PrefetchHooks(
               db: db,
               explicitlyWatchedTables: [],
-              addJoins: <
-                T extends TableManagerState<
-                  dynamic,
-                  dynamic,
-                  dynamic,
-                  dynamic,
-                  dynamic,
-                  dynamic,
-                  dynamic,
-                  dynamic,
-                  dynamic,
-                  dynamic,
-                  dynamic
-                >
-              >(state) {
-                if (familiaId) {
-                  state =
-                      state.withJoin(
-                            currentTable: table,
-                            currentColumn: table.familiaId,
-                            referencedTable:
-                                $$ClienteDescuentoTableTableReferences
-                                    ._familiaIdTable(db),
-                            referencedColumn:
-                                $$ClienteDescuentoTableTableReferences
-                                    ._familiaIdTable(db)
-                                    .id,
-                          )
-                          as T;
-                }
-                if (subfamiliaId) {
-                  state =
-                      state.withJoin(
-                            currentTable: table,
-                            currentColumn: table.subfamiliaId,
-                            referencedTable:
-                                $$ClienteDescuentoTableTableReferences
-                                    ._subfamiliaIdTable(db),
-                            referencedColumn:
-                                $$ClienteDescuentoTableTableReferences
-                                    ._subfamiliaIdTable(db)
-                                    .id,
-                          )
-                          as T;
-                }
+              addJoins:
+                  <
+                    T extends TableManagerState<
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic
+                    >
+                  >(state) {
+                    if (familiaId) {
+                      state =
+                          state.withJoin(
+                                currentTable: table,
+                                currentColumn: table.familiaId,
+                                referencedTable:
+                                    $$ClienteDescuentoTableTableReferences
+                                        ._familiaIdTable(db),
+                                referencedColumn:
+                                    $$ClienteDescuentoTableTableReferences
+                                        ._familiaIdTable(db)
+                                        .id,
+                              )
+                              as T;
+                    }
+                    if (subfamiliaId) {
+                      state =
+                          state.withJoin(
+                                currentTable: table,
+                                currentColumn: table.subfamiliaId,
+                                referencedTable:
+                                    $$ClienteDescuentoTableTableReferences
+                                        ._subfamiliaIdTable(db),
+                                referencedColumn:
+                                    $$ClienteDescuentoTableTableReferences
+                                        ._subfamiliaIdTable(db)
+                                        .id,
+                              )
+                              as T;
+                    }
 
-                return state;
-              },
+                    return state;
+                  },
               getPrefetchedDataCallback: (items) async {
                 return [];
               },
@@ -40497,18 +40084,15 @@ class $$ClienteContactoTableTableTableManager
         TableManagerState(
           db: db,
           table: table,
-          createFilteringComposer:
-              () => $$ClienteContactoTableTableFilterComposer(
+          createFilteringComposer: () =>
+              $$ClienteContactoTableTableFilterComposer($db: db, $table: table),
+          createOrderingComposer: () =>
+              $$ClienteContactoTableTableOrderingComposer(
                 $db: db,
                 $table: table,
               ),
-          createOrderingComposer:
-              () => $$ClienteContactoTableTableOrderingComposer(
-                $db: db,
-                $table: table,
-              ),
-          createComputedFieldComposer:
-              () => $$ClienteContactoTableTableAnnotationComposer(
+          createComputedFieldComposer: () =>
+              $$ClienteContactoTableTableAnnotationComposer(
                 $db: db,
                 $table: table,
               ),
@@ -40568,16 +40152,9 @@ class $$ClienteContactoTableTableTableManager
                 deleted: deleted,
                 rowid: rowid,
               ),
-          withReferenceMapper:
-              (p0) =>
-                  p0
-                      .map(
-                        (e) => (
-                          e.readTable(table),
-                          BaseReferences(db, table, e),
-                        ),
-                      )
-                      .toList(),
+          withReferenceMapper: (p0) => p0
+              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
+              .toList(),
           prefetchHooksCallback: null,
         ),
       );
@@ -40991,18 +40568,18 @@ class $$ClienteDireccionTableTableTableManager
         TableManagerState(
           db: db,
           table: table,
-          createFilteringComposer:
-              () => $$ClienteDireccionTableTableFilterComposer(
+          createFilteringComposer: () =>
+              $$ClienteDireccionTableTableFilterComposer(
                 $db: db,
                 $table: table,
               ),
-          createOrderingComposer:
-              () => $$ClienteDireccionTableTableOrderingComposer(
+          createOrderingComposer: () =>
+              $$ClienteDireccionTableTableOrderingComposer(
                 $db: db,
                 $table: table,
               ),
-          createComputedFieldComposer:
-              () => $$ClienteDireccionTableTableAnnotationComposer(
+          createComputedFieldComposer: () =>
+              $$ClienteDireccionTableTableAnnotationComposer(
                 $db: db,
                 $table: table,
               ),
@@ -41078,53 +40655,52 @@ class $$ClienteDireccionTableTableTableManager
                 deleted: deleted,
                 rowid: rowid,
               ),
-          withReferenceMapper:
-              (p0) =>
-                  p0
-                      .map(
-                        (e) => (
-                          e.readTable(table),
-                          $$ClienteDireccionTableTableReferences(db, table, e),
-                        ),
-                      )
-                      .toList(),
+          withReferenceMapper: (p0) => p0
+              .map(
+                (e) => (
+                  e.readTable(table),
+                  $$ClienteDireccionTableTableReferences(db, table, e),
+                ),
+              )
+              .toList(),
           prefetchHooksCallback: ({paisId = false}) {
             return PrefetchHooks(
               db: db,
               explicitlyWatchedTables: [],
-              addJoins: <
-                T extends TableManagerState<
-                  dynamic,
-                  dynamic,
-                  dynamic,
-                  dynamic,
-                  dynamic,
-                  dynamic,
-                  dynamic,
-                  dynamic,
-                  dynamic,
-                  dynamic,
-                  dynamic
-                >
-              >(state) {
-                if (paisId) {
-                  state =
-                      state.withJoin(
-                            currentTable: table,
-                            currentColumn: table.paisId,
-                            referencedTable:
-                                $$ClienteDireccionTableTableReferences
-                                    ._paisIdTable(db),
-                            referencedColumn:
-                                $$ClienteDireccionTableTableReferences
-                                    ._paisIdTable(db)
-                                    .id,
-                          )
-                          as T;
-                }
+              addJoins:
+                  <
+                    T extends TableManagerState<
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic
+                    >
+                  >(state) {
+                    if (paisId) {
+                      state =
+                          state.withJoin(
+                                currentTable: table,
+                                currentColumn: table.paisId,
+                                referencedTable:
+                                    $$ClienteDireccionTableTableReferences
+                                        ._paisIdTable(db),
+                                referencedColumn:
+                                    $$ClienteDireccionTableTableReferences
+                                        ._paisIdTable(db)
+                                        .id,
+                              )
+                              as T;
+                    }
 
-                return state;
-              },
+                    return state;
+                  },
               getPrefetchedDataCallback: (items) async {
                 return [];
               },
@@ -41495,18 +41071,18 @@ class $$ClientePagoPendienteTableTableTableManager
         TableManagerState(
           db: db,
           table: table,
-          createFilteringComposer:
-              () => $$ClientePagoPendienteTableTableFilterComposer(
+          createFilteringComposer: () =>
+              $$ClientePagoPendienteTableTableFilterComposer(
                 $db: db,
                 $table: table,
               ),
-          createOrderingComposer:
-              () => $$ClientePagoPendienteTableTableOrderingComposer(
+          createOrderingComposer: () =>
+              $$ClientePagoPendienteTableTableOrderingComposer(
                 $db: db,
                 $table: table,
               ),
-          createComputedFieldComposer:
-              () => $$ClientePagoPendienteTableTableAnnotationComposer(
+          createComputedFieldComposer: () =>
+              $$ClientePagoPendienteTableTableAnnotationComposer(
                 $db: db,
                 $table: table,
               ),
@@ -41570,57 +41146,52 @@ class $$ClientePagoPendienteTableTableTableManager
                 deleted: deleted,
                 rowid: rowid,
               ),
-          withReferenceMapper:
-              (p0) =>
-                  p0
-                      .map(
-                        (e) => (
-                          e.readTable(table),
-                          $$ClientePagoPendienteTableTableReferences(
-                            db,
-                            table,
-                            e,
-                          ),
-                        ),
-                      )
-                      .toList(),
+          withReferenceMapper: (p0) => p0
+              .map(
+                (e) => (
+                  e.readTable(table),
+                  $$ClientePagoPendienteTableTableReferences(db, table, e),
+                ),
+              )
+              .toList(),
           prefetchHooksCallback: ({metodoDeCobroId = false}) {
             return PrefetchHooks(
               db: db,
               explicitlyWatchedTables: [],
-              addJoins: <
-                T extends TableManagerState<
-                  dynamic,
-                  dynamic,
-                  dynamic,
-                  dynamic,
-                  dynamic,
-                  dynamic,
-                  dynamic,
-                  dynamic,
-                  dynamic,
-                  dynamic,
-                  dynamic
-                >
-              >(state) {
-                if (metodoDeCobroId) {
-                  state =
-                      state.withJoin(
-                            currentTable: table,
-                            currentColumn: table.metodoDeCobroId,
-                            referencedTable:
-                                $$ClientePagoPendienteTableTableReferences
-                                    ._metodoDeCobroIdTable(db),
-                            referencedColumn:
-                                $$ClientePagoPendienteTableTableReferences
-                                    ._metodoDeCobroIdTable(db)
-                                    .id,
-                          )
-                          as T;
-                }
+              addJoins:
+                  <
+                    T extends TableManagerState<
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic
+                    >
+                  >(state) {
+                    if (metodoDeCobroId) {
+                      state =
+                          state.withJoin(
+                                currentTable: table,
+                                currentColumn: table.metodoDeCobroId,
+                                referencedTable:
+                                    $$ClientePagoPendienteTableTableReferences
+                                        ._metodoDeCobroIdTable(db),
+                                referencedColumn:
+                                    $$ClientePagoPendienteTableTableReferences
+                                        ._metodoDeCobroIdTable(db)
+                                        .id,
+                              )
+                              as T;
+                    }
 
-                return state;
-              },
+                    return state;
+                  },
               getPrefetchedDataCallback: (items) async {
                 return [];
               },
@@ -41842,18 +41413,18 @@ class $$ClientePrecioNetoTableTableTableManager
         TableManagerState(
           db: db,
           table: table,
-          createFilteringComposer:
-              () => $$ClientePrecioNetoTableTableFilterComposer(
+          createFilteringComposer: () =>
+              $$ClientePrecioNetoTableTableFilterComposer(
                 $db: db,
                 $table: table,
               ),
-          createOrderingComposer:
-              () => $$ClientePrecioNetoTableTableOrderingComposer(
+          createOrderingComposer: () =>
+              $$ClientePrecioNetoTableTableOrderingComposer(
                 $db: db,
                 $table: table,
               ),
-          createComputedFieldComposer:
-              () => $$ClientePrecioNetoTableTableAnnotationComposer(
+          createComputedFieldComposer: () =>
+              $$ClientePrecioNetoTableTableAnnotationComposer(
                 $db: db,
                 $table: table,
               ),
@@ -41901,16 +41472,9 @@ class $$ClientePrecioNetoTableTableTableManager
                 deleted: deleted,
                 rowid: rowid,
               ),
-          withReferenceMapper:
-              (p0) =>
-                  p0
-                      .map(
-                        (e) => (
-                          e.readTable(table),
-                          BaseReferences(db, table, e),
-                        ),
-                      )
-                      .toList(),
+          withReferenceMapper: (p0) => p0
+              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
+              .toList(),
           prefetchHooksCallback: null,
         ),
       );
@@ -42150,18 +41714,12 @@ class $$ClienteRappelTableTableTableManager
         TableManagerState(
           db: db,
           table: table,
-          createFilteringComposer:
-              () => $$ClienteRappelTableTableFilterComposer(
-                $db: db,
-                $table: table,
-              ),
-          createOrderingComposer:
-              () => $$ClienteRappelTableTableOrderingComposer(
-                $db: db,
-                $table: table,
-              ),
-          createComputedFieldComposer:
-              () => $$ClienteRappelTableTableAnnotationComposer(
+          createFilteringComposer: () =>
+              $$ClienteRappelTableTableFilterComposer($db: db, $table: table),
+          createOrderingComposer: () =>
+              $$ClienteRappelTableTableOrderingComposer($db: db, $table: table),
+          createComputedFieldComposer: () =>
+              $$ClienteRappelTableTableAnnotationComposer(
                 $db: db,
                 $table: table,
               ),
@@ -42213,16 +41771,9 @@ class $$ClienteRappelTableTableTableManager
                 deleted: deleted,
                 rowid: rowid,
               ),
-          withReferenceMapper:
-              (p0) =>
-                  p0
-                      .map(
-                        (e) => (
-                          e.readTable(table),
-                          BaseReferences(db, table, e),
-                        ),
-                      )
-                      .toList(),
+          withReferenceMapper: (p0) => p0
+              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
+              .toList(),
           prefetchHooksCallback: null,
         ),
       );
@@ -42619,18 +42170,18 @@ class $$ClienteEstadoPotencialTableTableTableManager
         TableManagerState(
           db: db,
           table: table,
-          createFilteringComposer:
-              () => $$ClienteEstadoPotencialTableTableFilterComposer(
+          createFilteringComposer: () =>
+              $$ClienteEstadoPotencialTableTableFilterComposer(
                 $db: db,
                 $table: table,
               ),
-          createOrderingComposer:
-              () => $$ClienteEstadoPotencialTableTableOrderingComposer(
+          createOrderingComposer: () =>
+              $$ClienteEstadoPotencialTableTableOrderingComposer(
                 $db: db,
                 $table: table,
               ),
-          createComputedFieldComposer:
-              () => $$ClienteEstadoPotencialTableTableAnnotationComposer(
+          createComputedFieldComposer: () =>
+              $$ClienteEstadoPotencialTableTableAnnotationComposer(
                 $db: db,
                 $table: table,
               ),
@@ -42718,16 +42269,9 @@ class $$ClienteEstadoPotencialTableTableTableManager
                 deleted: deleted,
                 rowid: rowid,
               ),
-          withReferenceMapper:
-              (p0) =>
-                  p0
-                      .map(
-                        (e) => (
-                          e.readTable(table),
-                          BaseReferences(db, table, e),
-                        ),
-                      )
-                      .toList(),
+          withReferenceMapper: (p0) => p0
+              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
+              .toList(),
           prefetchHooksCallback: null,
         ),
       );
@@ -43124,18 +42668,18 @@ class $$ClienteTipoPotencialTableTableTableManager
         TableManagerState(
           db: db,
           table: table,
-          createFilteringComposer:
-              () => $$ClienteTipoPotencialTableTableFilterComposer(
+          createFilteringComposer: () =>
+              $$ClienteTipoPotencialTableTableFilterComposer(
                 $db: db,
                 $table: table,
               ),
-          createOrderingComposer:
-              () => $$ClienteTipoPotencialTableTableOrderingComposer(
+          createOrderingComposer: () =>
+              $$ClienteTipoPotencialTableTableOrderingComposer(
                 $db: db,
                 $table: table,
               ),
-          createComputedFieldComposer:
-              () => $$ClienteTipoPotencialTableTableAnnotationComposer(
+          createComputedFieldComposer: () =>
+              $$ClienteTipoPotencialTableTableAnnotationComposer(
                 $db: db,
                 $table: table,
               ),
@@ -43223,16 +42767,9 @@ class $$ClienteTipoPotencialTableTableTableManager
                 deleted: deleted,
                 rowid: rowid,
               ),
-          withReferenceMapper:
-              (p0) =>
-                  p0
-                      .map(
-                        (e) => (
-                          e.readTable(table),
-                          BaseReferences(db, table, e),
-                        ),
-                      )
-                      .toList(),
+          withReferenceMapper: (p0) => p0
+              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
+              .toList(),
           prefetchHooksCallback: null,
         ),
       );
@@ -43376,18 +42913,18 @@ class $$EstadisticasArticulosTopTableTableTableManager
         TableManagerState(
           db: db,
           table: table,
-          createFilteringComposer:
-              () => $$EstadisticasArticulosTopTableTableFilterComposer(
+          createFilteringComposer: () =>
+              $$EstadisticasArticulosTopTableTableFilterComposer(
                 $db: db,
                 $table: table,
               ),
-          createOrderingComposer:
-              () => $$EstadisticasArticulosTopTableTableOrderingComposer(
+          createOrderingComposer: () =>
+              $$EstadisticasArticulosTopTableTableOrderingComposer(
                 $db: db,
                 $table: table,
               ),
-          createComputedFieldComposer:
-              () => $$EstadisticasArticulosTopTableTableAnnotationComposer(
+          createComputedFieldComposer: () =>
+              $$EstadisticasArticulosTopTableTableAnnotationComposer(
                 $db: db,
                 $table: table,
               ),
@@ -43415,16 +42952,9 @@ class $$EstadisticasArticulosTopTableTableTableManager
                 deleted: deleted,
                 rowid: rowid,
               ),
-          withReferenceMapper:
-              (p0) =>
-                  p0
-                      .map(
-                        (e) => (
-                          e.readTable(table),
-                          BaseReferences(db, table, e),
-                        ),
-                      )
-                      .toList(),
+          withReferenceMapper: (p0) => p0
+              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
+              .toList(),
           prefetchHooksCallback: null,
         ),
       );
@@ -44798,16 +44328,12 @@ class $$ArticuloTableTableTableManager
         TableManagerState(
           db: db,
           table: table,
-          createFilteringComposer:
-              () => $$ArticuloTableTableFilterComposer($db: db, $table: table),
-          createOrderingComposer:
-              () =>
-                  $$ArticuloTableTableOrderingComposer($db: db, $table: table),
-          createComputedFieldComposer:
-              () => $$ArticuloTableTableAnnotationComposer(
-                $db: db,
-                $table: table,
-              ),
+          createFilteringComposer: () =>
+              $$ArticuloTableTableFilterComposer($db: db, $table: table),
+          createOrderingComposer: () =>
+              $$ArticuloTableTableOrderingComposer($db: db, $table: table),
+          createComputedFieldComposer: () =>
+              $$ArticuloTableTableAnnotationComposer($db: db, $table: table),
           updateCompanionCallback:
               ({
                 Value<String> id = const Value.absent(),
@@ -45096,66 +44622,63 @@ class $$ArticuloTableTableTableManager
                 deleted: deleted,
                 rowid: rowid,
               ),
-          withReferenceMapper:
-              (p0) =>
-                  p0
-                      .map(
-                        (e) => (
-                          e.readTable(table),
-                          $$ArticuloTableTableReferences(db, table, e),
-                        ),
-                      )
-                      .toList(),
+          withReferenceMapper: (p0) => p0
+              .map(
+                (e) => (
+                  e.readTable(table),
+                  $$ArticuloTableTableReferences(db, table, e),
+                ),
+              )
+              .toList(),
           prefetchHooksCallback: ({familiaId = false, subfamiliaId = false}) {
             return PrefetchHooks(
               db: db,
               explicitlyWatchedTables: [],
-              addJoins: <
-                T extends TableManagerState<
-                  dynamic,
-                  dynamic,
-                  dynamic,
-                  dynamic,
-                  dynamic,
-                  dynamic,
-                  dynamic,
-                  dynamic,
-                  dynamic,
-                  dynamic,
-                  dynamic
-                >
-              >(state) {
-                if (familiaId) {
-                  state =
-                      state.withJoin(
-                            currentTable: table,
-                            currentColumn: table.familiaId,
-                            referencedTable: $$ArticuloTableTableReferences
-                                ._familiaIdTable(db),
-                            referencedColumn:
-                                $$ArticuloTableTableReferences
+              addJoins:
+                  <
+                    T extends TableManagerState<
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic
+                    >
+                  >(state) {
+                    if (familiaId) {
+                      state =
+                          state.withJoin(
+                                currentTable: table,
+                                currentColumn: table.familiaId,
+                                referencedTable: $$ArticuloTableTableReferences
+                                    ._familiaIdTable(db),
+                                referencedColumn: $$ArticuloTableTableReferences
                                     ._familiaIdTable(db)
                                     .id,
-                          )
-                          as T;
-                }
-                if (subfamiliaId) {
-                  state =
-                      state.withJoin(
-                            currentTable: table,
-                            currentColumn: table.subfamiliaId,
-                            referencedTable: $$ArticuloTableTableReferences
-                                ._subfamiliaIdTable(db),
-                            referencedColumn:
-                                $$ArticuloTableTableReferences
+                              )
+                              as T;
+                    }
+                    if (subfamiliaId) {
+                      state =
+                          state.withJoin(
+                                currentTable: table,
+                                currentColumn: table.subfamiliaId,
+                                referencedTable: $$ArticuloTableTableReferences
+                                    ._subfamiliaIdTable(db),
+                                referencedColumn: $$ArticuloTableTableReferences
                                     ._subfamiliaIdTable(db)
                                     .id,
-                          )
-                          as T;
-                }
+                              )
+                              as T;
+                    }
 
-                return state;
-              },
+                    return state;
+                  },
               getPrefetchedDataCallback: (items) async {
                 return [];
               },
@@ -45583,18 +45106,18 @@ class $$ArticuloComponenteTableTableTableManager
         TableManagerState(
           db: db,
           table: table,
-          createFilteringComposer:
-              () => $$ArticuloComponenteTableTableFilterComposer(
+          createFilteringComposer: () =>
+              $$ArticuloComponenteTableTableFilterComposer(
                 $db: db,
                 $table: table,
               ),
-          createOrderingComposer:
-              () => $$ArticuloComponenteTableTableOrderingComposer(
+          createOrderingComposer: () =>
+              $$ArticuloComponenteTableTableOrderingComposer(
                 $db: db,
                 $table: table,
               ),
-          createComputedFieldComposer:
-              () => $$ArticuloComponenteTableTableAnnotationComposer(
+          createComputedFieldComposer: () =>
+              $$ArticuloComponenteTableTableAnnotationComposer(
                 $db: db,
                 $table: table,
               ),
@@ -45690,16 +45213,9 @@ class $$ArticuloComponenteTableTableTableManager
                 deleted: deleted,
                 rowid: rowid,
               ),
-          withReferenceMapper:
-              (p0) =>
-                  p0
-                      .map(
-                        (e) => (
-                          e.readTable(table),
-                          BaseReferences(db, table, e),
-                        ),
-                      )
-                      .toList(),
+          withReferenceMapper: (p0) => p0
+              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
+              .toList(),
           prefetchHooksCallback: null,
         ),
       );
@@ -45873,18 +45389,18 @@ class $$ArticuloEmpresaIvaTableTableTableManager
         TableManagerState(
           db: db,
           table: table,
-          createFilteringComposer:
-              () => $$ArticuloEmpresaIvaTableTableFilterComposer(
+          createFilteringComposer: () =>
+              $$ArticuloEmpresaIvaTableTableFilterComposer(
                 $db: db,
                 $table: table,
               ),
-          createOrderingComposer:
-              () => $$ArticuloEmpresaIvaTableTableOrderingComposer(
+          createOrderingComposer: () =>
+              $$ArticuloEmpresaIvaTableTableOrderingComposer(
                 $db: db,
                 $table: table,
               ),
-          createComputedFieldComposer:
-              () => $$ArticuloEmpresaIvaTableTableAnnotationComposer(
+          createComputedFieldComposer: () =>
+              $$ArticuloEmpresaIvaTableTableAnnotationComposer(
                 $db: db,
                 $table: table,
               ),
@@ -45920,16 +45436,9 @@ class $$ArticuloEmpresaIvaTableTableTableManager
                 deleted: deleted,
                 rowid: rowid,
               ),
-          withReferenceMapper:
-              (p0) =>
-                  p0
-                      .map(
-                        (e) => (
-                          e.readTable(table),
-                          BaseReferences(db, table, e),
-                        ),
-                      )
-                      .toList(),
+          withReferenceMapper: (p0) => p0
+              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
+              .toList(),
           prefetchHooksCallback: null,
         ),
       );
@@ -46120,18 +45629,18 @@ class $$ArticuloRecambioTableTableTableManager
         TableManagerState(
           db: db,
           table: table,
-          createFilteringComposer:
-              () => $$ArticuloRecambioTableTableFilterComposer(
+          createFilteringComposer: () =>
+              $$ArticuloRecambioTableTableFilterComposer(
                 $db: db,
                 $table: table,
               ),
-          createOrderingComposer:
-              () => $$ArticuloRecambioTableTableOrderingComposer(
+          createOrderingComposer: () =>
+              $$ArticuloRecambioTableTableOrderingComposer(
                 $db: db,
                 $table: table,
               ),
-          createComputedFieldComposer:
-              () => $$ArticuloRecambioTableTableAnnotationComposer(
+          createComputedFieldComposer: () =>
+              $$ArticuloRecambioTableTableAnnotationComposer(
                 $db: db,
                 $table: table,
               ),
@@ -46171,16 +45680,9 @@ class $$ArticuloRecambioTableTableTableManager
                 deleted: deleted,
                 rowid: rowid,
               ),
-          withReferenceMapper:
-              (p0) =>
-                  p0
-                      .map(
-                        (e) => (
-                          e.readTable(table),
-                          BaseReferences(db, table, e),
-                        ),
-                      )
-                      .toList(),
+          withReferenceMapper: (p0) => p0
+              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
+              .toList(),
           prefetchHooksCallback: null,
         ),
       );
@@ -46356,18 +45858,18 @@ class $$ArticuloSustitutivoTableTableTableManager
         TableManagerState(
           db: db,
           table: table,
-          createFilteringComposer:
-              () => $$ArticuloSustitutivoTableTableFilterComposer(
+          createFilteringComposer: () =>
+              $$ArticuloSustitutivoTableTableFilterComposer(
                 $db: db,
                 $table: table,
               ),
-          createOrderingComposer:
-              () => $$ArticuloSustitutivoTableTableOrderingComposer(
+          createOrderingComposer: () =>
+              $$ArticuloSustitutivoTableTableOrderingComposer(
                 $db: db,
                 $table: table,
               ),
-          createComputedFieldComposer:
-              () => $$ArticuloSustitutivoTableTableAnnotationComposer(
+          createComputedFieldComposer: () =>
+              $$ArticuloSustitutivoTableTableAnnotationComposer(
                 $db: db,
                 $table: table,
               ),
@@ -46403,16 +45905,9 @@ class $$ArticuloSustitutivoTableTableTableManager
                 deleted: deleted,
                 rowid: rowid,
               ),
-          withReferenceMapper:
-              (p0) =>
-                  p0
-                      .map(
-                        (e) => (
-                          e.readTable(table),
-                          BaseReferences(db, table, e),
-                        ),
-                      )
-                      .toList(),
+          withReferenceMapper: (p0) => p0
+              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
+              .toList(),
           prefetchHooksCallback: null,
         ),
       );
@@ -46652,18 +46147,18 @@ class $$ArticuloPrecioTarifaTableTableTableManager
         TableManagerState(
           db: db,
           table: table,
-          createFilteringComposer:
-              () => $$ArticuloPrecioTarifaTableTableFilterComposer(
+          createFilteringComposer: () =>
+              $$ArticuloPrecioTarifaTableTableFilterComposer(
                 $db: db,
                 $table: table,
               ),
-          createOrderingComposer:
-              () => $$ArticuloPrecioTarifaTableTableOrderingComposer(
+          createOrderingComposer: () =>
+              $$ArticuloPrecioTarifaTableTableOrderingComposer(
                 $db: db,
                 $table: table,
               ),
-          createComputedFieldComposer:
-              () => $$ArticuloPrecioTarifaTableTableAnnotationComposer(
+          createComputedFieldComposer: () =>
+              $$ArticuloPrecioTarifaTableTableAnnotationComposer(
                 $db: db,
                 $table: table,
               ),
@@ -46715,16 +46210,9 @@ class $$ArticuloPrecioTarifaTableTableTableManager
                 deleted: deleted,
                 rowid: rowid,
               ),
-          withReferenceMapper:
-              (p0) =>
-                  p0
-                      .map(
-                        (e) => (
-                          e.readTable(table),
-                          BaseReferences(db, table, e),
-                        ),
-                      )
-                      .toList(),
+          withReferenceMapper: (p0) => p0
+              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
+              .toList(),
           prefetchHooksCallback: null,
         ),
       );
@@ -46966,18 +46454,18 @@ class $$ArticuloGrupoNetoTableTableTableManager
         TableManagerState(
           db: db,
           table: table,
-          createFilteringComposer:
-              () => $$ArticuloGrupoNetoTableTableFilterComposer(
+          createFilteringComposer: () =>
+              $$ArticuloGrupoNetoTableTableFilterComposer(
                 $db: db,
                 $table: table,
               ),
-          createOrderingComposer:
-              () => $$ArticuloGrupoNetoTableTableOrderingComposer(
+          createOrderingComposer: () =>
+              $$ArticuloGrupoNetoTableTableOrderingComposer(
                 $db: db,
                 $table: table,
               ),
-          createComputedFieldComposer:
-              () => $$ArticuloGrupoNetoTableTableAnnotationComposer(
+          createComputedFieldComposer: () =>
+              $$ArticuloGrupoNetoTableTableAnnotationComposer(
                 $db: db,
                 $table: table,
               ),
@@ -47029,16 +46517,9 @@ class $$ArticuloGrupoNetoTableTableTableManager
                 deleted: deleted,
                 rowid: rowid,
               ),
-          withReferenceMapper:
-              (p0) =>
-                  p0
-                      .map(
-                        (e) => (
-                          e.readTable(table),
-                          BaseReferences(db, table, e),
-                        ),
-                      )
-                      .toList(),
+          withReferenceMapper: (p0) => p0
+              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
+              .toList(),
           prefetchHooksCallback: null,
         ),
       );
@@ -47284,23 +46765,21 @@ class $$EstadisticasClienteUsuarioVentasTableTableTableManager
         TableManagerState(
           db: db,
           table: table,
-          createFilteringComposer:
-              () => $$EstadisticasClienteUsuarioVentasTableTableFilterComposer(
+          createFilteringComposer: () =>
+              $$EstadisticasClienteUsuarioVentasTableTableFilterComposer(
                 $db: db,
                 $table: table,
               ),
-          createOrderingComposer:
-              () =>
-                  $$EstadisticasClienteUsuarioVentasTableTableOrderingComposer(
-                    $db: db,
-                    $table: table,
-                  ),
-          createComputedFieldComposer:
-              () =>
-                  $$EstadisticasClienteUsuarioVentasTableTableAnnotationComposer(
-                    $db: db,
-                    $table: table,
-                  ),
+          createOrderingComposer: () =>
+              $$EstadisticasClienteUsuarioVentasTableTableOrderingComposer(
+                $db: db,
+                $table: table,
+              ),
+          createComputedFieldComposer: () =>
+              $$EstadisticasClienteUsuarioVentasTableTableAnnotationComposer(
+                $db: db,
+                $table: table,
+              ),
           updateCompanionCallback:
               ({
                 Value<double> anyo = const Value.absent(),
@@ -47349,16 +46828,9 @@ class $$EstadisticasClienteUsuarioVentasTableTableTableManager
                 deleted: deleted,
                 rowid: rowid,
               ),
-          withReferenceMapper:
-              (p0) =>
-                  p0
-                      .map(
-                        (e) => (
-                          e.readTable(table),
-                          BaseReferences(db, table, e),
-                        ),
-                      )
-                      .toList(),
+          withReferenceMapper: (p0) => p0
+              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
+              .toList(),
           prefetchHooksCallback: null,
         ),
       );
@@ -47665,18 +47137,18 @@ class $$EstadisticasUltimosPreciosTableTableTableManager
         TableManagerState(
           db: db,
           table: table,
-          createFilteringComposer:
-              () => $$EstadisticasUltimosPreciosTableTableFilterComposer(
+          createFilteringComposer: () =>
+              $$EstadisticasUltimosPreciosTableTableFilterComposer(
                 $db: db,
                 $table: table,
               ),
-          createOrderingComposer:
-              () => $$EstadisticasUltimosPreciosTableTableOrderingComposer(
+          createOrderingComposer: () =>
+              $$EstadisticasUltimosPreciosTableTableOrderingComposer(
                 $db: db,
                 $table: table,
               ),
-          createComputedFieldComposer:
-              () => $$EstadisticasUltimosPreciosTableTableAnnotationComposer(
+          createComputedFieldComposer: () =>
+              $$EstadisticasUltimosPreciosTableTableAnnotationComposer(
                 $db: db,
                 $table: table,
               ),
@@ -47744,16 +47216,9 @@ class $$EstadisticasUltimosPreciosTableTableTableManager
                 deleted: deleted,
                 rowid: rowid,
               ),
-          withReferenceMapper:
-              (p0) =>
-                  p0
-                      .map(
-                        (e) => (
-                          e.readTable(table),
-                          BaseReferences(db, table, e),
-                        ),
-                      )
-                      .toList(),
+          withReferenceMapper: (p0) => p0
+              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
+              .toList(),
           prefetchHooksCallback: null,
         ),
       );
@@ -48300,13 +47765,12 @@ class $$VisitaTableTableTableManager
         TableManagerState(
           db: db,
           table: table,
-          createFilteringComposer:
-              () => $$VisitaTableTableFilterComposer($db: db, $table: table),
-          createOrderingComposer:
-              () => $$VisitaTableTableOrderingComposer($db: db, $table: table),
-          createComputedFieldComposer:
-              () =>
-                  $$VisitaTableTableAnnotationComposer($db: db, $table: table),
+          createFilteringComposer: () =>
+              $$VisitaTableTableFilterComposer($db: db, $table: table),
+          createOrderingComposer: () =>
+              $$VisitaTableTableOrderingComposer($db: db, $table: table),
+          createComputedFieldComposer: () =>
+              $$VisitaTableTableAnnotationComposer($db: db, $table: table),
           updateCompanionCallback:
               ({
                 Value<String> id = const Value.absent(),
@@ -48435,16 +47899,9 @@ class $$VisitaTableTableTableManager
                 deleted: deleted,
                 rowid: rowid,
               ),
-          withReferenceMapper:
-              (p0) =>
-                  p0
-                      .map(
-                        (e) => (
-                          e.readTable(table),
-                          BaseReferences(db, table, e),
-                        ),
-                      )
-                      .toList(),
+          withReferenceMapper: (p0) => p0
+              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
+              .toList(),
           prefetchHooksCallback: null,
         ),
       );
@@ -48678,18 +48135,12 @@ class $$PedidoAlbaranTableTableTableManager
         TableManagerState(
           db: db,
           table: table,
-          createFilteringComposer:
-              () => $$PedidoAlbaranTableTableFilterComposer(
-                $db: db,
-                $table: table,
-              ),
-          createOrderingComposer:
-              () => $$PedidoAlbaranTableTableOrderingComposer(
-                $db: db,
-                $table: table,
-              ),
-          createComputedFieldComposer:
-              () => $$PedidoAlbaranTableTableAnnotationComposer(
+          createFilteringComposer: () =>
+              $$PedidoAlbaranTableTableFilterComposer($db: db, $table: table),
+          createOrderingComposer: () =>
+              $$PedidoAlbaranTableTableOrderingComposer($db: db, $table: table),
+          createComputedFieldComposer: () =>
+              $$PedidoAlbaranTableTableAnnotationComposer(
                 $db: db,
                 $table: table,
               ),
@@ -48741,16 +48192,9 @@ class $$PedidoAlbaranTableTableTableManager
                 deleted: deleted,
                 rowid: rowid,
               ),
-          withReferenceMapper:
-              (p0) =>
-                  p0
-                      .map(
-                        (e) => (
-                          e.readTable(table),
-                          BaseReferences(db, table, e),
-                        ),
-                      )
-                      .toList(),
+          withReferenceMapper: (p0) => p0
+              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
+              .toList(),
           prefetchHooksCallback: null,
         ),
       );
@@ -48975,18 +48419,18 @@ class $$DescuentoGeneralTableTableTableManager
         TableManagerState(
           db: db,
           table: table,
-          createFilteringComposer:
-              () => $$DescuentoGeneralTableTableFilterComposer(
+          createFilteringComposer: () =>
+              $$DescuentoGeneralTableTableFilterComposer(
                 $db: db,
                 $table: table,
               ),
-          createOrderingComposer:
-              () => $$DescuentoGeneralTableTableOrderingComposer(
+          createOrderingComposer: () =>
+              $$DescuentoGeneralTableTableOrderingComposer(
                 $db: db,
                 $table: table,
               ),
-          createComputedFieldComposer:
-              () => $$DescuentoGeneralTableTableAnnotationComposer(
+          createComputedFieldComposer: () =>
+              $$DescuentoGeneralTableTableAnnotationComposer(
                 $db: db,
                 $table: table,
               ),
@@ -49034,16 +48478,9 @@ class $$DescuentoGeneralTableTableTableManager
                 deleted: deleted,
                 rowid: rowid,
               ),
-          withReferenceMapper:
-              (p0) =>
-                  p0
-                      .map(
-                        (e) => (
-                          e.readTable(table),
-                          BaseReferences(db, table, e),
-                        ),
-                      )
-                      .toList(),
+          withReferenceMapper: (p0) => p0
+              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
+              .toList(),
           prefetchHooksCallback: null,
         ),
       );
@@ -49423,18 +48860,15 @@ class $$DevolucionTipoTableTableTableManager
         TableManagerState(
           db: db,
           table: table,
-          createFilteringComposer:
-              () => $$DevolucionTipoTableTableFilterComposer(
+          createFilteringComposer: () =>
+              $$DevolucionTipoTableTableFilterComposer($db: db, $table: table),
+          createOrderingComposer: () =>
+              $$DevolucionTipoTableTableOrderingComposer(
                 $db: db,
                 $table: table,
               ),
-          createOrderingComposer:
-              () => $$DevolucionTipoTableTableOrderingComposer(
-                $db: db,
-                $table: table,
-              ),
-          createComputedFieldComposer:
-              () => $$DevolucionTipoTableTableAnnotationComposer(
+          createComputedFieldComposer: () =>
+              $$DevolucionTipoTableTableAnnotationComposer(
                 $db: db,
                 $table: table,
               ),
@@ -49518,16 +48952,9 @@ class $$DevolucionTipoTableTableTableManager
                 deleted: deleted,
                 rowid: rowid,
               ),
-          withReferenceMapper:
-              (p0) =>
-                  p0
-                      .map(
-                        (e) => (
-                          e.readTable(table),
-                          BaseReferences(db, table, e),
-                        ),
-                      )
-                      .toList(),
+          withReferenceMapper: (p0) => p0
+              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
+              .toList(),
           prefetchHooksCallback: null,
         ),
       );
@@ -49907,18 +49334,18 @@ class $$DevolucionMotivoTableTableTableManager
         TableManagerState(
           db: db,
           table: table,
-          createFilteringComposer:
-              () => $$DevolucionMotivoTableTableFilterComposer(
+          createFilteringComposer: () =>
+              $$DevolucionMotivoTableTableFilterComposer(
                 $db: db,
                 $table: table,
               ),
-          createOrderingComposer:
-              () => $$DevolucionMotivoTableTableOrderingComposer(
+          createOrderingComposer: () =>
+              $$DevolucionMotivoTableTableOrderingComposer(
                 $db: db,
                 $table: table,
               ),
-          createComputedFieldComposer:
-              () => $$DevolucionMotivoTableTableAnnotationComposer(
+          createComputedFieldComposer: () =>
+              $$DevolucionMotivoTableTableAnnotationComposer(
                 $db: db,
                 $table: table,
               ),
@@ -50002,16 +49429,9 @@ class $$DevolucionMotivoTableTableTableManager
                 deleted: deleted,
                 rowid: rowid,
               ),
-          withReferenceMapper:
-              (p0) =>
-                  p0
-                      .map(
-                        (e) => (
-                          e.readTable(table),
-                          BaseReferences(db, table, e),
-                        ),
-                      )
-                      .toList(),
+          withReferenceMapper: (p0) => p0
+              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
+              .toList(),
           prefetchHooksCallback: null,
         ),
       );
@@ -50391,18 +49811,18 @@ class $$DevolucionEstadoTableTableTableManager
         TableManagerState(
           db: db,
           table: table,
-          createFilteringComposer:
-              () => $$DevolucionEstadoTableTableFilterComposer(
+          createFilteringComposer: () =>
+              $$DevolucionEstadoTableTableFilterComposer(
                 $db: db,
                 $table: table,
               ),
-          createOrderingComposer:
-              () => $$DevolucionEstadoTableTableOrderingComposer(
+          createOrderingComposer: () =>
+              $$DevolucionEstadoTableTableOrderingComposer(
                 $db: db,
                 $table: table,
               ),
-          createComputedFieldComposer:
-              () => $$DevolucionEstadoTableTableAnnotationComposer(
+          createComputedFieldComposer: () =>
+              $$DevolucionEstadoTableTableAnnotationComposer(
                 $db: db,
                 $table: table,
               ),
@@ -50486,16 +49906,9 @@ class $$DevolucionEstadoTableTableTableManager
                 deleted: deleted,
                 rowid: rowid,
               ),
-          withReferenceMapper:
-              (p0) =>
-                  p0
-                      .map(
-                        (e) => (
-                          e.readTable(table),
-                          BaseReferences(db, table, e),
-                        ),
-                      )
-                      .toList(),
+          withReferenceMapper: (p0) => p0
+              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
+              .toList(),
           prefetchHooksCallback: null,
         ),
       );
@@ -50756,18 +50169,15 @@ class $$DevolucionLineaTableTableTableManager
         TableManagerState(
           db: db,
           table: table,
-          createFilteringComposer:
-              () => $$DevolucionLineaTableTableFilterComposer(
+          createFilteringComposer: () =>
+              $$DevolucionLineaTableTableFilterComposer($db: db, $table: table),
+          createOrderingComposer: () =>
+              $$DevolucionLineaTableTableOrderingComposer(
                 $db: db,
                 $table: table,
               ),
-          createOrderingComposer:
-              () => $$DevolucionLineaTableTableOrderingComposer(
-                $db: db,
-                $table: table,
-              ),
-          createComputedFieldComposer:
-              () => $$DevolucionLineaTableTableAnnotationComposer(
+          createComputedFieldComposer: () =>
+              $$DevolucionLineaTableTableAnnotationComposer(
                 $db: db,
                 $table: table,
               ),
@@ -50823,16 +50233,9 @@ class $$DevolucionLineaTableTableTableManager
                 deleted: deleted,
                 rowid: rowid,
               ),
-          withReferenceMapper:
-              (p0) =>
-                  p0
-                      .map(
-                        (e) => (
-                          e.readTable(table),
-                          BaseReferences(db, table, e),
-                        ),
-                      )
-                      .toList(),
+          withReferenceMapper: (p0) => p0
+              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
+              .toList(),
           prefetchHooksCallback: null,
         ),
       );
@@ -51217,19 +50620,12 @@ class $$DevolucionTableTableTableManager
         TableManagerState(
           db: db,
           table: table,
-          createFilteringComposer:
-              () =>
-                  $$DevolucionTableTableFilterComposer($db: db, $table: table),
-          createOrderingComposer:
-              () => $$DevolucionTableTableOrderingComposer(
-                $db: db,
-                $table: table,
-              ),
-          createComputedFieldComposer:
-              () => $$DevolucionTableTableAnnotationComposer(
-                $db: db,
-                $table: table,
-              ),
+          createFilteringComposer: () =>
+              $$DevolucionTableTableFilterComposer($db: db, $table: table),
+          createOrderingComposer: () =>
+              $$DevolucionTableTableOrderingComposer($db: db, $table: table),
+          createComputedFieldComposer: () =>
+              $$DevolucionTableTableAnnotationComposer($db: db, $table: table),
           updateCompanionCallback:
               ({
                 Value<String> empresaId = const Value.absent(),
@@ -51314,16 +50710,9 @@ class $$DevolucionTableTableTableManager
                 deleted: deleted,
                 rowid: rowid,
               ),
-          withReferenceMapper:
-              (p0) =>
-                  p0
-                      .map(
-                        (e) => (
-                          e.readTable(table),
-                          BaseReferences(db, table, e),
-                        ),
-                      )
-                      .toList(),
+          withReferenceMapper: (p0) => p0
+              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
+              .toList(),
           prefetchHooksCallback: null,
         ),
       );
@@ -51512,16 +50901,12 @@ class $$ProvinciaTableTableTableManager
         TableManagerState(
           db: db,
           table: table,
-          createFilteringComposer:
-              () => $$ProvinciaTableTableFilterComposer($db: db, $table: table),
-          createOrderingComposer:
-              () =>
-                  $$ProvinciaTableTableOrderingComposer($db: db, $table: table),
-          createComputedFieldComposer:
-              () => $$ProvinciaTableTableAnnotationComposer(
-                $db: db,
-                $table: table,
-              ),
+          createFilteringComposer: () =>
+              $$ProvinciaTableTableFilterComposer($db: db, $table: table),
+          createOrderingComposer: () =>
+              $$ProvinciaTableTableOrderingComposer($db: db, $table: table),
+          createComputedFieldComposer: () =>
+              $$ProvinciaTableTableAnnotationComposer($db: db, $table: table),
           updateCompanionCallback:
               ({
                 Value<String?> paisId = const Value.absent(),
@@ -51558,16 +50943,9 @@ class $$ProvinciaTableTableTableManager
                 deleted: deleted,
                 rowid: rowid,
               ),
-          withReferenceMapper:
-              (p0) =>
-                  p0
-                      .map(
-                        (e) => (
-                          e.readTable(table),
-                          BaseReferences(db, table, e),
-                        ),
-                      )
-                      .toList(),
+          withReferenceMapper: (p0) => p0
+              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
+              .toList(),
           prefetchHooksCallback: null,
         ),
       );
@@ -51873,18 +51251,18 @@ class $$VisitaCompetidorTableTableTableManager
         TableManagerState(
           db: db,
           table: table,
-          createFilteringComposer:
-              () => $$VisitaCompetidorTableTableFilterComposer(
+          createFilteringComposer: () =>
+              $$VisitaCompetidorTableTableFilterComposer(
                 $db: db,
                 $table: table,
               ),
-          createOrderingComposer:
-              () => $$VisitaCompetidorTableTableOrderingComposer(
+          createOrderingComposer: () =>
+              $$VisitaCompetidorTableTableOrderingComposer(
                 $db: db,
                 $table: table,
               ),
-          createComputedFieldComposer:
-              () => $$VisitaCompetidorTableTableAnnotationComposer(
+          createComputedFieldComposer: () =>
+              $$VisitaCompetidorTableTableAnnotationComposer(
                 $db: db,
                 $table: table,
               ),
@@ -51948,16 +51326,9 @@ class $$VisitaCompetidorTableTableTableManager
                 lastUpdated: lastUpdated,
                 deleted: deleted,
               ),
-          withReferenceMapper:
-              (p0) =>
-                  p0
-                      .map(
-                        (e) => (
-                          e.readTable(table),
-                          BaseReferences(db, table, e),
-                        ),
-                      )
-                      .toList(),
+          withReferenceMapper: (p0) => p0
+              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
+              .toList(),
           prefetchHooksCallback: null,
         ),
       );
@@ -52267,18 +51638,12 @@ class $$VisitaSectorTableTableTableManager
         TableManagerState(
           db: db,
           table: table,
-          createFilteringComposer:
-              () => $$VisitaSectorTableTableFilterComposer(
-                $db: db,
-                $table: table,
-              ),
-          createOrderingComposer:
-              () => $$VisitaSectorTableTableOrderingComposer(
-                $db: db,
-                $table: table,
-              ),
-          createComputedFieldComposer:
-              () => $$VisitaSectorTableTableAnnotationComposer(
+          createFilteringComposer: () =>
+              $$VisitaSectorTableTableFilterComposer($db: db, $table: table),
+          createOrderingComposer: () =>
+              $$VisitaSectorTableTableOrderingComposer($db: db, $table: table),
+          createComputedFieldComposer: () =>
+              $$VisitaSectorTableTableAnnotationComposer(
                 $db: db,
                 $table: table,
               ),
@@ -52342,16 +51707,9 @@ class $$VisitaSectorTableTableTableManager
                 lastUpdated: lastUpdated,
                 deleted: deleted,
               ),
-          withReferenceMapper:
-              (p0) =>
-                  p0
-                      .map(
-                        (e) => (
-                          e.readTable(table),
-                          BaseReferences(db, table, e),
-                        ),
-                      )
-                      .toList(),
+          withReferenceMapper: (p0) => p0
+              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
+              .toList(),
           prefetchHooksCallback: null,
         ),
       );
@@ -52661,18 +52019,18 @@ class $$VisitaMotivoNoVentaTableTableTableManager
         TableManagerState(
           db: db,
           table: table,
-          createFilteringComposer:
-              () => $$VisitaMotivoNoVentaTableTableFilterComposer(
+          createFilteringComposer: () =>
+              $$VisitaMotivoNoVentaTableTableFilterComposer(
                 $db: db,
                 $table: table,
               ),
-          createOrderingComposer:
-              () => $$VisitaMotivoNoVentaTableTableOrderingComposer(
+          createOrderingComposer: () =>
+              $$VisitaMotivoNoVentaTableTableOrderingComposer(
                 $db: db,
                 $table: table,
               ),
-          createComputedFieldComposer:
-              () => $$VisitaMotivoNoVentaTableTableAnnotationComposer(
+          createComputedFieldComposer: () =>
+              $$VisitaMotivoNoVentaTableTableAnnotationComposer(
                 $db: db,
                 $table: table,
               ),
@@ -52736,16 +52094,9 @@ class $$VisitaMotivoNoVentaTableTableTableManager
                 lastUpdated: lastUpdated,
                 deleted: deleted,
               ),
-          withReferenceMapper:
-              (p0) =>
-                  p0
-                      .map(
-                        (e) => (
-                          e.readTable(table),
-                          BaseReferences(db, table, e),
-                        ),
-                      )
-                      .toList(),
+          withReferenceMapper: (p0) => p0
+              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
+              .toList(),
           prefetchHooksCallback: null,
         ),
       );
@@ -52904,18 +52255,18 @@ class $$VisitaCompetenciaTableTableTableManager
         TableManagerState(
           db: db,
           table: table,
-          createFilteringComposer:
-              () => $$VisitaCompetenciaTableTableFilterComposer(
+          createFilteringComposer: () =>
+              $$VisitaCompetenciaTableTableFilterComposer(
                 $db: db,
                 $table: table,
               ),
-          createOrderingComposer:
-              () => $$VisitaCompetenciaTableTableOrderingComposer(
+          createOrderingComposer: () =>
+              $$VisitaCompetenciaTableTableOrderingComposer(
                 $db: db,
                 $table: table,
               ),
-          createComputedFieldComposer:
-              () => $$VisitaCompetenciaTableTableAnnotationComposer(
+          createComputedFieldComposer: () =>
+              $$VisitaCompetenciaTableTableAnnotationComposer(
                 $db: db,
                 $table: table,
               ),
@@ -52947,16 +52298,9 @@ class $$VisitaCompetenciaTableTableTableManager
                 deleted: deleted,
                 rowid: rowid,
               ),
-          withReferenceMapper:
-              (p0) =>
-                  p0
-                      .map(
-                        (e) => (
-                          e.readTable(table),
-                          BaseReferences(db, table, e),
-                        ),
-                      )
-                      .toList(),
+          withReferenceMapper: (p0) => p0
+              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
+              .toList(),
           prefetchHooksCallback: null,
         ),
       );
@@ -53336,18 +52680,15 @@ class $$TrackingEstadoTableTableTableManager
         TableManagerState(
           db: db,
           table: table,
-          createFilteringComposer:
-              () => $$TrackingEstadoTableTableFilterComposer(
+          createFilteringComposer: () =>
+              $$TrackingEstadoTableTableFilterComposer($db: db, $table: table),
+          createOrderingComposer: () =>
+              $$TrackingEstadoTableTableOrderingComposer(
                 $db: db,
                 $table: table,
               ),
-          createOrderingComposer:
-              () => $$TrackingEstadoTableTableOrderingComposer(
-                $db: db,
-                $table: table,
-              ),
-          createComputedFieldComposer:
-              () => $$TrackingEstadoTableTableAnnotationComposer(
+          createComputedFieldComposer: () =>
+              $$TrackingEstadoTableTableAnnotationComposer(
                 $db: db,
                 $table: table,
               ),
@@ -53431,16 +52772,9 @@ class $$TrackingEstadoTableTableTableManager
                 deleted: deleted,
                 rowid: rowid,
               ),
-          withReferenceMapper:
-              (p0) =>
-                  p0
-                      .map(
-                        (e) => (
-                          e.readTable(table),
-                          BaseReferences(db, table, e),
-                        ),
-                      )
-                      .toList(),
+          withReferenceMapper: (p0) => p0
+              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
+              .toList(),
           prefetchHooksCallback: null,
         ),
       );
@@ -53763,13 +53097,12 @@ class $$SectorTableTableTableManager
         TableManagerState(
           db: db,
           table: table,
-          createFilteringComposer:
-              () => $$SectorTableTableFilterComposer($db: db, $table: table),
-          createOrderingComposer:
-              () => $$SectorTableTableOrderingComposer($db: db, $table: table),
-          createComputedFieldComposer:
-              () =>
-                  $$SectorTableTableAnnotationComposer($db: db, $table: table),
+          createFilteringComposer: () =>
+              $$SectorTableTableFilterComposer($db: db, $table: table),
+          createOrderingComposer: () =>
+              $$SectorTableTableOrderingComposer($db: db, $table: table),
+          createComputedFieldComposer: () =>
+              $$SectorTableTableAnnotationComposer($db: db, $table: table),
           updateCompanionCallback:
               ({
                 Value<String> id = const Value.absent(),
@@ -53838,16 +53171,9 @@ class $$SectorTableTableTableManager
                 deleted: deleted,
                 rowid: rowid,
               ),
-          withReferenceMapper:
-              (p0) =>
-                  p0
-                      .map(
-                        (e) => (
-                          e.readTable(table),
-                          BaseReferences(db, table, e),
-                        ),
-                      )
-                      .toList(),
+          withReferenceMapper: (p0) => p0
+              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
+              .toList(),
           prefetchHooksCallback: null,
         ),
       );
@@ -54172,16 +53498,12 @@ class $$SubsectorTableTableTableManager
         TableManagerState(
           db: db,
           table: table,
-          createFilteringComposer:
-              () => $$SubsectorTableTableFilterComposer($db: db, $table: table),
-          createOrderingComposer:
-              () =>
-                  $$SubsectorTableTableOrderingComposer($db: db, $table: table),
-          createComputedFieldComposer:
-              () => $$SubsectorTableTableAnnotationComposer(
-                $db: db,
-                $table: table,
-              ),
+          createFilteringComposer: () =>
+              $$SubsectorTableTableFilterComposer($db: db, $table: table),
+          createOrderingComposer: () =>
+              $$SubsectorTableTableOrderingComposer($db: db, $table: table),
+          createComputedFieldComposer: () =>
+              $$SubsectorTableTableAnnotationComposer($db: db, $table: table),
           updateCompanionCallback:
               ({
                 Value<String> sectorId = const Value.absent(),
@@ -54250,16 +53572,9 @@ class $$SubsectorTableTableTableManager
                 deleted: deleted,
                 rowid: rowid,
               ),
-          withReferenceMapper:
-              (p0) =>
-                  p0
-                      .map(
-                        (e) => (
-                          e.readTable(table),
-                          BaseReferences(db, table, e),
-                        ),
-                      )
-                      .toList(),
+          withReferenceMapper: (p0) => p0
+              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
+              .toList(),
           prefetchHooksCallback: null,
         ),
       );
@@ -54478,19 +53793,12 @@ class $$PromoDtoCabTableTableTableManager
         TableManagerState(
           db: db,
           table: table,
-          createFilteringComposer:
-              () =>
-                  $$PromoDtoCabTableTableFilterComposer($db: db, $table: table),
-          createOrderingComposer:
-              () => $$PromoDtoCabTableTableOrderingComposer(
-                $db: db,
-                $table: table,
-              ),
-          createComputedFieldComposer:
-              () => $$PromoDtoCabTableTableAnnotationComposer(
-                $db: db,
-                $table: table,
-              ),
+          createFilteringComposer: () =>
+              $$PromoDtoCabTableTableFilterComposer($db: db, $table: table),
+          createOrderingComposer: () =>
+              $$PromoDtoCabTableTableOrderingComposer($db: db, $table: table),
+          createComputedFieldComposer: () =>
+              $$PromoDtoCabTableTableAnnotationComposer($db: db, $table: table),
           updateCompanionCallback:
               ({
                 Value<String> empresaId = const Value.absent(),
@@ -54535,16 +53843,9 @@ class $$PromoDtoCabTableTableTableManager
                 deleted: deleted,
                 rowid: rowid,
               ),
-          withReferenceMapper:
-              (p0) =>
-                  p0
-                      .map(
-                        (e) => (
-                          e.readTable(table),
-                          BaseReferences(db, table, e),
-                        ),
-                      )
-                      .toList(),
+          withReferenceMapper: (p0) => p0
+              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
+              .toList(),
           prefetchHooksCallback: null,
         ),
       );
@@ -54733,18 +54034,15 @@ class $$PromoDtoClienteTableTableTableManager
         TableManagerState(
           db: db,
           table: table,
-          createFilteringComposer:
-              () => $$PromoDtoClienteTableTableFilterComposer(
+          createFilteringComposer: () =>
+              $$PromoDtoClienteTableTableFilterComposer($db: db, $table: table),
+          createOrderingComposer: () =>
+              $$PromoDtoClienteTableTableOrderingComposer(
                 $db: db,
                 $table: table,
               ),
-          createOrderingComposer:
-              () => $$PromoDtoClienteTableTableOrderingComposer(
-                $db: db,
-                $table: table,
-              ),
-          createComputedFieldComposer:
-              () => $$PromoDtoClienteTableTableAnnotationComposer(
+          createComputedFieldComposer: () =>
+              $$PromoDtoClienteTableTableAnnotationComposer(
                 $db: db,
                 $table: table,
               ),
@@ -54784,16 +54082,9 @@ class $$PromoDtoClienteTableTableTableManager
                 deleted: deleted,
                 rowid: rowid,
               ),
-          withReferenceMapper:
-              (p0) =>
-                  p0
-                      .map(
-                        (e) => (
-                          e.readTable(table),
-                          BaseReferences(db, table, e),
-                        ),
-                      )
-                      .toList(),
+          withReferenceMapper: (p0) => p0
+              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
+              .toList(),
           prefetchHooksCallback: null,
         ),
       );
@@ -55033,19 +54324,12 @@ class $$PromoDtoLinTableTableTableManager
         TableManagerState(
           db: db,
           table: table,
-          createFilteringComposer:
-              () =>
-                  $$PromoDtoLinTableTableFilterComposer($db: db, $table: table),
-          createOrderingComposer:
-              () => $$PromoDtoLinTableTableOrderingComposer(
-                $db: db,
-                $table: table,
-              ),
-          createComputedFieldComposer:
-              () => $$PromoDtoLinTableTableAnnotationComposer(
-                $db: db,
-                $table: table,
-              ),
+          createFilteringComposer: () =>
+              $$PromoDtoLinTableTableFilterComposer($db: db, $table: table),
+          createOrderingComposer: () =>
+              $$PromoDtoLinTableTableOrderingComposer($db: db, $table: table),
+          createComputedFieldComposer: () =>
+              $$PromoDtoLinTableTableAnnotationComposer($db: db, $table: table),
           updateCompanionCallback:
               ({
                 Value<String> empresaId = const Value.absent(),
@@ -55094,16 +54378,9 @@ class $$PromoDtoLinTableTableTableManager
                 deleted: deleted,
                 rowid: rowid,
               ),
-          withReferenceMapper:
-              (p0) =>
-                  p0
-                      .map(
-                        (e) => (
-                          e.readTable(table),
-                          BaseReferences(db, table, e),
-                        ),
-                      )
-                      .toList(),
+          withReferenceMapper: (p0) => p0
+              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
+              .toList(),
           prefetchHooksCallback: null,
         ),
       );

@@ -18,10 +18,11 @@ class ArticuloDocumentoState with _$ArticuloDocumentoState {
   const factory ArticuloDocumentoState.error(String failure) = _Error;
 }
 
-final articuloDocumentoControllerProvider = StateNotifierProvider.autoDispose<
-  ArticuloDocumentoController,
-  ArticuloDocumentoState
->((ref) => ArticuloDocumentoController(ref));
+final articuloDocumentoControllerProvider =
+    StateNotifierProvider.autoDispose<
+      ArticuloDocumentoController,
+      ArticuloDocumentoState
+    >((ref) => ArticuloDocumentoController(ref));
 
 class ArticuloDocumentoController
     extends StateNotifier<ArticuloDocumentoState> {

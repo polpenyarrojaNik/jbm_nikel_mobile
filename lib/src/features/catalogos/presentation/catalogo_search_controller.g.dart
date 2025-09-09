@@ -11,19 +11,19 @@ String _$catalogoIndexScreenControllerHash() =>
 
 /// See also [CatalogoIndexScreenController].
 @ProviderFor(CatalogoIndexScreenController)
-final catalogoIndexScreenControllerProvider = AutoDisposeAsyncNotifierProvider<
-  CatalogoIndexScreenController,
-  List<Catalogo>
->.internal(
-  CatalogoIndexScreenController.new,
-  name: r'catalogoIndexScreenControllerProvider',
-  debugGetCreateSourceHash:
-      const bool.fromEnvironment('dart.vm.product')
+final catalogoIndexScreenControllerProvider =
+    AutoDisposeAsyncNotifierProvider<
+      CatalogoIndexScreenController,
+      List<Catalogo>
+    >.internal(
+      CatalogoIndexScreenController.new,
+      name: r'catalogoIndexScreenControllerProvider',
+      debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
           ? null
           : _$catalogoIndexScreenControllerHash,
-  dependencies: null,
-  allTransitiveDependencies: null,
-);
+      dependencies: null,
+      allTransitiveDependencies: null,
+    );
 
 typedef _$CatalogoIndexScreenController =
     AutoDisposeAsyncNotifier<List<Catalogo>>;

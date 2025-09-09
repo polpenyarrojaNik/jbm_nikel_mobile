@@ -18,10 +18,9 @@ final articuloDetalleAddArticuloABorradorButtonControllerProvider =
     >.internal(
       ArticuloDetalleAddArticuloABorradorButtonController.new,
       name: r'articuloDetalleAddArticuloABorradorButtonControllerProvider',
-      debugGetCreateSourceHash:
-          const bool.fromEnvironment('dart.vm.product')
-              ? null
-              : _$articuloDetalleAddArticuloABorradorButtonControllerHash,
+      debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+          ? null
+          : _$articuloDetalleAddArticuloABorradorButtonControllerHash,
       dependencies: null,
       allTransitiveDependencies: null,
     );
@@ -33,19 +32,19 @@ String _$getPedidoVentaLineaHash() =>
 
 /// See also [GetPedidoVentaLinea].
 @ProviderFor(GetPedidoVentaLinea)
-final getPedidoVentaLineaProvider = AutoDisposeNotifierProvider<
-  GetPedidoVentaLinea,
-  MutationState<Either<AppException, int>, PedidoLocalParam>
->.internal(
-  GetPedidoVentaLinea.new,
-  name: r'getPedidoVentaLineaProvider',
-  debugGetCreateSourceHash:
-      const bool.fromEnvironment('dart.vm.product')
+final getPedidoVentaLineaProvider =
+    AutoDisposeNotifierProvider<
+      GetPedidoVentaLinea,
+      MutationState<Either<AppException, int>, PedidoLocalParam>
+    >.internal(
+      GetPedidoVentaLinea.new,
+      name: r'getPedidoVentaLineaProvider',
+      debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
           ? null
           : _$getPedidoVentaLineaHash,
-  dependencies: null,
-  allTransitiveDependencies: null,
-);
+      dependencies: null,
+      allTransitiveDependencies: null,
+    );
 
 typedef _$GetPedidoVentaLinea =
     AutoDisposeNotifier<

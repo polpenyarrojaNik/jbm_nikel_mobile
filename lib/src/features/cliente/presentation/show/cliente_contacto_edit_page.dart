@@ -49,10 +49,9 @@ class ClienteContactoEditPage extends ConsumerWidget {
       clienteContactoEditPageControllerProvider(clienteImpParam),
       (_, state) => state.whenOrNull(
         error: (error, _) {
-          final errorMessage =
-              (error is AppException)
-                  ? error.details.message
-                  : error.toString();
+          final errorMessage = (error is AppException)
+              ? error.details.message
+              : error.toString();
 
           context.showErrorBar(
             content: Text(errorMessage),
@@ -102,10 +101,9 @@ class ClienteContactoEditPage extends ConsumerWidget {
 
     return Scaffold(
       appBar: CommonAppBar(
-        titleText:
-            S
-                .of(context)
-                .cliente_show_clienteContacto_clienteContactoEditPage_editarContacto,
+        titleText: S
+            .of(context)
+            .cliente_show_clienteContacto_clienteContactoEditPage_editarContacto,
         actions: [
           IconButton(
             onPressed: () => _saveClienteContactoImp(ref, formKey),
@@ -116,22 +114,18 @@ class ClienteContactoEditPage extends ConsumerWidget {
       body: Padding(
         padding: const EdgeInsets.all(16),
         child: value.when(
-          data:
-              (clienteContactoEditPageData) => Column(
-                children: [
-                  Expanded(
-                    child: _ClienteContactoImpEditForm(
-                      clienteContacto:
-                          clienteContactoEditPageData.clienteContacto,
-                      formKey: formKey,
-                    ),
-                  ),
-                  if (clienteImpParam.id != null)
-                    _CambiosPendientesListView(
-                      clienteImpParam: clienteImpParam,
-                    ),
-                ],
+          data: (clienteContactoEditPageData) => Column(
+            children: [
+              Expanded(
+                child: _ClienteContactoImpEditForm(
+                  clienteContacto: clienteContactoEditPageData.clienteContacto,
+                  formKey: formKey,
+                ),
               ),
+              if (clienteImpParam.id != null)
+                _CambiosPendientesListView(clienteImpParam: clienteImpParam),
+            ],
+          ),
           error: (error, _) {
             final clienteContactoEditPageData =
                 error as ClienteContactoImpEditPageData;
@@ -262,10 +256,9 @@ class _ClienteContactoImpEditForm extends StatelessWidget {
               child: PhoneTextFormField(
                 name: 'telefono1',
                 initialValue: clienteContacto?.telefono1,
-                labelText:
-                    S
-                        .of(context)
-                        .cliente_show_clienteContacto_clienteContactoEditPage_telefono1,
+                labelText: S
+                    .of(context)
+                    .cliente_show_clienteContacto_clienteContactoEditPage_telefono1,
                 validator: FormBuilderValidators.compose([
                   FormBuilderValidators.phoneNumber(checkNullOrEmpty: false),
                   FormBuilderValidators.maxLength(25, checkNullOrEmpty: false),
@@ -277,10 +270,9 @@ class _ClienteContactoImpEditForm extends StatelessWidget {
               child: PhoneTextFormField(
                 name: 'telefono2',
                 initialValue: clienteContacto?.telefono2,
-                labelText:
-                    S
-                        .of(context)
-                        .cliente_show_clienteContacto_clienteContactoEditPage_telefono2,
+                labelText: S
+                    .of(context)
+                    .cliente_show_clienteContacto_clienteContactoEditPage_telefono2,
                 validator: FormBuilderValidators.compose([
                   FormBuilderValidators.phoneNumber(checkNullOrEmpty: false),
                   FormBuilderValidators.maxLength(25, checkNullOrEmpty: false),
@@ -316,10 +308,8 @@ class _ClienteContactoImpEditForm extends StatelessWidget {
                       .of(context)
                       .cliente_show_clienteContacto_clienteContactoEditPage_observaciones,
                   suffixButton: IconButton(
-                    onPressed:
-                        () =>
-                            formKey.currentState?.fields['observaciones']
-                                ?.reset(),
+                    onPressed: () =>
+                        formKey.currentState?.fields['observaciones']?.reset(),
                     icon: const Icon(Icons.cancel_outlined),
                   ),
                 ),
@@ -372,38 +362,34 @@ class _CambiosPendientesListView extends ConsumerWidget {
       clienteContactoImpListInSyncByClienteProvider(clienteImpParam),
     );
     return clienteConatctoImpValue.when(
-      data:
-          (clienteContactoImpList) =>
-              clienteContactoImpList.isEmpty
-                  ? Container()
-                  : Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          S
-                              .of(context)
-                              .cliente_show_clienteContacto_clienteContactoEditPage_cambiosPendientesDeTramitar,
-                          style: Theme.of(context).textTheme.titleSmall,
-                        ),
-                        const Gap(4),
-                        ListView.separated(
-                          shrinkWrap: true,
-                          itemBuilder:
-                              (context, i) => ClienteContactoImpListTile(
-                                clienteContactoImp: clienteContactoImpList[i],
-                              ),
-                          separatorBuilder: (context, i) => const Divider(),
-                          itemCount: clienteContactoImpList.length,
-                        ),
-                      ],
-                    ),
+      data: (clienteContactoImpList) => clienteContactoImpList.isEmpty
+          ? Container()
+          : Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    S
+                        .of(context)
+                        .cliente_show_clienteContacto_clienteContactoEditPage_cambiosPendientesDeTramitar,
+                    style: Theme.of(context).textTheme.titleSmall,
                   ),
-      error:
-          (error, _) => ErrorMessageWidget(
-            (error is AppException) ? error.details.message : error.toString(),
-          ),
+                  const Gap(4),
+                  ListView.separated(
+                    shrinkWrap: true,
+                    itemBuilder: (context, i) => ClienteContactoImpListTile(
+                      clienteContactoImp: clienteContactoImpList[i],
+                    ),
+                    separatorBuilder: (context, i) => const Divider(),
+                    itemCount: clienteContactoImpList.length,
+                  ),
+                ],
+              ),
+            ),
+      error: (error, _) => ErrorMessageWidget(
+        (error is AppException) ? error.details.message : error.toString(),
+      ),
       loading: () => const Center(child: CircularProgressIndicator()),
     );
   }

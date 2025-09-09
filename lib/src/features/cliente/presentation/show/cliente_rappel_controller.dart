@@ -18,10 +18,11 @@ class ClienteRappelControllerState with _$ClienteRappelControllerState {
   const factory ClienteRappelControllerState.error(String failure) = _Error;
 }
 
-final clienteRappelControllerProvider = StateNotifierProvider.autoDispose<
-  ClienteRappelController,
-  ClienteRappelControllerState
->((ref) => ClienteRappelController(ref));
+final clienteRappelControllerProvider =
+    StateNotifierProvider.autoDispose<
+      ClienteRappelController,
+      ClienteRappelControllerState
+    >((ref) => ClienteRappelController(ref));
 
 class ClienteRappelController
     extends StateNotifier<ClienteRappelControllerState> {

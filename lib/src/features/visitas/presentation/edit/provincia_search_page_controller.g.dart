@@ -88,10 +88,9 @@ class ProvinciaSearchPageControllerProvider
         () => ProvinciaSearchPageController()..paisId = paisId,
         from: provinciaSearchPageControllerProvider,
         name: r'provinciaSearchPageControllerProvider',
-        debugGetCreateSourceHash:
-            const bool.fromEnvironment('dart.vm.product')
-                ? null
-                : _$provinciaSearchPageControllerHash,
+        debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+            ? null
+            : _$provinciaSearchPageControllerHash,
         dependencies: ProvinciaSearchPageControllerFamily._dependencies,
         allTransitiveDependencies:
             ProvinciaSearchPageControllerFamily._allTransitiveDependencies,

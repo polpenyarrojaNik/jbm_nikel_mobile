@@ -47,10 +47,9 @@ class ClienteContactoModificacionEditPageControllerProvider
               ..clienteModificacionParam = clienteModificacionParam,
         from: clienteContactoModificacionEditPageControllerProvider,
         name: r'clienteContactoModificacionEditPageControllerProvider',
-        debugGetCreateSourceHash:
-            const bool.fromEnvironment('dart.vm.product')
-                ? null
-                : _$ClienteContactoModificacionEditPageControllerHash,
+        debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+            ? null
+            : _$ClienteContactoModificacionEditPageControllerHash,
       );
 
   final ClienteModificacionParam clienteModificacionParam;

@@ -61,20 +61,17 @@ _ArticuloDTO _$ArticuloDTOFromJson(Map<String, dynamic> json) => _ArticuloDTO(
   comprasEntregaCantidad1: (json['COMPRAS_ENTREGA_CANTIDAD_1'] as num).toInt(),
   comprasEntregaCantidad2: (json['COMPRAS_ENTREGA_CANTIDAD_2'] as num).toInt(),
   comprasEntregaCantidad3: (json['COMPRAS_ENTREGA_CANTIDAD_3'] as num).toInt(),
-  comprasEntregaCantidadMas3:
-      (json['COMPRAS_ENTREGA_CANTIDAD_MAS_3'] as num).toInt(),
-  comprasEntregaFecha1:
-      json['COMPRAS_ENTREGA_FECHA_1'] == null
-          ? null
-          : DateTime.parse(json['COMPRAS_ENTREGA_FECHA_1'] as String),
-  comprasEntregaFecha2:
-      json['COMPRAS_ENTREGA_FECHA_2'] == null
-          ? null
-          : DateTime.parse(json['COMPRAS_ENTREGA_FECHA_2'] as String),
-  comprasEntregaFecha3:
-      json['COMPRAS_ENTREGA_FECHA_3'] == null
-          ? null
-          : DateTime.parse(json['COMPRAS_ENTREGA_FECHA_3'] as String),
+  comprasEntregaCantidadMas3: (json['COMPRAS_ENTREGA_CANTIDAD_MAS_3'] as num)
+      .toInt(),
+  comprasEntregaFecha1: json['COMPRAS_ENTREGA_FECHA_1'] == null
+      ? null
+      : DateTime.parse(json['COMPRAS_ENTREGA_FECHA_1'] as String),
+  comprasEntregaFecha2: json['COMPRAS_ENTREGA_FECHA_2'] == null
+      ? null
+      : DateTime.parse(json['COMPRAS_ENTREGA_FECHA_2'] as String),
+  comprasEntregaFecha3: json['COMPRAS_ENTREGA_FECHA_3'] == null
+      ? null
+      : DateTime.parse(json['COMPRAS_ENTREGA_FECHA_3'] as String),
   comprasEntregaEstado1: json['COMPRAS_ENTREGA_ESTADO_1'] as String?,
   comprasEntregaEstado2: json['COMPRAS_ENTREGA_ESTADO_2'] as String?,
   comprasEntregaEstado3: json['COMPRAS_ENTREGA_ESTADO_'] as String?,

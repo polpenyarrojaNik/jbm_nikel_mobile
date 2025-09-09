@@ -284,11 +284,10 @@ class ArticuloTable extends Table {
   TextColumn get descripcionEL => text().nullable().named('DESCRIPCION_EL')();
   TextColumn get familiaId =>
       text().nullable().references(FamiliaTable, #id).named('FAMILIA_ID')();
-  TextColumn get subfamiliaId =>
-      text()
-          .nullable()
-          .references(SubfamiliaTable, #id)
-          .named('SUBFAMILIA_ID')();
+  TextColumn get subfamiliaId => text()
+      .nullable()
+      .references(SubfamiliaTable, #id)
+      .named('SUBFAMILIA_ID')();
   IntColumn get ventaMinimo => integer().named('VENTA_MINIMO')();
   IntColumn get ventaMultiplo => integer().named('VENTA_MULTIPLO')();
   IntColumn get unidadesSubcaja => integer().named('UNIDADES_SUBCAJA')();

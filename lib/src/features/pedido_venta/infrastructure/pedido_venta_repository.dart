@@ -253,51 +253,48 @@ class PedidoVentaRepository {
       final busqueda = searchText.toUpperCase().split(' ');
       Expression<bool>? predicate;
       for (var i = 0; i < busqueda.length; i++) {
-        predicate =
-            predicate == null
-                ? (_remoteDb.pedidoVentaTable.pedidoVentaId.like(
-                      '%${busqueda[i]}%',
-                    ) |
-                    _remoteDb.pedidoVentaTable.nombreCliente.like(
-                      '%${busqueda[i]}%',
-                    ) |
-                    _remoteDb.pedidoVentaTable.clienteId.like(
-                      '%${busqueda[i]}%',
-                    ) |
-                    _remoteDb.pedidoVentaTable.pedidoVentaId.like(
-                      '%${busqueda[i]}%',
-                    ) |
-                    _remoteDb.pedidoVentaTable.poblacion.like(
-                      '%${busqueda[i]}%',
-                    ) |
-                    _remoteDb.pedidoVentaTable.codigoPostal.like(
-                      '%${busqueda[i]}%',
-                    ) |
-                    _remoteDb.pedidoVentaTable.provincia.like(
-                      '%${busqueda[i]}%',
-                    ))
-                : predicate &
-                    (_remoteDb.pedidoVentaTable.pedidoVentaId.like(
-                          '%${busqueda[i]}%',
-                        ) |
-                        (_remoteDb.pedidoVentaTable.nombreCliente.like(
-                              '%${busqueda[i]}%',
-                            ) |
-                            _remoteDb.pedidoVentaTable.pedidoVentaId.like(
-                              '%${busqueda[i]}%',
-                            ) |
-                            _remoteDb.pedidoVentaTable.clienteId.like(
-                              '%${busqueda[i]}%',
-                            ) |
-                            _remoteDb.pedidoVentaTable.poblacion.like(
-                              '%${busqueda[i]}%',
-                            ) |
-                            _remoteDb.pedidoVentaTable.codigoPostal.like(
-                              '%${busqueda[i]}%',
-                            ) |
-                            _remoteDb.pedidoVentaTable.provincia.like(
-                              '%${busqueda[i]}%',
-                            )));
+        predicate = predicate == null
+            ? (_remoteDb.pedidoVentaTable.pedidoVentaId.like(
+                    '%${busqueda[i]}%',
+                  ) |
+                  _remoteDb.pedidoVentaTable.nombreCliente.like(
+                    '%${busqueda[i]}%',
+                  ) |
+                  _remoteDb.pedidoVentaTable.clienteId.like(
+                    '%${busqueda[i]}%',
+                  ) |
+                  _remoteDb.pedidoVentaTable.pedidoVentaId.like(
+                    '%${busqueda[i]}%',
+                  ) |
+                  _remoteDb.pedidoVentaTable.poblacion.like(
+                    '%${busqueda[i]}%',
+                  ) |
+                  _remoteDb.pedidoVentaTable.codigoPostal.like(
+                    '%${busqueda[i]}%',
+                  ) |
+                  _remoteDb.pedidoVentaTable.provincia.like('%${busqueda[i]}%'))
+            : predicate &
+                  (_remoteDb.pedidoVentaTable.pedidoVentaId.like(
+                        '%${busqueda[i]}%',
+                      ) |
+                      (_remoteDb.pedidoVentaTable.nombreCliente.like(
+                            '%${busqueda[i]}%',
+                          ) |
+                          _remoteDb.pedidoVentaTable.pedidoVentaId.like(
+                            '%${busqueda[i]}%',
+                          ) |
+                          _remoteDb.pedidoVentaTable.clienteId.like(
+                            '%${busqueda[i]}%',
+                          ) |
+                          _remoteDb.pedidoVentaTable.poblacion.like(
+                            '%${busqueda[i]}%',
+                          ) |
+                          _remoteDb.pedidoVentaTable.codigoPostal.like(
+                            '%${busqueda[i]}%',
+                          ) |
+                          _remoteDb.pedidoVentaTable.provincia.like(
+                            '%${busqueda[i]}%',
+                          )));
       }
       query.where(predicate!);
     }
@@ -373,45 +370,42 @@ class PedidoVentaRepository {
       final busqueda = searchText.toUpperCase().split(' ');
       Expression<bool>? predicate;
       for (var i = 0; i < busqueda.length; i++) {
-        predicate =
-            predicate == null
-                ? (_remoteDb.pedidoVentaTable.pedidoVentaId.like(
-                      '%${busqueda[i]}%',
-                    ) |
-                    _remoteDb.pedidoVentaTable.nombreCliente.like(
-                      '%${busqueda[i]}%',
-                    ) |
-                    _remoteDb.pedidoVentaTable.clienteId.like(
-                      '%${busqueda[i]}%',
-                    ) |
-                    _remoteDb.pedidoVentaTable.poblacion.like(
-                      '%${busqueda[i]}%',
-                    ) |
-                    _remoteDb.pedidoVentaTable.codigoPostal.like(
-                      '%${busqueda[i]}%',
-                    ) |
-                    _remoteDb.pedidoVentaTable.provincia.like(
-                      '%${busqueda[i]}%',
-                    ))
-                : predicate &
-                    ((_remoteDb.pedidoVentaTable.pedidoVentaId.like(
-                          '%${busqueda[i]}%',
-                        ) |
-                        _remoteDb.pedidoVentaTable.nombreCliente.like(
-                          '%${busqueda[i]}%',
-                        ) |
-                        _remoteDb.pedidoVentaTable.clienteId.like(
-                          '%${busqueda[i]}%',
-                        ) |
-                        _remoteDb.pedidoVentaTable.poblacion.like(
-                          '%${busqueda[i]}%',
-                        ) |
-                        _remoteDb.pedidoVentaTable.codigoPostal.like(
-                          '%${busqueda[i]}%',
-                        ) |
-                        _remoteDb.pedidoVentaTable.provincia.like(
-                          '%${busqueda[i]}%',
-                        )));
+        predicate = predicate == null
+            ? (_remoteDb.pedidoVentaTable.pedidoVentaId.like(
+                    '%${busqueda[i]}%',
+                  ) |
+                  _remoteDb.pedidoVentaTable.nombreCliente.like(
+                    '%${busqueda[i]}%',
+                  ) |
+                  _remoteDb.pedidoVentaTable.clienteId.like(
+                    '%${busqueda[i]}%',
+                  ) |
+                  _remoteDb.pedidoVentaTable.poblacion.like(
+                    '%${busqueda[i]}%',
+                  ) |
+                  _remoteDb.pedidoVentaTable.codigoPostal.like(
+                    '%${busqueda[i]}%',
+                  ) |
+                  _remoteDb.pedidoVentaTable.provincia.like('%${busqueda[i]}%'))
+            : predicate &
+                  ((_remoteDb.pedidoVentaTable.pedidoVentaId.like(
+                        '%${busqueda[i]}%',
+                      ) |
+                      _remoteDb.pedidoVentaTable.nombreCliente.like(
+                        '%${busqueda[i]}%',
+                      ) |
+                      _remoteDb.pedidoVentaTable.clienteId.like(
+                        '%${busqueda[i]}%',
+                      ) |
+                      _remoteDb.pedidoVentaTable.poblacion.like(
+                        '%${busqueda[i]}%',
+                      ) |
+                      _remoteDb.pedidoVentaTable.codigoPostal.like(
+                        '%${busqueda[i]}%',
+                      ) |
+                      _remoteDb.pedidoVentaTable.provincia.like(
+                        '%${busqueda[i]}%',
+                      )));
       }
       query.where(predicate!);
     }
@@ -438,39 +432,38 @@ class PedidoVentaRepository {
       final busqueda = searchText.toUpperCase().split(' ');
       Expression<bool>? predicate;
       for (var i = 0; i < busqueda.length; i++) {
-        predicate =
-            predicate == null
-                ? (_localDb.pedidoVentaLocalTable.nombreCliente.like(
-                      '%${busqueda[i]}%',
-                    ) |
-                    _localDb.pedidoVentaLocalTable.clienteId.like(
-                      '%${busqueda[i]}%',
-                    ) |
-                    _localDb.pedidoVentaLocalTable.poblacion.like(
-                      '%${busqueda[i]}%',
-                    ) |
-                    _localDb.pedidoVentaLocalTable.codigoPostal.like(
-                      '%${busqueda[i]}%',
-                    ) |
-                    _localDb.pedidoVentaLocalTable.provincia.like(
-                      '%${busqueda[i]}%',
-                    ))
-                : predicate &
-                    (_localDb.pedidoVentaLocalTable.nombreCliente.like(
-                          '%${busqueda[i]}%',
-                        ) |
-                        _localDb.pedidoVentaLocalTable.clienteId.like(
-                          '%${busqueda[i]}%',
-                        ) |
-                        _localDb.pedidoVentaLocalTable.poblacion.like(
-                          '%${busqueda[i]}%',
-                        ) |
-                        _localDb.pedidoVentaLocalTable.codigoPostal.like(
-                          '%${busqueda[i]}%',
-                        ) |
-                        _localDb.pedidoVentaLocalTable.provincia.like(
-                          '%${busqueda[i]}%',
-                        ));
+        predicate = predicate == null
+            ? (_localDb.pedidoVentaLocalTable.nombreCliente.like(
+                    '%${busqueda[i]}%',
+                  ) |
+                  _localDb.pedidoVentaLocalTable.clienteId.like(
+                    '%${busqueda[i]}%',
+                  ) |
+                  _localDb.pedidoVentaLocalTable.poblacion.like(
+                    '%${busqueda[i]}%',
+                  ) |
+                  _localDb.pedidoVentaLocalTable.codigoPostal.like(
+                    '%${busqueda[i]}%',
+                  ) |
+                  _localDb.pedidoVentaLocalTable.provincia.like(
+                    '%${busqueda[i]}%',
+                  ))
+            : predicate &
+                  (_localDb.pedidoVentaLocalTable.nombreCliente.like(
+                        '%${busqueda[i]}%',
+                      ) |
+                      _localDb.pedidoVentaLocalTable.clienteId.like(
+                        '%${busqueda[i]}%',
+                      ) |
+                      _localDb.pedidoVentaLocalTable.poblacion.like(
+                        '%${busqueda[i]}%',
+                      ) |
+                      _localDb.pedidoVentaLocalTable.codigoPostal.like(
+                        '%${busqueda[i]}%',
+                      ) |
+                      _localDb.pedidoVentaLocalTable.provincia.like(
+                        '%${busqueda[i]}%',
+                      ));
       }
       query.where((tbl) => predicate!);
     }
@@ -491,20 +484,22 @@ class PedidoVentaRepository {
 
       final clienteUsuarioDTO =
           await (_remoteDb.select(_remoteDb.clienteUsuarioTable)..where(
-            (tbl) =>
-                tbl.clienteId.equals(pedidoVentaLocalDTO.clienteId) &
-                tbl.usuarioId.equals(usuario.id),
-          )).getSingleOrNull();
+                (tbl) =>
+                    tbl.clienteId.equals(pedidoVentaLocalDTO.clienteId) &
+                    tbl.usuarioId.equals(usuario.id),
+              ))
+              .getSingleOrNull();
 
       if (clienteUsuarioDTO != null) {
         final divisaDTO =
-            await (_remoteDb.select(_remoteDb.divisaTable)..where(
-              (tbl) => tbl.id.equals(pedidoVentaLocalDTO.divisaId!),
-            )).getSingle();
+            await (_remoteDb.select(
+                  _remoteDb.divisaTable,
+                )..where((tbl) => tbl.id.equals(pedidoVentaLocalDTO.divisaId!)))
+                .getSingle();
         final paisDTO =
-            await (_remoteDb.select(_remoteDb.paisTable)..where(
-              (tbl) => tbl.id.equals(pedidoVentaLocalDTO.paisId!),
-            )).getSingle();
+            await (_remoteDb.select(_remoteDb.paisTable)
+                  ..where((tbl) => tbl.id.equals(pedidoVentaLocalDTO.paisId!)))
+                .getSingle();
 
         final pedidoVentaLineaList = await getLocalPedidoVentaLineaList(
           pedidoVentaAppId: pedidoVentaLocalDTO.pedidoVentaAppId,
@@ -589,11 +584,11 @@ class PedidoVentaRepository {
     try {
       return !pedidoVentaIdIsLocalParam.isLocal
           ? await getSyncPedidoVentaById(
-            pedidoVentaId: pedidoVentaIdIsLocalParam.pedidoId!,
-          )
+              pedidoVentaId: pedidoVentaIdIsLocalParam.pedidoId!,
+            )
           : await getPedidoVentaLocalById(
-            pedidoVentaAppId: pedidoVentaIdIsLocalParam.pedidoAppId!,
-          );
+              pedidoVentaAppId: pedidoVentaIdIsLocalParam.pedidoAppId!,
+            );
     } catch (e, stackTrace) {
       Error.throwWithStackTrace(
         AppException.fetchLocalDataFailure(e.toString()),
@@ -606,17 +601,18 @@ class PedidoVentaRepository {
     try {
       final pedidoVentaBorradorListDTO =
           await (_localDb.select(_localDb.pedidoVentaLocalTable)..where(
-            (tbl) => tbl.borrador.equals('S') & tbl.tratada.equals('N'),
-          )).get();
+                (tbl) => tbl.borrador.equals('S') & tbl.tratada.equals('N'),
+              ))
+              .get();
 
       final pedidoVentaBorradoresList = await Future.wait(
         pedidoVentaBorradorListDTO.map((e) async {
-          final divisaDTO =
-              await (_remoteDb.select(_remoteDb.divisaTable)
-                ..where((tbl) => tbl.id.equals(e.divisaId!))).getSingle();
-          final paisDTO =
-              await (_remoteDb.select(_remoteDb.paisTable)
-                ..where((tbl) => tbl.id.equals(e.paisId!))).getSingle();
+          final divisaDTO = await (_remoteDb.select(
+            _remoteDb.divisaTable,
+          )..where((tbl) => tbl.id.equals(e.divisaId!))).getSingle();
+          final paisDTO = await (_remoteDb.select(
+            _remoteDb.paisTable,
+          )..where((tbl) => tbl.id.equals(e.paisId!))).getSingle();
 
           final pedidoVentaLineas = await getLocalPedidoVentaLineaList(
             pedidoVentaAppId: e.pedidoVentaAppId,
@@ -766,13 +762,13 @@ class PedidoVentaRepository {
     try {
       return !pedidoLocalParam.isLocal
           ? await getSyncPedidoVentaLineaList(
-            pedidoVentaId: pedidoLocalParam.pedidoId!,
-            pedidoAppId: pedidoLocalParam.pedidoAppId,
-          )
+              pedidoVentaId: pedidoLocalParam.pedidoId!,
+              pedidoAppId: pedidoLocalParam.pedidoAppId,
+            )
           : await getLocalPedidoVentaLineaList(
-            pedidoVentaAppId: pedidoLocalParam.pedidoAppId!,
-            addLineaDesdeArticulo: pedidoLocalParam.addLineaDesdeArticulo,
-          );
+              pedidoVentaAppId: pedidoLocalParam.pedidoAppId!,
+              addLineaDesdeArticulo: pedidoLocalParam.addLineaDesdeArticulo,
+            );
     } catch (e, stackTrace) {
       Error.throwWithStackTrace(
         AppException.fetchLocalDataFailure(e.toString()),
@@ -847,30 +843,29 @@ class PedidoVentaRepository {
         ),
       );
 
-      final pedidoVentaLineaList =
-          await query.map((row) {
-            final pedidoVentaLocalDTO = row.readTable(
-              _localDb.pedidoVentaLocalTable,
-            );
-            final pedidoVentaLineaDTO = row.readTable(
-              _localDb.pedidoVentaLineaLocalTable,
-            );
-            return pedidoVentaLineaDTO.toDomain(
-              divisaId: pedidoVentaLocalDTO.divisaId!,
-              importeLinea: getTotalLinea(
-                precio: Precio(
-                  precio: pedidoVentaLineaDTO.precioDivisa.toMoney(
-                    currencyId: pedidoVentaLocalDTO.divisaId!,
-                  ),
-                  tipoPrecio: pedidoVentaLineaDTO.tipoPrecio,
-                ),
-                cantidad: pedidoVentaLineaDTO.cantidad,
-                descuento1: pedidoVentaLineaDTO.descuento1,
-                descuento2: pedidoVentaLineaDTO.descuento2,
-                descuento3: pedidoVentaLineaDTO.descuento3,
+      final pedidoVentaLineaList = await query.map((row) {
+        final pedidoVentaLocalDTO = row.readTable(
+          _localDb.pedidoVentaLocalTable,
+        );
+        final pedidoVentaLineaDTO = row.readTable(
+          _localDb.pedidoVentaLineaLocalTable,
+        );
+        return pedidoVentaLineaDTO.toDomain(
+          divisaId: pedidoVentaLocalDTO.divisaId!,
+          importeLinea: getTotalLinea(
+            precio: Precio(
+              precio: pedidoVentaLineaDTO.precioDivisa.toMoney(
+                currencyId: pedidoVentaLocalDTO.divisaId!,
               ),
-            );
-          }).get();
+              tipoPrecio: pedidoVentaLineaDTO.tipoPrecio,
+            ),
+            cantidad: pedidoVentaLineaDTO.cantidad,
+            descuento1: pedidoVentaLineaDTO.descuento1,
+            descuento2: pedidoVentaLineaDTO.descuento2,
+            descuento3: pedidoVentaLineaDTO.descuento3,
+          ),
+        );
+      }).get();
 
       if (addLineaDesdeArticulo != null) {
         pedidoVentaLineaList.add(addLineaDesdeArticulo);
@@ -887,8 +882,9 @@ class PedidoVentaRepository {
 
   Future<List<PedidoVentaEstado>> getPedidoVentaEstadoList() async {
     try {
-      final query =
-          await _remoteDb.select(_remoteDb.pedidoVentaEstadoTable).get();
+      final query = await _remoteDb
+          .select(_remoteDb.pedidoVentaEstadoTable)
+          .get();
 
       return query.map((e) => e.toDomain()).toList();
     } catch (e, stackTrace) {
@@ -900,9 +896,9 @@ class PedidoVentaRepository {
   }
 
   Future<int> getStockActual({required String articuloId}) async {
-    final query =
-        await (_remoteDb.select(_remoteDb.articuloTable)
-          ..where((tbl) => tbl.id.equals(articuloId))).getSingle();
+    final query = await (_remoteDb.select(
+      _remoteDb.articuloTable,
+    )..where((tbl) => tbl.id.equals(articuloId))).getSingle();
 
     return query.stockDisponible;
   }
@@ -935,10 +931,9 @@ class PedidoVentaRepository {
       isBorrador,
     );
 
-    final pedidoVentaLineaLocalDTOList =
-        pedidoVentaLineaList
-            .map((e) => PedidoVentaLineaLocalDTO.fromDomain(e))
-            .toList();
+    final pedidoVentaLineaLocalDTOList = pedidoVentaLineaList
+        .map((e) => PedidoVentaLineaLocalDTO.fromDomain(e))
+        .toList();
 
     await insertPedidoInDB(
       pedidoVentaLocalDTO,
@@ -961,11 +956,10 @@ class PedidoVentaRepository {
       } catch (e) {
         if (e is AppException) {
           await e.whenOrNull(
-            notConnection:
-                () => updateWithError(pedidoVentaLocalDTO, e.details.message),
-            restApiFailure:
-                (error, _) =>
-                    updateWithError(pedidoVentaLocalDTO, e.details.message),
+            notConnection: () =>
+                updateWithError(pedidoVentaLocalDTO, e.details.message),
+            restApiFailure: (error, _) =>
+                updateWithError(pedidoVentaLocalDTO, e.details.message),
           );
         }
         rethrow;
@@ -978,21 +972,24 @@ class PedidoVentaRepository {
     String errorMessage,
   ) async {
     await (_localDb.update(_localDb.pedidoVentaLocalTable)..where(
-      (tbl) =>
-          tbl.pedidoVentaAppId.equals(pedidoVentaLocalDTO.pedidoVentaAppId),
-    )).write(
-      local.PedidoVentaLocalTableCompanion(
-        errorSyncMessage: Value(errorMessage),
-      ),
-    );
+          (tbl) =>
+              tbl.pedidoVentaAppId.equals(pedidoVentaLocalDTO.pedidoVentaAppId),
+        ))
+        .write(
+          local.PedidoVentaLocalTableCompanion(
+            errorSyncMessage: Value(errorMessage),
+          ),
+        );
   }
 
   Future<void> deletePedidoVenta({required String pedidoVentaAppId}) async {
     try {
-      await (_localDb.delete(_localDb.pedidoVentaLocalTable)
-        ..where((tbl) => tbl.pedidoVentaAppId.equals(pedidoVentaAppId))).go();
-      await (_localDb.delete(_localDb.pedidoVentaLineaLocalTable)
-        ..where((tbl) => tbl.pedidoVentaAppId.equals(pedidoVentaAppId))).go();
+      await (_localDb.delete(
+        _localDb.pedidoVentaLocalTable,
+      )..where((tbl) => tbl.pedidoVentaAppId.equals(pedidoVentaAppId))).go();
+      await (_localDb.delete(
+        _localDb.pedidoVentaLineaLocalTable,
+      )..where((tbl) => tbl.pedidoVentaAppId.equals(pedidoVentaAppId))).go();
     } catch (e, stackTrace) {
       Error.throwWithStackTrace(
         AppException.insertDataFailure(e.toString()),
@@ -1015,9 +1012,9 @@ class PedidoVentaRepository {
     var tipoPrecio = 1;
     var iva = 0.0;
 
-    final clienteDto =
-        await (_remoteDb.select(_remoteDb.clienteTable)
-          ..where((t) => t.id.equals(clienteId))).getSingleOrNull();
+    final clienteDto = await (_remoteDb.select(
+      _remoteDb.clienteTable,
+    )..where((t) => t.id.equals(clienteId))).getSingleOrNull();
 
     if (clienteDto != null) {
       divisaId = clienteDto.divisaId ?? 'EU';
@@ -1030,15 +1027,14 @@ class PedidoVentaRepository {
       final descuentoGeneralId = clienteDto.descuentoGeneralId;
       final tipoCalculoPrecio = clienteDto.tipoCalculoPrecio;
 
-      final precioTarifa =
-          (tarifaId != null)
-              ? await _getPrecioTarifa(
-                tarifaId: tarifaId,
-                articuloId: articuloId,
-                cantidad: cantidad,
-                divisaId: divisaId,
-              )
-              : Precio(precio: 0.toMoney(currencyId: divisaId), tipoPrecio: 1);
+      final precioTarifa = (tarifaId != null)
+          ? await _getPrecioTarifa(
+              tarifaId: tarifaId,
+              articuloId: articuloId,
+              cantidad: cantidad,
+              divisaId: divisaId,
+            )
+          : Precio(precio: 0.toMoney(currencyId: divisaId), tipoPrecio: 1);
 
       final precioNetoCliente = await _getPrecioClienteNeto(
         clienteId: clienteId,
@@ -1054,22 +1050,20 @@ class PedidoVentaRepository {
         divisaId: divisaId,
       );
 
-      final descuentoGeneral =
-          descuentoGeneralId != null
-              ? await _getDescuentoGeneral(
-                articuloId: articuloId,
-                descuentoGeneralId: descuentoGeneralId,
-              )
-              : 0.0;
+      final descuentoGeneral = descuentoGeneralId != null
+          ? await _getDescuentoGeneral(
+              articuloId: articuloId,
+              descuentoGeneralId: descuentoGeneralId,
+            )
+          : 0.0;
       final descuentoCliente = await _getDescuentoCliente(
         articuloId: articuloId,
         clienteId: clienteId,
       );
 
-      final descuento =
-          (descuentoGeneral > descuentoCliente)
-              ? descuentoGeneral
-              : descuentoCliente;
+      final descuento = (descuentoGeneral > descuentoCliente)
+          ? descuentoGeneral
+          : descuentoCliente;
 
       // Precio Neto Tarifa
       final precioNetoTarifa = Precio(
@@ -1097,10 +1091,10 @@ class PedidoVentaRepository {
       // Cálculo precio neto
       final precioNeto =
           (precioGrupoNetosUnitario.isZero ||
-                  (!precioNetoClienteUnitario.isZero &&
-                      precioNetoClienteUnitario <= precioGrupoNetosUnitario))
-              ? precioNetoCliente
-              : precioGrupoNetos;
+              (!precioNetoClienteUnitario.isZero &&
+                  precioNetoClienteUnitario <= precioGrupoNetosUnitario))
+          ? precioNetoCliente
+          : precioGrupoNetos;
 
       final precioNetoUnitario = _getPrecioUnitario(
         precio: precioNeto.precio,
@@ -1227,10 +1221,9 @@ class PedidoVentaRepository {
                 _remoteDb.articuloEmpresaIvaTable.articuloId.equals(articuloId),
           );
 
-    final ivaClienteQuery =
-        _remoteDb.selectOnly(_remoteDb.clienteTable)
-          ..addColumns([_remoteDb.clienteTable.iva])
-          ..where(_remoteDb.clienteTable.id.equals(clienteDto.id));
+    final ivaClienteQuery = _remoteDb.selectOnly(_remoteDb.clienteTable)
+      ..addColumns([_remoteDb.clienteTable.iva])
+      ..where(_remoteDb.clienteTable.id.equals(clienteDto.id));
 
     final ivaArticulo = (await ivaArticuloQuery.getSingleOrNull())?.read(
       _remoteDb.articuloEmpresaIvaTable.iva,
@@ -1339,21 +1332,21 @@ class PedidoVentaRepository {
   ) async {
     try {
       final pedidoVentaLocalToJson = pedidoVentaLocalDTO.toJson();
-      final pedidoVentaLineasLocalListToJson =
-          pedidoVentaLineaDTOList.map((e) => e.toJson()).toList();
+      final pedidoVentaLineasLocalListToJson = pedidoVentaLineaDTOList
+          .map((e) => e.toJson())
+          .toList();
       pedidoVentaLocalToJson['PEDIDO_VENTA_LINEAS'] =
           pedidoVentaLineasLocalListToJson;
 
-      final requestUri =
-          (test)
-              ? Uri.http(
-                dotenv.get('URL', fallback: 'localhost:3001'),
-                'api/v4/online/pedidos',
-              )
-              : Uri.https(
-                dotenv.get('URL', fallback: 'localhost:3001'),
-                'api/v4/online/pedidos',
-              );
+      final requestUri = (test)
+          ? Uri.http(
+              dotenv.get('URL', fallback: 'localhost:3001'),
+              'api/v4/online/pedidos',
+            )
+          : Uri.https(
+              dotenv.get('URL', fallback: 'localhost:3001'),
+              'api/v4/online/pedidos',
+            );
 
       final response = await _dio.postUri(
         requestUri,
@@ -1384,18 +1377,17 @@ class PedidoVentaRepository {
     required String pedidoVentaAppId,
   }) async {
     final pedidoVentaLocalDTO =
-        await (_localDb.select(_localDb.pedidoVentaLocalTable)..where(
-          (tbl) => tbl.pedidoVentaAppId.equals(pedidoVentaAppId),
-        )).getSingle();
+        await (_localDb.select(_localDb.pedidoVentaLocalTable)
+              ..where((tbl) => tbl.pedidoVentaAppId.equals(pedidoVentaAppId)))
+            .getSingle();
 
     final divisaDTO =
-        await (_remoteDb.select(_remoteDb.divisaTable)..where(
-          (tbl) => tbl.id.equals(pedidoVentaLocalDTO.divisaId!),
-        )).getSingle();
-    final paisDTO =
-        await (_remoteDb.select(_remoteDb.paisTable)..where(
-          (tbl) => tbl.id.equals(pedidoVentaLocalDTO.paisId!),
-        )).getSingle();
+        await (_remoteDb.select(_remoteDb.divisaTable)
+              ..where((tbl) => tbl.id.equals(pedidoVentaLocalDTO.divisaId!)))
+            .getSingle();
+    final paisDTO = await (_remoteDb.select(
+      _remoteDb.paisTable,
+    )..where((tbl) => tbl.id.equals(pedidoVentaLocalDTO.paisId!))).getSingle();
 
     final pedidoVentaLineas = await getLocalPedidoVentaLineaList(
       pedidoVentaAppId: pedidoVentaAppId,
@@ -1428,19 +1420,18 @@ class PedidoVentaRepository {
     final articuloPrecioTarifaDTO =
         await (_remoteDb.select(_remoteDb.articuloPrecioTarifaTable)
               ..where(
-                (precioTarifa) =>
-                    divisaId != null
-                        ? precioTarifa.tarifaId.equals(tarifaId) &
-                            precioTarifa.articuloId.equals(articuloId) &
-                            precioTarifa.cantidadDesde.isSmallerOrEqualValue(
-                              cantidad,
-                            ) &
-                            precioTarifa.divisaId.equals(divisaId)
-                        : precioTarifa.tarifaId.equals(tarifaId) &
-                            precioTarifa.articuloId.equals(articuloId) &
-                            precioTarifa.cantidadDesde.isSmallerOrEqualValue(
-                              cantidad,
-                            ),
+                (precioTarifa) => divisaId != null
+                    ? precioTarifa.tarifaId.equals(tarifaId) &
+                          precioTarifa.articuloId.equals(articuloId) &
+                          precioTarifa.cantidadDesde.isSmallerOrEqualValue(
+                            cantidad,
+                          ) &
+                          precioTarifa.divisaId.equals(divisaId)
+                    : precioTarifa.tarifaId.equals(tarifaId) &
+                          precioTarifa.articuloId.equals(articuloId) &
+                          precioTarifa.cantidadDesde.isSmallerOrEqualValue(
+                            cantidad,
+                          ),
               )
               ..orderBy([
                 (precioTarifa) => OrderingTerm(
@@ -1453,11 +1444,11 @@ class PedidoVentaRepository {
 
     return (articuloPrecioTarifaDTO != null)
         ? Precio(
-          precio: articuloPrecioTarifaDTO.precio.toMoney(
-            currencyId: articuloPrecioTarifaDTO.divisaId,
-          ),
-          tipoPrecio: articuloPrecioTarifaDTO.tipoPrecio,
-        )
+            precio: articuloPrecioTarifaDTO.precio.toMoney(
+              currencyId: articuloPrecioTarifaDTO.divisaId,
+            ),
+            tipoPrecio: articuloPrecioTarifaDTO.tipoPrecio,
+          )
         : Precio(precio: 0.toMoney(currencyId: divisaId), tipoPrecio: 1);
   }
 
@@ -1467,20 +1458,20 @@ class PedidoVentaRepository {
     required int cantidad,
     String? divisaId,
   }) async {
-    final query = _remoteDb.select(_remoteDb.clienteGrupoNetoTable).join([
-      innerJoin(
-        _remoteDb.articuloGrupoNetoTable,
-        _remoteDb.articuloGrupoNetoTable.grupoNetoId.equalsExp(
-          _remoteDb.clienteGrupoNetoTable.grupoNetoId,
-        ),
-      ),
-    ])..where(
-      _remoteDb.clienteGrupoNetoTable.clienteId.equals(clienteId) &
-          _remoteDb.articuloGrupoNetoTable.articuloId.equals(articuloId) &
-          _remoteDb.articuloGrupoNetoTable.cantidadDesde.isSmallerOrEqualValue(
-            cantidad,
+    final query =
+        _remoteDb.select(_remoteDb.clienteGrupoNetoTable).join([
+          innerJoin(
+            _remoteDb.articuloGrupoNetoTable,
+            _remoteDb.articuloGrupoNetoTable.grupoNetoId.equalsExp(
+              _remoteDb.clienteGrupoNetoTable.grupoNetoId,
+            ),
           ),
-    );
+        ])..where(
+          _remoteDb.clienteGrupoNetoTable.clienteId.equals(clienteId) &
+              _remoteDb.articuloGrupoNetoTable.articuloId.equals(articuloId) &
+              _remoteDb.articuloGrupoNetoTable.cantidadDesde
+                  .isSmallerOrEqualValue(cantidad),
+        );
 
     final queryResult = await query.get();
     if (queryResult.isEmpty) {
@@ -1550,14 +1541,15 @@ class PedidoVentaRepository {
 
     return (queryResult != null)
         ? Precio(
-          precio: queryResult
-              .read(_remoteDb.clientePrecioNetoTable.precio)!
-              .toMoney(
-                currencyId: queryResult.read(_remoteDb.clienteTable.divisaId),
-              ),
-          tipoPrecio:
-              queryResult.read(_remoteDb.clientePrecioNetoTable.tipoPrecio)!,
-        )
+            precio: queryResult
+                .read(_remoteDb.clientePrecioNetoTable.precio)!
+                .toMoney(
+                  currencyId: queryResult.read(_remoteDb.clienteTable.divisaId),
+                ),
+            tipoPrecio: queryResult.read(
+              _remoteDb.clientePrecioNetoTable.tipoPrecio,
+            )!,
+          )
         : Precio(precio: 0.toMoney(currencyId: divisaId), tipoPrecio: 1);
   }
 
@@ -2123,9 +2115,9 @@ class PedidoVentaRepository {
   Money _getPrecioUnitario({required Money precio, required int tipoPrecio}) {
     return tipoPrecio != 0
         ? Money.fromFixedWithCurrency(
-          precio.amount / Fixed.fromNum(tipoPrecio),
-          precio.currency,
-        )
+            precio.amount / Fixed.fromNum(tipoPrecio),
+            precio.currency,
+          )
         : 0.toMoney(currencyId: precio.currency.isoCode);
   }
 
@@ -2193,8 +2185,9 @@ class PedidoVentaRepository {
   }
 
   Future<DateTime> getLastSyncDate() async {
-    final lastSyncDTO =
-        await _localDb.select(_localDb.syncDateTimeTable).getSingle();
+    final lastSyncDTO = await _localDb
+        .select(_localDb.syncDateTimeTable)
+        .getSingle();
     return lastSyncDTO.pedidoUltimaSync;
   }
 
@@ -2306,32 +2299,35 @@ class PedidoVentaRepository {
   }
 
   Future<int?> _getStockDisponible(String articuloId) async {
-    final articuloDto =
-        await (_remoteDb.select(_remoteDb.articuloTable)
-          ..where((tbl) => tbl.id.equals(articuloId))).getSingleOrNull();
+    final articuloDto = await (_remoteDb.select(
+      _remoteDb.articuloTable,
+    )..where((tbl) => tbl.id.equals(articuloId))).getSingleOrNull();
 
     return articuloDto?.stockDisponible;
   }
 
   Future<double> _getDescuentoProntoPago(String clienteId) async {
-    final clienteDto =
-        await (_remoteDb.select(_remoteDb.clienteTable)
-          ..where((tbl) => tbl.id.equals(clienteId))).getSingle();
+    final clienteDto = await (_remoteDb.select(
+      _remoteDb.clienteTable,
+    )..where((tbl) => tbl.id.equals(clienteId))).getSingle();
 
     return clienteDto.descuentoProntoPago;
   }
 
   Future<void> _removePedidoSyncDatabase(String pedidoId) async {
-    await (_remoteDb.delete(_remoteDb.pedidoVentaTable)
-      ..where((tbl) => tbl.pedidoVentaId.equals(pedidoId))).go();
-    await (_remoteDb.delete(_remoteDb.pedidoVentaLineaTable)
-      ..where((tbl) => tbl.pedidoId.equals(pedidoId))).go();
+    await (_remoteDb.delete(
+      _remoteDb.pedidoVentaTable,
+    )..where((tbl) => tbl.pedidoVentaId.equals(pedidoId))).go();
+    await (_remoteDb.delete(
+      _remoteDb.pedidoVentaLineaTable,
+    )..where((tbl) => tbl.pedidoId.equals(pedidoId))).go();
   }
 
   Future<void> deletePedidoVentaLocalAntiguos() async {
     final currentDate = DateTime.now();
-    final pedidosVentaLocalList =
-        await (_localDb.select(_localDb.pedidoVentaLocalTable)).get();
+    final pedidosVentaLocalList = await (_localDb.select(
+      _localDb.pedidoVentaLocalTable,
+    )).get();
 
     for (var i = 0; i < pedidosVentaLocalList.length; i++) {
       if (pedidosVentaLocalList[i].tratada == 'S' &&
@@ -2339,15 +2335,17 @@ class PedidoVentaRepository {
               .add(const Duration(days: 30))
               .isBefore(currentDate)) {
         await (_localDb.delete(_localDb.pedidoVentaLineaLocalTable)..where(
-          (tbl) => tbl.pedidoVentaAppId.equals(
-            pedidosVentaLocalList[i].pedidoVentaAppId,
-          ),
-        )).go();
+              (tbl) => tbl.pedidoVentaAppId.equals(
+                pedidosVentaLocalList[i].pedidoVentaAppId,
+              ),
+            ))
+            .go();
         await (_localDb.delete(_localDb.pedidoVentaLocalTable)..where(
-          (tbl) => tbl.pedidoVentaAppId.equals(
-            pedidosVentaLocalList[i].pedidoVentaAppId,
-          ),
-        )).go();
+              (tbl) => tbl.pedidoVentaAppId.equals(
+                pedidosVentaLocalList[i].pedidoVentaAppId,
+              ),
+            ))
+            .go();
       }
     }
   }
@@ -2426,8 +2424,9 @@ class PedidoVentaRepository {
       final promoId = queryResult[i].read(
         _remoteDb.promoDtoCabTable.promoDtoId,
       );
-      final empresaId =
-          queryResult[i].read(_remoteDb.promoDtoCabTable.empresaId)!;
+      final empresaId = queryResult[i].read(
+        _remoteDb.promoDtoCabTable.empresaId,
+      )!;
       final activa = await _getPromoDtoActivaCliente(
         empresaId,
         clienteId,
@@ -2462,29 +2461,25 @@ class PedidoVentaRepository {
     String clienteId,
     String promoDtoId,
   ) async {
-    final promoClienteIncluido =
-        (await (_remoteDb.customSelect(
-              ''' SELECT * FROM promo_dto_cliente WHERE PROMO_DTO_ID = ? AND EMPRESA_ID = ? AND CLIENTE_ID = ? AND TIPO = ?''',
-              variables: [
-                Variable.withString(promoDtoId),
-                Variable.withString(empresaId),
-                Variable.withString(clienteId),
-                Variable.withString('I'),
-              ],
-            )).get())
-            .isNotEmpty;
+    final promoClienteIncluido = (await (_remoteDb.customSelect(
+      ''' SELECT * FROM promo_dto_cliente WHERE PROMO_DTO_ID = ? AND EMPRESA_ID = ? AND CLIENTE_ID = ? AND TIPO = ?''',
+      variables: [
+        Variable.withString(promoDtoId),
+        Variable.withString(empresaId),
+        Variable.withString(clienteId),
+        Variable.withString('I'),
+      ],
+    )).get()).isNotEmpty;
 
-    final promoClienteExcluido =
-        (await (_remoteDb.customSelect(
-              ''' SELECT * FROM promo_dto_cliente WHERE PROMO_DTO_ID = ? AND EMPRESA_ID = ? AND CLIENTE_ID = ? AND TIPO = ?''',
-              variables: [
-                Variable.withString(promoDtoId),
-                Variable.withString(empresaId),
-                Variable.withString(clienteId),
-                Variable.withString('E'),
-              ],
-            )).get())
-            .isNotEmpty;
+    final promoClienteExcluido = (await (_remoteDb.customSelect(
+      ''' SELECT * FROM promo_dto_cliente WHERE PROMO_DTO_ID = ? AND EMPRESA_ID = ? AND CLIENTE_ID = ? AND TIPO = ?''',
+      variables: [
+        Variable.withString(promoDtoId),
+        Variable.withString(empresaId),
+        Variable.withString(clienteId),
+        Variable.withString('E'),
+      ],
+    )).get()).isNotEmpty;
 
     final promoClienteTodosIncluido =
         (await (_remoteDb

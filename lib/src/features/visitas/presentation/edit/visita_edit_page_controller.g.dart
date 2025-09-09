@@ -18,10 +18,9 @@ final visitaSectorListFormDropdownControllerProvider =
     >.internal(
       VisitaSectorListFormDropdownController.new,
       name: r'visitaSectorListFormDropdownControllerProvider',
-      debugGetCreateSourceHash:
-          const bool.fromEnvironment('dart.vm.product')
-              ? null
-              : _$visitaSectorListFormDropdownControllerHash,
+      debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+          ? null
+          : _$visitaSectorListFormDropdownControllerHash,
       dependencies: null,
       allTransitiveDependencies: null,
     );
@@ -40,10 +39,9 @@ final visitaCompetidorListFormDropdownControllerProvider =
     >.internal(
       VisitaCompetidorListFormDropdownController.new,
       name: r'visitaCompetidorListFormDropdownControllerProvider',
-      debugGetCreateSourceHash:
-          const bool.fromEnvironment('dart.vm.product')
-              ? null
-              : _$visitaCompetidorListFormDropdownControllerHash,
+      debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+          ? null
+          : _$visitaCompetidorListFormDropdownControllerHash,
       dependencies: null,
       allTransitiveDependencies: null,
     );
@@ -62,10 +60,9 @@ final visitaMotivosNoVentaListFormDropdownControllerProvider =
     >.internal(
       VisitaMotivosNoVentaListFormDropdownController.new,
       name: r'visitaMotivosNoVentaListFormDropdownControllerProvider',
-      debugGetCreateSourceHash:
-          const bool.fromEnvironment('dart.vm.product')
-              ? null
-              : _$visitaMotivosNoVentaListFormDropdownControllerHash,
+      debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+          ? null
+          : _$visitaMotivosNoVentaListFormDropdownControllerHash,
       dependencies: null,
       allTransitiveDependencies: null,
     );

@@ -89,10 +89,9 @@ class ArticuloIndexScreenControllerProvider
               ..isSearchArticuloForForm = isSearchArticuloForForm,
         from: articuloIndexScreenControllerProvider,
         name: r'articuloIndexScreenControllerProvider',
-        debugGetCreateSourceHash:
-            const bool.fromEnvironment('dart.vm.product')
-                ? null
-                : _$articuloIndexScreenControllerHash,
+        debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+            ? null
+            : _$articuloIndexScreenControllerHash,
         dependencies: ArticuloIndexScreenControllerFamily._dependencies,
         allTransitiveDependencies:
             ArticuloIndexScreenControllerFamily._allTransitiveDependencies,
@@ -250,21 +249,18 @@ class ArticuloIndexScreenPaginatedControllerProvider
     required int page,
     required bool isSearchArticuloForForm,
   }) : this._internal(
-         () =>
-             ArticuloIndexScreenPaginatedController()
-               ..page = page
-               ..isSearchArticuloForForm = isSearchArticuloForForm,
+         () => ArticuloIndexScreenPaginatedController()
+           ..page = page
+           ..isSearchArticuloForForm = isSearchArticuloForForm,
          from: articuloIndexScreenPaginatedControllerProvider,
          name: r'articuloIndexScreenPaginatedControllerProvider',
-         debugGetCreateSourceHash:
-             const bool.fromEnvironment('dart.vm.product')
-                 ? null
-                 : _$articuloIndexScreenPaginatedControllerHash,
+         debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+             ? null
+             : _$articuloIndexScreenPaginatedControllerHash,
          dependencies:
              ArticuloIndexScreenPaginatedControllerFamily._dependencies,
-         allTransitiveDependencies:
-             ArticuloIndexScreenPaginatedControllerFamily
-                 ._allTransitiveDependencies,
+         allTransitiveDependencies: ArticuloIndexScreenPaginatedControllerFamily
+             ._allTransitiveDependencies,
          page: page,
          isSearchArticuloForForm: isSearchArticuloForForm,
        );
@@ -300,10 +296,9 @@ class ArticuloIndexScreenPaginatedControllerProvider
     return ProviderOverride(
       origin: this,
       override: ArticuloIndexScreenPaginatedControllerProvider._internal(
-        () =>
-            create()
-              ..page = page
-              ..isSearchArticuloForForm = isSearchArticuloForForm,
+        () => create()
+          ..page = page
+          ..isSearchArticuloForForm = isSearchArticuloForForm,
         from: from,
         name: null,
         dependencies: null,

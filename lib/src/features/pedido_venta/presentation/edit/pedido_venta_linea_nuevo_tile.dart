@@ -33,12 +33,11 @@ class PedidoVentaLineaNuevoTile extends ConsumerWidget {
     );
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 16),
-      color:
-          (pedidoVentaLinea.pedidoLineaIdComponente != null)
-              ? Theme.of(
-                context,
-              ).colorScheme.secondaryContainer.withValues(alpha: 0.5)
-              : Colors.transparent,
+      color: (pedidoVentaLinea.pedidoLineaIdComponente != null)
+          ? Theme.of(
+              context,
+            ).colorScheme.secondaryContainer.withValues(alpha: 0.5)
+          : Colors.transparent,
       child: IntrinsicHeight(
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -59,19 +58,17 @@ class PedidoVentaLineaNuevoTile extends ConsumerWidget {
                     children: [
                       GestureDetector(
                         behavior: HitTestBehavior.opaque,
-                        onTap:
-                            () => context.router.push(
-                              ArticuloDetalleRoute(
-                                articuloId: pedidoVentaLinea.articuloId,
-                              ),
-                            ),
+                        onTap: () => context.router.push(
+                          ArticuloDetalleRoute(
+                            articuloId: pedidoVentaLinea.articuloId,
+                          ),
+                        ),
                         child: Text(
                           pedidoVentaLinea.articuloId,
-                          style: Theme.of(
-                            context,
-                          ).textTheme.titleSmall?.copyWith(
-                            color: Theme.of(context).colorScheme.primary,
-                          ),
+                          style: Theme.of(context).textTheme.titleSmall
+                              ?.copyWith(
+                                color: Theme.of(context).colorScheme.primary,
+                              ),
                         ),
                       ),
                       Row(
@@ -116,14 +113,12 @@ class PedidoVentaLineaNuevoTile extends ConsumerWidget {
                     ),
                   articuloPrecioValue.maybeWhen(
                     orElse: () => Container(),
-                    data:
-                        (ultimosPrecios) =>
-                            ultimosPrecios != null
-                                ? Text(
-                                  '${S.of(context).pedido_edit_pedidoEdit_ultimoPrecioDeCompra}:  ${formatPrecioYDescuento(precio: ultimosPrecios.precioDivisa, tipoPrecio: ultimosPrecios.tipoPrecio, descuento1: ultimosPrecios.descuento1, descuento2: ultimosPrecios.descuento2, descuento3: ultimosPrecios.descuento3)} (${numberFormatCantidades(ultimosPrecios.cantidad)} ${S.of(context).unidad})',
-                                  style: Theme.of(context).textTheme.bodySmall,
-                                )
-                                : Container(),
+                    data: (ultimosPrecios) => ultimosPrecios != null
+                        ? Text(
+                            '${S.of(context).pedido_edit_pedidoEdit_ultimoPrecioDeCompra}:  ${formatPrecioYDescuento(precio: ultimosPrecios.precioDivisa, tipoPrecio: ultimosPrecios.tipoPrecio, descuento1: ultimosPrecios.descuento1, descuento2: ultimosPrecios.descuento2, descuento3: ultimosPrecios.descuento3)} (${numberFormatCantidades(ultimosPrecios.cantidad)} ${S.of(context).unidad})',
+                            style: Theme.of(context).textTheme.bodySmall,
+                          )
+                        : Container(),
                   ),
                 ],
               ),

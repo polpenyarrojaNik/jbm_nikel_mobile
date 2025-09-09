@@ -38,24 +38,21 @@ class ArticuloPedidoVentaPage extends ConsumerWidget {
           state.maybeWhen(
             orElse: () => const ProgressIndicatorWidget(),
             error: (e, st) => ErrorMessageWidget(e.toString()),
-            data:
-                (articuloPedidoVentaLineaList) =>
-                    (articuloPedidoVentaLineaList.isNotEmpty)
-                        ? Expanded(
-                          child: ListView.separated(
-                            itemCount: articuloPedidoVentaLineaList.length,
-                            itemBuilder:
-                                (context, i) => ArticuloPedidoVentaLineaTile(
-                                  pedidoVentaLinea:
-                                      articuloPedidoVentaLineaList[i],
-                                ),
-                            separatorBuilder: (context, i) => const Divider(),
-                          ),
-                        )
-                        : Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [Text(S.of(context).sinResultados)],
-                        ),
+            data: (articuloPedidoVentaLineaList) =>
+                (articuloPedidoVentaLineaList.isNotEmpty)
+                ? Expanded(
+                    child: ListView.separated(
+                      itemCount: articuloPedidoVentaLineaList.length,
+                      itemBuilder: (context, i) => ArticuloPedidoVentaLineaTile(
+                        pedidoVentaLinea: articuloPedidoVentaLineaList[i],
+                      ),
+                      separatorBuilder: (context, i) => const Divider(),
+                    ),
+                  )
+                : Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [Text(S.of(context).sinResultados)],
+                  ),
           ),
         ],
       ),

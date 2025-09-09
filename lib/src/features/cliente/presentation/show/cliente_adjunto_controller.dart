@@ -18,10 +18,11 @@ class ClienteAdjuntoState with _$ClienteAdjuntoState {
   const factory ClienteAdjuntoState.error(String failure) = _Error;
 }
 
-final clienteAdjuntoControllerProvider = StateNotifierProvider.autoDispose<
-  ClienteAdjuntoController,
-  ClienteAdjuntoState
->((ref) => ClienteAdjuntoController(ref));
+final clienteAdjuntoControllerProvider =
+    StateNotifierProvider.autoDispose<
+      ClienteAdjuntoController,
+      ClienteAdjuntoState
+    >((ref) => ClienteAdjuntoController(ref));
 
 class ClienteAdjuntoController extends StateNotifier<ClienteAdjuntoState> {
   final Ref _ref;

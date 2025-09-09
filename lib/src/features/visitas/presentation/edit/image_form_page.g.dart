@@ -87,10 +87,9 @@ class ImageFormPageControllerProvider
         () => ImageFormPageController()..imageFile = imageFile,
         from: imageFormPageControllerProvider,
         name: r'imageFormPageControllerProvider',
-        debugGetCreateSourceHash:
-            const bool.fromEnvironment('dart.vm.product')
-                ? null
-                : _$imageFormPageControllerHash,
+        debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+            ? null
+            : _$imageFormPageControllerHash,
         dependencies: ImageFormPageControllerFamily._dependencies,
         allTransitiveDependencies:
             ImageFormPageControllerFamily._allTransitiveDependencies,
@@ -252,10 +251,9 @@ class SetImageFromDataProvider
         () => SetImageFromData()..imageFile = imageFile,
         from: setImageFromDataProvider,
         name: r'setImageFromDataProvider',
-        debugGetCreateSourceHash:
-            const bool.fromEnvironment('dart.vm.product')
-                ? null
-                : _$setImageFromDataHash,
+        debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+            ? null
+            : _$setImageFromDataHash,
         dependencies: SetImageFromDataFamily._dependencies,
         allTransitiveDependencies:
             SetImageFromDataFamily._allTransitiveDependencies,

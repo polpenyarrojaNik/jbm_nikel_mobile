@@ -25,8 +25,9 @@ class ClienteDevolucionDetallePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: CommonAppBar(
-        titleText:
-            S.of(context).cliente_show_clienteDevolucion_detalleDevolucion,
+        titleText: S
+            .of(context)
+            .cliente_show_clienteDevolucion_detalleDevolucion,
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -125,20 +126,23 @@ class DevolucionInfoContainer extends StatelessWidget {
           value: numberFormatCantidades(devolucion.bultos),
         ),
         RowFieldTextDetalle(
-          fieldTitleValue:
-              S.of(context).cliente_show_clienteDevolucion_kilosDevolucion,
+          fieldTitleValue: S
+              .of(context)
+              .cliente_show_clienteDevolucion_kilosDevolucion,
           value: '${numberFormatCantidades(devolucion.kilosDevolucion)} kg',
         ),
         if (devolucion.agenciaTransporte != null)
           RowFieldTextDetalle(
-            fieldTitleValue:
-                S.of(context).cliente_show_clienteDevolucion_agencia,
+            fieldTitleValue: S
+                .of(context)
+                .cliente_show_clienteDevolucion_agencia,
             value: devolucion.agenciaTransporte,
           ),
         if (devolucion.almacenDestino != null)
           RowFieldTextDetalle(
-            fieldTitleValue:
-                S.of(context).cliente_show_clienteDevolucion_destino,
+            fieldTitleValue: S
+                .of(context)
+                .cliente_show_clienteDevolucion_destino,
             value: devolucion.almacenDestino,
           ),
         const Gap(12),
@@ -164,19 +168,16 @@ class DevolucionLineaContainer extends ConsumerWidget {
         Padding(
           padding: const EdgeInsets.all(16.0),
           child: state.when(
-            data:
-                (devolucionLineasList) => ListView.separated(
-                  shrinkWrap: true,
-                  itemBuilder:
-                      (context, i) => ClienteDevolucionLineaListTile(
-                        devolucionLinea: devolucionLineasList[i],
-                      ),
-                  separatorBuilder: (context, i) => const Divider(),
-                  itemCount: devolucionLineasList.length,
-                ),
-            error:
-                (error, _) =>
-                    Center(child: ErrorMessageWidget(error.toString())),
+            data: (devolucionLineasList) => ListView.separated(
+              shrinkWrap: true,
+              itemBuilder: (context, i) => ClienteDevolucionLineaListTile(
+                devolucionLinea: devolucionLineasList[i],
+              ),
+              separatorBuilder: (context, i) => const Divider(),
+              itemCount: devolucionLineasList.length,
+            ),
+            error: (error, _) =>
+                Center(child: ErrorMessageWidget(error.toString())),
             loading: () => const Center(child: ProgressIndicatorWidget()),
           ),
         ),

@@ -6,10 +6,11 @@ import '../../../core/exceptions/app_exception.dart';
 
 part 'delete_database_controller.freezed.dart';
 
-final deleteDatabaseControllerProvider = StateNotifierProvider.autoDispose<
-  DeleteDatabaseController,
-  DeleteDatabaseControllerState
->((ref) => DeleteDatabaseController(ref.watch(settingsRepositoryProvider)));
+final deleteDatabaseControllerProvider =
+    StateNotifierProvider.autoDispose<
+      DeleteDatabaseController,
+      DeleteDatabaseControllerState
+    >((ref) => DeleteDatabaseController(ref.watch(settingsRepositoryProvider)));
 
 @freezed
 class DeleteDatabaseControllerState with _$DeleteDatabaseControllerState {

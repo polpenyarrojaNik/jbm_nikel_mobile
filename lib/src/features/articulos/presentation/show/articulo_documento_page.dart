@@ -38,11 +38,10 @@ class ArticuloDocumentoPage extends ConsumerWidget {
       state.when(
         data: (file) => (file != null) ? OpenFile.open(file.path) : null,
         error: (error) => showToast(error.toString(), context),
-        loading:
-            () => showToast(
-              S.of(context).cliente_show_clienteAdjunto_abriendoArchivo,
-              context,
-            ),
+        loading: () => showToast(
+          S.of(context).cliente_show_clienteAdjunto_abriendoArchivo,
+          context,
+        ),
         initial: () => null,
       );
     });
@@ -62,28 +61,25 @@ class ArticuloDocumentoPage extends ConsumerWidget {
               if (e is AppException) {
                 return e.maybeWhen(
                   orElse: () => ErrorMessageWidget(e.toString()),
-                  notConnection:
-                      () => Center(child: Text(S.of(context).sincConexion)),
+                  notConnection: () =>
+                      Center(child: Text(S.of(context).sincConexion)),
                 );
               }
               return ErrorMessageWidget(e.toString());
             },
-            data:
-                (articuloDocumentoList) =>
-                    (articuloDocumentoList.isNotEmpty)
-                        ? Expanded(
-                          child: ListView.builder(
-                            itemCount: articuloDocumentoList.length,
-                            itemBuilder:
-                                (context, i) => ArticuloDocumentoTile(
-                                  articuloDocumento: articuloDocumentoList[i],
-                                ),
-                          ),
-                        )
-                        : Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [Text(S.of(context).sinResultados)],
-                        ),
+            data: (articuloDocumentoList) => (articuloDocumentoList.isNotEmpty)
+                ? Expanded(
+                    child: ListView.builder(
+                      itemCount: articuloDocumentoList.length,
+                      itemBuilder: (context, i) => ArticuloDocumentoTile(
+                        articuloDocumento: articuloDocumentoList[i],
+                      ),
+                    ),
+                  )
+                : Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [Text(S.of(context).sinResultados)],
+                  ),
           ),
         ],
       ),
@@ -101,12 +97,11 @@ class ArticuloDocumentoTile extends ConsumerWidget {
     return Padding(
       padding: kPaddingList,
       child: GestureDetector(
-        onTap:
-            () => openFile(
-              articuloId: articuloDocumento.articuloId,
-              nombreArchivo: articuloDocumento.nombreArchivo,
-              ref: ref,
-            ),
+        onTap: () => openFile(
+          articuloId: articuloDocumento.articuloId,
+          nombreArchivo: articuloDocumento.nombreArchivo,
+          ref: ref,
+        ),
         child: Card(
           elevation: 0,
           shape: RoundedRectangleBorder(

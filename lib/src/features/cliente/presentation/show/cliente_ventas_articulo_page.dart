@@ -34,12 +34,12 @@ class ClienteVentasArticuloPage extends ConsumerWidget {
         isSearchingFirst: false,
         title: S.of(context).cliente_show_clienteVentasArticulo_titulo,
         searchTitle: S.of(context).cliente_show_clienteVentasArticulo_buscar,
-        onChanged:
-            (searchText) => _debouncer.run(() {
-              ref
+        onChanged: (searchText) => _debouncer.run(() {
+          ref
                   .read(clienteVentasArticuloSearchQueryStateProvider.notifier)
-                  .state = searchText;
-            }),
+                  .state =
+              searchText;
+        }),
       ),
       body: Column(
         children: [
@@ -100,25 +100,24 @@ class _VentasArticuloDataTableState
       child: state.maybeWhen(
         orElse: () => const ProgressIndicatorWidget(),
         error: (error, _) => ErrorMessageWidget(error.toString()),
-        data:
-            (clienteVentasArticuloList) => PaginatedDataTable2(
-              sortColumnIndex: _currentSortColumn,
-              sortAscending: _sortAsc,
-              horizontalMargin: 12,
-              columnSpacing: 12,
-              autoRowsToHeight: true,
-              minWidth: 1500,
-              lmRatio: 2,
-              smRatio: 0.7,
-              fit: FlexFit.tight,
-              columns: _createColumns(clienteVentasArticuloList),
-              source: _ClienteVentasArticuloDataList(
-                clienteVentasArticuloList,
-                selectedRow,
-                (numRow) => setState(() => selectedRow = numRow),
-                context,
-              ),
-            ),
+        data: (clienteVentasArticuloList) => PaginatedDataTable2(
+          sortColumnIndex: _currentSortColumn,
+          sortAscending: _sortAsc,
+          horizontalMargin: 12,
+          columnSpacing: 12,
+          autoRowsToHeight: true,
+          minWidth: 1500,
+          lmRatio: 2,
+          smRatio: 0.7,
+          fit: FlexFit.tight,
+          columns: _createColumns(clienteVentasArticuloList),
+          source: _ClienteVentasArticuloDataList(
+            clienteVentasArticuloList,
+            selectedRow,
+            (numRow) => setState(() => selectedRow = numRow),
+            context,
+          ),
+        ),
       ),
     );
   }

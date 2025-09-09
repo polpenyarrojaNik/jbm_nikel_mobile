@@ -40,40 +40,36 @@ class ExpedicionRepository {
     final query = searchText.isNotEmpty ? {'busqueda': searchText} : null;
 
     final expedicionDTOList = await _remoteExpedicionDTOList(
-      requestUri:
-          (usuario.test)
-              ? Uri.http(
-                dotenv.get('URL', fallback: 'localhost:3001'),
-                'api/v1/online/expediciones',
-                query,
-              )
-              : Uri.https(
-                dotenv.get('URL', fallback: 'localhost:3001'),
-                'api/v1/online/expediciones',
-                query,
-              ),
+      requestUri: (usuario.test)
+          ? Uri.http(
+              dotenv.get('URL', fallback: 'localhost:3001'),
+              'api/v1/online/expediciones',
+              query,
+            )
+          : Uri.https(
+              dotenv.get('URL', fallback: 'localhost:3001'),
+              'api/v1/online/expediciones',
+              query,
+            ),
       jsonDataSelector: (json) => json['data'] as List<dynamic>,
       provisionalToken: usuario.provisionalToken,
     );
 
     return Future.wait(
       expedicionDTOList.map((dto) async {
-        final paisDto =
-            await (_remoteDb.select(_remoteDb.paisTable)..where(
-              (tbl) => tbl.id.equalsNullable(dto.paisId),
-            )).getSingleOrNull();
-        final divisaDto =
-            await (_remoteDb.select(_remoteDb.divisaTable)
-              ..where((tbl) => tbl.id.equals(dto.divisaId))).getSingle();
+        final paisDto = await (_remoteDb.select(
+          _remoteDb.paisTable,
+        )..where((tbl) => tbl.id.equalsNullable(dto.paisId))).getSingleOrNull();
+        final divisaDto = await (_remoteDb.select(
+          _remoteDb.divisaTable,
+        )..where((tbl) => tbl.id.equals(dto.divisaId))).getSingle();
 
-        final pedidoVentaEstadoDto =
-            await (_remoteDb.select(_remoteDb.pedidoVentaEstadoTable)..where(
-              (tbl) => tbl.id.equals(dto.pedidoVentaEstadoId),
-            )).getSingle();
-        final trackingEstodoDto =
-            await (_remoteDb.select(
-              _remoteDb.trackingEstadoTable,
-            )..where((tbl) => tbl.id.equals(dto.estadoTrackingId))).getSingle();
+        final pedidoVentaEstadoDto = await (_remoteDb.select(
+          _remoteDb.pedidoVentaEstadoTable,
+        )..where((tbl) => tbl.id.equals(dto.pedidoVentaEstadoId))).getSingle();
+        final trackingEstodoDto = await (_remoteDb.select(
+          _remoteDb.trackingEstadoTable,
+        )..where((tbl) => tbl.id.equals(dto.estadoTrackingId))).getSingle();
 
         return dto.toDomain(
           pais: paisDto?.toDomain(),

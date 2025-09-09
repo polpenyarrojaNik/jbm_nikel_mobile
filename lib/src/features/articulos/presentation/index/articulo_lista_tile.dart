@@ -33,7 +33,7 @@ class ArticuloListaTile extends StatelessWidget {
             (articulo.familia != null && articulo.subfamilia != null)
                 ? '${articulo.familia!.descripcion}/${articulo.subfamilia!.descripcion}'
                 : (articulo.familia?.descripcion ??
-                    S.of(context).unknownFamily),
+                      S.of(context).unknownFamily),
             style: Theme.of(context).textTheme.bodySmall,
           ),
         ],

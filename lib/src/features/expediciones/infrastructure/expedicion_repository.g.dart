@@ -15,10 +15,9 @@ final expedicionRepositoryProvider =
     AutoDisposeProvider<ExpedicionRepository>.internal(
       expedicionRepository,
       name: r'expedicionRepositoryProvider',
-      debugGetCreateSourceHash:
-          const bool.fromEnvironment('dart.vm.product')
-              ? null
-              : _$expedicionRepositoryHash,
+      debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+          ? null
+          : _$expedicionRepositoryHash,
       dependencies: null,
       allTransitiveDependencies: null,
     );

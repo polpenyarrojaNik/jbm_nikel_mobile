@@ -11,38 +11,38 @@ String _$clienteSectorPageControllerHash() =>
 
 /// See also [ClienteSectorPageController].
 @ProviderFor(ClienteSectorPageController)
-final clienteSectorPageControllerProvider = AutoDisposeAsyncNotifierProvider<
-  ClienteSectorPageController,
-  List<Sector>
->.internal(
-  ClienteSectorPageController.new,
-  name: r'clienteSectorPageControllerProvider',
-  debugGetCreateSourceHash:
-      const bool.fromEnvironment('dart.vm.product')
+final clienteSectorPageControllerProvider =
+    AutoDisposeAsyncNotifierProvider<
+      ClienteSectorPageController,
+      List<Sector>
+    >.internal(
+      ClienteSectorPageController.new,
+      name: r'clienteSectorPageControllerProvider',
+      debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
           ? null
           : _$clienteSectorPageControllerHash,
-  dependencies: null,
-  allTransitiveDependencies: null,
-);
+      dependencies: null,
+      allTransitiveDependencies: null,
+    );
 
 typedef _$ClienteSectorPageController = AutoDisposeAsyncNotifier<List<Sector>>;
 String _$upsertClienteImpHash() => r'f6687f39d939244a322adc28530949e36925ef3b';
 
 /// See also [UpsertClienteImp].
 @ProviderFor(UpsertClienteImp)
-final upsertClienteImpProvider = AutoDisposeNotifierProvider<
-  UpsertClienteImp,
-  MutationState<Either<AppException, Unit>, ClienteImp>
->.internal(
-  UpsertClienteImp.new,
-  name: r'upsertClienteImpProvider',
-  debugGetCreateSourceHash:
-      const bool.fromEnvironment('dart.vm.product')
+final upsertClienteImpProvider =
+    AutoDisposeNotifierProvider<
+      UpsertClienteImp,
+      MutationState<Either<AppException, Unit>, ClienteImp>
+    >.internal(
+      UpsertClienteImp.new,
+      name: r'upsertClienteImpProvider',
+      debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
           ? null
           : _$upsertClienteImpHash,
-  dependencies: null,
-  allTransitiveDependencies: null,
-);
+      dependencies: null,
+      allTransitiveDependencies: null,
+    );
 
 typedef _$UpsertClienteImp =
     AutoDisposeNotifier<MutationState<Either<AppException, Unit>, ClienteImp>>;

@@ -52,10 +52,9 @@ class CatalogoFavoritoController
         catalogoId: catalogoId,
       );
 
-      state =
-          isFavorite
-              ? const CatalogoFavoritoControllerState.favorite()
-              : const CatalogoFavoritoControllerState.noFavorite();
+      state = isFavorite
+          ? const CatalogoFavoritoControllerState.favorite()
+          : const CatalogoFavoritoControllerState.noFavorite();
     } on AppException catch (e, stackTrace) {
       state = CatalogoFavoritoControllerState.error(
         e.details.message,

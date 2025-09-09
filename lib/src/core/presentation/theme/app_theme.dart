@@ -15,10 +15,9 @@ class AppTheme {
   }
 
   static ThemeData _createTheme(Brightness brightness) {
-    final myColorScheme =
-        brightness == Brightness.light
-            ? AppColors().lightColorScheme
-            : AppColors().darkColorScheme;
+    final myColorScheme = brightness == Brightness.light
+        ? AppColors().lightColorScheme
+        : AppColors().darkColorScheme;
     return ThemeData(
       useMaterial3: true,
       colorScheme: myColorScheme,

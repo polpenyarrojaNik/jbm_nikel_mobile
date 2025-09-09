@@ -23,10 +23,9 @@ _PedidoVentaLineaLocalDTO _$PedidoVentaLineaLocalDTOFromJson(
   descuento3: (json['DTO3'] as num).toDouble(),
   descuentoProntoPago: (json['DTO_PP'] as num).toDouble(),
   stockDisponibleSN: json['STOCK_DISPONIBLE_SN'] as String,
-  fechaDisponible:
-      json['F_DISPONIBLE'] == null
-          ? null
-          : DateTime.parse(json['F_DISPONIBLE'] as String),
+  fechaDisponible: json['F_DISPONIBLE'] == null
+      ? null
+      : DateTime.parse(json['F_DISPONIBLE'] as String),
   iva: (json['IVA'] as num).toDouble(),
   pedidoLineaComponenteId: json['PEDIDO_LINEA_ID_COMPONENTE'] as String?,
 );

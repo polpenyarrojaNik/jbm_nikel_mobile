@@ -110,8 +110,9 @@ class SyncNotifier extends StateNotifier<SyncControllerState> {
   }
 
   Future<bool> more30MinFromLastSync() async {
-    final syncDateTimeDTO =
-        await _localDb.select(_localDb.syncDateTimeTable).getSingle();
+    final syncDateTimeDTO = await _localDb
+        .select(_localDb.syncDateTimeTable)
+        .getSingle();
     final isMore30MinSalesOrder = more30MinFromPedidoVenta(syncDateTimeDTO);
     if (isMore30MinSalesOrder) {
       return true;

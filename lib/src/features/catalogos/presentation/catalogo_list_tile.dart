@@ -35,7 +35,8 @@ class CatalogoListTile extends ConsumerWidget {
       child: ClipRRect(
         child: GestureDetector(
           onTap: state.maybeWhen(
-            orElse: () => () => downloadAttachment(ref),
+            orElse: () =>
+                () => downloadAttachment(ref),
             loading: null,
           ),
           child: Card(
@@ -60,44 +61,38 @@ class CatalogoListTile extends ConsumerWidget {
                       Flexible(
                         child: Text(
                           catalogo.nombreCompleto,
-                          style: Theme.of(
-                            context,
-                          ).textTheme.bodyLarge?.copyWith(
-                            color: Theme.of(context).colorScheme.primary,
-                          ),
+                          style: Theme.of(context).textTheme.bodyLarge
+                              ?.copyWith(
+                                color: Theme.of(context).colorScheme.primary,
+                              ),
                         ),
                       ),
                       stateFavorite.maybeWhen(
                         orElse: () => const ProgressIndicatorWidget(),
-                        error:
-                            (error, _) => const IconButton(
-                              onPressed: null,
-                              icon: Icon(Icons.error),
-                            ),
-                        favorite:
-                            () => IconButton(
-                              onPressed:
-                                  () => removeCatlalogoFavorite(
-                                    ref: ref,
-                                    catalogo: catalogo,
-                                  ),
-                              icon: Icon(
-                                Icons.star,
-                                color: Theme.of(context).colorScheme.primary,
-                              ),
-                            ),
-                        noFavorite:
-                            () => IconButton(
-                              onPressed:
-                                  () => setCatlalogoToFavorite(
-                                    ref: ref,
-                                    catalogo: catalogo,
-                                  ),
-                              icon: Icon(
-                                Icons.star_outline,
-                                color: Theme.of(context).colorScheme.primary,
-                              ),
-                            ),
+                        error: (error, _) => const IconButton(
+                          onPressed: null,
+                          icon: Icon(Icons.error),
+                        ),
+                        favorite: () => IconButton(
+                          onPressed: () => removeCatlalogoFavorite(
+                            ref: ref,
+                            catalogo: catalogo,
+                          ),
+                          icon: Icon(
+                            Icons.star,
+                            color: Theme.of(context).colorScheme.primary,
+                          ),
+                        ),
+                        noFavorite: () => IconButton(
+                          onPressed: () => setCatlalogoToFavorite(
+                            ref: ref,
+                            catalogo: catalogo,
+                          ),
+                          icon: Icon(
+                            Icons.star_outline,
+                            color: Theme.of(context).colorScheme.primary,
+                          ),
+                        ),
                       ),
                     ],
                   ),
@@ -107,20 +102,19 @@ class CatalogoListTile extends ConsumerWidget {
                       child: CachedNetworkImage(
                         imageUrl: catalogo.getImageUrl,
                         fit: BoxFit.contain,
-                        progressIndicatorBuilder:
-                            (context, url, progress) => Image.asset(
+                        progressIndicatorBuilder: (context, url, progress) =>
+                            Image.asset(
                               semanticLabel: 'Loading...',
                               // width: 300,
                               fit: BoxFit.contain,
                               'assets/image-placeholder.png',
                             ),
-                        errorWidget:
-                            (context, error, _) => Image.asset(
-                              semanticLabel: 'Error loading image',
-                              // width: 300,
-                              fit: BoxFit.contain,
-                              'assets/image-placeholder.png',
-                            ),
+                        errorWidget: (context, error, _) => Image.asset(
+                          semanticLabel: 'Error loading image',
+                          // width: 300,
+                          fit: BoxFit.contain,
+                          'assets/image-placeholder.png',
+                        ),
                       ),
                     ),
                   ),

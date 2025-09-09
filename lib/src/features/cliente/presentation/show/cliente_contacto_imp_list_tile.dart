@@ -63,11 +63,12 @@ class ClienteContactoImpListTile extends ConsumerWidget {
                       Flexible(
                         child: Text(
                           clienteContactoImp.email!,
-                          style: Theme.of(
-                            context,
-                          ).textTheme.bodyMedium?.copyWith(
-                            color: Theme.of(context).textTheme.bodySmall?.color,
-                          ),
+                          style: Theme.of(context).textTheme.bodyMedium
+                              ?.copyWith(
+                                color: Theme.of(
+                                  context,
+                                ).textTheme.bodySmall?.color,
+                              ),
                         ),
                       ),
                     ],
@@ -84,11 +85,12 @@ class ClienteContactoImpListTile extends ConsumerWidget {
                       Flexible(
                         child: Text(
                           clienteContactoImp.telefono1!,
-                          style: Theme.of(
-                            context,
-                          ).textTheme.bodyMedium?.copyWith(
-                            color: Theme.of(context).textTheme.bodySmall?.color,
-                          ),
+                          style: Theme.of(context).textTheme.bodyMedium
+                              ?.copyWith(
+                                color: Theme.of(
+                                  context,
+                                ).textTheme.bodySmall?.color,
+                              ),
                         ),
                       ),
                     ],

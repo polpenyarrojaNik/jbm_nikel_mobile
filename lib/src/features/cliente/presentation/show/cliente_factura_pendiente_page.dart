@@ -43,24 +43,21 @@ class ClientePagoPendientePage extends ConsumerWidget {
           state.maybeWhen(
             orElse: () => const ProgressIndicatorWidget(),
             error: (e, st) => ErrorMessageWidget(e.toString()),
-            data:
-                (clientePagosPendientesList) =>
-                    (clientePagosPendientesList.isNotEmpty)
-                        ? Expanded(
-                          child: ListView.separated(
-                            itemCount: clientePagosPendientesList.length,
-                            itemBuilder:
-                                (context, i) => ClientePagoPendienteTile(
-                                  clientePagoPendiente:
-                                      clientePagosPendientesList[i],
-                                ),
-                            separatorBuilder: (context, i) => const Divider(),
-                          ),
-                        )
-                        : Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [Text(S.of(context).sinResultados)],
-                        ),
+            data: (clientePagosPendientesList) =>
+                (clientePagosPendientesList.isNotEmpty)
+                ? Expanded(
+                    child: ListView.separated(
+                      itemCount: clientePagosPendientesList.length,
+                      itemBuilder: (context, i) => ClientePagoPendienteTile(
+                        clientePagoPendiente: clientePagosPendientesList[i],
+                      ),
+                      separatorBuilder: (context, i) => const Divider(),
+                    ),
+                  )
+                : Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [Text(S.of(context).sinResultados)],
+                  ),
           ),
         ],
       ),
@@ -82,10 +79,9 @@ class ClientePagoPendienteTile extends StatelessWidget {
       child: Container(
         padding: kPaddingList,
         decoration: BoxDecoration(
-          color:
-              (clientePagoPendiente.vencidoJBM ?? false)
-                  ? Theme.of(context).colorScheme.errorContainer
-                  : null,
+          color: (clientePagoPendiente.vencidoJBM ?? false)
+              ? Theme.of(context).colorScheme.errorContainer
+              : null,
           borderRadius: BorderRadius.circular(4),
         ),
         child: Row(

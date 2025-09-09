@@ -19,8 +19,9 @@ class AsyncValueWidget<T> extends StatelessWidget {
     return value.when(
       data: onData,
       error: (error, st) {
-        final errorMessage =
-            (error is AppException) ? error.details.message : error.toString();
+        final errorMessage = (error is AppException)
+            ? error.details.message
+            : error.toString();
 
         return Center(child: ErrorMessageWidget(errorMessage));
       },

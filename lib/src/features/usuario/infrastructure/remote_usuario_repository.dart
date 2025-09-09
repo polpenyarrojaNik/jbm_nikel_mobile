@@ -49,8 +49,8 @@ class RemoteUsuarioRepository {
 
   Future<UsuarioDTO> signIn(String username, String password, bool test) async {
     _dio.options = BaseOptions(
-      validateStatus:
-          (status) => status != null && status >= 200 && status < 400,
+      validateStatus: (status) =>
+          status != null && status >= 200 && status < 400,
     );
 
     try {
@@ -138,18 +138,17 @@ class RemoteUsuarioRepository {
 
   Future<UsuarioAuxDTO> remoteSyncUser(UsuarioDTO usuarioDto) async {
     try {
-      final requestUri =
-          (usuarioDto.isTest)
-              ? Uri.http(
-                // dotenv.get('URL', fallback: 'localhost:3001'),
-                'jbm-api-test.nikel.es:8080',
-                'api/v1/sync/usuario/${usuarioDto.id}',
-              )
-              : Uri.https(
-                // dotenv.get('URL', fallback: 'localhost:3001'),
-                'jbm-api.nikel.es',
-                'api/v1/sync/usuario/${usuarioDto.id}',
-              );
+      final requestUri = (usuarioDto.isTest)
+          ? Uri.http(
+              // dotenv.get('URL', fallback: 'localhost:3001'),
+              'jbm-api-test.nikel.es:8080',
+              'api/v1/sync/usuario/${usuarioDto.id}',
+            )
+          : Uri.https(
+              // dotenv.get('URL', fallback: 'localhost:3001'),
+              'jbm-api.nikel.es',
+              'api/v1/sync/usuario/${usuarioDto.id}',
+            );
 
       final response = await _dio.getUri(
         requestUri,

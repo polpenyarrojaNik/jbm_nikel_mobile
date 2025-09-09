@@ -78,29 +78,25 @@ class _ArticuloListaPageState extends ConsumerState<ArticuloListaPage> {
           isSearchingFirst: widget.isSearchArticuloForForm,
           title: S.of(context).articulo_index_titulo,
           searchTitle: S.of(context).articulo_index_buscarArticulos,
-          onChanged:
-              (searchText) => _debouncer.run(
-                () =>
-                    ref.read(articulosSearchQueryStateProvider.notifier).state =
-                        searchText,
-              ),
+          onChanged: (searchText) => _debouncer.run(
+            () => ref.read(articulosSearchQueryStateProvider.notifier).state =
+                searchText,
+          ),
         ),
         body: stateSync.maybeWhen(
-          orElse:
-              () => ArticleListViewWidget(
-                stateSync: stateSync,
-                ref: ref,
-                isSearchArticuloForForm: widget.isSearchArticuloForForm,
-              ),
-          synchronized:
-              () => RefreshIndicator(
-                onRefresh: () => refreshArticleDb(ref),
-                child: ArticleListViewWidget(
-                  stateSync: stateSync,
-                  ref: ref,
-                  isSearchArticuloForForm: widget.isSearchArticuloForForm,
-                ),
-              ),
+          orElse: () => ArticleListViewWidget(
+            stateSync: stateSync,
+            ref: ref,
+            isSearchArticuloForForm: widget.isSearchArticuloForForm,
+          ),
+          synchronized: () => RefreshIndicator(
+            onRefresh: () => refreshArticleDb(ref),
+            child: ArticleListViewWidget(
+              stateSync: stateSync,
+              ref: ref,
+              isSearchArticuloForForm: widget.isSearchArticuloForForm,
+            ),
+          ),
         ),
       ),
     );
@@ -152,9 +148,8 @@ class ArticleListViewWidget extends StatelessWidget {
             final stateLastSyncDate = ref.watch(articuloLastSyncDateProvider);
 
             return stateLastSyncDate.when(
-              data:
-                  (fechaUltimaSync) =>
-                      UltimaSyncDateWidget(ultimaSyncDate: fechaUltimaSync),
+              data: (fechaUltimaSync) =>
+                  UltimaSyncDateWidget(ultimaSyncDate: fechaUltimaSync),
               error: (_, stackTrace) => Container(),
               loading: () => const ProgressIndicatorWidget(),
             );
@@ -163,49 +158,37 @@ class ArticleListViewWidget extends StatelessWidget {
         const Gap(8),
         Expanded(
           child: stateArticuloListCount.maybeWhen(
-            data:
-                (count) => ListView.separated(
-                  separatorBuilder: (context, i) => const Divider(),
-                  shrinkWrap: true,
-                  physics: const AlwaysScrollableScrollPhysics(),
-                  itemCount: count,
-                  itemBuilder:
-                      (context, i) => ref
-                          .watch(
-                            ArticuloIndexScreenPaginatedControllerProvider(
-                              page: i ~/ ArticuloRepository.pageSize,
-                              isSearchArticuloForForm: isSearchArticuloForForm,
+            data: (count) => ListView.separated(
+              separatorBuilder: (context, i) => const Divider(),
+              shrinkWrap: true,
+              physics: const AlwaysScrollableScrollPhysics(),
+              itemCount: count,
+              itemBuilder: (context, i) => ref
+                  .watch(
+                    ArticuloIndexScreenPaginatedControllerProvider(
+                      page: i ~/ ArticuloRepository.pageSize,
+                      isSearchArticuloForForm: isSearchArticuloForForm,
+                    ),
+                  )
+                  .maybeWhen(
+                    data: (articuloList) => GestureDetector(
+                      onTap: () => (!isSearchArticuloForForm)
+                          ? navigateToArticuloDetalPage(
+                              context,
+                              articuloList[i % ArticuloRepository.pageSize].id,
+                            )
+                          : selectArticuloForFromPage(
+                              context,
+                              ref,
+                              articuloList[i % ArticuloRepository.pageSize],
                             ),
-                          )
-                          .maybeWhen(
-                            data:
-                                (articuloList) => GestureDetector(
-                                  onTap:
-                                      () =>
-                                          (!isSearchArticuloForForm)
-                                              ? navigateToArticuloDetalPage(
-                                                context,
-                                                articuloList[i %
-                                                        ArticuloRepository
-                                                            .pageSize]
-                                                    .id,
-                                              )
-                                              : selectArticuloForFromPage(
-                                                context,
-                                                ref,
-                                                articuloList[i %
-                                                    ArticuloRepository
-                                                        .pageSize],
-                                              ),
-                                  child: ArticuloListaTile(
-                                    articulo:
-                                        articuloList[i %
-                                            ArticuloRepository.pageSize],
-                                  ),
-                                ),
-                            orElse: () => const ArticuloListShimmer(),
-                          ),
-                ),
+                      child: ArticuloListaTile(
+                        articulo: articuloList[i % ArticuloRepository.pageSize],
+                      ),
+                    ),
+                    orElse: () => const ArticuloListShimmer(),
+                  ),
+            ),
             orElse: () => const ProgressIndicatorWidget(),
           ),
         ),

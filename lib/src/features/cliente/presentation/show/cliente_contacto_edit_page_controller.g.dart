@@ -94,10 +94,9 @@ class ClienteContactoEditPageControllerProvider
               ..clienteImpParam = clienteImpParam,
         from: clienteContactoEditPageControllerProvider,
         name: r'clienteContactoEditPageControllerProvider',
-        debugGetCreateSourceHash:
-            const bool.fromEnvironment('dart.vm.product')
-                ? null
-                : _$clienteContactoEditPageControllerHash,
+        debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+            ? null
+            : _$clienteContactoEditPageControllerHash,
         dependencies: ClienteContactoEditPageControllerFamily._dependencies,
         allTransitiveDependencies:
             ClienteContactoEditPageControllerFamily._allTransitiveDependencies,

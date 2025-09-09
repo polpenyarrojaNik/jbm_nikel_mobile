@@ -85,8 +85,9 @@ final articuloComponenteListProvider = FutureProvider.autoDispose
 final articuloPrecioTarifaListProvider = FutureProvider.autoDispose
     .family<List<ArticuloPrecioTarifa>, String>((ref, articuloId) async {
       final articuloRepository = ref.watch(articuloRepositoryProvider);
-      final usuario =
-          await ref.watch(usuarioServiceProvider).getSignedInUsuario();
+      final usuario = await ref
+          .watch(usuarioServiceProvider)
+          .getSignedInUsuario();
 
       return articuloRepository.getArticuloPrecioTarifaListaById(
         articuloId: articuloId,
@@ -97,8 +98,9 @@ final articuloPrecioTarifaListProvider = FutureProvider.autoDispose
 final articuloGrupoNetoPriceListProvider = FutureProvider.autoDispose
     .family<List<ArticuloGrupoNeto>, String>((ref, articuloId) async {
       final articuloRepository = ref.watch(articuloRepositoryProvider);
-      final usuario =
-          await ref.watch(usuarioServiceProvider).getSignedInUsuario();
+      final usuario = await ref
+          .watch(usuarioServiceProvider)
+          .getSignedInUsuario();
 
       return articuloRepository.getArticuloGrupoNetoListaById(
         articuloId: articuloId,
@@ -125,8 +127,9 @@ final articuloRecambioListProvider = FutureProvider.autoDispose
 final articuloImageListProvider = FutureProvider.autoDispose
     .family<List<ArticuloImagen>, String>((ref, articuloId) async {
       final articuloRepository = ref.watch(articuloRepositoryProvider);
-      final usuario =
-          await ref.watch(usuarioServiceProvider).getSignedInUsuario();
+      final usuario = await ref
+          .watch(usuarioServiceProvider)
+          .getSignedInUsuario();
       return articuloRepository.getArticuloImagenesListaById(
         articuloId: articuloId,
         provisionalToken: usuario!.provisionalToken,
@@ -137,8 +140,9 @@ final articuloImageListProvider = FutureProvider.autoDispose
 final articuloDocumentListProvider = FutureProvider.autoDispose
     .family<List<ArticuloDocumento>, String>((ref, articuloId) async {
       final articuloRepository = ref.watch(articuloRepositoryProvider);
-      final usuario =
-          await ref.watch(usuarioServiceProvider).getSignedInUsuario();
+      final usuario = await ref
+          .watch(usuarioServiceProvider)
+          .getSignedInUsuario();
       return articuloRepository.getArticuloDocumentoListById(
         articuloId: articuloId,
         provisionalToken: usuario!.provisionalToken,
@@ -149,8 +153,9 @@ final articuloDocumentListProvider = FutureProvider.autoDispose
 final articuloDocumentFileProvider = FutureProvider.autoDispose
     .family<File?, AdjuntoParam>((ref, adjuntoParam) async {
       final articuloRepository = ref.watch(articuloRepositoryProvider);
-      final usuario =
-          await ref.watch(usuarioServiceProvider).getSignedInUsuario();
+      final usuario = await ref
+          .watch(usuarioServiceProvider)
+          .getSignedInUsuario();
       return articuloRepository.getArticuloDocumentFile(
         adjuntoParam: adjuntoParam,
         provisionalToken: usuario!.provisionalToken,
@@ -162,8 +167,9 @@ final articuloImageFileProvider = FutureProvider.autoDispose
     .family<Uint8List?, AdjuntoParam>((ref, adjuntoParam) async {
       final articuloRepository = ref.watch(articuloRepositoryProvider);
 
-      final usuario =
-          await ref.watch(usuarioServiceProvider).getSignedInUsuario();
+      final usuario = await ref
+          .watch(usuarioServiceProvider)
+          .getSignedInUsuario();
       return articuloRepository.getImageFile(
         adjuntoParam: adjuntoParam,
         provisionalToken: usuario!.provisionalToken,
@@ -175,8 +181,9 @@ final articuloPedidoVentaLineaListProvider = FutureProvider.autoDispose
     .family<List<ArticuloPedidoVentaLinea>, String>((ref, articuloId) async {
       final articuloRepository = ref.watch(articuloRepositoryProvider);
 
-      final usuario =
-          await ref.watch(usuarioServiceProvider).getSignedInUsuario();
+      final usuario = await ref
+          .watch(usuarioServiceProvider)
+          .getSignedInUsuario();
       return articuloRepository.getArticuloPedidoVentaById(
         articuloId: articuloId,
         usuarioId: usuario!.id,
@@ -186,8 +193,9 @@ final articuloPedidoVentaLineaListProvider = FutureProvider.autoDispose
 final articuloVentasMesProvider = FutureProvider.autoDispose
     .family<List<ArticuloVentasMes>, String>((ref, articuloId) async {
       final articuloRepository = ref.watch(articuloRepositoryProvider);
-      final usuario =
-          await ref.watch(usuarioServiceProvider).getSignedInUsuario();
+      final usuario = await ref
+          .watch(usuarioServiceProvider)
+          .getSignedInUsuario();
       return articuloRepository.getVentasMesById(
         articuloId: articuloId,
         usuarioId: usuario!.id,
@@ -198,8 +206,9 @@ final articuloVentasMesProvider = FutureProvider.autoDispose
 final articuloVentasClienteProvider = FutureProvider.autoDispose
     .family<List<ArticuloVentasCliente>, String>((ref, articuloId) async {
       final articuloRepository = ref.watch(articuloRepositoryProvider);
-      final usuario =
-          await ref.watch(usuarioServiceProvider).getSignedInUsuario();
+      final usuario = await ref
+          .watch(usuarioServiceProvider)
+          .getSignedInUsuario();
       return articuloRepository.getVentasClienteById(
         articuloId: articuloId,
         usuarioId: usuario!.id,
@@ -246,10 +255,9 @@ class ArticuloRepository {
     required String searchText,
   }) async {
     try {
-      final query =
-          await _remoteDb
-              .customSelect(
-                '''
+      final query = await _remoteDb
+          .customSelect(
+            '''
           SELECT art.*
           FROM ARTICULOS art
           WHERE ${descripcionSegunLocale(searchText)}
@@ -267,25 +275,25 @@ class ArticuloRepository {
            art.ARTICULO_ID
           LIMIT :limit OFFSET :offset
 ''',
-                variables: [
-                  const Variable(pageSize),
-                  Variable(page * pageSize),
-                ],
-                readsFrom: {_remoteDb.articuloTable},
-              )
-              .get();
+            variables: [const Variable(pageSize), Variable(page * pageSize)],
+            readsFrom: {_remoteDb.articuloTable},
+          )
+          .get();
 
       return await Future.wait(
         query.map((row) async {
           final articuloDTO = ArticuloDTO.fromJson(row.data);
           final familiaDTO =
               await (_remoteDb.select(_remoteDb.familiaTable)..where(
-                (t) => t.id.equals(row.data['FAMILIA_ID'] as String? ?? ''),
-              )).getSingleOrNull();
+                    (t) => t.id.equals(row.data['FAMILIA_ID'] as String? ?? ''),
+                  ))
+                  .getSingleOrNull();
           final subfamiliaDTO =
               await (_remoteDb.select(_remoteDb.subfamiliaTable)..where(
-                (t) => t.id.equals(row.data['SUBFAMILIA_ID'] as String? ?? ''),
-              )).getSingleOrNull();
+                    (t) =>
+                        t.id.equals(row.data['SUBFAMILIA_ID'] as String? ?? ''),
+                  ))
+                  .getSingleOrNull();
           return articuloDTO.toDomain(
             familia: familiaDTO?.toDomain(),
             subfamilia: subfamiliaDTO?.toDomain(),
@@ -302,10 +310,9 @@ class ArticuloRepository {
 
   Future<int> getArticuloCountList({required String searchText}) async {
     try {
-      final query =
-          await _remoteDb
-              .customSelect(
-                '''
+      final query = await _remoteDb
+          .customSelect(
+            '''
           SELECT COUNT(*) as COUNT
           FROM ARTICULOS art
           WHERE ${descripcionSegunLocale(searchText)}
@@ -315,9 +322,9 @@ class ArticuloRepository {
           OR art.GS1_128_CAJA LIKE '%$searchText%'
           OR art.GS1_128_PALET LIKE '%$searchText%'
 ''',
-                readsFrom: {_remoteDb.articuloTable},
-              )
-              .getSingle();
+            readsFrom: {_remoteDb.articuloTable},
+          )
+          .getSingle();
 
       final count = query.data['COUNT'] as int?;
 
@@ -340,14 +347,12 @@ class ArticuloRepository {
         ..where((t) => t.id.equals(articuloId)));
 
       return await query.asyncMap((row) async {
-        final familiaDTO =
-            await (_remoteDb.select(_remoteDb.familiaTable)..where(
-              (t) => t.id.equals(row.familiaId ?? ''),
-            )).getSingleOrNull();
-        final subfamiliaDTO =
-            await (_remoteDb.select(_remoteDb.subfamiliaTable)..where(
-              (t) => t.id.equals(row.subfamiliaId ?? ''),
-            )).getSingleOrNull();
+        final familiaDTO = await (_remoteDb.select(
+          _remoteDb.familiaTable,
+        )..where((t) => t.id.equals(row.familiaId ?? ''))).getSingleOrNull();
+        final subfamiliaDTO = await (_remoteDb.select(
+          _remoteDb.subfamiliaTable,
+        )..where((t) => t.id.equals(row.subfamiliaId ?? ''))).getSingleOrNull();
 
         final ventasAnyoActual = await _getSalesForYear(
           DateTime.now().year,
@@ -382,21 +387,18 @@ class ArticuloRepository {
           usuarioId,
         );
 
-        final margenAnyoActual =
-            ventasAnyoActual == 0
-                ? 0.0
-                : ((1 - (costeAnyoActual / ventasAnyoActual)) * 100) -
-                    margenComercial;
-        final margenAnyoAnterior =
-            ventasAnyoAnterior == 0
-                ? 0.0
-                : ((1 - (costeAnyoAnterior / ventasAnyoAnterior)) * 100) -
-                    margenComercial;
-        final margenHaceDosAnyos =
-            ventasHaceDosAnyos == 0
-                ? 0.0
-                : ((1 - (costeHaceDosAnyos / ventasHaceDosAnyos)) * 100) -
-                    margenComercial;
+        final margenAnyoActual = ventasAnyoActual == 0
+            ? 0.0
+            : ((1 - (costeAnyoActual / ventasAnyoActual)) * 100) -
+                  margenComercial;
+        final margenAnyoAnterior = ventasAnyoAnterior == 0
+            ? 0.0
+            : ((1 - (costeAnyoAnterior / ventasAnyoAnterior)) * 100) -
+                  margenComercial;
+        final margenHaceDosAnyos = ventasHaceDosAnyos == 0
+            ? 0.0
+            : ((1 - (costeHaceDosAnyos / ventasHaceDosAnyos)) * 100) -
+                  margenComercial;
 
         return row
             .toDomain(
@@ -507,10 +509,9 @@ AND estadisticas_venta.cliente_id IN (SELECT clientes_usuario.cliente_id
     required String usuarioId,
   }) async {
     try {
-      final query =
-          await _remoteDb
-              .customSelect(
-                '''
+      final query = await _remoteDb
+          .customSelect(
+            '''
 SELECT *
   FROM ARTICULOS_TARIFA_PRECIO
  WHERE ARTICULOS_TARIFA_PRECIO.TARIFA_ID
@@ -521,13 +522,13 @@ SELECT *
                        AND CLIENTES_USUARIO.USUARIO_ID = :usuarioId)
        AND ARTICULOS_TARIFA_PRECIO.ARTICULO_ID = :articuloId;
 ''',
-                variables: [Variable(usuarioId), Variable(articuloId)],
-                readsFrom: {
-                  _remoteDb.articuloGrupoNetoTable,
-                  _remoteDb.clienteGrupoNetoTable,
-                },
-              )
-              .get();
+            variables: [Variable(usuarioId), Variable(articuloId)],
+            readsFrom: {
+              _remoteDb.articuloGrupoNetoTable,
+              _remoteDb.clienteGrupoNetoTable,
+            },
+          )
+          .get();
 
       return query
           .map((row) => ArticuloPrecioTarifaDTO.fromJson(row.data).toDomain())
@@ -545,10 +546,9 @@ SELECT *
     required String usuarioId,
   }) async {
     try {
-      final query =
-          await _remoteDb
-              .customSelect(
-                '''
+      final query = await _remoteDb
+          .customSelect(
+            '''
       SELECT *
   FROM ${_remoteDb.articuloGrupoNetoTable.tableName}
  WHERE EXISTS
@@ -559,13 +559,13 @@ SELECT *
              AND clientes_usuario.usuario_id = :usuarioId)
    AND articulos_grupos_netos_precio.articulo_id = :articuloId
 ''',
-                variables: [Variable(usuarioId), Variable(articuloId)],
-                readsFrom: {
-                  _remoteDb.articuloGrupoNetoTable,
-                  _remoteDb.clienteGrupoNetoTable,
-                },
-              )
-              .get();
+            variables: [Variable(usuarioId), Variable(articuloId)],
+            readsFrom: {
+              _remoteDb.articuloGrupoNetoTable,
+              _remoteDb.clienteGrupoNetoTable,
+            },
+          )
+          .get();
 
       return query
           .map((row) => ArticuloGrupoNetoDTO.fromJson(row.data).toDomain())
@@ -600,12 +600,13 @@ SELECT *
     required String articuloId,
   }) async {
     try {
-      final query = (_remoteDb.select(_remoteDb.articuloSustitutivoTable)
-          ..where((t) => t.articuloId.equals(articuloId)))
-        ..orderBy([
-          (t) => OrderingTerm(expression: t.orden),
-          (t) => OrderingTerm(expression: t.articuloSustitutivoId),
-        ]);
+      final query =
+          (_remoteDb.select(_remoteDb.articuloSustitutivoTable)
+              ..where((t) => t.articuloId.equals(articuloId)))
+            ..orderBy([
+              (t) => OrderingTerm(expression: t.orden),
+              (t) => OrderingTerm(expression: t.articuloSustitutivoId),
+            ]);
 
       return await query.asyncMap((row) async {
         final articuloSustitutivo = await getArticuloById(
@@ -633,18 +634,17 @@ SELECT *
   }) async {
     final query = {'ARTICULO_ID': articuloId};
     final articuloImageDTOList = await _remoteGetArticuloImagen(
-      requestUri:
-          (test)
-              ? Uri.http(
-                dotenv.get('URL', fallback: 'localhost:3001'),
-                'api/v1/online/articulo/imagenes',
-                query,
-              )
-              : Uri.https(
-                dotenv.get('URL', fallback: 'localhost:3001'),
-                'api/v1/online/articulo/imagenes',
-                query,
-              ),
+      requestUri: (test)
+          ? Uri.http(
+              dotenv.get('URL', fallback: 'localhost:3001'),
+              'api/v1/online/articulo/imagenes',
+              query,
+            )
+          : Uri.https(
+              dotenv.get('URL', fallback: 'localhost:3001'),
+              'api/v1/online/articulo/imagenes',
+              query,
+            ),
       jsonDataSelector: (json) => json['data'] as List<dynamic>,
       provisionalToken: provisionalToken,
     );
@@ -659,18 +659,17 @@ SELECT *
   }) async {
     final query = {'ARTICULO_ID': articuloId};
     final articuloDocumentoDTOList = await _remoteGetArticuloDocumentos(
-      requestUri:
-          (test)
-              ? Uri.http(
-                dotenv.get('URL', fallback: 'localhost:3001'),
-                'api/v1/online/articulo/documentos',
-                query,
-              )
-              : Uri.https(
-                dotenv.get('URL', fallback: 'localhost:3001'),
-                'api/v1/online/articulo/documentos',
-                query,
-              ),
+      requestUri: (test)
+          ? Uri.http(
+              dotenv.get('URL', fallback: 'localhost:3001'),
+              'api/v1/online/articulo/documentos',
+              query,
+            )
+          : Uri.https(
+              dotenv.get('URL', fallback: 'localhost:3001'),
+              'api/v1/online/articulo/documentos',
+              query,
+            ),
       jsonDataSelector: (json) => json['data'] as List<dynamic>,
       provisionalToken: provisionalToken,
     );
@@ -686,18 +685,17 @@ SELECT *
     if (adjuntoParam.nombreArchivo != '') {
       final query = {'NOMBRE_ARCHIVO': adjuntoParam.nombreArchivo};
       final dataImage = await _remoteGetAttachment(
-        requestUri:
-            (test)
-                ? Uri.http(
-                  dotenv.get('URL', fallback: 'localhost:3001'),
-                  'api/v1/online/adjunto/articulo/${adjuntoParam.id}/img',
-                  query,
-                )
-                : Uri.https(
-                  dotenv.get('URL', fallback: 'localhost:3001'),
-                  'api/v1/online/adjunto/articulo/${adjuntoParam.id}/img',
-                  query,
-                ),
+        requestUri: (test)
+            ? Uri.http(
+                dotenv.get('URL', fallback: 'localhost:3001'),
+                'api/v1/online/adjunto/articulo/${adjuntoParam.id}/img',
+                query,
+              )
+            : Uri.https(
+                dotenv.get('URL', fallback: 'localhost:3001'),
+                'api/v1/online/adjunto/articulo/${adjuntoParam.id}/img',
+                query,
+              ),
         provisionalToken: provisionalToken,
       );
 
@@ -715,18 +713,17 @@ SELECT *
     if (adjuntoParam.nombreArchivo != '') {
       final query = {'NOMBRE_ARCHIVO': adjuntoParam.nombreArchivo};
       final data = await _remoteGetAttachment(
-        requestUri:
-            (test)
-                ? Uri.http(
-                  dotenv.get('URL', fallback: 'localhost:3001'),
-                  'api/v1/online/adjunto/articulo/${adjuntoParam.id}/doc',
-                  query,
-                )
-                : Uri.https(
-                  dotenv.get('URL', fallback: 'localhost:3001'),
-                  'api/v1/online/adjunto/articulo/${adjuntoParam.id}/doc',
-                  query,
-                ),
+        requestUri: (test)
+            ? Uri.http(
+                dotenv.get('URL', fallback: 'localhost:3001'),
+                'api/v1/online/adjunto/articulo/${adjuntoParam.id}/doc',
+                query,
+              )
+            : Uri.https(
+                dotenv.get('URL', fallback: 'localhost:3001'),
+                'api/v1/online/adjunto/articulo/${adjuntoParam.id}/doc',
+                query,
+              ),
         provisionalToken: provisionalToken,
       );
 
@@ -759,18 +756,17 @@ SELECT *
     if (adjuntoParam.nombreArchivo != '') {
       final query = {'NOMBRE_ARCHIVO': adjuntoParam.nombreArchivo};
       final data = await _remoteGetAttachment(
-        requestUri:
-            (test)
-                ? Uri.http(
-                  dotenv.get('URL', fallback: 'localhost:3001'),
-                  'api/v1/online/adjunto/cliente/${adjuntoParam.id}',
-                  query,
-                )
-                : Uri.https(
-                  dotenv.get('URL', fallback: 'localhost:3001'),
-                  'api/v1/online/adjunto/cliente/${adjuntoParam.id}',
-                  query,
-                ),
+        requestUri: (test)
+            ? Uri.http(
+                dotenv.get('URL', fallback: 'localhost:3001'),
+                'api/v1/online/adjunto/cliente/${adjuntoParam.id}',
+                query,
+              )
+            : Uri.https(
+                dotenv.get('URL', fallback: 'localhost:3001'),
+                'api/v1/online/adjunto/cliente/${adjuntoParam.id}',
+                query,
+              ),
         provisionalToken: provisionalToken,
       );
 
@@ -981,8 +977,8 @@ SELECT *
     required String searchText,
   }) async {
     try {
-      final countExp =
-          _remoteDb.estadisticasUltimosPreciosTable.articuloId.count();
+      final countExp = _remoteDb.estadisticasUltimosPreciosTable.articuloId
+          .count();
 
       final query = _remoteDb
           .select(_remoteDb.estadisticasUltimosPreciosTable)
@@ -1034,31 +1030,28 @@ SELECT *
     required bool verTotalVentas,
   }) async {
     try {
-      final queryVentasMes =
-          await _remoteDb
-              .customSelect(
-                _getVentasMesCustomSelect(),
-                variables: [Variable(articuloId), Variable(usuarioId)],
-                readsFrom: {_remoteDb.estadisticasClienteUsuarioVentasTable},
-              )
-              .get();
+      final queryVentasMes = await _remoteDb
+          .customSelect(
+            _getVentasMesCustomSelect(),
+            variables: [Variable(articuloId), Variable(usuarioId)],
+            readsFrom: {_remoteDb.estadisticasClienteUsuarioVentasTable},
+          )
+          .get();
 
       if (verTotalVentas) {
         final articuloVentaMesList = <ArticuloVentasMes>[];
 
-        final queryVentasMesTodos =
-            await _remoteDb
-                .customSelect(
-                  _getVentasMesAllCustomSelect(),
-                  variables: [Variable(articuloId), Variable(usuarioId)],
-                  readsFrom: {_remoteDb.estadisticasClienteUsuarioVentasTable},
-                )
-                .get();
+        final queryVentasMesTodos = await _remoteDb
+            .customSelect(
+              _getVentasMesAllCustomSelect(),
+              variables: [Variable(articuloId), Variable(usuarioId)],
+              readsFrom: {_remoteDb.estadisticasClienteUsuarioVentasTable},
+            )
+            .get();
 
-        final ventasMesTodos =
-            queryVentasMesTodos.map((row) {
-              return ArticuloVentasMesTodosDTO.fromJson(row.data).toDomain();
-            }).toList();
+        final ventasMesTodos = queryVentasMesTodos.map((row) {
+          return ArticuloVentasMesTodosDTO.fromJson(row.data).toDomain();
+        }).toList();
 
         for (var i = 0; i < queryVentasMes.length; i++) {
           articuloVentaMesList.add(
@@ -1087,14 +1080,13 @@ SELECT *
     required String usuarioId,
   }) async {
     try {
-      final query =
-          await _remoteDb
-              .customSelect(
-                _getVentasClienteCustomSelect(),
-                variables: [Variable(articuloId), Variable(usuarioId)],
-                readsFrom: {_remoteDb.estadisticasClienteUsuarioVentasTable},
-              )
-              .get();
+      final query = await _remoteDb
+          .customSelect(
+            _getVentasClienteCustomSelect(),
+            variables: [Variable(articuloId), Variable(usuarioId)],
+            readsFrom: {_remoteDb.estadisticasClienteUsuarioVentasTable},
+          )
+          .get();
 
       return query
           .map((row) => ArticuloVentasClienteDTO.fromJson(row.data).toDomain())
@@ -1122,7 +1114,8 @@ FROM (
         select += ' UNION ALL ';
       }
 
-      select += '''
+      select +=
+          '''
 SELECT $mes          mes,
        Sum(unidades) unidades_anyo_0,
        0             unidades_anyo_1,
@@ -1228,7 +1221,8 @@ FROM (
         select += ' UNION ALL ';
       }
 
-      select += '''
+      select +=
+          '''
 SELECT $mes          mes,
        Sum(unidades) unidades_anyo_todos_0,
        0             unidades_anyo_todos_1,
@@ -1545,30 +1539,27 @@ ORDER  BY IMPORTE_ANYO DESC
       case 'en':
         var sqlWhere = '';
         for (var i = 0; i < stringList.length; i++) {
-          sqlWhere +=
-              (i > 0 && i < stringList.length)
-                  ? " OR art.DESCRIPCION_EN LIKE '%${stringList[i]}%'"
-                  : "art.DESCRIPCION_EN LIKE '%${stringList[i]}%'";
+          sqlWhere += (i > 0 && i < stringList.length)
+              ? " OR art.DESCRIPCION_EN LIKE '%${stringList[i]}%'"
+              : "art.DESCRIPCION_EN LIKE '%${stringList[i]}%'";
         }
 
         return sqlWhere;
       case 'fr':
         var sqlWhere = '';
         for (var i = 0; i < stringList.length; i++) {
-          sqlWhere +=
-              (i > 0 && i < stringList.length)
-                  ? " OR art.DESCRIPCION_FR LIKE '%${stringList[i]}%'"
-                  : "art.DESCRIPCION_FR LIKE '%${stringList[i]}%'";
+          sqlWhere += (i > 0 && i < stringList.length)
+              ? " OR art.DESCRIPCION_FR LIKE '%${stringList[i]}%'"
+              : "art.DESCRIPCION_FR LIKE '%${stringList[i]}%'";
         }
 
         return sqlWhere;
       case 'de':
         var sqlWhere = '';
         for (var i = 0; i < stringList.length; i++) {
-          sqlWhere +=
-              (i > 0 && i < stringList.length)
-                  ? " OR art.DESCRIPCION_DE LIKE '%${stringList[i]}%'"
-                  : "art.DESCRIPCION_DE LIKE '%${stringList[i]}%'";
+          sqlWhere += (i > 0 && i < stringList.length)
+              ? " OR art.DESCRIPCION_DE LIKE '%${stringList[i]}%'"
+              : "art.DESCRIPCION_DE LIKE '%${stringList[i]}%'";
         }
 
         return sqlWhere;
@@ -1576,10 +1567,9 @@ ORDER  BY IMPORTE_ANYO DESC
       case 'it':
         var sqlWhere = '';
         for (var i = 0; i < stringList.length; i++) {
-          sqlWhere +=
-              (i > 0 && i < stringList.length)
-                  ? " OR art.DESCRIPCION_IT LIKE '%${stringList[i]}%'"
-                  : "art.DESCRIPCION_IT LIKE '%${stringList[i]}%'";
+          sqlWhere += (i > 0 && i < stringList.length)
+              ? " OR art.DESCRIPCION_IT LIKE '%${stringList[i]}%'"
+              : "art.DESCRIPCION_IT LIKE '%${stringList[i]}%'";
         }
 
         return sqlWhere;
@@ -1587,10 +1577,9 @@ ORDER  BY IMPORTE_ANYO DESC
       default:
         var sqlWhere = '';
         for (var i = 0; i < stringList.length; i++) {
-          sqlWhere +=
-              (i > 0 && i < stringList.length)
-                  ? " OR art.DESCRIPCION_ES LIKE '%${stringList[i]}%'"
-                  : "art.DESCRIPCION_ES LIKE '%${stringList[i]}%'";
+          sqlWhere += (i > 0 && i < stringList.length)
+              ? " OR art.DESCRIPCION_ES LIKE '%${stringList[i]}%'"
+              : "art.DESCRIPCION_ES LIKE '%${stringList[i]}%'";
         }
 
         return sqlWhere;
@@ -1598,8 +1587,9 @@ ORDER  BY IMPORTE_ANYO DESC
   }
 
   Future<DateTime> getLastSyncDate() async {
-    final lastSyncDTO =
-        await _localDb.select(_localDb.syncDateTimeTable).getSingle();
+    final lastSyncDTO = await _localDb
+        .select(_localDb.syncDateTimeTable)
+        .getSingle();
     return lastSyncDTO.articuloUltimaSync;
   }
 }

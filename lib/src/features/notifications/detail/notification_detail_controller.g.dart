@@ -88,10 +88,9 @@ class NotificationDetailScreenControllerProvider
         () => NotificationDetailScreenController()..id = id,
         from: notificationDetailScreenControllerProvider,
         name: r'notificationDetailScreenControllerProvider',
-        debugGetCreateSourceHash:
-            const bool.fromEnvironment('dart.vm.product')
-                ? null
-                : _$notificationDetailScreenControllerHash,
+        debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+            ? null
+            : _$notificationDetailScreenControllerHash,
         dependencies: NotificationDetailScreenControllerFamily._dependencies,
         allTransitiveDependencies:
             NotificationDetailScreenControllerFamily._allTransitiveDependencies,

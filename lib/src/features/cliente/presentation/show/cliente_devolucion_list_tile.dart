@@ -14,10 +14,9 @@ class ClienteDevolucionListTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap:
-          () => context.router.push(
-            ClienteDevolucionDetalleRoute(devolucion: devolucion),
-          ),
+      onTap: () => context.router.push(
+        ClienteDevolucionDetalleRoute(devolucion: devolucion),
+      ),
       child: IntrinsicHeight(
         child: Container(
           padding: const EdgeInsets.only(right: 16),
@@ -39,12 +38,12 @@ class ClienteDevolucionListTile extends StatelessWidget {
                       children: [
                         Text(
                           devolucion.id,
-                          style: Theme.of(
-                            context,
-                          ).textTheme.bodySmall?.copyWith(
-                            color:
-                                Theme.of(context).textTheme.bodyMedium?.color,
-                          ),
+                          style: Theme.of(context).textTheme.bodySmall
+                              ?.copyWith(
+                                color: Theme.of(
+                                  context,
+                                ).textTheme.bodyMedium?.color,
+                              ),
                         ),
                         Text(
                           dateFormatter(

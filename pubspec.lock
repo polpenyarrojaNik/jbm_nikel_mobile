@@ -1186,10 +1186,10 @@ packages:
     dependency: "direct main"
     description:
       name: map_launcher
-      sha256: "75e2742879228eb3147edb6604cc0dc105da1357eb6b4c1b938c52bc474f6088"
+      sha256: "39af937533f3d9af306357c28546ded909a0f81c76097e118724df4d0713d2f2"
       url: "https://pub.dev"
     source: hosted
-    version: "4.4.0"
+    version: "4.4.2"
   markdown:
     dependency: transitive
     description:
@@ -2196,5 +2196,5 @@ packages:
     source: hosted
     version: "3.1.3"
 sdks:
-  dart: ">=3.9.0 <4.0.0"
-  flutter: ">=3.35.0"
+  dart: "3.9.0"
+  flutter: ">=3.35.2 <4.0.0"

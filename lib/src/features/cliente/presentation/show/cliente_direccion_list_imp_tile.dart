@@ -42,14 +42,13 @@ class ClienteDireccionImpListTile extends StatelessWidget {
             children: [
               SizedBox(
                 width: 50,
-                child:
-                    (clienteDireccionImp.direccionId != null)
-                        ? Text(
-                          (clienteDireccionImp.direccionId!.length > 3)
-                              ? 'PRV'
-                              : clienteDireccionImp.direccionId!,
-                        )
-                        : null,
+                child: (clienteDireccionImp.direccionId != null)
+                    ? Text(
+                        (clienteDireccionImp.direccionId!.length > 3)
+                            ? 'PRV'
+                            : clienteDireccionImp.direccionId!,
+                      )
+                    : null,
               ),
               Expanded(
                 child: Column(

@@ -63,10 +63,9 @@ class _ClienteDireccionEditPageState
       clienteDireccionEditPageControllerProvider(widget.clienteImpParam),
       (_, state) => state.whenOrNull(
         error: (error, _) {
-          final errorMessage =
-              (error is AppException)
-                  ? error.details.message
-                  : error.toString();
+          final errorMessage = (error is AppException)
+              ? error.details.message
+              : error.toString();
 
           context.showErrorBar(content: Text(errorMessage));
 
@@ -110,10 +109,9 @@ class _ClienteDireccionEditPageState
 
     return Scaffold(
       appBar: CommonAppBar(
-        titleText:
-            S
-                .of(context)
-                .cliente_show_clienteDireccion_clienteDireccionEditPage_editarDireccion,
+        titleText: S
+            .of(context)
+            .cliente_show_clienteDireccion_clienteDireccionEditPage_editarDireccion,
         actions: [
           IconButton(
             onPressed: () => saveClienteDireccion(ref, formKey),
@@ -124,24 +122,23 @@ class _ClienteDireccionEditPageState
       body: Padding(
         padding: const EdgeInsets.all(16),
         child: value.when(
-          data:
-              (clienteDireccionEditPageData) => Column(
-                children: [
-                  Expanded(
-                    child: ClienteDireccionEditForm(
-                      clienteDireccion:
-                          clienteDireccionEditPageData.clienteDireccion,
-                      formKey: formKey,
-                      paisCliente: widget.clienteImpParam.clientePais,
-                      onPaisChanged: onPaisChanged,
-                    ),
-                  ),
-                  if (widget.clienteImpParam.id != null)
-                    _CambiosPendientesListView(
-                      clienteImpParam: widget.clienteImpParam,
-                    ),
-                ],
+          data: (clienteDireccionEditPageData) => Column(
+            children: [
+              Expanded(
+                child: ClienteDireccionEditForm(
+                  clienteDireccion:
+                      clienteDireccionEditPageData.clienteDireccion,
+                  formKey: formKey,
+                  paisCliente: widget.clienteImpParam.clientePais,
+                  onPaisChanged: onPaisChanged,
+                ),
               ),
+              if (widget.clienteImpParam.id != null)
+                _CambiosPendientesListView(
+                  clienteImpParam: widget.clienteImpParam,
+                ),
+            ],
+          ),
           error: (error, _) {
             final clienteDireccionEditPageData =
                 error as ClienteDireccionEditPageData;
@@ -378,38 +375,34 @@ class _CambiosPendientesListView extends ConsumerWidget {
       clienteDireccionImpListInSyncByClienteProvider(clienteImpParam),
     );
     return clienteDireccionImpValue.when(
-      data:
-          (clienteDireccionImpList) =>
-              clienteDireccionImpList.isEmpty
-                  ? Container()
-                  : Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          S
-                              .of(context)
-                              .cliente_show_clienteDireccion_clienteDireccionEditPage_cambiosPendientesDeTramitar,
-                          style: Theme.of(context).textTheme.titleSmall,
-                        ),
-                        const Gap(4),
-                        ListView.separated(
-                          shrinkWrap: true,
-                          itemBuilder:
-                              (context, i) => ClienteDireccionImpListTile(
-                                clienteDireccionImp: clienteDireccionImpList[i],
-                              ),
-                          separatorBuilder: (context, i) => const Divider(),
-                          itemCount: clienteDireccionImpList.length,
-                        ),
-                      ],
-                    ),
+      data: (clienteDireccionImpList) => clienteDireccionImpList.isEmpty
+          ? Container()
+          : Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    S
+                        .of(context)
+                        .cliente_show_clienteDireccion_clienteDireccionEditPage_cambiosPendientesDeTramitar,
+                    style: Theme.of(context).textTheme.titleSmall,
                   ),
-      error:
-          (error, _) => ErrorMessageWidget(
-            (error is AppException) ? error.details.message : error.toString(),
-          ),
+                  const Gap(4),
+                  ListView.separated(
+                    shrinkWrap: true,
+                    itemBuilder: (context, i) => ClienteDireccionImpListTile(
+                      clienteDireccionImp: clienteDireccionImpList[i],
+                    ),
+                    separatorBuilder: (context, i) => const Divider(),
+                    itemCount: clienteDireccionImpList.length,
+                  ),
+                ],
+              ),
+            ),
+      error: (error, _) => ErrorMessageWidget(
+        (error is AppException) ? error.details.message : error.toString(),
+      ),
       loading: () => const Center(child: CircularProgressIndicator()),
     );
   }

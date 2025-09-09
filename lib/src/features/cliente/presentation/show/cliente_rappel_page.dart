@@ -37,11 +37,10 @@ class ClienteRappelPage extends ConsumerWidget {
       state.when(
         data: (file) => (file != null) ? OpenFile.open(file.path) : null,
         error: (error) => showToast(error.toString(), context),
-        loading:
-            () => showToast(
-              S.of(context).cliente_show_clienteAdjunto_abriendoArchivo,
-              context,
-            ),
+        loading: () => showToast(
+          S.of(context).cliente_show_clienteAdjunto_abriendoArchivo,
+          context,
+        ),
         initial: () => null,
       );
     });
@@ -60,23 +59,20 @@ class ClienteRappelPage extends ConsumerWidget {
           state.maybeWhen(
             orElse: () => const ProgressIndicatorWidget(),
             error: (e, st) => ErrorMessageWidget(e.toString()),
-            data:
-                (clienteRappelList) =>
-                    (clienteRappelList.isNotEmpty)
-                        ? Expanded(
-                          child: ListView.separated(
-                            itemCount: clienteRappelList.length,
-                            itemBuilder:
-                                (context, i) => ClienteRappelTile(
-                                  clienteRappel: clienteRappelList[i],
-                                ),
-                            separatorBuilder: (context, i) => const Divider(),
-                          ),
-                        )
-                        : Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [Text(S.of(context).sinResultados)],
-                        ),
+            data: (clienteRappelList) => (clienteRappelList.isNotEmpty)
+                ? Expanded(
+                    child: ListView.separated(
+                      itemCount: clienteRappelList.length,
+                      itemBuilder: (context, i) => ClienteRappelTile(
+                        clienteRappel: clienteRappelList[i],
+                      ),
+                      separatorBuilder: (context, i) => const Divider(),
+                    ),
+                  )
+                : Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [Text(S.of(context).sinResultados)],
+                  ),
           ),
         ],
       ),
@@ -92,15 +88,13 @@ class ClienteRappelTile extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return GestureDetector(
-      onTap:
-          () =>
-              (clienteRappel.nombreArchivo != null)
-                  ? openFile(
-                    rappelId: clienteRappel.rappelId,
-                    nombreArchivo: clienteRappel.nombreArchivo!,
-                    ref: ref,
-                  )
-                  : null,
+      onTap: () => (clienteRappel.nombreArchivo != null)
+          ? openFile(
+              rappelId: clienteRappel.rappelId,
+              nombreArchivo: clienteRappel.nombreArchivo!,
+              ref: ref,
+            )
+          : null,
       child: Padding(
         padding: kPaddingList,
         child: IntrinsicHeight(
@@ -151,15 +145,13 @@ class ClienteRappelTile extends ConsumerWidget {
                   horizontal: -4,
                   vertical: -4,
                 ),
-                onPressed:
-                    () =>
-                        (clienteRappel.nombreArchivo != null)
-                            ? openFile(
-                              rappelId: clienteRappel.rappelId,
-                              nombreArchivo: clienteRappel.nombreArchivo!,
-                              ref: ref,
-                            )
-                            : null,
+                onPressed: () => (clienteRappel.nombreArchivo != null)
+                    ? openFile(
+                        rappelId: clienteRappel.rappelId,
+                        nombreArchivo: clienteRappel.nombreArchivo!,
+                        ref: ref,
+                      )
+                    : null,
                 icon: const Icon(Icons.navigate_next_outlined, size: 16),
               ),
             ],

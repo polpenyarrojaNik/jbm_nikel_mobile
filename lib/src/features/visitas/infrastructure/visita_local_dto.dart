@@ -99,15 +99,14 @@ abstract class VisitaLocalDTO
       codigoMotivoNoPedido: visita.motivoNoPedido?.id,
       codigoSector: visita.sector?.id,
       codigoCompetencia: null,
-      almacenPropio:
-          (() {
-            if (visita.almacenPropio == null) {
-              return null;
-            } else if (visita.almacenPropio!) {
-              return 'S';
-            }
-            return 'N';
-          })(),
+      almacenPropio: (() {
+        if (visita.almacenPropio == null) {
+          return null;
+        } else if (visita.almacenPropio!) {
+          return 'S';
+        }
+        return 'N';
+      })(),
       capacidad: getIdFromCapacidad(visita.capacidad),
       frecuenciaPedido: getIdFromFrecuenciaPedido(visita.frecuenciaPedido),
       latitud: visita.latitud,
@@ -172,8 +171,9 @@ abstract class VisitaLocalDTO
     List<VisitaCompetenciaLocalDTO> visitaCompenteciaLocalDtoList,
   ) {
     final json = toJson();
-    json['VISITA_COMPETENCIA'] =
-        visitaCompenteciaLocalDtoList.map((e) => e.toJson()).toList();
+    json['VISITA_COMPETENCIA'] = visitaCompenteciaLocalDtoList
+        .map((e) => e.toJson())
+        .toList();
     return json;
   }
 

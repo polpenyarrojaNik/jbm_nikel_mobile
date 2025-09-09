@@ -307,9 +307,9 @@ abstract class ClienteDTO with _$ClienteDTO implements Insertable<ClienteDTO> {
 
     return riesgoExcedidoFixed.isNegative
         ? Money.fromFixedWithCurrency(
-          riesgoExcedidoFixed.abs,
-          Currencies().find(divisaId)!,
-        )
+            riesgoExcedidoFixed.abs,
+            Currencies().find(divisaId)!,
+          )
         : Money.parseWithCurrency('0', Currencies().find(divisaId)!);
   }
 }
@@ -363,16 +363,14 @@ class ClienteTable extends Table {
   TextColumn get descripcionDescuentoGeneral =>
       text().nullable().named('DESCUENTO_GENERAL_DESCRIPCION')();
   TextColumn get tipoCalculoPrecio => text().named('TIPO_CALCULO_PRECIO')();
-  TextColumn get plazoDeCobroId =>
-      text()
-          .references(PlazoDeCobroTable, #id)
-          .nullable()
-          .named('PLAZO_COBRO_ID')();
-  TextColumn get metodoDeCobroId =>
-      text()
-          .references(MetodoDeCobroTable, #id)
-          .nullable()
-          .named('METODO_COBRO_ID')();
+  TextColumn get plazoDeCobroId => text()
+      .references(PlazoDeCobroTable, #id)
+      .nullable()
+      .named('PLAZO_COBRO_ID')();
+  TextColumn get metodoDeCobroId => text()
+      .references(MetodoDeCobroTable, #id)
+      .nullable()
+      .named('METODO_COBRO_ID')();
   RealColumn get descuentoProntoPago => real().named('DESCUENTO_PRONTO_PAGO')();
   RealColumn get riesgoConcedidoInterno =>
       real().named('RIESGO_CONCEDIDO_INTERNO')();

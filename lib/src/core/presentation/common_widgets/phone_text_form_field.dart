@@ -75,18 +75,17 @@ class PhoneTextFormField extends ConsumerWidget {
         ),
         verifyExisitingPhoneState.maybeWhen(
           orElse: () => Container(),
-          data:
-              (data) => data.fold(
-                (l) => Container(),
-                (result) =>
-                    result != null
-                        ? Text(
-                          '${S.of(context).esteNumeroTelefonoExisiteEnElCliente} #${result.clienteId} ${result.nombre}',
-                          style: Theme.of(context).textTheme.labelSmall
-                              ?.copyWith(color: Colors.orange),
-                        )
-                        : Container(),
-              ),
+          data: (data) => data.fold(
+            (l) => Container(),
+            (result) => result != null
+                ? Text(
+                    '${S.of(context).esteNumeroTelefonoExisiteEnElCliente} #${result.clienteId} ${result.nombre}',
+                    style: Theme.of(
+                      context,
+                    ).textTheme.labelSmall?.copyWith(color: Colors.orange),
+                  )
+                : Container(),
+          ),
 
           loading: () => const LinearProgressIndicator(),
         ),

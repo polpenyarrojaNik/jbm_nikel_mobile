@@ -44,10 +44,9 @@ class LoginPageState extends ConsumerState<LoginPage> {
       (_, state) => state.whenOrNull(
         error: (error, stackTrace) {
           if (!state.isRefreshing) {
-            final errorMessage =
-                (error is AppException)
-                    ? error.details.message
-                    : error.toString();
+            final errorMessage = (error is AppException)
+                ? error.details.message
+                : error.toString();
             showToast(errorMessage, context);
           }
         },
@@ -63,85 +62,82 @@ class LoginPageState extends ConsumerState<LoginPage> {
             padding: const EdgeInsets.symmetric(horizontal: 48.0),
             child: ReactiveFormBuilder(
               form: buildForm,
-              builder:
-                  (context, form, child) => SingleChildScrollView(
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.stretch,
-                      children: [
-                        Container(
-                          alignment: Alignment.center,
-                          child: Image.asset(
-                            semanticLabel: 'Logo de JBM',
-                            'assets/jbm_300x300.png',
-                            fit: BoxFit.cover,
-                            width: 250,
-                          ),
-                        ),
-                        const Gap(48),
-                        Text(
-                          S.of(context).auth_loginPage_titulo,
-                          style: Theme.of(context).textTheme.headlineSmall!,
-                        ),
-                        Text(
-                          'JBM Nikel Mobile',
-                          style: Theme.of(context).textTheme.headlineMedium!
-                              .copyWith(fontWeight: FontWeight.bold),
-                        ),
-                        const Gap(16),
-                        ReactiveTextField<String>(
-                          key: const ValueKey('usuario'),
-                          formControlName: 'usuario',
-                          textCapitalization: TextCapitalization.characters,
-                          validationMessages: {
-                            ValidationMessage.required:
-                                (error) =>
-                                    S.of(context).auth_loginPage_requerido,
-                          },
-                          textInputAction: TextInputAction.next,
-                          decoration: AppDecoration.loginField(
-                            S.of(context).auth_loginPage_usuario,
-                          ),
-                        ),
-                        const Gap(16),
-                        ReactiveTextField<String>(
-                          formControlName: 'contrasenya',
-                          obscureText: true,
-                          textCapitalization: TextCapitalization.characters,
-                          validationMessages: {
-                            ValidationMessage.required:
-                                (error) =>
-                                    S.of(context).auth_loginPage_requerido,
-                          },
-                          textInputAction: TextInputAction.done,
-                          onSubmitted: (_) => _submit(form, ref),
-                          decoration: AppDecoration.loginField(
-                            S.of(context).auth_loginPage_contrasena,
-                          ),
-                        ),
-                        const Gap(32),
-                        state.maybeWhen(
-                          orElse: () {
-                            return PrimaryButton(
-                              onPressed: () => _submit(form, ref),
-                              text: S.of(context).auth_loginPage_iniciarSesion,
-                            );
-                          },
-                          loading: () => const ProgressIndicatorWidget(),
-                        ),
-                        const Gap(32),
-                        Container(
-                          alignment: Alignment.center,
-                          child: Image.asset(
-                            semanticLabel: 'Logo de Nikel',
-                            'assets/nikel_logo_400.png',
-                            fit: BoxFit.fitWidth,
-                            width: 150,
-                          ),
-                        ),
-                      ],
+              builder: (context, form, child) => SingleChildScrollView(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    Container(
+                      alignment: Alignment.center,
+                      child: Image.asset(
+                        semanticLabel: 'Logo de JBM',
+                        'assets/jbm_300x300.png',
+                        fit: BoxFit.cover,
+                        width: 250,
+                      ),
                     ),
-                  ),
+                    const Gap(48),
+                    Text(
+                      S.of(context).auth_loginPage_titulo,
+                      style: Theme.of(context).textTheme.headlineSmall!,
+                    ),
+                    Text(
+                      'JBM Nikel Mobile',
+                      style: Theme.of(context).textTheme.headlineMedium!
+                          .copyWith(fontWeight: FontWeight.bold),
+                    ),
+                    const Gap(16),
+                    ReactiveTextField<String>(
+                      key: const ValueKey('usuario'),
+                      formControlName: 'usuario',
+                      textCapitalization: TextCapitalization.characters,
+                      validationMessages: {
+                        ValidationMessage.required: (error) =>
+                            S.of(context).auth_loginPage_requerido,
+                      },
+                      textInputAction: TextInputAction.next,
+                      decoration: AppDecoration.loginField(
+                        S.of(context).auth_loginPage_usuario,
+                      ),
+                    ),
+                    const Gap(16),
+                    ReactiveTextField<String>(
+                      formControlName: 'contrasenya',
+                      obscureText: true,
+                      textCapitalization: TextCapitalization.characters,
+                      validationMessages: {
+                        ValidationMessage.required: (error) =>
+                            S.of(context).auth_loginPage_requerido,
+                      },
+                      textInputAction: TextInputAction.done,
+                      onSubmitted: (_) => _submit(form, ref),
+                      decoration: AppDecoration.loginField(
+                        S.of(context).auth_loginPage_contrasena,
+                      ),
+                    ),
+                    const Gap(32),
+                    state.maybeWhen(
+                      orElse: () {
+                        return PrimaryButton(
+                          onPressed: () => _submit(form, ref),
+                          text: S.of(context).auth_loginPage_iniciarSesion,
+                        );
+                      },
+                      loading: () => const ProgressIndicatorWidget(),
+                    ),
+                    const Gap(32),
+                    Container(
+                      alignment: Alignment.center,
+                      child: Image.asset(
+                        semanticLabel: 'Logo de Nikel',
+                        'assets/nikel_logo_400.png',
+                        fit: BoxFit.fitWidth,
+                        width: 150,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
             ),
           ),
         ),

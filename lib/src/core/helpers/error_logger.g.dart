@@ -13,8 +13,9 @@ String _$errorLoggerHash() => r'1818bb683c341c96008c6995f3400c42963ead75';
 final errorLoggerProvider = Provider<ErrorLogger>.internal(
   errorLogger,
   name: r'errorLoggerProvider',
-  debugGetCreateSourceHash:
-      const bool.fromEnvironment('dart.vm.product') ? null : _$errorLoggerHash,
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+      ? null
+      : _$errorLoggerHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );

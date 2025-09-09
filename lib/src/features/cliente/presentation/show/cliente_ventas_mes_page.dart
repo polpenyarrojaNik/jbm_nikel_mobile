@@ -44,37 +44,33 @@ class ClienteVentasMesPage extends ConsumerWidget {
           state.maybeWhen(
             orElse: () => const ProgressIndicatorWidget(),
             error: (e, st) => ErrorMessageWidget(e.toString()),
-            data:
-                (clienteVentasMesList) =>
-                    (clienteVentasMesList.isNotEmpty)
-                        ? Expanded(
-                          child: ListView(
-                            children: [
-                              VentasMesDataTable(
-                                clienteVentasMesList: clienteVentasMesList,
-                              ),
-                              const Gap(16),
-                              Container(
-                                height: 420,
-                                padding: const EdgeInsets.symmetric(
-                                  horizontal: 16,
-                                ),
-                                child: GraficaVentasMes(
-                                  clienteVentasMesList: clienteVentasMesList,
-                                ),
-                              ),
-                              const Gap(8),
-                              const LeyendaWidget(),
-                            ],
-                          ),
-                        )
-                        : Padding(
-                          padding: const EdgeInsets.all(16.0),
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [Text(S.of(context).sinResultados)],
+            data: (clienteVentasMesList) => (clienteVentasMesList.isNotEmpty)
+                ? Expanded(
+                    child: ListView(
+                      children: [
+                        VentasMesDataTable(
+                          clienteVentasMesList: clienteVentasMesList,
+                        ),
+                        const Gap(16),
+                        Container(
+                          height: 420,
+                          padding: const EdgeInsets.symmetric(horizontal: 16),
+                          child: GraficaVentasMes(
+                            clienteVentasMesList: clienteVentasMesList,
                           ),
                         ),
+                        const Gap(8),
+                        const LeyendaWidget(),
+                      ],
+                    ),
+                  )
+                : Padding(
+                    padding: const EdgeInsets.all(16.0),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [Text(S.of(context).sinResultados)],
+                    ),
+                  ),
           ),
         ],
       ),
@@ -180,10 +176,9 @@ class _VentasMesDataTableState extends State<VentasMesDataTable> {
     for (var i = 0; i < clienteVentasMesList.length; i++) {
       dataRows.add(
         DataRow(
-          onLongPress:
-              () => setState(() {
-                selectedRow = i;
-              }),
+          onLongPress: () => setState(() {
+            selectedRow = i;
+          }),
           selected: selectedRow == i,
           cells: [
             DataCell(
@@ -458,34 +453,27 @@ class _GraficaVentasMesState extends State<GraficaVentasMes> {
                     bottomTitles: AxisTitles(
                       sideTitles: SideTitles(
                         showTitles: true,
-                        getTitlesWidget:
-                            (value, meta) => getTiltlesMeses(
-                              widget.clienteVentasMesList,
-                              value,
-                            ),
+                        getTitlesWidget: (value, meta) =>
+                            getTiltlesMeses(widget.clienteVentasMesList, value),
                       ),
                     ),
                   ),
                   gridData: FlGridData(
                     show: true,
                     drawVerticalLine: false,
-                    getDrawingHorizontalLine:
-                        (value) => const FlLine(
-                          color: Color(0xFFececec),
-                          strokeWidth: 1,
-                        ),
+                    getDrawingHorizontalLine: (value) =>
+                        const FlLine(color: Color(0xFFececec), strokeWidth: 1),
                   ),
-                  barGroups:
-                      dataList.asMap().entries.map((e) {
-                        final index = e.key;
-                        final data = e.value;
-                        return generateBarGroup(
-                          index,
-                          data.color,
-                          data.value,
-                          data.shadowValue,
-                        );
-                      }).toList(),
+                  barGroups: dataList.asMap().entries.map((e) {
+                    final index = e.key;
+                    final data = e.value;
+                    return generateBarGroup(
+                      index,
+                      data.color,
+                      data.value,
+                      data.shadowValue,
+                    );
+                  }).toList(),
                   maxY: getMaxYValue(widget.clienteVentasMesList),
                   minY: 0,
                 ),
@@ -538,13 +526,15 @@ class _GraficaVentasMesState extends State<GraficaVentasMes> {
     for (var i = 0; i < clienteVentasMesList.length; i++) {
       if (maxY <
           clienteVentasMesList[i].importeAnyo.amount.toDecimal().toDouble()) {
-        maxY =
-            clienteVentasMesList[i].importeAnyo.amount.toDecimal().toDouble();
+        maxY = clienteVentasMesList[i].importeAnyo.amount
+            .toDecimal()
+            .toDouble();
       }
       if (maxY <
           clienteVentasMesList[i].importeAnyo_1.amount.toDecimal().toDouble()) {
-        maxY =
-            clienteVentasMesList[i].importeAnyo_1.amount.toDecimal().toDouble();
+        maxY = clienteVentasMesList[i].importeAnyo_1.amount
+            .toDecimal()
+            .toDouble();
       }
     }
 

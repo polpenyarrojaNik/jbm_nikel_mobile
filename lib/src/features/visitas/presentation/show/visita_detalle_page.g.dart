@@ -101,17 +101,15 @@ class VisitaDetalleControllerProvider
     bool isLocal,
     String? createVisitaFromClienteId,
   ) : this._internal(
-        () =>
-            VisitaDetalleController()
-              ..id = id
-              ..isLocal = isLocal
-              ..createVisitaFromClienteId = createVisitaFromClienteId,
+        () => VisitaDetalleController()
+          ..id = id
+          ..isLocal = isLocal
+          ..createVisitaFromClienteId = createVisitaFromClienteId,
         from: visitaDetalleControllerProvider,
         name: r'visitaDetalleControllerProvider',
-        debugGetCreateSourceHash:
-            const bool.fromEnvironment('dart.vm.product')
-                ? null
-                : _$visitaDetalleControllerHash,
+        debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+            ? null
+            : _$visitaDetalleControllerHash,
         dependencies: VisitaDetalleControllerFamily._dependencies,
         allTransitiveDependencies:
             VisitaDetalleControllerFamily._allTransitiveDependencies,
@@ -148,11 +146,10 @@ class VisitaDetalleControllerProvider
     return ProviderOverride(
       origin: this,
       override: VisitaDetalleControllerProvider._internal(
-        () =>
-            create()
-              ..id = id
-              ..isLocal = isLocal
-              ..createVisitaFromClienteId = createVisitaFromClienteId,
+        () => create()
+          ..id = id
+          ..isLocal = isLocal
+          ..createVisitaFromClienteId = createVisitaFromClienteId,
         from: from,
         name: null,
         dependencies: null,

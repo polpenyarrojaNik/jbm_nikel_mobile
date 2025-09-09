@@ -98,13 +98,11 @@ class ClienteVentasArticuloIndexScreenPaginatedControllerProvider
                ..clienteId = clienteId,
          from: clienteVentasArticuloIndexScreenPaginatedControllerProvider,
          name: r'clienteVentasArticuloIndexScreenPaginatedControllerProvider',
-         debugGetCreateSourceHash:
-             const bool.fromEnvironment('dart.vm.product')
-                 ? null
-                 : _$clienteVentasArticuloIndexScreenPaginatedControllerHash,
-         dependencies:
-             ClienteVentasArticuloIndexScreenPaginatedControllerFamily
-                 ._dependencies,
+         debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+             ? null
+             : _$clienteVentasArticuloIndexScreenPaginatedControllerHash,
+         dependencies: ClienteVentasArticuloIndexScreenPaginatedControllerFamily
+             ._dependencies,
          allTransitiveDependencies:
              ClienteVentasArticuloIndexScreenPaginatedControllerFamily
                  ._allTransitiveDependencies,

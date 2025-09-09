@@ -462,7 +462,7 @@ class __$$_FailureCopyWithImpl<$Res> extends _$AuthStateCopyWithImpl<$Res>
         e == freezed
             ? _value.e
             : e // ignore: cast_nullable_to_non_nullable
-                as String,
+                  as String,
       ),
     );
   }

@@ -164,16 +164,14 @@ String dtoText(double descuento1, double descuento2, double descuento3) {
     dtoText += '${numberFormatCantidades(descuento1)}%';
   }
   if (descuento2 != 0) {
-    dtoText +=
-        (dtoText.isNotEmpty)
-            ? ' -${numberFormatCantidades(descuento2)}%'
-            : '${numberFormatCantidades(descuento2)}%';
+    dtoText += (dtoText.isNotEmpty)
+        ? ' -${numberFormatCantidades(descuento2)}%'
+        : '${numberFormatCantidades(descuento2)}%';
   }
   if (descuento3 != 0) {
-    dtoText +=
-        (dtoText.isNotEmpty)
-            ? ' -${numberFormatCantidades(descuento3)}%'
-            : '${numberFormatCantidades(descuento3)}%';
+    dtoText += (dtoText.isNotEmpty)
+        ? ' -${numberFormatCantidades(descuento3)}%'
+        : '${numberFormatCantidades(descuento3)}%';
   }
   return dtoText;
 }

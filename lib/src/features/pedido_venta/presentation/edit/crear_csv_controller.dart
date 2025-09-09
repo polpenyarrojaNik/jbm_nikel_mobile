@@ -8,14 +8,15 @@ import '../../infrastructure/pedido_venta_repository.dart';
 
 part 'crear_csv_controller.freezed.dart';
 
-final crearCsvControllerProvider = StateNotifierProvider.autoDispose<
-  CrearCsvController,
-  CrearCsvControllerState
->((ref) {
-  final pedidoVentaRepository = ref.watch(pedidoVentaRepositoryProvider);
+final crearCsvControllerProvider =
+    StateNotifierProvider.autoDispose<
+      CrearCsvController,
+      CrearCsvControllerState
+    >((ref) {
+      final pedidoVentaRepository = ref.watch(pedidoVentaRepositoryProvider);
 
-  return CrearCsvController(pedidoVentaRepository: pedidoVentaRepository);
-});
+      return CrearCsvController(pedidoVentaRepository: pedidoVentaRepository);
+    });
 
 @freezed
 class CrearCsvControllerState with _$CrearCsvControllerState {

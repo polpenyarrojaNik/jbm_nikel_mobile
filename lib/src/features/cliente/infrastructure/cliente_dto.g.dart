@@ -41,24 +41,22 @@ _ClienteDTO _$ClienteDTOFromJson(Map<String, dynamic> json) => _ClienteDTO(
   metodoDeCobroId: json['METODO_COBRO_ID'] as String?,
   descuentoProntoPago: (json['DESCUENTO_PRONTO_PAGO'] as num).toDouble(),
   riesgoConcedidoInterno: (json['RIESGO_CONCEDIDO_INTERNO'] as num).toDouble(),
-  riesgoConcedidoInternoDate:
-      json['RIESGO_CONCEDIDO_INTERNO_FECHA'] == null
-          ? null
-          : DateTime.parse(json['RIESGO_CONCEDIDO_INTERNO_FECHA'] as String),
+  riesgoConcedidoInternoDate: json['RIESGO_CONCEDIDO_INTERNO_FECHA'] == null
+      ? null
+      : DateTime.parse(json['RIESGO_CONCEDIDO_INTERNO_FECHA'] as String),
   riesgoConcedidoCoafe: (json['RIESGO_CONCEDIDO_COFACE'] as num).toDouble(),
-  riesgoConcedidoCoafeFecha:
-      json['RIESGO_CONCEDIDO_COFACE_FECHA'] == null
-          ? null
-          : DateTime.parse(json['RIESGO_CONCEDIDO_COFACE_FECHA'] as String),
+  riesgoConcedidoCoafeFecha: json['RIESGO_CONCEDIDO_COFACE_FECHA'] == null
+      ? null
+      : DateTime.parse(json['RIESGO_CONCEDIDO_COFACE_FECHA'] as String),
   riesgoConcedido: (json['RIESGO_CONCEDIDO'] as num?)?.toDouble(),
   riesgoPendienteCobroVencido:
       (json['RIESGO_PDTE_COBRO_VENCIDO_CLIENTE'] as num?)?.toDouble(),
   riesgoPendienteCobroNoVencido:
       (json['RIESGO_PDTE_COBRO_NO_VENCIDO_CLIENTE'] as num?)?.toDouble(),
-  riesgoPendienteServir:
-      (json['RIESGO_PDTE_SERVIR_CLIENTE'] as num?)?.toDouble(),
-  riesgoPendienteFacturar:
-      (json['RIESGO_PDTE_FACTURAR_CLIENTE'] as num?)?.toDouble(),
+  riesgoPendienteServir: (json['RIESGO_PDTE_SERVIR_CLIENTE'] as num?)
+      ?.toDouble(),
+  riesgoPendienteFacturar: (json['RIESGO_PDTE_FACTURAR_CLIENTE'] as num?)
+      ?.toDouble(),
   obvservacionesInternas: json['OBSERVACIONES_INTERNAS'] as String?,
   clientePotencial: json['CLIENTE_POTENCIAL'] as String?,
   clienteEstadoPotencialId: json['ESTADO_POTENCIAL_ID'] as String?,
@@ -118,11 +116,11 @@ Map<String, dynamic> _$ClienteDTOToJson(_ClienteDTO instance) =>
       'METODO_COBRO_ID': instance.metodoDeCobroId,
       'DESCUENTO_PRONTO_PAGO': instance.descuentoProntoPago,
       'RIESGO_CONCEDIDO_INTERNO': instance.riesgoConcedidoInterno,
-      'RIESGO_CONCEDIDO_INTERNO_FECHA':
-          instance.riesgoConcedidoInternoDate?.toIso8601String(),
+      'RIESGO_CONCEDIDO_INTERNO_FECHA': instance.riesgoConcedidoInternoDate
+          ?.toIso8601String(),
       'RIESGO_CONCEDIDO_COFACE': instance.riesgoConcedidoCoafe,
-      'RIESGO_CONCEDIDO_COFACE_FECHA':
-          instance.riesgoConcedidoCoafeFecha?.toIso8601String(),
+      'RIESGO_CONCEDIDO_COFACE_FECHA': instance.riesgoConcedidoCoafeFecha
+          ?.toIso8601String(),
       'RIESGO_CONCEDIDO': instance.riesgoConcedido,
       'RIESGO_PDTE_COBRO_VENCIDO_CLIENTE': instance.riesgoPendienteCobroVencido,
       'RIESGO_PDTE_COBRO_NO_VENCIDO_CLIENTE':

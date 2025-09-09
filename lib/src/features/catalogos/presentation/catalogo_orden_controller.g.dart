@@ -15,10 +15,9 @@ final catalogoOrdenControllerProvider =
     AutoDisposeNotifierProvider<CatalogoOrdenController, void>.internal(
       CatalogoOrdenController.new,
       name: r'catalogoOrdenControllerProvider',
-      debugGetCreateSourceHash:
-          const bool.fromEnvironment('dart.vm.product')
-              ? null
-              : _$catalogoOrdenControllerHash,
+      debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+          ? null
+          : _$catalogoOrdenControllerHash,
       dependencies: null,
       allTransitiveDependencies: null,
     );
@@ -29,19 +28,19 @@ String _$saveCatalogoAbiertoHash() =>
 
 /// See also [SaveCatalogoAbierto].
 @ProviderFor(SaveCatalogoAbierto)
-final saveCatalogoAbiertoProvider = AutoDisposeNotifierProvider<
-  SaveCatalogoAbierto,
-  MutationState<Either<AppException, Unit>, int>
->.internal(
-  SaveCatalogoAbierto.new,
-  name: r'saveCatalogoAbiertoProvider',
-  debugGetCreateSourceHash:
-      const bool.fromEnvironment('dart.vm.product')
+final saveCatalogoAbiertoProvider =
+    AutoDisposeNotifierProvider<
+      SaveCatalogoAbierto,
+      MutationState<Either<AppException, Unit>, int>
+    >.internal(
+      SaveCatalogoAbierto.new,
+      name: r'saveCatalogoAbiertoProvider',
+      debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
           ? null
           : _$saveCatalogoAbiertoHash,
-  dependencies: null,
-  allTransitiveDependencies: null,
-);
+      dependencies: null,
+      allTransitiveDependencies: null,
+    );
 
 typedef _$SaveCatalogoAbierto =
     AutoDisposeNotifier<MutationState<Either<AppException, Unit>, int>>;

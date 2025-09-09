@@ -46,57 +46,54 @@ class _ClientesAlrededorPageState extends ConsumerState<ClientesAlrededorPage> {
     return Scaffold(
       appBar: AppBar(title: Text(S.of(context).cliente_alrededor_titulo)),
       body: state.when(
-        data:
-            (position) => Stack(
-              fit: StackFit.expand,
-              alignment: AlignmentDirectional.bottomCenter,
-              children: [
-                GoogleMapsContainer(
-                  radiusKm: radiusKm,
-                  currentLatLng: LatLng(position.latitude, position.longitude),
-                  showDireccionesEnvio: showDireccionesEnvio,
-                  showPotenciales: showPotenciales,
-                ),
-                Positioned(
-                  top: 8,
-                  right: 8,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.end,
-                    children: [
-                      _CheckboxDireccionesEnvio(
-                        onShowDireccionesEnvioChanged:
-                            (_) => onChangeDireccionesEnvio(),
-                        showDireccionesEnvio: showDireccionesEnvio,
-                      ),
-                      const Gap(4),
-                      _CheckboxPotenciales(
-                        onShowPotencialesChanged: (_) => onChangePotenciales(),
-                        showPotenciales: showPotenciales,
-                      ),
-                    ],
-                  ),
-                ),
-                _SliderKm(
-                  onSliderChanged: (radiusKm) => onSliderChanged(radiusKm),
-                  radiusKm: radiusKm,
-                ),
-              ],
+        data: (position) => Stack(
+          fit: StackFit.expand,
+          alignment: AlignmentDirectional.bottomCenter,
+          children: [
+            GoogleMapsContainer(
+              radiusKm: radiusKm,
+              currentLatLng: LatLng(position.latitude, position.longitude),
+              showDireccionesEnvio: showDireccionesEnvio,
+              showPotenciales: showPotenciales,
             ),
-        loading:
-            () => Center(
+            Positioned(
+              top: 8,
+              right: 8,
               child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
-                  const CircularProgressIndicator(),
-                  Text(S.of(context).cliente_alrededor_cargandoMapa),
+                  _CheckboxDireccionesEnvio(
+                    onShowDireccionesEnvioChanged: (_) =>
+                        onChangeDireccionesEnvio(),
+                    showDireccionesEnvio: showDireccionesEnvio,
+                  ),
+                  const Gap(4),
+                  _CheckboxPotenciales(
+                    onShowPotencialesChanged: (_) => onChangePotenciales(),
+                    showPotenciales: showPotenciales,
+                  ),
                 ],
               ),
             ),
-        error:
-            (e, _) => ErrorMessageWidget(
-              (e is AppException) ? e.details.message : e.toString(),
+            _SliderKm(
+              onSliderChanged: (radiusKm) => onSliderChanged(radiusKm),
+              radiusKm: radiusKm,
             ),
+          ],
+        ),
+        loading: () => Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              const CircularProgressIndicator(),
+              Text(S.of(context).cliente_alrededor_cargandoMapa),
+            ],
+          ),
+        ),
+        error: (e, _) => ErrorMessageWidget(
+          (e is AppException) ? e.details.message : e.toString(),
+        ),
       ),
     );
   }
@@ -190,15 +187,13 @@ class _GoogleMapsContainerState extends ConsumerState<GoogleMapsContainer> {
       myLocationEnabled: true,
       markers: stateMarkers.maybeWhen(
         orElse: () => const <Marker>{},
-        data:
-            (clientesAlrededorList) =>
-                setMarkerList(clientesAlrededorList: clientesAlrededorList),
+        data: (clientesAlrededorList) =>
+            setMarkerList(clientesAlrededorList: clientesAlrededorList),
       ),
       circles: {circle},
-      onLongPress:
-          (newLatLng) => setState(() {
-            mapLatLng = newLatLng;
-          }),
+      onLongPress: (newLatLng) => setState(() {
+        mapLatLng = newLatLng;
+      }),
       onCameraMove: (cameraPosition) => isMyCurrentPosition(cameraPosition),
       initialCameraPosition: CameraPosition(
         target: widget.currentLatLng,
@@ -239,12 +234,10 @@ class _GoogleMapsContainerState extends ConsumerState<GoogleMapsContainer> {
             icon: BitmapDescriptor.defaultMarkerWithHue(
               _getMarkerIcon(c.isDireccionFiscal, c.isClientePotencial),
             ),
-            onTap:
-                () => showDialog(
-                  context: context,
-                  builder:
-                      (ctx) => _ClienteAlrededorDialog(clienteAlrededor: c),
-                ),
+            onTap: () => showDialog(
+              context: context,
+              builder: (ctx) => _ClienteAlrededorDialog(clienteAlrededor: c),
+            ),
           ),
         )
         .toSet();
@@ -305,10 +298,9 @@ class _SliderKm extends StatelessWidget {
       child: Column(
         children: [
           Slider(
-            activeColor:
-                _isDark(context)
-                    ? Theme.of(context).colorScheme.primaryContainer
-                    : Theme.of(context).colorScheme.primary,
+            activeColor: _isDark(context)
+                ? Theme.of(context).colorScheme.primaryContainer
+                : Theme.of(context).colorScheme.primary,
             value: radiusKm / 1000,
             min: 0,
             max: 500,
@@ -426,10 +418,9 @@ class _ClienteAlrededorDialog extends StatelessWidget {
           Flexible(child: Text(clienteAlrededor.nombre)),
           const Gap(4),
           IconButton(
-            onPressed:
-                () => context.router.push(
-                  ClienteDetalleRoute(clienteId: clienteAlrededor.clienteId),
-                ),
+            onPressed: () => context.router.push(
+              ClienteDetalleRoute(clienteId: clienteAlrededor.clienteId),
+            ),
             icon: const Icon(Icons.info),
           ),
         ],
@@ -456,15 +447,17 @@ class _ClienteAlrededorDialog extends StatelessWidget {
           if (clienteAlrededor.nombreRepresentante1 != null) const Gap(2),
           if (clienteAlrededor.nombreRepresentante1 != null)
             RowFieldTextDetalle(
-              fieldTitleValue:
-                  S.of(context).cliente_show_clienteDetalle_comercial1,
+              fieldTitleValue: S
+                  .of(context)
+                  .cliente_show_clienteDetalle_comercial1,
               value: clienteAlrededor.nombreRepresentante1!,
             ),
           if (clienteAlrededor.nombreRepresentante1 != null) const Gap(2),
           if (clienteAlrededor.nombreRepresentante2 != null)
             RowFieldTextDetalle(
-              fieldTitleValue:
-                  S.of(context).cliente_show_clienteDetalle_comercial2,
+              fieldTitleValue: S
+                  .of(context)
+                  .cliente_show_clienteDetalle_comercial2,
               value: clienteAlrededor.nombreRepresentante2,
             ),
           const Divider(),

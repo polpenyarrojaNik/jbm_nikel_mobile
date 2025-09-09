@@ -24,14 +24,13 @@ class PrimaryButton extends StatelessWidget {
       height: 48,
       child: ElevatedButton(
         onPressed: onPressed,
-        child:
-            isLoading
-                ? const ProgressIndicatorWidget()
-                : Text(
-                  text,
-                  textAlign: TextAlign.center,
-                  style: Theme.of(context).textTheme.titleLarge!,
-                ),
+        child: isLoading
+            ? const ProgressIndicatorWidget()
+            : Text(
+                text,
+                textAlign: TextAlign.center,
+                style: Theme.of(context).textTheme.titleLarge!,
+              ),
       ),
     );
   }

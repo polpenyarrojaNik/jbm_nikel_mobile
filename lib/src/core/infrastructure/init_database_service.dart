@@ -175,8 +175,9 @@ class InitDatabaseService {
 
   Future<int> getSchemaVersionFromPreferences() async {
     try {
-      final syncDateTimeTable =
-          await localDb.select(localDb.syncDateTimeTable).getSingleOrNull();
+      final syncDateTimeTable = await localDb
+          .select(localDb.syncDateTimeTable)
+          .getSingleOrNull();
 
       return syncDateTimeTable?.dbSchemaVersion ?? -1;
     } catch (e) {

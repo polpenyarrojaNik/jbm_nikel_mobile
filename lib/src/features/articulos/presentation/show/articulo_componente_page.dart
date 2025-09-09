@@ -38,20 +38,18 @@ class ArticuloComponentePage extends ConsumerWidget {
           state.maybeWhen(
             orElse: () => const ProgressIndicatorWidget(),
             error: (e, st) => ErrorMessageWidget(e.toString()),
-            data:
-                (articuloComponenteList) =>
-                    (articuloComponenteList.isNotEmpty)
-                        ? Expanded(
-                          child: ListView.separated(
-                            separatorBuilder: (context, i) => const Divider(),
-                            itemBuilder:
-                                (context, i) => ArticuloComponenteTile(
-                                  articuloComponente: articuloComponenteList[i],
-                                ),
-                            itemCount: articuloComponenteList.length,
-                          ),
-                        )
-                        : Column(children: [Text(S.of(context).sinResultados)]),
+            data: (articuloComponenteList) =>
+                (articuloComponenteList.isNotEmpty)
+                ? Expanded(
+                    child: ListView.separated(
+                      separatorBuilder: (context, i) => const Divider(),
+                      itemBuilder: (context, i) => ArticuloComponenteTile(
+                        articuloComponente: articuloComponenteList[i],
+                      ),
+                      itemCount: articuloComponenteList.length,
+                    ),
+                  )
+                : Column(children: [Text(S.of(context).sinResultados)]),
           ),
         ],
       ),

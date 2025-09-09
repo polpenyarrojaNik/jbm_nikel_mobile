@@ -34,15 +34,14 @@ void main() async {
           options
             ..considerInAppFramesByDefault = false
             ..addInAppInclude('jbm_nikel_mobile');
-          options.beforeSend =
-              (event, hint) async => _sentryBeforeSendOptions(event);
+          options.beforeSend = (event, hint) async =>
+              _sentryBeforeSendOptions(event);
           options.tracesSampleRate = 1;
           options.enableAutoPerformanceTracing = false;
         },
-        appRunner:
-            () => runApp(
-              ProviderScope(observers: [RiverpodLogger()], child: const App()),
-            ),
+        appRunner: () => runApp(
+          ProviderScope(observers: [RiverpodLogger()], child: const App()),
+        ),
       );
 
       FlutterError.onError = (FlutterErrorDetails detalles) {

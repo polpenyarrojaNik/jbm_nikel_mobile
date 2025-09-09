@@ -38,11 +38,10 @@ class ClienteAdjuntoPage extends ConsumerWidget {
       state.when(
         data: (file) => (file != null) ? OpenFile.open(file.path) : null,
         error: (error) => showToast(error.toString(), context),
-        loading:
-            () => showToast(
-              S.of(context).cliente_show_clienteAdjunto_abriendoArchivo,
-              context,
-            ),
+        loading: () => showToast(
+          S.of(context).cliente_show_clienteAdjunto_abriendoArchivo,
+          context,
+        ),
         initial: () => null,
       );
     });
@@ -64,29 +63,26 @@ class ClienteAdjuntoPage extends ConsumerWidget {
               if (e is AppException) {
                 return e.maybeWhen(
                   orElse: () => ErrorMessageWidget(e.toString()),
-                  notConnection:
-                      () => Center(child: Text(S.of(context).sincConexion)),
+                  notConnection: () =>
+                      Center(child: Text(S.of(context).sincConexion)),
                 );
               }
 
               return ErrorMessageWidget(e.toString());
             },
-            data:
-                (clienteAdjuntoList) =>
-                    (clienteAdjuntoList.isNotEmpty)
-                        ? Expanded(
-                          child: ListView.builder(
-                            itemCount: clienteAdjuntoList.length,
-                            itemBuilder:
-                                (context, i) => ClienteAdjuntoTile(
-                                  clienteAdjunto: clienteAdjuntoList[i],
-                                ),
-                          ),
-                        )
-                        : Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [Text(S.of(context).sinResultados)],
-                        ),
+            data: (clienteAdjuntoList) => (clienteAdjuntoList.isNotEmpty)
+                ? Expanded(
+                    child: ListView.builder(
+                      itemCount: clienteAdjuntoList.length,
+                      itemBuilder: (context, i) => ClienteAdjuntoTile(
+                        clienteAdjunto: clienteAdjuntoList[i],
+                      ),
+                    ),
+                  )
+                : Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [Text(S.of(context).sinResultados)],
+                  ),
           ),
         ],
       ),
@@ -104,12 +100,11 @@ class ClienteAdjuntoTile extends ConsumerWidget {
     return Padding(
       padding: kPaddingList,
       child: GestureDetector(
-        onTap:
-            () => openFile(
-              clienteId: clienteAdjunto.clienteId,
-              nombreAdjunto: clienteAdjunto.nombreAdjunto,
-              ref: ref,
-            ),
+        onTap: () => openFile(
+          clienteId: clienteAdjunto.clienteId,
+          nombreAdjunto: clienteAdjunto.nombreAdjunto,
+          ref: ref,
+        ),
         child: Card(
           elevation: 0,
           shape: RoundedRectangleBorder(

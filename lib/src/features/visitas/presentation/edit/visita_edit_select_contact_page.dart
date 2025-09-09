@@ -40,37 +40,30 @@ class VisitaEditSelectContactPage extends ConsumerWidget {
           state.maybeWhen(
             orElse: () => const ProgressIndicatorWidget(),
             error: (e, st) => ErrorMessageWidget(e.toString()),
-            data:
-                (clienteContactoList) =>
-                    (clienteContactoList.isNotEmpty)
-                        ? Expanded(
-                          child: ListView.separated(
-                            itemCount: clienteContactoList.length,
-                            itemBuilder:
-                                (context, i) => GestureDetector(
-                                  behavior: HitTestBehavior.opaque,
-                                  onTap:
-                                      () => context.router.maybePop(
-                                        clienteContactoList[i],
-                                      ),
-                                  child: ClienteContactoTile(
-                                    clienteContacto: clienteContactoList[i],
-                                    clienteImpParam: ClienteImpParam(
-                                      cliente.id,
-                                      id: clienteContactoList[i].contactoId,
-                                      impId:
-                                          clienteContactoList[i]
-                                              .contactoImpGuid,
-                                    ),
-                                  ),
-                                ),
-                            separatorBuilder: (context, i) => const Divider(),
+            data: (clienteContactoList) => (clienteContactoList.isNotEmpty)
+                ? Expanded(
+                    child: ListView.separated(
+                      itemCount: clienteContactoList.length,
+                      itemBuilder: (context, i) => GestureDetector(
+                        behavior: HitTestBehavior.opaque,
+                        onTap: () =>
+                            context.router.maybePop(clienteContactoList[i]),
+                        child: ClienteContactoTile(
+                          clienteContacto: clienteContactoList[i],
+                          clienteImpParam: ClienteImpParam(
+                            cliente.id,
+                            id: clienteContactoList[i].contactoId,
+                            impId: clienteContactoList[i].contactoImpGuid,
                           ),
-                        )
-                        : Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [Text(S.of(context).sinResultados)],
                         ),
+                      ),
+                      separatorBuilder: (context, i) => const Divider(),
+                    ),
+                  )
+                : Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [Text(S.of(context).sinResultados)],
+                  ),
           ),
         ],
       ),

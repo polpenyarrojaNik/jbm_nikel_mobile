@@ -36,16 +36,15 @@ class ArticuloVentasClientePage extends ConsumerWidget {
           state.maybeWhen(
             orElse: () => const ProgressIndicatorWidget(),
             error: (e, st) => ErrorMessageWidget(e.toString()),
-            data:
-                (articuloVentasClienteList) =>
-                    (articuloVentasClienteList.isNotEmpty)
-                        ? VentasClienteDataTable(
-                          articuloVentasClienteList: articuloVentasClienteList,
-                        )
-                        : Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [Text(S.of(context).sinResultados)],
-                        ),
+            data: (articuloVentasClienteList) =>
+                (articuloVentasClienteList.isNotEmpty)
+                ? VentasClienteDataTable(
+                    articuloVentasClienteList: articuloVentasClienteList,
+                  )
+                : Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [Text(S.of(context).sinResultados)],
+                  ),
           ),
         ],
       ),
@@ -404,10 +403,9 @@ class _VentasClienteDataTableState extends State<VentasClienteDataTable> {
     for (var i = 0; i < articuloVentasClienteList.length; i++) {
       dataRows.add(
         DataRow(
-          onLongPress:
-              () => setState(() {
-                selectedRow = i;
-              }),
+          onLongPress: () => setState(() {
+            selectedRow = i;
+          }),
           selected: selectedRow == i,
           cells: [
             DataCell(

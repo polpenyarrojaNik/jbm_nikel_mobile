@@ -242,36 +242,34 @@ class PedidoVentaEditPageController
     } catch (e, stack) {
       if (e is AppException) {
         e.whenOrNull(
-          notConnection:
-              () =>
-                  state = PedidoVentaEditPageControllerState.savedError(
-                    _cliente,
-                    _clienteDireccion,
-                    pedidoVentaLineaList,
-                    _currentStep,
-                    _observaciones,
-                    _pedidoCliente,
-                    _oferta,
-                    _ofertaFechaHasta,
-                    _isBorrador,
-                    e,
-                    stackTrace: stack,
-                  ),
-          restApiFailure:
-              (error, _) =>
-                  state = PedidoVentaEditPageControllerState.savedError(
-                    _cliente,
-                    _clienteDireccion,
-                    pedidoVentaLineaList,
-                    _currentStep,
-                    _observaciones,
-                    _pedidoCliente,
-                    _oferta,
-                    _ofertaFechaHasta,
-                    _isBorrador,
-                    e,
-                    stackTrace: stack,
-                  ),
+          notConnection: () =>
+              state = PedidoVentaEditPageControllerState.savedError(
+                _cliente,
+                _clienteDireccion,
+                pedidoVentaLineaList,
+                _currentStep,
+                _observaciones,
+                _pedidoCliente,
+                _oferta,
+                _ofertaFechaHasta,
+                _isBorrador,
+                e,
+                stackTrace: stack,
+              ),
+          restApiFailure: (error, _) =>
+              state = PedidoVentaEditPageControllerState.savedError(
+                _cliente,
+                _clienteDireccion,
+                pedidoVentaLineaList,
+                _currentStep,
+                _observaciones,
+                _pedidoCliente,
+                _oferta,
+                _ofertaFechaHasta,
+                _isBorrador,
+                e,
+                stackTrace: stack,
+              ),
         );
       }
       state = PedidoVentaEditPageControllerState.error(
@@ -327,10 +325,9 @@ class PedidoVentaEditPageController
   }
 
   void navigateToTappedStep({required int tappedStep}) {
-    _currentStep =
-        (_currentStep > 0)
-            ? _currentStep -= (_currentStep - tappedStep)
-            : _currentStep;
+    _currentStep = (_currentStep > 0)
+        ? _currentStep -= (_currentStep - tappedStep)
+        : _currentStep;
 
     state = PedidoVentaEditPageControllerState.data(
       _cliente,

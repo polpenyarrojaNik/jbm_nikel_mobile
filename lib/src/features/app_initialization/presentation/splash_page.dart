@@ -67,29 +67,27 @@ class _SplashPageState extends ConsumerState<SplashPage> {
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: state.maybeWhen(
-          downloadDatabase:
-              (lastSchemaDatabase, newSchemaDatabase) => Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  const ProgressIndicatorWidget(),
-                  const Gap(32),
-                  Text(
-                    '${S.of(context).splash_descargandoBaseDeDatos}\n${S.of(context).splash_actualizandoBaseDeDatosDe} $lastSchemaDatabase ${S.of(context).splash_a} $newSchemaDatabase...',
-                  ),
-                ],
+          downloadDatabase: (lastSchemaDatabase, newSchemaDatabase) => Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              const ProgressIndicatorWidget(),
+              const Gap(32),
+              Text(
+                '${S.of(context).splash_descargandoBaseDeDatos}\n${S.of(context).splash_actualizandoBaseDeDatosDe} $lastSchemaDatabase ${S.of(context).splash_a} $newSchemaDatabase...',
               ),
+            ],
+          ),
           orElse: () => Container(),
           loading: () => const Center(child: CircularProgressIndicator()),
-          error:
-              (e, _) => Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Expanded(child: ErrorMessageWidget(e.toString())),
-                  const _ReintentarSyncButton(),
-                ],
-              ),
+          error: (e, _) => Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Expanded(child: ErrorMessageWidget(e.toString())),
+              const _ReintentarSyncButton(),
+            ],
+          ),
           data: () => Container(),
         ),
       ),

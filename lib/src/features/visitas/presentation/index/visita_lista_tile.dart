@@ -22,15 +22,13 @@ class VisitaListaTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap:
-          () =>
-              (!navigatedFromCliente)
-                  ? navigateToVisitaDetalle(
-                    context: context,
-                    id: visita.id ?? visita.visitaAppId!,
-                    isLocal: !visita.tratada,
-                  )
-                  : null,
+      onTap: () => (!navigatedFromCliente)
+          ? navigateToVisitaDetalle(
+              context: context,
+              id: visita.id ?? visita.visitaAppId!,
+              isLocal: !visita.tratada,
+            )
+          : null,
       child: Container(
         padding: kPaddingList,
         color: Colors.transparent,
@@ -48,12 +46,11 @@ class VisitaListaTile extends StatelessWidget {
                     ) !=
                     null)
                   ChipContainer(
-                    text:
-                        getEstadoVisitaLocal(
-                          context,
-                          visita.enviada,
-                          visita.tratada,
-                        )!,
+                    text: getEstadoVisitaLocal(
+                      context,
+                      visita.enviada,
+                      visita.tratada,
+                    )!,
                     color: getColorEstadoVisitaLocal(
                       context,
                       visita.enviada,

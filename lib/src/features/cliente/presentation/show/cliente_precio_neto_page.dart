@@ -41,23 +41,20 @@ class ClientePrecioNetoPage extends ConsumerWidget {
           state.maybeWhen(
             orElse: () => const ProgressIndicatorWidget(),
             error: (e, st) => ErrorMessageWidget(e.toString()),
-            data:
-                (clientePrecioNetoList) =>
-                    (clientePrecioNetoList.isNotEmpty)
-                        ? Expanded(
-                          child: ListView.separated(
-                            itemCount: clientePrecioNetoList.length,
-                            itemBuilder:
-                                (context, i) => ClientePrecioNetoTile(
-                                  clientePrecioNeto: clientePrecioNetoList[i],
-                                ),
-                            separatorBuilder: (context, i) => const Divider(),
-                          ),
-                        )
-                        : Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [Text(S.of(context).sinResultados)],
-                        ),
+            data: (clientePrecioNetoList) => (clientePrecioNetoList.isNotEmpty)
+                ? Expanded(
+                    child: ListView.separated(
+                      itemCount: clientePrecioNetoList.length,
+                      itemBuilder: (context, i) => ClientePrecioNetoTile(
+                        clientePrecioNeto: clientePrecioNetoList[i],
+                      ),
+                      separatorBuilder: (context, i) => const Divider(),
+                    ),
+                  )
+                : Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [Text(S.of(context).sinResultados)],
+                  ),
           ),
         ],
       ),

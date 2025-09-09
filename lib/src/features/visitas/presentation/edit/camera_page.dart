@@ -59,43 +59,42 @@ class CameraPageState extends State<CameraPage> {
         if (snapshot.connectionState == ConnectionState.done) {
           return _controller.value.isInitialized
               ? Scaffold(
-                appBar: AppBar(title: Text(S.of(context).camera)),
-                body: Stack(
-                  children: [
-                    Center(
-                      child: LayoutBuilder(
-                        builder:
-                            (context, constraints) => SizedBox(
-                              width: constraints.maxWidth,
-                              height: constraints.maxHeight,
-                              child: CameraPreview(_controller),
-                            ),
-                      ),
-                    ),
-                    Align(
-                      alignment: Alignment.center,
-                      child: Container(
-                        width: MediaQuery.sizeOf(context).width * 0.8,
-                        height: MediaQuery.sizeOf(context).width * 0.5,
-                        decoration: BoxDecoration(
-                          border: Border.all(color: Colors.red, width: 2.0),
+                  appBar: AppBar(title: Text(S.of(context).camera)),
+                  body: Stack(
+                    children: [
+                      Center(
+                        child: LayoutBuilder(
+                          builder: (context, constraints) => SizedBox(
+                            width: constraints.maxWidth,
+                            height: constraints.maxHeight,
+                            child: CameraPreview(_controller),
+                          ),
                         ),
                       ),
-                    ),
-                  ],
-                ),
-                floatingActionButton: FloatingActionButton(
-                  onPressed: () => onTakePicture(context),
-                  child: const Icon(Icons.camera_alt),
-                ),
-              )
+                      Align(
+                        alignment: Alignment.center,
+                        child: Container(
+                          width: MediaQuery.sizeOf(context).width * 0.8,
+                          height: MediaQuery.sizeOf(context).width * 0.5,
+                          decoration: BoxDecoration(
+                            border: Border.all(color: Colors.red, width: 2.0),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                  floatingActionButton: FloatingActionButton(
+                    onPressed: () => onTakePicture(context),
+                    child: const Icon(Icons.camera_alt),
+                  ),
+                )
               : Scaffold(
-                appBar: AppBar(title: Text(S.of(context).camera)),
-                body: Container(
-                  color: Colors.black,
-                  child: const Center(child: CircularProgressIndicator()),
-                ),
-              );
+                  appBar: AppBar(title: Text(S.of(context).camera)),
+                  body: Container(
+                    color: Colors.black,
+                    child: const Center(child: CircularProgressIndicator()),
+                  ),
+                );
         }
         return const Center(child: CircularProgressIndicator());
       },

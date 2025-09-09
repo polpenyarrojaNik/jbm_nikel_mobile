@@ -18,10 +18,9 @@ final clienteIndexControllerSearchTextParameterProvider =
     >.internal(
       ClienteIndexControllerSearchTextParameter.new,
       name: r'clienteIndexControllerSearchTextParameterProvider',
-      debugGetCreateSourceHash:
-          const bool.fromEnvironment('dart.vm.product')
-              ? null
-              : _$clienteIndexControllerSearchTextParameterHash,
+      debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+          ? null
+          : _$clienteIndexControllerSearchTextParameterHash,
       dependencies: null,
       allTransitiveDependencies: null,
     );
@@ -33,19 +32,19 @@ String _$clienteIndexScreenControllerHash() =>
 
 /// See also [ClienteIndexScreenController].
 @ProviderFor(ClienteIndexScreenController)
-final clienteIndexScreenControllerProvider = AutoDisposeAsyncNotifierProvider<
-  ClienteIndexScreenController,
-  int
->.internal(
-  ClienteIndexScreenController.new,
-  name: r'clienteIndexScreenControllerProvider',
-  debugGetCreateSourceHash:
-      const bool.fromEnvironment('dart.vm.product')
+final clienteIndexScreenControllerProvider =
+    AutoDisposeAsyncNotifierProvider<
+      ClienteIndexScreenController,
+      int
+    >.internal(
+      ClienteIndexScreenController.new,
+      name: r'clienteIndexScreenControllerProvider',
+      debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
           ? null
           : _$clienteIndexScreenControllerHash,
-  dependencies: null,
-  allTransitiveDependencies: null,
-);
+      dependencies: null,
+      allTransitiveDependencies: null,
+    );
 
 typedef _$ClienteIndexScreenController = AutoDisposeAsyncNotifier<int>;
 String _$clienteIndexScreenPaginatedControllerHash() =>
@@ -130,14 +129,12 @@ class ClienteIndexScreenPaginatedControllerProvider
         () => ClienteIndexScreenPaginatedController()..page = page,
         from: clienteIndexScreenPaginatedControllerProvider,
         name: r'clienteIndexScreenPaginatedControllerProvider',
-        debugGetCreateSourceHash:
-            const bool.fromEnvironment('dart.vm.product')
-                ? null
-                : _$clienteIndexScreenPaginatedControllerHash,
+        debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+            ? null
+            : _$clienteIndexScreenPaginatedControllerHash,
         dependencies: ClienteIndexScreenPaginatedControllerFamily._dependencies,
-        allTransitiveDependencies:
-            ClienteIndexScreenPaginatedControllerFamily
-                ._allTransitiveDependencies,
+        allTransitiveDependencies: ClienteIndexScreenPaginatedControllerFamily
+            ._allTransitiveDependencies,
         page: page,
       );
 

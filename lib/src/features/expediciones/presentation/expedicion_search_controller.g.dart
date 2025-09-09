@@ -18,10 +18,9 @@ final expedicionIndexScreenControllerProvider =
     >.internal(
       ExpedicionIndexScreenController.new,
       name: r'expedicionIndexScreenControllerProvider',
-      debugGetCreateSourceHash:
-          const bool.fromEnvironment('dart.vm.product')
-              ? null
-              : _$expedicionIndexScreenControllerHash,
+      debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+          ? null
+          : _$expedicionIndexScreenControllerHash,
       dependencies: null,
       allTransitiveDependencies: null,
     );

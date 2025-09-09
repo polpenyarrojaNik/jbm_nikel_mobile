@@ -320,17 +320,16 @@ class _IconStepperState extends State<IconStepper>
 
     return widget.steps[index].icon == null
         ? Text(
-          '${index + 1}',
-          style:
-              isDarkActive
-                  ? _kStepStyle.copyWith(color: Colors.black87)
-                  : _kStepStyle,
-        )
+            '${index + 1}',
+            style: isDarkActive
+                ? _kStepStyle.copyWith(color: Colors.black87)
+                : _kStepStyle,
+          )
         : Icon(
-          widget.steps[index].icon,
-          color: isDarkActive ? _kCircleActiveDark : _kCircleActiveLight,
-          size: 18.0,
-        );
+            widget.steps[index].icon,
+            color: isDarkActive ? _kCircleActiveDark : _kCircleActiveLight,
+            size: 18.0,
+          );
   }
 
   Color _circleColor(int index) {
@@ -409,10 +408,9 @@ class _IconStepperState extends State<IconStepper>
         firstCurve: const Interval(0.0, 0.6, curve: Curves.fastOutSlowIn),
         secondCurve: const Interval(0.4, 1.0, curve: Curves.fastOutSlowIn),
         sizeCurve: Curves.fastOutSlowIn,
-        crossFadeState:
-            widget.steps[index].state == IconStepState.error
-                ? CrossFadeState.showSecond
-                : CrossFadeState.showFirst,
+        crossFadeState: widget.steps[index].state == IconStepState.error
+            ? CrossFadeState.showSecond
+            : CrossFadeState.showFirst,
         duration: kThemeAnimationDuration,
       );
     }
@@ -518,19 +516,18 @@ class _IconStepperState extends State<IconStepper>
                 }),
                 shape: WidgetStateProperty.all(buttonShape),
               ),
-              child:
-                  (widget.currentStep == widget.steps.length - 1)
-                      ? Center(
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            const Icon(Icons.save),
-                            const Gap(8),
-                            Text(S.of(context).send),
-                          ],
-                        ),
-                      )
-                      : const Icon(Icons.navigate_next),
+              child: (widget.currentStep == widget.steps.length - 1)
+                  ? Center(
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          const Icon(Icons.save),
+                          const Gap(8),
+                          Text(S.of(context).send),
+                        ],
+                      ),
+                    )
+                  : const Icon(Icons.navigate_next),
             ),
           ),
         ],
@@ -589,10 +586,9 @@ class _IconStepperState extends State<IconStepper>
           firstCurve: const Interval(0.0, 0.6, curve: Curves.fastOutSlowIn),
           secondCurve: const Interval(0.4, 1.0, curve: Curves.fastOutSlowIn),
           sizeCurve: Curves.fastOutSlowIn,
-          crossFadeState:
-              _isCurrent(index)
-                  ? CrossFadeState.showSecond
-                  : CrossFadeState.showFirst,
+          crossFadeState: _isCurrent(index)
+              ? CrossFadeState.showSecond
+              : CrossFadeState.showFirst,
           duration: kThemeAnimationDuration,
         ),
       ],
@@ -609,20 +605,19 @@ class _IconStepperState extends State<IconStepper>
             key: _keys[i],
             children: [
               InkWell(
-                onTap:
-                    widget.steps[i].state != IconStepState.disabled
-                        ? () {
-                          // In the vertical case we need to scroll to the
-                          // newly tapped step.
-                          Scrollable.ensureVisible(
-                            _keys[i].currentContext!,
-                            curve: Curves.fastOutSlowIn,
-                            duration: kThemeAnimationDuration,
-                          );
+                onTap: widget.steps[i].state != IconStepState.disabled
+                    ? () {
+                        // In the vertical case we need to scroll to the
+                        // newly tapped step.
+                        Scrollable.ensureVisible(
+                          _keys[i].currentContext!,
+                          curve: Curves.fastOutSlowIn,
+                          duration: kThemeAnimationDuration,
+                        );
 
-                          widget.onStepTapped?.call(i);
-                        }
-                        : null,
+                        widget.onStepTapped?.call(i);
+                      }
+                    : null,
                 canRequestFocus:
                     widget.steps[i].state != IconStepState.disabled,
                 child: _buildVerticalHeader(i),
@@ -638,12 +633,11 @@ class _IconStepperState extends State<IconStepper>
     final children = <Widget>[
       for (int i = 0; i < widget.steps.length; i += 1) ...<Widget>[
         InkResponse(
-          onTap:
-              widget.steps[i].state != IconStepState.disabled
-                  ? () {
-                    widget.onStepTapped?.call(i);
-                  }
-                  : null,
+          onTap: widget.steps[i].state != IconStepState.disabled
+              ? () {
+                  widget.onStepTapped?.call(i);
+                }
+              : null,
           canRequestFocus: widget.steps[i].state != IconStepState.disabled,
           child: Row(
             children: [

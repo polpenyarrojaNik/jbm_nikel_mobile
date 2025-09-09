@@ -37,24 +37,21 @@ class ArticuloSustitutivoPage extends ConsumerWidget {
           state.maybeWhen(
             orElse: () => const ProgressIndicatorWidget(),
             error: (e, st) => ErrorMessageWidget(e.toString()),
-            data:
-                (articuloSustitutivoList) =>
-                    (articuloSustitutivoList.isNotEmpty)
-                        ? Expanded(
-                          child: ListView.separated(
-                            itemCount: articuloSustitutivoList.length,
-                            itemBuilder:
-                                (context, i) => ArticuloSustitutivoTile(
-                                  articuloSustitutivo:
-                                      articuloSustitutivoList[i],
-                                ),
-                            separatorBuilder: (context, i) => const Divider(),
-                          ),
-                        )
-                        : Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [Text(S.of(context).sinResultados)],
-                        ),
+            data: (articuloSustitutivoList) =>
+                (articuloSustitutivoList.isNotEmpty)
+                ? Expanded(
+                    child: ListView.separated(
+                      itemCount: articuloSustitutivoList.length,
+                      itemBuilder: (context, i) => ArticuloSustitutivoTile(
+                        articuloSustitutivo: articuloSustitutivoList[i],
+                      ),
+                      separatorBuilder: (context, i) => const Divider(),
+                    ),
+                  )
+                : Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [Text(S.of(context).sinResultados)],
+                  ),
           ),
         ],
       ),

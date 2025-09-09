@@ -26,13 +26,12 @@ class UsuarioDioInterceptor extends Interceptor {
     RequestInterceptorHandler handler,
   ) async {
     final usuario = await _usuarioService.getSignedInUsuario();
-    final modifiedOptions =
-        options
-          ..headers.addAll(
-            usuario == null
-                ? {}
-                : {'Authorization': 'Bearer ${usuario.provisionalToken}'},
-          );
+    final modifiedOptions = options
+      ..headers.addAll(
+        usuario == null
+            ? {}
+            : {'Authorization': 'Bearer ${usuario.provisionalToken}'},
+      );
     handler.next(modifiedOptions);
   }
 

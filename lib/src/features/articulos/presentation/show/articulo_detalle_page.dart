@@ -94,11 +94,11 @@ class ArticuloDetallePage extends ConsumerWidget {
           data: (pedidoVentaBorradoresList) {
             return pedidoVentaBorradoresList.isNotEmpty
                 ? [
-                  AddArticleToBorradorButton(
-                    pedidoVentaBorradoresList: pedidoVentaBorradoresList,
-                    articuloId: articuloId,
-                  ),
-                ]
+                    AddArticleToBorradorButton(
+                      pedidoVentaBorradoresList: pedidoVentaBorradoresList,
+                      articuloId: articuloId,
+                    ),
+                  ]
                 : null;
           },
         ),
@@ -108,16 +108,15 @@ class ArticuloDetallePage extends ConsumerWidget {
           final articuloValue = ref.watch(articuloProvider(articuloId));
           return AsyncValueWidget<Articulo>(
             value: articuloValue,
-            onData:
-                (articulo) => ListView(
-                  shrinkWrap: true,
-                  physics: const BouncingScrollPhysics(),
-                  children: [
-                    _ArticuloInfoContainer(articulo: articulo),
-                    _DatosRelacionados(articulo: articulo, params: params),
-                    _Consultas(articulo: articulo, params: params),
-                  ],
-                ),
+            onData: (articulo) => ListView(
+              shrinkWrap: true,
+              physics: const BouncingScrollPhysics(),
+              children: [
+                _ArticuloInfoContainer(articulo: articulo),
+                _DatosRelacionados(articulo: articulo, params: params),
+                _Consultas(articulo: articulo, params: params),
+              ],
+            ),
           );
         },
       ),
@@ -139,54 +138,49 @@ class AddArticleToBorradorButton extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     ref.listen(getPedidoVentaLineaProvider, (_, state) {
       state.whenOrNull(
-        data:
-            (data) => data.fold(
-              (l) => unawaited(
-                context.showErrorBar(
-                  content: ErrorMessageWidget(l.details.message),
-                ),
-              ),
-              (r) => naviagateToSelectCantidad(
-                context,
-                PedidoLocalParam(
-                  pedidoAppId:
-                      pedidoVentaBorradoresList.first.pedidoVentaAppId!,
-                  isEdit: false,
-                ),
-                pedidoVentaBorradoresList.first.clienteId!,
-                r,
-              ),
+        data: (data) => data.fold(
+          (l) => unawaited(
+            context.showErrorBar(
+              content: ErrorMessageWidget(l.details.message),
             ),
-        error:
-            (error, _) => context.showErrorBar(
-              content: ErrorMessageWidget(error.toString()),
+          ),
+          (r) => naviagateToSelectCantidad(
+            context,
+            PedidoLocalParam(
+              pedidoAppId: pedidoVentaBorradoresList.first.pedidoVentaAppId!,
+              isEdit: false,
             ),
+            pedidoVentaBorradoresList.first.clienteId!,
+            r,
+          ),
+        ),
+        error: (error, _) =>
+            context.showErrorBar(content: ErrorMessageWidget(error.toString())),
       );
     });
 
     final getPedidoVentaLineaState = ref.watch(getPedidoVentaLineaProvider);
 
     return IconButton(
-      onPressed:
-          getPedidoVentaLineaState.isLoading
-              ? null
-              : () {
-                if (pedidoVentaBorradoresList.length == 1) {
-                  getPedidoVentaLineaState(
-                    PedidoLocalParam(
-                      pedidoAppId:
-                          pedidoVentaBorradoresList.first.pedidoVentaAppId!,
-                      isEdit: false,
-                    ),
-                  );
-                } else {
-                  selectBorradorToAddArticle(
-                    context,
-                    ref,
-                    pedidoVentaBorradoresList,
-                  );
-                }
-              },
+      onPressed: getPedidoVentaLineaState.isLoading
+          ? null
+          : () {
+              if (pedidoVentaBorradoresList.length == 1) {
+                getPedidoVentaLineaState(
+                  PedidoLocalParam(
+                    pedidoAppId:
+                        pedidoVentaBorradoresList.first.pedidoVentaAppId!,
+                    isEdit: false,
+                  ),
+                );
+              } else {
+                selectBorradorToAddArticle(
+                  context,
+                  ref,
+                  pedidoVentaBorradoresList,
+                );
+              }
+            },
 
       icon: const Icon(Icons.add_shopping_cart_outlined),
     );
@@ -199,10 +193,9 @@ class AddArticleToBorradorButton extends ConsumerWidget {
   ) async {
     final pedidoVentaBorrador = await showDialog<PedidoVenta?>(
       context: context,
-      builder:
-          (context) => SelectPedidoVentaBorradorAlertDialog(
-            pedidoVentaBorradoresList: pedidoVentaBorradoresList,
-          ),
+      builder: (context) => SelectPedidoVentaBorradorAlertDialog(
+        pedidoVentaBorradoresList: pedidoVentaBorradoresList,
+      ),
     );
 
     if (pedidoVentaBorrador != null) {
@@ -257,15 +250,11 @@ class SelectPedidoVentaBorradorAlertDialog extends StatelessWidget {
           children: [
             ListView.separated(
               shrinkWrap: true,
-              itemBuilder:
-                  (context, i) => PedidoVentaListaTile(
-                    pedidoVenta: pedidoVentaBorradoresList[i],
-                    onTap:
-                        () => Navigator.pop(
-                          context,
-                          pedidoVentaBorradoresList[i],
-                        ),
-                  ),
+              itemBuilder: (context, i) => PedidoVentaListaTile(
+                pedidoVenta: pedidoVentaBorradoresList[i],
+                onTap: () =>
+                    Navigator.pop(context, pedidoVentaBorradoresList[i]),
+              ),
               separatorBuilder: (context, index) => const Gap(4),
               itemCount: pedidoVentaBorradoresList.length,
             ),
@@ -324,11 +313,8 @@ class _ArticuloInfoContainer extends StatelessWidget {
                 ),
               ),
               IconButton(
-                onPressed:
-                    () => showAllDescriptions(
-                      context: context,
-                      articulo: articulo,
-                    ),
+                onPressed: () =>
+                    showAllDescriptions(context: context, articulo: articulo),
                 icon: const Icon(Icons.info),
                 visualDensity: const VisualDensity(
                   vertical: -4,
@@ -345,7 +331,7 @@ class _ArticuloInfoContainer extends StatelessWidget {
             (articulo.familia != null && articulo.subfamilia != null)
                 ? '${articulo.familia!.descripcion}/${articulo.subfamilia!.descripcion}'
                 : (articulo.familia?.descripcion ??
-                    S.of(context).unknownFamily),
+                      S.of(context).unknownFamily),
             style: Theme.of(context).textTheme.bodySmall,
           ),
         ),
@@ -353,8 +339,9 @@ class _ArticuloInfoContainer extends StatelessWidget {
         if (getSummaryInLocalLanguage(articulo: articulo) != null)
           SummaryTextWidget(articulo: articulo),
         MobileCustomSeparators(
-          separatorTitle:
-              S.of(context).articulo_show_articuloDetalle_stockYEntregas,
+          separatorTitle: S
+              .of(context)
+              .articulo_show_articuloDetalle_stockYEntregas,
         ),
         Padding(
           padding: const EdgeInsets.all(16.0),
@@ -383,12 +370,12 @@ class _ArticuloInfoContainer extends StatelessWidget {
                             S
                                 .of(context)
                                 .articulo_show_articuloDetalle_entrega1,
-                            style: Theme.of(
-                              context,
-                            ).textTheme.titleSmall!.copyWith(
-                              color:
-                                  Theme.of(context).textTheme.bodySmall!.color,
-                            ),
+                            style: Theme.of(context).textTheme.titleSmall!
+                                .copyWith(
+                                  color: Theme.of(
+                                    context,
+                                  ).textTheme.bodySmall!.color,
+                                ),
                           ),
                           if (articulo.comprasEntregaCantidad1 != 0)
                             const Gap(8),
@@ -397,14 +384,12 @@ class _ArticuloInfoContainer extends StatelessWidget {
                               S
                                   .of(context)
                                   .articulo_show_articuloDetalle_entrega2,
-                              style: Theme.of(
-                                context,
-                              ).textTheme.titleSmall!.copyWith(
-                                color:
-                                    Theme.of(
+                              style: Theme.of(context).textTheme.titleSmall!
+                                  .copyWith(
+                                    color: Theme.of(
                                       context,
                                     ).textTheme.bodySmall!.color,
-                              ),
+                                  ),
                             ),
                           if (articulo.comprasEntregaCantidad2 != 0)
                             const Gap(8),
@@ -413,28 +398,24 @@ class _ArticuloInfoContainer extends StatelessWidget {
                               S
                                   .of(context)
                                   .articulo_show_articuloDetalle_entrega3,
-                              style: Theme.of(
-                                context,
-                              ).textTheme.titleSmall!.copyWith(
-                                color:
-                                    Theme.of(
+                              style: Theme.of(context).textTheme.titleSmall!
+                                  .copyWith(
+                                    color: Theme.of(
                                       context,
                                     ).textTheme.bodySmall!.color,
-                              ),
+                                  ),
                             ),
                           if (articulo.comprasEntregaCantidad3 != 0)
                             const Gap(8),
                           if (articulo.comprasEntregaCantidadMas3 != 0)
                             Text(
                               S.of(context).articulo_show_articuloDetalle_mas,
-                              style: Theme.of(
-                                context,
-                              ).textTheme.titleSmall!.copyWith(
-                                color:
-                                    Theme.of(
+                              style: Theme.of(context).textTheme.titleSmall!
+                                  .copyWith(
+                                    color: Theme.of(
                                       context,
                                     ).textTheme.bodySmall!.color,
-                              ),
+                                  ),
                             ),
                         ],
                       ),
@@ -516,8 +497,9 @@ class _ArticuloInfoContainer extends StatelessWidget {
           ),
         ),
         MobileCustomSeparators(
-          separatorTitle:
-              S.of(context).articulo_show_articuloDetalle_datosLogistica,
+          separatorTitle: S
+              .of(context)
+              .articulo_show_articuloDetalle_datosLogistica,
         ),
         Padding(
           padding: const EdgeInsets.all(16.0),
@@ -525,22 +507,25 @@ class _ArticuloInfoContainer extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               ColumnFieldTextDetalle(
-                fieldTitleValue:
-                    S.of(context).articulo_show_articuloDetalle_cantidadSubcaja,
+                fieldTitleValue: S
+                    .of(context)
+                    .articulo_show_articuloDetalle_cantidadSubcaja,
                 value:
                     '${numberFormatCantidades(articulo.unidadesSubcaja)} ${S.of(context).unidad}',
                 selectable: true,
               ),
               ColumnFieldTextDetalle(
-                fieldTitleValue:
-                    S.of(context).articulo_show_articuloDetalle_cantidadCaja,
+                fieldTitleValue: S
+                    .of(context)
+                    .articulo_show_articuloDetalle_cantidadCaja,
                 value:
                     '${numberFormatCantidades(articulo.unidadesCaja)} ${S.of(context).unidad}',
                 selectable: true,
               ),
               ColumnFieldTextDetalle(
-                fieldTitleValue:
-                    S.of(context).articulo_show_articuloDetalle_cantidadPalet,
+                fieldTitleValue: S
+                    .of(context)
+                    .articulo_show_articuloDetalle_cantidadPalet,
                 value:
                     '${numberFormatCantidades(articulo.unidadesPalet)} ${S.of(context).unidad}',
                 selectable: true,
@@ -551,8 +536,9 @@ class _ArticuloInfoContainer extends StatelessWidget {
                 children: [
                   Expanded(
                     child: ColumnFieldTextDetalle(
-                      fieldTitleValue:
-                          S.of(context).articulo_show_articuloDetalle_peso,
+                      fieldTitleValue: S
+                          .of(context)
+                          .articulo_show_articuloDetalle_peso,
                       value:
                           '${numberFormatCantidades(articulo.pesoKg)} ${S.of(context).articulo_show_articuloDetalle_kg}',
                       selectable: true,
@@ -560,8 +546,9 @@ class _ArticuloInfoContainer extends StatelessWidget {
                   ),
                   Expanded(
                     child: ColumnFieldTextDetalle(
-                      fieldTitleValue:
-                          S.of(context).articulo_show_articuloDetalle_medidas,
+                      fieldTitleValue: S
+                          .of(context)
+                          .articulo_show_articuloDetalle_medidas,
                       value:
                           '${numberFormatCantidades(articulo.altoCm)} cm x ${numberFormatCantidades(articulo.largoCm)} cm x ${numberFormatCantidades(articulo.anchoCm)} cm',
                       selectable: true,
@@ -574,8 +561,9 @@ class _ArticuloInfoContainer extends StatelessWidget {
         ),
         _ArticuloAnalisis(articulo: articulo),
         MobileCustomSeparators(
-          separatorTitle:
-              S.of(context).articulo_show_articuloDetalle_otrosDatos,
+          separatorTitle: S
+              .of(context)
+              .articulo_show_articuloDetalle_otrosDatos,
         ),
         Padding(
           padding: const EdgeInsets.all(16),
@@ -588,10 +576,9 @@ class _ArticuloInfoContainer extends StatelessWidget {
                   if (articulo.paginaEnCatalgo != null)
                     Expanded(
                       child: ColumnFieldTextDetalle(
-                        fieldTitleValue:
-                            S
-                                .of(context)
-                                .articulo_show_articuloDetalle_paginaEnCatalogo,
+                        fieldTitleValue: S
+                            .of(context)
+                            .articulo_show_articuloDetalle_paginaEnCatalogo,
                         value: Text(articulo.paginaEnCatalgo!),
                         selectable: true,
                       ),
@@ -599,10 +586,9 @@ class _ArticuloInfoContainer extends StatelessWidget {
                   if (articulo.paginaEnCatalgo2 != null)
                     Expanded(
                       child: ColumnFieldTextDetalle(
-                        fieldTitleValue:
-                            S
-                                .of(context)
-                                .articulo_show_articuloDetalle_pagina2Edicion,
+                        fieldTitleValue: S
+                            .of(context)
+                            .articulo_show_articuloDetalle_pagina2Edicion,
                         value: Text(articulo.paginaEnCatalgo2!),
                         selectable: true,
                       ),
@@ -999,52 +985,47 @@ class _ArticuloImageCarrouselState
   Widget build(BuildContext context) {
     final state = ref.watch(articuloImageListProvider(widget.articuloId));
     return state.when(
-      data:
-          (articuloImagenes) => Column(
-            children: [
-              SizedBox(
+      data: (articuloImagenes) => Column(
+        children: [
+          SizedBox(
+            height: 175,
+            width: 400,
+            child: PageView.builder(
+              itemCount: articuloImagenes.length,
+              pageSnapping: true,
+              controller: _pageController,
+              onPageChanged: (page) {
+                setState(() {
+                  activePage = page;
+                });
+              },
+              itemBuilder: (context, i) => CachedNetworkImage(
+                imageUrl: articuloImagenes[i].url,
+                progressIndicatorBuilder: (context, url, progress) =>
+                    Image.asset(
+                      semanticLabel: 'Cargando imagen...',
+                      height: 175,
+                      width: 400,
+                      fit: BoxFit.contain,
+                      'assets/image-placeholder.png',
+                    ),
+                errorWidget: (context, error, _) => Center(
+                  child: Text(
+                    S.of(context).articulo_show_articuloDetalle_noDisponible,
+                  ),
+                ),
                 height: 175,
                 width: 400,
-                child: PageView.builder(
-                  itemCount: articuloImagenes.length,
-                  pageSnapping: true,
-                  controller: _pageController,
-                  onPageChanged: (page) {
-                    setState(() {
-                      activePage = page;
-                    });
-                  },
-                  itemBuilder:
-                      (context, i) => CachedNetworkImage(
-                        imageUrl: articuloImagenes[i].url,
-                        progressIndicatorBuilder:
-                            (context, url, progress) => Image.asset(
-                              semanticLabel: 'Cargando imagen...',
-                              height: 175,
-                              width: 400,
-                              fit: BoxFit.contain,
-                              'assets/image-placeholder.png',
-                            ),
-                        errorWidget:
-                            (context, error, _) => Center(
-                              child: Text(
-                                S
-                                    .of(context)
-                                    .articulo_show_articuloDetalle_noDisponible,
-                              ),
-                            ),
-                        height: 175,
-                        width: 400,
-                        fit: BoxFit.contain,
-                      ),
-                ),
+                fit: BoxFit.contain,
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: indicators(articuloImagenes.length, activePage),
-              ),
-            ],
+            ),
           ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: indicators(articuloImagenes.length, activePage),
+          ),
+        ],
+      ),
       error: (error, _) => Container(),
       loading: () => const ProgressIndicatorWidget(),
     );
@@ -1084,73 +1065,69 @@ class _DatosRelacionados extends StatelessWidget {
     return Column(
       children: [
         MobileCustomSeparators(
-          separatorTitle:
-              S.of(context).articulo_show_articuloDetalle_datosRelacionados,
+          separatorTitle: S
+              .of(context)
+              .articulo_show_articuloDetalle_datosRelacionados,
         ),
         const Gap(8),
         DatosExtraRow(
           title: S.of(context).articulo_show_articuloPreciosTarifa_titulo,
-          navigationTo:
-              () => context.router.push(
-                ArticuloPrecioTarifaRoute(
-                  articuloId: articulo.id,
-                  description: getDescriptionArticuloInLocalLanguage(
-                    articulo: articulo,
-                  ),
-                ),
+          navigationTo: () => context.router.push(
+            ArticuloPrecioTarifaRoute(
+              articuloId: articulo.id,
+              description: getDescriptionArticuloInLocalLanguage(
+                articulo: articulo,
               ),
+            ),
+          ),
         ),
         const Divider(),
         DatosExtraRow(
           title: S.of(context).articulo_show_articuloGruposNetos_titulo,
-          navigationTo:
-              () => context.router.push(
-                ArticuloGrupoNetoRoute(
-                  articuloId: articulo.id,
-                  description: getDescriptionArticuloInLocalLanguage(
-                    articulo: articulo,
-                  ),
-                ),
+          navigationTo: () => context.router.push(
+            ArticuloGrupoNetoRoute(
+              articuloId: articulo.id,
+              description: getDescriptionArticuloInLocalLanguage(
+                articulo: articulo,
               ),
+            ),
+          ),
         ),
         const Divider(),
         DatosExtraRow(
           title: S.of(context).articulo_show_articuloComponentes_titulo,
-          navigationTo:
-              () => context.router.push(
-                ArticuloComponenteRoute(
-                  articuloId: articulo.id,
-                  description: getDescriptionArticuloInLocalLanguage(
-                    articulo: articulo,
-                  ),
-                ),
+          navigationTo: () => context.router.push(
+            ArticuloComponenteRoute(
+              articuloId: articulo.id,
+              description: getDescriptionArticuloInLocalLanguage(
+                articulo: articulo,
               ),
+            ),
+          ),
         ),
         const Divider(),
         DatosExtraRow(
           title: S.of(context).articulo_show_articuloRecambio_titulo,
-          navigationTo:
-              () => context.router.push(
-                ArticuloRecambioRoute(
-                  articuloId: articulo.id,
-                  description: getDescriptionArticuloInLocalLanguage(
-                    articulo: articulo,
-                  ),
-                ),
+          navigationTo: () => context.router.push(
+            ArticuloRecambioRoute(
+              articuloId: articulo.id,
+              description: getDescriptionArticuloInLocalLanguage(
+                articulo: articulo,
               ),
+            ),
+          ),
         ),
         const Divider(),
         DatosExtraRow(
           title: S.of(context).articulo_show_articuloSustitutivo_titulo,
-          navigationTo:
-              () => context.router.push(
-                ArticuloSustitutivoRoute(
-                  articuloId: articulo.id,
-                  description: getDescriptionArticuloInLocalLanguage(
-                    articulo: articulo,
-                  ),
-                ),
+          navigationTo: () => context.router.push(
+            ArticuloSustitutivoRoute(
+              articuloId: articulo.id,
+              description: getDescriptionArticuloInLocalLanguage(
+                articulo: articulo,
               ),
+            ),
+          ),
         ),
         const Gap(8),
       ],
@@ -1174,67 +1151,62 @@ class _Consultas extends StatelessWidget {
         const Gap(8),
         DatosExtraRow(
           title: S.of(context).articulo_show_articuloPedidoVenta_titulo,
-          navigationTo:
-              () => context.router.push(
-                ArticuloPedidoVentaRoute(
-                  articuloId: articulo.id,
-                  description: getDescriptionArticuloInLocalLanguage(
-                    articulo: articulo,
-                  ),
-                ),
+          navigationTo: () => context.router.push(
+            ArticuloPedidoVentaRoute(
+              articuloId: articulo.id,
+              description: getDescriptionArticuloInLocalLanguage(
+                articulo: articulo,
               ),
+            ),
+          ),
         ),
         const Divider(),
         DatosExtraRow(
           title: S.of(context).articulo_show_articuloVentasMes_titulo,
-          navigationTo:
-              () => context.router.push(
-                ArticuloVentasMesRoute(
-                  articuloId: articulo.id,
-                  descripcion: getDescriptionArticuloInLocalLanguage(
-                    articulo: articulo,
-                  ),
-                ),
+          navigationTo: () => context.router.push(
+            ArticuloVentasMesRoute(
+              articuloId: articulo.id,
+              descripcion: getDescriptionArticuloInLocalLanguage(
+                articulo: articulo,
               ),
+            ),
+          ),
         ),
         const Divider(),
         DatosExtraRow(
           title: S.of(context).articulo_show_articuloVentasCliente_titulo,
-          navigationTo:
-              () => context.router.push(
-                ArticuloVentasClienteRoute(
-                  articuloId: articulo.id,
-                  description: getDescriptionArticuloInLocalLanguage(
-                    articulo: articulo,
-                  ),
-                ),
+          navigationTo: () => context.router.push(
+            ArticuloVentasClienteRoute(
+              articuloId: articulo.id,
+              description: getDescriptionArticuloInLocalLanguage(
+                articulo: articulo,
               ),
+            ),
+          ),
         ),
         const Divider(),
         DatosExtraRow(
           title: S.of(context).ultimosPrecios_titulo,
-          navigationTo:
-              () => context.router.push(
-                ArticuloUltimosPreciosRoute(
-                  articuloId: articulo.id,
-                  description: getDescriptionArticuloInLocalLanguage(
-                    articulo: articulo,
-                  ),
-                ),
+          navigationTo: () => context.router.push(
+            ArticuloUltimosPreciosRoute(
+              articuloId: articulo.id,
+              description: getDescriptionArticuloInLocalLanguage(
+                articulo: articulo,
               ),
+            ),
+          ),
         ),
         const Divider(),
         DatosExtraRow(
           title: S.of(context).articulo_show_articuloDocumentos_titulo,
-          navigationTo:
-              () => context.router.push(
-                ArticuloDocumentoRoute(
-                  articuloId: articulo.id,
-                  description: getDescriptionArticuloInLocalLanguage(
-                    articulo: articulo,
-                  ),
-                ),
+          navigationTo: () => context.router.push(
+            ArticuloDocumentoRoute(
+              articuloId: articulo.id,
+              description: getDescriptionArticuloInLocalLanguage(
+                articulo: articulo,
               ),
+            ),
+          ),
         ),
       ],
     );
@@ -1279,11 +1251,10 @@ class _SummaryTextWidgetState extends ConsumerState<SummaryTextWidget> {
               ),
               const Gap(8),
               IconButton(
-                onPressed:
-                    () => showAllResumenes(
-                      context: context,
-                      articulo: widget.articulo,
-                    ),
+                onPressed: () => showAllResumenes(
+                  context: context,
+                  articulo: widget.articulo,
+                ),
                 icon: const Icon(Icons.info),
                 visualDensity: const VisualDensity(
                   vertical: -4,
@@ -1294,10 +1265,9 @@ class _SummaryTextWidgetState extends ConsumerState<SummaryTextWidget> {
           ),
           IconButton(
             onPressed: () => showAllSummaryText(),
-            icon:
-                (showAllText)
-                    ? const Icon(Icons.arrow_drop_up)
-                    : const Icon(Icons.arrow_drop_down),
+            icon: (showAllText)
+                ? const Icon(Icons.arrow_drop_up)
+                : const Icon(Icons.arrow_drop_down),
           ),
         ],
       ),

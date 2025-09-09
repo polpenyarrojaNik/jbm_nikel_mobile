@@ -160,21 +160,19 @@ class VisitaRepository {
   }
 
   Future<void> deleteVisita(String visitaAppId) async {
-    await (_localDb.delete(_localDb.visitaLocalTable)
-      ..where((tbl) => tbl.visitaAppId.equals(visitaAppId))).go();
+    await (_localDb.delete(
+      _localDb.visitaLocalTable,
+    )..where((tbl) => tbl.visitaAppId.equals(visitaAppId))).go();
   }
 
   Future<void> upsertVisita(Visita visitaLocal) async {
     final visitaLocalDto = VisitaLocalDTO.fromDomain(visitaLocal);
-    final visitaCompetenciaLocalDTOList =
-        visitaLocal.competenciaList
-            .map(
-              (e) => VisitaCompetenciaLocalDTO.fromDomain(
-                visitaLocal.visitaAppId!,
-                e,
-              ),
-            )
-            .toList();
+    final visitaCompetenciaLocalDTOList = visitaLocal.competenciaList
+        .map(
+          (e) =>
+              VisitaCompetenciaLocalDTO.fromDomain(visitaLocal.visitaAppId!, e),
+        )
+        .toList();
     final json = jsonEncode(visitaLocalDto.toJson());
     log.d(json);
     await insertVisitaInDb(visitaLocalDto, visitaCompetenciaLocalDTOList);
@@ -189,10 +187,10 @@ class VisitaRepository {
     } catch (e) {
       if (e is AppException) {
         await e.whenOrNull(
-          notConnection:
-              () => updateWithError(visitaLocalDto, e.details.message),
-          restApiFailure:
-              (error, _) => updateWithError(visitaLocalDto, e.details.message),
+          notConnection: () =>
+              updateWithError(visitaLocalDto, e.details.message),
+          restApiFailure: (error, _) =>
+              updateWithError(visitaLocalDto, e.details.message),
         );
         return;
       }
@@ -204,11 +202,13 @@ class VisitaRepository {
     VisitaLocalDTO visitaLocalDto,
     String errorMessage,
   ) async {
-    await (_localDb.update(_localDb.visitaLocalTable)..where(
-      (tbl) => tbl.visitaAppId.equals(visitaLocalDto.visitaAppId!),
-    )).write(
-      local.VisitaLocalTableCompanion(errorSyncMessage: Value(errorMessage)),
-    );
+    await (_localDb.update(_localDb.visitaLocalTable)
+          ..where((tbl) => tbl.visitaAppId.equals(visitaLocalDto.visitaAppId!)))
+        .write(
+          local.VisitaLocalTableCompanion(
+            errorSyncMessage: Value(errorMessage),
+          ),
+        );
   }
 
   Future<void> insertVisitaInDb(
@@ -239,16 +239,15 @@ class VisitaRepository {
     bool test,
   ) async {
     try {
-      final requestUri =
-          (test)
-              ? Uri.http(
-                dotenv.get('URL_TEST', fallback: 'localhost:3001'),
-                'api/v7/online/visitas',
-              )
-              : Uri.https(
-                dotenv.get('URL', fallback: 'localhost:3001'),
-                'api/v7/online/visitas',
-              );
+      final requestUri = (test)
+          ? Uri.http(
+              dotenv.get('URL_TEST', fallback: 'localhost:3001'),
+              'api/v7/online/visitas',
+            )
+          : Uri.https(
+              dotenv.get('URL', fallback: 'localhost:3001'),
+              'api/v7/online/visitas',
+            );
 
       final response = await _dio.postUri(
         requestUri,
@@ -276,10 +275,9 @@ class VisitaRepository {
           stackTrace,
         );
       }
-      final responseErrorJson =
-          (e.response?.data is List<int>)
-              ? e.response?.statusMessage
-              : (e.response?.data['detalle'] ?? e.response?.data['message']);
+      final responseErrorJson = (e.response?.data is List<int>)
+          ? e.response?.statusMessage
+          : (e.response?.data['detalle'] ?? e.response?.data['message']);
       if (responseErrorJson != null) {
         errorDetalle = responseErrorJson as String?;
 
@@ -330,41 +328,39 @@ class VisitaRepository {
       final busqueda = searchText.toUpperCase().split(' ');
       Expression<bool>? predicate;
       for (var i = 0; i < busqueda.length; i++) {
-        predicate =
-            predicate == null
-                ? (_localDb.visitaLocalTable.resumen.like('%$searchText%') |
-                    _localDb.visitaLocalTable.clienteId.like('%$searchText%') |
-                    _localDb.visitaLocalTable.clienteProvisionalNombre.like(
-                      '%$searchText%',
-                    ) |
-                    _localDb.visitaLocalTable.clienteProvisionalEmail.like(
-                      '%$searchText%',
-                    ) |
-                    _localDb.visitaLocalTable.clienteProvisionalTelefono.like(
-                      '%$searchText%',
-                    ) |
-                    _localDb.visitaLocalTable.clienteProvisionalPoblacion.like(
-                      '%$searchText%',
-                    ) |
-                    _localDb.visitaLocalTable.contacto.like('%$searchText%'))
-                : predicate &
-                    (_localDb.visitaLocalTable.resumen.like('%$searchText%') |
-                        _localDb.visitaLocalTable.clienteId.like(
-                          '%$searchText%',
-                        ) |
-                        _localDb.visitaLocalTable.clienteProvisionalNombre.like(
-                          '%$searchText%',
-                        ) |
-                        _localDb.visitaLocalTable.clienteProvisionalEmail.like(
-                          '%$searchText%',
-                        ) |
-                        _localDb.visitaLocalTable.clienteProvisionalTelefono
-                            .like('%$searchText%') |
-                        _localDb.visitaLocalTable.clienteProvisionalPoblacion
-                            .like('%$searchText%') |
-                        _localDb.visitaLocalTable.contacto.like(
-                          '%$searchText%',
-                        ));
+        predicate = predicate == null
+            ? (_localDb.visitaLocalTable.resumen.like('%$searchText%') |
+                  _localDb.visitaLocalTable.clienteId.like('%$searchText%') |
+                  _localDb.visitaLocalTable.clienteProvisionalNombre.like(
+                    '%$searchText%',
+                  ) |
+                  _localDb.visitaLocalTable.clienteProvisionalEmail.like(
+                    '%$searchText%',
+                  ) |
+                  _localDb.visitaLocalTable.clienteProvisionalTelefono.like(
+                    '%$searchText%',
+                  ) |
+                  _localDb.visitaLocalTable.clienteProvisionalPoblacion.like(
+                    '%$searchText%',
+                  ) |
+                  _localDb.visitaLocalTable.contacto.like('%$searchText%'))
+            : predicate &
+                  (_localDb.visitaLocalTable.resumen.like('%$searchText%') |
+                      _localDb.visitaLocalTable.clienteId.like(
+                        '%$searchText%',
+                      ) |
+                      _localDb.visitaLocalTable.clienteProvisionalNombre.like(
+                        '%$searchText%',
+                      ) |
+                      _localDb.visitaLocalTable.clienteProvisionalEmail.like(
+                        '%$searchText%',
+                      ) |
+                      _localDb.visitaLocalTable.clienteProvisionalTelefono.like(
+                        '%$searchText%',
+                      ) |
+                      _localDb.visitaLocalTable.clienteProvisionalPoblacion
+                          .like('%$searchText%') |
+                      _localDb.visitaLocalTable.contacto.like('%$searchText%'));
       }
       query.where((tbl) => predicate!);
     }
@@ -384,55 +380,66 @@ class VisitaRepository {
       final visitaLocalDTO = visitaLocalDTOList[i];
       final clienteUsuarioDTO =
           await (_remoteDb.select(_remoteDb.clienteUsuarioTable)..where(
-            (tbl) =>
-                tbl.clienteId.equalsNullable(visitaLocalDTO.clienteId) &
-                tbl.usuarioId.equals(usuarioId),
-          )).getSingleOrNull();
+                (tbl) =>
+                    tbl.clienteId.equalsNullable(visitaLocalDTO.clienteId) &
+                    tbl.usuarioId.equals(usuarioId),
+              ))
+              .getSingleOrNull();
 
       if (clienteUsuarioDTO != null ||
           (visitaLocalDTO.numEmpl == usuarioId &&
               visitaLocalDTO.clienteId == null)) {
         final clienteDTO =
             await (_remoteDb.select(_remoteDb.clienteTable)..where(
-              (tbl) => tbl.id.equalsNullable(visitaLocalDTO.clienteId),
-            )).getSingleOrNull();
+                  (tbl) => tbl.id.equalsNullable(visitaLocalDTO.clienteId),
+                ))
+                .getSingleOrNull();
 
         final provinciaDTO =
             await (_remoteDb.select(_remoteDb.provinciaTable)..where(
-              (tbl) => tbl.provinciaId.equalsNullable(
-                visitaLocalDTO.clienteProvisionalProvinciaId,
-              ),
-            )).getSingleOrNull();
+                  (tbl) => tbl.provinciaId.equalsNullable(
+                    visitaLocalDTO.clienteProvisionalProvinciaId,
+                  ),
+                ))
+                .getSingleOrNull();
 
         final paisDTO =
             await (_remoteDb.select(_remoteDb.paisTable)..where(
-              (tbl) => tbl.id.equalsNullable(
-                visitaLocalDTO.clienteProvisionalPaisId,
-              ),
-            )).getSingleOrNull();
+                  (tbl) => tbl.id.equalsNullable(
+                    visitaLocalDTO.clienteProvisionalPaisId,
+                  ),
+                ))
+                .getSingleOrNull();
 
         final motivoNoInteresDTO =
             await (_remoteDb.select(_remoteDb.visitaMotivoNoVentaTable)..where(
-              (tbl) =>
-                  tbl.id.equalsNullable(visitaLocalDTO.codigoMotivoNoInteres),
-            )).getSingleOrNull();
+                  (tbl) => tbl.id.equalsNullable(
+                    visitaLocalDTO.codigoMotivoNoInteres,
+                  ),
+                ))
+                .getSingleOrNull();
 
         final motivoNoPedidoDTO =
             await (_remoteDb.select(_remoteDb.visitaMotivoNoVentaTable)..where(
-              (tbl) =>
-                  tbl.id.equalsNullable(visitaLocalDTO.codigoMotivoNoPedido),
-            )).getSingleOrNull();
+                  (tbl) => tbl.id.equalsNullable(
+                    visitaLocalDTO.codigoMotivoNoPedido,
+                  ),
+                ))
+                .getSingleOrNull();
 
         final visitaSectorDTO =
             await (_remoteDb.select(_remoteDb.visitaSectorTable)..where(
-              (tbl) => tbl.id.equalsNullable(visitaLocalDTO.codigoSector),
-            )).getSingleOrNull();
+                  (tbl) => tbl.id.equalsNullable(visitaLocalDTO.codigoSector),
+                ))
+                .getSingleOrNull();
 
         final visitaCompetenciaLocalListDTO =
             await (_localDb.select(_localDb.visitaCompetenciaLocalTable)..where(
-              (tbl) =>
-                  tbl.visitaAppId.equalsNullable(visitaLocalDTO.visitaAppId),
-            )).get();
+                  (tbl) => tbl.visitaAppId.equalsNullable(
+                    visitaLocalDTO.visitaAppId,
+                  ),
+                ))
+                .get();
 
         final competenciaDtoList =
             await _getCompetidorsFromVistasCompetenciaLocalDTOList(
@@ -563,47 +570,46 @@ class VisitaRepository {
       final busqueda = searchText.toUpperCase().split(' ');
       Expression<bool>? predicate;
       for (var i = 0; i < busqueda.length; i++) {
-        predicate =
-            predicate == null
-                ? (_remoteDb.visitaTable.resumen.like('%$searchText%') |
-                    _remoteDb.visitaTable.clienteId.like('%$searchText%') |
-                    _remoteDb.clienteTable.nombreCliente.like('%$searchText%') |
-                    _remoteDb.clienteTable.nombreFiscal.like('%$searchText%') |
-                    _remoteDb.visitaTable.clienteProvisionalNombre.like(
-                      '%$searchText%',
-                    ) |
-                    _remoteDb.visitaTable.clienteProvisionalEmail.like(
-                      '%$searchText%',
-                    ) |
-                    _remoteDb.visitaTable.clienteProvisionalTelefono.like(
-                      '%$searchText%',
-                    ) |
-                    _remoteDb.visitaTable.clienteProvisionalPoblacion.like(
-                      '%$searchText%',
-                    ) |
-                    _remoteDb.visitaTable.contacto.like('%$searchText%'))
-                : predicate &
-                    (_remoteDb.visitaTable.resumen.like('%$searchText%') |
-                        _remoteDb.visitaTable.clienteId.like('%$searchText%') |
-                        _remoteDb.clienteTable.nombreCliente.like(
-                          '%$searchText%',
-                        ) |
-                        _remoteDb.clienteTable.nombreFiscal.like(
-                          '%$searchText%',
-                        ) |
-                        _remoteDb.visitaTable.clienteProvisionalNombre.like(
-                          '%$searchText%',
-                        ) |
-                        _remoteDb.visitaTable.clienteProvisionalEmail.like(
-                          '%$searchText%',
-                        ) |
-                        _remoteDb.visitaTable.clienteProvisionalTelefono.like(
-                          '%$searchText%',
-                        ) |
-                        _remoteDb.visitaTable.clienteProvisionalPoblacion.like(
-                          '%$searchText%',
-                        ) |
-                        _remoteDb.visitaTable.contacto.like('%$searchText%'));
+        predicate = predicate == null
+            ? (_remoteDb.visitaTable.resumen.like('%$searchText%') |
+                  _remoteDb.visitaTable.clienteId.like('%$searchText%') |
+                  _remoteDb.clienteTable.nombreCliente.like('%$searchText%') |
+                  _remoteDb.clienteTable.nombreFiscal.like('%$searchText%') |
+                  _remoteDb.visitaTable.clienteProvisionalNombre.like(
+                    '%$searchText%',
+                  ) |
+                  _remoteDb.visitaTable.clienteProvisionalEmail.like(
+                    '%$searchText%',
+                  ) |
+                  _remoteDb.visitaTable.clienteProvisionalTelefono.like(
+                    '%$searchText%',
+                  ) |
+                  _remoteDb.visitaTable.clienteProvisionalPoblacion.like(
+                    '%$searchText%',
+                  ) |
+                  _remoteDb.visitaTable.contacto.like('%$searchText%'))
+            : predicate &
+                  (_remoteDb.visitaTable.resumen.like('%$searchText%') |
+                      _remoteDb.visitaTable.clienteId.like('%$searchText%') |
+                      _remoteDb.clienteTable.nombreCliente.like(
+                        '%$searchText%',
+                      ) |
+                      _remoteDb.clienteTable.nombreFiscal.like(
+                        '%$searchText%',
+                      ) |
+                      _remoteDb.visitaTable.clienteProvisionalNombre.like(
+                        '%$searchText%',
+                      ) |
+                      _remoteDb.visitaTable.clienteProvisionalEmail.like(
+                        '%$searchText%',
+                      ) |
+                      _remoteDb.visitaTable.clienteProvisionalTelefono.like(
+                        '%$searchText%',
+                      ) |
+                      _remoteDb.visitaTable.clienteProvisionalPoblacion.like(
+                        '%$searchText%',
+                      ) |
+                      _remoteDb.visitaTable.contacto.like('%$searchText%'));
       }
       query.where(predicate!);
     }
@@ -659,47 +665,46 @@ class VisitaRepository {
       final busqueda = searchText.toUpperCase().split(' ');
       Expression<bool>? predicate;
       for (var i = 0; i < busqueda.length; i++) {
-        predicate =
-            predicate == null
-                ? (_remoteDb.visitaTable.resumen.like('%$searchText%') |
-                    _remoteDb.visitaTable.clienteId.like('%$searchText%') |
-                    _remoteDb.clienteTable.nombreCliente.like('%$searchText%') |
-                    _remoteDb.clienteTable.nombreFiscal.like('%$searchText%') |
-                    _remoteDb.visitaTable.clienteProvisionalNombre.like(
-                      '%$searchText%',
-                    ) |
-                    _remoteDb.visitaTable.clienteProvisionalEmail.like(
-                      '%$searchText%',
-                    ) |
-                    _remoteDb.visitaTable.clienteProvisionalTelefono.like(
-                      '%$searchText%',
-                    ) |
-                    _remoteDb.visitaTable.clienteProvisionalPoblacion.like(
-                      '%$searchText%',
-                    ) |
-                    _remoteDb.visitaTable.contacto.like('%$searchText%'))
-                : predicate &
-                    (_remoteDb.visitaTable.resumen.like('%$searchText%') |
-                        _remoteDb.visitaTable.clienteId.like('%$searchText%') |
-                        _remoteDb.clienteTable.nombreCliente.like(
-                          '%$searchText%',
-                        ) |
-                        _remoteDb.clienteTable.nombreFiscal.like(
-                          '%$searchText%',
-                        ) |
-                        _remoteDb.visitaTable.clienteProvisionalNombre.like(
-                          '%$searchText%',
-                        ) |
-                        _remoteDb.visitaTable.clienteProvisionalEmail.like(
-                          '%$searchText%',
-                        ) |
-                        _remoteDb.visitaTable.clienteProvisionalTelefono.like(
-                          '%$searchText%',
-                        ) |
-                        _remoteDb.visitaTable.clienteProvisionalPoblacion.like(
-                          '%$searchText%',
-                        ) |
-                        _remoteDb.visitaTable.contacto.like('%$searchText%'));
+        predicate = predicate == null
+            ? (_remoteDb.visitaTable.resumen.like('%$searchText%') |
+                  _remoteDb.visitaTable.clienteId.like('%$searchText%') |
+                  _remoteDb.clienteTable.nombreCliente.like('%$searchText%') |
+                  _remoteDb.clienteTable.nombreFiscal.like('%$searchText%') |
+                  _remoteDb.visitaTable.clienteProvisionalNombre.like(
+                    '%$searchText%',
+                  ) |
+                  _remoteDb.visitaTable.clienteProvisionalEmail.like(
+                    '%$searchText%',
+                  ) |
+                  _remoteDb.visitaTable.clienteProvisionalTelefono.like(
+                    '%$searchText%',
+                  ) |
+                  _remoteDb.visitaTable.clienteProvisionalPoblacion.like(
+                    '%$searchText%',
+                  ) |
+                  _remoteDb.visitaTable.contacto.like('%$searchText%'))
+            : predicate &
+                  (_remoteDb.visitaTable.resumen.like('%$searchText%') |
+                      _remoteDb.visitaTable.clienteId.like('%$searchText%') |
+                      _remoteDb.clienteTable.nombreCliente.like(
+                        '%$searchText%',
+                      ) |
+                      _remoteDb.clienteTable.nombreFiscal.like(
+                        '%$searchText%',
+                      ) |
+                      _remoteDb.visitaTable.clienteProvisionalNombre.like(
+                        '%$searchText%',
+                      ) |
+                      _remoteDb.visitaTable.clienteProvisionalEmail.like(
+                        '%$searchText%',
+                      ) |
+                      _remoteDb.visitaTable.clienteProvisionalTelefono.like(
+                        '%$searchText%',
+                      ) |
+                      _remoteDb.visitaTable.clienteProvisionalPoblacion.like(
+                        '%$searchText%',
+                      ) |
+                      _remoteDb.visitaTable.contacto.like('%$searchText%'));
       }
       query.where(predicate!);
     }
@@ -759,46 +764,52 @@ class VisitaRepository {
   }
 
   Future<Visita> getVisitaLocal({required String visitaAppId}) async {
-    final visitaDTO =
-        await (_localDb.select(_localDb.visitaLocalTable)
-          ..where((tbl) => tbl.visitaAppId.equals(visitaAppId))).getSingle();
+    final visitaDTO = await (_localDb.select(
+      _localDb.visitaLocalTable,
+    )..where((tbl) => tbl.visitaAppId.equals(visitaAppId))).getSingle();
 
     final clienteDTO =
-        await (_remoteDb.select(_remoteDb.clienteTable)..where(
-          (tbl) => tbl.id.equalsNullable(visitaDTO.clienteId),
-        )).getSingleOrNull();
+        await (_remoteDb.select(_remoteDb.clienteTable)
+              ..where((tbl) => tbl.id.equalsNullable(visitaDTO.clienteId)))
+            .getSingleOrNull();
 
     final provinciaDTO =
         await (_remoteDb.select(_remoteDb.provinciaTable)..where(
-          (tbl) => tbl.provinciaId.equalsNullable(
-            visitaDTO.clienteProvisionalProvinciaId,
-          ),
-        )).getSingleOrNull();
+              (tbl) => tbl.provinciaId.equalsNullable(
+                visitaDTO.clienteProvisionalProvinciaId,
+              ),
+            ))
+            .getSingleOrNull();
 
     final paisDTO =
         await (_remoteDb.select(_remoteDb.paisTable)..where(
-          (tbl) => tbl.id.equalsNullable(visitaDTO.clienteProvisionalPaisId),
-        )).getSingleOrNull();
+              (tbl) =>
+                  tbl.id.equalsNullable(visitaDTO.clienteProvisionalPaisId),
+            ))
+            .getSingleOrNull();
 
     final motivoNoInteresDTO =
         await (_remoteDb.select(_remoteDb.visitaMotivoNoVentaTable)..where(
-          (tbl) => tbl.id.equalsNullable(visitaDTO.codigoMotivoNoInteres),
-        )).getSingleOrNull();
+              (tbl) => tbl.id.equalsNullable(visitaDTO.codigoMotivoNoInteres),
+            ))
+            .getSingleOrNull();
 
     final motivoNoPedidoDTO =
         await (_remoteDb.select(_remoteDb.visitaMotivoNoVentaTable)..where(
-          (tbl) => tbl.id.equalsNullable(visitaDTO.codigoMotivoNoPedido),
-        )).getSingleOrNull();
+              (tbl) => tbl.id.equalsNullable(visitaDTO.codigoMotivoNoPedido),
+            ))
+            .getSingleOrNull();
 
     final visitaSectorDTO =
-        await (_remoteDb.select(_remoteDb.visitaSectorTable)..where(
-          (tbl) => tbl.id.equalsNullable(visitaDTO.codigoSector),
-        )).getSingleOrNull();
+        await (_remoteDb.select(_remoteDb.visitaSectorTable)
+              ..where((tbl) => tbl.id.equalsNullable(visitaDTO.codigoSector)))
+            .getSingleOrNull();
 
     final visitaCompetenciaLocalListDTO =
         await (_localDb.select(_localDb.visitaCompetenciaLocalTable)..where(
-          (tbl) => tbl.visitaAppId.equalsNullable(visitaDTO.visitaAppId),
-        )).get();
+              (tbl) => tbl.visitaAppId.equalsNullable(visitaDTO.visitaAppId),
+            ))
+            .get();
 
     final competenciaDtoList =
         await _getCompetidorsFromVistasCompetenciaLocalDTOList(
@@ -817,10 +828,9 @@ class VisitaRepository {
   }
 
   Future<List<Pais>> getPaises(String searchText) async {
-    final query =
-        await _remoteDb
-            .customSelect(
-              '''
+    final query = await _remoteDb
+        .customSelect(
+          '''
           SELECT *
           FROM PAISES
           WHERE ${descripcionSegunLocale(searchText)}
@@ -830,9 +840,9 @@ class VisitaRepository {
           END
 
 ''',
-              readsFrom: {_remoteDb.paisTable},
-            )
-            .get();
+          readsFrom: {_remoteDb.paisTable},
+        )
+        .get();
 
     return Future.wait(
       query.map((row) async {
@@ -855,10 +865,9 @@ class VisitaRepository {
     }
 
     queryText += 'ORDER BY PROVINCIA, PROVINCIA_ID';
-    final query =
-        await _remoteDb
-            .customSelect(queryText, readsFrom: {_remoteDb.paisTable})
-            .get();
+    final query = await _remoteDb
+        .customSelect(queryText, readsFrom: {_remoteDb.paisTable})
+        .get();
 
     return Future.wait(
       query.map((row) async {
@@ -869,36 +878,36 @@ class VisitaRepository {
   }
 
   Future<DateTime> getLastSyncDate() async {
-    final lastSyncDTO =
-        await _localDb.select(_localDb.syncDateTimeTable).getSingle();
+    final lastSyncDTO = await _localDb
+        .select(_localDb.syncDateTimeTable)
+        .getSingle();
     return lastSyncDTO.visitaUltimaSync;
   }
 
   Future<bool> existClientePotencialPhone(String phoneValue) async {
-    final visitasList =
-        await (_remoteDb.select(_remoteDb.visitaTable)..where(
-          (tbl) => tbl.clienteProvisionalTelefono.equals(phoneValue),
-        )).get();
+    final visitasList = await (_remoteDb.select(
+      _remoteDb.visitaTable,
+    )..where((tbl) => tbl.clienteProvisionalTelefono.equals(phoneValue))).get();
 
     final clienteContactoList =
         await (_remoteDb.select(_remoteDb.clienteContactoTable)..where(
-          (tbl) =>
-              tbl.telefono1.equals(phoneValue) |
-              tbl.telefono2.equals(phoneValue),
-        )).get();
+              (tbl) =>
+                  tbl.telefono1.equals(phoneValue) |
+                  tbl.telefono2.equals(phoneValue),
+            ))
+            .get();
 
     return visitasList.isNotEmpty || clienteContactoList.isNotEmpty;
   }
 
   Future<bool> existClientePotencialEmail(String emailValue) async {
-    final visitasList =
-        await (_remoteDb.select(_remoteDb.visitaTable)..where(
-          (tbl) => tbl.clienteProvisionalEmail.equals(emailValue),
-        )).get();
+    final visitasList = await (_remoteDb.select(
+      _remoteDb.visitaTable,
+    )..where((tbl) => tbl.clienteProvisionalEmail.equals(emailValue))).get();
 
-    final clienteContactoList =
-        await (_remoteDb.select(_remoteDb.clienteContactoTable)
-          ..where((tbl) => tbl.email.equals(emailValue))).get();
+    final clienteContactoList = await (_remoteDb.select(
+      _remoteDb.clienteContactoTable,
+    )..where((tbl) => tbl.email.equals(emailValue))).get();
 
     return visitasList.isNotEmpty || clienteContactoList.isNotEmpty;
   }
@@ -945,37 +954,42 @@ class VisitaRepository {
 
   Future<void> deleteVisitasLocalAntiguas() async {
     final currentDate = DateTime.now();
-    final visitaLocalList =
-        await (_localDb.select(_localDb.visitaLocalTable)).get();
+    final visitaLocalList = await (_localDb.select(
+      _localDb.visitaLocalTable,
+    )).get();
 
     for (var i = 0; i < visitaLocalList.length; i++) {
       if (visitaLocalList[i].tratada == 'S' &&
           visitaLocalList[i].fecha
               .add(const Duration(days: 30))
               .isBefore(currentDate)) {
-        await (_localDb.delete(_localDb.visitaLocalTable)
-          ..where((tbl) => tbl.fecha.equals(visitaLocalList[i].fecha))).go();
+        await (_localDb.delete(
+          _localDb.visitaLocalTable,
+        )..where((tbl) => tbl.fecha.equals(visitaLocalList[i].fecha))).go();
       }
     }
   }
 
   Future<List<VisitaSector>> getVisitaSectores() async {
-    final visitaSectoresDTOList =
-        await (_remoteDb.select(_remoteDb.visitaSectorTable)).get();
+    final visitaSectoresDTOList = await (_remoteDb.select(
+      _remoteDb.visitaSectorTable,
+    )).get();
 
     return visitaSectoresDTOList.map((e) => e.toDomain()).toList();
   }
 
   Future<List<VisitaCompetidor>> getVisitaCompetidores() async {
-    final visitaCompetidoresDTOList =
-        await (_remoteDb.select(_remoteDb.visitaCompetidorTable)).get();
+    final visitaCompetidoresDTOList = await (_remoteDb.select(
+      _remoteDb.visitaCompetidorTable,
+    )).get();
 
     return visitaCompetidoresDTOList.map((e) => e.toDomain()).toList();
   }
 
   Future<List<VisitaMotivoNoVenta>> getVisitaMotivosNoVenta() async {
-    final visitaMotivosNoVentaDTOList =
-        await (_remoteDb.select(_remoteDb.visitaMotivoNoVentaTable)).get();
+    final visitaMotivosNoVentaDTOList = await (_remoteDb.select(
+      _remoteDb.visitaMotivoNoVentaTable,
+    )).get();
 
     return visitaMotivosNoVentaDTOList.map((e) => e.toDomain()).toList();
   }
@@ -1111,17 +1125,19 @@ class VisitaRepository {
 
       final paisDto =
           await (_remoteDb.select(_remoteDb.paisTable)..where(
-            (tbl) => tbl.id.equals(geolocationEntityDTO.countryCode),
-          )).getSingleOrNull();
+                (tbl) => tbl.id.equals(geolocationEntityDTO.countryCode),
+              ))
+              .getSingleOrNull();
 
       final provinciaDto =
           await (_remoteDb.select(_remoteDb.provinciaTable)..where(
-            (tbl) =>
-                tbl.paisId.equals(geolocationEntityDTO.countryCode) &
-                tbl.provincia.equalsNullable(
-                  geolocationEntityDTO.advinistrativeLevels?.state,
-                ),
-          )).getSingleOrNull();
+                (tbl) =>
+                    tbl.paisId.equals(geolocationEntityDTO.countryCode) &
+                    tbl.provincia.equalsNullable(
+                      geolocationEntityDTO.advinistrativeLevels?.state,
+                    ),
+              ))
+              .getSingleOrNull();
 
       return geolocationEntityDTO.toDomain(
         provinciaDto?.toDomain(),
@@ -1167,10 +1183,9 @@ class VisitaRepository {
           stackTrace,
         );
       }
-      final responseErrorJson =
-          (e.response?.data is List<int>)
-              ? e.response?.statusMessage
-              : (e.response?.data['detalle'] ?? e.response?.data['message']);
+      final responseErrorJson = (e.response?.data is List<int>)
+          ? e.response?.statusMessage
+          : (e.response?.data['detalle'] ?? e.response?.data['message']);
       if (responseErrorJson != null) {
         errorDetalle = responseErrorJson as String?;
 
@@ -1197,10 +1212,9 @@ class VisitaRepository {
   String? _getAddressString(List<String> addressList) {
     var addressString = '';
     for (var i = 0; i < addressList.length; i++) {
-      addressString +=
-          (i == addressList.length - 1)
-              ? addressList[i]
-              : '${addressList[i]}, ';
+      addressString += (i == addressList.length - 1)
+          ? addressList[i]
+          : '${addressList[i]}, ';
     }
     return addressString.isNotEmpty ? addressString : null;
   }
@@ -1216,8 +1230,10 @@ class VisitaRepository {
 
       final competidorDto =
           await (_remoteDb.select(_remoteDb.visitaCompetidorTable)..where(
-            (tbl) => tbl.id.equals(visitaComeptenciaLocalDto.codigoCompetencia),
-          )).getSingleOrNull();
+                (tbl) =>
+                    tbl.id.equals(visitaComeptenciaLocalDto.codigoCompetencia),
+              ))
+              .getSingleOrNull();
 
       if (competidorDto != null) {
         competidorList.add(competidorDto.toDomain());

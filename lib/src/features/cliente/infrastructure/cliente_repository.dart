@@ -179,8 +179,9 @@ final clienteDevolucionesLineaProvider = FutureProvider.autoDispose
 final clienteAdjuntoProvider = FutureProvider.autoDispose
     .family<List<ClienteAdjunto>, String>((ref, clienteId) async {
       final clienteRepository = ref.watch(clienteRepositoryProvider);
-      final usuario =
-          await ref.watch(usuarioServiceProvider).getSignedInUsuario();
+      final usuario = await ref
+          .watch(usuarioServiceProvider)
+          .getSignedInUsuario();
       return clienteRepository.getClienteAdjuntoById(
         clienteId: clienteId,
         provisionalToken: usuario!.provisionalToken,
@@ -296,35 +297,34 @@ class ClienteRepository {
         final busqueda = searchText.toUpperCase().split(' ');
         Expression<bool>? predicate;
         for (var i = 0; i < busqueda.length; i++) {
-          predicate =
-              predicate == null
-                  ? ((_remoteDb.clienteTable.id.like('%${busqueda[i]}%') |
-                      (_remoteDb.clienteTable.nombreCliente.like(
-                            '%${busqueda[i]}%',
-                          ) |
-                          _remoteDb.clienteTable.nombreFiscal.like(
-                            '%${busqueda[i]}%',
-                          ) |
-                          _remoteDb.clienteTable.poblacionFiscal.like(
-                            '%${busqueda[i]}%',
-                          ) |
-                          _remoteDb.clienteTable.provinciaFiscal.like(
-                            '%${busqueda[i]}%',
-                          ))))
-                  : predicate &
-                      ((_remoteDb.clienteTable.id.like('%${busqueda[i]}%') |
-                          (_remoteDb.clienteTable.nombreCliente.like(
-                                '%${busqueda[i]}%',
-                              ) |
-                              _remoteDb.clienteTable.nombreFiscal.like(
-                                '%${busqueda[i]}%',
-                              ) |
-                              _remoteDb.clienteTable.poblacionFiscal.like(
-                                '%${busqueda[i]}%',
-                              ) |
-                              _remoteDb.clienteTable.provinciaFiscal.like(
-                                '%${busqueda[i]}%',
-                              ))));
+          predicate = predicate == null
+              ? ((_remoteDb.clienteTable.id.like('%${busqueda[i]}%') |
+                    (_remoteDb.clienteTable.nombreCliente.like(
+                          '%${busqueda[i]}%',
+                        ) |
+                        _remoteDb.clienteTable.nombreFiscal.like(
+                          '%${busqueda[i]}%',
+                        ) |
+                        _remoteDb.clienteTable.poblacionFiscal.like(
+                          '%${busqueda[i]}%',
+                        ) |
+                        _remoteDb.clienteTable.provinciaFiscal.like(
+                          '%${busqueda[i]}%',
+                        ))))
+              : predicate &
+                    ((_remoteDb.clienteTable.id.like('%${busqueda[i]}%') |
+                        (_remoteDb.clienteTable.nombreCliente.like(
+                              '%${busqueda[i]}%',
+                            ) |
+                            _remoteDb.clienteTable.nombreFiscal.like(
+                              '%${busqueda[i]}%',
+                            ) |
+                            _remoteDb.clienteTable.poblacionFiscal.like(
+                              '%${busqueda[i]}%',
+                            ) |
+                            _remoteDb.clienteTable.provinciaFiscal.like(
+                              '%${busqueda[i]}%',
+                            ))));
         }
         query.where(predicate!);
       }
@@ -339,50 +339,50 @@ class ClienteRepository {
         OrderingTerm.asc(_remoteDb.clienteTable.id),
       ]);
 
-      final clienteList =
-          await query.asyncMap((row) async {
-            ClienteDireccion? clienteDireccionPredeterminada;
+      final clienteList = await query.asyncMap((row) async {
+        ClienteDireccion? clienteDireccionPredeterminada;
 
-            final clienteDTO = row.readTable(_remoteDb.clienteTable);
-            final paisDTO = row.readTableOrNull(_remoteDb.paisTable);
-            final divisaDTO = row.readTableOrNull(_remoteDb.divisaTable);
-            final metodoDeCobroDTO = row.readTableOrNull(
-              _remoteDb.metodoDeCobroTable,
-            );
-            final plazoDeCobroDTO = row.readTableOrNull(
-              _remoteDb.plazoDeCobroTable,
-            );
-            final clienteEstadoPotencialDTO = row.readTableOrNull(
-              _remoteDb.clienteEstadoPotencialTable,
-            );
-            final clienteTipoPotencialDTO = row.readTableOrNull(
-              _remoteDb.clienteTipoPotencialTable,
-            );
-            final sectorDTO = row.readTableOrNull(_remoteDb.sectorTable);
-            final subsectorDTO = row.readTableOrNull(_remoteDb.subsectorTable);
+        final clienteDTO = row.readTable(_remoteDb.clienteTable);
+        final paisDTO = row.readTableOrNull(_remoteDb.paisTable);
+        final divisaDTO = row.readTableOrNull(_remoteDb.divisaTable);
+        final metodoDeCobroDTO = row.readTableOrNull(
+          _remoteDb.metodoDeCobroTable,
+        );
+        final plazoDeCobroDTO = row.readTableOrNull(
+          _remoteDb.plazoDeCobroTable,
+        );
+        final clienteEstadoPotencialDTO = row.readTableOrNull(
+          _remoteDb.clienteEstadoPotencialTable,
+        );
+        final clienteTipoPotencialDTO = row.readTableOrNull(
+          _remoteDb.clienteTipoPotencialTable,
+        );
+        final sectorDTO = row.readTableOrNull(_remoteDb.sectorTable);
+        final subsectorDTO = row.readTableOrNull(_remoteDb.subsectorTable);
 
-            final direccionesPredeterminada =
-                await getClienteDireccionesListById(clienteId: clienteDTO.id);
+        final direccionesPredeterminada = await getClienteDireccionesListById(
+          clienteId: clienteDTO.id,
+        );
 
-            for (var i = 0; i < direccionesPredeterminada.length; i++) {
-              if (direccionesPredeterminada[i].predeterminada) {
-                clienteDireccionPredeterminada = direccionesPredeterminada[i];
-                break;
-              }
-            }
+        for (var i = 0; i < direccionesPredeterminada.length; i++) {
+          if (direccionesPredeterminada[i].predeterminada) {
+            clienteDireccionPredeterminada = direccionesPredeterminada[i];
+            break;
+          }
+        }
 
-            return clienteDTO.toDomain(
-              paisFiscal: paisDTO?.toDomain(),
-              divisa: divisaDTO?.toDomain(),
-              metodoDeCobro: metodoDeCobroDTO?.toDomain(),
-              plazoDeCobro: plazoDeCobroDTO?.toDomain(),
-              clienteEstadoPotencial: clienteEstadoPotencialDTO?.toDomain(),
-              clienteTipoPotencial: clienteTipoPotencialDTO?.toDomain(),
-              clienteDireccionPredeterminada: clienteDireccionPredeterminada,
-              sector: sectorDTO?.toDomain(),
-              subsector: subsectorDTO?.toDomain(sectorDTO!.toDomain()),
-            );
-          }).get();
+        return clienteDTO.toDomain(
+          paisFiscal: paisDTO?.toDomain(),
+          divisa: divisaDTO?.toDomain(),
+          metodoDeCobro: metodoDeCobroDTO?.toDomain(),
+          plazoDeCobro: plazoDeCobroDTO?.toDomain(),
+          clienteEstadoPotencial: clienteEstadoPotencialDTO?.toDomain(),
+          clienteTipoPotencial: clienteTipoPotencialDTO?.toDomain(),
+          clienteDireccionPredeterminada: clienteDireccionPredeterminada,
+          sector: sectorDTO?.toDomain(),
+          subsector: subsectorDTO?.toDomain(sectorDTO!.toDomain()),
+        );
+      }).get();
       return clienteList;
     } catch (e, stackTrace) {
       Error.throwWithStackTrace(
@@ -446,35 +446,34 @@ class ClienteRepository {
         final busqueda = searchText.toUpperCase().split(' ');
         Expression<bool>? predicate;
         for (var i = 0; i < busqueda.length; i++) {
-          predicate =
-              predicate == null
-                  ? ((_remoteDb.clienteTable.id.like('%${busqueda[i]}%') |
-                      (_remoteDb.clienteTable.nombreCliente.like(
-                            '%${busqueda[i]}%',
-                          ) |
-                          _remoteDb.clienteTable.nombreFiscal.like(
-                            '%${busqueda[i]}%',
-                          ) |
-                          _remoteDb.clienteTable.poblacionFiscal.like(
-                            '%${busqueda[i]}%',
-                          ) |
-                          _remoteDb.clienteTable.provinciaFiscal.like(
-                            '%${busqueda[i]}%',
-                          ))))
-                  : predicate &
-                      ((_remoteDb.clienteTable.id.like('%${busqueda[i]}%') |
-                          (_remoteDb.clienteTable.nombreCliente.like(
-                                '%${busqueda[i]}%',
-                              ) |
-                              _remoteDb.clienteTable.nombreFiscal.like(
-                                '%${busqueda[i]}%',
-                              ) |
-                              _remoteDb.clienteTable.poblacionFiscal.like(
-                                '%${busqueda[i]}%',
-                              ) |
-                              _remoteDb.clienteTable.provinciaFiscal.like(
-                                '%${busqueda[i]}%',
-                              ))));
+          predicate = predicate == null
+              ? ((_remoteDb.clienteTable.id.like('%${busqueda[i]}%') |
+                    (_remoteDb.clienteTable.nombreCliente.like(
+                          '%${busqueda[i]}%',
+                        ) |
+                        _remoteDb.clienteTable.nombreFiscal.like(
+                          '%${busqueda[i]}%',
+                        ) |
+                        _remoteDb.clienteTable.poblacionFiscal.like(
+                          '%${busqueda[i]}%',
+                        ) |
+                        _remoteDb.clienteTable.provinciaFiscal.like(
+                          '%${busqueda[i]}%',
+                        ))))
+              : predicate &
+                    ((_remoteDb.clienteTable.id.like('%${busqueda[i]}%') |
+                        (_remoteDb.clienteTable.nombreCliente.like(
+                              '%${busqueda[i]}%',
+                            ) |
+                            _remoteDb.clienteTable.nombreFiscal.like(
+                              '%${busqueda[i]}%',
+                            ) |
+                            _remoteDb.clienteTable.poblacionFiscal.like(
+                              '%${busqueda[i]}%',
+                            ) |
+                            _remoteDb.clienteTable.provinciaFiscal.like(
+                              '%${busqueda[i]}%',
+                            ))));
         }
         query.where(predicate!);
       }
@@ -602,28 +601,27 @@ class ClienteRepository {
         ..where((t) => t.clienteId.equals(clienteId)));
 
       return await query.asyncMap((row) async {
-        final articuloDto =
-            (row.articuloId != '*')
-                ? await (_remoteDb.select(_remoteDb.articuloTable)
-                  ..where((t) => t.id.equals(row.articuloId))).getSingle()
-                : null;
+        final articuloDto = (row.articuloId != '*')
+            ? await (_remoteDb.select(
+                _remoteDb.articuloTable,
+              )..where((t) => t.id.equals(row.articuloId))).getSingle()
+            : null;
 
-        final familiaDTO =
-            await (_remoteDb.select(_remoteDb.familiaTable)
-              ..where((t) => t.id.equals(row.familiaId))).getSingle();
-        final subfamiliaDTO =
-            await (_remoteDb.select(_remoteDb.subfamiliaTable)
-              ..where((t) => t.id.equals(row.subfamiliaId))).getSingle();
+        final familiaDTO = await (_remoteDb.select(
+          _remoteDb.familiaTable,
+        )..where((t) => t.id.equals(row.familiaId))).getSingle();
+        final subfamiliaDTO = await (_remoteDb.select(
+          _remoteDb.subfamiliaTable,
+        )..where((t) => t.id.equals(row.subfamiliaId))).getSingle();
         return row.toDomain(
-          descripcion:
-              (articuloDto != null)
-                  ? getDescriptionInLocalLanguage(
-                    articulo: articuloDto.toDomain(
-                      familia: null,
-                      subfamilia: null,
-                    ),
-                  )
-                  : null,
+          descripcion: (articuloDto != null)
+              ? getDescriptionInLocalLanguage(
+                  articulo: articuloDto.toDomain(
+                    familia: null,
+                    subfamilia: null,
+                  ),
+                )
+              : null,
           familia: familiaDTO.toDomain(),
           subfamilia: subfamiliaDTO.toDomain(),
         );
@@ -698,10 +696,9 @@ class ClienteRepository {
     required String clienteId,
   }) async {
     try {
-      final query =
-          (_remoteDb.select(_remoteDb.clienteRappelTable)
-            ..where((t) => t.clienteId.equals(clienteId))
-            ..orderBy([(t) => OrderingTerm.desc(t.fechaDesDe)]));
+      final query = (_remoteDb.select(_remoteDb.clienteRappelTable)
+        ..where((t) => t.clienteId.equals(clienteId))
+        ..orderBy([(t) => OrderingTerm.desc(t.fechaDesDe)]));
 
       return await query.map((row) {
         return row.toDomain();
@@ -733,9 +730,9 @@ class ClienteRepository {
         final clienteDTO = row.readTable(_remoteDb.clienteTable);
 
         final metodoDeCobroDTO =
-            await (_remoteDb.select(_remoteDb.metodoDeCobroTable)..where(
-              (t) => t.id.equals(clienteDTO.metodoDeCobroId ?? ''),
-            )).getSingleOrNull();
+            await (_remoteDb.select(_remoteDb.metodoDeCobroTable)
+                  ..where((t) => t.id.equals(clienteDTO.metodoDeCobroId ?? '')))
+                .getSingleOrNull();
 
         final pagosPendienteDTO = row.readTable(
           _remoteDb.clientePagoPendienteTable,
@@ -757,14 +754,13 @@ class ClienteRepository {
     required String clienteId,
   }) async {
     try {
-      final query =
-          await _remoteDb
-              .customSelect(
-                _getVentasMesCustomSelect(),
-                variables: [Variable(clienteId)],
-                readsFrom: {_remoteDb.estadisticasClienteUsuarioVentasTable},
-              )
-              .get();
+      final query = await _remoteDb
+          .customSelect(
+            _getVentasMesCustomSelect(),
+            variables: [Variable(clienteId)],
+            readsFrom: {_remoteDb.estadisticasClienteUsuarioVentasTable},
+          )
+          .get();
 
       return query.map((row) {
         return ClienteVentasMesDTO.fromJson(row.data).toDomain();
@@ -783,14 +779,13 @@ class ClienteRepository {
   }) async {
     try {
       final idioma = Intl.getCurrentLocale();
-      final query =
-          await _remoteDb
-              .customSelect(
-                _getVentasArticuloCustomSelect(searchText),
-                variables: [Variable(idioma), Variable(clienteId)],
-                readsFrom: {_remoteDb.estadisticasClienteUsuarioVentasTable},
-              )
-              .get();
+      final query = await _remoteDb
+          .customSelect(
+            _getVentasArticuloCustomSelect(searchText),
+            variables: [Variable(idioma), Variable(clienteId)],
+            readsFrom: {_remoteDb.estadisticasClienteUsuarioVentasTable},
+          )
+          .get();
 
       return query.map((row) {
         return ClienteVentasArticuloDTO.fromJson(row.data).toDomain();
@@ -810,18 +805,17 @@ class ClienteRepository {
   }) async {
     final query = {'CLIENTE_ID': clienteId};
     final clienteAdjuntoDTOList = await _remoteGetClienteAdjunto(
-      requestUri:
-          (test)
-              ? Uri.http(
-                dotenv.get('URL', fallback: 'localhost:3001'),
-                'api/v1/online/cliente/adjuntos',
-                query,
-              )
-              : Uri.https(
-                dotenv.get('URL', fallback: 'localhost:3001'),
-                'api/v1/online/cliente/adjuntos',
-                query,
-              ),
+      requestUri: (test)
+          ? Uri.http(
+              dotenv.get('URL', fallback: 'localhost:3001'),
+              'api/v1/online/cliente/adjuntos',
+              query,
+            )
+          : Uri.https(
+              dotenv.get('URL', fallback: 'localhost:3001'),
+              'api/v1/online/cliente/adjuntos',
+              query,
+            ),
       jsonDataSelector: (json) => json['data'] as List<dynamic>,
       provisionalToken: provisionalToken,
     );
@@ -867,18 +861,17 @@ class ClienteRepository {
     if (adjuntoParam.nombreArchivo != '') {
       final query = {'NOMBRE_ARCHIVO': adjuntoParam.nombreArchivo};
       final data = await _remoteGetAttachment(
-        requestUri:
-            (test)
-                ? Uri.http(
-                  dotenv.get('URL', fallback: 'localhost:3001'),
-                  'api/v1/online/adjunto/cliente/${adjuntoParam.id}',
-                  query,
-                )
-                : Uri.https(
-                  dotenv.get('URL', fallback: 'localhost:3001'),
-                  'api/v1/online/adjunto/cliente/${adjuntoParam.id}',
-                  query,
-                ),
+        requestUri: (test)
+            ? Uri.http(
+                dotenv.get('URL', fallback: 'localhost:3001'),
+                'api/v1/online/adjunto/cliente/${adjuntoParam.id}',
+                query,
+              )
+            : Uri.https(
+                dotenv.get('URL', fallback: 'localhost:3001'),
+                'api/v1/online/adjunto/cliente/${adjuntoParam.id}',
+                query,
+              ),
         provisionalToken: provisionalToken,
       );
 
@@ -911,18 +904,17 @@ class ClienteRepository {
     if (adjuntoParam.nombreArchivo != '') {
       final query = {'NOMBRE_ARCHIVO': adjuntoParam.nombreArchivo};
       final data = await _remoteGetAttachment(
-        requestUri:
-            (test)
-                ? Uri.http(
-                  dotenv.get('URL', fallback: 'localhost:3001'),
-                  'api/v1/online/adjunto/rappel/${adjuntoParam.id}',
-                  query,
-                )
-                : Uri.https(
-                  dotenv.get('URL', fallback: 'localhost:3001'),
-                  'api/v1/online/adjunto/rappel/${adjuntoParam.id}',
-                  query,
-                ),
+        requestUri: (test)
+            ? Uri.http(
+                dotenv.get('URL', fallback: 'localhost:3001'),
+                'api/v1/online/adjunto/rappel/${adjuntoParam.id}',
+                query,
+              )
+            : Uri.https(
+                dotenv.get('URL', fallback: 'localhost:3001'),
+                'api/v1/online/adjunto/rappel/${adjuntoParam.id}',
+                query,
+              ),
         provisionalToken: provisionalToken,
       );
 
@@ -990,7 +982,8 @@ FROM (
         select += ' UNION ALL ';
       }
 
-      select += '''
+      select +=
+          '''
         SELECT $mes mes
                 , SUM(importe) importe_anyo_0
                 , 0 importe_anyo_1
@@ -1051,7 +1044,8 @@ GROUP BY mes
   }
 
   String _getVentasArticuloCustomSelect(String searchText) {
-    final select = '''
+    final select =
+        '''
 SELECT ARTICULO_ID
         , DESCRIPCION
         , GTIN_13_UNIDAD
@@ -1272,8 +1266,8 @@ GROUP BY ARTICULO_ID, DESCRIPCION
     required String searchText,
   }) async {
     try {
-      final countExp =
-          _remoteDb.estadisticasUltimosPreciosTable.clienteId.count();
+      final countExp = _remoteDb.estadisticasUltimosPreciosTable.clienteId
+          .count();
 
       final query = _remoteDb
           .selectOnly(_remoteDb.estadisticasUltimosPreciosTable)
@@ -1519,16 +1513,15 @@ GROUP BY ARTICULO_ID, DESCRIPCION
     ClienteImpParam clienteContactoImpParam,
   ) async {
     try {
-      final requestUri =
-          (usuario.test)
-              ? Uri.http(
-                dotenv.get('URL', fallback: 'localhost:3001'),
-                'api/v1/online/clientes/${clienteContactoImpParam.clienteId}/contactos/${clienteContactoImpParam.id!}',
-              )
-              : Uri.https(
-                dotenv.get('URL', fallback: 'localhost:3001'),
-                'api/v1/online/clientes/${clienteContactoImpParam.clienteId}/contactos/${clienteContactoImpParam.id!}',
-              );
+      final requestUri = (usuario.test)
+          ? Uri.http(
+              dotenv.get('URL', fallback: 'localhost:3001'),
+              'api/v1/online/clientes/${clienteContactoImpParam.clienteId}/contactos/${clienteContactoImpParam.id!}',
+            )
+          : Uri.https(
+              dotenv.get('URL', fallback: 'localhost:3001'),
+              'api/v1/online/clientes/${clienteContactoImpParam.clienteId}/contactos/${clienteContactoImpParam.id!}',
+            );
 
       final response = await _dio.getUri(
         requestUri,
@@ -1662,8 +1655,9 @@ GROUP BY ARTICULO_ID, DESCRIPCION
     ClienteImpDTO clienteImpDTO,
   ) async {
     try {
-      await (_remoteDb.update(_remoteDb.clienteTable)
-        ..where((tbl) => tbl.id.equals(clienteImpDTO.clienteId))).write(
+      await (_remoteDb.update(
+        _remoteDb.clienteTable,
+      )..where((tbl) => tbl.id.equals(clienteImpDTO.clienteId))).write(
         ClienteTableCompanion(
           sectorId: Value(clienteImpDTO.sectorId),
           subsectorId: const Value.absent(),
@@ -1684,16 +1678,15 @@ GROUP BY ARTICULO_ID, DESCRIPCION
       final clienteContactoImpToJson = clienteContactoImpDTO.toJson();
       log.d(jsonEncode(clienteContactoImpToJson));
 
-      final requestUri =
-          (usuario.test)
-              ? Uri.http(
-                dotenv.get('URL', fallback: 'localhost:3001'),
-                'api/v1/online/clientes/${clienteContactoImpDTO.clienteId}/contacto',
-              )
-              : Uri.https(
-                dotenv.get('URL', fallback: 'localhost:3001'),
-                'api/v1/online/clientes/${clienteContactoImpDTO.clienteId}/contacto',
-              );
+      final requestUri = (usuario.test)
+          ? Uri.http(
+              dotenv.get('URL', fallback: 'localhost:3001'),
+              'api/v1/online/clientes/${clienteContactoImpDTO.clienteId}/contacto',
+            )
+          : Uri.https(
+              dotenv.get('URL', fallback: 'localhost:3001'),
+              'api/v1/online/clientes/${clienteContactoImpDTO.clienteId}/contacto',
+            );
 
       final response = await _dio.postUri(
         requestUri,
@@ -1763,8 +1756,9 @@ GROUP BY ARTICULO_ID, DESCRIPCION
     String contactoGuidImp,
   ) async {
     try {
-      await (_localDb.delete(_localDb.clienteContactoImpTable)
-        ..where((tbl) => tbl.id.equals(contactoGuidImp))).go();
+      await (_localDb.delete(
+        _localDb.clienteContactoImpTable,
+      )..where((tbl) => tbl.id.equals(contactoGuidImp))).go();
     } catch (e, stackTrace) {
       Error.throwWithStackTrace(
         AppException.insertDataFailure(e.toString()),
@@ -1812,11 +1806,12 @@ GROUP BY ARTICULO_ID, DESCRIPCION
     String clienteDireccionId,
   ) async {
     try {
-      final query = (_remoteDb.select(_remoteDb.clienteDireccionTable)..where(
-        (t) =>
-            t.clienteId.equals(clienteId) &
-            t.direccionId.equals(clienteDireccionId),
-      ));
+      final query = (_remoteDb.select(_remoteDb.clienteDireccionTable)
+        ..where(
+          (t) =>
+              t.clienteId.equals(clienteId) &
+              t.direccionId.equals(clienteDireccionId),
+        ));
 
       return await query.asyncMap((row) async {
         final pais = await _getPaisCliente(clienteId: clienteId);
@@ -1903,16 +1898,15 @@ GROUP BY ARTICULO_ID, DESCRIPCION
     ClienteImpParam clienteDireccionImpParam,
   ) async {
     try {
-      final requestUri =
-          (usuario.test)
-              ? Uri.http(
-                dotenv.get('URL', fallback: 'localhost:3001'),
-                'api/v1/online/clientes/${clienteDireccionImpParam.clienteId}/direcciones/${clienteDireccionImpParam.id!}',
-              )
-              : Uri.https(
-                dotenv.get('URL', fallback: 'localhost:3001'),
-                'api/v1/online/clientes/${clienteDireccionImpParam.clienteId}/direcciones/${clienteDireccionImpParam.id!}',
-              );
+      final requestUri = (usuario.test)
+          ? Uri.http(
+              dotenv.get('URL', fallback: 'localhost:3001'),
+              'api/v1/online/clientes/${clienteDireccionImpParam.clienteId}/direcciones/${clienteDireccionImpParam.id!}',
+            )
+          : Uri.https(
+              dotenv.get('URL', fallback: 'localhost:3001'),
+              'api/v1/online/clientes/${clienteDireccionImpParam.clienteId}/direcciones/${clienteDireccionImpParam.id!}',
+            );
 
       final response = await _dio.getUri(
         requestUri,
@@ -1953,28 +1947,27 @@ GROUP BY ARTICULO_ID, DESCRIPCION
     try {
       if (direccionId != null) {
         final pais = await _getPaisCliente(clienteId: clienteId);
-        final queryRemote = (_remoteDb.select(
-          _remoteDb.clienteDireccionTable,
-        )..where(
-          (t) =>
-              t.clienteId.equals(clienteId) & t.direccionId.equals(direccionId),
-        ));
+        final queryRemote = (_remoteDb.select(_remoteDb.clienteDireccionTable)
+          ..where(
+            (t) =>
+                t.clienteId.equals(clienteId) &
+                t.direccionId.equals(direccionId),
+          ));
 
-        final clienteDireccionSync =
-            await queryRemote
-                .map((row) => row.toDomain(pais))
-                .getSingleOrNull();
+        final clienteDireccionSync = await queryRemote
+            .map((row) => row.toDomain(pais))
+            .getSingleOrNull();
 
         if (clienteDireccionSync != null) {
           return clienteDireccionSync;
         }
 
-        final queryLocal = (_localDb.select(
-          _localDb.clienteDireccionImpTable,
-        )..where(
-          (t) =>
-              t.clienteId.equals(clienteId) & t.direccionId.equals(direccionId),
-        ));
+        final queryLocal = (_localDb.select(_localDb.clienteDireccionImpTable)
+          ..where(
+            (t) =>
+                t.clienteId.equals(clienteId) &
+                t.direccionId.equals(direccionId),
+          ));
 
         return await queryLocal
             .map(
@@ -1998,17 +1991,18 @@ GROUP BY ARTICULO_ID, DESCRIPCION
     String? searchText,
   ) async {
     try {
-      final query = (_remoteDb.select(_remoteDb.clienteDireccionTable)..where(
-        (t) =>
-            t.clienteId.equals(clienteId) &
-            (t.nombre.contains(searchText ?? '') |
-                t.direccion1.contains(searchText ?? '') |
-                t.direccion1.contains(searchText ?? '') |
-                t.codigoPostal.contains(searchText ?? '') |
-                t.poblacion.contains(searchText ?? '') |
-                t.provincia.contains(searchText ?? '') |
-                t.paisId.contains(searchText ?? '')),
-      ));
+      final query = (_remoteDb.select(_remoteDb.clienteDireccionTable)
+        ..where(
+          (t) =>
+              t.clienteId.equals(clienteId) &
+              (t.nombre.contains(searchText ?? '') |
+                  t.direccion1.contains(searchText ?? '') |
+                  t.direccion1.contains(searchText ?? '') |
+                  t.codigoPostal.contains(searchText ?? '') |
+                  t.poblacion.contains(searchText ?? '') |
+                  t.provincia.contains(searchText ?? '') |
+                  t.paisId.contains(searchText ?? '')),
+        ));
 
       return await query.asyncMap((row) async {
         final pais = await _getPaisCliente(clienteId: clienteId);
@@ -2041,17 +2035,18 @@ GROUP BY ARTICULO_ID, DESCRIPCION
     String? searchText,
   ) async {
     try {
-      final query = (_localDb.select(_localDb.clienteDireccionImpTable)..where(
-        (t) =>
-            t.clienteId.equals(clienteId) &
-            (t.nombre.contains(searchText ?? '') |
-                t.direccion1.contains(searchText ?? '') |
-                t.direccion1.contains(searchText ?? '') |
-                t.codigoPostal.contains(searchText ?? '') |
-                t.poblacion.contains(searchText ?? '') |
-                t.provincia.contains(searchText ?? '') |
-                t.paisId.contains(searchText ?? '')),
-      ));
+      final query = (_localDb.select(_localDb.clienteDireccionImpTable)
+        ..where(
+          (t) =>
+              t.clienteId.equals(clienteId) &
+              (t.nombre.contains(searchText ?? '') |
+                  t.direccion1.contains(searchText ?? '') |
+                  t.direccion1.contains(searchText ?? '') |
+                  t.codigoPostal.contains(searchText ?? '') |
+                  t.poblacion.contains(searchText ?? '') |
+                  t.provincia.contains(searchText ?? '') |
+                  t.paisId.contains(searchText ?? '')),
+        ));
 
       return await query.asyncMap((row) async {
         final pais = await _getPaisCliente(clienteId: row.clienteId);
@@ -2087,16 +2082,15 @@ GROUP BY ARTICULO_ID, DESCRIPCION
       final clienteDireccionImpToJson = clienteDireccionImpDTO.toJson();
       log.d(jsonEncode(clienteDireccionImpToJson));
 
-      final requestUri =
-          (usuario.test)
-              ? Uri.http(
-                dotenv.get('URL', fallback: 'localhost:3001'),
-                'api/v2/online/clientes/${clienteDireccionImpDTO.clienteId}/direccion',
-              )
-              : Uri.https(
-                dotenv.get('URL', fallback: 'localhost:3001'),
-                'api/v2/online/clientes/${clienteDireccionImpDTO.clienteId}/direccion',
-              );
+      final requestUri = (usuario.test)
+          ? Uri.http(
+              dotenv.get('URL', fallback: 'localhost:3001'),
+              'api/v2/online/clientes/${clienteDireccionImpDTO.clienteId}/direccion',
+            )
+          : Uri.https(
+              dotenv.get('URL', fallback: 'localhost:3001'),
+              'api/v2/online/clientes/${clienteDireccionImpDTO.clienteId}/direccion',
+            );
 
       final response = await _dio.postUri(
         requestUri,
@@ -2166,8 +2160,9 @@ GROUP BY ARTICULO_ID, DESCRIPCION
     String direccionGuidImp,
   ) async {
     try {
-      await (_localDb.delete(_localDb.clienteDireccionImpTable)
-        ..where((tbl) => tbl.id.equals(direccionGuidImp))).go();
+      await (_localDb.delete(
+        _localDb.clienteDireccionImpTable,
+      )..where((tbl) => tbl.id.equals(direccionGuidImp))).go();
     } catch (e, stackTrace) {
       Error.throwWithStackTrace(
         AppException.insertDataFailure(e.toString()),
@@ -2177,14 +2172,14 @@ GROUP BY ARTICULO_ID, DESCRIPCION
   }
 
   Future<Pais?> _getPaisCliente({required String clienteId}) async {
-    final clienteDto =
-        await (_remoteDb.select(_remoteDb.clienteTable)
-          ..where((tbl) => tbl.id.equals(clienteId))).getSingle();
+    final clienteDto = await (_remoteDb.select(
+      _remoteDb.clienteTable,
+    )..where((tbl) => tbl.id.equals(clienteId))).getSingle();
 
     final paisDto =
-        await (_remoteDb.select(_remoteDb.paisTable)..where(
-          (tbl) => tbl.id.equalsNullable(clienteDto.paisFiscalId),
-        )).getSingleOrNull();
+        await (_remoteDb.select(_remoteDb.paisTable)
+              ..where((tbl) => tbl.id.equalsNullable(clienteDto.paisFiscalId)))
+            .getSingleOrNull();
 
     return paisDto?.toDomain();
   }
@@ -2210,9 +2205,10 @@ GROUP BY ARTICULO_ID, DESCRIPCION
   Future<List<Sector>> getSectoresList() async {
     final sectoresDto =
         await (_remoteDb.select(_remoteDb.sectorTable)..orderBy([
-          (tbl) => OrderingTerm.desc(tbl.altaSN.equals('S')),
-          (tbl) => OrderingTerm(expression: tbl.id),
-        ])).get();
+              (tbl) => OrderingTerm.desc(tbl.altaSN.equals('S')),
+              (tbl) => OrderingTerm(expression: tbl.id),
+            ]))
+            .get();
 
     return sectoresDto.map((e) => e.toDomain()).toList();
   }
@@ -2290,8 +2286,9 @@ GROUP BY ARTICULO_ID, DESCRIPCION
   }
 
   Future<DateTime> getLastSyncDate() async {
-    final lastSyncDTO =
-        await _localDb.select(_localDb.syncDateTimeTable).getSingle();
+    final lastSyncDTO = await _localDb
+        .select(_localDb.syncDateTimeTable)
+        .getSingle();
     return lastSyncDTO.clienteUltimaSync;
   }
 
@@ -2318,10 +2315,11 @@ GROUP BY ARTICULO_ID, DESCRIPCION
     try {
       final customerListDTO =
           await (_remoteDb.select(_remoteDb.clienteTable)..where(
-            (tbl) =>
-                tbl.telefonoFijo.equals(value) |
-                tbl.telefonoMovil.equals(value),
-          )).get();
+                (tbl) =>
+                    tbl.telefonoFijo.equals(value) |
+                    tbl.telefonoMovil.equals(value),
+              ))
+              .get();
 
       if (customerListDTO.isNotEmpty) {
         return right(
@@ -2329,9 +2327,9 @@ GROUP BY ARTICULO_ID, DESCRIPCION
         );
       }
 
-      final clienteDireccionListDTO =
-          await (_remoteDb.select(_remoteDb.clienteDireccionTable)
-            ..where((tbl) => tbl.telefono.equals(value))).get();
+      final clienteDireccionListDTO = await (_remoteDb.select(
+        _remoteDb.clienteDireccionTable,
+      )..where((tbl) => tbl.telefono.equals(value))).get();
 
       if (clienteDireccionListDTO.isNotEmpty) {
         return right(
@@ -2344,8 +2342,10 @@ GROUP BY ARTICULO_ID, DESCRIPCION
 
       final clienteContactoListDTO =
           await (_remoteDb.select(_remoteDb.clienteContactoTable)..where(
-            (tbl) => tbl.telefono1.equals(value) | tbl.telefono2.equals(value),
-          )).get();
+                (tbl) =>
+                    tbl.telefono1.equals(value) | tbl.telefono2.equals(value),
+              ))
+              .get();
 
       if (clienteContactoListDTO.isNotEmpty) {
         final cliente = await getClienteById(

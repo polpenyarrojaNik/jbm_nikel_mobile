@@ -40,23 +40,21 @@ class ClienteGrupoNetoPage extends ConsumerWidget {
           state.maybeWhen(
             orElse: () => const ProgressIndicatorWidget(),
             error: (e, st) => ErrorMessageWidget(e.toString()),
-            data:
-                (clienteGruposNetosList) =>
-                    (clienteGruposNetosList.isNotEmpty)
-                        ? Expanded(
-                          child: ListView.separated(
-                            itemCount: clienteGruposNetosList.length,
-                            itemBuilder:
-                                (context, i) => ClienteGrupoNetoTile(
-                                  clienteGrupoNeto: clienteGruposNetosList[i],
-                                ),
-                            separatorBuilder: (context, i) => const Divider(),
-                          ),
-                        )
-                        : Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [Text(S.of(context).sinResultados)],
-                        ),
+            data: (clienteGruposNetosList) =>
+                (clienteGruposNetosList.isNotEmpty)
+                ? Expanded(
+                    child: ListView.separated(
+                      itemCount: clienteGruposNetosList.length,
+                      itemBuilder: (context, i) => ClienteGrupoNetoTile(
+                        clienteGrupoNeto: clienteGruposNetosList[i],
+                      ),
+                      separatorBuilder: (context, i) => const Divider(),
+                    ),
+                  )
+                : Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [Text(S.of(context).sinResultados)],
+                  ),
           ),
         ],
       ),
