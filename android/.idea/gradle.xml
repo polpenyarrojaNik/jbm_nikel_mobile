@@ -7,9 +7,9 @@
         <compositeConfiguration>
           <compositeBuild compositeDefinitionSource="SCRIPT">
             <builds>
-              <build path="/opt/homebrew/Caskroom/flutter/3.19.6/flutter/packages/flutter_tools/gradle" name="gradle">
+              <build path="$USER_HOME$/.puro/envs/jbm/flutter/packages/flutter_tools/gradle" name="gradle">
                 <projects>
-                  <project path="/opt/homebrew/Caskroom/flutter/3.19.6/flutter/packages/flutter_tools/gradle" />
+                  <project path="$USER_HOME$/.puro/envs/jbm/flutter/packages/flutter_tools/gradle" />
                 </projects>
               </build>
             </builds>
@@ -20,34 +20,35 @@
         <option name="gradleJvm" value="corretto-17" />
         <option name="modules">
           <set>
-            <option value="$USER_HOME$/.pub-cache/git/better_open_file-59ac27ef9e52fcb9084266093deb5a23466cd686/android" />
-            <option value="$USER_HOME$/.pub-cache/hosted/pub.dev/camera_android_camerax-0.6.13/android" />
-            <option value="$USER_HOME$/.pub-cache/hosted/pub.dev/country_codes-3.3.0/android" />
-            <option value="$USER_HOME$/.pub-cache/hosted/pub.dev/device_info_plus-11.3.0/android" />
-            <option value="$USER_HOME$/.pub-cache/hosted/pub.dev/flutter_archive-6.0.3/android" />
-            <option value="$USER_HOME$/.pub-cache/hosted/pub.dev/flutter_keyboard_visibility-6.0.0/android" />
-            <option value="$USER_HOME$/.pub-cache/hosted/pub.dev/flutter_plugin_android_lifecycle-2.0.24/android" />
-            <option value="$USER_HOME$/.pub-cache/hosted/pub.dev/flutter_secure_storage-9.2.4/android" />
-            <option value="$USER_HOME$/.pub-cache/hosted/pub.dev/geolocator_android-4.6.1/android" />
-            <option value="$USER_HOME$/.pub-cache/hosted/pub.dev/google_maps_flutter_android-2.14.12/android" />
-            <option value="$USER_HOME$/.pub-cache/hosted/pub.dev/google_mlkit_commons-0.9.0/android" />
-            <option value="$USER_HOME$/.pub-cache/hosted/pub.dev/google_mlkit_entity_extraction-0.14.0/android" />
-            <option value="$USER_HOME$/.pub-cache/hosted/pub.dev/google_mlkit_text_recognition-0.14.0/android" />
-            <option value="$USER_HOME$/.pub-cache/hosted/pub.dev/map_launcher-3.5.0/android" />
-            <option value="$USER_HOME$/.pub-cache/hosted/pub.dev/package_info_plus-8.2.1/android" />
-            <option value="$USER_HOME$/.pub-cache/hosted/pub.dev/path_provider_android-2.2.15/android" />
-            <option value="$USER_HOME$/.pub-cache/hosted/pub.dev/share_plus-10.1.4/android" />
-            <option value="$USER_HOME$/.pub-cache/hosted/pub.dev/shared_preferences_android-2.4.6/android" />
-            <option value="$USER_HOME$/.pub-cache/hosted/pub.dev/sqflite_android-2.4.1/android" />
-            <option value="$USER_HOME$/.pub-cache/hosted/pub.dev/sqlite3_flutter_libs-0.5.30/android" />
-            <option value="$USER_HOME$/.pub-cache/hosted/pub.dev/syncfusion_flutter_pdfviewer-28.2.6/android" />
-            <option value="$USER_HOME$/.pub-cache/hosted/pub.dev/url_launcher_android-6.3.14/android" />
+            <option value="$USER_HOME$/.puro/envs/jbm/flutter/packages/flutter_tools/gradle" />
+            <option value="$USER_HOME$/.puro/shared/pub_cache/git/better_open_file-9b84a3a7a4e19d071ff2eef5af0ef36c9bd2c45a/android" />
+            <option value="$USER_HOME$/.puro/shared/pub_cache/hosted/pub.dev/camera_android_camerax-0.6.21/android" />
+            <option value="$USER_HOME$/.puro/shared/pub_cache/hosted/pub.dev/country_codes-3.3.0/android" />
+            <option value="$USER_HOME$/.puro/shared/pub_cache/hosted/pub.dev/device_info_plus-11.5.0/android" />
+            <option value="$USER_HOME$/.puro/shared/pub_cache/hosted/pub.dev/flutter_archive-6.0.3/android" />
+            <option value="$USER_HOME$/.puro/shared/pub_cache/hosted/pub.dev/flutter_keyboard_visibility-6.0.0/android" />
+            <option value="$USER_HOME$/.puro/shared/pub_cache/hosted/pub.dev/flutter_plugin_android_lifecycle-2.0.30/android" />
+            <option value="$USER_HOME$/.puro/shared/pub_cache/hosted/pub.dev/flutter_secure_storage-9.2.4/android" />
+            <option value="$USER_HOME$/.puro/shared/pub_cache/hosted/pub.dev/geolocator_android-5.0.2/android" />
+            <option value="$USER_HOME$/.puro/shared/pub_cache/hosted/pub.dev/google_maps_flutter_android-2.18.2/android" />
+            <option value="$USER_HOME$/.puro/shared/pub_cache/hosted/pub.dev/google_mlkit_commons-0.11.0/android" />
+            <option value="$USER_HOME$/.puro/shared/pub_cache/hosted/pub.dev/google_mlkit_entity_extraction-0.15.1/android" />
+            <option value="$USER_HOME$/.puro/shared/pub_cache/hosted/pub.dev/google_mlkit_text_recognition-0.15.0/android" />
+            <option value="$USER_HOME$/.puro/shared/pub_cache/hosted/pub.dev/jni-0.14.2/android" />
+            <option value="$USER_HOME$/.puro/shared/pub_cache/hosted/pub.dev/map_launcher-4.4.2/android" />
+            <option value="$USER_HOME$/.puro/shared/pub_cache/hosted/pub.dev/package_info_plus-8.3.1/android" />
+            <option value="$USER_HOME$/.puro/shared/pub_cache/hosted/pub.dev/path_provider_android-2.2.18/android" />
+            <option value="$USER_HOME$/.puro/shared/pub_cache/hosted/pub.dev/sentry_flutter-9.6.0/android" />
+            <option value="$USER_HOME$/.puro/shared/pub_cache/hosted/pub.dev/share_plus-11.1.0/android" />
+            <option value="$USER_HOME$/.puro/shared/pub_cache/hosted/pub.dev/shared_preferences_android-2.4.12/android" />
+            <option value="$USER_HOME$/.puro/shared/pub_cache/hosted/pub.dev/sqflite_android-2.4.2+2/android" />
+            <option value="$USER_HOME$/.puro/shared/pub_cache/hosted/pub.dev/sqlite3_flutter_libs-0.5.39/android" />
+            <option value="$USER_HOME$/.puro/shared/pub_cache/hosted/pub.dev/syncfusion_flutter_pdfviewer-30.2.7/android" />
+            <option value="$USER_HOME$/.puro/shared/pub_cache/hosted/pub.dev/url_launcher_android-6.3.18/android" />
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
-            <option value="/opt/homebrew/Caskroom/flutter/3.19.6/flutter/packages/flutter_tools/gradle" />
           </set>
         </option>
-        <option name="resolveExternalAnnotations" value="false" />
       </GradleProjectSettings>
     </option>
   </component>
