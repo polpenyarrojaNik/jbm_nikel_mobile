@@ -1680,7 +1680,7 @@ GROUP BY ARTICULO_ID, DESCRIPCION
 
       final requestUri = (usuario.test)
           ? Uri.http(
-              dotenv.get('URL', fallback: 'localhost:3001'),
+              dotenv.get('URL_TEST', fallback: 'localhost:3001'),
               'api/v1/online/clientes/${clienteContactoImpDTO.clienteId}/contacto',
             )
           : Uri.https(
@@ -2084,7 +2084,7 @@ GROUP BY ARTICULO_ID, DESCRIPCION
 
       final requestUri = (usuario.test)
           ? Uri.http(
-              dotenv.get('URL', fallback: 'localhost:3001'),
+              dotenv.get('URL_TEST', fallback: 'localhost:3001'),
               'api/v2/online/clientes/${clienteDireccionImpDTO.clienteId}/direccion',
             )
           : Uri.https(

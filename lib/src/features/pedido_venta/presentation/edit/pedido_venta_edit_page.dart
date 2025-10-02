@@ -355,12 +355,12 @@ class _PedidoVentaEditPageState extends ConsumerState<PedidoVentaEditPage> {
     ref.invalidate(pedidoVentaIndexScreenControllerProvider);
     // ref.invalidate(getPedidoVentaBorradorPendiente);
 
-    if (!pedidoLocalParam.isLocal) {
+    if (widget.createPedidoFromClienteId != null) {
+      unawaited(context.router.maybePop());
+    } else {
       context.router.popUntil(
         (route) => route.settings.name == PedidoVentaListRoute.name,
       );
-    } else {
-      unawaited(context.router.maybePop());
     }
 
     await transaction.finish();

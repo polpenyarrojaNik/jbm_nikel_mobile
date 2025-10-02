@@ -9,9 +9,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:money2/money2.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
 
-// import 'package:upgrader/upgrader.dart';
-
-import 'src/core/application/log_service.dart';
 import 'src/core/helpers/extension.dart';
 import 'src/core/presentation/app.dart';
 
@@ -27,8 +24,8 @@ void main() async {
       //TODO REMOVE this for release builds
       // await Upgrader.clearSavedSettings();
 
-      await SentryFlutter.init(
-        (options) {
+      if (kReleaseMode) {
+        await SentryFlutter.init((options) {
           options.dsn = dotenv.get('SENTRY_DNS');
           options.environment = kReleaseMode ? 'prod' : 'dev';
           options
@@ -38,18 +35,27 @@ void main() async {
               _sentryBeforeSendOptions(event);
           options.tracesSampleRate = 1;
           options.enableAutoPerformanceTracing = false;
-        },
-        appRunner: () => runApp(
-          ProviderScope(observers: [RiverpodLogger()], child: const App()),
-        ),
-      );
+        });
+      }
+
+      runApp(ProviderScope(child: const App()));
 
       FlutterError.onError = (FlutterErrorDetails detalles) {
         FlutterError.presentError(detalles);
-        Sentry.captureException(detalles.exception, stackTrace: detalles.stack);
+        if (kReleaseMode) {
+          Sentry.captureException(
+            detalles.exception,
+            stackTrace: detalles.stack,
+          );
+        }
       };
       ErrorWidget.builder = (FlutterErrorDetails detalles) {
-        Sentry.captureException(detalles.exception, stackTrace: detalles.stack);
+        if (kReleaseMode) {
+          Sentry.captureException(
+            detalles.exception,
+            stackTrace: detalles.stack,
+          );
+        }
 
         return Scaffold(
           appBar: AppBar(
@@ -63,7 +69,9 @@ void main() async {
     (Object error, StackTrace stack) {
       // ignore: avoid_print
       print(error);
-      Sentry.captureException(error, stackTrace: stack);
+      if (kReleaseMode) {
+        Sentry.captureException(error, stackTrace: stack);
+      }
 
       exit(1);
     },

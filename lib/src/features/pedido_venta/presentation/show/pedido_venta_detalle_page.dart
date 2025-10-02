@@ -193,12 +193,12 @@ class ClienteInfoContainer extends StatelessWidget {
             ChipContainer(
               text: (pedidoVenta.pedidoVentaEstado != null)
                   ? pedidoVenta.pedidoVentaEstado!.descripcion
-                  : getEstadoPedidoLocal(
+                  : (getEstadoPedidoLocal(
                       context,
                       pedidoVenta.enviada,
                       pedidoVenta.enviada,
                       pedidoVenta.tratada,
-                    )!,
+                    )!),
               color: pedidoVentaEstadoColor(
                 pedidoVentaEstadoId: pedidoVenta.pedidoVentaEstado?.id,
                 opacidad: 0.25,
@@ -231,8 +231,8 @@ class ClienteInfoContainer extends StatelessWidget {
           ),
           maxLines: 1,
           overflow: TextOverflow.ellipsis,
-          style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-            color: Theme.of(context).textTheme.bodySmall!.color,
+          style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+            color: Theme.of(context).textTheme.bodySmall?.color,
           ),
         ),
         Text(
@@ -242,8 +242,8 @@ class ClienteInfoContainer extends StatelessWidget {
           ),
           maxLines: 1,
           overflow: TextOverflow.ellipsis,
-          style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-            color: Theme.of(context).textTheme.bodySmall!.color,
+          style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+            color: Theme.of(context).textTheme.bodySmall?.color,
           ),
         ),
       ],
