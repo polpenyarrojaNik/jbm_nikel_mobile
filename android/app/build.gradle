@@ -41,7 +41,7 @@ android {
 
     defaultConfig {
         applicationId "es.nikel.jbm.jbm_nikel_mobile"
-        minSdk = Math.max(flutter.minSdkVersion, 23)
+        minSdk = Math.max(flutter.minSdkVersion, 26)
         targetSdk = flutter.targetSdkVersion
         versionCode = flutter.versionCode
         versionName = flutter.versionName

@@ -355,7 +355,8 @@ class _PedidoVentaEditPageState extends ConsumerState<PedidoVentaEditPage> {
     ref.invalidate(pedidoVentaIndexScreenControllerProvider);
     // ref.invalidate(getPedidoVentaBorradorPendiente);
 
-    if (widget.createPedidoFromClienteId != null) {
+    if (widget.createPedidoFromClienteId != null ||
+        widget.addLineaDesdeArticulo != null) {
       unawaited(context.router.maybePop());
     } else {
       context.router.popUntil(
