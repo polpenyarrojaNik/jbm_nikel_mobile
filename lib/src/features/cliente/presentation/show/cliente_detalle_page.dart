@@ -990,6 +990,7 @@ class _DatosRelacionados extends StatelessWidget {
             ),
           ),
         ),
+
         const Divider(),
         DatosExtraRow(
           title: S.of(context).cliente_show_clienteRappel_titulo,
@@ -1074,6 +1075,28 @@ class _Consultas extends StatelessWidget {
           title: S.of(context).cliente_show_clienteDevolucion_titulo,
           navigationTo: () => context.router.push(
             ClienteDevolucionRoute(
+              clienteId: cliente.id,
+              nombreCliente: cliente.nombreCliente,
+            ),
+          ),
+        ),
+        const Divider(),
+
+        DatosExtraRow(
+          title: S.of(context).PDFdeliveryNotes,
+          navigationTo: () => context.router.push(
+            ClienteAlbaranRoute(
+              clienteId: cliente.id,
+              nombreCliente: cliente.nombreCliente,
+            ),
+          ),
+        ),
+        const Divider(),
+
+        DatosExtraRow(
+          title: S.of(context).PDFinvoices,
+          navigationTo: () => context.router.push(
+            ClienteFacturaRoute(
               clienteId: cliente.id,
               nombreCliente: cliente.nombreCliente,
             ),

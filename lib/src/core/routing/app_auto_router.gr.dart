@@ -905,6 +905,71 @@ class ClienteAdjuntoRouteArgs {
 }
 
 /// generated route for
+/// [ClienteAlbaranPage]
+class ClienteAlbaranRoute extends PageRouteInfo<ClienteAlbaranRouteArgs> {
+  ClienteAlbaranRoute({
+    Key? key,
+    required String clienteId,
+    required String? nombreCliente,
+    List<PageRouteInfo>? children,
+  }) : super(
+         ClienteAlbaranRoute.name,
+         args: ClienteAlbaranRouteArgs(
+           key: key,
+           clienteId: clienteId,
+           nombreCliente: nombreCliente,
+         ),
+         initialChildren: children,
+       );
+
+  static const String name = 'ClienteAlbaranRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      final args = data.argsAs<ClienteAlbaranRouteArgs>();
+      return ClienteAlbaranPage(
+        key: args.key,
+        clienteId: args.clienteId,
+        nombreCliente: args.nombreCliente,
+      );
+    },
+  );
+}
+
+class ClienteAlbaranRouteArgs {
+  const ClienteAlbaranRouteArgs({
+    this.key,
+    required this.clienteId,
+    required this.nombreCliente,
+  });
+
+  final Key? key;
+
+  final String clienteId;
+
+  final String? nombreCliente;
+
+  @override
+  String toString() {
+    return 'ClienteAlbaranRouteArgs{key: $key, clienteId: $clienteId, nombreCliente: $nombreCliente}';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
+    if (other is! ClienteAlbaranRouteArgs) return false;
+    return key == other.key &&
+        clienteId == other.clienteId &&
+        nombreCliente == other.nombreCliente;
+  }
+
+  @override
+  int get hashCode =>
+      key.hashCode ^ clienteId.hashCode ^ nombreCliente.hashCode;
+}
+
+/// generated route for
 /// [ClienteArticulosTopListPage]
 class ClienteArticulosTopListRoute
     extends PageRouteInfo<ClienteArticulosTopListRouteArgs> {
@@ -1511,6 +1576,71 @@ class ClienteDireccionesListRouteArgs {
       clienteId.hashCode ^
       paisCliente.hashCode ^
       nombreCliente.hashCode;
+}
+
+/// generated route for
+/// [ClienteFacturaPage]
+class ClienteFacturaRoute extends PageRouteInfo<ClienteFacturaRouteArgs> {
+  ClienteFacturaRoute({
+    Key? key,
+    required String clienteId,
+    required String? nombreCliente,
+    List<PageRouteInfo>? children,
+  }) : super(
+         ClienteFacturaRoute.name,
+         args: ClienteFacturaRouteArgs(
+           key: key,
+           clienteId: clienteId,
+           nombreCliente: nombreCliente,
+         ),
+         initialChildren: children,
+       );
+
+  static const String name = 'ClienteFacturaRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      final args = data.argsAs<ClienteFacturaRouteArgs>();
+      return ClienteFacturaPage(
+        key: args.key,
+        clienteId: args.clienteId,
+        nombreCliente: args.nombreCliente,
+      );
+    },
+  );
+}
+
+class ClienteFacturaRouteArgs {
+  const ClienteFacturaRouteArgs({
+    this.key,
+    required this.clienteId,
+    required this.nombreCliente,
+  });
+
+  final Key? key;
+
+  final String clienteId;
+
+  final String? nombreCliente;
+
+  @override
+  String toString() {
+    return 'ClienteFacturaRouteArgs{key: $key, clienteId: $clienteId, nombreCliente: $nombreCliente}';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
+    if (other is! ClienteFacturaRouteArgs) return false;
+    return key == other.key &&
+        clienteId == other.clienteId &&
+        nombreCliente == other.nombreCliente;
+  }
+
+  @override
+  int get hashCode =>
+      key.hashCode ^ clienteId.hashCode ^ nombreCliente.hashCode;
 }
 
 /// generated route for

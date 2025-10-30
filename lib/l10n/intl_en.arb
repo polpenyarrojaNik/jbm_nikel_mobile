@@ -419,5 +419,7 @@
   "until": "Until",
   "freightCharge": "Freight charge",
   "unknownFamily": "Unknown family",
-  "unknownCustomer": "Unknown customer"
+  "unknownCustomer": "Unknown customer",
+  "PDFdeliveryNotes": "PDF Delivery notes",
+  "PDFinvoices": "PDF Invoices"
 }

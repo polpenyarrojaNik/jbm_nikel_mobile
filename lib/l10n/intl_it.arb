@@ -417,5 +417,7 @@
   "cancel": "Annulla",
   "amount": "Quantità",
   "freightCharge": "Spese di trasporto",
-  "until": "Fino a"
+  "until": "Fino a",
+  "PDFdeliveryNotes": "PDF Buoni di spedizione",
+  "PDFinvoices": "PDFFatture"
 }

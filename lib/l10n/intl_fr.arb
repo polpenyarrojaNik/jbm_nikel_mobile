@@ -417,5 +417,7 @@
   "cancel": "Annuler",
   "amount": "Montant",
   "freightCharge": "Frais de transport",
-  "until": "Jusqu'à"
+  "until": "Jusqu'à",
+  "PDFdeliveryNotes": "PDF Bons de livraison",
+  "PDFinvoices": "PDF Factures"
 }

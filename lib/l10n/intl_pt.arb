@@ -417,5 +417,7 @@
   "cancel": "Cancelar",
   "amount": "Quantia",
   "freightCharge": "Taxa de frete",
-  "until": "Até"
+  "until": "Até",
+  "PDFdeliveryNotes": "PDF Bons de entrega",
+  "PDFinvoices": "PDF Faturas"
 }

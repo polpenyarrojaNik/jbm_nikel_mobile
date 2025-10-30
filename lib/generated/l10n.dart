@@ -4293,6 +4293,26 @@ class S {
       args: [],
     );
   }
+
+  /// `PDF Delivery notes`
+  String get PDFdeliveryNotes {
+    return Intl.message(
+      'PDF Delivery notes',
+      name: 'PDFdeliveryNotes',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `PDF Invoices`
+  String get PDFinvoices {
+    return Intl.message(
+      'PDF Invoices',
+      name: 'PDFinvoices',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

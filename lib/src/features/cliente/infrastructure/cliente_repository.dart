@@ -36,11 +36,13 @@ import '../../visitas/domain/visita.dart';
 import '../../visitas/infrastructure/visita_repository.dart';
 import '../domain/cliente.dart';
 import '../domain/cliente_adjunto.dart';
+import '../domain/cliente_albaran.dart';
 import '../domain/cliente_contacto.dart';
 import '../domain/cliente_contacto_imp.dart';
 import '../domain/cliente_descuento.dart';
 import '../domain/cliente_direccion.dart';
 import '../domain/cliente_direccion_imp.dart';
+import '../domain/cliente_factura.dart';
 import '../domain/cliente_grupo_neto.dart';
 import '../domain/cliente_imp.dart';
 import '../domain/cliente_imp_param.dart';
@@ -51,10 +53,12 @@ import '../domain/cliente_telefono.dart';
 import '../domain/cliente_ventas_articulo.dart';
 import '../domain/cliente_ventas_mes.dart';
 import 'cliente_adjunto_dto.dart';
+import 'cliente_albaran_dto.dart';
 import 'cliente_contacto_dto.dart';
 import 'cliente_contacto_imp_dto.dart';
 import 'cliente_direccion_dto.dart';
 import 'cliente_direccion_imp_dto.dart';
+import 'cliente_factura_dto.dart';
 import 'cliente_imp_dto.dart';
 import 'cliente_ventas_articulo_dto.dart';
 import 'cliente_ventas_mes_dto.dart';
@@ -216,7 +220,9 @@ final clienteDireccionImpListInSyncByClienteProvider = FutureProvider
 
 class ClienteRepository {
   static const pageSize = 100;
-  static const clienteVentasArticuloPageSize = 50;
+  static const clienteAuxiliarPageSize = 50;
+  final List<ClienteAlbaran> clienteAlbaranList = [];
+  final List<ClienteFactura> clienteFacturaList = [];
 
   final RemoteAppDatabase _remoteDb;
   final LocalAppDatabase _localDb;
@@ -2361,5 +2367,343 @@ GROUP BY ARTICULO_ID, DESCRIPCION
       }
       return left(AppException.unexpectedError());
     }
+  }
+
+  Future<List<ClienteAlbaran>> getAlbaranesList({
+    required int page,
+    required String customerId,
+  }) async {
+    final requestUri = (usuario.test)
+        ? Uri.http(
+            dotenv.get('URL', fallback: 'localhost:3001'),
+            'api/v1/online/clientes/$customerId/albaranes',
+            {
+              'page': page.toString(),
+              'pageSize': clienteAuxiliarPageSize.toString(),
+            },
+          )
+        : Uri.https(
+            dotenv.get('URL', fallback: 'localhost:3001'),
+            'api/v1/online/clientes/$customerId/albaranes',
+            {
+              'page': page.toString(),
+              'pageSize': clienteAuxiliarPageSize.toString(),
+            },
+          );
+
+    if (page <= 1) {
+      clienteAlbaranList.clear();
+    }
+
+    final divisaId = await _getDivisaIdCliente(clienteId: customerId);
+    final pais = await _getPaisCliente(clienteId: customerId);
+
+    final clienteAlbaranDTOList = await _remoteGetClienteAlbaranDto(
+      requestUri: requestUri,
+      jsonDataSelector: (json) => json['data'],
+      provisionalToken: usuario.provisionalToken,
+    );
+
+    clienteAlbaranList.addAll(
+      clienteAlbaranDTOList.map((e) => e.toDomain(pais, divisaId)).toList(),
+    );
+
+    return clienteAlbaranList;
+  }
+
+  Future<List<ClienteFactura>> getFacturasList({
+    required int page,
+    required String customerId,
+  }) async {
+    final requestUri = (usuario.test)
+        ? Uri.http(
+            dotenv.get('URL', fallback: 'localhost:3001'),
+            'api/v1/online/clientes/$customerId/facturas',
+            {
+              'page': page.toString(),
+              'pageSize': clienteAuxiliarPageSize.toString(),
+            },
+          )
+        : Uri.https(
+            dotenv.get('URL', fallback: 'localhost:3001'),
+            'api/v1/online/clientes/$customerId/facturas',
+            {
+              'page': page.toString(),
+              'pageSize': clienteAuxiliarPageSize.toString(),
+            },
+          );
+
+    if (page <= 1) {
+      clienteFacturaList.clear();
+    }
+
+    final divisaId = await _getDivisaIdCliente(clienteId: customerId);
+
+    final clienteFacturaDTOList = await _remoteGetClienteFacturaDto(
+      requestUri: requestUri,
+      jsonDataSelector: (json) => json['data'],
+      provisionalToken: usuario.provisionalToken,
+    );
+
+    clienteFacturaList.addAll(
+      clienteFacturaDTOList.map((e) => e.toDomain(divisaId)).toList(),
+    );
+
+    return clienteFacturaList;
+  }
+
+  Future<int> getAlbaranesCountList({required String clienteId}) async {
+    final requestUri = (usuario.test)
+        ? Uri.http(
+            dotenv.get('URL', fallback: 'localhost:3001'),
+            'api/v1/online/clientes/$clienteId/albaranes_count',
+          )
+        : Uri.https(
+            dotenv.get('URL', fallback: 'localhost:3001'),
+            'api/v1/online/clientes/$clienteId/albaranes_count',
+          );
+
+    final clienteAlbaranCount = await _remoteGetClienteAlbaranCount(
+      requestUri: requestUri,
+      jsonDataSelector: (json) => json['data'],
+      provisionalToken: usuario.provisionalToken,
+    );
+
+    return clienteAlbaranCount;
+  }
+
+  Future<int> getFacturasCountList({required String clienteId}) async {
+    final requestUri = (usuario.test)
+        ? Uri.http(
+            dotenv.get('URL', fallback: 'localhost:3001'),
+            'api/v1/online/clientes/$clienteId/facturas_count',
+          )
+        : Uri.https(
+            dotenv.get('URL', fallback: 'localhost:3001'),
+            'api/v1/online/clientes/$clienteId/facturas_count',
+          );
+
+    final clienteFacturaCount = await _remoteGetClienteFacturaCount(
+      requestUri: requestUri,
+      jsonDataSelector: (json) => json['data'],
+      provisionalToken: usuario.provisionalToken,
+    );
+
+    return clienteFacturaCount;
+  }
+
+  Future<File?> getAlbaranDocumentFile({
+    required AdjuntoParam adjuntoParam,
+    required String provisionalToken,
+    required bool test,
+  }) async {
+    if (adjuntoParam.nombreArchivo != '') {
+      final query = {'NOMBRE_ARCHIVO': adjuntoParam.nombreArchivo};
+      final data = await _remoteGetAttachment(
+        requestUri: (test)
+            ? Uri.http(
+                dotenv.get('URL', fallback: 'localhost:3001'),
+                'api/v1/online/adjunto/albaran/${adjuntoParam.id}',
+                query,
+              )
+            : Uri.https(
+                dotenv.get('URL', fallback: 'localhost:3001'),
+                'api/v1/online/adjunto/albaran/${adjuntoParam.id}',
+                query,
+              ),
+        provisionalToken: provisionalToken,
+      );
+
+      try {
+        final cahceDirectories = await getTemporaryDirectory();
+
+        final file = await File(
+          '${cahceDirectories.path}/albaran/${adjuntoParam.id}/${adjuntoParam.nombreArchivo ?? ''}',
+        ).create(recursive: true);
+        final raf = file.openSync(mode: FileMode.write);
+        raf.writeFromSync(data);
+        await raf.close();
+        return file;
+      } catch (e, stackTrace) {
+        Error.throwWithStackTrace(
+          AppException.createFileInCacheFailure(e.toString()),
+          stackTrace,
+        );
+      }
+    }
+
+    return null;
+  }
+
+  Future<File?> getFacturaDocumentFile({
+    required AdjuntoParam adjuntoParam,
+    required String provisionalToken,
+    required bool test,
+  }) async {
+    if (adjuntoParam.nombreArchivo != '') {
+      final query = {'NOMBRE_ARCHIVO': adjuntoParam.nombreArchivo};
+      final data = await _remoteGetAttachment(
+        requestUri: (test)
+            ? Uri.http(
+                dotenv.get('URL', fallback: 'localhost:3001'),
+                'api/v1/online/adjunto/factura/${adjuntoParam.id}',
+                query,
+              )
+            : Uri.https(
+                dotenv.get('URL', fallback: 'localhost:3001'),
+                'api/v1/online/adjunto/factura/${adjuntoParam.id}',
+                query,
+              ),
+        provisionalToken: provisionalToken,
+      );
+
+      try {
+        final cahceDirectories = await getTemporaryDirectory();
+
+        final file = await File(
+          '${cahceDirectories.path}/factura/${adjuntoParam.id}/${adjuntoParam.nombreArchivo ?? ''}',
+        ).create(recursive: true);
+        final raf = file.openSync(mode: FileMode.write);
+        raf.writeFromSync(data);
+        await raf.close();
+        return file;
+      } catch (e, stackTrace) {
+        Error.throwWithStackTrace(
+          AppException.createFileInCacheFailure(e.toString()),
+          stackTrace,
+        );
+      }
+    }
+
+    return null;
+  }
+
+  Future<List<ClienteAlbaranDTO>> _remoteGetClienteAlbaranDto({
+    required Uri requestUri,
+    required dynamic Function(dynamic json) jsonDataSelector,
+    required String provisionalToken,
+  }) async {
+    try {
+      final response = await _dio.getUri(
+        requestUri,
+        options: Options(
+          headers: {'authorization': 'Bearer $provisionalToken'},
+        ),
+      );
+      if (response.statusCode == 200) {
+        final data = jsonDataSelector(response.data) as List<dynamic>;
+        return data
+            .map((e) => ClienteAlbaranDTO.fromJson(e as Map<String, dynamic>))
+            .toList();
+      }
+      throw AppException.restApiFailure(
+        response.statusCode ?? 400,
+        response.statusMessage ?? '',
+      );
+    } catch (e, stackTrace) {
+      Error.throwWithStackTrace(
+        getApiError(e, stackTrace, errorLogger),
+        stackTrace,
+      );
+    }
+  }
+
+  Future<List<ClienteFacturaDTO>> _remoteGetClienteFacturaDto({
+    required Uri requestUri,
+    required dynamic Function(dynamic json) jsonDataSelector,
+    required String provisionalToken,
+  }) async {
+    try {
+      final response = await _dio.getUri(
+        requestUri,
+        options: Options(
+          headers: {'authorization': 'Bearer $provisionalToken'},
+        ),
+      );
+      if (response.statusCode == 200) {
+        final data = jsonDataSelector(response.data) as List<dynamic>;
+        return data
+            .map((e) => ClienteFacturaDTO.fromJson(e as Map<String, dynamic>))
+            .toList();
+      }
+      throw AppException.restApiFailure(
+        response.statusCode ?? 400,
+        response.statusMessage ?? '',
+      );
+    } catch (e, stackTrace) {
+      Error.throwWithStackTrace(
+        getApiError(e, stackTrace, errorLogger),
+        stackTrace,
+      );
+    }
+  }
+
+  Future<int> _remoteGetClienteAlbaranCount({
+    required Uri requestUri,
+    required dynamic Function(dynamic json) jsonDataSelector,
+    required String provisionalToken,
+  }) async {
+    try {
+      final response = await _dio.getUri(
+        requestUri,
+        options: Options(
+          headers: {'authorization': 'Bearer $provisionalToken'},
+        ),
+      );
+      if (response.statusCode == 200) {
+        final data = jsonDataSelector(response.data) as int;
+        return data;
+      }
+      throw AppException.restApiFailure(
+        response.statusCode ?? 400,
+        response.statusMessage ?? '',
+      );
+    } catch (e, stackTrace) {
+      Error.throwWithStackTrace(
+        getApiError(e, stackTrace, errorLogger),
+        stackTrace,
+      );
+    }
+  }
+
+  Future<int> _remoteGetClienteFacturaCount({
+    required Uri requestUri,
+    required dynamic Function(dynamic json) jsonDataSelector,
+    required String provisionalToken,
+  }) async {
+    try {
+      final response = await _dio.getUri(
+        requestUri,
+        options: Options(
+          headers: {'authorization': 'Bearer $provisionalToken'},
+        ),
+      );
+      if (response.statusCode == 200) {
+        final data = jsonDataSelector(response.data) as int;
+        return data;
+      }
+      throw AppException.restApiFailure(
+        response.statusCode ?? 400,
+        response.statusMessage ?? '',
+      );
+    } catch (e, stackTrace) {
+      Error.throwWithStackTrace(
+        getApiError(e, stackTrace, errorLogger),
+        stackTrace,
+      );
+    }
+  }
+
+  Future<String?> _getDivisaIdCliente({required String clienteId}) async {
+    final clienteDto = await (_remoteDb.select(
+      _remoteDb.clienteTable,
+    )..where((tbl) => tbl.id.equals(clienteId))).getSingle();
+
+    final divisaDto =
+        await (_remoteDb.select(_remoteDb.divisaTable)
+              ..where((tbl) => tbl.id.equalsNullable(clienteDto.divisaId)))
+            .getSingleOrNull();
+
+    return divisaDto?.id;
   }
 }

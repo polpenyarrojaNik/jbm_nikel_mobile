@@ -24,6 +24,7 @@ import '../../features/cliente/domain/cliente.dart';
 import '../../features/cliente/domain/cliente_imp_param.dart';
 import '../../features/cliente/presentation/index/cliente_lista_page.dart';
 import '../../features/cliente/presentation/show/cliente_adjunto_page.dart';
+import '../../features/cliente/presentation/show/cliente_albaran_page.dart';
 import '../../features/cliente/presentation/show/cliente_articulo_top_lista_page.dart';
 import '../../features/cliente/presentation/show/cliente_contacto_edit_page.dart';
 import '../../features/cliente/presentation/show/cliente_contacto_list_page.dart';
@@ -34,6 +35,7 @@ import '../../features/cliente/presentation/show/cliente_devolucion_page.dart';
 import '../../features/cliente/presentation/show/cliente_direccion_edit_page.dart';
 import '../../features/cliente/presentation/show/cliente_direccion_list_page.dart';
 import '../../features/cliente/presentation/show/cliente_direccion_seleccionar_pais_page.dart';
+import '../../features/cliente/presentation/show/cliente_factura_page.dart';
 import '../../features/cliente/presentation/show/cliente_factura_pendiente_page.dart';
 import '../../features/cliente/presentation/show/cliente_grupo_neto_page.dart';
 import '../../features/cliente/presentation/show/cliente_pedidos_page.dart';
@@ -171,6 +173,9 @@ class AppRouter extends RootStackRouter {
       page: ClienteUltimosPreciosRoute.page,
       path: '/cliente/:id/ultimos-precios',
     ),
+    AutoRoute(page: ClienteAlbaranRoute.page, path: '/cliente/:id/albaran'),
+    AutoRoute(page: ClienteFacturaRoute.page, path: '/cliente/:id/factura'),
+
     AutoRoute(page: PedidoVentaListRoute.page, path: '/pedido'),
     AutoRoute(page: PedidoVentaDetalleRoute.page, path: '/pedido/:id'),
     AutoRoute(
@@ -300,37 +305,3 @@ class AutoRouteLogObserver extends AutoRouterObserver {
   void didChangeTabRoute(TabPageRoute route, TabPageRoute previousRoute) =>
       log.d('Route: [tab route re-visited: ${route.name}');
 }
-
-// class RouteGuard extends AutoRedirectGuard {
-//   final WidgetRef ref;
-//   RouteGuard(this.ref) {
-//     ref.listen<Usuario?>(usuarioNotifierProvider, (_, state) {
-//       if (state == null) {
-//         reevaluate();
-//       } else {}
-//     });
-//   }
-
-//   @override
-//   void onNavigation(NavigationResolver resolver, StackRouter router) {
-//     final usuario = ref.read(usuarioNotifierProvider);
-//     if (usuario != null) return resolver.next();
-//     router.push(
-//       LoginRoute(
-//         onLoginCallback: (_) {
-//           resolver.next();
-//           router.removeLast();
-//         },
-//       ),
-//     );
-//   }
-
-//   @override
-//   Future<bool> canNavigate(RouteMatch route) async {
-//     final usuario = ref.read(usuarioNotifierProvider);
-//     if (usuario == null) {
-//       return false;
-//     }
-//     return true;
-//   }
-// }
