@@ -299,14 +299,13 @@ class _SelecionarCantidadPageState
                       ),
                     const Gap(8),
                     statePrecioTarifa.when(
-                      data: (preciosTarifaList) => ListView.separated(
+                      data: (preciosTarifaList) => ListView.builder(
                         shrinkWrap: true,
                         physics: const NeverScrollableScrollPhysics(),
                         itemCount: preciosTarifaList.length,
                         itemBuilder: (context, i) => ArticuloPrecioTarifaTile(
                           articuloPrecioTarifa: preciosTarifaList[i],
                         ),
-                        separatorBuilder: (context, i) => const Divider(),
                       ),
                       error: (error, _) =>
                           Center(child: ErrorMessageWidget(error.toString())),
