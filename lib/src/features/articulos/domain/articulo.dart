@@ -77,6 +77,7 @@ abstract class Articulo with _$Articulo {
     String? gs1128Caja,
     String? gs1128Palet,
     int? ventasOrden,
+    Money? costeUnitario,
     required Money ventasAnyoActual,
     required Money ventasAnyoAnterior,
     required Money ventasHaceDosAnyos,

@@ -21,5 +21,7 @@ abstract class Usuario with _$Usuario {
     required String version,
     required String buildNumber,
     required String deviceInfo,
+    required bool costeSn,
+    required bool filtroRepresentante,
   }) = _Usuario;
 }

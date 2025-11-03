@@ -4313,6 +4313,16 @@ class S {
       args: [],
     );
   }
+
+  /// `Unit cost`
+  String get unitCost {
+    return Intl.message(
+      'Unit cost',
+      name: 'unitCost',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

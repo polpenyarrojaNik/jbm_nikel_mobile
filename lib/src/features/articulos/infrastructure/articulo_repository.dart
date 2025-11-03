@@ -85,13 +85,9 @@ final articuloComponenteListProvider = FutureProvider.autoDispose
 final articuloPrecioTarifaListProvider = FutureProvider.autoDispose
     .family<List<ArticuloPrecioTarifa>, String>((ref, articuloId) async {
       final articuloRepository = ref.watch(articuloRepositoryProvider);
-      final usuario = await ref
-          .watch(usuarioServiceProvider)
-          .getSignedInUsuario();
 
       return articuloRepository.getArticuloPrecioTarifaListaById(
         articuloId: articuloId,
-        usuarioId: usuario!.id,
       );
     });
 
@@ -506,29 +502,42 @@ AND estadisticas_venta.cliente_id IN (SELECT clientes_usuario.cliente_id
 
   Future<List<ArticuloPrecioTarifa>> getArticuloPrecioTarifaListaById({
     required String articuloId,
-    required String usuarioId,
   }) async {
+    final usuario = await _usuario.getSignedInUsuario();
+
     try {
-      final query = await _remoteDb
-          .customSelect(
-            '''
+      final query = usuario!.filtroRepresentante
+          ? await _remoteDb
+                .customSelect(
+                  '''
+          SELECT *
+            FROM ARTICULOS_TARIFA_PRECIO
+            INNER JOIN USUARIO_TARIFA ON ARTICULOS_TARIFA_PRECIO.TARIFA_ID = USUARIO_TARIFA.TARIFA_ID
+          WHERE ARTICULOS_TARIFA_PRECIO.VISIBLE_SN = 'S'
+                AND ARTICULOS_TARIFA_PRECIO.ARTICULO_ID = :articuloId
+                AND USUARIO_TARIFA.USUARIO_ID = :usuarioId
+                ;
+      ''',
+                  variables: [Variable(articuloId), Variable(usuario.id)],
+                  readsFrom: {
+                    _remoteDb.articuloGrupoNetoTable,
+                    _remoteDb.usuarioTarifaTable,
+                  },
+                )
+                .get()
+          : await _remoteDb
+                .customSelect(
+                  '''
 SELECT *
   FROM ARTICULOS_TARIFA_PRECIO
- WHERE ARTICULOS_TARIFA_PRECIO.TARIFA_ID
-       IN (SELECT DISTINCT CLIENTES.TARIFA_ID
-                      FROM CLIENTES
-                INNER JOIN CLIENTES_USUARIO
-                        ON CLIENTES_USUARIO.CLIENTE_ID = CLIENTES.CLIENTE_ID
-                       AND CLIENTES_USUARIO.USUARIO_ID = :usuarioId)
-       AND ARTICULOS_TARIFA_PRECIO.ARTICULO_ID = :articuloId;
+ WHERE ARTICULOS_TARIFA_PRECIO.VISIBLE_SN = 'S'
+      AND ARTICULOS_TARIFA_PRECIO.ARTICULO_ID = :articuloId
+       ;
 ''',
-            variables: [Variable(usuarioId), Variable(articuloId)],
-            readsFrom: {
-              _remoteDb.articuloGrupoNetoTable,
-              _remoteDb.clienteGrupoNetoTable,
-            },
-          )
-          .get();
+                  variables: [Variable(articuloId)],
+                  readsFrom: {_remoteDb.articuloGrupoNetoTable},
+                )
+                .get();
 
       return query
           .map((row) => ArticuloPrecioTarifaDTO.fromJson(row.data).toDomain())

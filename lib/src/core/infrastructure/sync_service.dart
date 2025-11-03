@@ -21,6 +21,7 @@ import '../../features/articulos/infrastructure/articulo_precio_tarifa_dto.dart'
 import '../../features/articulos/infrastructure/articulo_recambio_dto.dart';
 import '../../features/articulos/infrastructure/articulo_sustitutivo_dto.dart';
 import '../../features/articulos/infrastructure/descuento_general_dto.dart';
+import '../../features/articulos/infrastructure/usuario_tarifa_dto.dart';
 import '../../features/catalogos/infrastructure/catalogo_dto.dart';
 import '../../features/cliente/infrastructure/cliente_contacto_dto.dart';
 import '../../features/cliente/infrastructure/cliente_descuento_dto.dart';
@@ -169,6 +170,7 @@ class SyncService {
       await syncArticuloGruposNetos();
       await syncArticuloComponentes();
       await syncArticuloTarifaPrecio();
+      await syncUsuarioTarifa();
       await syncArticuloRecambios();
       await syncArticuloSustitutivo();
       await syncUltimosPrecios();
@@ -315,7 +317,7 @@ class SyncService {
   Future<void> syncArticulos() async {
     try {
       await _syncTable(
-        apiPath: 'api/v2/sync/articulos',
+        apiPath: 'api/v3/sync/articulos',
         tableInfo: _remoteDb.articuloTable,
         fromJson: (e) => ArticuloDTO.fromJson(e),
       );
@@ -378,6 +380,21 @@ class SyncService {
         apiPath: 'api/v1/sync/articulos/precios-tarifa',
         tableInfo: _remoteDb.articuloPrecioTarifaTable,
         fromJson: (e) => ArticuloPrecioTarifaDTO.fromJson(e),
+      );
+    } on AppException catch (e) {
+      log.e(e.details);
+      rethrow;
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+  Future<void> syncUsuarioTarifa() async {
+    try {
+      await _syncTable(
+        apiPath: 'api/v1/sync/usuario-tarifa',
+        tableInfo: _remoteDb.usuarioTarifaTable,
+        fromJson: (e) => UsuarioTarifaDTO.fromJson(e),
       );
     } on AppException catch (e) {
       log.e(e.details);

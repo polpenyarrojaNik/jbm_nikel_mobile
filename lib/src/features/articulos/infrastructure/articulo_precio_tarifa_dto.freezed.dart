@@ -15,7 +15,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$ArticuloPrecioTarifaDTO {
 
-@JsonKey(name: 'ARTICULO_ID') String get articuloId;@JsonKey(name: 'TARIFA_ID') String get tarifaId;@JsonKey(name: 'TARIFA_DESCRIPCION') String? get tarifaDescripcion;@JsonKey(name: 'CANTIDAD_DESDE') int get cantidadDesde;@JsonKey(name: 'PRECIO') double get precio;@JsonKey(name: 'DIVISA_ID') String get divisaId;@JsonKey(name: 'TIPO_PRECIO') int get tipoPrecio;@JsonKey(name: 'LAST_UPDATED') DateTime get lastUpdated;@JsonKey(name: 'DELETED') String get deleted;
+@JsonKey(name: 'ARTICULO_ID') String get articuloId;@JsonKey(name: 'TARIFA_ID') String get tarifaId;@JsonKey(name: 'TARIFA_DESCRIPCION') String? get tarifaDescripcion;@JsonKey(name: 'CANTIDAD_DESDE') int get cantidadDesde;@JsonKey(name: 'PRECIO') double get precio;@JsonKey(name: 'DIVISA_ID') String get divisaId;@JsonKey(name: 'TIPO_PRECIO') int get tipoPrecio;@JsonKey(name: 'VISIBLE_SN') String get visibleSN;@JsonKey(name: 'LAST_UPDATED') DateTime get lastUpdated;@JsonKey(name: 'DELETED') String get deleted;
 /// Create a copy of ArticuloPrecioTarifaDTO
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -28,16 +28,16 @@ $ArticuloPrecioTarifaDTOCopyWith<ArticuloPrecioTarifaDTO> get copyWith => _$Arti
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ArticuloPrecioTarifaDTO&&(identical(other.articuloId, articuloId) || other.articuloId == articuloId)&&(identical(other.tarifaId, tarifaId) || other.tarifaId == tarifaId)&&(identical(other.tarifaDescripcion, tarifaDescripcion) || other.tarifaDescripcion == tarifaDescripcion)&&(identical(other.cantidadDesde, cantidadDesde) || other.cantidadDesde == cantidadDesde)&&(identical(other.precio, precio) || other.precio == precio)&&(identical(other.divisaId, divisaId) || other.divisaId == divisaId)&&(identical(other.tipoPrecio, tipoPrecio) || other.tipoPrecio == tipoPrecio)&&(identical(other.lastUpdated, lastUpdated) || other.lastUpdated == lastUpdated)&&(identical(other.deleted, deleted) || other.deleted == deleted));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ArticuloPrecioTarifaDTO&&(identical(other.articuloId, articuloId) || other.articuloId == articuloId)&&(identical(other.tarifaId, tarifaId) || other.tarifaId == tarifaId)&&(identical(other.tarifaDescripcion, tarifaDescripcion) || other.tarifaDescripcion == tarifaDescripcion)&&(identical(other.cantidadDesde, cantidadDesde) || other.cantidadDesde == cantidadDesde)&&(identical(other.precio, precio) || other.precio == precio)&&(identical(other.divisaId, divisaId) || other.divisaId == divisaId)&&(identical(other.tipoPrecio, tipoPrecio) || other.tipoPrecio == tipoPrecio)&&(identical(other.visibleSN, visibleSN) || other.visibleSN == visibleSN)&&(identical(other.lastUpdated, lastUpdated) || other.lastUpdated == lastUpdated)&&(identical(other.deleted, deleted) || other.deleted == deleted));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,articuloId,tarifaId,tarifaDescripcion,cantidadDesde,precio,divisaId,tipoPrecio,lastUpdated,deleted);
+int get hashCode => Object.hash(runtimeType,articuloId,tarifaId,tarifaDescripcion,cantidadDesde,precio,divisaId,tipoPrecio,visibleSN,lastUpdated,deleted);
 
 @override
 String toString() {
-  return 'ArticuloPrecioTarifaDTO(articuloId: $articuloId, tarifaId: $tarifaId, tarifaDescripcion: $tarifaDescripcion, cantidadDesde: $cantidadDesde, precio: $precio, divisaId: $divisaId, tipoPrecio: $tipoPrecio, lastUpdated: $lastUpdated, deleted: $deleted)';
+  return 'ArticuloPrecioTarifaDTO(articuloId: $articuloId, tarifaId: $tarifaId, tarifaDescripcion: $tarifaDescripcion, cantidadDesde: $cantidadDesde, precio: $precio, divisaId: $divisaId, tipoPrecio: $tipoPrecio, visibleSN: $visibleSN, lastUpdated: $lastUpdated, deleted: $deleted)';
 }
 
 
@@ -48,7 +48,7 @@ abstract mixin class $ArticuloPrecioTarifaDTOCopyWith<$Res>  {
   factory $ArticuloPrecioTarifaDTOCopyWith(ArticuloPrecioTarifaDTO value, $Res Function(ArticuloPrecioTarifaDTO) _then) = _$ArticuloPrecioTarifaDTOCopyWithImpl;
 @useResult
 $Res call({
-@JsonKey(name: 'ARTICULO_ID') String articuloId,@JsonKey(name: 'TARIFA_ID') String tarifaId,@JsonKey(name: 'TARIFA_DESCRIPCION') String? tarifaDescripcion,@JsonKey(name: 'CANTIDAD_DESDE') int cantidadDesde,@JsonKey(name: 'PRECIO') double precio,@JsonKey(name: 'DIVISA_ID') String divisaId,@JsonKey(name: 'TIPO_PRECIO') int tipoPrecio,@JsonKey(name: 'LAST_UPDATED') DateTime lastUpdated,@JsonKey(name: 'DELETED') String deleted
+@JsonKey(name: 'ARTICULO_ID') String articuloId,@JsonKey(name: 'TARIFA_ID') String tarifaId,@JsonKey(name: 'TARIFA_DESCRIPCION') String? tarifaDescripcion,@JsonKey(name: 'CANTIDAD_DESDE') int cantidadDesde,@JsonKey(name: 'PRECIO') double precio,@JsonKey(name: 'DIVISA_ID') String divisaId,@JsonKey(name: 'TIPO_PRECIO') int tipoPrecio,@JsonKey(name: 'VISIBLE_SN') String visibleSN,@JsonKey(name: 'LAST_UPDATED') DateTime lastUpdated,@JsonKey(name: 'DELETED') String deleted
 });
 
 
@@ -65,7 +65,7 @@ class _$ArticuloPrecioTarifaDTOCopyWithImpl<$Res>
 
 /// Create a copy of ArticuloPrecioTarifaDTO
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? articuloId = null,Object? tarifaId = null,Object? tarifaDescripcion = freezed,Object? cantidadDesde = null,Object? precio = null,Object? divisaId = null,Object? tipoPrecio = null,Object? lastUpdated = null,Object? deleted = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? articuloId = null,Object? tarifaId = null,Object? tarifaDescripcion = freezed,Object? cantidadDesde = null,Object? precio = null,Object? divisaId = null,Object? tipoPrecio = null,Object? visibleSN = null,Object? lastUpdated = null,Object? deleted = null,}) {
   return _then(_self.copyWith(
 articuloId: null == articuloId ? _self.articuloId : articuloId // ignore: cast_nullable_to_non_nullable
 as String,tarifaId: null == tarifaId ? _self.tarifaId : tarifaId // ignore: cast_nullable_to_non_nullable
@@ -74,7 +74,8 @@ as String?,cantidadDesde: null == cantidadDesde ? _self.cantidadDesde : cantidad
 as int,precio: null == precio ? _self.precio : precio // ignore: cast_nullable_to_non_nullable
 as double,divisaId: null == divisaId ? _self.divisaId : divisaId // ignore: cast_nullable_to_non_nullable
 as String,tipoPrecio: null == tipoPrecio ? _self.tipoPrecio : tipoPrecio // ignore: cast_nullable_to_non_nullable
-as int,lastUpdated: null == lastUpdated ? _self.lastUpdated : lastUpdated // ignore: cast_nullable_to_non_nullable
+as int,visibleSN: null == visibleSN ? _self.visibleSN : visibleSN // ignore: cast_nullable_to_non_nullable
+as String,lastUpdated: null == lastUpdated ? _self.lastUpdated : lastUpdated // ignore: cast_nullable_to_non_nullable
 as DateTime,deleted: null == deleted ? _self.deleted : deleted // ignore: cast_nullable_to_non_nullable
 as String,
   ));
@@ -161,10 +162,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function(@JsonKey(name: 'ARTICULO_ID')  String articuloId, @JsonKey(name: 'TARIFA_ID')  String tarifaId, @JsonKey(name: 'TARIFA_DESCRIPCION')  String? tarifaDescripcion, @JsonKey(name: 'CANTIDAD_DESDE')  int cantidadDesde, @JsonKey(name: 'PRECIO')  double precio, @JsonKey(name: 'DIVISA_ID')  String divisaId, @JsonKey(name: 'TIPO_PRECIO')  int tipoPrecio, @JsonKey(name: 'LAST_UPDATED')  DateTime lastUpdated, @JsonKey(name: 'DELETED')  String deleted)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function(@JsonKey(name: 'ARTICULO_ID')  String articuloId, @JsonKey(name: 'TARIFA_ID')  String tarifaId, @JsonKey(name: 'TARIFA_DESCRIPCION')  String? tarifaDescripcion, @JsonKey(name: 'CANTIDAD_DESDE')  int cantidadDesde, @JsonKey(name: 'PRECIO')  double precio, @JsonKey(name: 'DIVISA_ID')  String divisaId, @JsonKey(name: 'TIPO_PRECIO')  int tipoPrecio, @JsonKey(name: 'VISIBLE_SN')  String visibleSN, @JsonKey(name: 'LAST_UPDATED')  DateTime lastUpdated, @JsonKey(name: 'DELETED')  String deleted)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _ArticuloPrecioTarifaDTO() when $default != null:
-return $default(_that.articuloId,_that.tarifaId,_that.tarifaDescripcion,_that.cantidadDesde,_that.precio,_that.divisaId,_that.tipoPrecio,_that.lastUpdated,_that.deleted);case _:
+return $default(_that.articuloId,_that.tarifaId,_that.tarifaDescripcion,_that.cantidadDesde,_that.precio,_that.divisaId,_that.tipoPrecio,_that.visibleSN,_that.lastUpdated,_that.deleted);case _:
   return orElse();
 
 }
@@ -182,10 +183,10 @@ return $default(_that.articuloId,_that.tarifaId,_that.tarifaDescripcion,_that.ca
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function(@JsonKey(name: 'ARTICULO_ID')  String articuloId, @JsonKey(name: 'TARIFA_ID')  String tarifaId, @JsonKey(name: 'TARIFA_DESCRIPCION')  String? tarifaDescripcion, @JsonKey(name: 'CANTIDAD_DESDE')  int cantidadDesde, @JsonKey(name: 'PRECIO')  double precio, @JsonKey(name: 'DIVISA_ID')  String divisaId, @JsonKey(name: 'TIPO_PRECIO')  int tipoPrecio, @JsonKey(name: 'LAST_UPDATED')  DateTime lastUpdated, @JsonKey(name: 'DELETED')  String deleted)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function(@JsonKey(name: 'ARTICULO_ID')  String articuloId, @JsonKey(name: 'TARIFA_ID')  String tarifaId, @JsonKey(name: 'TARIFA_DESCRIPCION')  String? tarifaDescripcion, @JsonKey(name: 'CANTIDAD_DESDE')  int cantidadDesde, @JsonKey(name: 'PRECIO')  double precio, @JsonKey(name: 'DIVISA_ID')  String divisaId, @JsonKey(name: 'TIPO_PRECIO')  int tipoPrecio, @JsonKey(name: 'VISIBLE_SN')  String visibleSN, @JsonKey(name: 'LAST_UPDATED')  DateTime lastUpdated, @JsonKey(name: 'DELETED')  String deleted)  $default,) {final _that = this;
 switch (_that) {
 case _ArticuloPrecioTarifaDTO():
-return $default(_that.articuloId,_that.tarifaId,_that.tarifaDescripcion,_that.cantidadDesde,_that.precio,_that.divisaId,_that.tipoPrecio,_that.lastUpdated,_that.deleted);case _:
+return $default(_that.articuloId,_that.tarifaId,_that.tarifaDescripcion,_that.cantidadDesde,_that.precio,_that.divisaId,_that.tipoPrecio,_that.visibleSN,_that.lastUpdated,_that.deleted);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -202,10 +203,10 @@ return $default(_that.articuloId,_that.tarifaId,_that.tarifaDescripcion,_that.ca
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function(@JsonKey(name: 'ARTICULO_ID')  String articuloId, @JsonKey(name: 'TARIFA_ID')  String tarifaId, @JsonKey(name: 'TARIFA_DESCRIPCION')  String? tarifaDescripcion, @JsonKey(name: 'CANTIDAD_DESDE')  int cantidadDesde, @JsonKey(name: 'PRECIO')  double precio, @JsonKey(name: 'DIVISA_ID')  String divisaId, @JsonKey(name: 'TIPO_PRECIO')  int tipoPrecio, @JsonKey(name: 'LAST_UPDATED')  DateTime lastUpdated, @JsonKey(name: 'DELETED')  String deleted)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function(@JsonKey(name: 'ARTICULO_ID')  String articuloId, @JsonKey(name: 'TARIFA_ID')  String tarifaId, @JsonKey(name: 'TARIFA_DESCRIPCION')  String? tarifaDescripcion, @JsonKey(name: 'CANTIDAD_DESDE')  int cantidadDesde, @JsonKey(name: 'PRECIO')  double precio, @JsonKey(name: 'DIVISA_ID')  String divisaId, @JsonKey(name: 'TIPO_PRECIO')  int tipoPrecio, @JsonKey(name: 'VISIBLE_SN')  String visibleSN, @JsonKey(name: 'LAST_UPDATED')  DateTime lastUpdated, @JsonKey(name: 'DELETED')  String deleted)?  $default,) {final _that = this;
 switch (_that) {
 case _ArticuloPrecioTarifaDTO() when $default != null:
-return $default(_that.articuloId,_that.tarifaId,_that.tarifaDescripcion,_that.cantidadDesde,_that.precio,_that.divisaId,_that.tipoPrecio,_that.lastUpdated,_that.deleted);case _:
+return $default(_that.articuloId,_that.tarifaId,_that.tarifaDescripcion,_that.cantidadDesde,_that.precio,_that.divisaId,_that.tipoPrecio,_that.visibleSN,_that.lastUpdated,_that.deleted);case _:
   return null;
 
 }
@@ -217,7 +218,7 @@ return $default(_that.articuloId,_that.tarifaId,_that.tarifaDescripcion,_that.ca
 @JsonSerializable()
 
 class _ArticuloPrecioTarifaDTO extends ArticuloPrecioTarifaDTO {
-  const _ArticuloPrecioTarifaDTO({@JsonKey(name: 'ARTICULO_ID') required this.articuloId, @JsonKey(name: 'TARIFA_ID') required this.tarifaId, @JsonKey(name: 'TARIFA_DESCRIPCION') this.tarifaDescripcion, @JsonKey(name: 'CANTIDAD_DESDE') required this.cantidadDesde, @JsonKey(name: 'PRECIO') required this.precio, @JsonKey(name: 'DIVISA_ID') required this.divisaId, @JsonKey(name: 'TIPO_PRECIO') required this.tipoPrecio, @JsonKey(name: 'LAST_UPDATED') required this.lastUpdated, @JsonKey(name: 'DELETED') this.deleted = 'N'}): super._();
+  const _ArticuloPrecioTarifaDTO({@JsonKey(name: 'ARTICULO_ID') required this.articuloId, @JsonKey(name: 'TARIFA_ID') required this.tarifaId, @JsonKey(name: 'TARIFA_DESCRIPCION') this.tarifaDescripcion, @JsonKey(name: 'CANTIDAD_DESDE') required this.cantidadDesde, @JsonKey(name: 'PRECIO') required this.precio, @JsonKey(name: 'DIVISA_ID') required this.divisaId, @JsonKey(name: 'TIPO_PRECIO') required this.tipoPrecio, @JsonKey(name: 'VISIBLE_SN') required this.visibleSN, @JsonKey(name: 'LAST_UPDATED') required this.lastUpdated, @JsonKey(name: 'DELETED') this.deleted = 'N'}): super._();
   factory _ArticuloPrecioTarifaDTO.fromJson(Map<String, dynamic> json) => _$ArticuloPrecioTarifaDTOFromJson(json);
 
 @override@JsonKey(name: 'ARTICULO_ID') final  String articuloId;
@@ -227,6 +228,7 @@ class _ArticuloPrecioTarifaDTO extends ArticuloPrecioTarifaDTO {
 @override@JsonKey(name: 'PRECIO') final  double precio;
 @override@JsonKey(name: 'DIVISA_ID') final  String divisaId;
 @override@JsonKey(name: 'TIPO_PRECIO') final  int tipoPrecio;
+@override@JsonKey(name: 'VISIBLE_SN') final  String visibleSN;
 @override@JsonKey(name: 'LAST_UPDATED') final  DateTime lastUpdated;
 @override@JsonKey(name: 'DELETED') final  String deleted;
 
@@ -243,16 +245,16 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ArticuloPrecioTarifaDTO&&(identical(other.articuloId, articuloId) || other.articuloId == articuloId)&&(identical(other.tarifaId, tarifaId) || other.tarifaId == tarifaId)&&(identical(other.tarifaDescripcion, tarifaDescripcion) || other.tarifaDescripcion == tarifaDescripcion)&&(identical(other.cantidadDesde, cantidadDesde) || other.cantidadDesde == cantidadDesde)&&(identical(other.precio, precio) || other.precio == precio)&&(identical(other.divisaId, divisaId) || other.divisaId == divisaId)&&(identical(other.tipoPrecio, tipoPrecio) || other.tipoPrecio == tipoPrecio)&&(identical(other.lastUpdated, lastUpdated) || other.lastUpdated == lastUpdated)&&(identical(other.deleted, deleted) || other.deleted == deleted));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ArticuloPrecioTarifaDTO&&(identical(other.articuloId, articuloId) || other.articuloId == articuloId)&&(identical(other.tarifaId, tarifaId) || other.tarifaId == tarifaId)&&(identical(other.tarifaDescripcion, tarifaDescripcion) || other.tarifaDescripcion == tarifaDescripcion)&&(identical(other.cantidadDesde, cantidadDesde) || other.cantidadDesde == cantidadDesde)&&(identical(other.precio, precio) || other.precio == precio)&&(identical(other.divisaId, divisaId) || other.divisaId == divisaId)&&(identical(other.tipoPrecio, tipoPrecio) || other.tipoPrecio == tipoPrecio)&&(identical(other.visibleSN, visibleSN) || other.visibleSN == visibleSN)&&(identical(other.lastUpdated, lastUpdated) || other.lastUpdated == lastUpdated)&&(identical(other.deleted, deleted) || other.deleted == deleted));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,articuloId,tarifaId,tarifaDescripcion,cantidadDesde,precio,divisaId,tipoPrecio,lastUpdated,deleted);
+int get hashCode => Object.hash(runtimeType,articuloId,tarifaId,tarifaDescripcion,cantidadDesde,precio,divisaId,tipoPrecio,visibleSN,lastUpdated,deleted);
 
 @override
 String toString() {
-  return 'ArticuloPrecioTarifaDTO(articuloId: $articuloId, tarifaId: $tarifaId, tarifaDescripcion: $tarifaDescripcion, cantidadDesde: $cantidadDesde, precio: $precio, divisaId: $divisaId, tipoPrecio: $tipoPrecio, lastUpdated: $lastUpdated, deleted: $deleted)';
+  return 'ArticuloPrecioTarifaDTO(articuloId: $articuloId, tarifaId: $tarifaId, tarifaDescripcion: $tarifaDescripcion, cantidadDesde: $cantidadDesde, precio: $precio, divisaId: $divisaId, tipoPrecio: $tipoPrecio, visibleSN: $visibleSN, lastUpdated: $lastUpdated, deleted: $deleted)';
 }
 
 
@@ -263,7 +265,7 @@ abstract mixin class _$ArticuloPrecioTarifaDTOCopyWith<$Res> implements $Articul
   factory _$ArticuloPrecioTarifaDTOCopyWith(_ArticuloPrecioTarifaDTO value, $Res Function(_ArticuloPrecioTarifaDTO) _then) = __$ArticuloPrecioTarifaDTOCopyWithImpl;
 @override @useResult
 $Res call({
-@JsonKey(name: 'ARTICULO_ID') String articuloId,@JsonKey(name: 'TARIFA_ID') String tarifaId,@JsonKey(name: 'TARIFA_DESCRIPCION') String? tarifaDescripcion,@JsonKey(name: 'CANTIDAD_DESDE') int cantidadDesde,@JsonKey(name: 'PRECIO') double precio,@JsonKey(name: 'DIVISA_ID') String divisaId,@JsonKey(name: 'TIPO_PRECIO') int tipoPrecio,@JsonKey(name: 'LAST_UPDATED') DateTime lastUpdated,@JsonKey(name: 'DELETED') String deleted
+@JsonKey(name: 'ARTICULO_ID') String articuloId,@JsonKey(name: 'TARIFA_ID') String tarifaId,@JsonKey(name: 'TARIFA_DESCRIPCION') String? tarifaDescripcion,@JsonKey(name: 'CANTIDAD_DESDE') int cantidadDesde,@JsonKey(name: 'PRECIO') double precio,@JsonKey(name: 'DIVISA_ID') String divisaId,@JsonKey(name: 'TIPO_PRECIO') int tipoPrecio,@JsonKey(name: 'VISIBLE_SN') String visibleSN,@JsonKey(name: 'LAST_UPDATED') DateTime lastUpdated,@JsonKey(name: 'DELETED') String deleted
 });
 
 
@@ -280,7 +282,7 @@ class __$ArticuloPrecioTarifaDTOCopyWithImpl<$Res>
 
 /// Create a copy of ArticuloPrecioTarifaDTO
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? articuloId = null,Object? tarifaId = null,Object? tarifaDescripcion = freezed,Object? cantidadDesde = null,Object? precio = null,Object? divisaId = null,Object? tipoPrecio = null,Object? lastUpdated = null,Object? deleted = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? articuloId = null,Object? tarifaId = null,Object? tarifaDescripcion = freezed,Object? cantidadDesde = null,Object? precio = null,Object? divisaId = null,Object? tipoPrecio = null,Object? visibleSN = null,Object? lastUpdated = null,Object? deleted = null,}) {
   return _then(_ArticuloPrecioTarifaDTO(
 articuloId: null == articuloId ? _self.articuloId : articuloId // ignore: cast_nullable_to_non_nullable
 as String,tarifaId: null == tarifaId ? _self.tarifaId : tarifaId // ignore: cast_nullable_to_non_nullable
@@ -289,7 +291,8 @@ as String?,cantidadDesde: null == cantidadDesde ? _self.cantidadDesde : cantidad
 as int,precio: null == precio ? _self.precio : precio // ignore: cast_nullable_to_non_nullable
 as double,divisaId: null == divisaId ? _self.divisaId : divisaId // ignore: cast_nullable_to_non_nullable
 as String,tipoPrecio: null == tipoPrecio ? _self.tipoPrecio : tipoPrecio // ignore: cast_nullable_to_non_nullable
-as int,lastUpdated: null == lastUpdated ? _self.lastUpdated : lastUpdated // ignore: cast_nullable_to_non_nullable
+as int,visibleSN: null == visibleSN ? _self.visibleSN : visibleSN // ignore: cast_nullable_to_non_nullable
+as String,lastUpdated: null == lastUpdated ? _self.lastUpdated : lastUpdated // ignore: cast_nullable_to_non_nullable
 as DateTime,deleted: null == deleted ? _self.deleted : deleted // ignore: cast_nullable_to_non_nullable
 as String,
   ));

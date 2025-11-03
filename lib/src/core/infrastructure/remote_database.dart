@@ -16,6 +16,7 @@ import '../../features/articulos/infrastructure/articulo_precio_tarifa_dto.dart'
 import '../../features/articulos/infrastructure/articulo_recambio_dto.dart';
 import '../../features/articulos/infrastructure/articulo_sustitutivo_dto.dart';
 import '../../features/articulos/infrastructure/descuento_general_dto.dart';
+import '../../features/articulos/infrastructure/usuario_tarifa_dto.dart';
 import '../../features/cliente/infrastructure/cliente_contacto_dto.dart';
 import '../../features/cliente/infrastructure/cliente_descuento_dto.dart';
 import '../../features/cliente/infrastructure/cliente_direccion_dto.dart';
@@ -144,6 +145,7 @@ const kRemoteDatabaseName = 'jbm.sqlite';
     PromoDtoCabTable,
     PromoDtoClienteTable,
     PromoDtoLinTable,
+    UsuarioTarifaTable,
   ],
 )
 class RemoteAppDatabase extends _$RemoteAppDatabase {
@@ -152,7 +154,7 @@ class RemoteAppDatabase extends _$RemoteAppDatabase {
   RemoteAppDatabase.connect(super.connection) : test = false, super.connect();
   RemoteAppDatabase.test() : test = true, super(NativeDatabase.memory());
   @override
-  int get schemaVersion => 35;
+  int get schemaVersion => 37;
 }
 
 Future<DriftIsolate> _createDriftIsolate() async {

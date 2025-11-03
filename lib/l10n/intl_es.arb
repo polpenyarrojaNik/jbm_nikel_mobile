@@ -420,5 +420,6 @@
   "until": "Hasta",
   "unknownFamily": "Familia desconocida",
   "PDFdeliveryNotes": "PDF Albaranes",
-  "PDFinvoices": "PDF Facturas"
+  "PDFinvoices": "PDF Facturas",
+  "unitCost": "Coste unitario"
 }

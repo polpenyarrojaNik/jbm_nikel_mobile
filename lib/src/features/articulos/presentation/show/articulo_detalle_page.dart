@@ -27,6 +27,7 @@ import '../../../pedido_venta/domain/pedido_venta.dart';
 import '../../../pedido_venta/domain/seleccionar_cantidad_param.dart';
 import '../../../pedido_venta/infrastructure/pedido_venta_repository.dart';
 import '../../../pedido_venta/presentation/index/pedido_venta_lista_tile.dart';
+import '../../../usuario/application/usuario_notifier.dart';
 import '../../domain/articulo.dart';
 import '../../infrastructure/articulo_repository.dart';
 
@@ -265,13 +266,13 @@ class SelectPedidoVentaBorradorAlertDialog extends StatelessWidget {
   }
 }
 
-class _ArticuloInfoContainer extends StatelessWidget {
+class _ArticuloInfoContainer extends ConsumerWidget {
   const _ArticuloInfoContainer({required this.articulo});
 
   final Articulo articulo;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return ListView(
       shrinkWrap: true,
       physics: const NeverScrollableScrollPhysics(),
@@ -556,6 +557,22 @@ class _ArticuloInfoContainer extends StatelessWidget {
                   ),
                 ],
               ),
+              if (articulo.costeUnitario != null &&
+                  (ref.read(usuarioNotifierProvider)?.costeSn ?? false)) ...[
+                const Divider(),
+                Column(
+                  children: [
+                    ColumnFieldTextDetalle(
+                      fieldTitleValue: S.of(context).unitCost,
+                      value: formatPrecios(
+                        precio: articulo.costeUnitario!,
+                        tipoPrecio: null,
+                      ),
+                      selectable: true,
+                    ),
+                  ],
+                ),
+              ],
             ],
           ),
         ),

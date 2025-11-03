@@ -419,5 +419,6 @@
   "freightCharge": "Frais de transport",
   "until": "Jusqu'à",
   "PDFdeliveryNotes": "PDF Bons de livraison",
-  "PDFinvoices": "PDF Factures"
+  "PDFinvoices": "PDF Factures",
+  "unitCost": "Coût unitaire"
 }

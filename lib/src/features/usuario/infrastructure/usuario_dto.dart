@@ -28,6 +28,8 @@ abstract class UsuarioDTO with _$UsuarioDTO {
     @JsonKey(name: 'BUILD_NUMBER') String? buildNumber,
     @JsonKey(name: 'DEVICE_INFO') String? deviceInfo,
     @JsonKey(name: 'MARGEN_COMERCIAL') double? margenComercial,
+    @JsonKey(name: 'COSTE_SN') required String costeSn,
+    @JsonKey(name: 'FILTRO_REPRESENTANTE') required String filtroRepresentante,
   }) = _UsuarioDTO;
 
   DateTime get expiration {
@@ -63,6 +65,8 @@ abstract class UsuarioDTO with _$UsuarioDTO {
       version: usuario.version,
       buildNumber: usuario.buildNumber,
       deviceInfo: usuario.deviceInfo,
+      costeSn: usuario.costeSn ? 'S' : 'N',
+      filtroRepresentante: usuario.filtroRepresentante ? 'S' : 'N',
     );
   }
 
@@ -83,6 +87,8 @@ abstract class UsuarioDTO with _$UsuarioDTO {
       version: version!,
       buildNumber: buildNumber!,
       deviceInfo: deviceInfo!,
+      costeSn: costeSn == 'S',
+      filtroRepresentante: filtroRepresentante == 'S',
     );
   }
 }

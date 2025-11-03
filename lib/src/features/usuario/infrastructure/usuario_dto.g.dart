@@ -22,6 +22,8 @@ _UsuarioDTO _$UsuarioDTOFromJson(Map<String, dynamic> json) => _UsuarioDTO(
   buildNumber: json['BUILD_NUMBER'] as String?,
   deviceInfo: json['DEVICE_INFO'] as String?,
   margenComercial: (json['MARGEN_COMERCIAL'] as num?)?.toDouble(),
+  costeSn: json['COSTE_SN'] as String,
+  filtroRepresentante: json['FILTRO_REPRESENTANTE'] as String,
 );
 
 Map<String, dynamic> _$UsuarioDTOToJson(_UsuarioDTO instance) =>
@@ -41,4 +43,6 @@ Map<String, dynamic> _$UsuarioDTOToJson(_UsuarioDTO instance) =>
       'BUILD_NUMBER': instance.buildNumber,
       'DEVICE_INFO': instance.deviceInfo,
       'MARGEN_COMERCIAL': instance.margenComercial,
+      'COSTE_SN': instance.costeSn,
+      'FILTRO_REPRESENTANTE': instance.filtroRepresentante,
     };

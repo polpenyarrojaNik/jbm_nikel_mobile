@@ -16,6 +16,7 @@ import '../../../../core/routing/app_auto_router.dart';
 import '../../../articulos/domain/articulo.dart';
 import '../../../articulos/domain/articulo_sustitutivo.dart';
 import '../../../articulos/infrastructure/articulo_repository.dart';
+import '../../../articulos/presentation/show/articulo_precio_tarifa_page.dart';
 import '../../../cliente/domain/cliente.dart';
 import '../../../cliente/infrastructure/cliente_repository.dart';
 import '../../../usuario/application/usuario_notifier.dart';
@@ -133,7 +134,10 @@ class _SelecionarCantidadPageState
         data: (newArticuloPrecio) => setArticuloPrecioValue(newArticuloPrecio),
       );
     });
-    final state = ref.watch(articuloPrecioProvider);
+    final stateArticuloPrecio = ref.watch(articuloPrecioProvider);
+    final statePrecioTarifa = ref.watch(
+      articuloPrecioTarifaListProvider(articuloId!),
+    );
     return Scaffold(
       appBar: AppBar(
         title: Text(
@@ -265,7 +269,7 @@ class _SelecionarCantidadPageState
                       ),
                     ),
                     if (articuloPrecio != null)
-                      state.when(
+                      stateArticuloPrecio.when(
                         initial: () => Container(),
                         error: (error, _) =>
                             Center(child: ErrorMessageWidget(error.toString())),
@@ -293,6 +297,22 @@ class _SelecionarCantidadPageState
                               )
                             : Container(),
                       ),
+                    const Gap(8),
+                    statePrecioTarifa.when(
+                      data: (preciosTarifaList) => ListView.separated(
+                        shrinkWrap: true,
+                        physics: const NeverScrollableScrollPhysics(),
+                        itemCount: preciosTarifaList.length,
+                        itemBuilder: (context, i) => ArticuloPrecioTarifaTile(
+                          articuloPrecioTarifa: preciosTarifaList[i],
+                        ),
+                        separatorBuilder: (context, i) => const Divider(),
+                      ),
+                      error: (error, _) =>
+                          Center(child: ErrorMessageWidget(error.toString())),
+                      loading: () =>
+                          const Center(child: CircularProgressIndicator()),
+                    ),
                   ],
                 ),
               ),

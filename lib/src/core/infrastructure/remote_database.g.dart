@@ -15065,6 +15065,17 @@ class $ArticuloTableTable extends ArticuloTable
     type: DriftSqlType.int,
     requiredDuringInsert: false,
   );
+  static const VerificationMeta _costeUnitarioMeta = const VerificationMeta(
+    'costeUnitario',
+  );
+  @override
+  late final GeneratedColumn<double> costeUnitario = GeneratedColumn<double>(
+    'COSTE_UNITARIO',
+    aliasedName,
+    true,
+    type: DriftSqlType.double,
+    requiredDuringInsert: false,
+  );
   static const VerificationMeta _lastUpdatedMeta = const VerificationMeta(
     'lastUpdated',
   );
@@ -15157,6 +15168,7 @@ class $ArticuloTableTable extends ArticuloTable
     gs1128Caja,
     gs1128Palet,
     ventasOrden,
+    costeUnitario,
     lastUpdated,
     deleted,
   ];
@@ -15747,6 +15759,15 @@ class $ArticuloTableTable extends ArticuloTable
         ),
       );
     }
+    if (data.containsKey('COSTE_UNITARIO')) {
+      context.handle(
+        _costeUnitarioMeta,
+        costeUnitario.isAcceptableOrUnknown(
+          data['COSTE_UNITARIO']!,
+          _costeUnitarioMeta,
+        ),
+      );
+    }
     if (data.containsKey('LAST_UPDATED')) {
       context.handle(
         _lastUpdatedMeta,
@@ -16041,6 +16062,10 @@ class $ArticuloTableTable extends ArticuloTable
         DriftSqlType.int,
         data['${effectivePrefix}VENTAS_ORDEN'],
       ),
+      costeUnitario: attachedDatabase.typeMapping.read(
+        DriftSqlType.double,
+        data['${effectivePrefix}COSTE_UNITARIO'],
+      ),
       lastUpdated: attachedDatabase.typeMapping.read(
         DriftSqlType.dateTime,
         data['${effectivePrefix}LAST_UPDATED'],
@@ -16126,6 +16151,7 @@ class ArticuloTableCompanion extends UpdateCompanion<ArticuloDTO> {
   final Value<String?> gs1128Caja;
   final Value<String?> gs1128Palet;
   final Value<int?> ventasOrden;
+  final Value<double?> costeUnitario;
   final Value<DateTime> lastUpdated;
   final Value<String> deleted;
   final Value<int> rowid;
@@ -16197,6 +16223,7 @@ class ArticuloTableCompanion extends UpdateCompanion<ArticuloDTO> {
     this.gs1128Caja = const Value.absent(),
     this.gs1128Palet = const Value.absent(),
     this.ventasOrden = const Value.absent(),
+    this.costeUnitario = const Value.absent(),
     this.lastUpdated = const Value.absent(),
     this.deleted = const Value.absent(),
     this.rowid = const Value.absent(),
@@ -16269,6 +16296,7 @@ class ArticuloTableCompanion extends UpdateCompanion<ArticuloDTO> {
     this.gs1128Caja = const Value.absent(),
     this.gs1128Palet = const Value.absent(),
     this.ventasOrden = const Value.absent(),
+    this.costeUnitario = const Value.absent(),
     required DateTime lastUpdated,
     this.deleted = const Value.absent(),
     this.rowid = const Value.absent(),
@@ -16363,6 +16391,7 @@ class ArticuloTableCompanion extends UpdateCompanion<ArticuloDTO> {
     Expression<String>? gs1128Caja,
     Expression<String>? gs1128Palet,
     Expression<int>? ventasOrden,
+    Expression<double>? costeUnitario,
     Expression<DateTime>? lastUpdated,
     Expression<String>? deleted,
     Expression<int>? rowid,
@@ -16445,6 +16474,7 @@ class ArticuloTableCompanion extends UpdateCompanion<ArticuloDTO> {
       if (gs1128Caja != null) 'GS1_128_CAJA': gs1128Caja,
       if (gs1128Palet != null) 'GS1_128_PALET': gs1128Palet,
       if (ventasOrden != null) 'VENTAS_ORDEN': ventasOrden,
+      if (costeUnitario != null) 'COSTE_UNITARIO': costeUnitario,
       if (lastUpdated != null) 'LAST_UPDATED': lastUpdated,
       if (deleted != null) 'DELETED': deleted,
       if (rowid != null) 'rowid': rowid,
@@ -16519,6 +16549,7 @@ class ArticuloTableCompanion extends UpdateCompanion<ArticuloDTO> {
     Value<String?>? gs1128Caja,
     Value<String?>? gs1128Palet,
     Value<int?>? ventasOrden,
+    Value<double?>? costeUnitario,
     Value<DateTime>? lastUpdated,
     Value<String>? deleted,
     Value<int>? rowid,
@@ -16598,6 +16629,7 @@ class ArticuloTableCompanion extends UpdateCompanion<ArticuloDTO> {
       gs1128Caja: gs1128Caja ?? this.gs1128Caja,
       gs1128Palet: gs1128Palet ?? this.gs1128Palet,
       ventasOrden: ventasOrden ?? this.ventasOrden,
+      costeUnitario: costeUnitario ?? this.costeUnitario,
       lastUpdated: lastUpdated ?? this.lastUpdated,
       deleted: deleted ?? this.deleted,
       rowid: rowid ?? this.rowid,
@@ -16828,6 +16860,9 @@ class ArticuloTableCompanion extends UpdateCompanion<ArticuloDTO> {
     if (ventasOrden.present) {
       map['VENTAS_ORDEN'] = Variable<int>(ventasOrden.value);
     }
+    if (costeUnitario.present) {
+      map['COSTE_UNITARIO'] = Variable<double>(costeUnitario.value);
+    }
     if (lastUpdated.present) {
       map['LAST_UPDATED'] = Variable<DateTime>(lastUpdated.value);
     }
@@ -16910,6 +16945,7 @@ class ArticuloTableCompanion extends UpdateCompanion<ArticuloDTO> {
           ..write('gs1128Caja: $gs1128Caja, ')
           ..write('gs1128Palet: $gs1128Palet, ')
           ..write('ventasOrden: $ventasOrden, ')
+          ..write('costeUnitario: $costeUnitario, ')
           ..write('lastUpdated: $lastUpdated, ')
           ..write('deleted: $deleted, ')
           ..write('rowid: $rowid')
@@ -18637,6 +18673,17 @@ class $ArticuloPrecioTarifaTableTable extends ArticuloPrecioTarifaTable
     type: DriftSqlType.int,
     requiredDuringInsert: true,
   );
+  static const VerificationMeta _visibleSNMeta = const VerificationMeta(
+    'visibleSN',
+  );
+  @override
+  late final GeneratedColumn<String> visibleSN = GeneratedColumn<String>(
+    'VISIBLE_SN',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
   static const VerificationMeta _lastUpdatedMeta = const VerificationMeta(
     'lastUpdated',
   );
@@ -18669,6 +18716,7 @@ class $ArticuloPrecioTarifaTableTable extends ArticuloPrecioTarifaTable
     precio,
     divisaId,
     tipoPrecio,
+    visibleSN,
     lastUpdated,
     deleted,
   ];
@@ -18744,6 +18792,14 @@ class $ArticuloPrecioTarifaTableTable extends ArticuloPrecioTarifaTable
     } else if (isInserting) {
       context.missing(_tipoPrecioMeta);
     }
+    if (data.containsKey('VISIBLE_SN')) {
+      context.handle(
+        _visibleSNMeta,
+        visibleSN.isAcceptableOrUnknown(data['VISIBLE_SN']!, _visibleSNMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_visibleSNMeta);
+    }
     if (data.containsKey('LAST_UPDATED')) {
       context.handle(
         _lastUpdatedMeta,
@@ -18801,6 +18857,10 @@ class $ArticuloPrecioTarifaTableTable extends ArticuloPrecioTarifaTable
         DriftSqlType.int,
         data['${effectivePrefix}TIPO_PRECIO'],
       )!,
+      visibleSN: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}VISIBLE_SN'],
+      )!,
       lastUpdated: attachedDatabase.typeMapping.read(
         DriftSqlType.dateTime,
         data['${effectivePrefix}LAST_UPDATED'],
@@ -18827,6 +18887,7 @@ class ArticuloPrecioTarifaTableCompanion
   final Value<double> precio;
   final Value<String> divisaId;
   final Value<int> tipoPrecio;
+  final Value<String> visibleSN;
   final Value<DateTime> lastUpdated;
   final Value<String> deleted;
   final Value<int> rowid;
@@ -18838,6 +18899,7 @@ class ArticuloPrecioTarifaTableCompanion
     this.precio = const Value.absent(),
     this.divisaId = const Value.absent(),
     this.tipoPrecio = const Value.absent(),
+    this.visibleSN = const Value.absent(),
     this.lastUpdated = const Value.absent(),
     this.deleted = const Value.absent(),
     this.rowid = const Value.absent(),
@@ -18850,6 +18912,7 @@ class ArticuloPrecioTarifaTableCompanion
     required double precio,
     required String divisaId,
     required int tipoPrecio,
+    required String visibleSN,
     required DateTime lastUpdated,
     this.deleted = const Value.absent(),
     this.rowid = const Value.absent(),
@@ -18859,6 +18922,7 @@ class ArticuloPrecioTarifaTableCompanion
        precio = Value(precio),
        divisaId = Value(divisaId),
        tipoPrecio = Value(tipoPrecio),
+       visibleSN = Value(visibleSN),
        lastUpdated = Value(lastUpdated);
   static Insertable<ArticuloPrecioTarifaDTO> custom({
     Expression<String>? articuloId,
@@ -18868,6 +18932,7 @@ class ArticuloPrecioTarifaTableCompanion
     Expression<double>? precio,
     Expression<String>? divisaId,
     Expression<int>? tipoPrecio,
+    Expression<String>? visibleSN,
     Expression<DateTime>? lastUpdated,
     Expression<String>? deleted,
     Expression<int>? rowid,
@@ -18880,6 +18945,7 @@ class ArticuloPrecioTarifaTableCompanion
       if (precio != null) 'PRECIO': precio,
       if (divisaId != null) 'DIVISA_ID': divisaId,
       if (tipoPrecio != null) 'TIPO_PRECIO': tipoPrecio,
+      if (visibleSN != null) 'VISIBLE_SN': visibleSN,
       if (lastUpdated != null) 'LAST_UPDATED': lastUpdated,
       if (deleted != null) 'DELETED': deleted,
       if (rowid != null) 'rowid': rowid,
@@ -18894,6 +18960,7 @@ class ArticuloPrecioTarifaTableCompanion
     Value<double>? precio,
     Value<String>? divisaId,
     Value<int>? tipoPrecio,
+    Value<String>? visibleSN,
     Value<DateTime>? lastUpdated,
     Value<String>? deleted,
     Value<int>? rowid,
@@ -18906,6 +18973,7 @@ class ArticuloPrecioTarifaTableCompanion
       precio: precio ?? this.precio,
       divisaId: divisaId ?? this.divisaId,
       tipoPrecio: tipoPrecio ?? this.tipoPrecio,
+      visibleSN: visibleSN ?? this.visibleSN,
       lastUpdated: lastUpdated ?? this.lastUpdated,
       deleted: deleted ?? this.deleted,
       rowid: rowid ?? this.rowid,
@@ -18936,6 +19004,9 @@ class ArticuloPrecioTarifaTableCompanion
     if (tipoPrecio.present) {
       map['TIPO_PRECIO'] = Variable<int>(tipoPrecio.value);
     }
+    if (visibleSN.present) {
+      map['VISIBLE_SN'] = Variable<String>(visibleSN.value);
+    }
     if (lastUpdated.present) {
       map['LAST_UPDATED'] = Variable<DateTime>(lastUpdated.value);
     }
@@ -18958,6 +19029,7 @@ class ArticuloPrecioTarifaTableCompanion
           ..write('precio: $precio, ')
           ..write('divisaId: $divisaId, ')
           ..write('tipoPrecio: $tipoPrecio, ')
+          ..write('visibleSN: $visibleSN, ')
           ..write('lastUpdated: $lastUpdated, ')
           ..write('deleted: $deleted, ')
           ..write('rowid: $rowid')
@@ -30582,6 +30654,231 @@ class PromoDtoLinTableCompanion extends UpdateCompanion<PromoDtoLineaDTO> {
   }
 }
 
+class $UsuarioTarifaTableTable extends UsuarioTarifaTable
+    with TableInfo<$UsuarioTarifaTableTable, UsuarioTarifaDTO> {
+  @override
+  final GeneratedDatabase attachedDatabase;
+  final String? _alias;
+  $UsuarioTarifaTableTable(this.attachedDatabase, [this._alias]);
+  static const VerificationMeta _usuarioIdMeta = const VerificationMeta(
+    'usuarioId',
+  );
+  @override
+  late final GeneratedColumn<String> usuarioId = GeneratedColumn<String>(
+    'USUARIO_ID',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _tarifaIdMeta = const VerificationMeta(
+    'tarifaId',
+  );
+  @override
+  late final GeneratedColumn<String> tarifaId = GeneratedColumn<String>(
+    'TARIFA_ID',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _lastUpdatedMeta = const VerificationMeta(
+    'lastUpdated',
+  );
+  @override
+  late final GeneratedColumn<DateTime> lastUpdated = GeneratedColumn<DateTime>(
+    'LAST_UPDATED',
+    aliasedName,
+    false,
+    type: DriftSqlType.dateTime,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _deletedMeta = const VerificationMeta(
+    'deleted',
+  );
+  @override
+  late final GeneratedColumn<String> deleted = GeneratedColumn<String>(
+    'DELETED',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+    defaultValue: const Constant('N'),
+  );
+  @override
+  List<GeneratedColumn> get $columns => [
+    usuarioId,
+    tarifaId,
+    lastUpdated,
+    deleted,
+  ];
+  @override
+  String get aliasedName => _alias ?? actualTableName;
+  @override
+  String get actualTableName => $name;
+  static const String $name = 'USUARIO_TARIFA';
+  @override
+  VerificationContext validateIntegrity(
+    Insertable<UsuarioTarifaDTO> instance, {
+    bool isInserting = false,
+  }) {
+    final context = VerificationContext();
+    final data = instance.toColumns(true);
+    if (data.containsKey('USUARIO_ID')) {
+      context.handle(
+        _usuarioIdMeta,
+        usuarioId.isAcceptableOrUnknown(data['USUARIO_ID']!, _usuarioIdMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_usuarioIdMeta);
+    }
+    if (data.containsKey('TARIFA_ID')) {
+      context.handle(
+        _tarifaIdMeta,
+        tarifaId.isAcceptableOrUnknown(data['TARIFA_ID']!, _tarifaIdMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_tarifaIdMeta);
+    }
+    if (data.containsKey('LAST_UPDATED')) {
+      context.handle(
+        _lastUpdatedMeta,
+        lastUpdated.isAcceptableOrUnknown(
+          data['LAST_UPDATED']!,
+          _lastUpdatedMeta,
+        ),
+      );
+    } else if (isInserting) {
+      context.missing(_lastUpdatedMeta);
+    }
+    if (data.containsKey('DELETED')) {
+      context.handle(
+        _deletedMeta,
+        deleted.isAcceptableOrUnknown(data['DELETED']!, _deletedMeta),
+      );
+    }
+    return context;
+  }
+
+  @override
+  Set<GeneratedColumn> get $primaryKey => {usuarioId, tarifaId};
+  @override
+  UsuarioTarifaDTO map(Map<String, dynamic> data, {String? tablePrefix}) {
+    final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
+    return UsuarioTarifaDTO.new(
+      usuarioId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}USUARIO_ID'],
+      )!,
+      tarifaId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}TARIFA_ID'],
+      )!,
+      lastUpdated: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}LAST_UPDATED'],
+      )!,
+      deleted: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}DELETED'],
+      )!,
+    );
+  }
+
+  @override
+  $UsuarioTarifaTableTable createAlias(String alias) {
+    return $UsuarioTarifaTableTable(attachedDatabase, alias);
+  }
+}
+
+class UsuarioTarifaTableCompanion extends UpdateCompanion<UsuarioTarifaDTO> {
+  final Value<String> usuarioId;
+  final Value<String> tarifaId;
+  final Value<DateTime> lastUpdated;
+  final Value<String> deleted;
+  final Value<int> rowid;
+  const UsuarioTarifaTableCompanion({
+    this.usuarioId = const Value.absent(),
+    this.tarifaId = const Value.absent(),
+    this.lastUpdated = const Value.absent(),
+    this.deleted = const Value.absent(),
+    this.rowid = const Value.absent(),
+  });
+  UsuarioTarifaTableCompanion.insert({
+    required String usuarioId,
+    required String tarifaId,
+    required DateTime lastUpdated,
+    this.deleted = const Value.absent(),
+    this.rowid = const Value.absent(),
+  }) : usuarioId = Value(usuarioId),
+       tarifaId = Value(tarifaId),
+       lastUpdated = Value(lastUpdated);
+  static Insertable<UsuarioTarifaDTO> custom({
+    Expression<String>? usuarioId,
+    Expression<String>? tarifaId,
+    Expression<DateTime>? lastUpdated,
+    Expression<String>? deleted,
+    Expression<int>? rowid,
+  }) {
+    return RawValuesInsertable({
+      if (usuarioId != null) 'USUARIO_ID': usuarioId,
+      if (tarifaId != null) 'TARIFA_ID': tarifaId,
+      if (lastUpdated != null) 'LAST_UPDATED': lastUpdated,
+      if (deleted != null) 'DELETED': deleted,
+      if (rowid != null) 'rowid': rowid,
+    });
+  }
+
+  UsuarioTarifaTableCompanion copyWith({
+    Value<String>? usuarioId,
+    Value<String>? tarifaId,
+    Value<DateTime>? lastUpdated,
+    Value<String>? deleted,
+    Value<int>? rowid,
+  }) {
+    return UsuarioTarifaTableCompanion(
+      usuarioId: usuarioId ?? this.usuarioId,
+      tarifaId: tarifaId ?? this.tarifaId,
+      lastUpdated: lastUpdated ?? this.lastUpdated,
+      deleted: deleted ?? this.deleted,
+      rowid: rowid ?? this.rowid,
+    );
+  }
+
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    if (usuarioId.present) {
+      map['USUARIO_ID'] = Variable<String>(usuarioId.value);
+    }
+    if (tarifaId.present) {
+      map['TARIFA_ID'] = Variable<String>(tarifaId.value);
+    }
+    if (lastUpdated.present) {
+      map['LAST_UPDATED'] = Variable<DateTime>(lastUpdated.value);
+    }
+    if (deleted.present) {
+      map['DELETED'] = Variable<String>(deleted.value);
+    }
+    if (rowid.present) {
+      map['rowid'] = Variable<int>(rowid.value);
+    }
+    return map;
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('UsuarioTarifaTableCompanion(')
+          ..write('usuarioId: $usuarioId, ')
+          ..write('tarifaId: $tarifaId, ')
+          ..write('lastUpdated: $lastUpdated, ')
+          ..write('deleted: $deleted, ')
+          ..write('rowid: $rowid')
+          ..write(')'))
+        .toString();
+  }
+}
+
 abstract class _$RemoteAppDatabase extends GeneratedDatabase {
   _$RemoteAppDatabase(QueryExecutor e) : super(e);
   _$RemoteAppDatabase.connect(DatabaseConnection c) : super.connect(c);
@@ -30681,6 +30978,8 @@ abstract class _$RemoteAppDatabase extends GeneratedDatabase {
   late final $PromoDtoLinTableTable promoDtoLinTable = $PromoDtoLinTableTable(
     this,
   );
+  late final $UsuarioTarifaTableTable usuarioTarifaTable =
+      $UsuarioTarifaTableTable(this);
   @override
   Iterable<TableInfo<Table, Object?>> get allTables =>
       allSchemaEntities.whereType<TableInfo<Table, Object?>>();
@@ -30735,6 +31034,7 @@ abstract class _$RemoteAppDatabase extends GeneratedDatabase {
     promoDtoCabTable,
     promoDtoClienteTable,
     promoDtoLinTable,
+    usuarioTarifaTable,
   ];
   @override
   DriftDatabaseOptions get options =>
@@ -43050,6 +43350,7 @@ typedef $$ArticuloTableTableCreateCompanionBuilder =
       Value<String?> gs1128Caja,
       Value<String?> gs1128Palet,
       Value<int?> ventasOrden,
+      Value<double?> costeUnitario,
       required DateTime lastUpdated,
       Value<String> deleted,
       Value<int> rowid,
@@ -43123,6 +43424,7 @@ typedef $$ArticuloTableTableUpdateCompanionBuilder =
       Value<String?> gs1128Caja,
       Value<String?> gs1128Palet,
       Value<int?> ventasOrden,
+      Value<double?> costeUnitario,
       Value<DateTime> lastUpdated,
       Value<String> deleted,
       Value<int> rowid,
@@ -43510,6 +43812,11 @@ class $$ArticuloTableTableFilterComposer
 
   ColumnFilters<int> get ventasOrden => $composableBuilder(
     column: $table.ventasOrden,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<double> get costeUnitario => $composableBuilder(
+    column: $table.costeUnitario,
     builder: (column) => ColumnFilters(column),
   );
 
@@ -43904,6 +44211,11 @@ class $$ArticuloTableTableOrderingComposer
     builder: (column) => ColumnOrderings(column),
   );
 
+  ColumnOrderings<double> get costeUnitario => $composableBuilder(
+    column: $table.costeUnitario,
+    builder: (column) => ColumnOrderings(column),
+  );
+
   ColumnOrderings<DateTime> get lastUpdated => $composableBuilder(
     column: $table.lastUpdated,
     builder: (column) => ColumnOrderings(column),
@@ -44251,6 +44563,11 @@ class $$ArticuloTableTableAnnotationComposer
     builder: (column) => column,
   );
 
+  GeneratedColumn<double> get costeUnitario => $composableBuilder(
+    column: $table.costeUnitario,
+    builder: (column) => column,
+  );
+
   GeneratedColumn<DateTime> get lastUpdated => $composableBuilder(
     column: $table.lastUpdated,
     builder: (column) => column,
@@ -44403,6 +44720,7 @@ class $$ArticuloTableTableTableManager
                 Value<String?> gs1128Caja = const Value.absent(),
                 Value<String?> gs1128Palet = const Value.absent(),
                 Value<int?> ventasOrden = const Value.absent(),
+                Value<double?> costeUnitario = const Value.absent(),
                 Value<DateTime> lastUpdated = const Value.absent(),
                 Value<String> deleted = const Value.absent(),
                 Value<int> rowid = const Value.absent(),
@@ -44474,6 +44792,7 @@ class $$ArticuloTableTableTableManager
                 gs1128Caja: gs1128Caja,
                 gs1128Palet: gs1128Palet,
                 ventasOrden: ventasOrden,
+                costeUnitario: costeUnitario,
                 lastUpdated: lastUpdated,
                 deleted: deleted,
                 rowid: rowid,
@@ -44547,6 +44866,7 @@ class $$ArticuloTableTableTableManager
                 Value<String?> gs1128Caja = const Value.absent(),
                 Value<String?> gs1128Palet = const Value.absent(),
                 Value<int?> ventasOrden = const Value.absent(),
+                Value<double?> costeUnitario = const Value.absent(),
                 required DateTime lastUpdated,
                 Value<String> deleted = const Value.absent(),
                 Value<int> rowid = const Value.absent(),
@@ -44618,6 +44938,7 @@ class $$ArticuloTableTableTableManager
                 gs1128Caja: gs1128Caja,
                 gs1128Palet: gs1128Palet,
                 ventasOrden: ventasOrden,
+                costeUnitario: costeUnitario,
                 lastUpdated: lastUpdated,
                 deleted: deleted,
                 rowid: rowid,
@@ -45943,6 +46264,7 @@ typedef $$ArticuloPrecioTarifaTableTableCreateCompanionBuilder =
       required double precio,
       required String divisaId,
       required int tipoPrecio,
+      required String visibleSN,
       required DateTime lastUpdated,
       Value<String> deleted,
       Value<int> rowid,
@@ -45956,6 +46278,7 @@ typedef $$ArticuloPrecioTarifaTableTableUpdateCompanionBuilder =
       Value<double> precio,
       Value<String> divisaId,
       Value<int> tipoPrecio,
+      Value<String> visibleSN,
       Value<DateTime> lastUpdated,
       Value<String> deleted,
       Value<int> rowid,
@@ -46002,6 +46325,11 @@ class $$ArticuloPrecioTarifaTableTableFilterComposer
 
   ColumnFilters<int> get tipoPrecio => $composableBuilder(
     column: $table.tipoPrecio,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get visibleSN => $composableBuilder(
+    column: $table.visibleSN,
     builder: (column) => ColumnFilters(column),
   );
 
@@ -46060,6 +46388,11 @@ class $$ArticuloPrecioTarifaTableTableOrderingComposer
     builder: (column) => ColumnOrderings(column),
   );
 
+  ColumnOrderings<String> get visibleSN => $composableBuilder(
+    column: $table.visibleSN,
+    builder: (column) => ColumnOrderings(column),
+  );
+
   ColumnOrderings<DateTime> get lastUpdated => $composableBuilder(
     column: $table.lastUpdated,
     builder: (column) => ColumnOrderings(column),
@@ -46108,6 +46441,9 @@ class $$ArticuloPrecioTarifaTableTableAnnotationComposer
     column: $table.tipoPrecio,
     builder: (column) => column,
   );
+
+  GeneratedColumn<String> get visibleSN =>
+      $composableBuilder(column: $table.visibleSN, builder: (column) => column);
 
   GeneratedColumn<DateTime> get lastUpdated => $composableBuilder(
     column: $table.lastUpdated,
@@ -46171,6 +46507,7 @@ class $$ArticuloPrecioTarifaTableTableTableManager
                 Value<double> precio = const Value.absent(),
                 Value<String> divisaId = const Value.absent(),
                 Value<int> tipoPrecio = const Value.absent(),
+                Value<String> visibleSN = const Value.absent(),
                 Value<DateTime> lastUpdated = const Value.absent(),
                 Value<String> deleted = const Value.absent(),
                 Value<int> rowid = const Value.absent(),
@@ -46182,6 +46519,7 @@ class $$ArticuloPrecioTarifaTableTableTableManager
                 precio: precio,
                 divisaId: divisaId,
                 tipoPrecio: tipoPrecio,
+                visibleSN: visibleSN,
                 lastUpdated: lastUpdated,
                 deleted: deleted,
                 rowid: rowid,
@@ -46195,6 +46533,7 @@ class $$ArticuloPrecioTarifaTableTableTableManager
                 required double precio,
                 required String divisaId,
                 required int tipoPrecio,
+                required String visibleSN,
                 required DateTime lastUpdated,
                 Value<String> deleted = const Value.absent(),
                 Value<int> rowid = const Value.absent(),
@@ -46206,6 +46545,7 @@ class $$ArticuloPrecioTarifaTableTableTableManager
                 precio: precio,
                 divisaId: divisaId,
                 tipoPrecio: tipoPrecio,
+                visibleSN: visibleSN,
                 lastUpdated: lastUpdated,
                 deleted: deleted,
                 rowid: rowid,
@@ -54407,6 +54747,202 @@ typedef $$PromoDtoLinTableTableProcessedTableManager =
       PromoDtoLineaDTO,
       PrefetchHooks Function()
     >;
+typedef $$UsuarioTarifaTableTableCreateCompanionBuilder =
+    UsuarioTarifaTableCompanion Function({
+      required String usuarioId,
+      required String tarifaId,
+      required DateTime lastUpdated,
+      Value<String> deleted,
+      Value<int> rowid,
+    });
+typedef $$UsuarioTarifaTableTableUpdateCompanionBuilder =
+    UsuarioTarifaTableCompanion Function({
+      Value<String> usuarioId,
+      Value<String> tarifaId,
+      Value<DateTime> lastUpdated,
+      Value<String> deleted,
+      Value<int> rowid,
+    });
+
+class $$UsuarioTarifaTableTableFilterComposer
+    extends Composer<_$RemoteAppDatabase, $UsuarioTarifaTableTable> {
+  $$UsuarioTarifaTableTableFilterComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnFilters<String> get usuarioId => $composableBuilder(
+    column: $table.usuarioId,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get tarifaId => $composableBuilder(
+    column: $table.tarifaId,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<DateTime> get lastUpdated => $composableBuilder(
+    column: $table.lastUpdated,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get deleted => $composableBuilder(
+    column: $table.deleted,
+    builder: (column) => ColumnFilters(column),
+  );
+}
+
+class $$UsuarioTarifaTableTableOrderingComposer
+    extends Composer<_$RemoteAppDatabase, $UsuarioTarifaTableTable> {
+  $$UsuarioTarifaTableTableOrderingComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnOrderings<String> get usuarioId => $composableBuilder(
+    column: $table.usuarioId,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get tarifaId => $composableBuilder(
+    column: $table.tarifaId,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<DateTime> get lastUpdated => $composableBuilder(
+    column: $table.lastUpdated,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get deleted => $composableBuilder(
+    column: $table.deleted,
+    builder: (column) => ColumnOrderings(column),
+  );
+}
+
+class $$UsuarioTarifaTableTableAnnotationComposer
+    extends Composer<_$RemoteAppDatabase, $UsuarioTarifaTableTable> {
+  $$UsuarioTarifaTableTableAnnotationComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  GeneratedColumn<String> get usuarioId =>
+      $composableBuilder(column: $table.usuarioId, builder: (column) => column);
+
+  GeneratedColumn<String> get tarifaId =>
+      $composableBuilder(column: $table.tarifaId, builder: (column) => column);
+
+  GeneratedColumn<DateTime> get lastUpdated => $composableBuilder(
+    column: $table.lastUpdated,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<String> get deleted =>
+      $composableBuilder(column: $table.deleted, builder: (column) => column);
+}
+
+class $$UsuarioTarifaTableTableTableManager
+    extends
+        RootTableManager<
+          _$RemoteAppDatabase,
+          $UsuarioTarifaTableTable,
+          UsuarioTarifaDTO,
+          $$UsuarioTarifaTableTableFilterComposer,
+          $$UsuarioTarifaTableTableOrderingComposer,
+          $$UsuarioTarifaTableTableAnnotationComposer,
+          $$UsuarioTarifaTableTableCreateCompanionBuilder,
+          $$UsuarioTarifaTableTableUpdateCompanionBuilder,
+          (
+            UsuarioTarifaDTO,
+            BaseReferences<
+              _$RemoteAppDatabase,
+              $UsuarioTarifaTableTable,
+              UsuarioTarifaDTO
+            >,
+          ),
+          UsuarioTarifaDTO,
+          PrefetchHooks Function()
+        > {
+  $$UsuarioTarifaTableTableTableManager(
+    _$RemoteAppDatabase db,
+    $UsuarioTarifaTableTable table,
+  ) : super(
+        TableManagerState(
+          db: db,
+          table: table,
+          createFilteringComposer: () =>
+              $$UsuarioTarifaTableTableFilterComposer($db: db, $table: table),
+          createOrderingComposer: () =>
+              $$UsuarioTarifaTableTableOrderingComposer($db: db, $table: table),
+          createComputedFieldComposer: () =>
+              $$UsuarioTarifaTableTableAnnotationComposer(
+                $db: db,
+                $table: table,
+              ),
+          updateCompanionCallback:
+              ({
+                Value<String> usuarioId = const Value.absent(),
+                Value<String> tarifaId = const Value.absent(),
+                Value<DateTime> lastUpdated = const Value.absent(),
+                Value<String> deleted = const Value.absent(),
+                Value<int> rowid = const Value.absent(),
+              }) => UsuarioTarifaTableCompanion(
+                usuarioId: usuarioId,
+                tarifaId: tarifaId,
+                lastUpdated: lastUpdated,
+                deleted: deleted,
+                rowid: rowid,
+              ),
+          createCompanionCallback:
+              ({
+                required String usuarioId,
+                required String tarifaId,
+                required DateTime lastUpdated,
+                Value<String> deleted = const Value.absent(),
+                Value<int> rowid = const Value.absent(),
+              }) => UsuarioTarifaTableCompanion.insert(
+                usuarioId: usuarioId,
+                tarifaId: tarifaId,
+                lastUpdated: lastUpdated,
+                deleted: deleted,
+                rowid: rowid,
+              ),
+          withReferenceMapper: (p0) => p0
+              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
+              .toList(),
+          prefetchHooksCallback: null,
+        ),
+      );
+}
+
+typedef $$UsuarioTarifaTableTableProcessedTableManager =
+    ProcessedTableManager<
+      _$RemoteAppDatabase,
+      $UsuarioTarifaTableTable,
+      UsuarioTarifaDTO,
+      $$UsuarioTarifaTableTableFilterComposer,
+      $$UsuarioTarifaTableTableOrderingComposer,
+      $$UsuarioTarifaTableTableAnnotationComposer,
+      $$UsuarioTarifaTableTableCreateCompanionBuilder,
+      $$UsuarioTarifaTableTableUpdateCompanionBuilder,
+      (
+        UsuarioTarifaDTO,
+        BaseReferences<
+          _$RemoteAppDatabase,
+          $UsuarioTarifaTableTable,
+          UsuarioTarifaDTO
+        >,
+      ),
+      UsuarioTarifaDTO,
+      PrefetchHooks Function()
+    >;
 
 class $RemoteAppDatabaseManager {
   final _$RemoteAppDatabase _db;
@@ -54558,4 +55094,6 @@ class $RemoteAppDatabaseManager {
       $$PromoDtoClienteTableTableTableManager(_db, _db.promoDtoClienteTable);
   $$PromoDtoLinTableTableTableManager get promoDtoLinTable =>
       $$PromoDtoLinTableTableTableManager(_db, _db.promoDtoLinTable);
+  $$UsuarioTarifaTableTableTableManager get usuarioTarifaTable =>
+      $$UsuarioTarifaTableTableTableManager(_db, _db.usuarioTarifaTable);
 }

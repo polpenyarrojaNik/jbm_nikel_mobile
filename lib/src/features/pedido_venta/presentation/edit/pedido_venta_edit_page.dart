@@ -327,7 +327,6 @@ class _PedidoVentaEditPageState extends ConsumerState<PedidoVentaEditPage> {
           transaction: transaction,
         );
 
-    // ref.invalidate(getPedidoVentaBorradorPendiente);
     ref.invalidate(pedidoVentaProvider(pedidoLocalParam));
     ref.invalidate(pedidoVentaIndexScreenControllerProvider);
     ref.invalidate(pedidoVentaIndexScreenPaginatedControllerProvider);
@@ -353,7 +352,6 @@ class _PedidoVentaEditPageState extends ConsumerState<PedidoVentaEditPage> {
     }
     ref.invalidate(pedidoVentaIndexScreenPaginatedControllerProvider);
     ref.invalidate(pedidoVentaIndexScreenControllerProvider);
-    // ref.invalidate(getPedidoVentaBorradorPendiente);
 
     if (widget.createPedidoFromClienteId != null ||
         widget.addLineaDesdeArticulo != null) {

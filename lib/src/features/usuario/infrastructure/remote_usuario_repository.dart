@@ -32,19 +32,19 @@ class RemoteUsuarioRepository {
 
   static final authorizationEndpoint = Uri.https(
     dotenv.get('URL', fallback: 'localhost:3001'),
-    '/api/v5/login',
+    '/api/v6/login',
   );
   static final authorizationTestEndpoint = Uri.http(
-    dotenv.get('URL', fallback: 'localhost:3001'),
-    '/api/v5/login',
+    dotenv.get('URL_TEST', fallback: 'localhost:3001'),
+    '/api/v6/login',
   );
   static final renewTokenEndpoint = Uri.https(
     dotenv.get('URL', fallback: 'localhost:3001'),
-    '/api/v4/renew-token',
+    '/api/v6/renew-token',
   );
   static final renewTokenTestEndpoint = Uri.http(
-    dotenv.get('URL', fallback: 'localhost:3001'),
-    '/api/v4/renew-token',
+    dotenv.get('URL_TEST', fallback: 'localhost:3001'),
+    '/api/v6/renew-token',
   );
 
   Future<UsuarioDTO> signIn(String username, String password, bool test) async {

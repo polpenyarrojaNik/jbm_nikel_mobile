@@ -419,5 +419,6 @@
   "freightCharge": "Spese di trasporto",
   "until": "Fino a",
   "PDFdeliveryNotes": "PDF Buoni di spedizione",
-  "PDFinvoices": "PDFFatture"
+  "PDFinvoices": "PDFFatture",
+  "unitCost": "Custo unitario"
 }

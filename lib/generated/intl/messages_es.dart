@@ -749,6 +749,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "ultimosPrecios_titulo":
             MessageLookupByLibrary.simpleMessage("Últimos precios"),
         "unidad": MessageLookupByLibrary.simpleMessage("ud."),
+        "unitCost": MessageLookupByLibrary.simpleMessage("Coste unitario"),
         "unknown": MessageLookupByLibrary.simpleMessage("Desconocido"),
         "unknownFamily":
             MessageLookupByLibrary.simpleMessage("Familia desconocida"),

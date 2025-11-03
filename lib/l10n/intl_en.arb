@@ -421,5 +421,6 @@
   "unknownFamily": "Unknown family",
   "unknownCustomer": "Unknown customer",
   "PDFdeliveryNotes": "PDF Delivery notes",
-  "PDFinvoices": "PDF Invoices"
+  "PDFinvoices": "PDF Invoices",
+  "unitCost": "Unit cost"
 }

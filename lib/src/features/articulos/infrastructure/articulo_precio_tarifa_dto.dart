@@ -23,6 +23,7 @@ abstract class ArticuloPrecioTarifaDTO
     @JsonKey(name: 'PRECIO') required double precio,
     @JsonKey(name: 'DIVISA_ID') required String divisaId,
     @JsonKey(name: 'TIPO_PRECIO') required int tipoPrecio,
+    @JsonKey(name: 'VISIBLE_SN') required String visibleSN,
     @JsonKey(name: 'LAST_UPDATED') required DateTime lastUpdated,
     @JsonKey(name: 'DELETED') @Default('N') String deleted,
   }) = _ArticuloPrecioTarifaDTO;
@@ -39,6 +40,7 @@ abstract class ArticuloPrecioTarifaDTO
       precio: precio.toMoney(currencyId: divisaId),
       divisaId: divisaId,
       tipoPrecio: tipoPrecio,
+      visibleSN: visibleSN == 'S',
       lastUpdated: lastUpdated,
       deleted: (deleted == 'S'),
     );
@@ -54,6 +56,7 @@ abstract class ArticuloPrecioTarifaDTO
       precio: Value(precio),
       divisaId: Value(divisaId),
       tipoPrecio: Value(tipoPrecio),
+      visibleSN: Value(visibleSN),
       lastUpdated: Value(lastUpdated),
       deleted: Value(deleted),
     ).toColumns(nullToAbsent);
@@ -76,6 +79,7 @@ class ArticuloPrecioTarifaTable extends Table {
   RealColumn get precio => real().named('PRECIO')();
   TextColumn get divisaId => text().named('DIVISA_ID')();
   IntColumn get tipoPrecio => integer().named('TIPO_PRECIO')();
+  TextColumn get visibleSN => text().named('VISIBLE_SN')();
   DateTimeColumn get lastUpdated => dateTime().named('LAST_UPDATED')();
   TextColumn get deleted =>
       text().withDefault(const Constant('N')).named('DELETED')();

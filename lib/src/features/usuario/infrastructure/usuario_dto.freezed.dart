@@ -15,7 +15,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$UsuarioDTO {
 
-@JsonKey(name: 'USUARIO_ID') String get id;@JsonKey(name: 'USUARIO') String get usuario;@JsonKey(name: 'CLAVE') String get contrasenya;@JsonKey(name: 'NOMBRE_MOSTRAR', defaultValue: '') String? get nombreUsuario;@JsonKey(name: 'PROVISIONAL_TOKEN') String get provisionalToken;@JsonKey(name: 'REFRESH_TOKEN') String? get refreshToken;@JsonKey(name: 'TEST') String get test;@JsonKey(name: 'IDIOMA_ID') String get idiomaId;@JsonKey(name: 'MODIFICAR_PRECIO_PEDIDO_SN') String get modificarPedido;@JsonKey(name: 'APP_VER_TOTAL_VENTAS') String get verTotalVentas;@JsonKey(name: 'PACKAGE_NAME') String? get packageName;@JsonKey(name: 'VERSION') String? get version;@JsonKey(name: 'BUILD_NUMBER') String? get buildNumber;@JsonKey(name: 'DEVICE_INFO') String? get deviceInfo;@JsonKey(name: 'MARGEN_COMERCIAL') double? get margenComercial;
+@JsonKey(name: 'USUARIO_ID') String get id;@JsonKey(name: 'USUARIO') String get usuario;@JsonKey(name: 'CLAVE') String get contrasenya;@JsonKey(name: 'NOMBRE_MOSTRAR', defaultValue: '') String? get nombreUsuario;@JsonKey(name: 'PROVISIONAL_TOKEN') String get provisionalToken;@JsonKey(name: 'REFRESH_TOKEN') String? get refreshToken;@JsonKey(name: 'TEST') String get test;@JsonKey(name: 'IDIOMA_ID') String get idiomaId;@JsonKey(name: 'MODIFICAR_PRECIO_PEDIDO_SN') String get modificarPedido;@JsonKey(name: 'APP_VER_TOTAL_VENTAS') String get verTotalVentas;@JsonKey(name: 'PACKAGE_NAME') String? get packageName;@JsonKey(name: 'VERSION') String? get version;@JsonKey(name: 'BUILD_NUMBER') String? get buildNumber;@JsonKey(name: 'DEVICE_INFO') String? get deviceInfo;@JsonKey(name: 'MARGEN_COMERCIAL') double? get margenComercial;@JsonKey(name: 'COSTE_SN') String get costeSn;@JsonKey(name: 'FILTRO_REPRESENTANTE') String get filtroRepresentante;
 /// Create a copy of UsuarioDTO
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -28,16 +28,16 @@ $UsuarioDTOCopyWith<UsuarioDTO> get copyWith => _$UsuarioDTOCopyWithImpl<Usuario
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is UsuarioDTO&&(identical(other.id, id) || other.id == id)&&(identical(other.usuario, usuario) || other.usuario == usuario)&&(identical(other.contrasenya, contrasenya) || other.contrasenya == contrasenya)&&(identical(other.nombreUsuario, nombreUsuario) || other.nombreUsuario == nombreUsuario)&&(identical(other.provisionalToken, provisionalToken) || other.provisionalToken == provisionalToken)&&(identical(other.refreshToken, refreshToken) || other.refreshToken == refreshToken)&&(identical(other.test, test) || other.test == test)&&(identical(other.idiomaId, idiomaId) || other.idiomaId == idiomaId)&&(identical(other.modificarPedido, modificarPedido) || other.modificarPedido == modificarPedido)&&(identical(other.verTotalVentas, verTotalVentas) || other.verTotalVentas == verTotalVentas)&&(identical(other.packageName, packageName) || other.packageName == packageName)&&(identical(other.version, version) || other.version == version)&&(identical(other.buildNumber, buildNumber) || other.buildNumber == buildNumber)&&(identical(other.deviceInfo, deviceInfo) || other.deviceInfo == deviceInfo)&&(identical(other.margenComercial, margenComercial) || other.margenComercial == margenComercial));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is UsuarioDTO&&(identical(other.id, id) || other.id == id)&&(identical(other.usuario, usuario) || other.usuario == usuario)&&(identical(other.contrasenya, contrasenya) || other.contrasenya == contrasenya)&&(identical(other.nombreUsuario, nombreUsuario) || other.nombreUsuario == nombreUsuario)&&(identical(other.provisionalToken, provisionalToken) || other.provisionalToken == provisionalToken)&&(identical(other.refreshToken, refreshToken) || other.refreshToken == refreshToken)&&(identical(other.test, test) || other.test == test)&&(identical(other.idiomaId, idiomaId) || other.idiomaId == idiomaId)&&(identical(other.modificarPedido, modificarPedido) || other.modificarPedido == modificarPedido)&&(identical(other.verTotalVentas, verTotalVentas) || other.verTotalVentas == verTotalVentas)&&(identical(other.packageName, packageName) || other.packageName == packageName)&&(identical(other.version, version) || other.version == version)&&(identical(other.buildNumber, buildNumber) || other.buildNumber == buildNumber)&&(identical(other.deviceInfo, deviceInfo) || other.deviceInfo == deviceInfo)&&(identical(other.margenComercial, margenComercial) || other.margenComercial == margenComercial)&&(identical(other.costeSn, costeSn) || other.costeSn == costeSn)&&(identical(other.filtroRepresentante, filtroRepresentante) || other.filtroRepresentante == filtroRepresentante));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,id,usuario,contrasenya,nombreUsuario,provisionalToken,refreshToken,test,idiomaId,modificarPedido,verTotalVentas,packageName,version,buildNumber,deviceInfo,margenComercial);
+int get hashCode => Object.hash(runtimeType,id,usuario,contrasenya,nombreUsuario,provisionalToken,refreshToken,test,idiomaId,modificarPedido,verTotalVentas,packageName,version,buildNumber,deviceInfo,margenComercial,costeSn,filtroRepresentante);
 
 @override
 String toString() {
-  return 'UsuarioDTO(id: $id, usuario: $usuario, contrasenya: $contrasenya, nombreUsuario: $nombreUsuario, provisionalToken: $provisionalToken, refreshToken: $refreshToken, test: $test, idiomaId: $idiomaId, modificarPedido: $modificarPedido, verTotalVentas: $verTotalVentas, packageName: $packageName, version: $version, buildNumber: $buildNumber, deviceInfo: $deviceInfo, margenComercial: $margenComercial)';
+  return 'UsuarioDTO(id: $id, usuario: $usuario, contrasenya: $contrasenya, nombreUsuario: $nombreUsuario, provisionalToken: $provisionalToken, refreshToken: $refreshToken, test: $test, idiomaId: $idiomaId, modificarPedido: $modificarPedido, verTotalVentas: $verTotalVentas, packageName: $packageName, version: $version, buildNumber: $buildNumber, deviceInfo: $deviceInfo, margenComercial: $margenComercial, costeSn: $costeSn, filtroRepresentante: $filtroRepresentante)';
 }
 
 
@@ -48,7 +48,7 @@ abstract mixin class $UsuarioDTOCopyWith<$Res>  {
   factory $UsuarioDTOCopyWith(UsuarioDTO value, $Res Function(UsuarioDTO) _then) = _$UsuarioDTOCopyWithImpl;
 @useResult
 $Res call({
-@JsonKey(name: 'USUARIO_ID') String id,@JsonKey(name: 'USUARIO') String usuario,@JsonKey(name: 'CLAVE') String contrasenya,@JsonKey(name: 'NOMBRE_MOSTRAR', defaultValue: '') String? nombreUsuario,@JsonKey(name: 'PROVISIONAL_TOKEN') String provisionalToken,@JsonKey(name: 'REFRESH_TOKEN') String? refreshToken,@JsonKey(name: 'TEST') String test,@JsonKey(name: 'IDIOMA_ID') String idiomaId,@JsonKey(name: 'MODIFICAR_PRECIO_PEDIDO_SN') String modificarPedido,@JsonKey(name: 'APP_VER_TOTAL_VENTAS') String verTotalVentas,@JsonKey(name: 'PACKAGE_NAME') String? packageName,@JsonKey(name: 'VERSION') String? version,@JsonKey(name: 'BUILD_NUMBER') String? buildNumber,@JsonKey(name: 'DEVICE_INFO') String? deviceInfo,@JsonKey(name: 'MARGEN_COMERCIAL') double? margenComercial
+@JsonKey(name: 'USUARIO_ID') String id,@JsonKey(name: 'USUARIO') String usuario,@JsonKey(name: 'CLAVE') String contrasenya,@JsonKey(name: 'NOMBRE_MOSTRAR', defaultValue: '') String? nombreUsuario,@JsonKey(name: 'PROVISIONAL_TOKEN') String provisionalToken,@JsonKey(name: 'REFRESH_TOKEN') String? refreshToken,@JsonKey(name: 'TEST') String test,@JsonKey(name: 'IDIOMA_ID') String idiomaId,@JsonKey(name: 'MODIFICAR_PRECIO_PEDIDO_SN') String modificarPedido,@JsonKey(name: 'APP_VER_TOTAL_VENTAS') String verTotalVentas,@JsonKey(name: 'PACKAGE_NAME') String? packageName,@JsonKey(name: 'VERSION') String? version,@JsonKey(name: 'BUILD_NUMBER') String? buildNumber,@JsonKey(name: 'DEVICE_INFO') String? deviceInfo,@JsonKey(name: 'MARGEN_COMERCIAL') double? margenComercial,@JsonKey(name: 'COSTE_SN') String costeSn,@JsonKey(name: 'FILTRO_REPRESENTANTE') String filtroRepresentante
 });
 
 
@@ -65,7 +65,7 @@ class _$UsuarioDTOCopyWithImpl<$Res>
 
 /// Create a copy of UsuarioDTO
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? usuario = null,Object? contrasenya = null,Object? nombreUsuario = freezed,Object? provisionalToken = null,Object? refreshToken = freezed,Object? test = null,Object? idiomaId = null,Object? modificarPedido = null,Object? verTotalVentas = null,Object? packageName = freezed,Object? version = freezed,Object? buildNumber = freezed,Object? deviceInfo = freezed,Object? margenComercial = freezed,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? usuario = null,Object? contrasenya = null,Object? nombreUsuario = freezed,Object? provisionalToken = null,Object? refreshToken = freezed,Object? test = null,Object? idiomaId = null,Object? modificarPedido = null,Object? verTotalVentas = null,Object? packageName = freezed,Object? version = freezed,Object? buildNumber = freezed,Object? deviceInfo = freezed,Object? margenComercial = freezed,Object? costeSn = null,Object? filtroRepresentante = null,}) {
   return _then(_self.copyWith(
 id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as String,usuario: null == usuario ? _self.usuario : usuario // ignore: cast_nullable_to_non_nullable
@@ -82,7 +82,9 @@ as String?,version: freezed == version ? _self.version : version // ignore: cast
 as String?,buildNumber: freezed == buildNumber ? _self.buildNumber : buildNumber // ignore: cast_nullable_to_non_nullable
 as String?,deviceInfo: freezed == deviceInfo ? _self.deviceInfo : deviceInfo // ignore: cast_nullable_to_non_nullable
 as String?,margenComercial: freezed == margenComercial ? _self.margenComercial : margenComercial // ignore: cast_nullable_to_non_nullable
-as double?,
+as double?,costeSn: null == costeSn ? _self.costeSn : costeSn // ignore: cast_nullable_to_non_nullable
+as String,filtroRepresentante: null == filtroRepresentante ? _self.filtroRepresentante : filtroRepresentante // ignore: cast_nullable_to_non_nullable
+as String,
   ));
 }
 
@@ -167,10 +169,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function(@JsonKey(name: 'USUARIO_ID')  String id, @JsonKey(name: 'USUARIO')  String usuario, @JsonKey(name: 'CLAVE')  String contrasenya, @JsonKey(name: 'NOMBRE_MOSTRAR', defaultValue: '')  String? nombreUsuario, @JsonKey(name: 'PROVISIONAL_TOKEN')  String provisionalToken, @JsonKey(name: 'REFRESH_TOKEN')  String? refreshToken, @JsonKey(name: 'TEST')  String test, @JsonKey(name: 'IDIOMA_ID')  String idiomaId, @JsonKey(name: 'MODIFICAR_PRECIO_PEDIDO_SN')  String modificarPedido, @JsonKey(name: 'APP_VER_TOTAL_VENTAS')  String verTotalVentas, @JsonKey(name: 'PACKAGE_NAME')  String? packageName, @JsonKey(name: 'VERSION')  String? version, @JsonKey(name: 'BUILD_NUMBER')  String? buildNumber, @JsonKey(name: 'DEVICE_INFO')  String? deviceInfo, @JsonKey(name: 'MARGEN_COMERCIAL')  double? margenComercial)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function(@JsonKey(name: 'USUARIO_ID')  String id, @JsonKey(name: 'USUARIO')  String usuario, @JsonKey(name: 'CLAVE')  String contrasenya, @JsonKey(name: 'NOMBRE_MOSTRAR', defaultValue: '')  String? nombreUsuario, @JsonKey(name: 'PROVISIONAL_TOKEN')  String provisionalToken, @JsonKey(name: 'REFRESH_TOKEN')  String? refreshToken, @JsonKey(name: 'TEST')  String test, @JsonKey(name: 'IDIOMA_ID')  String idiomaId, @JsonKey(name: 'MODIFICAR_PRECIO_PEDIDO_SN')  String modificarPedido, @JsonKey(name: 'APP_VER_TOTAL_VENTAS')  String verTotalVentas, @JsonKey(name: 'PACKAGE_NAME')  String? packageName, @JsonKey(name: 'VERSION')  String? version, @JsonKey(name: 'BUILD_NUMBER')  String? buildNumber, @JsonKey(name: 'DEVICE_INFO')  String? deviceInfo, @JsonKey(name: 'MARGEN_COMERCIAL')  double? margenComercial, @JsonKey(name: 'COSTE_SN')  String costeSn, @JsonKey(name: 'FILTRO_REPRESENTANTE')  String filtroRepresentante)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _UsuarioDTO() when $default != null:
-return $default(_that.id,_that.usuario,_that.contrasenya,_that.nombreUsuario,_that.provisionalToken,_that.refreshToken,_that.test,_that.idiomaId,_that.modificarPedido,_that.verTotalVentas,_that.packageName,_that.version,_that.buildNumber,_that.deviceInfo,_that.margenComercial);case _:
+return $default(_that.id,_that.usuario,_that.contrasenya,_that.nombreUsuario,_that.provisionalToken,_that.refreshToken,_that.test,_that.idiomaId,_that.modificarPedido,_that.verTotalVentas,_that.packageName,_that.version,_that.buildNumber,_that.deviceInfo,_that.margenComercial,_that.costeSn,_that.filtroRepresentante);case _:
   return orElse();
 
 }
@@ -188,10 +190,10 @@ return $default(_that.id,_that.usuario,_that.contrasenya,_that.nombreUsuario,_th
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function(@JsonKey(name: 'USUARIO_ID')  String id, @JsonKey(name: 'USUARIO')  String usuario, @JsonKey(name: 'CLAVE')  String contrasenya, @JsonKey(name: 'NOMBRE_MOSTRAR', defaultValue: '')  String? nombreUsuario, @JsonKey(name: 'PROVISIONAL_TOKEN')  String provisionalToken, @JsonKey(name: 'REFRESH_TOKEN')  String? refreshToken, @JsonKey(name: 'TEST')  String test, @JsonKey(name: 'IDIOMA_ID')  String idiomaId, @JsonKey(name: 'MODIFICAR_PRECIO_PEDIDO_SN')  String modificarPedido, @JsonKey(name: 'APP_VER_TOTAL_VENTAS')  String verTotalVentas, @JsonKey(name: 'PACKAGE_NAME')  String? packageName, @JsonKey(name: 'VERSION')  String? version, @JsonKey(name: 'BUILD_NUMBER')  String? buildNumber, @JsonKey(name: 'DEVICE_INFO')  String? deviceInfo, @JsonKey(name: 'MARGEN_COMERCIAL')  double? margenComercial)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function(@JsonKey(name: 'USUARIO_ID')  String id, @JsonKey(name: 'USUARIO')  String usuario, @JsonKey(name: 'CLAVE')  String contrasenya, @JsonKey(name: 'NOMBRE_MOSTRAR', defaultValue: '')  String? nombreUsuario, @JsonKey(name: 'PROVISIONAL_TOKEN')  String provisionalToken, @JsonKey(name: 'REFRESH_TOKEN')  String? refreshToken, @JsonKey(name: 'TEST')  String test, @JsonKey(name: 'IDIOMA_ID')  String idiomaId, @JsonKey(name: 'MODIFICAR_PRECIO_PEDIDO_SN')  String modificarPedido, @JsonKey(name: 'APP_VER_TOTAL_VENTAS')  String verTotalVentas, @JsonKey(name: 'PACKAGE_NAME')  String? packageName, @JsonKey(name: 'VERSION')  String? version, @JsonKey(name: 'BUILD_NUMBER')  String? buildNumber, @JsonKey(name: 'DEVICE_INFO')  String? deviceInfo, @JsonKey(name: 'MARGEN_COMERCIAL')  double? margenComercial, @JsonKey(name: 'COSTE_SN')  String costeSn, @JsonKey(name: 'FILTRO_REPRESENTANTE')  String filtroRepresentante)  $default,) {final _that = this;
 switch (_that) {
 case _UsuarioDTO():
-return $default(_that.id,_that.usuario,_that.contrasenya,_that.nombreUsuario,_that.provisionalToken,_that.refreshToken,_that.test,_that.idiomaId,_that.modificarPedido,_that.verTotalVentas,_that.packageName,_that.version,_that.buildNumber,_that.deviceInfo,_that.margenComercial);case _:
+return $default(_that.id,_that.usuario,_that.contrasenya,_that.nombreUsuario,_that.provisionalToken,_that.refreshToken,_that.test,_that.idiomaId,_that.modificarPedido,_that.verTotalVentas,_that.packageName,_that.version,_that.buildNumber,_that.deviceInfo,_that.margenComercial,_that.costeSn,_that.filtroRepresentante);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -208,10 +210,10 @@ return $default(_that.id,_that.usuario,_that.contrasenya,_that.nombreUsuario,_th
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function(@JsonKey(name: 'USUARIO_ID')  String id, @JsonKey(name: 'USUARIO')  String usuario, @JsonKey(name: 'CLAVE')  String contrasenya, @JsonKey(name: 'NOMBRE_MOSTRAR', defaultValue: '')  String? nombreUsuario, @JsonKey(name: 'PROVISIONAL_TOKEN')  String provisionalToken, @JsonKey(name: 'REFRESH_TOKEN')  String? refreshToken, @JsonKey(name: 'TEST')  String test, @JsonKey(name: 'IDIOMA_ID')  String idiomaId, @JsonKey(name: 'MODIFICAR_PRECIO_PEDIDO_SN')  String modificarPedido, @JsonKey(name: 'APP_VER_TOTAL_VENTAS')  String verTotalVentas, @JsonKey(name: 'PACKAGE_NAME')  String? packageName, @JsonKey(name: 'VERSION')  String? version, @JsonKey(name: 'BUILD_NUMBER')  String? buildNumber, @JsonKey(name: 'DEVICE_INFO')  String? deviceInfo, @JsonKey(name: 'MARGEN_COMERCIAL')  double? margenComercial)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function(@JsonKey(name: 'USUARIO_ID')  String id, @JsonKey(name: 'USUARIO')  String usuario, @JsonKey(name: 'CLAVE')  String contrasenya, @JsonKey(name: 'NOMBRE_MOSTRAR', defaultValue: '')  String? nombreUsuario, @JsonKey(name: 'PROVISIONAL_TOKEN')  String provisionalToken, @JsonKey(name: 'REFRESH_TOKEN')  String? refreshToken, @JsonKey(name: 'TEST')  String test, @JsonKey(name: 'IDIOMA_ID')  String idiomaId, @JsonKey(name: 'MODIFICAR_PRECIO_PEDIDO_SN')  String modificarPedido, @JsonKey(name: 'APP_VER_TOTAL_VENTAS')  String verTotalVentas, @JsonKey(name: 'PACKAGE_NAME')  String? packageName, @JsonKey(name: 'VERSION')  String? version, @JsonKey(name: 'BUILD_NUMBER')  String? buildNumber, @JsonKey(name: 'DEVICE_INFO')  String? deviceInfo, @JsonKey(name: 'MARGEN_COMERCIAL')  double? margenComercial, @JsonKey(name: 'COSTE_SN')  String costeSn, @JsonKey(name: 'FILTRO_REPRESENTANTE')  String filtroRepresentante)?  $default,) {final _that = this;
 switch (_that) {
 case _UsuarioDTO() when $default != null:
-return $default(_that.id,_that.usuario,_that.contrasenya,_that.nombreUsuario,_that.provisionalToken,_that.refreshToken,_that.test,_that.idiomaId,_that.modificarPedido,_that.verTotalVentas,_that.packageName,_that.version,_that.buildNumber,_that.deviceInfo,_that.margenComercial);case _:
+return $default(_that.id,_that.usuario,_that.contrasenya,_that.nombreUsuario,_that.provisionalToken,_that.refreshToken,_that.test,_that.idiomaId,_that.modificarPedido,_that.verTotalVentas,_that.packageName,_that.version,_that.buildNumber,_that.deviceInfo,_that.margenComercial,_that.costeSn,_that.filtroRepresentante);case _:
   return null;
 
 }
@@ -223,7 +225,7 @@ return $default(_that.id,_that.usuario,_that.contrasenya,_that.nombreUsuario,_th
 @JsonSerializable()
 
 class _UsuarioDTO extends UsuarioDTO {
-  const _UsuarioDTO({@JsonKey(name: 'USUARIO_ID') required this.id, @JsonKey(name: 'USUARIO') required this.usuario, @JsonKey(name: 'CLAVE') required this.contrasenya, @JsonKey(name: 'NOMBRE_MOSTRAR', defaultValue: '') required this.nombreUsuario, @JsonKey(name: 'PROVISIONAL_TOKEN') required this.provisionalToken, @JsonKey(name: 'REFRESH_TOKEN') this.refreshToken, @JsonKey(name: 'TEST') required this.test, @JsonKey(name: 'IDIOMA_ID') required this.idiomaId, @JsonKey(name: 'MODIFICAR_PRECIO_PEDIDO_SN') required this.modificarPedido, @JsonKey(name: 'APP_VER_TOTAL_VENTAS') required this.verTotalVentas, @JsonKey(name: 'PACKAGE_NAME') this.packageName, @JsonKey(name: 'VERSION') this.version, @JsonKey(name: 'BUILD_NUMBER') this.buildNumber, @JsonKey(name: 'DEVICE_INFO') this.deviceInfo, @JsonKey(name: 'MARGEN_COMERCIAL') this.margenComercial}): super._();
+  const _UsuarioDTO({@JsonKey(name: 'USUARIO_ID') required this.id, @JsonKey(name: 'USUARIO') required this.usuario, @JsonKey(name: 'CLAVE') required this.contrasenya, @JsonKey(name: 'NOMBRE_MOSTRAR', defaultValue: '') required this.nombreUsuario, @JsonKey(name: 'PROVISIONAL_TOKEN') required this.provisionalToken, @JsonKey(name: 'REFRESH_TOKEN') this.refreshToken, @JsonKey(name: 'TEST') required this.test, @JsonKey(name: 'IDIOMA_ID') required this.idiomaId, @JsonKey(name: 'MODIFICAR_PRECIO_PEDIDO_SN') required this.modificarPedido, @JsonKey(name: 'APP_VER_TOTAL_VENTAS') required this.verTotalVentas, @JsonKey(name: 'PACKAGE_NAME') this.packageName, @JsonKey(name: 'VERSION') this.version, @JsonKey(name: 'BUILD_NUMBER') this.buildNumber, @JsonKey(name: 'DEVICE_INFO') this.deviceInfo, @JsonKey(name: 'MARGEN_COMERCIAL') this.margenComercial, @JsonKey(name: 'COSTE_SN') required this.costeSn, @JsonKey(name: 'FILTRO_REPRESENTANTE') required this.filtroRepresentante}): super._();
   factory _UsuarioDTO.fromJson(Map<String, dynamic> json) => _$UsuarioDTOFromJson(json);
 
 @override@JsonKey(name: 'USUARIO_ID') final  String id;
@@ -241,6 +243,8 @@ class _UsuarioDTO extends UsuarioDTO {
 @override@JsonKey(name: 'BUILD_NUMBER') final  String? buildNumber;
 @override@JsonKey(name: 'DEVICE_INFO') final  String? deviceInfo;
 @override@JsonKey(name: 'MARGEN_COMERCIAL') final  double? margenComercial;
+@override@JsonKey(name: 'COSTE_SN') final  String costeSn;
+@override@JsonKey(name: 'FILTRO_REPRESENTANTE') final  String filtroRepresentante;
 
 /// Create a copy of UsuarioDTO
 /// with the given fields replaced by the non-null parameter values.
@@ -255,16 +259,16 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _UsuarioDTO&&(identical(other.id, id) || other.id == id)&&(identical(other.usuario, usuario) || other.usuario == usuario)&&(identical(other.contrasenya, contrasenya) || other.contrasenya == contrasenya)&&(identical(other.nombreUsuario, nombreUsuario) || other.nombreUsuario == nombreUsuario)&&(identical(other.provisionalToken, provisionalToken) || other.provisionalToken == provisionalToken)&&(identical(other.refreshToken, refreshToken) || other.refreshToken == refreshToken)&&(identical(other.test, test) || other.test == test)&&(identical(other.idiomaId, idiomaId) || other.idiomaId == idiomaId)&&(identical(other.modificarPedido, modificarPedido) || other.modificarPedido == modificarPedido)&&(identical(other.verTotalVentas, verTotalVentas) || other.verTotalVentas == verTotalVentas)&&(identical(other.packageName, packageName) || other.packageName == packageName)&&(identical(other.version, version) || other.version == version)&&(identical(other.buildNumber, buildNumber) || other.buildNumber == buildNumber)&&(identical(other.deviceInfo, deviceInfo) || other.deviceInfo == deviceInfo)&&(identical(other.margenComercial, margenComercial) || other.margenComercial == margenComercial));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _UsuarioDTO&&(identical(other.id, id) || other.id == id)&&(identical(other.usuario, usuario) || other.usuario == usuario)&&(identical(other.contrasenya, contrasenya) || other.contrasenya == contrasenya)&&(identical(other.nombreUsuario, nombreUsuario) || other.nombreUsuario == nombreUsuario)&&(identical(other.provisionalToken, provisionalToken) || other.provisionalToken == provisionalToken)&&(identical(other.refreshToken, refreshToken) || other.refreshToken == refreshToken)&&(identical(other.test, test) || other.test == test)&&(identical(other.idiomaId, idiomaId) || other.idiomaId == idiomaId)&&(identical(other.modificarPedido, modificarPedido) || other.modificarPedido == modificarPedido)&&(identical(other.verTotalVentas, verTotalVentas) || other.verTotalVentas == verTotalVentas)&&(identical(other.packageName, packageName) || other.packageName == packageName)&&(identical(other.version, version) || other.version == version)&&(identical(other.buildNumber, buildNumber) || other.buildNumber == buildNumber)&&(identical(other.deviceInfo, deviceInfo) || other.deviceInfo == deviceInfo)&&(identical(other.margenComercial, margenComercial) || other.margenComercial == margenComercial)&&(identical(other.costeSn, costeSn) || other.costeSn == costeSn)&&(identical(other.filtroRepresentante, filtroRepresentante) || other.filtroRepresentante == filtroRepresentante));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,id,usuario,contrasenya,nombreUsuario,provisionalToken,refreshToken,test,idiomaId,modificarPedido,verTotalVentas,packageName,version,buildNumber,deviceInfo,margenComercial);
+int get hashCode => Object.hash(runtimeType,id,usuario,contrasenya,nombreUsuario,provisionalToken,refreshToken,test,idiomaId,modificarPedido,verTotalVentas,packageName,version,buildNumber,deviceInfo,margenComercial,costeSn,filtroRepresentante);
 
 @override
 String toString() {
-  return 'UsuarioDTO(id: $id, usuario: $usuario, contrasenya: $contrasenya, nombreUsuario: $nombreUsuario, provisionalToken: $provisionalToken, refreshToken: $refreshToken, test: $test, idiomaId: $idiomaId, modificarPedido: $modificarPedido, verTotalVentas: $verTotalVentas, packageName: $packageName, version: $version, buildNumber: $buildNumber, deviceInfo: $deviceInfo, margenComercial: $margenComercial)';
+  return 'UsuarioDTO(id: $id, usuario: $usuario, contrasenya: $contrasenya, nombreUsuario: $nombreUsuario, provisionalToken: $provisionalToken, refreshToken: $refreshToken, test: $test, idiomaId: $idiomaId, modificarPedido: $modificarPedido, verTotalVentas: $verTotalVentas, packageName: $packageName, version: $version, buildNumber: $buildNumber, deviceInfo: $deviceInfo, margenComercial: $margenComercial, costeSn: $costeSn, filtroRepresentante: $filtroRepresentante)';
 }
 
 
@@ -275,7 +279,7 @@ abstract mixin class _$UsuarioDTOCopyWith<$Res> implements $UsuarioDTOCopyWith<$
   factory _$UsuarioDTOCopyWith(_UsuarioDTO value, $Res Function(_UsuarioDTO) _then) = __$UsuarioDTOCopyWithImpl;
 @override @useResult
 $Res call({
-@JsonKey(name: 'USUARIO_ID') String id,@JsonKey(name: 'USUARIO') String usuario,@JsonKey(name: 'CLAVE') String contrasenya,@JsonKey(name: 'NOMBRE_MOSTRAR', defaultValue: '') String? nombreUsuario,@JsonKey(name: 'PROVISIONAL_TOKEN') String provisionalToken,@JsonKey(name: 'REFRESH_TOKEN') String? refreshToken,@JsonKey(name: 'TEST') String test,@JsonKey(name: 'IDIOMA_ID') String idiomaId,@JsonKey(name: 'MODIFICAR_PRECIO_PEDIDO_SN') String modificarPedido,@JsonKey(name: 'APP_VER_TOTAL_VENTAS') String verTotalVentas,@JsonKey(name: 'PACKAGE_NAME') String? packageName,@JsonKey(name: 'VERSION') String? version,@JsonKey(name: 'BUILD_NUMBER') String? buildNumber,@JsonKey(name: 'DEVICE_INFO') String? deviceInfo,@JsonKey(name: 'MARGEN_COMERCIAL') double? margenComercial
+@JsonKey(name: 'USUARIO_ID') String id,@JsonKey(name: 'USUARIO') String usuario,@JsonKey(name: 'CLAVE') String contrasenya,@JsonKey(name: 'NOMBRE_MOSTRAR', defaultValue: '') String? nombreUsuario,@JsonKey(name: 'PROVISIONAL_TOKEN') String provisionalToken,@JsonKey(name: 'REFRESH_TOKEN') String? refreshToken,@JsonKey(name: 'TEST') String test,@JsonKey(name: 'IDIOMA_ID') String idiomaId,@JsonKey(name: 'MODIFICAR_PRECIO_PEDIDO_SN') String modificarPedido,@JsonKey(name: 'APP_VER_TOTAL_VENTAS') String verTotalVentas,@JsonKey(name: 'PACKAGE_NAME') String? packageName,@JsonKey(name: 'VERSION') String? version,@JsonKey(name: 'BUILD_NUMBER') String? buildNumber,@JsonKey(name: 'DEVICE_INFO') String? deviceInfo,@JsonKey(name: 'MARGEN_COMERCIAL') double? margenComercial,@JsonKey(name: 'COSTE_SN') String costeSn,@JsonKey(name: 'FILTRO_REPRESENTANTE') String filtroRepresentante
 });
 
 
@@ -292,7 +296,7 @@ class __$UsuarioDTOCopyWithImpl<$Res>
 
 /// Create a copy of UsuarioDTO
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? usuario = null,Object? contrasenya = null,Object? nombreUsuario = freezed,Object? provisionalToken = null,Object? refreshToken = freezed,Object? test = null,Object? idiomaId = null,Object? modificarPedido = null,Object? verTotalVentas = null,Object? packageName = freezed,Object? version = freezed,Object? buildNumber = freezed,Object? deviceInfo = freezed,Object? margenComercial = freezed,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? usuario = null,Object? contrasenya = null,Object? nombreUsuario = freezed,Object? provisionalToken = null,Object? refreshToken = freezed,Object? test = null,Object? idiomaId = null,Object? modificarPedido = null,Object? verTotalVentas = null,Object? packageName = freezed,Object? version = freezed,Object? buildNumber = freezed,Object? deviceInfo = freezed,Object? margenComercial = freezed,Object? costeSn = null,Object? filtroRepresentante = null,}) {
   return _then(_UsuarioDTO(
 id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as String,usuario: null == usuario ? _self.usuario : usuario // ignore: cast_nullable_to_non_nullable
@@ -309,7 +313,9 @@ as String?,version: freezed == version ? _self.version : version // ignore: cast
 as String?,buildNumber: freezed == buildNumber ? _self.buildNumber : buildNumber // ignore: cast_nullable_to_non_nullable
 as String?,deviceInfo: freezed == deviceInfo ? _self.deviceInfo : deviceInfo // ignore: cast_nullable_to_non_nullable
 as String?,margenComercial: freezed == margenComercial ? _self.margenComercial : margenComercial // ignore: cast_nullable_to_non_nullable
-as double?,
+as double?,costeSn: null == costeSn ? _self.costeSn : costeSn // ignore: cast_nullable_to_non_nullable
+as String,filtroRepresentante: null == filtroRepresentante ? _self.filtroRepresentante : filtroRepresentante // ignore: cast_nullable_to_non_nullable
+as String,
   ));
 }
 

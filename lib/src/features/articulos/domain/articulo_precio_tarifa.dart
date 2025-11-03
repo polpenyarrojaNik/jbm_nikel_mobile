@@ -16,5 +16,6 @@ abstract class ArticuloPrecioTarifa with _$ArticuloPrecioTarifa {
     required int tipoPrecio,
     required DateTime lastUpdated,
     required bool deleted,
+    required bool visibleSN,
   }) = _ArticuloPrecioTarifa;
 }
