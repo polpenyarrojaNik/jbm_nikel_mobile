@@ -76,6 +76,8 @@ _ClienteDTO _$ClienteDTOFromJson(Map<String, dynamic> json) => _ClienteDTO(
   importePortes1: (json['IMPORTE_PORTES1'] as num?)?.toDouble(),
   importePortes2: (json['IMPORTE_PORTES2'] as num?)?.toDouble(),
   importePortes3: (json['IMPORTE_PORTES3'] as num?)?.toDouble(),
+  ventasPeriodoActual: (json['VENTAS_PERIODO'] as num?)?.toDouble(),
+  ventasPeriodoAnterior: (json['VENTAS_PERIODO_ANTERIOR'] as num?)?.toDouble(),
   lastUpdated: DateTime.parse(json['LAST_UPDATED'] as String),
   deleted: json['DELETED'] as String? ?? 'N',
 );
@@ -146,6 +148,8 @@ Map<String, dynamic> _$ClienteDTOToJson(_ClienteDTO instance) =>
       'IMPORTE_PORTES1': instance.importePortes1,
       'IMPORTE_PORTES2': instance.importePortes2,
       'IMPORTE_PORTES3': instance.importePortes3,
+      'VENTAS_PERIODO': instance.ventasPeriodoActual,
+      'VENTAS_PERIODO_ANTERIOR': instance.ventasPeriodoAnterior,
       'LAST_UPDATED': instance.lastUpdated.toIso8601String(),
       'DELETED': instance.deleted,
     };

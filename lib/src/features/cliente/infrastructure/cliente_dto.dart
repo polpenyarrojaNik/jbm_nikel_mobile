@@ -97,6 +97,8 @@ abstract class ClienteDTO with _$ClienteDTO implements Insertable<ClienteDTO> {
     @JsonKey(name: 'IMPORTE_PORTES1') double? importePortes1,
     @JsonKey(name: 'IMPORTE_PORTES2') double? importePortes2,
     @JsonKey(name: 'IMPORTE_PORTES3') double? importePortes3,
+    @JsonKey(name: 'VENTAS_PERIODO') double? ventasPeriodoActual,
+    @JsonKey(name: 'VENTAS_PERIODO_ANTERIOR') double? ventasPeriodoAnterior,
     @JsonKey(name: 'LAST_UPDATED') required DateTime lastUpdated,
     @JsonKey(name: 'DELETED') @Default('N') String deleted,
   }) = _ClienteDTO;
@@ -203,6 +205,8 @@ abstract class ClienteDTO with _$ClienteDTO implements Insertable<ClienteDTO> {
       importePortes1: importePortes1,
       importePortes2: importePortes2,
       importePortes3: importePortes3,
+      ventasPeriodoActual: ventasPeriodoActual,
+      ventasPeriodoAnterior: ventasPeriodoAnterior,
       lastUpdated: lastUpdated,
       deleted: (deleted == 'S'),
     );
@@ -272,6 +276,8 @@ abstract class ClienteDTO with _$ClienteDTO implements Insertable<ClienteDTO> {
       importePortes1: Value(importePortes1),
       importePortes2: Value(importePortes2),
       importePortes3: Value(importePortes3),
+      ventasPeriodoActual: Value(ventasPeriodoActual),
+      ventasPeriodoAnterior: Value(ventasPeriodoAnterior),
       lastUpdated: Value(lastUpdated),
       deleted: Value(deleted),
     ).toColumns(nullToAbsent);
@@ -417,6 +423,10 @@ class ClienteTable extends Table {
   RealColumn get importePortes1 => real().nullable().named('IMPORTE_PORTES1')();
   RealColumn get importePortes2 => real().nullable().named('IMPORTE_PORTES2')();
   RealColumn get importePortes3 => real().nullable().named('IMPORTE_PORTES3')();
+  RealColumn get ventasPeriodoActual =>
+      real().nullable().named('VENTAS_PERIODO')();
+  RealColumn get ventasPeriodoAnterior =>
+      real().nullable().named('VENTAS_PERIODO_ANTERIOR')();
   DateTimeColumn get lastUpdated => dateTime().named('LAST_UPDATED')();
   TextColumn get deleted =>
       text().withDefault(const Constant('N')).named('DELETED')();

@@ -6124,6 +6124,28 @@ class $ClienteTableTable extends ClienteTable
     type: DriftSqlType.double,
     requiredDuringInsert: false,
   );
+  static const VerificationMeta _ventasPeriodoActualMeta =
+      const VerificationMeta('ventasPeriodoActual');
+  @override
+  late final GeneratedColumn<double> ventasPeriodoActual =
+      GeneratedColumn<double>(
+        'VENTAS_PERIODO',
+        aliasedName,
+        true,
+        type: DriftSqlType.double,
+        requiredDuringInsert: false,
+      );
+  static const VerificationMeta _ventasPeriodoAnteriorMeta =
+      const VerificationMeta('ventasPeriodoAnterior');
+  @override
+  late final GeneratedColumn<double> ventasPeriodoAnterior =
+      GeneratedColumn<double>(
+        'VENTAS_PERIODO_ANTERIOR',
+        aliasedName,
+        true,
+        type: DriftSqlType.double,
+        requiredDuringInsert: false,
+      );
   static const VerificationMeta _lastUpdatedMeta = const VerificationMeta(
     'lastUpdated',
   );
@@ -6210,6 +6232,8 @@ class $ClienteTableTable extends ClienteTable
     importePortes1,
     importePortes2,
     importePortes3,
+    ventasPeriodoActual,
+    ventasPeriodoAnterior,
     lastUpdated,
     deleted,
   ];
@@ -6785,6 +6809,24 @@ class $ClienteTableTable extends ClienteTable
         ),
       );
     }
+    if (data.containsKey('VENTAS_PERIODO')) {
+      context.handle(
+        _ventasPeriodoActualMeta,
+        ventasPeriodoActual.isAcceptableOrUnknown(
+          data['VENTAS_PERIODO']!,
+          _ventasPeriodoActualMeta,
+        ),
+      );
+    }
+    if (data.containsKey('VENTAS_PERIODO_ANTERIOR')) {
+      context.handle(
+        _ventasPeriodoAnteriorMeta,
+        ventasPeriodoAnterior.isAcceptableOrUnknown(
+          data['VENTAS_PERIODO_ANTERIOR']!,
+          _ventasPeriodoAnteriorMeta,
+        ),
+      );
+    }
     if (data.containsKey('LAST_UPDATED')) {
       context.handle(
         _lastUpdatedMeta,
@@ -7055,6 +7097,14 @@ class $ClienteTableTable extends ClienteTable
         DriftSqlType.double,
         data['${effectivePrefix}IMPORTE_PORTES3'],
       ),
+      ventasPeriodoActual: attachedDatabase.typeMapping.read(
+        DriftSqlType.double,
+        data['${effectivePrefix}VENTAS_PERIODO'],
+      ),
+      ventasPeriodoAnterior: attachedDatabase.typeMapping.read(
+        DriftSqlType.double,
+        data['${effectivePrefix}VENTAS_PERIODO_ANTERIOR'],
+      ),
       lastUpdated: attachedDatabase.typeMapping.read(
         DriftSqlType.dateTime,
         data['${effectivePrefix}LAST_UPDATED'],
@@ -7134,6 +7184,8 @@ class ClienteTableCompanion extends UpdateCompanion<ClienteDTO> {
   final Value<double?> importePortes1;
   final Value<double?> importePortes2;
   final Value<double?> importePortes3;
+  final Value<double?> ventasPeriodoActual;
+  final Value<double?> ventasPeriodoAnterior;
   final Value<DateTime> lastUpdated;
   final Value<String> deleted;
   final Value<int> rowid;
@@ -7199,6 +7251,8 @@ class ClienteTableCompanion extends UpdateCompanion<ClienteDTO> {
     this.importePortes1 = const Value.absent(),
     this.importePortes2 = const Value.absent(),
     this.importePortes3 = const Value.absent(),
+    this.ventasPeriodoActual = const Value.absent(),
+    this.ventasPeriodoAnterior = const Value.absent(),
     this.lastUpdated = const Value.absent(),
     this.deleted = const Value.absent(),
     this.rowid = const Value.absent(),
@@ -7265,6 +7319,8 @@ class ClienteTableCompanion extends UpdateCompanion<ClienteDTO> {
     this.importePortes1 = const Value.absent(),
     this.importePortes2 = const Value.absent(),
     this.importePortes3 = const Value.absent(),
+    this.ventasPeriodoActual = const Value.absent(),
+    this.ventasPeriodoAnterior = const Value.absent(),
     required DateTime lastUpdated,
     this.deleted = const Value.absent(),
     this.rowid = const Value.absent(),
@@ -7350,6 +7406,8 @@ class ClienteTableCompanion extends UpdateCompanion<ClienteDTO> {
     Expression<double>? importePortes1,
     Expression<double>? importePortes2,
     Expression<double>? importePortes3,
+    Expression<double>? ventasPeriodoActual,
+    Expression<double>? ventasPeriodoAnterior,
     Expression<DateTime>? lastUpdated,
     Expression<String>? deleted,
     Expression<int>? rowid,
@@ -7438,6 +7496,9 @@ class ClienteTableCompanion extends UpdateCompanion<ClienteDTO> {
       if (importePortes1 != null) 'IMPORTE_PORTES1': importePortes1,
       if (importePortes2 != null) 'IMPORTE_PORTES2': importePortes2,
       if (importePortes3 != null) 'IMPORTE_PORTES3': importePortes3,
+      if (ventasPeriodoActual != null) 'VENTAS_PERIODO': ventasPeriodoActual,
+      if (ventasPeriodoAnterior != null)
+        'VENTAS_PERIODO_ANTERIOR': ventasPeriodoAnterior,
       if (lastUpdated != null) 'LAST_UPDATED': lastUpdated,
       if (deleted != null) 'DELETED': deleted,
       if (rowid != null) 'rowid': rowid,
@@ -7506,6 +7567,8 @@ class ClienteTableCompanion extends UpdateCompanion<ClienteDTO> {
     Value<double?>? importePortes1,
     Value<double?>? importePortes2,
     Value<double?>? importePortes3,
+    Value<double?>? ventasPeriodoActual,
+    Value<double?>? ventasPeriodoAnterior,
     Value<DateTime>? lastUpdated,
     Value<String>? deleted,
     Value<int>? rowid,
@@ -7583,6 +7646,9 @@ class ClienteTableCompanion extends UpdateCompanion<ClienteDTO> {
       importePortes1: importePortes1 ?? this.importePortes1,
       importePortes2: importePortes2 ?? this.importePortes2,
       importePortes3: importePortes3 ?? this.importePortes3,
+      ventasPeriodoActual: ventasPeriodoActual ?? this.ventasPeriodoActual,
+      ventasPeriodoAnterior:
+          ventasPeriodoAnterior ?? this.ventasPeriodoAnterior,
       lastUpdated: lastUpdated ?? this.lastUpdated,
       deleted: deleted ?? this.deleted,
       rowid: rowid ?? this.rowid,
@@ -7803,6 +7869,14 @@ class ClienteTableCompanion extends UpdateCompanion<ClienteDTO> {
     if (importePortes3.present) {
       map['IMPORTE_PORTES3'] = Variable<double>(importePortes3.value);
     }
+    if (ventasPeriodoActual.present) {
+      map['VENTAS_PERIODO'] = Variable<double>(ventasPeriodoActual.value);
+    }
+    if (ventasPeriodoAnterior.present) {
+      map['VENTAS_PERIODO_ANTERIOR'] = Variable<double>(
+        ventasPeriodoAnterior.value,
+      );
+    }
     if (lastUpdated.present) {
       map['LAST_UPDATED'] = Variable<DateTime>(lastUpdated.value);
     }
@@ -7881,6 +7955,8 @@ class ClienteTableCompanion extends UpdateCompanion<ClienteDTO> {
           ..write('importePortes1: $importePortes1, ')
           ..write('importePortes2: $importePortes2, ')
           ..write('importePortes3: $importePortes3, ')
+          ..write('ventasPeriodoActual: $ventasPeriodoActual, ')
+          ..write('ventasPeriodoAnterior: $ventasPeriodoAnterior, ')
           ..write('lastUpdated: $lastUpdated, ')
           ..write('deleted: $deleted, ')
           ..write('rowid: $rowid')
@@ -35991,6 +36067,8 @@ typedef $$ClienteTableTableCreateCompanionBuilder =
       Value<double?> importePortes1,
       Value<double?> importePortes2,
       Value<double?> importePortes3,
+      Value<double?> ventasPeriodoActual,
+      Value<double?> ventasPeriodoAnterior,
       required DateTime lastUpdated,
       Value<String> deleted,
       Value<int> rowid,
@@ -36058,6 +36136,8 @@ typedef $$ClienteTableTableUpdateCompanionBuilder =
       Value<double?> importePortes1,
       Value<double?> importePortes2,
       Value<double?> importePortes3,
+      Value<double?> ventasPeriodoActual,
+      Value<double?> ventasPeriodoAnterior,
       Value<DateTime> lastUpdated,
       Value<String> deleted,
       Value<int> rowid,
@@ -36443,6 +36523,16 @@ class $$ClienteTableTableFilterComposer
 
   ColumnFilters<double> get importePortes3 => $composableBuilder(
     column: $table.importePortes3,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<double> get ventasPeriodoActual => $composableBuilder(
+    column: $table.ventasPeriodoActual,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<double> get ventasPeriodoAnterior => $composableBuilder(
+    column: $table.ventasPeriodoAnterior,
     builder: (column) => ColumnFilters(column),
   );
 
@@ -36845,6 +36935,16 @@ class $$ClienteTableTableOrderingComposer
     builder: (column) => ColumnOrderings(column),
   );
 
+  ColumnOrderings<double> get ventasPeriodoActual => $composableBuilder(
+    column: $table.ventasPeriodoActual,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<double> get ventasPeriodoAnterior => $composableBuilder(
+    column: $table.ventasPeriodoAnterior,
+    builder: (column) => ColumnOrderings(column),
+  );
+
   ColumnOrderings<DateTime> get lastUpdated => $composableBuilder(
     column: $table.lastUpdated,
     builder: (column) => ColumnOrderings(column),
@@ -37228,6 +37328,16 @@ class $$ClienteTableTableAnnotationComposer
     builder: (column) => column,
   );
 
+  GeneratedColumn<double> get ventasPeriodoActual => $composableBuilder(
+    column: $table.ventasPeriodoActual,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<double> get ventasPeriodoAnterior => $composableBuilder(
+    column: $table.ventasPeriodoAnterior,
+    builder: (column) => column,
+  );
+
   GeneratedColumn<DateTime> get lastUpdated => $composableBuilder(
     column: $table.lastUpdated,
     builder: (column) => column,
@@ -37432,6 +37542,8 @@ class $$ClienteTableTableTableManager
                 Value<double?> importePortes1 = const Value.absent(),
                 Value<double?> importePortes2 = const Value.absent(),
                 Value<double?> importePortes3 = const Value.absent(),
+                Value<double?> ventasPeriodoActual = const Value.absent(),
+                Value<double?> ventasPeriodoAnterior = const Value.absent(),
                 Value<DateTime> lastUpdated = const Value.absent(),
                 Value<String> deleted = const Value.absent(),
                 Value<int> rowid = const Value.absent(),
@@ -37497,6 +37609,8 @@ class $$ClienteTableTableTableManager
                 importePortes1: importePortes1,
                 importePortes2: importePortes2,
                 importePortes3: importePortes3,
+                ventasPeriodoActual: ventasPeriodoActual,
+                ventasPeriodoAnterior: ventasPeriodoAnterior,
                 lastUpdated: lastUpdated,
                 deleted: deleted,
                 rowid: rowid,
@@ -37569,6 +37683,8 @@ class $$ClienteTableTableTableManager
                 Value<double?> importePortes1 = const Value.absent(),
                 Value<double?> importePortes2 = const Value.absent(),
                 Value<double?> importePortes3 = const Value.absent(),
+                Value<double?> ventasPeriodoActual = const Value.absent(),
+                Value<double?> ventasPeriodoAnterior = const Value.absent(),
                 required DateTime lastUpdated,
                 Value<String> deleted = const Value.absent(),
                 Value<int> rowid = const Value.absent(),
@@ -37634,6 +37750,8 @@ class $$ClienteTableTableTableManager
                 importePortes1: importePortes1,
                 importePortes2: importePortes2,
                 importePortes3: importePortes3,
+                ventasPeriodoActual: ventasPeriodoActual,
+                ventasPeriodoAnterior: ventasPeriodoAnterior,
                 lastUpdated: lastUpdated,
                 deleted: deleted,
                 rowid: rowid,

@@ -12,6 +12,8 @@ import 'plazo_cobro.dart';
 
 part 'cliente.freezed.dart';
 
+enum Tendencia { up, down, equal }
+
 @freezed
 abstract class Cliente with _$Cliente {
   const Cliente._();
@@ -87,6 +89,8 @@ abstract class Cliente with _$Cliente {
     double? importePortes1,
     double? importePortes2,
     double? importePortes3,
+    double? ventasPeriodoActual,
+    double? ventasPeriodoAnterior,
     DateTime? lastUpdated,
     required bool deleted,
   }) = _Cliente;
@@ -94,5 +98,14 @@ abstract class Cliente with _$Cliente {
   bool isActivo() {
     return (ventasAnyoActual + ventasAnyoAnterior) !=
         Money.parse('0', isoCode: divisa!.id);
+  }
+
+  Tendencia get tendenciaVentas {
+    if (ventasAnyoActual > ventasAnyoAnterior) {
+      return Tendencia.up;
+    } else if (ventasAnyoActual < ventasAnyoAnterior) {
+      return Tendencia.down;
+    }
+    return Tendencia.equal;
   }
 }
