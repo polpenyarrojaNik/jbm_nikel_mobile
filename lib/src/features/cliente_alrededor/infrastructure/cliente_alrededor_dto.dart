@@ -32,6 +32,8 @@ abstract class ClienteAlrededorDTO with _$ClienteAlrededorDTO {
     required double ventasAnyoActual,
     required double ventasAnyoAnterior,
     required double porcentajeAbonos,
+    double? ventasPeriodoActual,
+    double? ventasPeriodoAnterior,
   }) = _ClienteAlrededorDTO;
 
   factory ClienteAlrededorDTO.fromJson(Map<String, dynamic> json) =>
@@ -56,6 +58,8 @@ abstract class ClienteAlrededorDTO with _$ClienteAlrededorDTO {
       ventasAnyoActual: clienteAlrededorDto.ventasAnyoActual,
       ventasAnyoAnterior: clienteAlrededorDto.ventasAnyoAnterior,
       porcentajeAbonos: clienteAlrededorDto.porcentajeAbonos,
+      ventasPeriodoActual: clienteAlrededorDto.ventasPeriodoActual,
+      ventasPeriodoAnterior: clienteAlrededorDto.ventasPeriodoAnterior,
     );
   }
 
@@ -66,6 +70,8 @@ abstract class ClienteAlrededorDTO with _$ClienteAlrededorDTO {
     double porcentajeAbonos,
     String? nombreRepresentante1,
     String? nombreRepresentante2,
+    double? ventasPeriodoActual,
+    double? ventasPeriodoAnterior,
   ) {
     return ClienteAlrededorDTO(
       clienteId: clienteDireccionDto.clienteId,
@@ -86,6 +92,8 @@ abstract class ClienteAlrededorDTO with _$ClienteAlrededorDTO {
       ventasAnyoActual: ventasAnyoActual,
       ventasAnyoAnterior: ventasAnyoAnterior,
       porcentajeAbonos: porcentajeAbonos,
+      ventasPeriodoActual: ventasPeriodoActual,
+      ventasPeriodoAnterior: ventasPeriodoAnterior,
     );
   }
 
@@ -108,6 +116,8 @@ abstract class ClienteAlrededorDTO with _$ClienteAlrededorDTO {
       ventasAnyoActual: ventasAnyoActual.toMoney(),
       ventasAnyoAnterior: ventasAnyoAnterior.toMoney(),
       porcentajeAbonos: porcentajeAbonos,
+      ventasPeriodoActual: ventasPeriodoActual,
+      ventasPeriodoAnterior: ventasPeriodoAnterior,
     );
   }
 }

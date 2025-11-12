@@ -3,6 +3,8 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+import '../../features/cliente/domain/cliente.dart';
+
 void navigateToEmailApp(String mail) async {
   final params = Uri(scheme: 'mailto', path: mail);
   await launchUrl(params, mode: LaunchMode.externalApplication);
@@ -55,4 +57,33 @@ String? getExtension(String? fileName) {
     return extension.toLowerCase();
   }
   return null;
+}
+
+Icon getTendenciaClienteIcon(TendenciaCliente tendencia) {
+  return Icon(
+    getTendenciaClienteIconData(tendencia),
+    color: getTendenciaClienteColor(tendencia),
+  );
+}
+
+IconData getTendenciaClienteIconData(TendenciaCliente tendencia) {
+  switch (tendencia) {
+    case TendenciaCliente.up:
+      return MdiIcons.chevronUpCircle;
+    case TendenciaCliente.down:
+      return MdiIcons.chevronDownCircle;
+    case TendenciaCliente.equal:
+      return Icons.drag_handle;
+  }
+}
+
+Color getTendenciaClienteColor(TendenciaCliente tendencia) {
+  switch (tendencia) {
+    case TendenciaCliente.up:
+      return Colors.green;
+    case TendenciaCliente.down:
+      return Colors.red;
+    case TendenciaCliente.equal:
+      return Colors.grey;
+  }
 }

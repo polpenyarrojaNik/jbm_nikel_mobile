@@ -14,7 +14,7 @@ class ChipContainer extends StatelessWidget {
         borderRadius: BorderRadius.circular(8),
       ),
       child: Padding(
-        padding: const EdgeInsets.all(4.0),
+        padding: const EdgeInsets.symmetric(horizontal: 4.0, vertical: 2),
         child: Text(text, style: Theme.of(context).textTheme.bodySmall),
       ),
     );

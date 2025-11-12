@@ -7,6 +7,7 @@ import 'package:material_design_icons_flutter/material_design_icons_flutter.dart
 
 import '../../../../../generated/l10n.dart';
 import '../../../../core/helpers/formatters.dart';
+import '../../../../core/helpers/helpers.dart';
 import '../../../../core/presentation/common_widgets/async_value_widget.dart';
 import '../../../../core/presentation/common_widgets/chip_container.dart';
 import '../../../../core/presentation/common_widgets/column_field_text_detail.dart';
@@ -280,6 +281,10 @@ class _ClienteAnalisis extends StatelessWidget {
       children: [
         MobileCustomSeparators(
           separatorTitle: S.of(context).cliente_show_clienteDetalle_analisis,
+          trailingWidget:
+              cliente.clientePotencial != null && !cliente.clientePotencial!
+              ? getTendenciaClienteIcon(cliente.tendenciaVentas)
+              : null,
         ),
         const Gap(8),
         Padding(

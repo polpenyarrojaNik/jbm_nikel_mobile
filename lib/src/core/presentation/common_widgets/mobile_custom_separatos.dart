@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
 
 class MobileCustomSeparators extends StatelessWidget {
-  const MobileCustomSeparators({super.key, required this.separatorTitle});
+  const MobileCustomSeparators({
+    super.key,
+    required this.separatorTitle,
+    this.trailingWidget,
+  });
 
   final String separatorTitle;
+  final Widget? trailingWidget;
 
   @override
   Widget build(BuildContext context) {
@@ -20,6 +25,8 @@ class MobileCustomSeparators extends StatelessWidget {
               color: Theme.of(context).colorScheme.onSurfaceVariant,
             ),
           ),
+
+          trailingWidget ?? const SizedBox.shrink(),
         ],
       ),
     );

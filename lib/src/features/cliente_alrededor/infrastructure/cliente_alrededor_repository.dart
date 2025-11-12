@@ -184,6 +184,8 @@ class ClienteAlrededorRepository {
           clienteDto.porcentajeAbonos,
           clienteDto.representante1Nombre,
           clienteDto.representante2Nombre,
+          clienteDto.ventasPeriodoActual,
+          clienteDto.ventasPeriodoAnterior,
         );
 
         return clienteAlrededorDto.toDomain(pais: paisDTO?.toDomain());

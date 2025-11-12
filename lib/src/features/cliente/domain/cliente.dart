@@ -12,7 +12,7 @@ import 'plazo_cobro.dart';
 
 part 'cliente.freezed.dart';
 
-enum Tendencia { up, down, equal }
+enum TendenciaCliente { up, down, equal }
 
 @freezed
 abstract class Cliente with _$Cliente {
@@ -100,12 +100,12 @@ abstract class Cliente with _$Cliente {
         Money.parse('0', isoCode: divisa!.id);
   }
 
-  Tendencia get tendenciaVentas {
+  TendenciaCliente get tendenciaVentas {
     if (ventasAnyoActual > ventasAnyoAnterior) {
-      return Tendencia.up;
+      return TendenciaCliente.up;
     } else if (ventasAnyoActual < ventasAnyoAnterior) {
-      return Tendencia.down;
+      return TendenciaCliente.down;
     }
-    return Tendencia.equal;
+    return TendenciaCliente.equal;
   }
 }

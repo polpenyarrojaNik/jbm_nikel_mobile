@@ -26,5 +26,7 @@ abstract class ClienteAlrededor with _$ClienteAlrededor {
     required double porcentajeAbonos,
     String? nombreRepresentante1,
     String? nombreRepresentante2,
+    double? ventasPeriodoActual,
+    double? ventasPeriodoAnterior,
   }) = _ClienteAlrededor;
 }

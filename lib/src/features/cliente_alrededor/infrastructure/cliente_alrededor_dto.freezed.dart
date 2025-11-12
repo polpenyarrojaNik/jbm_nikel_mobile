@@ -15,7 +15,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$ClienteAlrededorDTO {
 
- String get markerId; String get clienteId; String get nombre; String get isDireccionFiscal; String? get direccion; String? get codigoPostal; String? get poblacion; String? get provincia; String? get paisId; String? get isClientePotencial; double get latitud; double get longitud; String? get nombreRepresentante1; String? get nombreRepresentante2; double get ventasAnyoActual; double get ventasAnyoAnterior; double get porcentajeAbonos;
+ String get markerId; String get clienteId; String get nombre; String get isDireccionFiscal; String? get direccion; String? get codigoPostal; String? get poblacion; String? get provincia; String? get paisId; String? get isClientePotencial; double get latitud; double get longitud; String? get nombreRepresentante1; String? get nombreRepresentante2; double get ventasAnyoActual; double get ventasAnyoAnterior; double get porcentajeAbonos; double? get ventasPeriodoActual; double? get ventasPeriodoAnterior;
 /// Create a copy of ClienteAlrededorDTO
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -28,16 +28,16 @@ $ClienteAlrededorDTOCopyWith<ClienteAlrededorDTO> get copyWith => _$ClienteAlred
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ClienteAlrededorDTO&&(identical(other.markerId, markerId) || other.markerId == markerId)&&(identical(other.clienteId, clienteId) || other.clienteId == clienteId)&&(identical(other.nombre, nombre) || other.nombre == nombre)&&(identical(other.isDireccionFiscal, isDireccionFiscal) || other.isDireccionFiscal == isDireccionFiscal)&&(identical(other.direccion, direccion) || other.direccion == direccion)&&(identical(other.codigoPostal, codigoPostal) || other.codigoPostal == codigoPostal)&&(identical(other.poblacion, poblacion) || other.poblacion == poblacion)&&(identical(other.provincia, provincia) || other.provincia == provincia)&&(identical(other.paisId, paisId) || other.paisId == paisId)&&(identical(other.isClientePotencial, isClientePotencial) || other.isClientePotencial == isClientePotencial)&&(identical(other.latitud, latitud) || other.latitud == latitud)&&(identical(other.longitud, longitud) || other.longitud == longitud)&&(identical(other.nombreRepresentante1, nombreRepresentante1) || other.nombreRepresentante1 == nombreRepresentante1)&&(identical(other.nombreRepresentante2, nombreRepresentante2) || other.nombreRepresentante2 == nombreRepresentante2)&&(identical(other.ventasAnyoActual, ventasAnyoActual) || other.ventasAnyoActual == ventasAnyoActual)&&(identical(other.ventasAnyoAnterior, ventasAnyoAnterior) || other.ventasAnyoAnterior == ventasAnyoAnterior)&&(identical(other.porcentajeAbonos, porcentajeAbonos) || other.porcentajeAbonos == porcentajeAbonos));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ClienteAlrededorDTO&&(identical(other.markerId, markerId) || other.markerId == markerId)&&(identical(other.clienteId, clienteId) || other.clienteId == clienteId)&&(identical(other.nombre, nombre) || other.nombre == nombre)&&(identical(other.isDireccionFiscal, isDireccionFiscal) || other.isDireccionFiscal == isDireccionFiscal)&&(identical(other.direccion, direccion) || other.direccion == direccion)&&(identical(other.codigoPostal, codigoPostal) || other.codigoPostal == codigoPostal)&&(identical(other.poblacion, poblacion) || other.poblacion == poblacion)&&(identical(other.provincia, provincia) || other.provincia == provincia)&&(identical(other.paisId, paisId) || other.paisId == paisId)&&(identical(other.isClientePotencial, isClientePotencial) || other.isClientePotencial == isClientePotencial)&&(identical(other.latitud, latitud) || other.latitud == latitud)&&(identical(other.longitud, longitud) || other.longitud == longitud)&&(identical(other.nombreRepresentante1, nombreRepresentante1) || other.nombreRepresentante1 == nombreRepresentante1)&&(identical(other.nombreRepresentante2, nombreRepresentante2) || other.nombreRepresentante2 == nombreRepresentante2)&&(identical(other.ventasAnyoActual, ventasAnyoActual) || other.ventasAnyoActual == ventasAnyoActual)&&(identical(other.ventasAnyoAnterior, ventasAnyoAnterior) || other.ventasAnyoAnterior == ventasAnyoAnterior)&&(identical(other.porcentajeAbonos, porcentajeAbonos) || other.porcentajeAbonos == porcentajeAbonos)&&(identical(other.ventasPeriodoActual, ventasPeriodoActual) || other.ventasPeriodoActual == ventasPeriodoActual)&&(identical(other.ventasPeriodoAnterior, ventasPeriodoAnterior) || other.ventasPeriodoAnterior == ventasPeriodoAnterior));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,markerId,clienteId,nombre,isDireccionFiscal,direccion,codigoPostal,poblacion,provincia,paisId,isClientePotencial,latitud,longitud,nombreRepresentante1,nombreRepresentante2,ventasAnyoActual,ventasAnyoAnterior,porcentajeAbonos);
+int get hashCode => Object.hashAll([runtimeType,markerId,clienteId,nombre,isDireccionFiscal,direccion,codigoPostal,poblacion,provincia,paisId,isClientePotencial,latitud,longitud,nombreRepresentante1,nombreRepresentante2,ventasAnyoActual,ventasAnyoAnterior,porcentajeAbonos,ventasPeriodoActual,ventasPeriodoAnterior]);
 
 @override
 String toString() {
-  return 'ClienteAlrededorDTO(markerId: $markerId, clienteId: $clienteId, nombre: $nombre, isDireccionFiscal: $isDireccionFiscal, direccion: $direccion, codigoPostal: $codigoPostal, poblacion: $poblacion, provincia: $provincia, paisId: $paisId, isClientePotencial: $isClientePotencial, latitud: $latitud, longitud: $longitud, nombreRepresentante1: $nombreRepresentante1, nombreRepresentante2: $nombreRepresentante2, ventasAnyoActual: $ventasAnyoActual, ventasAnyoAnterior: $ventasAnyoAnterior, porcentajeAbonos: $porcentajeAbonos)';
+  return 'ClienteAlrededorDTO(markerId: $markerId, clienteId: $clienteId, nombre: $nombre, isDireccionFiscal: $isDireccionFiscal, direccion: $direccion, codigoPostal: $codigoPostal, poblacion: $poblacion, provincia: $provincia, paisId: $paisId, isClientePotencial: $isClientePotencial, latitud: $latitud, longitud: $longitud, nombreRepresentante1: $nombreRepresentante1, nombreRepresentante2: $nombreRepresentante2, ventasAnyoActual: $ventasAnyoActual, ventasAnyoAnterior: $ventasAnyoAnterior, porcentajeAbonos: $porcentajeAbonos, ventasPeriodoActual: $ventasPeriodoActual, ventasPeriodoAnterior: $ventasPeriodoAnterior)';
 }
 
 
@@ -48,7 +48,7 @@ abstract mixin class $ClienteAlrededorDTOCopyWith<$Res>  {
   factory $ClienteAlrededorDTOCopyWith(ClienteAlrededorDTO value, $Res Function(ClienteAlrededorDTO) _then) = _$ClienteAlrededorDTOCopyWithImpl;
 @useResult
 $Res call({
- String markerId, String clienteId, String nombre, String isDireccionFiscal, String? direccion, String? codigoPostal, String? poblacion, String? provincia, String? paisId, String? isClientePotencial, double latitud, double longitud, String? nombreRepresentante1, String? nombreRepresentante2, double ventasAnyoActual, double ventasAnyoAnterior, double porcentajeAbonos
+ String markerId, String clienteId, String nombre, String isDireccionFiscal, String? direccion, String? codigoPostal, String? poblacion, String? provincia, String? paisId, String? isClientePotencial, double latitud, double longitud, String? nombreRepresentante1, String? nombreRepresentante2, double ventasAnyoActual, double ventasAnyoAnterior, double porcentajeAbonos, double? ventasPeriodoActual, double? ventasPeriodoAnterior
 });
 
 
@@ -65,7 +65,7 @@ class _$ClienteAlrededorDTOCopyWithImpl<$Res>
 
 /// Create a copy of ClienteAlrededorDTO
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? markerId = null,Object? clienteId = null,Object? nombre = null,Object? isDireccionFiscal = null,Object? direccion = freezed,Object? codigoPostal = freezed,Object? poblacion = freezed,Object? provincia = freezed,Object? paisId = freezed,Object? isClientePotencial = freezed,Object? latitud = null,Object? longitud = null,Object? nombreRepresentante1 = freezed,Object? nombreRepresentante2 = freezed,Object? ventasAnyoActual = null,Object? ventasAnyoAnterior = null,Object? porcentajeAbonos = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? markerId = null,Object? clienteId = null,Object? nombre = null,Object? isDireccionFiscal = null,Object? direccion = freezed,Object? codigoPostal = freezed,Object? poblacion = freezed,Object? provincia = freezed,Object? paisId = freezed,Object? isClientePotencial = freezed,Object? latitud = null,Object? longitud = null,Object? nombreRepresentante1 = freezed,Object? nombreRepresentante2 = freezed,Object? ventasAnyoActual = null,Object? ventasAnyoAnterior = null,Object? porcentajeAbonos = null,Object? ventasPeriodoActual = freezed,Object? ventasPeriodoAnterior = freezed,}) {
   return _then(_self.copyWith(
 markerId: null == markerId ? _self.markerId : markerId // ignore: cast_nullable_to_non_nullable
 as String,clienteId: null == clienteId ? _self.clienteId : clienteId // ignore: cast_nullable_to_non_nullable
@@ -84,7 +84,9 @@ as String?,nombreRepresentante2: freezed == nombreRepresentante2 ? _self.nombreR
 as String?,ventasAnyoActual: null == ventasAnyoActual ? _self.ventasAnyoActual : ventasAnyoActual // ignore: cast_nullable_to_non_nullable
 as double,ventasAnyoAnterior: null == ventasAnyoAnterior ? _self.ventasAnyoAnterior : ventasAnyoAnterior // ignore: cast_nullable_to_non_nullable
 as double,porcentajeAbonos: null == porcentajeAbonos ? _self.porcentajeAbonos : porcentajeAbonos // ignore: cast_nullable_to_non_nullable
-as double,
+as double,ventasPeriodoActual: freezed == ventasPeriodoActual ? _self.ventasPeriodoActual : ventasPeriodoActual // ignore: cast_nullable_to_non_nullable
+as double?,ventasPeriodoAnterior: freezed == ventasPeriodoAnterior ? _self.ventasPeriodoAnterior : ventasPeriodoAnterior // ignore: cast_nullable_to_non_nullable
+as double?,
   ));
 }
 
@@ -169,10 +171,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String markerId,  String clienteId,  String nombre,  String isDireccionFiscal,  String? direccion,  String? codigoPostal,  String? poblacion,  String? provincia,  String? paisId,  String? isClientePotencial,  double latitud,  double longitud,  String? nombreRepresentante1,  String? nombreRepresentante2,  double ventasAnyoActual,  double ventasAnyoAnterior,  double porcentajeAbonos)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String markerId,  String clienteId,  String nombre,  String isDireccionFiscal,  String? direccion,  String? codigoPostal,  String? poblacion,  String? provincia,  String? paisId,  String? isClientePotencial,  double latitud,  double longitud,  String? nombreRepresentante1,  String? nombreRepresentante2,  double ventasAnyoActual,  double ventasAnyoAnterior,  double porcentajeAbonos,  double? ventasPeriodoActual,  double? ventasPeriodoAnterior)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _ClienteAlrededorDTO() when $default != null:
-return $default(_that.markerId,_that.clienteId,_that.nombre,_that.isDireccionFiscal,_that.direccion,_that.codigoPostal,_that.poblacion,_that.provincia,_that.paisId,_that.isClientePotencial,_that.latitud,_that.longitud,_that.nombreRepresentante1,_that.nombreRepresentante2,_that.ventasAnyoActual,_that.ventasAnyoAnterior,_that.porcentajeAbonos);case _:
+return $default(_that.markerId,_that.clienteId,_that.nombre,_that.isDireccionFiscal,_that.direccion,_that.codigoPostal,_that.poblacion,_that.provincia,_that.paisId,_that.isClientePotencial,_that.latitud,_that.longitud,_that.nombreRepresentante1,_that.nombreRepresentante2,_that.ventasAnyoActual,_that.ventasAnyoAnterior,_that.porcentajeAbonos,_that.ventasPeriodoActual,_that.ventasPeriodoAnterior);case _:
   return orElse();
 
 }
@@ -190,10 +192,10 @@ return $default(_that.markerId,_that.clienteId,_that.nombre,_that.isDireccionFis
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String markerId,  String clienteId,  String nombre,  String isDireccionFiscal,  String? direccion,  String? codigoPostal,  String? poblacion,  String? provincia,  String? paisId,  String? isClientePotencial,  double latitud,  double longitud,  String? nombreRepresentante1,  String? nombreRepresentante2,  double ventasAnyoActual,  double ventasAnyoAnterior,  double porcentajeAbonos)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String markerId,  String clienteId,  String nombre,  String isDireccionFiscal,  String? direccion,  String? codigoPostal,  String? poblacion,  String? provincia,  String? paisId,  String? isClientePotencial,  double latitud,  double longitud,  String? nombreRepresentante1,  String? nombreRepresentante2,  double ventasAnyoActual,  double ventasAnyoAnterior,  double porcentajeAbonos,  double? ventasPeriodoActual,  double? ventasPeriodoAnterior)  $default,) {final _that = this;
 switch (_that) {
 case _ClienteAlrededorDTO():
-return $default(_that.markerId,_that.clienteId,_that.nombre,_that.isDireccionFiscal,_that.direccion,_that.codigoPostal,_that.poblacion,_that.provincia,_that.paisId,_that.isClientePotencial,_that.latitud,_that.longitud,_that.nombreRepresentante1,_that.nombreRepresentante2,_that.ventasAnyoActual,_that.ventasAnyoAnterior,_that.porcentajeAbonos);case _:
+return $default(_that.markerId,_that.clienteId,_that.nombre,_that.isDireccionFiscal,_that.direccion,_that.codigoPostal,_that.poblacion,_that.provincia,_that.paisId,_that.isClientePotencial,_that.latitud,_that.longitud,_that.nombreRepresentante1,_that.nombreRepresentante2,_that.ventasAnyoActual,_that.ventasAnyoAnterior,_that.porcentajeAbonos,_that.ventasPeriodoActual,_that.ventasPeriodoAnterior);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -210,10 +212,10 @@ return $default(_that.markerId,_that.clienteId,_that.nombre,_that.isDireccionFis
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String markerId,  String clienteId,  String nombre,  String isDireccionFiscal,  String? direccion,  String? codigoPostal,  String? poblacion,  String? provincia,  String? paisId,  String? isClientePotencial,  double latitud,  double longitud,  String? nombreRepresentante1,  String? nombreRepresentante2,  double ventasAnyoActual,  double ventasAnyoAnterior,  double porcentajeAbonos)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String markerId,  String clienteId,  String nombre,  String isDireccionFiscal,  String? direccion,  String? codigoPostal,  String? poblacion,  String? provincia,  String? paisId,  String? isClientePotencial,  double latitud,  double longitud,  String? nombreRepresentante1,  String? nombreRepresentante2,  double ventasAnyoActual,  double ventasAnyoAnterior,  double porcentajeAbonos,  double? ventasPeriodoActual,  double? ventasPeriodoAnterior)?  $default,) {final _that = this;
 switch (_that) {
 case _ClienteAlrededorDTO() when $default != null:
-return $default(_that.markerId,_that.clienteId,_that.nombre,_that.isDireccionFiscal,_that.direccion,_that.codigoPostal,_that.poblacion,_that.provincia,_that.paisId,_that.isClientePotencial,_that.latitud,_that.longitud,_that.nombreRepresentante1,_that.nombreRepresentante2,_that.ventasAnyoActual,_that.ventasAnyoAnterior,_that.porcentajeAbonos);case _:
+return $default(_that.markerId,_that.clienteId,_that.nombre,_that.isDireccionFiscal,_that.direccion,_that.codigoPostal,_that.poblacion,_that.provincia,_that.paisId,_that.isClientePotencial,_that.latitud,_that.longitud,_that.nombreRepresentante1,_that.nombreRepresentante2,_that.ventasAnyoActual,_that.ventasAnyoAnterior,_that.porcentajeAbonos,_that.ventasPeriodoActual,_that.ventasPeriodoAnterior);case _:
   return null;
 
 }
@@ -225,7 +227,7 @@ return $default(_that.markerId,_that.clienteId,_that.nombre,_that.isDireccionFis
 @JsonSerializable()
 
 class _ClienteAlrededorDTO extends ClienteAlrededorDTO {
-  const _ClienteAlrededorDTO({required this.markerId, required this.clienteId, required this.nombre, required this.isDireccionFiscal, this.direccion, this.codigoPostal, this.poblacion, this.provincia, this.paisId, this.isClientePotencial, required this.latitud, required this.longitud, this.nombreRepresentante1, this.nombreRepresentante2, required this.ventasAnyoActual, required this.ventasAnyoAnterior, required this.porcentajeAbonos}): super._();
+  const _ClienteAlrededorDTO({required this.markerId, required this.clienteId, required this.nombre, required this.isDireccionFiscal, this.direccion, this.codigoPostal, this.poblacion, this.provincia, this.paisId, this.isClientePotencial, required this.latitud, required this.longitud, this.nombreRepresentante1, this.nombreRepresentante2, required this.ventasAnyoActual, required this.ventasAnyoAnterior, required this.porcentajeAbonos, this.ventasPeriodoActual, this.ventasPeriodoAnterior}): super._();
   factory _ClienteAlrededorDTO.fromJson(Map<String, dynamic> json) => _$ClienteAlrededorDTOFromJson(json);
 
 @override final  String markerId;
@@ -245,6 +247,8 @@ class _ClienteAlrededorDTO extends ClienteAlrededorDTO {
 @override final  double ventasAnyoActual;
 @override final  double ventasAnyoAnterior;
 @override final  double porcentajeAbonos;
+@override final  double? ventasPeriodoActual;
+@override final  double? ventasPeriodoAnterior;
 
 /// Create a copy of ClienteAlrededorDTO
 /// with the given fields replaced by the non-null parameter values.
@@ -259,16 +263,16 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ClienteAlrededorDTO&&(identical(other.markerId, markerId) || other.markerId == markerId)&&(identical(other.clienteId, clienteId) || other.clienteId == clienteId)&&(identical(other.nombre, nombre) || other.nombre == nombre)&&(identical(other.isDireccionFiscal, isDireccionFiscal) || other.isDireccionFiscal == isDireccionFiscal)&&(identical(other.direccion, direccion) || other.direccion == direccion)&&(identical(other.codigoPostal, codigoPostal) || other.codigoPostal == codigoPostal)&&(identical(other.poblacion, poblacion) || other.poblacion == poblacion)&&(identical(other.provincia, provincia) || other.provincia == provincia)&&(identical(other.paisId, paisId) || other.paisId == paisId)&&(identical(other.isClientePotencial, isClientePotencial) || other.isClientePotencial == isClientePotencial)&&(identical(other.latitud, latitud) || other.latitud == latitud)&&(identical(other.longitud, longitud) || other.longitud == longitud)&&(identical(other.nombreRepresentante1, nombreRepresentante1) || other.nombreRepresentante1 == nombreRepresentante1)&&(identical(other.nombreRepresentante2, nombreRepresentante2) || other.nombreRepresentante2 == nombreRepresentante2)&&(identical(other.ventasAnyoActual, ventasAnyoActual) || other.ventasAnyoActual == ventasAnyoActual)&&(identical(other.ventasAnyoAnterior, ventasAnyoAnterior) || other.ventasAnyoAnterior == ventasAnyoAnterior)&&(identical(other.porcentajeAbonos, porcentajeAbonos) || other.porcentajeAbonos == porcentajeAbonos));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ClienteAlrededorDTO&&(identical(other.markerId, markerId) || other.markerId == markerId)&&(identical(other.clienteId, clienteId) || other.clienteId == clienteId)&&(identical(other.nombre, nombre) || other.nombre == nombre)&&(identical(other.isDireccionFiscal, isDireccionFiscal) || other.isDireccionFiscal == isDireccionFiscal)&&(identical(other.direccion, direccion) || other.direccion == direccion)&&(identical(other.codigoPostal, codigoPostal) || other.codigoPostal == codigoPostal)&&(identical(other.poblacion, poblacion) || other.poblacion == poblacion)&&(identical(other.provincia, provincia) || other.provincia == provincia)&&(identical(other.paisId, paisId) || other.paisId == paisId)&&(identical(other.isClientePotencial, isClientePotencial) || other.isClientePotencial == isClientePotencial)&&(identical(other.latitud, latitud) || other.latitud == latitud)&&(identical(other.longitud, longitud) || other.longitud == longitud)&&(identical(other.nombreRepresentante1, nombreRepresentante1) || other.nombreRepresentante1 == nombreRepresentante1)&&(identical(other.nombreRepresentante2, nombreRepresentante2) || other.nombreRepresentante2 == nombreRepresentante2)&&(identical(other.ventasAnyoActual, ventasAnyoActual) || other.ventasAnyoActual == ventasAnyoActual)&&(identical(other.ventasAnyoAnterior, ventasAnyoAnterior) || other.ventasAnyoAnterior == ventasAnyoAnterior)&&(identical(other.porcentajeAbonos, porcentajeAbonos) || other.porcentajeAbonos == porcentajeAbonos)&&(identical(other.ventasPeriodoActual, ventasPeriodoActual) || other.ventasPeriodoActual == ventasPeriodoActual)&&(identical(other.ventasPeriodoAnterior, ventasPeriodoAnterior) || other.ventasPeriodoAnterior == ventasPeriodoAnterior));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,markerId,clienteId,nombre,isDireccionFiscal,direccion,codigoPostal,poblacion,provincia,paisId,isClientePotencial,latitud,longitud,nombreRepresentante1,nombreRepresentante2,ventasAnyoActual,ventasAnyoAnterior,porcentajeAbonos);
+int get hashCode => Object.hashAll([runtimeType,markerId,clienteId,nombre,isDireccionFiscal,direccion,codigoPostal,poblacion,provincia,paisId,isClientePotencial,latitud,longitud,nombreRepresentante1,nombreRepresentante2,ventasAnyoActual,ventasAnyoAnterior,porcentajeAbonos,ventasPeriodoActual,ventasPeriodoAnterior]);
 
 @override
 String toString() {
-  return 'ClienteAlrededorDTO(markerId: $markerId, clienteId: $clienteId, nombre: $nombre, isDireccionFiscal: $isDireccionFiscal, direccion: $direccion, codigoPostal: $codigoPostal, poblacion: $poblacion, provincia: $provincia, paisId: $paisId, isClientePotencial: $isClientePotencial, latitud: $latitud, longitud: $longitud, nombreRepresentante1: $nombreRepresentante1, nombreRepresentante2: $nombreRepresentante2, ventasAnyoActual: $ventasAnyoActual, ventasAnyoAnterior: $ventasAnyoAnterior, porcentajeAbonos: $porcentajeAbonos)';
+  return 'ClienteAlrededorDTO(markerId: $markerId, clienteId: $clienteId, nombre: $nombre, isDireccionFiscal: $isDireccionFiscal, direccion: $direccion, codigoPostal: $codigoPostal, poblacion: $poblacion, provincia: $provincia, paisId: $paisId, isClientePotencial: $isClientePotencial, latitud: $latitud, longitud: $longitud, nombreRepresentante1: $nombreRepresentante1, nombreRepresentante2: $nombreRepresentante2, ventasAnyoActual: $ventasAnyoActual, ventasAnyoAnterior: $ventasAnyoAnterior, porcentajeAbonos: $porcentajeAbonos, ventasPeriodoActual: $ventasPeriodoActual, ventasPeriodoAnterior: $ventasPeriodoAnterior)';
 }
 
 
@@ -279,7 +283,7 @@ abstract mixin class _$ClienteAlrededorDTOCopyWith<$Res> implements $ClienteAlre
   factory _$ClienteAlrededorDTOCopyWith(_ClienteAlrededorDTO value, $Res Function(_ClienteAlrededorDTO) _then) = __$ClienteAlrededorDTOCopyWithImpl;
 @override @useResult
 $Res call({
- String markerId, String clienteId, String nombre, String isDireccionFiscal, String? direccion, String? codigoPostal, String? poblacion, String? provincia, String? paisId, String? isClientePotencial, double latitud, double longitud, String? nombreRepresentante1, String? nombreRepresentante2, double ventasAnyoActual, double ventasAnyoAnterior, double porcentajeAbonos
+ String markerId, String clienteId, String nombre, String isDireccionFiscal, String? direccion, String? codigoPostal, String? poblacion, String? provincia, String? paisId, String? isClientePotencial, double latitud, double longitud, String? nombreRepresentante1, String? nombreRepresentante2, double ventasAnyoActual, double ventasAnyoAnterior, double porcentajeAbonos, double? ventasPeriodoActual, double? ventasPeriodoAnterior
 });
 
 
@@ -296,7 +300,7 @@ class __$ClienteAlrededorDTOCopyWithImpl<$Res>
 
 /// Create a copy of ClienteAlrededorDTO
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? markerId = null,Object? clienteId = null,Object? nombre = null,Object? isDireccionFiscal = null,Object? direccion = freezed,Object? codigoPostal = freezed,Object? poblacion = freezed,Object? provincia = freezed,Object? paisId = freezed,Object? isClientePotencial = freezed,Object? latitud = null,Object? longitud = null,Object? nombreRepresentante1 = freezed,Object? nombreRepresentante2 = freezed,Object? ventasAnyoActual = null,Object? ventasAnyoAnterior = null,Object? porcentajeAbonos = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? markerId = null,Object? clienteId = null,Object? nombre = null,Object? isDireccionFiscal = null,Object? direccion = freezed,Object? codigoPostal = freezed,Object? poblacion = freezed,Object? provincia = freezed,Object? paisId = freezed,Object? isClientePotencial = freezed,Object? latitud = null,Object? longitud = null,Object? nombreRepresentante1 = freezed,Object? nombreRepresentante2 = freezed,Object? ventasAnyoActual = null,Object? ventasAnyoAnterior = null,Object? porcentajeAbonos = null,Object? ventasPeriodoActual = freezed,Object? ventasPeriodoAnterior = freezed,}) {
   return _then(_ClienteAlrededorDTO(
 markerId: null == markerId ? _self.markerId : markerId // ignore: cast_nullable_to_non_nullable
 as String,clienteId: null == clienteId ? _self.clienteId : clienteId // ignore: cast_nullable_to_non_nullable
@@ -315,7 +319,9 @@ as String?,nombreRepresentante2: freezed == nombreRepresentante2 ? _self.nombreR
 as String?,ventasAnyoActual: null == ventasAnyoActual ? _self.ventasAnyoActual : ventasAnyoActual // ignore: cast_nullable_to_non_nullable
 as double,ventasAnyoAnterior: null == ventasAnyoAnterior ? _self.ventasAnyoAnterior : ventasAnyoAnterior // ignore: cast_nullable_to_non_nullable
 as double,porcentajeAbonos: null == porcentajeAbonos ? _self.porcentajeAbonos : porcentajeAbonos // ignore: cast_nullable_to_non_nullable
-as double,
+as double,ventasPeriodoActual: freezed == ventasPeriodoActual ? _self.ventasPeriodoActual : ventasPeriodoActual // ignore: cast_nullable_to_non_nullable
+as double?,ventasPeriodoAnterior: freezed == ventasPeriodoAnterior ? _self.ventasPeriodoAnterior : ventasPeriodoAnterior // ignore: cast_nullable_to_non_nullable
+as double?,
   ));
 }
 
