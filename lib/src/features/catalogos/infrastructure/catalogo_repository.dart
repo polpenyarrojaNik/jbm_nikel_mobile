@@ -115,12 +115,7 @@ class CatalogoRepository {
           )
           .toList();
 
-      final favoriteLocalList = await _getLocalFavoriteList(
-        // tipoCatalogo: tipoCatalogo,
-        // tipoPrecioCatalogo: tipoPrecioCatalogo,
-        // idiomaCatalogo: idiomaCatalogo,
-        // searchText: searchText,
-      );
+      final favoriteLocalList = await _getLocalFavoriteList();
 
       final catalogoOrdenAbiertoList = await _getCatalogoOrdenDTOList();
 
@@ -138,12 +133,7 @@ class CatalogoRepository {
       return e.maybeWhen(
         orElse: () => Error.throwWithStackTrace(e, stackTrace),
         notConnection: () async {
-          final favoriteLocalList = await _getLocalFavoriteList(
-            // tipoCatalogo: tipoCatalogo,
-            // tipoPrecioCatalogo: tipoPrecioCatalogo,
-            // idiomaCatalogo: idiomaCatalogo,
-            // searchText: searchText,
-          );
+          final favoriteLocalList = await _getLocalFavoriteList();
           return favoriteLocalList
               .map(
                 (e) => e.toDomain(
@@ -339,34 +329,9 @@ class CatalogoRepository {
     }
   }
 
-  Future<List<CatalogoDTO>> _getLocalFavoriteList(
-    // {
-    // TipoCatalogo? tipoCatalogo,
-    // TipoPrecioCatalogo? tipoPrecioCatalogo,
-    // IdiomaCatalogo? idiomaCatalogo,
-    // String? searchText,
-    // }
-  ) async {
+  Future<List<CatalogoDTO>> _getLocalFavoriteList() async {
     try {
       final query = _localDb.select(_localDb.catalogoFavoritoTable);
-
-      // if (tipoCatalogo != null && tipoCatalogo.tipoCatalogoId != '00') {
-      //   query.where((tbl) => tbl-)
-      // }
-
-      // if (tipoPrecioCatalogo != null &&
-      //     tipoPrecioCatalogo.tipoPrecioCatalogoId != '00') {
-      //   query.addAll(
-      //       {'tipoPrecioCatalogo': tipoPrecioCatalogo.tipoPrecioCatalogoId});
-      // }
-
-      // if (idiomaCatalogo != null && idiomaCatalogo.idiomaId != '00') {
-      //   query.addAll({'idiomaId': idiomaCatalogo.idiomaId});
-      // }
-
-      // if (searchText != null) {
-      //   query.addAll({'busqueda': searchText});
-      // }
 
       return await query.get();
     } catch (e, stackTrace) {

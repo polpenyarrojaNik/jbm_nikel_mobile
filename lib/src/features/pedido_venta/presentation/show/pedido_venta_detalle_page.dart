@@ -33,8 +33,6 @@ class PedidoVentaDetallePage extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final state = ref.watch(pedidoVentaProvider(pedidoLocalParam));
 
-    // final statePedidoBorrador = ref.watch(getPedidoVentaBorradorPendiente);
-
     ref.listen<PedidoVentaAdjuntoState>(
       pedidoVentaAdjuntoControllerProvider,
       (_, state) => state.when(

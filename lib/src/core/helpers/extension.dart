@@ -102,15 +102,8 @@ extension MoneyParsingDouble on num {
   Money toMoney({String? currencyId}) {
     final currency = Currencies().find(currencyId ?? 'EU') ?? currencies[0];
 
-    // NumberFormat formatter =
-    //     NumberFormat.decimalPattern(Intl.getCurrentLocale());
-
-    // final importeStr = formatter.format(this);
-
     try {
       return Money.fromNumWithCurrency(this, currency);
-
-      // return Money.parseWithCurrency(importeStr, currency);
     } on MoneyParseException {
       if (isNegative) {
         try {

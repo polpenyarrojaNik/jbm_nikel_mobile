@@ -1,12 +1,14 @@
 import 'dart:io';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_riverpod/legacy.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import '../../infrastructure/articulo_repository.dart';
-import '../../../usuario/infrastructure/usuario_service.dart';
 
 import '../../../../core/domain/adjunto_param.dart';
 import '../../../../core/exceptions/app_exception.dart';
+import '../../../usuario/infrastructure/usuario_service.dart';
+import '../../infrastructure/articulo_repository.dart';
+
 part 'articulo_documento_controller.freezed.dart';
 
 @freezed

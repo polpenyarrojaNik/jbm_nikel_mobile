@@ -14,7 +14,7 @@ if (keystorePropertiesFile.exists()) {
 
 android {
     namespace = "es.nikel.jbm.jbm_nikel_mobile"
-    compileSdk = flutter.compileSdkVersion
+    compileSdk = 36
 
 
     compileOptions {
@@ -69,5 +69,5 @@ flutter {
 }
 
 dependencies {
-    implementation 'com.android.support:multidex:1.0.3'
+    implementation 'com.android.support:multidex:2.0.1'
 }

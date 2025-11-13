@@ -38,9 +38,7 @@ class _SplashPageState extends ConsumerState<SplashPage> {
           await ref
               .read(pedidoVentaRepositoryProvider)
               .deletePedidoVentaLocalAntiguos();
-          // await ref
-          //     .read(visitaRepositoryProvider)
-          //     .deleteVisitasLocalAntiguas();
+
           unawaited(
             ref
                 .read(syncNotifierProvider.notifier)

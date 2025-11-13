@@ -1,11 +1,12 @@
 import 'dart:io';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_riverpod/legacy.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import '../../usuario/infrastructure/usuario_service.dart';
 
 import '../../../core/domain/adjunto_param.dart';
 import '../../../core/exceptions/app_exception.dart';
+import '../../usuario/infrastructure/usuario_service.dart';
 import '../infrastructure/catalogo_repository.dart';
 
 part 'catalogo_adjunto_controller.freezed.dart';

@@ -6,220 +6,214 @@ part of 'cliente_search_controller.dart';
 // RiverpodGenerator
 // **************************************************************************
 
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint, type=warning
+
+@ProviderFor(ClienteIndexControllerSearchTextParameter)
+const clienteIndexControllerSearchTextParameterProvider =
+    ClienteIndexControllerSearchTextParameterProvider._();
+
+final class ClienteIndexControllerSearchTextParameterProvider
+    extends
+        $NotifierProvider<ClienteIndexControllerSearchTextParameter, String> {
+  const ClienteIndexControllerSearchTextParameterProvider._()
+    : super(
+        from: null,
+        argument: null,
+        retry: null,
+        name: r'clienteIndexControllerSearchTextParameterProvider',
+        isAutoDispose: true,
+        dependencies: null,
+        $allTransitiveDependencies: null,
+      );
+
+  @override
+  String debugGetCreateSourceHash() =>
+      _$clienteIndexControllerSearchTextParameterHash();
+
+  @$internal
+  @override
+  ClienteIndexControllerSearchTextParameter create() =>
+      ClienteIndexControllerSearchTextParameter();
+
+  /// {@macro riverpod.override_with_value}
+  Override overrideWithValue(String value) {
+    return $ProviderOverride(
+      origin: this,
+      providerOverride: $SyncValueProvider<String>(value),
+    );
+  }
+}
+
 String _$clienteIndexControllerSearchTextParameterHash() =>
     r'32ff9340ee059291b84608d81f052dc3a3fae6ae';
 
-/// See also [ClienteIndexControllerSearchTextParameter].
-@ProviderFor(ClienteIndexControllerSearchTextParameter)
-final clienteIndexControllerSearchTextParameterProvider =
-    AutoDisposeNotifierProvider<
-      ClienteIndexControllerSearchTextParameter,
-      String
-    >.internal(
-      ClienteIndexControllerSearchTextParameter.new,
-      name: r'clienteIndexControllerSearchTextParameterProvider',
-      debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-          ? null
-          : _$clienteIndexControllerSearchTextParameterHash,
-      dependencies: null,
-      allTransitiveDependencies: null,
-    );
+abstract class _$ClienteIndexControllerSearchTextParameter
+    extends $Notifier<String> {
+  String build();
+  @$mustCallSuper
+  @override
+  void runBuild() {
+    final created = build();
+    final ref = this.ref as $Ref<String, String>;
+    final element =
+        ref.element
+            as $ClassProviderElement<
+              AnyNotifier<String, String>,
+              String,
+              Object?,
+              Object?
+            >;
+    element.handleValue(ref, created);
+  }
+}
 
-typedef _$ClienteIndexControllerSearchTextParameter =
-    AutoDisposeNotifier<String>;
+@ProviderFor(ClienteIndexScreenController)
+const clienteIndexScreenControllerProvider =
+    ClienteIndexScreenControllerProvider._();
+
+final class ClienteIndexScreenControllerProvider
+    extends $AsyncNotifierProvider<ClienteIndexScreenController, int> {
+  const ClienteIndexScreenControllerProvider._()
+    : super(
+        from: null,
+        argument: null,
+        retry: null,
+        name: r'clienteIndexScreenControllerProvider',
+        isAutoDispose: true,
+        dependencies: null,
+        $allTransitiveDependencies: null,
+      );
+
+  @override
+  String debugGetCreateSourceHash() => _$clienteIndexScreenControllerHash();
+
+  @$internal
+  @override
+  ClienteIndexScreenController create() => ClienteIndexScreenController();
+}
+
 String _$clienteIndexScreenControllerHash() =>
     r'ac8f46e2e91e6c5ac2233a9276d0bd4cb8396139';
 
-/// See also [ClienteIndexScreenController].
-@ProviderFor(ClienteIndexScreenController)
-final clienteIndexScreenControllerProvider =
-    AutoDisposeAsyncNotifierProvider<
-      ClienteIndexScreenController,
-      int
-    >.internal(
-      ClienteIndexScreenController.new,
-      name: r'clienteIndexScreenControllerProvider',
-      debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-          ? null
-          : _$clienteIndexScreenControllerHash,
-      dependencies: null,
-      allTransitiveDependencies: null,
-    );
-
-typedef _$ClienteIndexScreenController = AutoDisposeAsyncNotifier<int>;
-String _$clienteIndexScreenPaginatedControllerHash() =>
-    r'fe170ea50ebaa5455b4169b63835facac14d49c8';
-
-/// Copied from Dart SDK
-class _SystemHash {
-  _SystemHash._();
-
-  static int combine(int hash, int value) {
-    // ignore: parameter_assignments
-    hash = 0x1fffffff & (hash + value);
-    // ignore: parameter_assignments
-    hash = 0x1fffffff & (hash + ((0x0007ffff & hash) << 10));
-    return hash ^ (hash >> 6);
-  }
-
-  static int finish(int hash) {
-    // ignore: parameter_assignments
-    hash = 0x1fffffff & (hash + ((0x03ffffff & hash) << 3));
-    // ignore: parameter_assignments
-    hash = hash ^ (hash >> 11);
-    return 0x1fffffff & (hash + ((0x00003fff & hash) << 15));
+abstract class _$ClienteIndexScreenController extends $AsyncNotifier<int> {
+  FutureOr<int> build();
+  @$mustCallSuper
+  @override
+  void runBuild() {
+    final created = build();
+    final ref = this.ref as $Ref<AsyncValue<int>, int>;
+    final element =
+        ref.element
+            as $ClassProviderElement<
+              AnyNotifier<AsyncValue<int>, int>,
+              AsyncValue<int>,
+              Object?,
+              Object?
+            >;
+    element.handleValue(ref, created);
   }
 }
 
-abstract class _$ClienteIndexScreenPaginatedController
-    extends BuildlessAutoDisposeAsyncNotifier<List<Cliente>> {
-  late final int page;
-
-  FutureOr<List<Cliente>> build({required int page});
-}
-
-/// See also [ClienteIndexScreenPaginatedController].
 @ProviderFor(ClienteIndexScreenPaginatedController)
 const clienteIndexScreenPaginatedControllerProvider =
-    ClienteIndexScreenPaginatedControllerFamily();
+    ClienteIndexScreenPaginatedControllerFamily._();
 
-/// See also [ClienteIndexScreenPaginatedController].
-class ClienteIndexScreenPaginatedControllerFamily
-    extends Family<AsyncValue<List<Cliente>>> {
-  /// See also [ClienteIndexScreenPaginatedController].
-  const ClienteIndexScreenPaginatedControllerFamily();
-
-  /// See also [ClienteIndexScreenPaginatedController].
-  ClienteIndexScreenPaginatedControllerProvider call({required int page}) {
-    return ClienteIndexScreenPaginatedControllerProvider(page: page);
-  }
-
-  @override
-  ClienteIndexScreenPaginatedControllerProvider getProviderOverride(
-    covariant ClienteIndexScreenPaginatedControllerProvider provider,
-  ) {
-    return call(page: provider.page);
-  }
-
-  static const Iterable<ProviderOrFamily>? _dependencies = null;
-
-  @override
-  Iterable<ProviderOrFamily>? get dependencies => _dependencies;
-
-  static const Iterable<ProviderOrFamily>? _allTransitiveDependencies = null;
-
-  @override
-  Iterable<ProviderOrFamily>? get allTransitiveDependencies =>
-      _allTransitiveDependencies;
-
-  @override
-  String? get name => r'clienteIndexScreenPaginatedControllerProvider';
-}
-
-/// See also [ClienteIndexScreenPaginatedController].
-class ClienteIndexScreenPaginatedControllerProvider
+final class ClienteIndexScreenPaginatedControllerProvider
     extends
-        AutoDisposeAsyncNotifierProviderImpl<
+        $AsyncNotifierProvider<
           ClienteIndexScreenPaginatedController,
           List<Cliente>
         > {
-  /// See also [ClienteIndexScreenPaginatedController].
-  ClienteIndexScreenPaginatedControllerProvider({required int page})
-    : this._internal(
-        () => ClienteIndexScreenPaginatedController()..page = page,
-        from: clienteIndexScreenPaginatedControllerProvider,
-        name: r'clienteIndexScreenPaginatedControllerProvider',
-        debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-            ? null
-            : _$clienteIndexScreenPaginatedControllerHash,
-        dependencies: ClienteIndexScreenPaginatedControllerFamily._dependencies,
-        allTransitiveDependencies: ClienteIndexScreenPaginatedControllerFamily
-            ._allTransitiveDependencies,
-        page: page,
-      );
-
-  ClienteIndexScreenPaginatedControllerProvider._internal(
-    super._createNotifier, {
-    required super.name,
-    required super.dependencies,
-    required super.allTransitiveDependencies,
-    required super.debugGetCreateSourceHash,
-    required super.from,
-    required this.page,
-  }) : super.internal();
-
-  final int page;
+  const ClienteIndexScreenPaginatedControllerProvider._({
+    required ClienteIndexScreenPaginatedControllerFamily super.from,
+    required int super.argument,
+  }) : super(
+         retry: null,
+         name: r'clienteIndexScreenPaginatedControllerProvider',
+         isAutoDispose: true,
+         dependencies: null,
+         $allTransitiveDependencies: null,
+       );
 
   @override
-  FutureOr<List<Cliente>> runNotifierBuild(
-    covariant ClienteIndexScreenPaginatedController notifier,
-  ) {
-    return notifier.build(page: page);
-  }
+  String debugGetCreateSourceHash() =>
+      _$clienteIndexScreenPaginatedControllerHash();
 
   @override
-  Override overrideWith(
-    ClienteIndexScreenPaginatedController Function() create,
-  ) {
-    return ProviderOverride(
-      origin: this,
-      override: ClienteIndexScreenPaginatedControllerProvider._internal(
-        () => create()..page = page,
-        from: from,
-        name: null,
-        dependencies: null,
-        allTransitiveDependencies: null,
-        debugGetCreateSourceHash: null,
-        page: page,
-      ),
-    );
+  String toString() {
+    return r'clienteIndexScreenPaginatedControllerProvider'
+        ''
+        '($argument)';
   }
 
+  @$internal
   @override
-  AutoDisposeAsyncNotifierProviderElement<
-    ClienteIndexScreenPaginatedController,
-    List<Cliente>
-  >
-  createElement() {
-    return _ClienteIndexScreenPaginatedControllerProviderElement(this);
-  }
+  ClienteIndexScreenPaginatedController create() =>
+      ClienteIndexScreenPaginatedController();
 
   @override
   bool operator ==(Object other) {
     return other is ClienteIndexScreenPaginatedControllerProvider &&
-        other.page == page;
+        other.argument == argument;
   }
 
   @override
   int get hashCode {
-    var hash = _SystemHash.combine(0, runtimeType.hashCode);
-    hash = _SystemHash.combine(hash, page.hashCode);
-
-    return _SystemHash.finish(hash);
+    return argument.hashCode;
   }
 }
 
-@Deprecated('Will be removed in 3.0. Use Ref instead')
-// ignore: unused_element
-mixin ClienteIndexScreenPaginatedControllerRef
-    on AutoDisposeAsyncNotifierProviderRef<List<Cliente>> {
-  /// The parameter `page` of this provider.
-  int get page;
-}
+String _$clienteIndexScreenPaginatedControllerHash() =>
+    r'fe170ea50ebaa5455b4169b63835facac14d49c8';
 
-class _ClienteIndexScreenPaginatedControllerProviderElement
-    extends
-        AutoDisposeAsyncNotifierProviderElement<
+final class ClienteIndexScreenPaginatedControllerFamily extends $Family
+    with
+        $ClassFamilyOverride<
           ClienteIndexScreenPaginatedController,
-          List<Cliente>
-        >
-    with ClienteIndexScreenPaginatedControllerRef {
-  _ClienteIndexScreenPaginatedControllerProviderElement(super.provider);
+          AsyncValue<List<Cliente>>,
+          List<Cliente>,
+          FutureOr<List<Cliente>>,
+          int
+        > {
+  const ClienteIndexScreenPaginatedControllerFamily._()
+    : super(
+        retry: null,
+        name: r'clienteIndexScreenPaginatedControllerProvider',
+        dependencies: null,
+        $allTransitiveDependencies: null,
+        isAutoDispose: true,
+      );
+
+  ClienteIndexScreenPaginatedControllerProvider call({required int page}) =>
+      ClienteIndexScreenPaginatedControllerProvider._(
+        argument: page,
+        from: this,
+      );
 
   @override
-  int get page =>
-      (origin as ClienteIndexScreenPaginatedControllerProvider).page;
+  String toString() => r'clienteIndexScreenPaginatedControllerProvider';
 }
 
-// ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package
+abstract class _$ClienteIndexScreenPaginatedController
+    extends $AsyncNotifier<List<Cliente>> {
+  late final _$args = ref.$arg as int;
+  int get page => _$args;
+
+  FutureOr<List<Cliente>> build({required int page});
+  @$mustCallSuper
+  @override
+  void runBuild() {
+    final created = build(page: _$args);
+    final ref = this.ref as $Ref<AsyncValue<List<Cliente>>, List<Cliente>>;
+    final element =
+        ref.element
+            as $ClassProviderElement<
+              AnyNotifier<AsyncValue<List<Cliente>>, List<Cliente>>,
+              AsyncValue<List<Cliente>>,
+              Object?,
+              Object?
+            >;
+    element.handleValue(ref, created);
+  }
+}

@@ -6,183 +6,119 @@ part of 'cliente_contacto_edit_page_controller.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$clienteContactoEditPageControllerHash() =>
-    r'4506a1811e2986106c2a4bc14f650392e9dc2163';
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint, type=warning
 
-/// Copied from Dart SDK
-class _SystemHash {
-  _SystemHash._();
-
-  static int combine(int hash, int value) {
-    // ignore: parameter_assignments
-    hash = 0x1fffffff & (hash + value);
-    // ignore: parameter_assignments
-    hash = 0x1fffffff & (hash + ((0x0007ffff & hash) << 10));
-    return hash ^ (hash >> 6);
-  }
-
-  static int finish(int hash) {
-    // ignore: parameter_assignments
-    hash = 0x1fffffff & (hash + ((0x03ffffff & hash) << 3));
-    // ignore: parameter_assignments
-    hash = hash ^ (hash >> 11);
-    return 0x1fffffff & (hash + ((0x00003fff & hash) << 15));
-  }
-}
-
-abstract class _$ClienteContactoEditPageController
-    extends BuildlessAutoDisposeAsyncNotifier<ClienteContactoImpEditPageData> {
-  late final ClienteImpParam clienteImpParam;
-
-  FutureOr<ClienteContactoImpEditPageData> build(
-    ClienteImpParam clienteImpParam,
-  );
-}
-
-/// See also [ClienteContactoEditPageController].
 @ProviderFor(ClienteContactoEditPageController)
 const clienteContactoEditPageControllerProvider =
-    ClienteContactoEditPageControllerFamily();
+    ClienteContactoEditPageControllerFamily._();
 
-/// See also [ClienteContactoEditPageController].
-class ClienteContactoEditPageControllerFamily
-    extends Family<AsyncValue<ClienteContactoImpEditPageData>> {
-  /// See also [ClienteContactoEditPageController].
-  const ClienteContactoEditPageControllerFamily();
-
-  /// See also [ClienteContactoEditPageController].
-  ClienteContactoEditPageControllerProvider call(
-    ClienteImpParam clienteImpParam,
-  ) {
-    return ClienteContactoEditPageControllerProvider(clienteImpParam);
-  }
-
-  @override
-  ClienteContactoEditPageControllerProvider getProviderOverride(
-    covariant ClienteContactoEditPageControllerProvider provider,
-  ) {
-    return call(provider.clienteImpParam);
-  }
-
-  static const Iterable<ProviderOrFamily>? _dependencies = null;
-
-  @override
-  Iterable<ProviderOrFamily>? get dependencies => _dependencies;
-
-  static const Iterable<ProviderOrFamily>? _allTransitiveDependencies = null;
-
-  @override
-  Iterable<ProviderOrFamily>? get allTransitiveDependencies =>
-      _allTransitiveDependencies;
-
-  @override
-  String? get name => r'clienteContactoEditPageControllerProvider';
-}
-
-/// See also [ClienteContactoEditPageController].
-class ClienteContactoEditPageControllerProvider
+final class ClienteContactoEditPageControllerProvider
     extends
-        AutoDisposeAsyncNotifierProviderImpl<
+        $AsyncNotifierProvider<
           ClienteContactoEditPageController,
           ClienteContactoImpEditPageData
         > {
-  /// See also [ClienteContactoEditPageController].
-  ClienteContactoEditPageControllerProvider(ClienteImpParam clienteImpParam)
-    : this._internal(
-        () =>
-            ClienteContactoEditPageController()
-              ..clienteImpParam = clienteImpParam,
-        from: clienteContactoEditPageControllerProvider,
-        name: r'clienteContactoEditPageControllerProvider',
-        debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-            ? null
-            : _$clienteContactoEditPageControllerHash,
-        dependencies: ClienteContactoEditPageControllerFamily._dependencies,
-        allTransitiveDependencies:
-            ClienteContactoEditPageControllerFamily._allTransitiveDependencies,
-        clienteImpParam: clienteImpParam,
-      );
-
-  ClienteContactoEditPageControllerProvider._internal(
-    super._createNotifier, {
-    required super.name,
-    required super.dependencies,
-    required super.allTransitiveDependencies,
-    required super.debugGetCreateSourceHash,
-    required super.from,
-    required this.clienteImpParam,
-  }) : super.internal();
-
-  final ClienteImpParam clienteImpParam;
+  const ClienteContactoEditPageControllerProvider._({
+    required ClienteContactoEditPageControllerFamily super.from,
+    required ClienteImpParam super.argument,
+  }) : super(
+         retry: null,
+         name: r'clienteContactoEditPageControllerProvider',
+         isAutoDispose: true,
+         dependencies: null,
+         $allTransitiveDependencies: null,
+       );
 
   @override
-  FutureOr<ClienteContactoImpEditPageData> runNotifierBuild(
-    covariant ClienteContactoEditPageController notifier,
-  ) {
-    return notifier.build(clienteImpParam);
-  }
+  String debugGetCreateSourceHash() =>
+      _$clienteContactoEditPageControllerHash();
 
   @override
-  Override overrideWith(ClienteContactoEditPageController Function() create) {
-    return ProviderOverride(
-      origin: this,
-      override: ClienteContactoEditPageControllerProvider._internal(
-        () => create()..clienteImpParam = clienteImpParam,
-        from: from,
-        name: null,
-        dependencies: null,
-        allTransitiveDependencies: null,
-        debugGetCreateSourceHash: null,
-        clienteImpParam: clienteImpParam,
-      ),
-    );
+  String toString() {
+    return r'clienteContactoEditPageControllerProvider'
+        ''
+        '($argument)';
   }
 
+  @$internal
   @override
-  AutoDisposeAsyncNotifierProviderElement<
-    ClienteContactoEditPageController,
-    ClienteContactoImpEditPageData
-  >
-  createElement() {
-    return _ClienteContactoEditPageControllerProviderElement(this);
-  }
+  ClienteContactoEditPageController create() =>
+      ClienteContactoEditPageController();
 
   @override
   bool operator ==(Object other) {
     return other is ClienteContactoEditPageControllerProvider &&
-        other.clienteImpParam == clienteImpParam;
+        other.argument == argument;
   }
 
   @override
   int get hashCode {
-    var hash = _SystemHash.combine(0, runtimeType.hashCode);
-    hash = _SystemHash.combine(hash, clienteImpParam.hashCode);
-
-    return _SystemHash.finish(hash);
+    return argument.hashCode;
   }
 }
 
-@Deprecated('Will be removed in 3.0. Use Ref instead')
-// ignore: unused_element
-mixin ClienteContactoEditPageControllerRef
-    on AutoDisposeAsyncNotifierProviderRef<ClienteContactoImpEditPageData> {
-  /// The parameter `clienteImpParam` of this provider.
-  ClienteImpParam get clienteImpParam;
-}
+String _$clienteContactoEditPageControllerHash() =>
+    r'4506a1811e2986106c2a4bc14f650392e9dc2163';
 
-class _ClienteContactoEditPageControllerProviderElement
-    extends
-        AutoDisposeAsyncNotifierProviderElement<
+final class ClienteContactoEditPageControllerFamily extends $Family
+    with
+        $ClassFamilyOverride<
           ClienteContactoEditPageController,
-          ClienteContactoImpEditPageData
-        >
-    with ClienteContactoEditPageControllerRef {
-  _ClienteContactoEditPageControllerProviderElement(super.provider);
+          AsyncValue<ClienteContactoImpEditPageData>,
+          ClienteContactoImpEditPageData,
+          FutureOr<ClienteContactoImpEditPageData>,
+          ClienteImpParam
+        > {
+  const ClienteContactoEditPageControllerFamily._()
+    : super(
+        retry: null,
+        name: r'clienteContactoEditPageControllerProvider',
+        dependencies: null,
+        $allTransitiveDependencies: null,
+        isAutoDispose: true,
+      );
+
+  ClienteContactoEditPageControllerProvider call(
+    ClienteImpParam clienteImpParam,
+  ) => ClienteContactoEditPageControllerProvider._(
+    argument: clienteImpParam,
+    from: this,
+  );
 
   @override
-  ClienteImpParam get clienteImpParam =>
-      (origin as ClienteContactoEditPageControllerProvider).clienteImpParam;
+  String toString() => r'clienteContactoEditPageControllerProvider';
 }
 
-// ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package
+abstract class _$ClienteContactoEditPageController
+    extends $AsyncNotifier<ClienteContactoImpEditPageData> {
+  late final _$args = ref.$arg as ClienteImpParam;
+  ClienteImpParam get clienteImpParam => _$args;
+
+  FutureOr<ClienteContactoImpEditPageData> build(
+    ClienteImpParam clienteImpParam,
+  );
+  @$mustCallSuper
+  @override
+  void runBuild() {
+    final created = build(_$args);
+    final ref =
+        this.ref
+            as $Ref<
+              AsyncValue<ClienteContactoImpEditPageData>,
+              ClienteContactoImpEditPageData
+            >;
+    final element =
+        ref.element
+            as $ClassProviderElement<
+              AnyNotifier<
+                AsyncValue<ClienteContactoImpEditPageData>,
+                ClienteContactoImpEditPageData
+              >,
+              AsyncValue<ClienteContactoImpEditPageData>,
+              Object?,
+              Object?
+            >;
+    element.handleValue(ref, created);
+  }
+}

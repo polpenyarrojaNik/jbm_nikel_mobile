@@ -17,17 +17,18 @@ final log = Logger(
   output: null,
 );
 
-class RiverpodLogger extends ProviderObserver {
+final class RiverpodLogger extends ProviderObserver {
+  const RiverpodLogger();
+
   @override
   void didUpdateProvider(
-    ProviderBase<dynamic> provider,
+    ProviderObserverContext context,
     Object? previousValue,
     Object? newValue,
-    ProviderContainer container,
   ) {
-    if (newValue != null && newValue != previousValue) {
-      log.d('Provider: "${provider.name ?? provider.runtimeType}"');
-      log.d('   value: $newValue');
+    if (newValue != previousValue) {
+      log.d('Provider: "${context.provider}"');
+      log.d('   value: ${newValue ?? 'null'}');
     }
   }
 }
@@ -35,13 +36,12 @@ class RiverpodLogger extends ProviderObserver {
 class CustomPrinter extends LogPrinter {
   @override
   List<String> log(LogEvent event) {
-    // var color = PrettyPrinter.levelColors[event.level];
     final emoji = PrettyPrinter.defaultLevelEmojis[event.level];
     final timeStr = getTime();
 
     return [
       truncate(
-        '$emoji[$timeStr] > ${event.message}',
+        '${emoji ?? ''}[$timeStr] > ${(event.message != null) ? event.message : 'null'}',
         length: 120,
         rightLength: 20,
       ),

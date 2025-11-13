@@ -400,8 +400,7 @@ Color pedidoVentaEstadoColor({int? pedidoVentaEstadoId, double? opacidad}) {
       return Colors.lightGreen.withValues(alpha: opacidad ?? 1);
     case 2: //  Servido
       return Colors.green.withValues(alpha: opacidad ?? 1);
-    // case 3: //Anulado
-    //   return Colors.red.withValues(alpha: opacidad ?? 1);
+
     case 4: // Oferta
       return Colors.orange.withValues(alpha: opacidad ?? 1);
     case 90: //Abierto

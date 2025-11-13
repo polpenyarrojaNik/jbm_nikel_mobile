@@ -4,10 +4,10 @@ import 'package:auto_route/auto_route.dart';
 import 'package:better_open_file/better_open_file.dart';
 import 'package:flash/flash_helper.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/experimental/mutation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gap/gap.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-import 'package:riverpod_mutations/riverpod_mutations.dart';
 
 import '../../../../../generated/l10n.dart';
 import '../../../../core/domain/adjunto_param.dart';
@@ -76,22 +76,7 @@ class ClienteAlbaranDocumentController
   }
 }
 
-@riverpod
-class OpenDeliveryNoteDocument extends _$OpenDeliveryNoteDocument {
-  @override
-  MutationState<File?, AdjuntoParam> build() {
-    return MutationState.create(
-      (newState) => state = newState,
-      (adjuntoParam) async => ref
-          .read(
-            clienteAlbaranDocumentControllerProvider(
-              albaranId: adjuntoParam.id,
-            ).notifier,
-          )
-          .getAlbaranDocumentFile(adjuntoParam: adjuntoParam),
-    );
-  }
-}
+final openDeliveryNoteDocumentMutation = Mutation<File?>();
 
 @RoutePage()
 class ClienteAlbaranPage extends ConsumerWidget {
@@ -191,22 +176,22 @@ class ClienteAlbaranListTile extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    ref.listen(openDeliveryNoteDocumentProvider, (_, state) {
-      state.when(
-        initial: () {},
-        data: (file) {
-          if (file != null) {
-            OpenFile.open(file.path);
-          }
-        },
-        error: (error, _) =>
-            context.showErrorBar(content: ErrorMessageWidget(error.toString())),
-        loading: () => context.showInfoBar(
+    ref.listen(openDeliveryNoteDocumentMutation, (_, state) {
+      if (state is MutationSuccess<File?>) {
+        if (state.value != null) {
+          OpenFile.open(state.value!.path);
+        }
+      } else if (state is MutationError<File?>) {
+        context.showErrorBar(
+          content: ErrorMessageWidget(state.error.toString()),
+        );
+      } else if (state is MutationPending<File?>) {
+        context.showInfoBar(
           content: Text(
             S.of(context).catalogos_index_catalogoAdjunto_abriendoArchivo,
           ),
-        ),
-      );
+        );
+      }
     });
 
     return GestureDetector(
@@ -310,6 +295,16 @@ class ClienteAlbaranListTile extends ConsumerWidget {
       nombreArchivo: clienteAlbaran.documentoPdf,
     );
 
-    ref.read(openDeliveryNoteDocumentProvider)(adjuntoParam);
+    openDeliveryNoteDocumentMutation.run(ref, (tsx) async {
+      final clienteAlbaranDocumentControllerStateNotifier = tsx.get(
+        clienteAlbaranDocumentControllerProvider(
+          albaranId: adjuntoParam.id,
+        ).notifier,
+      );
+
+      final result = await clienteAlbaranDocumentControllerStateNotifier
+          .getAlbaranDocumentFile(adjuntoParam: adjuntoParam);
+      return result;
+    });
   }
 }

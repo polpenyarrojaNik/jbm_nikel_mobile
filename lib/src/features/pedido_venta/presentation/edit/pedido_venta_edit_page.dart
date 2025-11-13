@@ -429,7 +429,7 @@ class PedidoVentaEditForm extends ConsumerWidget {
                       // (!isBorrador)
                       //     ?
                       S
-                          .of(context)
+                          .of(ctx)
                           .pedido_edit_askPopAlertDialog_seguroQuieresSales,
                   // : S
                   //     .of(context)
@@ -438,12 +438,6 @@ class PedidoVentaEditForm extends ConsumerWidget {
               },
             )
             as bool?;
-    // if (isBorrador && (result ?? false)) {
-    //   ref.read(deletePedidoVentaProvider(pedidoLocalParam.pedidoAppId!));
-    //   // ref.invalidate(getPedidoVentaBorradorPendiente);
-    //   ref.invalidate(pedidoVentaIndexScreenPaginatedControllerProvider);
-    //   ref.invalidate(pedidoVentaIndexScreenControllerProvider);
-    // }
 
     if (result ?? false) {
       await transaction.finish();

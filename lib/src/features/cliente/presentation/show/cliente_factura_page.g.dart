@@ -6,517 +6,317 @@ part of 'cliente_factura_page.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$clienteFacturaCountControllerHash() =>
-    r'09d3279b681170606aa7377d0c7f0c0018efbabc';
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint, type=warning
 
-/// Copied from Dart SDK
-class _SystemHash {
-  _SystemHash._();
-
-  static int combine(int hash, int value) {
-    // ignore: parameter_assignments
-    hash = 0x1fffffff & (hash + value);
-    // ignore: parameter_assignments
-    hash = 0x1fffffff & (hash + ((0x0007ffff & hash) << 10));
-    return hash ^ (hash >> 6);
-  }
-
-  static int finish(int hash) {
-    // ignore: parameter_assignments
-    hash = 0x1fffffff & (hash + ((0x03ffffff & hash) << 3));
-    // ignore: parameter_assignments
-    hash = hash ^ (hash >> 11);
-    return 0x1fffffff & (hash + ((0x00003fff & hash) << 15));
-  }
-}
-
-abstract class _$ClienteFacturaCountController
-    extends BuildlessAutoDisposeAsyncNotifier<int> {
-  late final String clienteId;
-
-  FutureOr<int> build(String clienteId);
-}
-
-/// See also [ClienteFacturaCountController].
 @ProviderFor(ClienteFacturaCountController)
 const clienteFacturaCountControllerProvider =
-    ClienteFacturaCountControllerFamily();
+    ClienteFacturaCountControllerFamily._();
 
-/// See also [ClienteFacturaCountController].
-class ClienteFacturaCountControllerFamily extends Family<AsyncValue<int>> {
-  /// See also [ClienteFacturaCountController].
-  const ClienteFacturaCountControllerFamily();
+final class ClienteFacturaCountControllerProvider
+    extends $AsyncNotifierProvider<ClienteFacturaCountController, int> {
+  const ClienteFacturaCountControllerProvider._({
+    required ClienteFacturaCountControllerFamily super.from,
+    required String super.argument,
+  }) : super(
+         retry: null,
+         name: r'clienteFacturaCountControllerProvider',
+         isAutoDispose: true,
+         dependencies: null,
+         $allTransitiveDependencies: null,
+       );
 
-  /// See also [ClienteFacturaCountController].
-  ClienteFacturaCountControllerProvider call(String clienteId) {
-    return ClienteFacturaCountControllerProvider(clienteId);
+  @override
+  String debugGetCreateSourceHash() => _$clienteFacturaCountControllerHash();
+
+  @override
+  String toString() {
+    return r'clienteFacturaCountControllerProvider'
+        ''
+        '($argument)';
   }
 
+  @$internal
   @override
-  ClienteFacturaCountControllerProvider getProviderOverride(
-    covariant ClienteFacturaCountControllerProvider provider,
-  ) {
-    return call(provider.clienteId);
-  }
-
-  static const Iterable<ProviderOrFamily>? _dependencies = null;
-
-  @override
-  Iterable<ProviderOrFamily>? get dependencies => _dependencies;
-
-  static const Iterable<ProviderOrFamily>? _allTransitiveDependencies = null;
-
-  @override
-  Iterable<ProviderOrFamily>? get allTransitiveDependencies =>
-      _allTransitiveDependencies;
-
-  @override
-  String? get name => r'clienteFacturaCountControllerProvider';
-}
-
-/// See also [ClienteFacturaCountController].
-class ClienteFacturaCountControllerProvider
-    extends
-        AutoDisposeAsyncNotifierProviderImpl<
-          ClienteFacturaCountController,
-          int
-        > {
-  /// See also [ClienteFacturaCountController].
-  ClienteFacturaCountControllerProvider(String clienteId)
-    : this._internal(
-        () => ClienteFacturaCountController()..clienteId = clienteId,
-        from: clienteFacturaCountControllerProvider,
-        name: r'clienteFacturaCountControllerProvider',
-        debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-            ? null
-            : _$clienteFacturaCountControllerHash,
-        dependencies: ClienteFacturaCountControllerFamily._dependencies,
-        allTransitiveDependencies:
-            ClienteFacturaCountControllerFamily._allTransitiveDependencies,
-        clienteId: clienteId,
-      );
-
-  ClienteFacturaCountControllerProvider._internal(
-    super._createNotifier, {
-    required super.name,
-    required super.dependencies,
-    required super.allTransitiveDependencies,
-    required super.debugGetCreateSourceHash,
-    required super.from,
-    required this.clienteId,
-  }) : super.internal();
-
-  final String clienteId;
-
-  @override
-  FutureOr<int> runNotifierBuild(
-    covariant ClienteFacturaCountController notifier,
-  ) {
-    return notifier.build(clienteId);
-  }
-
-  @override
-  Override overrideWith(ClienteFacturaCountController Function() create) {
-    return ProviderOverride(
-      origin: this,
-      override: ClienteFacturaCountControllerProvider._internal(
-        () => create()..clienteId = clienteId,
-        from: from,
-        name: null,
-        dependencies: null,
-        allTransitiveDependencies: null,
-        debugGetCreateSourceHash: null,
-        clienteId: clienteId,
-      ),
-    );
-  }
-
-  @override
-  AutoDisposeAsyncNotifierProviderElement<ClienteFacturaCountController, int>
-  createElement() {
-    return _ClienteFacturaCountControllerProviderElement(this);
-  }
+  ClienteFacturaCountController create() => ClienteFacturaCountController();
 
   @override
   bool operator ==(Object other) {
     return other is ClienteFacturaCountControllerProvider &&
-        other.clienteId == clienteId;
+        other.argument == argument;
   }
 
   @override
   int get hashCode {
-    var hash = _SystemHash.combine(0, runtimeType.hashCode);
-    hash = _SystemHash.combine(hash, clienteId.hashCode);
-
-    return _SystemHash.finish(hash);
+    return argument.hashCode;
   }
 }
 
-@Deprecated('Will be removed in 3.0. Use Ref instead')
-// ignore: unused_element
-mixin ClienteFacturaCountControllerRef
-    on AutoDisposeAsyncNotifierProviderRef<int> {
-  /// The parameter `clienteId` of this provider.
-  String get clienteId;
-}
+String _$clienteFacturaCountControllerHash() =>
+    r'09d3279b681170606aa7377d0c7f0c0018efbabc';
 
-class _ClienteFacturaCountControllerProviderElement
-    extends
-        AutoDisposeAsyncNotifierProviderElement<
+final class ClienteFacturaCountControllerFamily extends $Family
+    with
+        $ClassFamilyOverride<
           ClienteFacturaCountController,
-          int
-        >
-    with ClienteFacturaCountControllerRef {
-  _ClienteFacturaCountControllerProviderElement(super.provider);
+          AsyncValue<int>,
+          int,
+          FutureOr<int>,
+          String
+        > {
+  const ClienteFacturaCountControllerFamily._()
+    : super(
+        retry: null,
+        name: r'clienteFacturaCountControllerProvider',
+        dependencies: null,
+        $allTransitiveDependencies: null,
+        isAutoDispose: true,
+      );
+
+  ClienteFacturaCountControllerProvider call(String clienteId) =>
+      ClienteFacturaCountControllerProvider._(argument: clienteId, from: this);
 
   @override
-  String get clienteId =>
-      (origin as ClienteFacturaCountControllerProvider).clienteId;
+  String toString() => r'clienteFacturaCountControllerProvider';
+}
+
+abstract class _$ClienteFacturaCountController extends $AsyncNotifier<int> {
+  late final _$args = ref.$arg as String;
+  String get clienteId => _$args;
+
+  FutureOr<int> build(String clienteId);
+  @$mustCallSuper
+  @override
+  void runBuild() {
+    final created = build(_$args);
+    final ref = this.ref as $Ref<AsyncValue<int>, int>;
+    final element =
+        ref.element
+            as $ClassProviderElement<
+              AnyNotifier<AsyncValue<int>, int>,
+              AsyncValue<int>,
+              Object?,
+              Object?
+            >;
+    element.handleValue(ref, created);
+  }
+}
+
+@ProviderFor(ClienteFacturaPaginationController)
+const clienteFacturaPaginationControllerProvider =
+    ClienteFacturaPaginationControllerFamily._();
+
+final class ClienteFacturaPaginationControllerProvider
+    extends
+        $AsyncNotifierProvider<
+          ClienteFacturaPaginationController,
+          List<ClienteFactura>
+        > {
+  const ClienteFacturaPaginationControllerProvider._({
+    required ClienteFacturaPaginationControllerFamily super.from,
+    required ({int page, String customerId}) super.argument,
+  }) : super(
+         retry: null,
+         name: r'clienteFacturaPaginationControllerProvider',
+         isAutoDispose: true,
+         dependencies: null,
+         $allTransitiveDependencies: null,
+       );
+
+  @override
+  String debugGetCreateSourceHash() =>
+      _$clienteFacturaPaginationControllerHash();
+
+  @override
+  String toString() {
+    return r'clienteFacturaPaginationControllerProvider'
+        ''
+        '$argument';
+  }
+
+  @$internal
+  @override
+  ClienteFacturaPaginationController create() =>
+      ClienteFacturaPaginationController();
+
+  @override
+  bool operator ==(Object other) {
+    return other is ClienteFacturaPaginationControllerProvider &&
+        other.argument == argument;
+  }
+
+  @override
+  int get hashCode {
+    return argument.hashCode;
+  }
 }
 
 String _$clienteFacturaPaginationControllerHash() =>
     r'6bfdd1bf093e0d3a130df326a9335b1b6721c95f';
 
+final class ClienteFacturaPaginationControllerFamily extends $Family
+    with
+        $ClassFamilyOverride<
+          ClienteFacturaPaginationController,
+          AsyncValue<List<ClienteFactura>>,
+          List<ClienteFactura>,
+          FutureOr<List<ClienteFactura>>,
+          ({int page, String customerId})
+        > {
+  const ClienteFacturaPaginationControllerFamily._()
+    : super(
+        retry: null,
+        name: r'clienteFacturaPaginationControllerProvider',
+        dependencies: null,
+        $allTransitiveDependencies: null,
+        isAutoDispose: true,
+      );
+
+  ClienteFacturaPaginationControllerProvider call({
+    required int page,
+    required String customerId,
+  }) => ClienteFacturaPaginationControllerProvider._(
+    argument: (page: page, customerId: customerId),
+    from: this,
+  );
+
+  @override
+  String toString() => r'clienteFacturaPaginationControllerProvider';
+}
+
 abstract class _$ClienteFacturaPaginationController
-    extends BuildlessAutoDisposeAsyncNotifier<List<ClienteFactura>> {
-  late final int page;
-  late final String customerId;
+    extends $AsyncNotifier<List<ClienteFactura>> {
+  late final _$args = ref.$arg as ({int page, String customerId});
+  int get page => _$args.page;
+  String get customerId => _$args.customerId;
 
   FutureOr<List<ClienteFactura>> build({
     required int page,
     required String customerId,
   });
-}
-
-/// See also [ClienteFacturaPaginationController].
-@ProviderFor(ClienteFacturaPaginationController)
-const clienteFacturaPaginationControllerProvider =
-    ClienteFacturaPaginationControllerFamily();
-
-/// See also [ClienteFacturaPaginationController].
-class ClienteFacturaPaginationControllerFamily
-    extends Family<AsyncValue<List<ClienteFactura>>> {
-  /// See also [ClienteFacturaPaginationController].
-  const ClienteFacturaPaginationControllerFamily();
-
-  /// See also [ClienteFacturaPaginationController].
-  ClienteFacturaPaginationControllerProvider call({
-    required int page,
-    required String customerId,
-  }) {
-    return ClienteFacturaPaginationControllerProvider(
-      page: page,
-      customerId: customerId,
-    );
-  }
-
+  @$mustCallSuper
   @override
-  ClienteFacturaPaginationControllerProvider getProviderOverride(
-    covariant ClienteFacturaPaginationControllerProvider provider,
-  ) {
-    return call(page: provider.page, customerId: provider.customerId);
-  }
-
-  static const Iterable<ProviderOrFamily>? _dependencies = null;
-
-  @override
-  Iterable<ProviderOrFamily>? get dependencies => _dependencies;
-
-  static const Iterable<ProviderOrFamily>? _allTransitiveDependencies = null;
-
-  @override
-  Iterable<ProviderOrFamily>? get allTransitiveDependencies =>
-      _allTransitiveDependencies;
-
-  @override
-  String? get name => r'clienteFacturaPaginationControllerProvider';
-}
-
-/// See also [ClienteFacturaPaginationController].
-class ClienteFacturaPaginationControllerProvider
-    extends
-        AutoDisposeAsyncNotifierProviderImpl<
-          ClienteFacturaPaginationController,
-          List<ClienteFactura>
-        > {
-  /// See also [ClienteFacturaPaginationController].
-  ClienteFacturaPaginationControllerProvider({
-    required int page,
-    required String customerId,
-  }) : this._internal(
-         () => ClienteFacturaPaginationController()
-           ..page = page
-           ..customerId = customerId,
-         from: clienteFacturaPaginationControllerProvider,
-         name: r'clienteFacturaPaginationControllerProvider',
-         debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-             ? null
-             : _$clienteFacturaPaginationControllerHash,
-         dependencies: ClienteFacturaPaginationControllerFamily._dependencies,
-         allTransitiveDependencies: ClienteFacturaPaginationControllerFamily
-             ._allTransitiveDependencies,
-         page: page,
-         customerId: customerId,
-       );
-
-  ClienteFacturaPaginationControllerProvider._internal(
-    super._createNotifier, {
-    required super.name,
-    required super.dependencies,
-    required super.allTransitiveDependencies,
-    required super.debugGetCreateSourceHash,
-    required super.from,
-    required this.page,
-    required this.customerId,
-  }) : super.internal();
-
-  final int page;
-  final String customerId;
-
-  @override
-  FutureOr<List<ClienteFactura>> runNotifierBuild(
-    covariant ClienteFacturaPaginationController notifier,
-  ) {
-    return notifier.build(page: page, customerId: customerId);
-  }
-
-  @override
-  Override overrideWith(ClienteFacturaPaginationController Function() create) {
-    return ProviderOverride(
-      origin: this,
-      override: ClienteFacturaPaginationControllerProvider._internal(
-        () => create()
-          ..page = page
-          ..customerId = customerId,
-        from: from,
-        name: null,
-        dependencies: null,
-        allTransitiveDependencies: null,
-        debugGetCreateSourceHash: null,
-        page: page,
-        customerId: customerId,
-      ),
-    );
-  }
-
-  @override
-  AutoDisposeAsyncNotifierProviderElement<
-    ClienteFacturaPaginationController,
-    List<ClienteFactura>
-  >
-  createElement() {
-    return _ClienteFacturaPaginationControllerProviderElement(this);
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return other is ClienteFacturaPaginationControllerProvider &&
-        other.page == page &&
-        other.customerId == customerId;
-  }
-
-  @override
-  int get hashCode {
-    var hash = _SystemHash.combine(0, runtimeType.hashCode);
-    hash = _SystemHash.combine(hash, page.hashCode);
-    hash = _SystemHash.combine(hash, customerId.hashCode);
-
-    return _SystemHash.finish(hash);
+  void runBuild() {
+    final created = build(page: _$args.page, customerId: _$args.customerId);
+    final ref =
+        this.ref
+            as $Ref<AsyncValue<List<ClienteFactura>>, List<ClienteFactura>>;
+    final element =
+        ref.element
+            as $ClassProviderElement<
+              AnyNotifier<
+                AsyncValue<List<ClienteFactura>>,
+                List<ClienteFactura>
+              >,
+              AsyncValue<List<ClienteFactura>>,
+              Object?,
+              Object?
+            >;
+    element.handleValue(ref, created);
   }
 }
 
-@Deprecated('Will be removed in 3.0. Use Ref instead')
-// ignore: unused_element
-mixin ClienteFacturaPaginationControllerRef
-    on AutoDisposeAsyncNotifierProviderRef<List<ClienteFactura>> {
-  /// The parameter `page` of this provider.
-  int get page;
-
-  /// The parameter `customerId` of this provider.
-  String get customerId;
-}
-
-class _ClienteFacturaPaginationControllerProviderElement
-    extends
-        AutoDisposeAsyncNotifierProviderElement<
-          ClienteFacturaPaginationController,
-          List<ClienteFactura>
-        >
-    with ClienteFacturaPaginationControllerRef {
-  _ClienteFacturaPaginationControllerProviderElement(super.provider);
-
-  @override
-  int get page => (origin as ClienteFacturaPaginationControllerProvider).page;
-  @override
-  String get customerId =>
-      (origin as ClienteFacturaPaginationControllerProvider).customerId;
-}
-
-String _$clienteFacturaDocumentControllerHash() =>
-    r'965f3863e6b5321f532899e2c12ce5d9518c3620';
-
-abstract class _$ClienteFacturaDocumentController
-    extends BuildlessAutoDisposeNotifier<void> {
-  late final String facturaId;
-
-  void build({required String facturaId});
-}
-
-/// See also [ClienteFacturaDocumentController].
 @ProviderFor(ClienteFacturaDocumentController)
 const clienteFacturaDocumentControllerProvider =
-    ClienteFacturaDocumentControllerFamily();
+    ClienteFacturaDocumentControllerFamily._();
 
-/// See also [ClienteFacturaDocumentController].
-class ClienteFacturaDocumentControllerFamily extends Family<void> {
-  /// See also [ClienteFacturaDocumentController].
-  const ClienteFacturaDocumentControllerFamily();
+final class ClienteFacturaDocumentControllerProvider
+    extends $NotifierProvider<ClienteFacturaDocumentController, void> {
+  const ClienteFacturaDocumentControllerProvider._({
+    required ClienteFacturaDocumentControllerFamily super.from,
+    required String super.argument,
+  }) : super(
+         retry: null,
+         name: r'clienteFacturaDocumentControllerProvider',
+         isAutoDispose: true,
+         dependencies: null,
+         $allTransitiveDependencies: null,
+       );
 
-  /// See also [ClienteFacturaDocumentController].
-  ClienteFacturaDocumentControllerProvider call({required String facturaId}) {
-    return ClienteFacturaDocumentControllerProvider(facturaId: facturaId);
+  @override
+  String debugGetCreateSourceHash() => _$clienteFacturaDocumentControllerHash();
+
+  @override
+  String toString() {
+    return r'clienteFacturaDocumentControllerProvider'
+        ''
+        '($argument)';
   }
 
+  @$internal
   @override
-  ClienteFacturaDocumentControllerProvider getProviderOverride(
-    covariant ClienteFacturaDocumentControllerProvider provider,
-  ) {
-    return call(facturaId: provider.facturaId);
-  }
+  ClienteFacturaDocumentController create() =>
+      ClienteFacturaDocumentController();
 
-  static const Iterable<ProviderOrFamily>? _dependencies = null;
-
-  @override
-  Iterable<ProviderOrFamily>? get dependencies => _dependencies;
-
-  static const Iterable<ProviderOrFamily>? _allTransitiveDependencies = null;
-
-  @override
-  Iterable<ProviderOrFamily>? get allTransitiveDependencies =>
-      _allTransitiveDependencies;
-
-  @override
-  String? get name => r'clienteFacturaDocumentControllerProvider';
-}
-
-/// See also [ClienteFacturaDocumentController].
-class ClienteFacturaDocumentControllerProvider
-    extends
-        AutoDisposeNotifierProviderImpl<
-          ClienteFacturaDocumentController,
-          void
-        > {
-  /// See also [ClienteFacturaDocumentController].
-  ClienteFacturaDocumentControllerProvider({required String facturaId})
-    : this._internal(
-        () => ClienteFacturaDocumentController()..facturaId = facturaId,
-        from: clienteFacturaDocumentControllerProvider,
-        name: r'clienteFacturaDocumentControllerProvider',
-        debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-            ? null
-            : _$clienteFacturaDocumentControllerHash,
-        dependencies: ClienteFacturaDocumentControllerFamily._dependencies,
-        allTransitiveDependencies:
-            ClienteFacturaDocumentControllerFamily._allTransitiveDependencies,
-        facturaId: facturaId,
-      );
-
-  ClienteFacturaDocumentControllerProvider._internal(
-    super._createNotifier, {
-    required super.name,
-    required super.dependencies,
-    required super.allTransitiveDependencies,
-    required super.debugGetCreateSourceHash,
-    required super.from,
-    required this.facturaId,
-  }) : super.internal();
-
-  final String facturaId;
-
-  @override
-  void runNotifierBuild(covariant ClienteFacturaDocumentController notifier) {
-    return notifier.build(facturaId: facturaId);
-  }
-
-  @override
-  Override overrideWith(ClienteFacturaDocumentController Function() create) {
-    return ProviderOverride(
+  /// {@macro riverpod.override_with_value}
+  Override overrideWithValue(void value) {
+    return $ProviderOverride(
       origin: this,
-      override: ClienteFacturaDocumentControllerProvider._internal(
-        () => create()..facturaId = facturaId,
-        from: from,
-        name: null,
-        dependencies: null,
-        allTransitiveDependencies: null,
-        debugGetCreateSourceHash: null,
-        facturaId: facturaId,
-      ),
+      providerOverride: $SyncValueProvider<void>(value),
     );
-  }
-
-  @override
-  AutoDisposeNotifierProviderElement<ClienteFacturaDocumentController, void>
-  createElement() {
-    return _ClienteFacturaDocumentControllerProviderElement(this);
   }
 
   @override
   bool operator ==(Object other) {
     return other is ClienteFacturaDocumentControllerProvider &&
-        other.facturaId == facturaId;
+        other.argument == argument;
   }
 
   @override
   int get hashCode {
-    var hash = _SystemHash.combine(0, runtimeType.hashCode);
-    hash = _SystemHash.combine(hash, facturaId.hashCode);
-
-    return _SystemHash.finish(hash);
+    return argument.hashCode;
   }
 }
 
-@Deprecated('Will be removed in 3.0. Use Ref instead')
-// ignore: unused_element
-mixin ClienteFacturaDocumentControllerRef
-    on AutoDisposeNotifierProviderRef<void> {
-  /// The parameter `facturaId` of this provider.
-  String get facturaId;
-}
+String _$clienteFacturaDocumentControllerHash() =>
+    r'965f3863e6b5321f532899e2c12ce5d9518c3620';
 
-class _ClienteFacturaDocumentControllerProviderElement
-    extends
-        AutoDisposeNotifierProviderElement<
+final class ClienteFacturaDocumentControllerFamily extends $Family
+    with
+        $ClassFamilyOverride<
           ClienteFacturaDocumentController,
-          void
-        >
-    with ClienteFacturaDocumentControllerRef {
-  _ClienteFacturaDocumentControllerProviderElement(super.provider);
+          void,
+          void,
+          void,
+          String
+        > {
+  const ClienteFacturaDocumentControllerFamily._()
+    : super(
+        retry: null,
+        name: r'clienteFacturaDocumentControllerProvider',
+        dependencies: null,
+        $allTransitiveDependencies: null,
+        isAutoDispose: true,
+      );
+
+  ClienteFacturaDocumentControllerProvider call({required String facturaId}) =>
+      ClienteFacturaDocumentControllerProvider._(
+        argument: facturaId,
+        from: this,
+      );
 
   @override
-  String get facturaId =>
-      (origin as ClienteFacturaDocumentControllerProvider).facturaId;
+  String toString() => r'clienteFacturaDocumentControllerProvider';
 }
 
-String _$openFacturaDocumentHash() =>
-    r'e7b105d411ab6425ce3e8ed7904699fca7b564ea';
+abstract class _$ClienteFacturaDocumentController extends $Notifier<void> {
+  late final _$args = ref.$arg as String;
+  String get facturaId => _$args;
 
-/// See also [OpenFacturaDocument].
-@ProviderFor(OpenFacturaDocument)
-final openFacturaDocumentProvider =
-    AutoDisposeNotifierProvider<
-      OpenFacturaDocument,
-      MutationState<File?, AdjuntoParam>
-    >.internal(
-      OpenFacturaDocument.new,
-      name: r'openFacturaDocumentProvider',
-      debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-          ? null
-          : _$openFacturaDocumentHash,
-      dependencies: null,
-      allTransitiveDependencies: null,
-    );
-
-typedef _$OpenFacturaDocument =
-    AutoDisposeNotifier<MutationState<File?, AdjuntoParam>>;
-// ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package
+  void build({required String facturaId});
+  @$mustCallSuper
+  @override
+  void runBuild() {
+    build(facturaId: _$args);
+    final ref = this.ref as $Ref<void, void>;
+    final element =
+        ref.element
+            as $ClassProviderElement<
+              AnyNotifier<void, void>,
+              void,
+              Object?,
+              Object?
+            >;
+    element.handleValue(ref, null);
+  }
+}

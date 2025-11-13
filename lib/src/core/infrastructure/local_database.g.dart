@@ -731,7 +731,7 @@ class $VisitaLocalTableTable extends VisitaLocalTable
   @override
   VisitaLocalDTO map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
-    return VisitaLocalDTO.new(
+    return VisitaLocalDTO(
       visitaAppId: attachedDatabase.typeMapping.read(
         DriftSqlType.string,
         data['${effectivePrefix}COD_VISITA_APP'],
@@ -1748,7 +1748,7 @@ class $PedidoVentaLineaLocalTableTable extends PedidoVentaLineaLocalTable
     String? tablePrefix,
   }) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
-    return PedidoVentaLineaLocalDTO.new(
+    return PedidoVentaLineaLocalDTO(
       pedidoVentaAppId: attachedDatabase.typeMapping.read(
         DriftSqlType.string,
         data['${effectivePrefix}PEDIDO_APP_ID'],
@@ -2587,7 +2587,7 @@ class $PedidoVentaLocalTableTable extends PedidoVentaLocalTable
   @override
   PedidoVentaLocalDTO map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
-    return PedidoVentaLocalDTO.new(
+    return PedidoVentaLocalDTO(
       usuarioId: attachedDatabase.typeMapping.read(
         DriftSqlType.string,
         data['${effectivePrefix}USUARIO_ID'],
@@ -3182,7 +3182,7 @@ class $SyncDateTimeTableTable extends SyncDateTimeTable
   @override
   SyncDateTimeDTO map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
-    return SyncDateTimeDTO.new(
+    return SyncDateTimeDTO(
       id: attachedDatabase.typeMapping.read(
         DriftSqlType.int,
         data['${effectivePrefix}ID'],
@@ -3593,7 +3593,7 @@ class $LogTableTable extends LogTable with TableInfo<$LogTableTable, LogDTO> {
   @override
   LogDTO map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
-    return LogDTO.new(
+    return LogDTO(
       id: attachedDatabase.typeMapping.read(
         DriftSqlType.int,
         data['${effectivePrefix}ID'],
@@ -4093,7 +4093,7 @@ class $CatalogoFavoritoTableTable extends CatalogoFavoritoTable
   @override
   CatalogoDTO map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
-    return CatalogoDTO.new(
+    return CatalogoDTO(
       catalogoId: attachedDatabase.typeMapping.read(
         DriftSqlType.int,
         data['${effectivePrefix}CATALOGO_ID'],
@@ -4603,7 +4603,7 @@ class $ClienteContactoImpTableTable extends ClienteContactoImpTable
   @override
   ClienteContactoImpDTO map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
-    return ClienteContactoImpDTO.new(
+    return ClienteContactoImpDTO(
       id: attachedDatabase.typeMapping.read(
         DriftSqlType.string,
         data['${effectivePrefix}GUID'],
@@ -5171,7 +5171,7 @@ class $ClienteDireccionImpTableTable extends ClienteDireccionImpTable
   @override
   ClienteDireccionImpDTO map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
-    return ClienteDireccionImpDTO.new(
+    return ClienteDireccionImpDTO(
       id: attachedDatabase.typeMapping.read(
         DriftSqlType.string,
         data['${effectivePrefix}GUID'],
@@ -5519,7 +5519,7 @@ class $CatalogoOrdenTableTable extends CatalogoOrdenTable
   @override
   CatalogoOrdenDTO map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
-    return CatalogoOrdenDTO.new(
+    return CatalogoOrdenDTO(
       catalogoId: attachedDatabase.typeMapping.read(
         DriftSqlType.int,
         data['${effectivePrefix}CATALOGO_ID'],
@@ -5656,7 +5656,7 @@ class $ClienteImpTableTable extends ClienteImpTable
   @override
   ClienteImpDTO map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
-    return ClienteImpDTO.new(
+    return ClienteImpDTO(
       clienteId: attachedDatabase.typeMapping.read(
         DriftSqlType.string,
         data['${effectivePrefix}CLIENTE_ID'],
@@ -5818,7 +5818,7 @@ class $VisitaCompetenciaLocalTableTable extends VisitaCompetenciaLocalTable
     String? tablePrefix,
   }) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
-    return VisitaCompetenciaLocalDTO.new(
+    return VisitaCompetenciaLocalDTO(
       visitaAppId: attachedDatabase.typeMapping.read(
         DriftSqlType.string,
         data['${effectivePrefix}COD_VISITA_APP'],

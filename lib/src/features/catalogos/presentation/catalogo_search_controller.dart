@@ -1,9 +1,9 @@
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-import '../domain/catalogo.dart';
-import '../domain/tipo_catalogo.dart';
+import 'package:flutter_riverpod/legacy.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
+import '../domain/catalogo.dart';
 import '../domain/idioma_catalogo.dart';
+import '../domain/tipo_catalogo.dart';
 import '../domain/tipo_precio_catalogo.dart';
 import '../infrastructure/catalogo_repository.dart';
 

@@ -6,195 +6,155 @@ part of 'visita_search_controller.dart';
 // RiverpodGenerator
 // **************************************************************************
 
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint, type=warning
+
+@ProviderFor(VisitaIndexScreenController)
+const visitaIndexScreenControllerProvider =
+    VisitaIndexScreenControllerProvider._();
+
+final class VisitaIndexScreenControllerProvider
+    extends $AsyncNotifierProvider<VisitaIndexScreenController, int> {
+  const VisitaIndexScreenControllerProvider._()
+    : super(
+        from: null,
+        argument: null,
+        retry: null,
+        name: r'visitaIndexScreenControllerProvider',
+        isAutoDispose: true,
+        dependencies: null,
+        $allTransitiveDependencies: null,
+      );
+
+  @override
+  String debugGetCreateSourceHash() => _$visitaIndexScreenControllerHash();
+
+  @$internal
+  @override
+  VisitaIndexScreenController create() => VisitaIndexScreenController();
+}
+
 String _$visitaIndexScreenControllerHash() =>
     r'6aa47f60efab2d24a7ea4a12cb55560850c78eec';
 
-/// See also [VisitaIndexScreenController].
-@ProviderFor(VisitaIndexScreenController)
-final visitaIndexScreenControllerProvider =
-    AutoDisposeAsyncNotifierProvider<VisitaIndexScreenController, int>.internal(
-      VisitaIndexScreenController.new,
-      name: r'visitaIndexScreenControllerProvider',
-      debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-          ? null
-          : _$visitaIndexScreenControllerHash,
-      dependencies: null,
-      allTransitiveDependencies: null,
-    );
-
-typedef _$VisitaIndexScreenController = AutoDisposeAsyncNotifier<int>;
-String _$visitaIndexScreenPaginatedControllerHash() =>
-    r'652caea9461bb21cd5cf3b6e0e79c11f2f58da92';
-
-/// Copied from Dart SDK
-class _SystemHash {
-  _SystemHash._();
-
-  static int combine(int hash, int value) {
-    // ignore: parameter_assignments
-    hash = 0x1fffffff & (hash + value);
-    // ignore: parameter_assignments
-    hash = 0x1fffffff & (hash + ((0x0007ffff & hash) << 10));
-    return hash ^ (hash >> 6);
-  }
-
-  static int finish(int hash) {
-    // ignore: parameter_assignments
-    hash = 0x1fffffff & (hash + ((0x03ffffff & hash) << 3));
-    // ignore: parameter_assignments
-    hash = hash ^ (hash >> 11);
-    return 0x1fffffff & (hash + ((0x00003fff & hash) << 15));
+abstract class _$VisitaIndexScreenController extends $AsyncNotifier<int> {
+  FutureOr<int> build();
+  @$mustCallSuper
+  @override
+  void runBuild() {
+    final created = build();
+    final ref = this.ref as $Ref<AsyncValue<int>, int>;
+    final element =
+        ref.element
+            as $ClassProviderElement<
+              AnyNotifier<AsyncValue<int>, int>,
+              AsyncValue<int>,
+              Object?,
+              Object?
+            >;
+    element.handleValue(ref, created);
   }
 }
 
-abstract class _$VisitaIndexScreenPaginatedController
-    extends BuildlessAutoDisposeAsyncNotifier<List<Visita>> {
-  late final int page;
-
-  FutureOr<List<Visita>> build({required int page});
-}
-
-/// See also [VisitaIndexScreenPaginatedController].
 @ProviderFor(VisitaIndexScreenPaginatedController)
 const visitaIndexScreenPaginatedControllerProvider =
-    VisitaIndexScreenPaginatedControllerFamily();
+    VisitaIndexScreenPaginatedControllerFamily._();
 
-/// See also [VisitaIndexScreenPaginatedController].
-class VisitaIndexScreenPaginatedControllerFamily
-    extends Family<AsyncValue<List<Visita>>> {
-  /// See also [VisitaIndexScreenPaginatedController].
-  const VisitaIndexScreenPaginatedControllerFamily();
-
-  /// See also [VisitaIndexScreenPaginatedController].
-  VisitaIndexScreenPaginatedControllerProvider call({required int page}) {
-    return VisitaIndexScreenPaginatedControllerProvider(page: page);
-  }
-
-  @override
-  VisitaIndexScreenPaginatedControllerProvider getProviderOverride(
-    covariant VisitaIndexScreenPaginatedControllerProvider provider,
-  ) {
-    return call(page: provider.page);
-  }
-
-  static const Iterable<ProviderOrFamily>? _dependencies = null;
-
-  @override
-  Iterable<ProviderOrFamily>? get dependencies => _dependencies;
-
-  static const Iterable<ProviderOrFamily>? _allTransitiveDependencies = null;
-
-  @override
-  Iterable<ProviderOrFamily>? get allTransitiveDependencies =>
-      _allTransitiveDependencies;
-
-  @override
-  String? get name => r'visitaIndexScreenPaginatedControllerProvider';
-}
-
-/// See also [VisitaIndexScreenPaginatedController].
-class VisitaIndexScreenPaginatedControllerProvider
+final class VisitaIndexScreenPaginatedControllerProvider
     extends
-        AutoDisposeAsyncNotifierProviderImpl<
+        $AsyncNotifierProvider<
           VisitaIndexScreenPaginatedController,
           List<Visita>
         > {
-  /// See also [VisitaIndexScreenPaginatedController].
-  VisitaIndexScreenPaginatedControllerProvider({required int page})
-    : this._internal(
-        () => VisitaIndexScreenPaginatedController()..page = page,
-        from: visitaIndexScreenPaginatedControllerProvider,
-        name: r'visitaIndexScreenPaginatedControllerProvider',
-        debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-            ? null
-            : _$visitaIndexScreenPaginatedControllerHash,
-        dependencies: VisitaIndexScreenPaginatedControllerFamily._dependencies,
-        allTransitiveDependencies: VisitaIndexScreenPaginatedControllerFamily
-            ._allTransitiveDependencies,
-        page: page,
-      );
-
-  VisitaIndexScreenPaginatedControllerProvider._internal(
-    super._createNotifier, {
-    required super.name,
-    required super.dependencies,
-    required super.allTransitiveDependencies,
-    required super.debugGetCreateSourceHash,
-    required super.from,
-    required this.page,
-  }) : super.internal();
-
-  final int page;
+  const VisitaIndexScreenPaginatedControllerProvider._({
+    required VisitaIndexScreenPaginatedControllerFamily super.from,
+    required int super.argument,
+  }) : super(
+         retry: null,
+         name: r'visitaIndexScreenPaginatedControllerProvider',
+         isAutoDispose: true,
+         dependencies: null,
+         $allTransitiveDependencies: null,
+       );
 
   @override
-  FutureOr<List<Visita>> runNotifierBuild(
-    covariant VisitaIndexScreenPaginatedController notifier,
-  ) {
-    return notifier.build(page: page);
-  }
+  String debugGetCreateSourceHash() =>
+      _$visitaIndexScreenPaginatedControllerHash();
 
   @override
-  Override overrideWith(
-    VisitaIndexScreenPaginatedController Function() create,
-  ) {
-    return ProviderOverride(
-      origin: this,
-      override: VisitaIndexScreenPaginatedControllerProvider._internal(
-        () => create()..page = page,
-        from: from,
-        name: null,
-        dependencies: null,
-        allTransitiveDependencies: null,
-        debugGetCreateSourceHash: null,
-        page: page,
-      ),
-    );
+  String toString() {
+    return r'visitaIndexScreenPaginatedControllerProvider'
+        ''
+        '($argument)';
   }
 
+  @$internal
   @override
-  AutoDisposeAsyncNotifierProviderElement<
-    VisitaIndexScreenPaginatedController,
-    List<Visita>
-  >
-  createElement() {
-    return _VisitaIndexScreenPaginatedControllerProviderElement(this);
-  }
+  VisitaIndexScreenPaginatedController create() =>
+      VisitaIndexScreenPaginatedController();
 
   @override
   bool operator ==(Object other) {
     return other is VisitaIndexScreenPaginatedControllerProvider &&
-        other.page == page;
+        other.argument == argument;
   }
 
   @override
   int get hashCode {
-    var hash = _SystemHash.combine(0, runtimeType.hashCode);
-    hash = _SystemHash.combine(hash, page.hashCode);
-
-    return _SystemHash.finish(hash);
+    return argument.hashCode;
   }
 }
 
-@Deprecated('Will be removed in 3.0. Use Ref instead')
-// ignore: unused_element
-mixin VisitaIndexScreenPaginatedControllerRef
-    on AutoDisposeAsyncNotifierProviderRef<List<Visita>> {
-  /// The parameter `page` of this provider.
-  int get page;
-}
+String _$visitaIndexScreenPaginatedControllerHash() =>
+    r'652caea9461bb21cd5cf3b6e0e79c11f2f58da92';
 
-class _VisitaIndexScreenPaginatedControllerProviderElement
-    extends
-        AutoDisposeAsyncNotifierProviderElement<
+final class VisitaIndexScreenPaginatedControllerFamily extends $Family
+    with
+        $ClassFamilyOverride<
           VisitaIndexScreenPaginatedController,
-          List<Visita>
-        >
-    with VisitaIndexScreenPaginatedControllerRef {
-  _VisitaIndexScreenPaginatedControllerProviderElement(super.provider);
+          AsyncValue<List<Visita>>,
+          List<Visita>,
+          FutureOr<List<Visita>>,
+          int
+        > {
+  const VisitaIndexScreenPaginatedControllerFamily._()
+    : super(
+        retry: null,
+        name: r'visitaIndexScreenPaginatedControllerProvider',
+        dependencies: null,
+        $allTransitiveDependencies: null,
+        isAutoDispose: true,
+      );
+
+  VisitaIndexScreenPaginatedControllerProvider call({required int page}) =>
+      VisitaIndexScreenPaginatedControllerProvider._(
+        argument: page,
+        from: this,
+      );
 
   @override
-  int get page => (origin as VisitaIndexScreenPaginatedControllerProvider).page;
+  String toString() => r'visitaIndexScreenPaginatedControllerProvider';
 }
 
-// ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package
+abstract class _$VisitaIndexScreenPaginatedController
+    extends $AsyncNotifier<List<Visita>> {
+  late final _$args = ref.$arg as int;
+  int get page => _$args;
+
+  FutureOr<List<Visita>> build({required int page});
+  @$mustCallSuper
+  @override
+  void runBuild() {
+    final created = build(page: _$args);
+    final ref = this.ref as $Ref<AsyncValue<List<Visita>>, List<Visita>>;
+    final element =
+        ref.element
+            as $ClassProviderElement<
+              AnyNotifier<AsyncValue<List<Visita>>, List<Visita>>,
+              AsyncValue<List<Visita>>,
+              Object?,
+              Object?
+            >;
+    element.handleValue(ref, created);
+  }
+}

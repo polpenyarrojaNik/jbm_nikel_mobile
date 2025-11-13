@@ -1,8 +1,8 @@
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-import '../../../../usuario/application/usuario_notifier.dart';
+import 'package:flutter_riverpod/legacy.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../../../../estadisticas/domain/estadisticas_ultimos_precios.dart';
+import '../../../../usuario/application/usuario_notifier.dart';
 import '../../../infrastructure/articulo_repository.dart';
 
 part 'articulo_ultimos_precios_search_controller.g.dart';

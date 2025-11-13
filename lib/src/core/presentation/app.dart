@@ -33,16 +33,6 @@ class App extends ConsumerWidget {
       )
       ..interceptors.add(ref.read(usuarioDioInterceptorProvider));
 
-    // ref.listen<Usuario?>(usuarioNotifierProvider, (_, state) {
-    //   if (state == null) {
-    //     appRouter.pushAndPopUntil(const LoginRoute(),
-    //         predicate: (route) => false);
-    //   } else {
-    //     appRouter.pushAndPopUntil(const SplashRoute(),
-    //         predicate: (route) => false);
-    //   }
-    // });
-
     return MaterialApp.router(
       title: 'JBM Nikel Mobile',
       localizationsDelegates: const [

@@ -1,7 +1,7 @@
-import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_riverpod/legacy.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import '../../../../core/domain/articulo_precio.dart';
 
+import '../../../../core/domain/articulo_precio.dart';
 import '../../infrastructure/pedido_venta_repository.dart';
 
 part 'select_cantidad_controller.freezed.dart';

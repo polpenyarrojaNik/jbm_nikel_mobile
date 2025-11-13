@@ -190,7 +190,7 @@ class PedidosListViewWidget extends StatelessWidget {
               itemCount: count,
               itemBuilder: (context, i) => ref
                   .watch(
-                    PedidoVentaIndexScreenPaginatedControllerProvider(
+                    pedidoVentaIndexScreenPaginatedControllerProvider(
                       page: (i ~/ PedidoVentaRepository.pageSize),
                     ),
                   )

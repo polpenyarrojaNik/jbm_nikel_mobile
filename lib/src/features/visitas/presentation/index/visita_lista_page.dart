@@ -151,7 +151,7 @@ class VisitaListViewWidget extends StatelessWidget {
               itemCount: count,
               itemBuilder: (context, i) => ref
                   .watch(
-                    VisitaIndexScreenPaginatedControllerProvider(
+                    visitaIndexScreenPaginatedControllerProvider(
                       page: (i ~/ VisitaRepository.pageSize),
                     ),
                   )

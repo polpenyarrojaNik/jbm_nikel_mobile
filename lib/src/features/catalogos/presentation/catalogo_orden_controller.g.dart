@@ -6,43 +6,59 @@ part of 'catalogo_orden_controller.dart';
 // RiverpodGenerator
 // **************************************************************************
 
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint, type=warning
+
+@ProviderFor(CatalogoOrdenController)
+const catalogoOrdenControllerProvider = CatalogoOrdenControllerProvider._();
+
+final class CatalogoOrdenControllerProvider
+    extends $NotifierProvider<CatalogoOrdenController, void> {
+  const CatalogoOrdenControllerProvider._()
+    : super(
+        from: null,
+        argument: null,
+        retry: null,
+        name: r'catalogoOrdenControllerProvider',
+        isAutoDispose: true,
+        dependencies: null,
+        $allTransitiveDependencies: null,
+      );
+
+  @override
+  String debugGetCreateSourceHash() => _$catalogoOrdenControllerHash();
+
+  @$internal
+  @override
+  CatalogoOrdenController create() => CatalogoOrdenController();
+
+  /// {@macro riverpod.override_with_value}
+  Override overrideWithValue(void value) {
+    return $ProviderOverride(
+      origin: this,
+      providerOverride: $SyncValueProvider<void>(value),
+    );
+  }
+}
+
 String _$catalogoOrdenControllerHash() =>
     r'f4ebfb8ccf2fbe263b8d37879a707dfd72b468df';
 
-/// See also [CatalogoOrdenController].
-@ProviderFor(CatalogoOrdenController)
-final catalogoOrdenControllerProvider =
-    AutoDisposeNotifierProvider<CatalogoOrdenController, void>.internal(
-      CatalogoOrdenController.new,
-      name: r'catalogoOrdenControllerProvider',
-      debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-          ? null
-          : _$catalogoOrdenControllerHash,
-      dependencies: null,
-      allTransitiveDependencies: null,
-    );
-
-typedef _$CatalogoOrdenController = AutoDisposeNotifier<void>;
-String _$saveCatalogoAbiertoHash() =>
-    r'74332eab4d1b41027f5fbac5393be7cf9c869353';
-
-/// See also [SaveCatalogoAbierto].
-@ProviderFor(SaveCatalogoAbierto)
-final saveCatalogoAbiertoProvider =
-    AutoDisposeNotifierProvider<
-      SaveCatalogoAbierto,
-      MutationState<Either<AppException, Unit>, int>
-    >.internal(
-      SaveCatalogoAbierto.new,
-      name: r'saveCatalogoAbiertoProvider',
-      debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-          ? null
-          : _$saveCatalogoAbiertoHash,
-      dependencies: null,
-      allTransitiveDependencies: null,
-    );
-
-typedef _$SaveCatalogoAbierto =
-    AutoDisposeNotifier<MutationState<Either<AppException, Unit>, int>>;
-// ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package
+abstract class _$CatalogoOrdenController extends $Notifier<void> {
+  void build();
+  @$mustCallSuper
+  @override
+  void runBuild() {
+    build();
+    final ref = this.ref as $Ref<void, void>;
+    final element =
+        ref.element
+            as $ClassProviderElement<
+              AnyNotifier<void, void>,
+              void,
+              Object?,
+              Object?
+            >;
+    element.handleValue(ref, null);
+  }
+}

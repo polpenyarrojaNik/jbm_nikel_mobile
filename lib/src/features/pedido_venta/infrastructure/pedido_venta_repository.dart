@@ -522,55 +522,6 @@ class PedidoVentaRepository {
     required String searchText,
     String? clienteId,
   }) async {
-    //TODO COMO HACER COUNT
-
-    // final countExp = _localDb.pedidoVentaLocalTable.pedidoVentaAppId.count();
-
-    // final query = _localDb.select(_localDb.pedidoVentaLocalTable).join([]);
-
-    // query.where(_localDb.pedidoVentaLocalTable.tratada.equals('N'));
-
-    // if (searchText != '') {
-    //   final busqueda = searchText.split(' ');
-    //   Expression<bool>? predicate;
-    //   for (var i = 0; i < busqueda.length; i++) {
-    //     if (predicate == null) {
-    //       predicate = (_localDb.pedidoVentaLocalTable.nombreCliente
-    //               .like('%${busqueda[i]}%') |
-    //           _localDb.pedidoVentaLocalTable.clienteId
-    //               .like('%${busqueda[i]}%') |
-    //           _localDb.pedidoVentaLocalTable.poblacion
-    //               .like('%${busqueda[i]}%') |
-    //           _localDb.pedidoVentaLocalTable.codigoPostal
-    //               .like('%${busqueda[i]}%') |
-    //           _localDb.pedidoVentaLocalTable.provincia
-    //               .like('%${busqueda[i]}%'));
-    //     } else {
-    //       predicate = predicate &
-    //           (_localDb.pedidoVentaLocalTable.nombreCliente
-    //                   .like('%${busqueda[i]}%') |
-    //               _localDb.pedidoVentaLocalTable.clienteId
-    //                   .like('%${busqueda[i]}%') |
-    //               _localDb.pedidoVentaLocalTable.poblacion
-    //                   .like('%${busqueda[i]}%') |
-    //               _localDb.pedidoVentaLocalTable.codigoPostal
-    //                   .like('%${busqueda[i]}%') |
-    //               _localDb.pedidoVentaLocalTable.provincia
-    //                   .like('%${busqueda[i]}%'));
-    //     }
-    //   }
-    //   query.where(predicate!);
-    // }
-
-    // if (clienteId != null) {
-    //   query.where(_localDb.pedidoVentaLocalTable.clienteId.equals(clienteId));
-    // }
-
-    // query.addColumns([countExp]);
-
-    // final count = await query.map((row) => row.read(countExp)).getSingle();
-    // return count ?? 0;
-
     final pedidoLocalList = await getPedidosVentaLocal(
       searchText: searchText,
       clienteId: clienteId,
@@ -642,36 +593,6 @@ class PedidoVentaRepository {
       );
     }
   }
-
-  // Future<PedidoVenta> getPedidoVentaBorrador() async {
-  //   final pedidoVentaBorradorDTO = await (_localDb
-  //           .select(_localDb.pedidoVentaLocalTable)
-  //         ..where((tbl) => tbl.borrador.equals('S') & tbl.tratada.equals('N')))
-  //       .getSingle();
-
-  //   final divisaDTO = await (_remoteDb.select(_remoteDb.divisaTable)
-  //         ..where((tbl) => tbl.id.equals(pedidoVentaBorradorDTO.divisaId!)))
-  //       .getSingle();
-  //   final paisDTO = await (_remoteDb.select(_remoteDb.paisTable)
-  //         ..where((tbl) => tbl.id.equals(pedidoVentaBorradorDTO.paisId!)))
-  //       .getSingle();
-
-  //   final pedidoVentaLineas = await getLocalPedidoVentaLineaList(
-  //       pedidoVentaAppId: pedidoVentaBorradorDTO.pedidoVentaAppId);
-
-  //   final importeBaseImponible =
-  //       getBaseImponible(pedidoVentaLineas, divisaDTO.id);
-  //   final importeIva =
-  //       getImporteIva(importeBaseImponible, pedidoVentaBorradorDTO.iva);
-
-  //   return pedidoVentaBorradorDTO.toDomain(
-  //     pais: paisDTO.toDomain(),
-  //     divisa: divisaDTO.toDomain(),
-  //     baseImponible: importeBaseImponible,
-  //     importeIva: importeIva,
-  //     total: importeBaseImponible + importeIva,
-  //   );
-  // }
 
   Future<PedidoVenta> getSyncPedidoVentaById({required String pedidoVentaId}) {
     final query = _remoteDb.select(_remoteDb.pedidoVentaTable).join([
@@ -1246,12 +1167,6 @@ class PedidoVentaRepository {
       description: 'Insert pedido: ${pedidoVentaLocalDTO.toJson()}',
     );
     try {
-      // if (pedidoVentaLocalDTO.borrador == 'S') {
-      //   await (_localDb.delete(_localDb.pedidoVentaLocalTable)
-      //         ..where((tbl) => tbl.borrador.equals('S')))
-      //       .go();
-      // }
-
       return await _localDb.transaction(() async {
         await _localDb
             .into(_localDb.pedidoVentaLocalTable)

@@ -6,24 +6,53 @@ part of 'expedicion_repository.dart';
 // RiverpodGenerator
 // **************************************************************************
 
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint, type=warning
+
+@ProviderFor(expedicionRepository)
+const expedicionRepositoryProvider = ExpedicionRepositoryProvider._();
+
+final class ExpedicionRepositoryProvider
+    extends
+        $FunctionalProvider<
+          ExpedicionRepository,
+          ExpedicionRepository,
+          ExpedicionRepository
+        >
+    with $Provider<ExpedicionRepository> {
+  const ExpedicionRepositoryProvider._()
+    : super(
+        from: null,
+        argument: null,
+        retry: null,
+        name: r'expedicionRepositoryProvider',
+        isAutoDispose: true,
+        dependencies: null,
+        $allTransitiveDependencies: null,
+      );
+
+  @override
+  String debugGetCreateSourceHash() => _$expedicionRepositoryHash();
+
+  @$internal
+  @override
+  $ProviderElement<ExpedicionRepository> $createElement(
+    $ProviderPointer pointer,
+  ) => $ProviderElement(pointer);
+
+  @override
+  ExpedicionRepository create(Ref ref) {
+    return expedicionRepository(ref);
+  }
+
+  /// {@macro riverpod.override_with_value}
+  Override overrideWithValue(ExpedicionRepository value) {
+    return $ProviderOverride(
+      origin: this,
+      providerOverride: $SyncValueProvider<ExpedicionRepository>(value),
+    );
+  }
+}
+
 String _$expedicionRepositoryHash() =>
     r'a69657bafcb843b0c7371071f7807d92bb14d1c8';
-
-/// See also [expedicionRepository].
-@ProviderFor(expedicionRepository)
-final expedicionRepositoryProvider =
-    AutoDisposeProvider<ExpedicionRepository>.internal(
-      expedicionRepository,
-      name: r'expedicionRepositoryProvider',
-      debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-          ? null
-          : _$expedicionRepositoryHash,
-      dependencies: null,
-      allTransitiveDependencies: null,
-    );
-
-@Deprecated('Will be removed in 3.0. Use Ref instead')
-// ignore: unused_element
-typedef ExpedicionRepositoryRef = AutoDisposeProviderRef<ExpedicionRepository>;
-// ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

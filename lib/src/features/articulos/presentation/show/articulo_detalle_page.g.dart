@@ -6,49 +6,67 @@ part of 'articulo_detalle_page.dart';
 // RiverpodGenerator
 // **************************************************************************
 
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint, type=warning
+
+@ProviderFor(ArticuloDetalleAddArticuloABorradorButtonController)
+const articuloDetalleAddArticuloABorradorButtonControllerProvider =
+    ArticuloDetalleAddArticuloABorradorButtonControllerProvider._();
+
+final class ArticuloDetalleAddArticuloABorradorButtonControllerProvider
+    extends
+        $NotifierProvider<
+          ArticuloDetalleAddArticuloABorradorButtonController,
+          void
+        > {
+  const ArticuloDetalleAddArticuloABorradorButtonControllerProvider._()
+    : super(
+        from: null,
+        argument: null,
+        retry: null,
+        name: r'articuloDetalleAddArticuloABorradorButtonControllerProvider',
+        isAutoDispose: true,
+        dependencies: null,
+        $allTransitiveDependencies: null,
+      );
+
+  @override
+  String debugGetCreateSourceHash() =>
+      _$articuloDetalleAddArticuloABorradorButtonControllerHash();
+
+  @$internal
+  @override
+  ArticuloDetalleAddArticuloABorradorButtonController create() =>
+      ArticuloDetalleAddArticuloABorradorButtonController();
+
+  /// {@macro riverpod.override_with_value}
+  Override overrideWithValue(void value) {
+    return $ProviderOverride(
+      origin: this,
+      providerOverride: $SyncValueProvider<void>(value),
+    );
+  }
+}
+
 String _$articuloDetalleAddArticuloABorradorButtonControllerHash() =>
     r'359327836b4e87bf5ca5a20d045ad953ec89b46b';
 
-/// See also [ArticuloDetalleAddArticuloABorradorButtonController].
-@ProviderFor(ArticuloDetalleAddArticuloABorradorButtonController)
-final articuloDetalleAddArticuloABorradorButtonControllerProvider =
-    AutoDisposeNotifierProvider<
-      ArticuloDetalleAddArticuloABorradorButtonController,
-      void
-    >.internal(
-      ArticuloDetalleAddArticuloABorradorButtonController.new,
-      name: r'articuloDetalleAddArticuloABorradorButtonControllerProvider',
-      debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-          ? null
-          : _$articuloDetalleAddArticuloABorradorButtonControllerHash,
-      dependencies: null,
-      allTransitiveDependencies: null,
-    );
-
-typedef _$ArticuloDetalleAddArticuloABorradorButtonController =
-    AutoDisposeNotifier<void>;
-String _$getPedidoVentaLineaHash() =>
-    r'4878024ca074fa43161fc411fe9ea9138cfa6157';
-
-/// See also [GetPedidoVentaLinea].
-@ProviderFor(GetPedidoVentaLinea)
-final getPedidoVentaLineaProvider =
-    AutoDisposeNotifierProvider<
-      GetPedidoVentaLinea,
-      MutationState<Either<AppException, int>, PedidoLocalParam>
-    >.internal(
-      GetPedidoVentaLinea.new,
-      name: r'getPedidoVentaLineaProvider',
-      debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-          ? null
-          : _$getPedidoVentaLineaHash,
-      dependencies: null,
-      allTransitiveDependencies: null,
-    );
-
-typedef _$GetPedidoVentaLinea =
-    AutoDisposeNotifier<
-      MutationState<Either<AppException, int>, PedidoLocalParam>
-    >;
-// ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package
+abstract class _$ArticuloDetalleAddArticuloABorradorButtonController
+    extends $Notifier<void> {
+  void build();
+  @$mustCallSuper
+  @override
+  void runBuild() {
+    build();
+    final ref = this.ref as $Ref<void, void>;
+    final element =
+        ref.element
+            as $ClassProviderElement<
+              AnyNotifier<void, void>,
+              void,
+              Object?,
+              Object?
+            >;
+    element.handleValue(ref, null);
+  }
+}

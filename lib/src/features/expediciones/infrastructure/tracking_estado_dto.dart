@@ -26,7 +26,6 @@ abstract class TrackingEstadoDTO
     @JsonKey(name: 'DESCRIPCION_HU') String? descripcionHU,
     @JsonKey(name: 'DESCRIPCION_IT') String? descripcionIT,
     @JsonKey(name: 'DESCRIPCION_NL') String? descripcionNL,
-    // @JsonKey(name: 'DESCRIPCION_PL') String? descripcionPL,
     @JsonKey(name: 'DESCRIPCION_PT') String? descripcionPT,
     @JsonKey(name: 'DESCRIPCION_RO') String? descripcionRO,
     @JsonKey(name: 'DESCRIPCION_RU') String? descripcionRU,
@@ -59,29 +58,6 @@ abstract class TrackingEstadoDTO
     } else if (currentLocale == 'pt' && descripcionPT != null) {
       return descripcionPT!;
     }
-    //else if (currentLocale == 'de' && descripcionDE != null) {
-    //   return descripcionDE!;
-    // } else if (currentLocale == 'ca' && descripcionCA != null) {
-    //   return descripcionCA!;
-    // } else if (currentLocale == 'gb' && descripcionGB != null) {
-    //   return descripcionGB!;
-    // } else if (currentLocale == 'hu' && descripcionHU != null) {
-    //   return descripcionHU!;
-    // }
-    //else if (currentLocale == 'nl' && descripcionNL != null) {
-    //   return descripcionNL!;
-    // } else if (currentLocale == 'pl' && descripcionPL != null) {
-    //   return descripcionPL!;
-    // }
-    //else if (currentLocale == 'ro' && descripcionRO != null) {
-    //   return descripcionRO!;
-    // } else if (currentLocale == 'ru' && descripcionRU != null) {
-    //   return descripcionRU!;
-    // } else if (currentLocale == 'cn' && descripcionCN != null) {
-    //   return descripcionCN!;
-    // } else if (currentLocale == 'el' && descripcionEL != null) {
-    //   return descripcionEL!;
-    // }
 
     return descripcionES;
   }
@@ -99,7 +75,6 @@ abstract class TrackingEstadoDTO
       descripcionHU: Value(descripcionHU),
       descripcionIT: Value(descripcionIT),
       descripcionNL: Value(descripcionNL),
-      // descripcionPL: Value(descripcionPL),
       descripcionPT: Value(descripcionPT),
       descripcionRO: Value(descripcionRO),
       descripcionRU: Value(descripcionRU),
@@ -129,7 +104,6 @@ class TrackingEstadoTable extends Table {
   TextColumn get descripcionHU => text().nullable().named('DESCRIPCION_HU')();
   TextColumn get descripcionIT => text().nullable().named('DESCRIPCION_IT')();
   TextColumn get descripcionNL => text().nullable().named('DESCRIPCION_NL')();
-  // TextColumn get descripcionPL => text().nullable().named('DESCRIPCION_PL')();
   TextColumn get descripcionPT => text().nullable().named('DESCRIPCION_PT')();
   TextColumn get descripcionRO => text().nullable().named('DESCRIPCION_RO')();
   TextColumn get descripcionRU => text().nullable().named('DESCRIPCION_RU')();

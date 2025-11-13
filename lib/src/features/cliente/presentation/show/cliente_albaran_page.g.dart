@@ -6,517 +6,317 @@ part of 'cliente_albaran_page.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$clienteAlbaranCountControllerHash() =>
-    r'ab29f96230e56cc02f9070f6907e7263e5fc173c';
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint, type=warning
 
-/// Copied from Dart SDK
-class _SystemHash {
-  _SystemHash._();
-
-  static int combine(int hash, int value) {
-    // ignore: parameter_assignments
-    hash = 0x1fffffff & (hash + value);
-    // ignore: parameter_assignments
-    hash = 0x1fffffff & (hash + ((0x0007ffff & hash) << 10));
-    return hash ^ (hash >> 6);
-  }
-
-  static int finish(int hash) {
-    // ignore: parameter_assignments
-    hash = 0x1fffffff & (hash + ((0x03ffffff & hash) << 3));
-    // ignore: parameter_assignments
-    hash = hash ^ (hash >> 11);
-    return 0x1fffffff & (hash + ((0x00003fff & hash) << 15));
-  }
-}
-
-abstract class _$ClienteAlbaranCountController
-    extends BuildlessAutoDisposeAsyncNotifier<int> {
-  late final String clienteId;
-
-  FutureOr<int> build(String clienteId);
-}
-
-/// See also [ClienteAlbaranCountController].
 @ProviderFor(ClienteAlbaranCountController)
 const clienteAlbaranCountControllerProvider =
-    ClienteAlbaranCountControllerFamily();
+    ClienteAlbaranCountControllerFamily._();
 
-/// See also [ClienteAlbaranCountController].
-class ClienteAlbaranCountControllerFamily extends Family<AsyncValue<int>> {
-  /// See also [ClienteAlbaranCountController].
-  const ClienteAlbaranCountControllerFamily();
+final class ClienteAlbaranCountControllerProvider
+    extends $AsyncNotifierProvider<ClienteAlbaranCountController, int> {
+  const ClienteAlbaranCountControllerProvider._({
+    required ClienteAlbaranCountControllerFamily super.from,
+    required String super.argument,
+  }) : super(
+         retry: null,
+         name: r'clienteAlbaranCountControllerProvider',
+         isAutoDispose: true,
+         dependencies: null,
+         $allTransitiveDependencies: null,
+       );
 
-  /// See also [ClienteAlbaranCountController].
-  ClienteAlbaranCountControllerProvider call(String clienteId) {
-    return ClienteAlbaranCountControllerProvider(clienteId);
+  @override
+  String debugGetCreateSourceHash() => _$clienteAlbaranCountControllerHash();
+
+  @override
+  String toString() {
+    return r'clienteAlbaranCountControllerProvider'
+        ''
+        '($argument)';
   }
 
+  @$internal
   @override
-  ClienteAlbaranCountControllerProvider getProviderOverride(
-    covariant ClienteAlbaranCountControllerProvider provider,
-  ) {
-    return call(provider.clienteId);
-  }
-
-  static const Iterable<ProviderOrFamily>? _dependencies = null;
-
-  @override
-  Iterable<ProviderOrFamily>? get dependencies => _dependencies;
-
-  static const Iterable<ProviderOrFamily>? _allTransitiveDependencies = null;
-
-  @override
-  Iterable<ProviderOrFamily>? get allTransitiveDependencies =>
-      _allTransitiveDependencies;
-
-  @override
-  String? get name => r'clienteAlbaranCountControllerProvider';
-}
-
-/// See also [ClienteAlbaranCountController].
-class ClienteAlbaranCountControllerProvider
-    extends
-        AutoDisposeAsyncNotifierProviderImpl<
-          ClienteAlbaranCountController,
-          int
-        > {
-  /// See also [ClienteAlbaranCountController].
-  ClienteAlbaranCountControllerProvider(String clienteId)
-    : this._internal(
-        () => ClienteAlbaranCountController()..clienteId = clienteId,
-        from: clienteAlbaranCountControllerProvider,
-        name: r'clienteAlbaranCountControllerProvider',
-        debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-            ? null
-            : _$clienteAlbaranCountControllerHash,
-        dependencies: ClienteAlbaranCountControllerFamily._dependencies,
-        allTransitiveDependencies:
-            ClienteAlbaranCountControllerFamily._allTransitiveDependencies,
-        clienteId: clienteId,
-      );
-
-  ClienteAlbaranCountControllerProvider._internal(
-    super._createNotifier, {
-    required super.name,
-    required super.dependencies,
-    required super.allTransitiveDependencies,
-    required super.debugGetCreateSourceHash,
-    required super.from,
-    required this.clienteId,
-  }) : super.internal();
-
-  final String clienteId;
-
-  @override
-  FutureOr<int> runNotifierBuild(
-    covariant ClienteAlbaranCountController notifier,
-  ) {
-    return notifier.build(clienteId);
-  }
-
-  @override
-  Override overrideWith(ClienteAlbaranCountController Function() create) {
-    return ProviderOverride(
-      origin: this,
-      override: ClienteAlbaranCountControllerProvider._internal(
-        () => create()..clienteId = clienteId,
-        from: from,
-        name: null,
-        dependencies: null,
-        allTransitiveDependencies: null,
-        debugGetCreateSourceHash: null,
-        clienteId: clienteId,
-      ),
-    );
-  }
-
-  @override
-  AutoDisposeAsyncNotifierProviderElement<ClienteAlbaranCountController, int>
-  createElement() {
-    return _ClienteAlbaranCountControllerProviderElement(this);
-  }
+  ClienteAlbaranCountController create() => ClienteAlbaranCountController();
 
   @override
   bool operator ==(Object other) {
     return other is ClienteAlbaranCountControllerProvider &&
-        other.clienteId == clienteId;
+        other.argument == argument;
   }
 
   @override
   int get hashCode {
-    var hash = _SystemHash.combine(0, runtimeType.hashCode);
-    hash = _SystemHash.combine(hash, clienteId.hashCode);
-
-    return _SystemHash.finish(hash);
+    return argument.hashCode;
   }
 }
 
-@Deprecated('Will be removed in 3.0. Use Ref instead')
-// ignore: unused_element
-mixin ClienteAlbaranCountControllerRef
-    on AutoDisposeAsyncNotifierProviderRef<int> {
-  /// The parameter `clienteId` of this provider.
-  String get clienteId;
-}
+String _$clienteAlbaranCountControllerHash() =>
+    r'ab29f96230e56cc02f9070f6907e7263e5fc173c';
 
-class _ClienteAlbaranCountControllerProviderElement
-    extends
-        AutoDisposeAsyncNotifierProviderElement<
+final class ClienteAlbaranCountControllerFamily extends $Family
+    with
+        $ClassFamilyOverride<
           ClienteAlbaranCountController,
-          int
-        >
-    with ClienteAlbaranCountControllerRef {
-  _ClienteAlbaranCountControllerProviderElement(super.provider);
+          AsyncValue<int>,
+          int,
+          FutureOr<int>,
+          String
+        > {
+  const ClienteAlbaranCountControllerFamily._()
+    : super(
+        retry: null,
+        name: r'clienteAlbaranCountControllerProvider',
+        dependencies: null,
+        $allTransitiveDependencies: null,
+        isAutoDispose: true,
+      );
+
+  ClienteAlbaranCountControllerProvider call(String clienteId) =>
+      ClienteAlbaranCountControllerProvider._(argument: clienteId, from: this);
 
   @override
-  String get clienteId =>
-      (origin as ClienteAlbaranCountControllerProvider).clienteId;
+  String toString() => r'clienteAlbaranCountControllerProvider';
+}
+
+abstract class _$ClienteAlbaranCountController extends $AsyncNotifier<int> {
+  late final _$args = ref.$arg as String;
+  String get clienteId => _$args;
+
+  FutureOr<int> build(String clienteId);
+  @$mustCallSuper
+  @override
+  void runBuild() {
+    final created = build(_$args);
+    final ref = this.ref as $Ref<AsyncValue<int>, int>;
+    final element =
+        ref.element
+            as $ClassProviderElement<
+              AnyNotifier<AsyncValue<int>, int>,
+              AsyncValue<int>,
+              Object?,
+              Object?
+            >;
+    element.handleValue(ref, created);
+  }
+}
+
+@ProviderFor(ClienteAlbaranPaginationController)
+const clienteAlbaranPaginationControllerProvider =
+    ClienteAlbaranPaginationControllerFamily._();
+
+final class ClienteAlbaranPaginationControllerProvider
+    extends
+        $AsyncNotifierProvider<
+          ClienteAlbaranPaginationController,
+          List<ClienteAlbaran>
+        > {
+  const ClienteAlbaranPaginationControllerProvider._({
+    required ClienteAlbaranPaginationControllerFamily super.from,
+    required ({int page, String customerId}) super.argument,
+  }) : super(
+         retry: null,
+         name: r'clienteAlbaranPaginationControllerProvider',
+         isAutoDispose: true,
+         dependencies: null,
+         $allTransitiveDependencies: null,
+       );
+
+  @override
+  String debugGetCreateSourceHash() =>
+      _$clienteAlbaranPaginationControllerHash();
+
+  @override
+  String toString() {
+    return r'clienteAlbaranPaginationControllerProvider'
+        ''
+        '$argument';
+  }
+
+  @$internal
+  @override
+  ClienteAlbaranPaginationController create() =>
+      ClienteAlbaranPaginationController();
+
+  @override
+  bool operator ==(Object other) {
+    return other is ClienteAlbaranPaginationControllerProvider &&
+        other.argument == argument;
+  }
+
+  @override
+  int get hashCode {
+    return argument.hashCode;
+  }
 }
 
 String _$clienteAlbaranPaginationControllerHash() =>
     r'03235fdc6b5214141816e23867a2fe7b869f4baa';
 
+final class ClienteAlbaranPaginationControllerFamily extends $Family
+    with
+        $ClassFamilyOverride<
+          ClienteAlbaranPaginationController,
+          AsyncValue<List<ClienteAlbaran>>,
+          List<ClienteAlbaran>,
+          FutureOr<List<ClienteAlbaran>>,
+          ({int page, String customerId})
+        > {
+  const ClienteAlbaranPaginationControllerFamily._()
+    : super(
+        retry: null,
+        name: r'clienteAlbaranPaginationControllerProvider',
+        dependencies: null,
+        $allTransitiveDependencies: null,
+        isAutoDispose: true,
+      );
+
+  ClienteAlbaranPaginationControllerProvider call({
+    required int page,
+    required String customerId,
+  }) => ClienteAlbaranPaginationControllerProvider._(
+    argument: (page: page, customerId: customerId),
+    from: this,
+  );
+
+  @override
+  String toString() => r'clienteAlbaranPaginationControllerProvider';
+}
+
 abstract class _$ClienteAlbaranPaginationController
-    extends BuildlessAutoDisposeAsyncNotifier<List<ClienteAlbaran>> {
-  late final int page;
-  late final String customerId;
+    extends $AsyncNotifier<List<ClienteAlbaran>> {
+  late final _$args = ref.$arg as ({int page, String customerId});
+  int get page => _$args.page;
+  String get customerId => _$args.customerId;
 
   FutureOr<List<ClienteAlbaran>> build({
     required int page,
     required String customerId,
   });
-}
-
-/// See also [ClienteAlbaranPaginationController].
-@ProviderFor(ClienteAlbaranPaginationController)
-const clienteAlbaranPaginationControllerProvider =
-    ClienteAlbaranPaginationControllerFamily();
-
-/// See also [ClienteAlbaranPaginationController].
-class ClienteAlbaranPaginationControllerFamily
-    extends Family<AsyncValue<List<ClienteAlbaran>>> {
-  /// See also [ClienteAlbaranPaginationController].
-  const ClienteAlbaranPaginationControllerFamily();
-
-  /// See also [ClienteAlbaranPaginationController].
-  ClienteAlbaranPaginationControllerProvider call({
-    required int page,
-    required String customerId,
-  }) {
-    return ClienteAlbaranPaginationControllerProvider(
-      page: page,
-      customerId: customerId,
-    );
-  }
-
+  @$mustCallSuper
   @override
-  ClienteAlbaranPaginationControllerProvider getProviderOverride(
-    covariant ClienteAlbaranPaginationControllerProvider provider,
-  ) {
-    return call(page: provider.page, customerId: provider.customerId);
-  }
-
-  static const Iterable<ProviderOrFamily>? _dependencies = null;
-
-  @override
-  Iterable<ProviderOrFamily>? get dependencies => _dependencies;
-
-  static const Iterable<ProviderOrFamily>? _allTransitiveDependencies = null;
-
-  @override
-  Iterable<ProviderOrFamily>? get allTransitiveDependencies =>
-      _allTransitiveDependencies;
-
-  @override
-  String? get name => r'clienteAlbaranPaginationControllerProvider';
-}
-
-/// See also [ClienteAlbaranPaginationController].
-class ClienteAlbaranPaginationControllerProvider
-    extends
-        AutoDisposeAsyncNotifierProviderImpl<
-          ClienteAlbaranPaginationController,
-          List<ClienteAlbaran>
-        > {
-  /// See also [ClienteAlbaranPaginationController].
-  ClienteAlbaranPaginationControllerProvider({
-    required int page,
-    required String customerId,
-  }) : this._internal(
-         () => ClienteAlbaranPaginationController()
-           ..page = page
-           ..customerId = customerId,
-         from: clienteAlbaranPaginationControllerProvider,
-         name: r'clienteAlbaranPaginationControllerProvider',
-         debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-             ? null
-             : _$clienteAlbaranPaginationControllerHash,
-         dependencies: ClienteAlbaranPaginationControllerFamily._dependencies,
-         allTransitiveDependencies: ClienteAlbaranPaginationControllerFamily
-             ._allTransitiveDependencies,
-         page: page,
-         customerId: customerId,
-       );
-
-  ClienteAlbaranPaginationControllerProvider._internal(
-    super._createNotifier, {
-    required super.name,
-    required super.dependencies,
-    required super.allTransitiveDependencies,
-    required super.debugGetCreateSourceHash,
-    required super.from,
-    required this.page,
-    required this.customerId,
-  }) : super.internal();
-
-  final int page;
-  final String customerId;
-
-  @override
-  FutureOr<List<ClienteAlbaran>> runNotifierBuild(
-    covariant ClienteAlbaranPaginationController notifier,
-  ) {
-    return notifier.build(page: page, customerId: customerId);
-  }
-
-  @override
-  Override overrideWith(ClienteAlbaranPaginationController Function() create) {
-    return ProviderOverride(
-      origin: this,
-      override: ClienteAlbaranPaginationControllerProvider._internal(
-        () => create()
-          ..page = page
-          ..customerId = customerId,
-        from: from,
-        name: null,
-        dependencies: null,
-        allTransitiveDependencies: null,
-        debugGetCreateSourceHash: null,
-        page: page,
-        customerId: customerId,
-      ),
-    );
-  }
-
-  @override
-  AutoDisposeAsyncNotifierProviderElement<
-    ClienteAlbaranPaginationController,
-    List<ClienteAlbaran>
-  >
-  createElement() {
-    return _ClienteAlbaranPaginationControllerProviderElement(this);
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return other is ClienteAlbaranPaginationControllerProvider &&
-        other.page == page &&
-        other.customerId == customerId;
-  }
-
-  @override
-  int get hashCode {
-    var hash = _SystemHash.combine(0, runtimeType.hashCode);
-    hash = _SystemHash.combine(hash, page.hashCode);
-    hash = _SystemHash.combine(hash, customerId.hashCode);
-
-    return _SystemHash.finish(hash);
+  void runBuild() {
+    final created = build(page: _$args.page, customerId: _$args.customerId);
+    final ref =
+        this.ref
+            as $Ref<AsyncValue<List<ClienteAlbaran>>, List<ClienteAlbaran>>;
+    final element =
+        ref.element
+            as $ClassProviderElement<
+              AnyNotifier<
+                AsyncValue<List<ClienteAlbaran>>,
+                List<ClienteAlbaran>
+              >,
+              AsyncValue<List<ClienteAlbaran>>,
+              Object?,
+              Object?
+            >;
+    element.handleValue(ref, created);
   }
 }
 
-@Deprecated('Will be removed in 3.0. Use Ref instead')
-// ignore: unused_element
-mixin ClienteAlbaranPaginationControllerRef
-    on AutoDisposeAsyncNotifierProviderRef<List<ClienteAlbaran>> {
-  /// The parameter `page` of this provider.
-  int get page;
-
-  /// The parameter `customerId` of this provider.
-  String get customerId;
-}
-
-class _ClienteAlbaranPaginationControllerProviderElement
-    extends
-        AutoDisposeAsyncNotifierProviderElement<
-          ClienteAlbaranPaginationController,
-          List<ClienteAlbaran>
-        >
-    with ClienteAlbaranPaginationControllerRef {
-  _ClienteAlbaranPaginationControllerProviderElement(super.provider);
-
-  @override
-  int get page => (origin as ClienteAlbaranPaginationControllerProvider).page;
-  @override
-  String get customerId =>
-      (origin as ClienteAlbaranPaginationControllerProvider).customerId;
-}
-
-String _$clienteAlbaranDocumentControllerHash() =>
-    r'e2d4b949539c4c1a6aa70584c1765d20f47d303a';
-
-abstract class _$ClienteAlbaranDocumentController
-    extends BuildlessAutoDisposeNotifier<void> {
-  late final String albaranId;
-
-  void build({required String albaranId});
-}
-
-/// See also [ClienteAlbaranDocumentController].
 @ProviderFor(ClienteAlbaranDocumentController)
 const clienteAlbaranDocumentControllerProvider =
-    ClienteAlbaranDocumentControllerFamily();
+    ClienteAlbaranDocumentControllerFamily._();
 
-/// See also [ClienteAlbaranDocumentController].
-class ClienteAlbaranDocumentControllerFamily extends Family<void> {
-  /// See also [ClienteAlbaranDocumentController].
-  const ClienteAlbaranDocumentControllerFamily();
+final class ClienteAlbaranDocumentControllerProvider
+    extends $NotifierProvider<ClienteAlbaranDocumentController, void> {
+  const ClienteAlbaranDocumentControllerProvider._({
+    required ClienteAlbaranDocumentControllerFamily super.from,
+    required String super.argument,
+  }) : super(
+         retry: null,
+         name: r'clienteAlbaranDocumentControllerProvider',
+         isAutoDispose: true,
+         dependencies: null,
+         $allTransitiveDependencies: null,
+       );
 
-  /// See also [ClienteAlbaranDocumentController].
-  ClienteAlbaranDocumentControllerProvider call({required String albaranId}) {
-    return ClienteAlbaranDocumentControllerProvider(albaranId: albaranId);
+  @override
+  String debugGetCreateSourceHash() => _$clienteAlbaranDocumentControllerHash();
+
+  @override
+  String toString() {
+    return r'clienteAlbaranDocumentControllerProvider'
+        ''
+        '($argument)';
   }
 
+  @$internal
   @override
-  ClienteAlbaranDocumentControllerProvider getProviderOverride(
-    covariant ClienteAlbaranDocumentControllerProvider provider,
-  ) {
-    return call(albaranId: provider.albaranId);
-  }
+  ClienteAlbaranDocumentController create() =>
+      ClienteAlbaranDocumentController();
 
-  static const Iterable<ProviderOrFamily>? _dependencies = null;
-
-  @override
-  Iterable<ProviderOrFamily>? get dependencies => _dependencies;
-
-  static const Iterable<ProviderOrFamily>? _allTransitiveDependencies = null;
-
-  @override
-  Iterable<ProviderOrFamily>? get allTransitiveDependencies =>
-      _allTransitiveDependencies;
-
-  @override
-  String? get name => r'clienteAlbaranDocumentControllerProvider';
-}
-
-/// See also [ClienteAlbaranDocumentController].
-class ClienteAlbaranDocumentControllerProvider
-    extends
-        AutoDisposeNotifierProviderImpl<
-          ClienteAlbaranDocumentController,
-          void
-        > {
-  /// See also [ClienteAlbaranDocumentController].
-  ClienteAlbaranDocumentControllerProvider({required String albaranId})
-    : this._internal(
-        () => ClienteAlbaranDocumentController()..albaranId = albaranId,
-        from: clienteAlbaranDocumentControllerProvider,
-        name: r'clienteAlbaranDocumentControllerProvider',
-        debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-            ? null
-            : _$clienteAlbaranDocumentControllerHash,
-        dependencies: ClienteAlbaranDocumentControllerFamily._dependencies,
-        allTransitiveDependencies:
-            ClienteAlbaranDocumentControllerFamily._allTransitiveDependencies,
-        albaranId: albaranId,
-      );
-
-  ClienteAlbaranDocumentControllerProvider._internal(
-    super._createNotifier, {
-    required super.name,
-    required super.dependencies,
-    required super.allTransitiveDependencies,
-    required super.debugGetCreateSourceHash,
-    required super.from,
-    required this.albaranId,
-  }) : super.internal();
-
-  final String albaranId;
-
-  @override
-  void runNotifierBuild(covariant ClienteAlbaranDocumentController notifier) {
-    return notifier.build(albaranId: albaranId);
-  }
-
-  @override
-  Override overrideWith(ClienteAlbaranDocumentController Function() create) {
-    return ProviderOverride(
+  /// {@macro riverpod.override_with_value}
+  Override overrideWithValue(void value) {
+    return $ProviderOverride(
       origin: this,
-      override: ClienteAlbaranDocumentControllerProvider._internal(
-        () => create()..albaranId = albaranId,
-        from: from,
-        name: null,
-        dependencies: null,
-        allTransitiveDependencies: null,
-        debugGetCreateSourceHash: null,
-        albaranId: albaranId,
-      ),
+      providerOverride: $SyncValueProvider<void>(value),
     );
-  }
-
-  @override
-  AutoDisposeNotifierProviderElement<ClienteAlbaranDocumentController, void>
-  createElement() {
-    return _ClienteAlbaranDocumentControllerProviderElement(this);
   }
 
   @override
   bool operator ==(Object other) {
     return other is ClienteAlbaranDocumentControllerProvider &&
-        other.albaranId == albaranId;
+        other.argument == argument;
   }
 
   @override
   int get hashCode {
-    var hash = _SystemHash.combine(0, runtimeType.hashCode);
-    hash = _SystemHash.combine(hash, albaranId.hashCode);
-
-    return _SystemHash.finish(hash);
+    return argument.hashCode;
   }
 }
 
-@Deprecated('Will be removed in 3.0. Use Ref instead')
-// ignore: unused_element
-mixin ClienteAlbaranDocumentControllerRef
-    on AutoDisposeNotifierProviderRef<void> {
-  /// The parameter `albaranId` of this provider.
-  String get albaranId;
-}
+String _$clienteAlbaranDocumentControllerHash() =>
+    r'e2d4b949539c4c1a6aa70584c1765d20f47d303a';
 
-class _ClienteAlbaranDocumentControllerProviderElement
-    extends
-        AutoDisposeNotifierProviderElement<
+final class ClienteAlbaranDocumentControllerFamily extends $Family
+    with
+        $ClassFamilyOverride<
           ClienteAlbaranDocumentController,
-          void
-        >
-    with ClienteAlbaranDocumentControllerRef {
-  _ClienteAlbaranDocumentControllerProviderElement(super.provider);
+          void,
+          void,
+          void,
+          String
+        > {
+  const ClienteAlbaranDocumentControllerFamily._()
+    : super(
+        retry: null,
+        name: r'clienteAlbaranDocumentControllerProvider',
+        dependencies: null,
+        $allTransitiveDependencies: null,
+        isAutoDispose: true,
+      );
+
+  ClienteAlbaranDocumentControllerProvider call({required String albaranId}) =>
+      ClienteAlbaranDocumentControllerProvider._(
+        argument: albaranId,
+        from: this,
+      );
 
   @override
-  String get albaranId =>
-      (origin as ClienteAlbaranDocumentControllerProvider).albaranId;
+  String toString() => r'clienteAlbaranDocumentControllerProvider';
 }
 
-String _$openDeliveryNoteDocumentHash() =>
-    r'ea8f204a9003b1615f033a401b8f629d93d74f9a';
+abstract class _$ClienteAlbaranDocumentController extends $Notifier<void> {
+  late final _$args = ref.$arg as String;
+  String get albaranId => _$args;
 
-/// See also [OpenDeliveryNoteDocument].
-@ProviderFor(OpenDeliveryNoteDocument)
-final openDeliveryNoteDocumentProvider =
-    AutoDisposeNotifierProvider<
-      OpenDeliveryNoteDocument,
-      MutationState<File?, AdjuntoParam>
-    >.internal(
-      OpenDeliveryNoteDocument.new,
-      name: r'openDeliveryNoteDocumentProvider',
-      debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-          ? null
-          : _$openDeliveryNoteDocumentHash,
-      dependencies: null,
-      allTransitiveDependencies: null,
-    );
-
-typedef _$OpenDeliveryNoteDocument =
-    AutoDisposeNotifier<MutationState<File?, AdjuntoParam>>;
-// ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package
+  void build({required String albaranId});
+  @$mustCallSuper
+  @override
+  void runBuild() {
+    build(albaranId: _$args);
+    final ref = this.ref as $Ref<void, void>;
+    final element =
+        ref.element
+            as $ClassProviderElement<
+              AnyNotifier<void, void>,
+              void,
+              Object?,
+              Object?
+            >;
+    element.handleValue(ref, null);
+  }
+}

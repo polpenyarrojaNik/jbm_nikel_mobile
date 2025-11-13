@@ -6,201 +6,157 @@ part of 'pedido_search_controller.dart';
 // RiverpodGenerator
 // **************************************************************************
 
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint, type=warning
+
+@ProviderFor(PedidoVentaIndexScreenController)
+const pedidoVentaIndexScreenControllerProvider =
+    PedidoVentaIndexScreenControllerProvider._();
+
+final class PedidoVentaIndexScreenControllerProvider
+    extends $AsyncNotifierProvider<PedidoVentaIndexScreenController, int> {
+  const PedidoVentaIndexScreenControllerProvider._()
+    : super(
+        from: null,
+        argument: null,
+        retry: null,
+        name: r'pedidoVentaIndexScreenControllerProvider',
+        isAutoDispose: true,
+        dependencies: null,
+        $allTransitiveDependencies: null,
+      );
+
+  @override
+  String debugGetCreateSourceHash() => _$pedidoVentaIndexScreenControllerHash();
+
+  @$internal
+  @override
+  PedidoVentaIndexScreenController create() =>
+      PedidoVentaIndexScreenController();
+}
+
 String _$pedidoVentaIndexScreenControllerHash() =>
     r'bcb2dc10f3c39b5c53798e4f8f1e7c6b8665347b';
 
-/// See also [PedidoVentaIndexScreenController].
-@ProviderFor(PedidoVentaIndexScreenController)
-final pedidoVentaIndexScreenControllerProvider =
-    AutoDisposeAsyncNotifierProvider<
-      PedidoVentaIndexScreenController,
-      int
-    >.internal(
-      PedidoVentaIndexScreenController.new,
-      name: r'pedidoVentaIndexScreenControllerProvider',
-      debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-          ? null
-          : _$pedidoVentaIndexScreenControllerHash,
-      dependencies: null,
-      allTransitiveDependencies: null,
-    );
-
-typedef _$PedidoVentaIndexScreenController = AutoDisposeAsyncNotifier<int>;
-String _$pedidoVentaIndexScreenPaginatedControllerHash() =>
-    r'98ec005bc9b56d783b01ce8ae8e34de3b1c13043';
-
-/// Copied from Dart SDK
-class _SystemHash {
-  _SystemHash._();
-
-  static int combine(int hash, int value) {
-    // ignore: parameter_assignments
-    hash = 0x1fffffff & (hash + value);
-    // ignore: parameter_assignments
-    hash = 0x1fffffff & (hash + ((0x0007ffff & hash) << 10));
-    return hash ^ (hash >> 6);
-  }
-
-  static int finish(int hash) {
-    // ignore: parameter_assignments
-    hash = 0x1fffffff & (hash + ((0x03ffffff & hash) << 3));
-    // ignore: parameter_assignments
-    hash = hash ^ (hash >> 11);
-    return 0x1fffffff & (hash + ((0x00003fff & hash) << 15));
+abstract class _$PedidoVentaIndexScreenController extends $AsyncNotifier<int> {
+  FutureOr<int> build();
+  @$mustCallSuper
+  @override
+  void runBuild() {
+    final created = build();
+    final ref = this.ref as $Ref<AsyncValue<int>, int>;
+    final element =
+        ref.element
+            as $ClassProviderElement<
+              AnyNotifier<AsyncValue<int>, int>,
+              AsyncValue<int>,
+              Object?,
+              Object?
+            >;
+    element.handleValue(ref, created);
   }
 }
 
-abstract class _$PedidoVentaIndexScreenPaginatedController
-    extends BuildlessAutoDisposeAsyncNotifier<List<PedidoVenta>> {
-  late final int page;
-
-  FutureOr<List<PedidoVenta>> build({required int page});
-}
-
-/// See also [PedidoVentaIndexScreenPaginatedController].
 @ProviderFor(PedidoVentaIndexScreenPaginatedController)
 const pedidoVentaIndexScreenPaginatedControllerProvider =
-    PedidoVentaIndexScreenPaginatedControllerFamily();
+    PedidoVentaIndexScreenPaginatedControllerFamily._();
 
-/// See also [PedidoVentaIndexScreenPaginatedController].
-class PedidoVentaIndexScreenPaginatedControllerFamily
-    extends Family<AsyncValue<List<PedidoVenta>>> {
-  /// See also [PedidoVentaIndexScreenPaginatedController].
-  const PedidoVentaIndexScreenPaginatedControllerFamily();
-
-  /// See also [PedidoVentaIndexScreenPaginatedController].
-  PedidoVentaIndexScreenPaginatedControllerProvider call({required int page}) {
-    return PedidoVentaIndexScreenPaginatedControllerProvider(page: page);
-  }
-
-  @override
-  PedidoVentaIndexScreenPaginatedControllerProvider getProviderOverride(
-    covariant PedidoVentaIndexScreenPaginatedControllerProvider provider,
-  ) {
-    return call(page: provider.page);
-  }
-
-  static const Iterable<ProviderOrFamily>? _dependencies = null;
-
-  @override
-  Iterable<ProviderOrFamily>? get dependencies => _dependencies;
-
-  static const Iterable<ProviderOrFamily>? _allTransitiveDependencies = null;
-
-  @override
-  Iterable<ProviderOrFamily>? get allTransitiveDependencies =>
-      _allTransitiveDependencies;
-
-  @override
-  String? get name => r'pedidoVentaIndexScreenPaginatedControllerProvider';
-}
-
-/// See also [PedidoVentaIndexScreenPaginatedController].
-class PedidoVentaIndexScreenPaginatedControllerProvider
+final class PedidoVentaIndexScreenPaginatedControllerProvider
     extends
-        AutoDisposeAsyncNotifierProviderImpl<
+        $AsyncNotifierProvider<
           PedidoVentaIndexScreenPaginatedController,
           List<PedidoVenta>
         > {
-  /// See also [PedidoVentaIndexScreenPaginatedController].
-  PedidoVentaIndexScreenPaginatedControllerProvider({required int page})
-    : this._internal(
-        () => PedidoVentaIndexScreenPaginatedController()..page = page,
-        from: pedidoVentaIndexScreenPaginatedControllerProvider,
-        name: r'pedidoVentaIndexScreenPaginatedControllerProvider',
-        debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-            ? null
-            : _$pedidoVentaIndexScreenPaginatedControllerHash,
-        dependencies:
-            PedidoVentaIndexScreenPaginatedControllerFamily._dependencies,
-        allTransitiveDependencies:
-            PedidoVentaIndexScreenPaginatedControllerFamily
-                ._allTransitiveDependencies,
-        page: page,
-      );
-
-  PedidoVentaIndexScreenPaginatedControllerProvider._internal(
-    super._createNotifier, {
-    required super.name,
-    required super.dependencies,
-    required super.allTransitiveDependencies,
-    required super.debugGetCreateSourceHash,
-    required super.from,
-    required this.page,
-  }) : super.internal();
-
-  final int page;
+  const PedidoVentaIndexScreenPaginatedControllerProvider._({
+    required PedidoVentaIndexScreenPaginatedControllerFamily super.from,
+    required int super.argument,
+  }) : super(
+         retry: null,
+         name: r'pedidoVentaIndexScreenPaginatedControllerProvider',
+         isAutoDispose: true,
+         dependencies: null,
+         $allTransitiveDependencies: null,
+       );
 
   @override
-  FutureOr<List<PedidoVenta>> runNotifierBuild(
-    covariant PedidoVentaIndexScreenPaginatedController notifier,
-  ) {
-    return notifier.build(page: page);
-  }
+  String debugGetCreateSourceHash() =>
+      _$pedidoVentaIndexScreenPaginatedControllerHash();
 
   @override
-  Override overrideWith(
-    PedidoVentaIndexScreenPaginatedController Function() create,
-  ) {
-    return ProviderOverride(
-      origin: this,
-      override: PedidoVentaIndexScreenPaginatedControllerProvider._internal(
-        () => create()..page = page,
-        from: from,
-        name: null,
-        dependencies: null,
-        allTransitiveDependencies: null,
-        debugGetCreateSourceHash: null,
-        page: page,
-      ),
-    );
+  String toString() {
+    return r'pedidoVentaIndexScreenPaginatedControllerProvider'
+        ''
+        '($argument)';
   }
 
+  @$internal
   @override
-  AutoDisposeAsyncNotifierProviderElement<
-    PedidoVentaIndexScreenPaginatedController,
-    List<PedidoVenta>
-  >
-  createElement() {
-    return _PedidoVentaIndexScreenPaginatedControllerProviderElement(this);
-  }
+  PedidoVentaIndexScreenPaginatedController create() =>
+      PedidoVentaIndexScreenPaginatedController();
 
   @override
   bool operator ==(Object other) {
     return other is PedidoVentaIndexScreenPaginatedControllerProvider &&
-        other.page == page;
+        other.argument == argument;
   }
 
   @override
   int get hashCode {
-    var hash = _SystemHash.combine(0, runtimeType.hashCode);
-    hash = _SystemHash.combine(hash, page.hashCode);
-
-    return _SystemHash.finish(hash);
+    return argument.hashCode;
   }
 }
 
-@Deprecated('Will be removed in 3.0. Use Ref instead')
-// ignore: unused_element
-mixin PedidoVentaIndexScreenPaginatedControllerRef
-    on AutoDisposeAsyncNotifierProviderRef<List<PedidoVenta>> {
-  /// The parameter `page` of this provider.
-  int get page;
-}
+String _$pedidoVentaIndexScreenPaginatedControllerHash() =>
+    r'98ec005bc9b56d783b01ce8ae8e34de3b1c13043';
 
-class _PedidoVentaIndexScreenPaginatedControllerProviderElement
-    extends
-        AutoDisposeAsyncNotifierProviderElement<
+final class PedidoVentaIndexScreenPaginatedControllerFamily extends $Family
+    with
+        $ClassFamilyOverride<
           PedidoVentaIndexScreenPaginatedController,
-          List<PedidoVenta>
-        >
-    with PedidoVentaIndexScreenPaginatedControllerRef {
-  _PedidoVentaIndexScreenPaginatedControllerProviderElement(super.provider);
+          AsyncValue<List<PedidoVenta>>,
+          List<PedidoVenta>,
+          FutureOr<List<PedidoVenta>>,
+          int
+        > {
+  const PedidoVentaIndexScreenPaginatedControllerFamily._()
+    : super(
+        retry: null,
+        name: r'pedidoVentaIndexScreenPaginatedControllerProvider',
+        dependencies: null,
+        $allTransitiveDependencies: null,
+        isAutoDispose: true,
+      );
+
+  PedidoVentaIndexScreenPaginatedControllerProvider call({required int page}) =>
+      PedidoVentaIndexScreenPaginatedControllerProvider._(
+        argument: page,
+        from: this,
+      );
 
   @override
-  int get page =>
-      (origin as PedidoVentaIndexScreenPaginatedControllerProvider).page;
+  String toString() => r'pedidoVentaIndexScreenPaginatedControllerProvider';
 }
 
-// ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package
+abstract class _$PedidoVentaIndexScreenPaginatedController
+    extends $AsyncNotifier<List<PedidoVenta>> {
+  late final _$args = ref.$arg as int;
+  int get page => _$args;
+
+  FutureOr<List<PedidoVenta>> build({required int page});
+  @$mustCallSuper
+  @override
+  void runBuild() {
+    final created = build(page: _$args);
+    final ref =
+        this.ref as $Ref<AsyncValue<List<PedidoVenta>>, List<PedidoVenta>>;
+    final element =
+        ref.element
+            as $ClassProviderElement<
+              AnyNotifier<AsyncValue<List<PedidoVenta>>, List<PedidoVenta>>,
+              AsyncValue<List<PedidoVenta>>,
+              Object?,
+              Object?
+            >;
+    element.handleValue(ref, created);
+  }
+}

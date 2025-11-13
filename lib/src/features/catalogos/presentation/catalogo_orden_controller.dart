@@ -1,6 +1,6 @@
+import 'package:flutter_riverpod/experimental/mutation.dart';
 import 'package:fpdart/fpdart.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-import 'package:riverpod_mutations/riverpod_mutations.dart';
 
 import '../../../core/exceptions/app_exception.dart';
 import '../infrastructure/catalogo_repository.dart';
@@ -26,15 +26,4 @@ class CatalogoOrdenController extends _$CatalogoOrdenController {
   }
 }
 
-@riverpod
-class SaveCatalogoAbierto extends _$SaveCatalogoAbierto {
-  @override
-  MutationState<Either<AppException, Unit>, int> build() {
-    return MutationState.create(
-      (newState) => state = newState,
-      (catalogoId) async => ref
-          .read(catalogoOrdenControllerProvider.notifier)
-          .saveCatalogoAbierto(catalogoId),
-    );
-  }
-}
+final saveCatalogoAbiertoMutation = Mutation<Either<AppException, Unit>>();

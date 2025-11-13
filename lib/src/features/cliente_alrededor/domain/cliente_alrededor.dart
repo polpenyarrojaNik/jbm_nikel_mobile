@@ -2,6 +2,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:money2/money2.dart';
 
 import '../../../core/domain/pais.dart';
+import '../../cliente/domain/cliente.dart';
 
 part 'cliente_alrededor.freezed.dart';
 
@@ -29,4 +30,13 @@ abstract class ClienteAlrededor with _$ClienteAlrededor {
     double? ventasPeriodoActual,
     double? ventasPeriodoAnterior,
   }) = _ClienteAlrededor;
+
+  TendenciaCliente get tendenciaVentas {
+    if (ventasAnyoActual > ventasAnyoAnterior) {
+      return TendenciaCliente.up;
+    } else if (ventasAnyoActual < ventasAnyoAnterior) {
+      return TendenciaCliente.down;
+    }
+    return TendenciaCliente.equal;
+  }
 }

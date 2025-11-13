@@ -52,7 +52,6 @@ abstract class CatalogoDTO
     nombreFicheroPortada: catalogo.nombreFicheroPortada,
     nombreFicheroCatalogo: catalogo.nombreFicheroCatalogo,
     descarga: catalogo.descarga ? 'S' : 'N',
-    // isFavorite: checkIsFavorite(favoriteList),
   );
 
   Catalogo toDomain({required bool test, required String? tipoPrecioCatalogo}) {
@@ -68,18 +67,8 @@ abstract class CatalogoDTO
       nombreFicheroPortada: nombreFicheroPortada,
       nombreFicheroCatalogo: nombreFicheroCatalogo,
       descarga: descarga == 'S',
-      // isFavorite: checkIsFavorite(favoriteList),
     );
   }
-
-  // bool checkIsFavorite(List<CatalogoFavoritoDTO> favoriteList) {
-  //   for (var i = 0; i < favoriteList.length; i++) {
-  //     if (favoriteList[i].catalogoId == catalogoId) {
-  //       return true;
-  //     }
-  //   }
-  //   return false;
-  // }
 
   @override
   Map<String, Expression> toColumns(bool nullToAbsent) {

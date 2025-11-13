@@ -4,11 +4,11 @@ import 'package:auto_route/auto_route.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flash/flash_helper.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/experimental/mutation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:fpdart/fpdart.dart';
 import 'package:gap/gap.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-import 'package:riverpod_mutations/riverpod_mutations.dart';
 
 import '../../../../../generated/l10n.dart';
 import '../../../../core/exceptions/app_exception.dart';
@@ -59,21 +59,7 @@ class ArticuloDetalleAddArticuloABorradorButtonController
   }
 }
 
-@riverpod
-class GetPedidoVentaLinea extends _$GetPedidoVentaLinea {
-  @override
-  MutationState<Either<AppException, int>, PedidoLocalParam> build() {
-    return MutationState.create(
-      (newState) => state = newState,
-      (pedidoLocalParam) async => ref
-          .read(
-            articuloDetalleAddArticuloABorradorButtonControllerProvider
-                .notifier,
-          )
-          .getPedidoVentaLinea(pedidoLocalParam),
-    );
-  }
-}
+final getPedidoVentaLineaMutation = Mutation<Either<AppException, int>>();
 
 @RoutePage()
 class ArticuloDetallePage extends ConsumerWidget {
@@ -137,9 +123,9 @@ class AddArticleToBorradorButton extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    ref.listen(getPedidoVentaLineaProvider, (_, state) {
-      state.whenOrNull(
-        data: (data) => data.fold(
+    ref.listen(getPedidoVentaLineaMutation, (_, state) {
+      if (state is MutationSuccess<Either<AppException, int>>) {
+        state.value.fold(
           (l) => unawaited(
             context.showErrorBar(
               content: ErrorMessageWidget(l.details.message),
@@ -154,25 +140,41 @@ class AddArticleToBorradorButton extends ConsumerWidget {
             pedidoVentaBorradoresList.first.clienteId!,
             r,
           ),
-        ),
-        error: (error, _) =>
-            context.showErrorBar(content: ErrorMessageWidget(error.toString())),
-      );
+        );
+      } else if (state is MutationError<Either<AppException, int>>) {
+        context.showErrorBar(
+          content: ErrorMessageWidget(state.error.toString()),
+        );
+      }
     });
 
-    final getPedidoVentaLineaState = ref.watch(getPedidoVentaLineaProvider);
+    final getPedidoVentaLineaState = ref.watch(getPedidoVentaLineaMutation);
 
     return IconButton(
-      onPressed: getPedidoVentaLineaState.isLoading
+      onPressed: getPedidoVentaLineaState.isPending
           ? null
           : () {
               if (pedidoVentaBorradoresList.length == 1) {
-                getPedidoVentaLineaState(
-                  PedidoLocalParam(
-                    pedidoAppId:
-                        pedidoVentaBorradoresList.first.pedidoVentaAppId!,
-                    isEdit: false,
-                  ),
+                unawaited(
+                  getPedidoVentaLineaMutation.run(ref, (tsx) async {
+                    final articuloDetalleAddArticuloABorradorButtonControllerNotifier =
+                        tsx.get(
+                          articuloDetalleAddArticuloABorradorButtonControllerProvider
+                              .notifier,
+                        );
+
+                    final result =
+                        await articuloDetalleAddArticuloABorradorButtonControllerNotifier
+                            .getPedidoVentaLinea(
+                              PedidoLocalParam(
+                                pedidoAppId: pedidoVentaBorradoresList
+                                    .first
+                                    .pedidoVentaAppId!,
+                                isEdit: false,
+                              ),
+                            );
+                    return result;
+                  }),
                 );
               } else {
                 selectBorradorToAddArticle(
@@ -205,8 +207,21 @@ class AddArticleToBorradorButton extends ConsumerWidget {
         isEdit: false,
         tratada: false,
       );
-      final getPedidoVentaLineaState = ref.read(getPedidoVentaLineaProvider);
-      unawaited(getPedidoVentaLineaState(pedidoLocalParam));
+
+      unawaited(
+        getPedidoVentaLineaMutation.run(ref, (tsx) async {
+          final articuloDetalleAddArticuloABorradorButtonControllerNotifier =
+              tsx.get(
+                articuloDetalleAddArticuloABorradorButtonControllerProvider
+                    .notifier,
+              );
+
+          final result =
+              await articuloDetalleAddArticuloABorradorButtonControllerNotifier
+                  .getPedidoVentaLinea(pedidoLocalParam);
+          return result;
+        }),
+      );
     }
   }
 
@@ -242,7 +257,6 @@ class SelectPedidoVentaBorradorAlertDialog extends StatelessWidget {
   Widget build(BuildContext context) {
     return AlertDialog(
       title: Text(S.of(context).seleccionarBorrador),
-      // scrollable: true,
       insetPadding: const EdgeInsets.symmetric(horizontal: 16),
       content: SizedBox(
         width: double.maxFinite,

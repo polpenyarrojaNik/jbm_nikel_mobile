@@ -15,12 +15,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$VisitaSectorDTO {
 
-@JsonKey(name: 'CODIGO') int get id;@JsonKey(name: 'DESCRIPCION_ES') String get descripcionES;@JsonKey(name: 'DESCRIPCION_EN') String? get descripcionEN;@JsonKey(name: 'DESCRIPCION_FR') String? get descripcionFR;@JsonKey(name: 'DESCRIPCION_DE') String? get descripcionDE;@JsonKey(name: 'DESCRIPCION_CA') String? get descripcionCA;@JsonKey(name: 'DESCRIPCION_GB') String? get descripcionGB;@JsonKey(name: 'DESCRIPCION_HU') String? get descripcionHU;@JsonKey(name: 'DESCRIPCION_IT') String? get descripcionIT;@JsonKey(name: 'DESCRIPCION_NL') String? get descripcionNL;@JsonKey(name: 'DESCRIPCION_PL') String? get descripcionPL;// @JsonKey(name: 'DESCRIPCION_PT') String? descripcionPT,
-// @JsonKey(name: 'DESCRIPCION_RO') String? descripcionRO,
-// @JsonKey(name: 'DESCRIPCION_RU') String? descripcionRU,
-// @JsonKey(name: 'DESCRIPCION_CN') String? descripcionCN,
-// @JsonKey(name: 'DESCRIPCION_EL') String? descripcionEL,
-@JsonKey(name: 'LAST_UPDATED') DateTime get lastUpdated;@JsonKey(name: 'DELETED') String get deleted;
+@JsonKey(name: 'CODIGO') int get id;@JsonKey(name: 'DESCRIPCION_ES') String get descripcionES;@JsonKey(name: 'DESCRIPCION_EN') String? get descripcionEN;@JsonKey(name: 'DESCRIPCION_FR') String? get descripcionFR;@JsonKey(name: 'DESCRIPCION_DE') String? get descripcionDE;@JsonKey(name: 'DESCRIPCION_CA') String? get descripcionCA;@JsonKey(name: 'DESCRIPCION_GB') String? get descripcionGB;@JsonKey(name: 'DESCRIPCION_HU') String? get descripcionHU;@JsonKey(name: 'DESCRIPCION_IT') String? get descripcionIT;@JsonKey(name: 'DESCRIPCION_NL') String? get descripcionNL;@JsonKey(name: 'DESCRIPCION_PL') String? get descripcionPL;@JsonKey(name: 'LAST_UPDATED') DateTime get lastUpdated;@JsonKey(name: 'DELETED') String get deleted;
 /// Create a copy of VisitaSectorDTO
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -240,11 +235,6 @@ class _VisitaSectorDTO extends VisitaSectorDTO {
 @override@JsonKey(name: 'DESCRIPCION_IT') final  String? descripcionIT;
 @override@JsonKey(name: 'DESCRIPCION_NL') final  String? descripcionNL;
 @override@JsonKey(name: 'DESCRIPCION_PL') final  String? descripcionPL;
-// @JsonKey(name: 'DESCRIPCION_PT') String? descripcionPT,
-// @JsonKey(name: 'DESCRIPCION_RO') String? descripcionRO,
-// @JsonKey(name: 'DESCRIPCION_RU') String? descripcionRU,
-// @JsonKey(name: 'DESCRIPCION_CN') String? descripcionCN,
-// @JsonKey(name: 'DESCRIPCION_EL') String? descripcionEL,
 @override@JsonKey(name: 'LAST_UPDATED') final  DateTime lastUpdated;
 @override@JsonKey(name: 'DELETED') final  String deleted;
 

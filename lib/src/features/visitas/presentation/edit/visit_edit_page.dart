@@ -5,13 +5,13 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flash/flash_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
+import 'package:flutter_riverpod/experimental/mutation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:fpdart/fpdart.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:gap/gap.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-import 'package:riverpod_mutations/riverpod_mutations.dart';
 import 'package:uuid/uuid.dart';
 
 import '../../../../../generated/l10n.dart';
@@ -106,24 +106,7 @@ class VisitEditPageController extends _$VisitEditPageController {
   }
 }
 
-@riverpod
-class SaveForm extends _$SaveForm {
-  @override
-  MutationState<Either<AppException, Visita>, Visita> build(
-    String visitaId,
-    bool isLocal,
-    bool isNew,
-  ) {
-    return MutationState.create(
-      (newState) => state = newState,
-      (newVisita) async => ref
-          .read(
-            visitEditPageControllerProvider(visitaId, isLocal, isNew).notifier,
-          )
-          .saveForm(newVisita),
-    );
-  }
-}
+final visitaSaveFormMutation = Mutation<Either<AppException, Visita>>();
 
 @RoutePage()
 class VisitaEditPage extends ConsumerWidget {
@@ -149,40 +132,39 @@ class VisitaEditPage extends ConsumerWidget {
       visitEditPageControllerProvider(id, isLocal, isNew),
     );
 
-    final stateSaveForm = ref.watch(saveFormProvider(id, isLocal, isNew));
+    final stateSaveForm = ref.watch(visitaSaveFormMutation);
 
-    ref.listen(saveFormProvider(id, isLocal, isNew), (_, state) {
-      state.whenOrNull(
-        error: (error, _) => context.showErrorBar(
+    ref.listen(visitaSaveFormMutation, (_, state) {
+      if (state is MutationSuccess<Either<AppException, Visita>>) {
+        state.value.fold(
+          (l) => context.showErrorBar(
+            duration: const Duration(seconds: 5),
+            content: ErrorMessageWidget(l.details.message),
+          ),
+          (r) {
+            context.showSuccessBar(
+              content: Text(S.of(context).visitas_edit_visitaEditar_saved),
+            );
+
+            ref.invalidate(
+              visitaDetalleControllerProvider(
+                id,
+                isLocal,
+                createVisitaFromClienteId,
+              ),
+            );
+            ref.invalidate(visitaIndexScreenControllerProvider);
+            ref.invalidate(visitaIndexScreenPaginatedControllerProvider);
+
+            context.router.maybePop();
+          },
+        );
+      } else if (state is MutationError<Either<AppException, Visita>>) {
+        context.showErrorBar(
           duration: const Duration(seconds: 5),
           content: Text(state.error.toString()),
-        ),
-        data: (result) {
-          result.fold(
-            (l) => context.showErrorBar(
-              duration: const Duration(seconds: 5),
-              content: ErrorMessageWidget(l.details.message),
-            ),
-            (r) {
-              context.showSuccessBar(
-                content: Text(S.of(context).visitas_edit_visitaEditar_saved),
-              );
-
-              ref.invalidate(
-                visitaDetalleControllerProvider(
-                  id,
-                  isLocal,
-                  createVisitaFromClienteId,
-                ),
-              );
-              ref.invalidate(visitaIndexScreenControllerProvider);
-              ref.invalidate(visitaIndexScreenPaginatedControllerProvider);
-
-              context.router.maybePop();
-            },
-          );
-        },
-      );
+        );
+      }
     });
     return Scaffold(
       appBar: CommonAppBar(
@@ -190,7 +172,7 @@ class VisitaEditPage extends ConsumerWidget {
             ? S.of(context).visitas_edit_visitaEditar_titleNueva
             : S.of(context).visitas_edit_visitaEditar_titleEditar),
         actions: [
-          stateSaveForm.isLoading
+          stateSaveForm.isPending
               ? Container()
               : IconButton(
                   icon: const Icon(Icons.save),
@@ -294,9 +276,16 @@ class VisitaEditPage extends ConsumerWidget {
         tratada: false,
       );
 
-      final saveForm = ref.read(saveFormProvider(id, isLocal, isNew));
+      unawaited(
+        visitaSaveFormMutation.run(ref, (tsx) async {
+          final controller = tsx.get(
+            visitEditPageControllerProvider(id, isLocal, isNew).notifier,
+          );
+          final result = await controller.saveForm(visita);
 
-      unawaited(saveForm(visita));
+          return result;
+        }),
+      );
     } else {
       await context.showErrorBar(
         content: Text(

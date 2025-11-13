@@ -1853,16 +1853,6 @@ class SyncService {
     }
   }
 
-  // Future<void> _remoteFavoriteFileFromLocal(
-  //     AdjuntoParam adjuntoParam, Directory documentDirectory) async {
-  //   final file = File(
-  //       '${documentDirectory.path}/catalogos/${adjuntoParam.id}/${adjuntoParam.nombreArchivo}');
-
-  //   if (file.existsSync()) {
-  //     file.deleteSync(recursive: true);
-  //   }
-  // }
-
   bool _fileExistInLocal(AdjuntoParam adjuntoParam, Directory directory) {
     final filePath =
         '${directory.path}/catalogos/${adjuntoParam.id}/${adjuntoParam.nombreArchivo ?? ''}';
@@ -1899,13 +1889,6 @@ class SyncService {
       );
     }
   }
-
-  // Future<void> _removeAllCatalogsFiles(Directory directory) async {
-  //   final directoryCatalogos = Directory('${directory.path}/catalogos');
-  //   if (directoryCatalogos.existsSync()) {
-  //     directoryCatalogos.deleteSync(recursive: true);
-  //   }
-  // }
 
   void _removeCatalogsFilesById(Directory directory, int catalogoId) {
     final directoryCatalogos = Directory(

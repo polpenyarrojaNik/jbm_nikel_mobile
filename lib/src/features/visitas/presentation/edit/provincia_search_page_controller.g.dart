@@ -6,177 +6,100 @@ part of 'provincia_search_page_controller.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$provinciaSearchPageControllerHash() =>
-    r'd615327c94a2c8bfd5f5240f75c3b4819acbcf7a';
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint, type=warning
 
-/// Copied from Dart SDK
-class _SystemHash {
-  _SystemHash._();
-
-  static int combine(int hash, int value) {
-    // ignore: parameter_assignments
-    hash = 0x1fffffff & (hash + value);
-    // ignore: parameter_assignments
-    hash = 0x1fffffff & (hash + ((0x0007ffff & hash) << 10));
-    return hash ^ (hash >> 6);
-  }
-
-  static int finish(int hash) {
-    // ignore: parameter_assignments
-    hash = 0x1fffffff & (hash + ((0x03ffffff & hash) << 3));
-    // ignore: parameter_assignments
-    hash = hash ^ (hash >> 11);
-    return 0x1fffffff & (hash + ((0x00003fff & hash) << 15));
-  }
-}
-
-abstract class _$ProvinciaSearchPageController
-    extends BuildlessAutoDisposeAsyncNotifier<List<Provincia>> {
-  late final String? paisId;
-
-  FutureOr<List<Provincia>> build(String? paisId);
-}
-
-/// See also [ProvinciaSearchPageController].
 @ProviderFor(ProvinciaSearchPageController)
 const provinciaSearchPageControllerProvider =
-    ProvinciaSearchPageControllerFamily();
+    ProvinciaSearchPageControllerFamily._();
 
-/// See also [ProvinciaSearchPageController].
-class ProvinciaSearchPageControllerFamily
-    extends Family<AsyncValue<List<Provincia>>> {
-  /// See also [ProvinciaSearchPageController].
-  const ProvinciaSearchPageControllerFamily();
-
-  /// See also [ProvinciaSearchPageController].
-  ProvinciaSearchPageControllerProvider call(String? paisId) {
-    return ProvinciaSearchPageControllerProvider(paisId);
-  }
-
-  @override
-  ProvinciaSearchPageControllerProvider getProviderOverride(
-    covariant ProvinciaSearchPageControllerProvider provider,
-  ) {
-    return call(provider.paisId);
-  }
-
-  static const Iterable<ProviderOrFamily>? _dependencies = null;
-
-  @override
-  Iterable<ProviderOrFamily>? get dependencies => _dependencies;
-
-  static const Iterable<ProviderOrFamily>? _allTransitiveDependencies = null;
-
-  @override
-  Iterable<ProviderOrFamily>? get allTransitiveDependencies =>
-      _allTransitiveDependencies;
-
-  @override
-  String? get name => r'provinciaSearchPageControllerProvider';
-}
-
-/// See also [ProvinciaSearchPageController].
-class ProvinciaSearchPageControllerProvider
+final class ProvinciaSearchPageControllerProvider
     extends
-        AutoDisposeAsyncNotifierProviderImpl<
-          ProvinciaSearchPageController,
-          List<Provincia>
-        > {
-  /// See also [ProvinciaSearchPageController].
-  ProvinciaSearchPageControllerProvider(String? paisId)
-    : this._internal(
-        () => ProvinciaSearchPageController()..paisId = paisId,
-        from: provinciaSearchPageControllerProvider,
-        name: r'provinciaSearchPageControllerProvider',
-        debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-            ? null
-            : _$provinciaSearchPageControllerHash,
-        dependencies: ProvinciaSearchPageControllerFamily._dependencies,
-        allTransitiveDependencies:
-            ProvinciaSearchPageControllerFamily._allTransitiveDependencies,
-        paisId: paisId,
-      );
-
-  ProvinciaSearchPageControllerProvider._internal(
-    super._createNotifier, {
-    required super.name,
-    required super.dependencies,
-    required super.allTransitiveDependencies,
-    required super.debugGetCreateSourceHash,
-    required super.from,
-    required this.paisId,
-  }) : super.internal();
-
-  final String? paisId;
+        $AsyncNotifierProvider<ProvinciaSearchPageController, List<Provincia>> {
+  const ProvinciaSearchPageControllerProvider._({
+    required ProvinciaSearchPageControllerFamily super.from,
+    required String? super.argument,
+  }) : super(
+         retry: null,
+         name: r'provinciaSearchPageControllerProvider',
+         isAutoDispose: true,
+         dependencies: null,
+         $allTransitiveDependencies: null,
+       );
 
   @override
-  FutureOr<List<Provincia>> runNotifierBuild(
-    covariant ProvinciaSearchPageController notifier,
-  ) {
-    return notifier.build(paisId);
-  }
+  String debugGetCreateSourceHash() => _$provinciaSearchPageControllerHash();
 
   @override
-  Override overrideWith(ProvinciaSearchPageController Function() create) {
-    return ProviderOverride(
-      origin: this,
-      override: ProvinciaSearchPageControllerProvider._internal(
-        () => create()..paisId = paisId,
-        from: from,
-        name: null,
-        dependencies: null,
-        allTransitiveDependencies: null,
-        debugGetCreateSourceHash: null,
-        paisId: paisId,
-      ),
-    );
+  String toString() {
+    return r'provinciaSearchPageControllerProvider'
+        ''
+        '($argument)';
   }
 
+  @$internal
   @override
-  AutoDisposeAsyncNotifierProviderElement<
-    ProvinciaSearchPageController,
-    List<Provincia>
-  >
-  createElement() {
-    return _ProvinciaSearchPageControllerProviderElement(this);
-  }
+  ProvinciaSearchPageController create() => ProvinciaSearchPageController();
 
   @override
   bool operator ==(Object other) {
     return other is ProvinciaSearchPageControllerProvider &&
-        other.paisId == paisId;
+        other.argument == argument;
   }
 
   @override
   int get hashCode {
-    var hash = _SystemHash.combine(0, runtimeType.hashCode);
-    hash = _SystemHash.combine(hash, paisId.hashCode);
-
-    return _SystemHash.finish(hash);
+    return argument.hashCode;
   }
 }
 
-@Deprecated('Will be removed in 3.0. Use Ref instead')
-// ignore: unused_element
-mixin ProvinciaSearchPageControllerRef
-    on AutoDisposeAsyncNotifierProviderRef<List<Provincia>> {
-  /// The parameter `paisId` of this provider.
-  String? get paisId;
-}
+String _$provinciaSearchPageControllerHash() =>
+    r'd615327c94a2c8bfd5f5240f75c3b4819acbcf7a';
 
-class _ProvinciaSearchPageControllerProviderElement
-    extends
-        AutoDisposeAsyncNotifierProviderElement<
+final class ProvinciaSearchPageControllerFamily extends $Family
+    with
+        $ClassFamilyOverride<
           ProvinciaSearchPageController,
-          List<Provincia>
-        >
-    with ProvinciaSearchPageControllerRef {
-  _ProvinciaSearchPageControllerProviderElement(super.provider);
+          AsyncValue<List<Provincia>>,
+          List<Provincia>,
+          FutureOr<List<Provincia>>,
+          String?
+        > {
+  const ProvinciaSearchPageControllerFamily._()
+    : super(
+        retry: null,
+        name: r'provinciaSearchPageControllerProvider',
+        dependencies: null,
+        $allTransitiveDependencies: null,
+        isAutoDispose: true,
+      );
+
+  ProvinciaSearchPageControllerProvider call(String? paisId) =>
+      ProvinciaSearchPageControllerProvider._(argument: paisId, from: this);
 
   @override
-  String? get paisId =>
-      (origin as ProvinciaSearchPageControllerProvider).paisId;
+  String toString() => r'provinciaSearchPageControllerProvider';
 }
 
-// ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package
+abstract class _$ProvinciaSearchPageController
+    extends $AsyncNotifier<List<Provincia>> {
+  late final _$args = ref.$arg as String?;
+  String? get paisId => _$args;
+
+  FutureOr<List<Provincia>> build(String? paisId);
+  @$mustCallSuper
+  @override
+  void runBuild() {
+    final created = build(_$args);
+    final ref = this.ref as $Ref<AsyncValue<List<Provincia>>, List<Provincia>>;
+    final element =
+        ref.element
+            as $ClassProviderElement<
+              AnyNotifier<AsyncValue<List<Provincia>>, List<Provincia>>,
+              AsyncValue<List<Provincia>>,
+              Object?,
+              Object?
+            >;
+    element.handleValue(ref, created);
+  }
+}

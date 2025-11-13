@@ -2,7 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:drift/drift.dart' hide JsonKey;
 import 'package:drift/isolate.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_riverpod/legacy.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:path_provider/path_provider.dart';
 

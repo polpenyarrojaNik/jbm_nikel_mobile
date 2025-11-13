@@ -58,7 +58,6 @@ class AppDecoration {
     return InputDecoration(
       alignLabelWithHint: true,
       isCollapsed: true,
-      // hintText: hintText,
       labelText: hintText,
       contentPadding: const EdgeInsets.all(8),
       border: OutlineInputBorder(

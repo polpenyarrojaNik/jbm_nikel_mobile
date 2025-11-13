@@ -72,7 +72,7 @@ class ArticuloUltimosPreciosPage extends ConsumerWidget {
                 itemCount: count,
                 itemBuilder: (context, i) => ref
                     .watch(
-                      ArticuloUltimosPreciosIndexScreenPaginatedControllerProvider(
+                      articuloUltimosPreciosIndexScreenPaginatedControllerProvider(
                         articuloId: articuloId,
                         page: (i ~/ ArticuloRepository.pageSize),
                       ),

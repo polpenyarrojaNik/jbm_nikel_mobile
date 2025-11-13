@@ -10,8 +10,16 @@ subprojects {
     project.buildDir = "${rootProject.buildDir}/${project.name}"
 }
 
-subprojects {
-     afterEvaluate { project ->
+subprojects {p ->
+    p.plugins.withId('com.android.library') {
+        if (p.android.hasProperty('compileSdk')) {
+            p.android.compileSdk = 36
+        } else if (p.android.hasProperty('compileSdkVersion')) {
+            p.android.compileSdkVersion 36
+        }
+    }
+
+  afterEvaluate { project ->
         if (project.hasProperty('android')) {
             project.android {
                 if (namespace == null) {

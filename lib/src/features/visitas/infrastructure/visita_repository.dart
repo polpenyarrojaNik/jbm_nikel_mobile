@@ -468,72 +468,6 @@ class VisitaRepository {
     required String usuarioId,
     String? clienteId,
   }) async {
-    //TODO Count visita correctamente.
-
-    // final countExp = _localDb.visitaLocalTable.visitaAppId.count();
-
-    // final query = _remoteDb.selectOnly(_remoteDb.visitaLocalTable).join([
-    //   leftOuterJoin(
-    //     _remoteDb.clienteTable,
-    //     _remoteDb.clienteTable.id
-    //         .equalsExp(_remoteDb.visitaLocalTable.clienteId),
-    //   ),
-    //   leftOuterJoin(
-    //     _remoteDb.clienteUsuarioTable,
-    //     _remoteDb.clienteUsuarioTable.clienteId
-    //         .equalsExp(_remoteDb.clienteTable.id),
-    //   )
-    // ]);
-
-    // query.where(_remoteDb.visitaLocalTable.tratada.equals('N') &
-    //     (_remoteDb.clienteUsuarioTable.usuarioId.equals(usuarioId) |
-    //         (_remoteDb.visitaLocalTable.numEmpl.equals(usuarioId) &
-    //             _remoteDb.visitaLocalTable.clienteId.isNull())));
-
-    // if (searchText != '') {
-    //   final busqueda = searchText.split(' ');
-    //   Expression<bool>? predicate;
-    //   for (var i = 0; i < busqueda.length; i++) {
-    //     if (predicate == null) {
-    //       predicate =
-    //           (_remoteDb.visitaLocalTable.resumen.like('%$searchText%') |
-    //               _remoteDb.visitaLocalTable.clienteId.like('%$searchText%') |
-    //               _remoteDb.visitaLocalTable.clienteProvisionalNombre
-    //                   .like('%$searchText%') |
-    //               _remoteDb.visitaLocalTable.clienteProvisionalEmail
-    //                   .like('%$searchText%') |
-    //               _remoteDb.visitaLocalTable.clienteProvisionalTelefono
-    //                   .like('%$searchText%') |
-    //               _remoteDb.visitaLocalTable.clienteProvisionalPoblacion
-    //                   .like('%$searchText%') |
-    //               _remoteDb.visitaLocalTable.contacto.like('%$searchText%'));
-    //     } else {
-    //       predicate = predicate &
-    //           (_remoteDb.visitaLocalTable.resumen.like('%$searchText%') |
-    //               _remoteDb.visitaLocalTable.clienteId.like('%$searchText%') |
-    //               _remoteDb.visitaLocalTable.clienteProvisionalNombre
-    //                   .like('%$searchText%') |
-    //               _remoteDb.visitaLocalTable.clienteProvisionalEmail
-    //                   .like('%$searchText%') |
-    //               _remoteDb.visitaLocalTable.clienteProvisionalTelefono
-    //                   .like('%$searchText%') |
-    //               _remoteDb.visitaLocalTable.clienteProvisionalPoblacion
-    //                   .like('%$searchText%') |
-    //               _remoteDb.visitaLocalTable.contacto.like('%$searchText%'));
-    //     }
-    //   }
-    //   query.where(predicate!);
-    // }
-
-    // if (clienteId != null) {
-    //   query.where(_remoteDb.visitaLocalTable.clienteId.equals(clienteId));
-    // }
-
-    // query.addColumns([countExp]);
-
-    // final count = await query.map((row) => row.read(countExp)).getSingle();
-    // return count ?? 0;
-
     final visitaLocalList = await getVisitasLocal(
       searchText: searchText,
       usuarioId: usuarioId,
@@ -935,8 +869,6 @@ class VisitaRepository {
     final currentLocale = Intl.getCurrentLocale();
 
     switch (currentLocale) {
-      // case 'es':
-      //   return "DESCRIPCION_ES";
       case 'en':
         return "DESCRIPCION_EN";
       case 'fr':
@@ -1059,6 +991,7 @@ class VisitaRepository {
                   ),
                 );
                 break;
+
               default:
                 ocrReconginzedTextList.add(
                   OcrRecognizedText(

@@ -4,10 +4,10 @@ import 'package:auto_route/auto_route.dart';
 import 'package:better_open_file/better_open_file.dart';
 import 'package:flash/flash_helper.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/experimental/mutation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gap/gap.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-import 'package:riverpod_mutations/riverpod_mutations.dart';
 
 import '../../../../../generated/l10n.dart';
 import '../../../../core/domain/adjunto_param.dart';
@@ -76,22 +76,7 @@ class ClienteFacturaDocumentController
   }
 }
 
-@riverpod
-class OpenFacturaDocument extends _$OpenFacturaDocument {
-  @override
-  MutationState<File?, AdjuntoParam> build() {
-    return MutationState.create(
-      (newState) => state = newState,
-      (adjuntoParam) async => ref
-          .read(
-            clienteFacturaDocumentControllerProvider(
-              facturaId: adjuntoParam.id,
-            ).notifier,
-          )
-          .getFacturaDocumentFile(adjuntoParam: adjuntoParam),
-    );
-  }
-}
+final openFacturaDocumentMutation = Mutation<File?>();
 
 @RoutePage()
 class ClienteFacturaPage extends ConsumerWidget {
@@ -190,22 +175,22 @@ class ClienteFacturaListTile extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    ref.listen(openFacturaDocumentProvider, (_, state) {
-      state.when(
-        initial: () {},
-        data: (file) {
-          if (file != null) {
-            OpenFile.open(file.path);
-          }
-        },
-        error: (error, _) =>
-            context.showErrorBar(content: ErrorMessageWidget(error.toString())),
-        loading: () => context.showInfoBar(
+    ref.listen(openFacturaDocumentMutation, (_, state) {
+      if (state is MutationSuccess<File?>) {
+        if (state.value != null) {
+          OpenFile.open(state.value!.path);
+        }
+      } else if (state is MutationError<File?>) {
+        context.showErrorBar(
+          content: ErrorMessageWidget(state.error.toString()),
+        );
+      } else if (state is MutationPending<File?>) {
+        context.showInfoBar(
           content: Text(
             S.of(context).catalogos_index_catalogoAdjunto_abriendoArchivo,
           ),
-        ),
-      );
+        );
+      }
     });
 
     return GestureDetector(
@@ -283,6 +268,16 @@ class ClienteFacturaListTile extends ConsumerWidget {
       nombreArchivo: clienteFactura.documentoPdf,
     );
 
-    ref.read(openFacturaDocumentProvider)(adjuntoParam);
+    openFacturaDocumentMutation.run(ref, (tsx) async {
+      final clienteFacturaDocumentControllerStateNotifier = tsx.get(
+        clienteFacturaDocumentControllerProvider(
+          facturaId: adjuntoParam.id,
+        ).notifier,
+      );
+
+      final result = await clienteFacturaDocumentControllerStateNotifier
+          .getFacturaDocumentFile(adjuntoParam: adjuntoParam);
+      return result;
+    });
   }
 }

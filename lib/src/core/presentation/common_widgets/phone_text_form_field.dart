@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
+import 'package:flutter_riverpod/experimental/mutation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:fpdart/fpdart.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-import 'package:riverpod_mutations/riverpod_mutations.dart';
 
 import '../../../../generated/l10n.dart';
 import '../../../features/cliente/domain/cliente_telefono.dart';
@@ -27,18 +27,8 @@ class PhoneTextFormBuilderController extends _$PhoneTextFormBuilderController {
   }
 }
 
-@riverpod
-class VerifyExistingPhone extends _$VerifyExistingPhone {
-  @override
-  MutationState<Either<AppException, ClienteTelefono?>, String> build() {
-    return MutationState.create(
-      (newState) => state = newState,
-      (newPhone) async => ref
-          .read(phoneTextFormBuilderControllerProvider.notifier)
-          .verifyExistingPhone(newPhone),
-    );
-  }
-}
+final verifyExistingPhoneMutation =
+    Mutation<Either<AppException, ClienteTelefono?>>();
 
 class PhoneTextFormField extends ConsumerWidget {
   const PhoneTextFormField({
@@ -56,7 +46,7 @@ class PhoneTextFormField extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final verifyExisitingPhoneState = ref.watch(verifyExistingPhoneProvider);
+    final verifyExisitingPhoneState = ref.watch(verifyExistingPhoneMutation);
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -68,14 +58,23 @@ class PhoneTextFormField extends ConsumerWidget {
           onChanged: (value) {
             ref.invalidate(phoneTextFormBuilderControllerProvider);
             if (value != null && value.isNotEmpty) {
-              verifyExisitingPhoneState(value);
+              verifyExistingPhoneMutation.run(ref, (tsx) async {
+                final phoneTextFormBuilderControllerStateNotifier = tsx.get(
+                  phoneTextFormBuilderControllerProvider.notifier,
+                );
+
+                final result = await phoneTextFormBuilderControllerStateNotifier
+                    .verifyExistingPhone(value);
+                return result;
+              });
             }
           },
           validator: validator,
         ),
-        verifyExisitingPhoneState.maybeWhen(
-          orElse: () => Container(),
-          data: (data) => data.fold(
+
+        if (verifyExisitingPhoneState
+            is MutationSuccess<Either<AppException, ClienteTelefono?>>)
+          verifyExisitingPhoneState.value.fold(
             (l) => Container(),
             (result) => result != null
                 ? Text(
@@ -85,10 +84,9 @@ class PhoneTextFormField extends ConsumerWidget {
                     ).textTheme.labelSmall?.copyWith(color: Colors.orange),
                   )
                 : Container(),
-          ),
-
-          loading: () => const LinearProgressIndicator(),
-        ),
+          )
+        else if (verifyExisitingPhoneState.isPending)
+          const LinearProgressIndicator(),
       ],
     );
   }

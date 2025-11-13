@@ -1,7 +1,8 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import '../../application/usuario_notifier.dart';
+import 'package:flutter_riverpod/legacy.dart';
 
 import '../../../../core/exceptions/app_exception.dart';
+import '../../application/usuario_notifier.dart';
 import '../../infrastructure/usuario_service.dart';
 
 final loginPageControllerProvider =

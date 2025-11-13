@@ -1535,16 +1535,6 @@ ORDER  BY IMPORTE_ANYO DESC
     final stringList = searchText.split(' ');
 
     switch (currentLocale) {
-      // case 'es':
-      //   var sqlWhere = '';
-      //   for (var i = 0; i < stringList.length; i++) {
-      //     sqlWhere +=
-      //         (i > 0 && i < stringList.length)
-      //             ? " OR art.DESCRIPCION_ES LIKE '%${stringList[i]}%'"
-      //             : "art.DESCRIPCION_ES LIKE '%${stringList[i]}%'";
-      //   }
-
-      //   return sqlWhere;
       case 'en':
         var sqlWhere = '';
         for (var i = 0; i < stringList.length; i++) {

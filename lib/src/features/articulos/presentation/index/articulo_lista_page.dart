@@ -165,7 +165,7 @@ class ArticleListViewWidget extends StatelessWidget {
               itemCount: count,
               itemBuilder: (context, i) => ref
                   .watch(
-                    ArticuloIndexScreenPaginatedControllerProvider(
+                    articuloIndexScreenPaginatedControllerProvider(
                       page: i ~/ ArticuloRepository.pageSize,
                       isSearchArticuloForForm: isSearchArticuloForForm,
                     ),

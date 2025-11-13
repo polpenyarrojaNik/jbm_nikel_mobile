@@ -1,4 +1,3 @@
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
 
@@ -16,6 +15,7 @@ class ErrorLogger {
 }
 
 @Riverpod(keepAlive: true)
+// ignore: avoid-unused-parameters
 ErrorLogger errorLogger(Ref ref) {
   return const ErrorLogger();
 }

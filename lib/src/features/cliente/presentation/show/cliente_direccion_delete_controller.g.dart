@@ -6,180 +6,103 @@ part of 'cliente_direccion_delete_controller.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$clienteDireccionDeleteControllerHash() =>
-    r'8cd0d1acbd308ed4e263bebf8dde77d99cf0aa00';
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint, type=warning
 
-/// Copied from Dart SDK
-class _SystemHash {
-  _SystemHash._();
-
-  static int combine(int hash, int value) {
-    // ignore: parameter_assignments
-    hash = 0x1fffffff & (hash + value);
-    // ignore: parameter_assignments
-    hash = 0x1fffffff & (hash + ((0x0007ffff & hash) << 10));
-    return hash ^ (hash >> 6);
-  }
-
-  static int finish(int hash) {
-    // ignore: parameter_assignments
-    hash = 0x1fffffff & (hash + ((0x03ffffff & hash) << 3));
-    // ignore: parameter_assignments
-    hash = hash ^ (hash >> 11);
-    return 0x1fffffff & (hash + ((0x00003fff & hash) << 15));
-  }
-}
-
-abstract class _$ClienteDireccionDeleteController
-    extends BuildlessAutoDisposeAsyncNotifier<bool> {
-  late final ClienteImpParam clienteImpParam;
-
-  FutureOr<bool> build(ClienteImpParam clienteImpParam);
-}
-
-/// See also [ClienteDireccionDeleteController].
 @ProviderFor(ClienteDireccionDeleteController)
 const clienteDireccionDeleteControllerProvider =
-    ClienteDireccionDeleteControllerFamily();
+    ClienteDireccionDeleteControllerFamily._();
 
-/// See also [ClienteDireccionDeleteController].
-class ClienteDireccionDeleteControllerFamily extends Family<AsyncValue<bool>> {
-  /// See also [ClienteDireccionDeleteController].
-  const ClienteDireccionDeleteControllerFamily();
+final class ClienteDireccionDeleteControllerProvider
+    extends $AsyncNotifierProvider<ClienteDireccionDeleteController, bool> {
+  const ClienteDireccionDeleteControllerProvider._({
+    required ClienteDireccionDeleteControllerFamily super.from,
+    required ClienteImpParam super.argument,
+  }) : super(
+         retry: null,
+         name: r'clienteDireccionDeleteControllerProvider',
+         isAutoDispose: true,
+         dependencies: null,
+         $allTransitiveDependencies: null,
+       );
 
-  /// See also [ClienteDireccionDeleteController].
-  ClienteDireccionDeleteControllerProvider call(
-    ClienteImpParam clienteImpParam,
-  ) {
-    return ClienteDireccionDeleteControllerProvider(clienteImpParam);
+  @override
+  String debugGetCreateSourceHash() => _$clienteDireccionDeleteControllerHash();
+
+  @override
+  String toString() {
+    return r'clienteDireccionDeleteControllerProvider'
+        ''
+        '($argument)';
   }
 
+  @$internal
   @override
-  ClienteDireccionDeleteControllerProvider getProviderOverride(
-    covariant ClienteDireccionDeleteControllerProvider provider,
-  ) {
-    return call(provider.clienteImpParam);
-  }
-
-  static const Iterable<ProviderOrFamily>? _dependencies = null;
-
-  @override
-  Iterable<ProviderOrFamily>? get dependencies => _dependencies;
-
-  static const Iterable<ProviderOrFamily>? _allTransitiveDependencies = null;
-
-  @override
-  Iterable<ProviderOrFamily>? get allTransitiveDependencies =>
-      _allTransitiveDependencies;
-
-  @override
-  String? get name => r'clienteDireccionDeleteControllerProvider';
-}
-
-/// See also [ClienteDireccionDeleteController].
-class ClienteDireccionDeleteControllerProvider
-    extends
-        AutoDisposeAsyncNotifierProviderImpl<
-          ClienteDireccionDeleteController,
-          bool
-        > {
-  /// See also [ClienteDireccionDeleteController].
-  ClienteDireccionDeleteControllerProvider(ClienteImpParam clienteImpParam)
-    : this._internal(
-        () =>
-            ClienteDireccionDeleteController()
-              ..clienteImpParam = clienteImpParam,
-        from: clienteDireccionDeleteControllerProvider,
-        name: r'clienteDireccionDeleteControllerProvider',
-        debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-            ? null
-            : _$clienteDireccionDeleteControllerHash,
-        dependencies: ClienteDireccionDeleteControllerFamily._dependencies,
-        allTransitiveDependencies:
-            ClienteDireccionDeleteControllerFamily._allTransitiveDependencies,
-        clienteImpParam: clienteImpParam,
-      );
-
-  ClienteDireccionDeleteControllerProvider._internal(
-    super._createNotifier, {
-    required super.name,
-    required super.dependencies,
-    required super.allTransitiveDependencies,
-    required super.debugGetCreateSourceHash,
-    required super.from,
-    required this.clienteImpParam,
-  }) : super.internal();
-
-  final ClienteImpParam clienteImpParam;
-
-  @override
-  FutureOr<bool> runNotifierBuild(
-    covariant ClienteDireccionDeleteController notifier,
-  ) {
-    return notifier.build(clienteImpParam);
-  }
-
-  @override
-  Override overrideWith(ClienteDireccionDeleteController Function() create) {
-    return ProviderOverride(
-      origin: this,
-      override: ClienteDireccionDeleteControllerProvider._internal(
-        () => create()..clienteImpParam = clienteImpParam,
-        from: from,
-        name: null,
-        dependencies: null,
-        allTransitiveDependencies: null,
-        debugGetCreateSourceHash: null,
-        clienteImpParam: clienteImpParam,
-      ),
-    );
-  }
-
-  @override
-  AutoDisposeAsyncNotifierProviderElement<
-    ClienteDireccionDeleteController,
-    bool
-  >
-  createElement() {
-    return _ClienteDireccionDeleteControllerProviderElement(this);
-  }
+  ClienteDireccionDeleteController create() =>
+      ClienteDireccionDeleteController();
 
   @override
   bool operator ==(Object other) {
     return other is ClienteDireccionDeleteControllerProvider &&
-        other.clienteImpParam == clienteImpParam;
+        other.argument == argument;
   }
 
   @override
   int get hashCode {
-    var hash = _SystemHash.combine(0, runtimeType.hashCode);
-    hash = _SystemHash.combine(hash, clienteImpParam.hashCode);
-
-    return _SystemHash.finish(hash);
+    return argument.hashCode;
   }
 }
 
-@Deprecated('Will be removed in 3.0. Use Ref instead')
-// ignore: unused_element
-mixin ClienteDireccionDeleteControllerRef
-    on AutoDisposeAsyncNotifierProviderRef<bool> {
-  /// The parameter `clienteImpParam` of this provider.
-  ClienteImpParam get clienteImpParam;
-}
+String _$clienteDireccionDeleteControllerHash() =>
+    r'8cd0d1acbd308ed4e263bebf8dde77d99cf0aa00';
 
-class _ClienteDireccionDeleteControllerProviderElement
-    extends
-        AutoDisposeAsyncNotifierProviderElement<
+final class ClienteDireccionDeleteControllerFamily extends $Family
+    with
+        $ClassFamilyOverride<
           ClienteDireccionDeleteController,
-          bool
-        >
-    with ClienteDireccionDeleteControllerRef {
-  _ClienteDireccionDeleteControllerProviderElement(super.provider);
+          AsyncValue<bool>,
+          bool,
+          FutureOr<bool>,
+          ClienteImpParam
+        > {
+  const ClienteDireccionDeleteControllerFamily._()
+    : super(
+        retry: null,
+        name: r'clienteDireccionDeleteControllerProvider',
+        dependencies: null,
+        $allTransitiveDependencies: null,
+        isAutoDispose: true,
+      );
+
+  ClienteDireccionDeleteControllerProvider call(
+    ClienteImpParam clienteImpParam,
+  ) => ClienteDireccionDeleteControllerProvider._(
+    argument: clienteImpParam,
+    from: this,
+  );
 
   @override
-  ClienteImpParam get clienteImpParam =>
-      (origin as ClienteDireccionDeleteControllerProvider).clienteImpParam;
+  String toString() => r'clienteDireccionDeleteControllerProvider';
 }
 
-// ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package
+abstract class _$ClienteDireccionDeleteController extends $AsyncNotifier<bool> {
+  late final _$args = ref.$arg as ClienteImpParam;
+  ClienteImpParam get clienteImpParam => _$args;
+
+  FutureOr<bool> build(ClienteImpParam clienteImpParam);
+  @$mustCallSuper
+  @override
+  void runBuild() {
+    final created = build(_$args);
+    final ref = this.ref as $Ref<AsyncValue<bool>, bool>;
+    final element =
+        ref.element
+            as $ClassProviderElement<
+              AnyNotifier<AsyncValue<bool>, bool>,
+              AsyncValue<bool>,
+              Object?,
+              Object?
+            >;
+    element.handleValue(ref, created);
+  }
+}

@@ -27,11 +27,6 @@ abstract class VisitaCompetidorDTO
     @JsonKey(name: 'DESCRIPCION_IT') String? descripcionIT,
     @JsonKey(name: 'DESCRIPCION_NL') String? descripcionNL,
     @JsonKey(name: 'DESCRIPCION_PL') String? descripcionPL,
-    // @JsonKey(name: 'DESCRIPCION_PT') String? descripcionPT,
-    // @JsonKey(name: 'DESCRIPCION_RO') String? descripcionRO,
-    // @JsonKey(name: 'DESCRIPCION_RU') String? descripcionRU,
-    // @JsonKey(name: 'DESCRIPCION_CN') String? descripcionCN,
-    // @JsonKey(name: 'DESCRIPCION_EL') String? descripcionEL,
     @JsonKey(name: 'LAST_UPDATED') required DateTime lastUpdated,
     @JsonKey(name: 'DELETED') @Default('N') String deleted,
   }) = _VisitaCompetidorDTO;
@@ -56,32 +51,7 @@ abstract class VisitaCompetidorDTO
       return descripcionFR!;
     } else if (currentLocale == 'it' && descripcionIT != null) {
       return descripcionIT!;
-      // } else if (currentLocale == 'pt' && descripcionPT != null) {
-      //   return descripcionPT!;
     }
-    //else if (currentLocale == 'de' && descripcionDE != null) {
-    //   return descripcionDE!;
-    // } else if (currentLocale == 'ca' && descripcionCA != null) {
-    //   return descripcionCA!;
-    // } else if (currentLocale == 'gb' && descripcionGB != null) {
-    //   return descripcionGB!;
-    // } else if (currentLocale == 'hu' && descripcionHU != null) {
-    //   return descripcionHU!;
-    // }
-    //else if (currentLocale == 'nl' && descripcionNL != null) {
-    //   return descripcionNL!;
-    // } else if (currentLocale == 'pl' && descripcionPL != null) {
-    //   return descripcionPL!;
-    // }
-    //else if (currentLocale == 'ro' && descripcionRO != null) {
-    //   return descripcionRO!;
-    // } else if (currentLocale == 'ru' && descripcionRU != null) {
-    //   return descripcionRU!;
-    // } else if (currentLocale == 'cn' && descripcionCN != null) {
-    //   return descripcionCN!;
-    // } else if (currentLocale == 'el' && descripcionEL != null) {
-    //   return descripcionEL!;
-    // }
 
     return descripcionES;
   }
@@ -100,11 +70,6 @@ abstract class VisitaCompetidorDTO
       descripcionIT: Value(descripcionIT),
       descripcionNL: Value(descripcionNL),
       descripcionPL: Value(descripcionPL),
-      // descripcionPT: Value(descripcionPT),
-      // descripcionRO: Value(descripcionRO),
-      // descripcionRU: Value(descripcionRU),
-      // descripcionCN: Value(descripcionCN),
-      // descripcionEL: Value(descripcionEL),
       lastUpdated: Value(lastUpdated),
       deleted: Value(deleted),
     ).toColumns(nullToAbsent);
@@ -130,11 +95,6 @@ class VisitaCompetidorTable extends Table {
   TextColumn get descripcionIT => text().nullable().named('DESCRIPCION_IT')();
   TextColumn get descripcionNL => text().nullable().named('DESCRIPCION_NL')();
   TextColumn get descripcionPL => text().nullable().named('DESCRIPCION_PL')();
-  // TextColumn get descripcionPT => text().nullable().named('DESCRIPCION_PT')();
-  // TextColumn get descripcionRO => text().nullable().named('DESCRIPCION_RO')();
-  // TextColumn get descripcionRU => text().nullable().named('DESCRIPCION_RU')();
-  // TextColumn get descripcionCN => text().nullable().named('DESCRIPCION_CN')();
-  // TextColumn get descripcionEL => text().nullable().named('DESCRIPCION_EL')();
   DateTimeColumn get lastUpdated => dateTime().named('LAST_UPDATED')();
   TextColumn get deleted =>
       text().withDefault(const Constant('N')).named('DELETED')();

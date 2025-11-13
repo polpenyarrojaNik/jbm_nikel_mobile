@@ -330,8 +330,12 @@ class _ClienteContactoImpEditForm extends StatelessWidget {
   void setContactValues(ImageFormData imageFormData) {
     formKey.currentState?.patchValue({
       'nombre': imageFormData.name,
-      'telefono': imageFormData.phoneList[0],
-      'telefono2': imageFormData.phoneList[1],
+      'telefono': imageFormData.phoneList.isNotEmpty
+          ? imageFormData.phoneList[0]
+          : null,
+      'telefono2': imageFormData.phoneList.length > 1
+          ? imageFormData.phoneList[1]
+          : null,
       'email': imageFormData.email,
     });
   }

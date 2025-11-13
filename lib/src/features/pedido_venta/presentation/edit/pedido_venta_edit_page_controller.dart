@@ -1,4 +1,4 @@
-import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_riverpod/legacy.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
 
@@ -100,45 +100,6 @@ class PedidoVentaEditPageController
   Future<void> getPedidoVenta() async {
     state = const PedidoVentaEditPageControllerState.loading();
     try {
-      // if (await pedidoVentaRepository.getBorradorPendiete() != null) {
-      //   _isBorrador = true;
-      //   final pedidoVentaBorrador =
-      //       await pedidoVentaRepository.getPedidoVentaBorrador();
-      //   pedidoVentaLineaList = await pedidoVentaRepository
-      //       .getPedidoVentaLineaListById(pedidoLocalParam: pedidoLocalParam);
-
-      //   _cliente = await clienteRepository.getClienteById(
-      //       clienteId: pedidoVentaBorrador.clienteId!);
-
-      //   _clienteDireccion =
-      //       await clienteRepository.getClienteDireccionByDireccionId(
-      //           clienteId: pedidoVentaBorrador.clienteId!,
-      //           direccionId: pedidoVentaBorrador.direccionId);
-
-      //   _currentStep = 2;
-
-      //   _observaciones = pedidoVentaBorrador.observaciones;
-
-      //   _pedidoCliente = pedidoVentaBorrador.pedidoCliente;
-
-      //   _oferta =
-      //       pedidoVentaBorrador.oferta ?? _cliente?.clientePotencial ?? false;
-
-      //   _ofertaFechaHasta = pedidoVentaBorrador.ofertaFechaHasta;
-
-      //   state = PedidoVentaEditPageControllerState.data(
-      //     _cliente,
-      //     _clienteDireccion,
-      //     pedidoVentaLineaList,
-      //     _currentStep,
-      //     _observaciones,
-      //     _pedidoCliente,
-      //     _oferta,
-      //     _ofertaFechaHasta,
-      //     _isBorrador,
-      //   );
-      // } else {
-      //   _isBorrador = false;
       if (!pedidoLocalParam.isEdit) {
         if (pedidoLocalParam.createPedidoFromClienteId != null) {
           _cliente = await clienteRepository.getClienteById(
@@ -501,7 +462,6 @@ class PedidoVentaEditPageController
       final newPedidoVentaLinea = PedidoVentaLinea(
         pedidoId: pedidoVentaLineaList[i].pedidoId,
         empresaId: pedidoVentaLineaList[i].empresaId,
-        // pedidoVentaLineaId: pedidoVentaLineaList[i].pedidoVentaLineaId,
         pedidoVentaAppId: pedidoVentaLineaList[i].pedidoVentaAppId,
         pedidoVentaLineaId: (i + 1).toString().padLeft(3, '0'),
         articuloId: pedidoVentaLineaList[i].articuloId,

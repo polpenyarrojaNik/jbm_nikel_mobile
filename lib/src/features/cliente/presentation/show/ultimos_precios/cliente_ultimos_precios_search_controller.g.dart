@@ -6,383 +6,230 @@ part of 'cliente_ultimos_precios_search_controller.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$clienteUltimosPreciosIndexScreenControllerHash() =>
-    r'd4a434dd16e5cf812fe9e7996144a24e747b2558';
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint, type=warning
 
-/// Copied from Dart SDK
-class _SystemHash {
-  _SystemHash._();
-
-  static int combine(int hash, int value) {
-    // ignore: parameter_assignments
-    hash = 0x1fffffff & (hash + value);
-    // ignore: parameter_assignments
-    hash = 0x1fffffff & (hash + ((0x0007ffff & hash) << 10));
-    return hash ^ (hash >> 6);
-  }
-
-  static int finish(int hash) {
-    // ignore: parameter_assignments
-    hash = 0x1fffffff & (hash + ((0x03ffffff & hash) << 3));
-    // ignore: parameter_assignments
-    hash = hash ^ (hash >> 11);
-    return 0x1fffffff & (hash + ((0x00003fff & hash) << 15));
-  }
-}
-
-abstract class _$ClienteUltimosPreciosIndexScreenController
-    extends BuildlessAutoDisposeAsyncNotifier<int> {
-  late final String clienteId;
-
-  FutureOr<int> build({required String clienteId});
-}
-
-/// See also [ClienteUltimosPreciosIndexScreenController].
 @ProviderFor(ClienteUltimosPreciosIndexScreenController)
 const clienteUltimosPreciosIndexScreenControllerProvider =
-    ClienteUltimosPreciosIndexScreenControllerFamily();
+    ClienteUltimosPreciosIndexScreenControllerFamily._();
 
-/// See also [ClienteUltimosPreciosIndexScreenController].
-class ClienteUltimosPreciosIndexScreenControllerFamily
-    extends Family<AsyncValue<int>> {
-  /// See also [ClienteUltimosPreciosIndexScreenController].
-  const ClienteUltimosPreciosIndexScreenControllerFamily();
-
-  /// See also [ClienteUltimosPreciosIndexScreenController].
-  ClienteUltimosPreciosIndexScreenControllerProvider call({
-    required String clienteId,
-  }) {
-    return ClienteUltimosPreciosIndexScreenControllerProvider(
-      clienteId: clienteId,
-    );
-  }
-
-  @override
-  ClienteUltimosPreciosIndexScreenControllerProvider getProviderOverride(
-    covariant ClienteUltimosPreciosIndexScreenControllerProvider provider,
-  ) {
-    return call(clienteId: provider.clienteId);
-  }
-
-  static const Iterable<ProviderOrFamily>? _dependencies = null;
-
-  @override
-  Iterable<ProviderOrFamily>? get dependencies => _dependencies;
-
-  static const Iterable<ProviderOrFamily>? _allTransitiveDependencies = null;
-
-  @override
-  Iterable<ProviderOrFamily>? get allTransitiveDependencies =>
-      _allTransitiveDependencies;
-
-  @override
-  String? get name => r'clienteUltimosPreciosIndexScreenControllerProvider';
-}
-
-/// See also [ClienteUltimosPreciosIndexScreenController].
-class ClienteUltimosPreciosIndexScreenControllerProvider
+final class ClienteUltimosPreciosIndexScreenControllerProvider
     extends
-        AutoDisposeAsyncNotifierProviderImpl<
+        $AsyncNotifierProvider<
           ClienteUltimosPreciosIndexScreenController,
           int
         > {
-  /// See also [ClienteUltimosPreciosIndexScreenController].
-  ClienteUltimosPreciosIndexScreenControllerProvider({
-    required String clienteId,
-  }) : this._internal(
-         () =>
-             ClienteUltimosPreciosIndexScreenController()
-               ..clienteId = clienteId,
-         from: clienteUltimosPreciosIndexScreenControllerProvider,
+  const ClienteUltimosPreciosIndexScreenControllerProvider._({
+    required ClienteUltimosPreciosIndexScreenControllerFamily super.from,
+    required String super.argument,
+  }) : super(
+         retry: null,
          name: r'clienteUltimosPreciosIndexScreenControllerProvider',
-         debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-             ? null
-             : _$clienteUltimosPreciosIndexScreenControllerHash,
-         dependencies:
-             ClienteUltimosPreciosIndexScreenControllerFamily._dependencies,
-         allTransitiveDependencies:
-             ClienteUltimosPreciosIndexScreenControllerFamily
-                 ._allTransitiveDependencies,
-         clienteId: clienteId,
+         isAutoDispose: true,
+         dependencies: null,
+         $allTransitiveDependencies: null,
        );
 
-  ClienteUltimosPreciosIndexScreenControllerProvider._internal(
-    super._createNotifier, {
-    required super.name,
-    required super.dependencies,
-    required super.allTransitiveDependencies,
-    required super.debugGetCreateSourceHash,
-    required super.from,
-    required this.clienteId,
-  }) : super.internal();
-
-  final String clienteId;
+  @override
+  String debugGetCreateSourceHash() =>
+      _$clienteUltimosPreciosIndexScreenControllerHash();
 
   @override
-  FutureOr<int> runNotifierBuild(
-    covariant ClienteUltimosPreciosIndexScreenController notifier,
-  ) {
-    return notifier.build(clienteId: clienteId);
+  String toString() {
+    return r'clienteUltimosPreciosIndexScreenControllerProvider'
+        ''
+        '($argument)';
   }
 
+  @$internal
   @override
-  Override overrideWith(
-    ClienteUltimosPreciosIndexScreenController Function() create,
-  ) {
-    return ProviderOverride(
-      origin: this,
-      override: ClienteUltimosPreciosIndexScreenControllerProvider._internal(
-        () => create()..clienteId = clienteId,
-        from: from,
-        name: null,
-        dependencies: null,
-        allTransitiveDependencies: null,
-        debugGetCreateSourceHash: null,
-        clienteId: clienteId,
-      ),
-    );
-  }
-
-  @override
-  AutoDisposeAsyncNotifierProviderElement<
-    ClienteUltimosPreciosIndexScreenController,
-    int
-  >
-  createElement() {
-    return _ClienteUltimosPreciosIndexScreenControllerProviderElement(this);
-  }
+  ClienteUltimosPreciosIndexScreenController create() =>
+      ClienteUltimosPreciosIndexScreenController();
 
   @override
   bool operator ==(Object other) {
     return other is ClienteUltimosPreciosIndexScreenControllerProvider &&
-        other.clienteId == clienteId;
+        other.argument == argument;
   }
 
   @override
   int get hashCode {
-    var hash = _SystemHash.combine(0, runtimeType.hashCode);
-    hash = _SystemHash.combine(hash, clienteId.hashCode);
-
-    return _SystemHash.finish(hash);
+    return argument.hashCode;
   }
 }
 
-@Deprecated('Will be removed in 3.0. Use Ref instead')
-// ignore: unused_element
-mixin ClienteUltimosPreciosIndexScreenControllerRef
-    on AutoDisposeAsyncNotifierProviderRef<int> {
-  /// The parameter `clienteId` of this provider.
-  String get clienteId;
-}
+String _$clienteUltimosPreciosIndexScreenControllerHash() =>
+    r'd4a434dd16e5cf812fe9e7996144a24e747b2558';
 
-class _ClienteUltimosPreciosIndexScreenControllerProviderElement
-    extends
-        AutoDisposeAsyncNotifierProviderElement<
+final class ClienteUltimosPreciosIndexScreenControllerFamily extends $Family
+    with
+        $ClassFamilyOverride<
           ClienteUltimosPreciosIndexScreenController,
-          int
-        >
-    with ClienteUltimosPreciosIndexScreenControllerRef {
-  _ClienteUltimosPreciosIndexScreenControllerProviderElement(super.provider);
+          AsyncValue<int>,
+          int,
+          FutureOr<int>,
+          String
+        > {
+  const ClienteUltimosPreciosIndexScreenControllerFamily._()
+    : super(
+        retry: null,
+        name: r'clienteUltimosPreciosIndexScreenControllerProvider',
+        dependencies: null,
+        $allTransitiveDependencies: null,
+        isAutoDispose: true,
+      );
+
+  ClienteUltimosPreciosIndexScreenControllerProvider call({
+    required String clienteId,
+  }) => ClienteUltimosPreciosIndexScreenControllerProvider._(
+    argument: clienteId,
+    from: this,
+  );
 
   @override
-  String get clienteId =>
-      (origin as ClienteUltimosPreciosIndexScreenControllerProvider).clienteId;
+  String toString() => r'clienteUltimosPreciosIndexScreenControllerProvider';
 }
 
-String _$clienteUltimosPreciosIndexScreenPaginatedControllerHash() =>
-    r'4ce9f71fba12e87c2ca23acd15ed7c7aecf65dd0';
+abstract class _$ClienteUltimosPreciosIndexScreenController
+    extends $AsyncNotifier<int> {
+  late final _$args = ref.$arg as String;
+  String get clienteId => _$args;
 
-abstract class _$ClienteUltimosPreciosIndexScreenPaginatedController
-    extends
-        BuildlessAutoDisposeAsyncNotifier<List<EstadisticasUltimosPrecios>> {
-  late final int page;
-  late final String clienteId;
-
-  FutureOr<List<EstadisticasUltimosPrecios>> build({
-    required int page,
-    required String clienteId,
-  });
+  FutureOr<int> build({required String clienteId});
+  @$mustCallSuper
+  @override
+  void runBuild() {
+    final created = build(clienteId: _$args);
+    final ref = this.ref as $Ref<AsyncValue<int>, int>;
+    final element =
+        ref.element
+            as $ClassProviderElement<
+              AnyNotifier<AsyncValue<int>, int>,
+              AsyncValue<int>,
+              Object?,
+              Object?
+            >;
+    element.handleValue(ref, created);
+  }
 }
 
-/// See also [ClienteUltimosPreciosIndexScreenPaginatedController].
 @ProviderFor(ClienteUltimosPreciosIndexScreenPaginatedController)
 const clienteUltimosPreciosIndexScreenPaginatedControllerProvider =
-    ClienteUltimosPreciosIndexScreenPaginatedControllerFamily();
+    ClienteUltimosPreciosIndexScreenPaginatedControllerFamily._();
 
-/// See also [ClienteUltimosPreciosIndexScreenPaginatedController].
-class ClienteUltimosPreciosIndexScreenPaginatedControllerFamily
-    extends Family<AsyncValue<List<EstadisticasUltimosPrecios>>> {
-  /// See also [ClienteUltimosPreciosIndexScreenPaginatedController].
-  const ClienteUltimosPreciosIndexScreenPaginatedControllerFamily();
-
-  /// See also [ClienteUltimosPreciosIndexScreenPaginatedController].
-  ClienteUltimosPreciosIndexScreenPaginatedControllerProvider call({
-    required int page,
-    required String clienteId,
-  }) {
-    return ClienteUltimosPreciosIndexScreenPaginatedControllerProvider(
-      page: page,
-      clienteId: clienteId,
-    );
-  }
-
-  @override
-  ClienteUltimosPreciosIndexScreenPaginatedControllerProvider
-  getProviderOverride(
-    covariant ClienteUltimosPreciosIndexScreenPaginatedControllerProvider
-    provider,
-  ) {
-    return call(page: provider.page, clienteId: provider.clienteId);
-  }
-
-  static const Iterable<ProviderOrFamily>? _dependencies = null;
-
-  @override
-  Iterable<ProviderOrFamily>? get dependencies => _dependencies;
-
-  static const Iterable<ProviderOrFamily>? _allTransitiveDependencies = null;
-
-  @override
-  Iterable<ProviderOrFamily>? get allTransitiveDependencies =>
-      _allTransitiveDependencies;
-
-  @override
-  String? get name =>
-      r'clienteUltimosPreciosIndexScreenPaginatedControllerProvider';
-}
-
-/// See also [ClienteUltimosPreciosIndexScreenPaginatedController].
-class ClienteUltimosPreciosIndexScreenPaginatedControllerProvider
+final class ClienteUltimosPreciosIndexScreenPaginatedControllerProvider
     extends
-        AutoDisposeAsyncNotifierProviderImpl<
+        $AsyncNotifierProvider<
           ClienteUltimosPreciosIndexScreenPaginatedController,
           List<EstadisticasUltimosPrecios>
         > {
-  /// See also [ClienteUltimosPreciosIndexScreenPaginatedController].
-  ClienteUltimosPreciosIndexScreenPaginatedControllerProvider({
-    required int page,
-    required String clienteId,
-  }) : this._internal(
-         () => ClienteUltimosPreciosIndexScreenPaginatedController()
-           ..page = page
-           ..clienteId = clienteId,
-         from: clienteUltimosPreciosIndexScreenPaginatedControllerProvider,
+  const ClienteUltimosPreciosIndexScreenPaginatedControllerProvider._({
+    required ClienteUltimosPreciosIndexScreenPaginatedControllerFamily
+    super.from,
+    required ({int page, String clienteId}) super.argument,
+  }) : super(
+         retry: null,
          name: r'clienteUltimosPreciosIndexScreenPaginatedControllerProvider',
-         debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-             ? null
-             : _$clienteUltimosPreciosIndexScreenPaginatedControllerHash,
-         dependencies: ClienteUltimosPreciosIndexScreenPaginatedControllerFamily
-             ._dependencies,
-         allTransitiveDependencies:
-             ClienteUltimosPreciosIndexScreenPaginatedControllerFamily
-                 ._allTransitiveDependencies,
-         page: page,
-         clienteId: clienteId,
+         isAutoDispose: true,
+         dependencies: null,
+         $allTransitiveDependencies: null,
        );
 
-  ClienteUltimosPreciosIndexScreenPaginatedControllerProvider._internal(
-    super._createNotifier, {
-    required super.name,
-    required super.dependencies,
-    required super.allTransitiveDependencies,
-    required super.debugGetCreateSourceHash,
-    required super.from,
-    required this.page,
-    required this.clienteId,
-  }) : super.internal();
-
-  final int page;
-  final String clienteId;
+  @override
+  String debugGetCreateSourceHash() =>
+      _$clienteUltimosPreciosIndexScreenPaginatedControllerHash();
 
   @override
-  FutureOr<List<EstadisticasUltimosPrecios>> runNotifierBuild(
-    covariant ClienteUltimosPreciosIndexScreenPaginatedController notifier,
-  ) {
-    return notifier.build(page: page, clienteId: clienteId);
+  String toString() {
+    return r'clienteUltimosPreciosIndexScreenPaginatedControllerProvider'
+        ''
+        '$argument';
   }
 
+  @$internal
   @override
-  Override overrideWith(
-    ClienteUltimosPreciosIndexScreenPaginatedController Function() create,
-  ) {
-    return ProviderOverride(
-      origin: this,
-      override:
-          ClienteUltimosPreciosIndexScreenPaginatedControllerProvider._internal(
-            () => create()
-              ..page = page
-              ..clienteId = clienteId,
-            from: from,
-            name: null,
-            dependencies: null,
-            allTransitiveDependencies: null,
-            debugGetCreateSourceHash: null,
-            page: page,
-            clienteId: clienteId,
-          ),
-    );
-  }
-
-  @override
-  AutoDisposeAsyncNotifierProviderElement<
-    ClienteUltimosPreciosIndexScreenPaginatedController,
-    List<EstadisticasUltimosPrecios>
-  >
-  createElement() {
-    return _ClienteUltimosPreciosIndexScreenPaginatedControllerProviderElement(
-      this,
-    );
-  }
+  ClienteUltimosPreciosIndexScreenPaginatedController create() =>
+      ClienteUltimosPreciosIndexScreenPaginatedController();
 
   @override
   bool operator ==(Object other) {
     return other
             is ClienteUltimosPreciosIndexScreenPaginatedControllerProvider &&
-        other.page == page &&
-        other.clienteId == clienteId;
+        other.argument == argument;
   }
 
   @override
   int get hashCode {
-    var hash = _SystemHash.combine(0, runtimeType.hashCode);
-    hash = _SystemHash.combine(hash, page.hashCode);
-    hash = _SystemHash.combine(hash, clienteId.hashCode);
-
-    return _SystemHash.finish(hash);
+    return argument.hashCode;
   }
 }
 
-@Deprecated('Will be removed in 3.0. Use Ref instead')
-// ignore: unused_element
-mixin ClienteUltimosPreciosIndexScreenPaginatedControllerRef
-    on AutoDisposeAsyncNotifierProviderRef<List<EstadisticasUltimosPrecios>> {
-  /// The parameter `page` of this provider.
-  int get page;
+String _$clienteUltimosPreciosIndexScreenPaginatedControllerHash() =>
+    r'4ce9f71fba12e87c2ca23acd15ed7c7aecf65dd0';
 
-  /// The parameter `clienteId` of this provider.
-  String get clienteId;
-}
-
-class _ClienteUltimosPreciosIndexScreenPaginatedControllerProviderElement
-    extends
-        AutoDisposeAsyncNotifierProviderElement<
+final class ClienteUltimosPreciosIndexScreenPaginatedControllerFamily
+    extends $Family
+    with
+        $ClassFamilyOverride<
           ClienteUltimosPreciosIndexScreenPaginatedController,
-          List<EstadisticasUltimosPrecios>
-        >
-    with ClienteUltimosPreciosIndexScreenPaginatedControllerRef {
-  _ClienteUltimosPreciosIndexScreenPaginatedControllerProviderElement(
-    super.provider,
+          AsyncValue<List<EstadisticasUltimosPrecios>>,
+          List<EstadisticasUltimosPrecios>,
+          FutureOr<List<EstadisticasUltimosPrecios>>,
+          ({int page, String clienteId})
+        > {
+  const ClienteUltimosPreciosIndexScreenPaginatedControllerFamily._()
+    : super(
+        retry: null,
+        name: r'clienteUltimosPreciosIndexScreenPaginatedControllerProvider',
+        dependencies: null,
+        $allTransitiveDependencies: null,
+        isAutoDispose: true,
+      );
+
+  ClienteUltimosPreciosIndexScreenPaginatedControllerProvider call({
+    required int page,
+    required String clienteId,
+  }) => ClienteUltimosPreciosIndexScreenPaginatedControllerProvider._(
+    argument: (page: page, clienteId: clienteId),
+    from: this,
   );
 
   @override
-  int get page =>
-      (origin as ClienteUltimosPreciosIndexScreenPaginatedControllerProvider)
-          .page;
-  @override
-  String get clienteId =>
-      (origin as ClienteUltimosPreciosIndexScreenPaginatedControllerProvider)
-          .clienteId;
+  String toString() =>
+      r'clienteUltimosPreciosIndexScreenPaginatedControllerProvider';
 }
 
-// ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package
+abstract class _$ClienteUltimosPreciosIndexScreenPaginatedController
+    extends $AsyncNotifier<List<EstadisticasUltimosPrecios>> {
+  late final _$args = ref.$arg as ({int page, String clienteId});
+  int get page => _$args.page;
+  String get clienteId => _$args.clienteId;
+
+  FutureOr<List<EstadisticasUltimosPrecios>> build({
+    required int page,
+    required String clienteId,
+  });
+  @$mustCallSuper
+  @override
+  void runBuild() {
+    final created = build(page: _$args.page, clienteId: _$args.clienteId);
+    final ref =
+        this.ref
+            as $Ref<
+              AsyncValue<List<EstadisticasUltimosPrecios>>,
+              List<EstadisticasUltimosPrecios>
+            >;
+    final element =
+        ref.element
+            as $ClassProviderElement<
+              AnyNotifier<
+                AsyncValue<List<EstadisticasUltimosPrecios>>,
+                List<EstadisticasUltimosPrecios>
+              >,
+              AsyncValue<List<EstadisticasUltimosPrecios>>,
+              Object?,
+              Object?
+            >;
+    element.handleValue(ref, created);
+  }
+}

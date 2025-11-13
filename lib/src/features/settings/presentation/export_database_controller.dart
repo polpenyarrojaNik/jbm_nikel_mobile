@@ -1,10 +1,10 @@
 import 'dart:io';
 
-import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_riverpod/legacy.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import '../infrastructure/settings_repository.dart';
 
 import '../../../core/exceptions/app_exception.dart';
+import '../infrastructure/settings_repository.dart';
 
 part 'export_database_controller.freezed.dart';
 

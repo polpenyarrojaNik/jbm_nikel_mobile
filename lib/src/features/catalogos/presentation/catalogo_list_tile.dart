@@ -105,13 +105,11 @@ class CatalogoListTile extends ConsumerWidget {
                         progressIndicatorBuilder: (context, url, progress) =>
                             Image.asset(
                               semanticLabel: 'Loading...',
-                              // width: 300,
                               fit: BoxFit.contain,
                               'assets/image-placeholder.png',
                             ),
                         errorWidget: (context, error, _) => Image.asset(
                           semanticLabel: 'Error loading image',
-                          // width: 300,
                           fit: BoxFit.contain,
                           'assets/image-placeholder.png',
                         ),
@@ -128,8 +126,17 @@ class CatalogoListTile extends ConsumerWidget {
   }
 
   void downloadAttachment(WidgetRef ref) async {
-    final stateCatalogoOrden = ref.read(saveCatalogoAbiertoProvider);
-    unawaited(stateCatalogoOrden(catalogo.catalogoId));
+    unawaited(
+      saveCatalogoAbiertoMutation.run(ref, (tsx) async {
+        final catalogoOrdenControllerStateNotifier = tsx.get(
+          catalogoOrdenControllerProvider.notifier,
+        );
+
+        final result = await catalogoOrdenControllerStateNotifier
+            .saveCatalogoAbierto(catalogo.catalogoId);
+        return result;
+      }),
+    );
     await ref
         .read(catalogoAdjuntoControllerProvider.notifier)
         .getAttachmentFile(

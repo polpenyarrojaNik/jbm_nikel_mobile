@@ -186,7 +186,7 @@ class ClientesListViewWidget extends StatelessWidget {
               itemCount: count,
               itemBuilder: (context, i) => ref
                   .watch(
-                    ClienteIndexScreenPaginatedControllerProvider(
+                    clienteIndexScreenPaginatedControllerProvider(
                       page: (i ~/ ClienteRepository.pageSize),
                     ),
                   )
@@ -228,7 +228,6 @@ class ClientesListViewWidget extends StatelessWidget {
     required BuildContext context,
     required Cliente cliente,
   }) {
-    // ref.read(clienteForFromStateProvider.notifier).state = cliente;
     context.router.maybePop(cliente);
   }
 }

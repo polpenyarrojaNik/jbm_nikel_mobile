@@ -421,12 +421,6 @@ class _IconStepperState extends State<IconStepper>
   }
 
   Widget _buildVerticalControls() {
-    // if (widget.controlsBuilder != null) {
-    //   return widget.controlsBuilder!(context,
-    //       onStepContinue: widget.onStepContinue,
-    //       onStepCancel: widget.onStepCancel);
-    // }
-
     final themeData = Theme.of(context);
     final colorScheme = themeData.colorScheme;
 

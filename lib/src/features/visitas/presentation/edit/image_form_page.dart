@@ -4,10 +4,10 @@ import 'package:auto_route/auto_route.dart';
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flash/flash_helper.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/experimental/mutation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:fpdart/fpdart.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-import 'package:riverpod_mutations/riverpod_mutations.dart';
 
 import '../../../../../generated/l10n.dart';
 import '../../../../core/exceptions/app_exception.dart';
@@ -47,32 +47,18 @@ class ImageFormPageController extends _$ImageFormPageController {
     return ref.read(visitaRepositoryProvider).reconginzedImage(imageFile);
   }
 
-  Future<Either<AppException, ImageFormData>> setImageFromData(
+  Future<Either<AppException, ImageFormData>> reconginzedImage(
     SetImageFromDataParam setImageFromDataParam,
   ) async {
     final result = await ref
         .read(visitaRepositoryProvider)
         .setImageFormData(setImageFromDataParam);
 
-    ref.invalidateSelf();
-
     return result;
   }
 }
 
-@riverpod
-class SetImageFromData extends _$SetImageFromData {
-  @override
-  MutationState<Either<AppException, ImageFormData>, SetImageFromDataParam>
-  build(File imageFile) {
-    return MutationState.create(
-      (newState) => state = newState,
-      (setImageFromDataParam) async => ref
-          .read(imageFormPageControllerProvider(imageFile).notifier)
-          .setImageFromData(setImageFromDataParam),
-    );
-  }
-}
+final reconizedImageMutation = Mutation<Either<AppException, ImageFormData>>();
 
 @RoutePage()
 class ImageFormPage extends ConsumerWidget {
@@ -139,20 +125,19 @@ class _DraggableFormState extends ConsumerState<DraggableForm> {
 
   @override
   Widget build(BuildContext context) {
-    ref.listen(setImageFromDataProvider(widget.imageFile), (_, state) {
-      state.whenOrNull(
-        data: (data) {
-          data.fold(
-            (l) => context.showErrorBar(
-              content: ErrorMessageWidget(l.details.message),
-            ),
-            (r) => context.maybePop(r),
-          );
-        },
-        error: (error, _) {
-          context.showErrorBar(content: ErrorMessageWidget(error.toString()));
-        },
-      );
+    ref.listen(reconizedImageMutation, (_, state) {
+      if (state is MutationSuccess<Either<AppException, ImageFormData>>) {
+        state.value.fold(
+          (l) => context.showErrorBar(
+            content: ErrorMessageWidget(l.details.message),
+          ),
+          (r) => context.router.maybePop(r),
+        );
+      } else if (state is MutationError<Either<AppException, ImageFormData>>) {
+        context.showErrorBar(
+          content: ErrorMessageWidget(state.error.toString()),
+        );
+      }
     });
 
     return Scaffold(
@@ -324,17 +309,25 @@ class _DraggableFormState extends ConsumerState<DraggableForm> {
   }
 
   void saveImageFormData(WidgetRef ref) {
-    final state = ref.read(setImageFromDataProvider(widget.imageFile));
-    state(
-      SetImageFromDataParam(
-        name: name,
-        company: company,
-        cargo: cargo,
-        address: address,
-        email: email,
-        phoneList: phones,
-      ),
+    final params = SetImageFromDataParam(
+      name: name,
+      company: company,
+      cargo: cargo,
+      address: address,
+      email: email,
+      phoneList: phones,
     );
+
+    reconizedImageMutation.run(ref, (tsx) async {
+      final imageFromDataControllerStateNotifier = tsx.get(
+        imageFormPageControllerProvider(widget.imageFile).notifier,
+      );
+
+      final result = await imageFromDataControllerStateNotifier
+          .reconginzedImage(params);
+
+      return result;
+    });
   }
 
   void _setInitalValues(List<OcrRecognizedText> ocrRecognizedTextList) {
@@ -361,10 +354,6 @@ class _DraggableFormState extends ConsumerState<DraggableForm> {
       if (ocrRecognizedTextList[i].type == RecognizedTextType.telf) {
         phones.add(ocrRecognizedTextList[i].text);
       }
-
-      // if (ocrRecognizedTextList[i].type == RecognizedTextType.website) {
-      //   website = ocrRecognizedTextList[i].text;
-      // }
 
       if (ocrRecognizedTextList[i].type == RecognizedTextType.unknown) {
         unreconizedList.add(ocrRecognizedTextList[i].text);
@@ -412,13 +401,10 @@ class _DraggableFormState extends ConsumerState<DraggableForm> {
       case RecognizedTextType.email:
         email = selectedText;
         break;
-      // case RecognizedTextType.website:
-      //   website = selectedText;
-      //   break;
-      case RecognizedTextType.unknown:
+
+      case RecognizedTextType.unknown || RecognizedTextType.website:
         unreconizedList.add(selectedText);
         break;
-      default:
     }
   }
 }
@@ -537,13 +523,6 @@ class TargetListView extends StatelessWidget {
                                   openSelectedTextTypeDialog(context, data),
                               child: Chip(label: Text(data)),
                             ),
-
-                            // Card(
-                            //   child: Padding(
-                            //     padding: const EdgeInsets.all(4.0),
-                            //     child: ,
-                            //   ),
-                            // ),
                           )
                           .toList(),
                     )
@@ -610,7 +589,6 @@ class SelectTextTypeDialog extends StatelessWidget {
     RecognizedTextType.address,
     RecognizedTextType.telf,
     RecognizedTextType.email,
-    // RecognizedTextType.website,
     RecognizedTextType.unknown,
   ];
 
@@ -653,8 +631,7 @@ class SelectTextTypeDialog extends StatelessWidget {
         return S.current.email;
       case RecognizedTextType.telf:
         return S.current.phones;
-
-      default:
+      case RecognizedTextType.unknown || RecognizedTextType.website:
         return S.current.unknown;
     }
   }

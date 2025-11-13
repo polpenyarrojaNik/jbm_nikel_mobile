@@ -78,7 +78,6 @@ class _SelecionarCantidadPageState
     paletController.text = unitsPalet.toString();
 
     descuento1Controller.text = numberFormatCantidades(descuento1);
-    // descuento2Controller.text = numberFormatCantidades(descuento2);
     unitsController.selection = TextSelection(
       baseOffset: 0,
       extentOffset: unitsController.text.length,

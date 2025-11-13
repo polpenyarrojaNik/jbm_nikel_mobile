@@ -52,33 +52,6 @@ abstract class PedidoVentaDTO
   factory PedidoVentaDTO.fromJson(Map<String, dynamic> json) =>
       _$PedidoVentaDTOFromJson(json);
 
-  // factory PedidoVentaDTO.fromDomain(PedidoVenta _) {
-  //   return PedidoVentaDTO(
-  //     empresaId: _.empresaId,
-  //     pedidoVentaId: _.pedidoVentaId,
-  //     pedidoVentaDate: _.pedidoVentaDate,
-  //     tipoVenta: _.tipoVenta,
-  //     nombreCliente: _.nombreCliente,
-  //     clienteId: _.clienteId,
-  //     direccionEntrga1: _.direccionEntrga1,
-  //     direccionEntrga2: _.direccionEntrga2,
-  //     codigoPostal: _.codigoPostal,
-  //     poblacion: _.poblacion,
-  //     state: _.state,
-  //     paisId: _.paisId,
-  //     divisaId: _.divisaId,
-  //     baseImponible: _.baseImponible.importe.toDecimal().toDouble(),
-  //     importeIva: _.importeIva.importe.toDecimal().toDouble(),
-  //     total: _.total.importe.toDecimal().toDouble(),
-  //     pedidoVentaEstadoId: _.pedidoVentaEstadoId,
-  //     oferta: (_.oferta) ? 'S' : 'N',
-  //     descuentoProntoPago: _.descuentoProntoPago,
-  //     iva: _.iva,
-  //     lastUpdated: _.lastUpdated,
-  //     deleted: (_.deleted) ? 'S' : 'N',
-  //   );
-  // }
-
   PedidoVenta toDomain({
     required Pais? pais,
     required Divisa divisa,
