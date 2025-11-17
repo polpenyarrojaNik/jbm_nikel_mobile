@@ -30,7 +30,6 @@ import '../../pedido_venta/domain/pedido_venta.dart';
 import '../../pedido_venta/infrastructure/pedido_venta_repository.dart';
 import '../../usuario/application/usuario_notifier.dart';
 import '../../usuario/domain/usuario.dart';
-import '../../usuario/infrastructure/usuario_service.dart';
 import '../../visitas/domain/visita.dart';
 import '../../visitas/infrastructure/visita_repository.dart';
 import '../domain/cliente.dart';

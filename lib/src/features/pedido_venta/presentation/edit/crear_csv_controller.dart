@@ -1,8 +1,6 @@
 import 'dart:io';
 
 import 'package:flutter_riverpod/experimental/mutation.dart';
-import 'package:flutter_riverpod/legacy.dart';
-import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../../domain/pedido_venta_linea.dart';
