@@ -47,7 +47,7 @@ class _PedidoVentaListPageState extends ConsumerState<PedidoVentaListPage> {
         .read(syncNotifierProvider.notifier)
         .syncAllInCompute(initAppProcess: false);
 
-    ref.read(notificationNotifierProvider.notifier).haveNotification();
+    ref.read(notificationProvider.notifier).build();
   }
 
   @override
@@ -55,7 +55,7 @@ class _PedidoVentaListPageState extends ConsumerState<PedidoVentaListPage> {
     final stateSync = ref.watch(syncNotifierProvider);
 
     ref.listen<AsyncValue<String?>>(
-      notificationNotifierProvider,
+      notificationProvider,
       (_, state) => state.whenOrNull(
         data: (notificationId) {
           if (notificationId != null) {
@@ -81,7 +81,9 @@ class _PedidoVentaListPageState extends ConsumerState<PedidoVentaListPage> {
         title: S.of(context).pedido_index_titulo,
         searchTitle: S.of(context).pedido_index_buscarPedidos,
         onChanged: (searchText) => _debouncer.run(() {
-          ref.read(pedidosSearchQueryStateProvider.notifier).state = searchText;
+          ref
+              .read(pedidosSearchQueryParamControllerProvider.notifier)
+              .setSearchQuery(searchText);
         }),
         actionButtons: [
           IconButton(
@@ -141,7 +143,9 @@ class _PedidoVentaListPageState extends ConsumerState<PedidoVentaListPage> {
 
     filteredStatus = filterEstado;
 
-    ref.read(pedidoVentaEstadoQueryStateProvider.notifier).state = filterEstado;
+    ref
+        .read(pedidoVentaEstadoQueryParamControllerProvider.notifier)
+        .setFilter(filterEstado);
   }
 }
 
@@ -275,7 +279,7 @@ class _PedidoVentaFilterDialogState
 
   @override
   Widget build(BuildContext context) {
-    final state = ref.watch(pedidoVentaEstadoProvider);
+    final state = ref.watch(pedidoVentaEstadoListProvider);
     return AlertDialog(
       title: Center(child: Text(S.of(context).pedido_index_filtros)),
       content: state.when(

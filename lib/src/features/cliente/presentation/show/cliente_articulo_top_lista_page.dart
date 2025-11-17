@@ -24,7 +24,7 @@ class ClienteArticulosTopListPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final state = ref.watch(articuloTopProvider(clienteId));
+    final state = ref.watch(articuloTopListProvider(clienteId));
 
     return Scaffold(
       appBar: CommonAppBar(

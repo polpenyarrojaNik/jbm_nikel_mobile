@@ -29,7 +29,7 @@ class ArticuloVentasMesPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final state = ref.watch(articuloVentasMesProvider(articuloId));
+    final state = ref.watch(getArticuloVentasMesByIdProvider(articuloId));
 
     final user = ref.read(usuarioNotifierProvider);
     return Scaffold(

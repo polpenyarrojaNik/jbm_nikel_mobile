@@ -26,7 +26,7 @@ class ArticuloRecambioPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final state = ref.watch(articuloRecambioListProvider(articuloId));
+    final state = ref.watch(getArticuloRecambioListaByIdProvider(articuloId));
     return Scaffold(
       appBar: CommonAppBar(
         titleText: (S.of(context).articulo_show_articuloRecambio_titulo),

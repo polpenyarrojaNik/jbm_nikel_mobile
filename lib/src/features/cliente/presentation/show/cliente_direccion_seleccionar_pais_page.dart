@@ -33,12 +33,11 @@ class ClienteDireccionSeleccionarPaisPage extends ConsumerWidget {
         searchTitle: S.of(context).cliente_index_buscarClientes,
         onChanged: (searchText) => _debouncer.run(() {
           ref
-                  .read(
-                    clienteDireccionSeleccionarPaisSearchQueryStateProvider
-                        .notifier,
-                  )
-                  .state =
-              searchText;
+              .read(
+                clienteDireccionSeleccionarPaisSearchQueryParamsControllerProvider
+                    .notifier,
+              )
+              .setSearchQuery(searchText);
         }),
       ),
       body: value.maybeWhen(

@@ -158,7 +158,9 @@ class DevolucionLineaContainer extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final state = ref.watch(clienteDevolucionesLineaProvider(devolucionId));
+    final state = ref.watch(
+      clienteDevolucionesLineaListByIdProvider(devolucionId),
+    );
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [

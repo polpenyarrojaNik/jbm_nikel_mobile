@@ -71,7 +71,7 @@ class ArticuloDetallePage extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final params = {'articuloId': articuloId};
     final statePedidoVentaBorradoresList = ref.watch(
-      getPedidoVentaBorradoresList,
+      getPedidoVentaBorradoresListProvider,
     );
     return Scaffold(
       appBar: CommonAppBar(
@@ -92,7 +92,7 @@ class ArticuloDetallePage extends ConsumerWidget {
       ),
       body: Consumer(
         builder: (context, ref, _) {
-          final articuloValue = ref.watch(articuloProvider(articuloId));
+          final articuloValue = ref.watch(getArticuloByIdProvider(articuloId));
           return AsyncValueWidget<Articulo>(
             value: articuloValue,
             onData: (articulo) => ListView(
@@ -1014,7 +1014,9 @@ class _ArticuloImageCarrouselState
 
   @override
   Widget build(BuildContext context) {
-    final state = ref.watch(articuloImageListProvider(widget.articuloId));
+    final state = ref.watch(
+      getArticuloImagenListaByIdProvider(widget.articuloId),
+    );
     return state.when(
       data: (articuloImagenes) => Column(
         children: [

@@ -58,7 +58,7 @@ class ClienteContactoEditPage extends ConsumerWidget {
             duration: const Duration(seconds: 5),
           );
           ref.invalidate(
-            clienteContactosListProvider(clienteImpParam.clienteId),
+            clienteContactosListByIdProvider(clienteImpParam.clienteId),
           );
           context.router.maybePop();
         },
@@ -82,7 +82,7 @@ class ClienteContactoEditPage extends ConsumerWidget {
               );
             }
             ref.invalidate(
-              clienteContactosListProvider(clienteImpParam.clienteId),
+              clienteContactosListByIdProvider(clienteImpParam.clienteId),
             );
             ref.invalidate(
               clienteContactoImpListInSyncByClienteProvider(clienteImpParam),

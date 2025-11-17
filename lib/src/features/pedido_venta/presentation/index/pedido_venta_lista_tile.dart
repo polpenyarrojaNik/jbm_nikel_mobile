@@ -30,13 +30,20 @@ class PedidoVentaListaTile extends ConsumerWidget {
               : DismissDirection.none,
           onDismissed: pedidoVenta.borrador
               ? (direction) {
-                  ref.read(
-                    deletePedidoVentaProvider(pedidoVenta.pedidoVentaAppId!),
-                  );
-                  ref.invalidate(
-                    pedidoVentaIndexScreenPaginatedControllerProvider,
-                  );
-                  ref.invalidate(pedidoVentaIndexScreenControllerProvider);
+                  ref
+                      .read(
+                        deletePedidoVentaProvider(
+                          pedidoVenta.pedidoVentaAppId!,
+                        ).future,
+                      )
+                      .then((_) {
+                        ref.invalidate(
+                          pedidoVentaIndexScreenPaginatedControllerProvider,
+                        );
+                        ref.invalidate(
+                          pedidoVentaIndexScreenControllerProvider,
+                        );
+                      });
                 }
               : null,
           child: Container(

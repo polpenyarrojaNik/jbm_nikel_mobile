@@ -7,6 +7,7 @@ import 'package:dio/dio.dart';
 import 'package:drift/drift.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:path_provider/path_provider.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
 import 'package:syncfusion_flutter_pdf/pdf.dart';
 
@@ -83,19 +84,21 @@ import 'remote_response.dart';
 import 'sector_dto.dart';
 import 'subsector_dto.dart';
 
-typedef Json = Map<String, dynamic>;
-final syncServiceProvider = Provider.autoDispose<SyncService>(
-  (ref) => SyncService(
-    ref.watch(appRemoteDatabaseProvider),
-    ref.watch(local.appLocalDatabaseProvider),
-    ref.watch(dioProvider),
-    ref.watch(usuarioNotifierProvider),
-    ref.watch(usuarioServiceProvider),
-    ref.watch(logRepositoryProvider),
-    null,
-    ref.watch(errorLoggerProvider),
-  ),
+part 'sync_service.g.dart';
+
+@riverpod
+SyncService syncService(Ref ref) => SyncService(
+  ref.watch(appRemoteDatabaseProvider),
+  ref.watch(local.appLocalDatabaseProvider),
+  ref.watch(dioProvider),
+  ref.watch(usuarioNotifierProvider),
+  ref.watch(usuarioServiceProvider),
+  ref.watch(logRepositoryProvider),
+  null,
+  ref.watch(errorLoggerProvider),
 );
+
+typedef Json = Map<String, dynamic>;
 
 class SyncService {
   final Dio _dio;

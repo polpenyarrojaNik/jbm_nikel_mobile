@@ -55215,3 +55215,57 @@ class $RemoteAppDatabaseManager {
   $$UsuarioTarifaTableTableTableManager get usuarioTarifaTable =>
       $$UsuarioTarifaTableTableTableManager(_db, _db.usuarioTarifaTable);
 }
+
+// **************************************************************************
+// RiverpodGenerator
+// **************************************************************************
+
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint, type=warning
+
+@ProviderFor(appRemoteDatabase)
+const appRemoteDatabaseProvider = AppRemoteDatabaseProvider._();
+
+final class AppRemoteDatabaseProvider
+    extends
+        $FunctionalProvider<
+          RemoteAppDatabase,
+          RemoteAppDatabase,
+          RemoteAppDatabase
+        >
+    with $Provider<RemoteAppDatabase> {
+  const AppRemoteDatabaseProvider._()
+    : super(
+        from: null,
+        argument: null,
+        retry: null,
+        name: r'appRemoteDatabaseProvider',
+        isAutoDispose: false,
+        dependencies: null,
+        $allTransitiveDependencies: null,
+      );
+
+  @override
+  String debugGetCreateSourceHash() => _$appRemoteDatabaseHash();
+
+  @$internal
+  @override
+  $ProviderElement<RemoteAppDatabase> $createElement(
+    $ProviderPointer pointer,
+  ) => $ProviderElement(pointer);
+
+  @override
+  RemoteAppDatabase create(Ref ref) {
+    return appRemoteDatabase(ref);
+  }
+
+  /// {@macro riverpod.override_with_value}
+  Override overrideWithValue(RemoteAppDatabase value) {
+    return $ProviderOverride(
+      origin: this,
+      providerOverride: $SyncValueProvider<RemoteAppDatabase>(value),
+    );
+  }
+}
+
+String _$appRemoteDatabaseHash() => r'542f0fe446b2820aa425254539060ccbf74fe92a';

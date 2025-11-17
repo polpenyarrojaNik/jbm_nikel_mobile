@@ -10,7 +10,7 @@ class IconMenuBadge extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final state = ref.watch(notificationNotifierProvider);
+    final state = ref.watch(notificationProvider);
 
     return Stack(
       children: [

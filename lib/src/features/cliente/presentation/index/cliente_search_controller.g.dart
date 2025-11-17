@@ -68,6 +68,64 @@ abstract class _$ClienteIndexControllerSearchTextParameter
   }
 }
 
+@ProviderFor(ClientesPotencialesQueryParamController)
+const clientesPotencialesQueryParamControllerProvider =
+    ClientesPotencialesQueryParamControllerProvider._();
+
+final class ClientesPotencialesQueryParamControllerProvider
+    extends $NotifierProvider<ClientesPotencialesQueryParamController, bool> {
+  const ClientesPotencialesQueryParamControllerProvider._()
+    : super(
+        from: null,
+        argument: null,
+        retry: null,
+        name: r'clientesPotencialesQueryParamControllerProvider',
+        isAutoDispose: true,
+        dependencies: null,
+        $allTransitiveDependencies: null,
+      );
+
+  @override
+  String debugGetCreateSourceHash() =>
+      _$clientesPotencialesQueryParamControllerHash();
+
+  @$internal
+  @override
+  ClientesPotencialesQueryParamController create() =>
+      ClientesPotencialesQueryParamController();
+
+  /// {@macro riverpod.override_with_value}
+  Override overrideWithValue(bool value) {
+    return $ProviderOverride(
+      origin: this,
+      providerOverride: $SyncValueProvider<bool>(value),
+    );
+  }
+}
+
+String _$clientesPotencialesQueryParamControllerHash() =>
+    r'bb3fda39f9da2aa2258e47243d6910d20d92bec7';
+
+abstract class _$ClientesPotencialesQueryParamController
+    extends $Notifier<bool> {
+  bool build();
+  @$mustCallSuper
+  @override
+  void runBuild() {
+    final created = build();
+    final ref = this.ref as $Ref<bool, bool>;
+    final element =
+        ref.element
+            as $ClassProviderElement<
+              AnyNotifier<bool, bool>,
+              bool,
+              Object?,
+              Object?
+            >;
+    element.handleValue(ref, created);
+  }
+}
+
 @ProviderFor(ClienteIndexScreenController)
 const clienteIndexScreenControllerProvider =
     ClienteIndexScreenControllerProvider._();
@@ -94,7 +152,7 @@ final class ClienteIndexScreenControllerProvider
 }
 
 String _$clienteIndexScreenControllerHash() =>
-    r'ac8f46e2e91e6c5ac2233a9276d0bd4cb8396139';
+    r'6cace43ea7935610d0269064be4199c369025cce';
 
 abstract class _$ClienteIndexScreenController extends $AsyncNotifier<int> {
   FutureOr<int> build();
@@ -165,7 +223,7 @@ final class ClienteIndexScreenPaginatedControllerProvider
 }
 
 String _$clienteIndexScreenPaginatedControllerHash() =>
-    r'fe170ea50ebaa5455b4169b63835facac14d49c8';
+    r'a01623353edaf5e37cd7b9f3ddd2ee28d6015269';
 
 final class ClienteIndexScreenPaginatedControllerFamily extends $Family
     with

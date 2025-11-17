@@ -3,8 +3,8 @@ import 'dart:io';
 import 'package:device_info_plus/device_info_plus.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:package_info_plus/package_info_plus.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../../../core/exceptions/app_exception.dart';
 import '../../../core/exceptions/get_api_error.dart';
@@ -13,16 +13,17 @@ import '../../../core/presentation/app.dart';
 import 'usuario_aux_dto.dart';
 import 'usuario_dto.dart';
 
-typedef Json = Map<String, dynamic>;
+part 'remote_usuario_repository.g.dart';
 
-final remoteUsuarioRepositoryProvider = Provider<RemoteUsuarioRepository>((
-  ref,
-) {
+@Riverpod(keepAlive: true)
+RemoteUsuarioRepository remoteUsuarioRepository(Ref ref) {
   return RemoteUsuarioRepository(
     ref.watch(dioForAuthProvider),
     ref.watch(errorLoggerProvider),
   );
-});
+}
+
+typedef Json = Map<String, dynamic>;
 
 class RemoteUsuarioRepository {
   final Dio _dio;

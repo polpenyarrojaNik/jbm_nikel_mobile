@@ -1,54 +1,42 @@
 import 'dart:io';
 
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:flutter_riverpod/legacy.dart';
-import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:flutter_riverpod/experimental/mutation.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../../../../core/domain/adjunto_param.dart';
-import '../../../../core/exceptions/app_exception.dart';
 import '../../../usuario/infrastructure/usuario_service.dart';
+import '../../domain/cliente_adjunto.dart';
 import '../../infrastructure/cliente_repository.dart';
 
-part 'cliente_adjunto_controller.freezed.dart';
+part 'cliente_adjunto_controller.g.dart';
 
-@freezed
-class ClienteAdjuntoState with _$ClienteAdjuntoState {
-  const ClienteAdjuntoState._();
-  const factory ClienteAdjuntoState.initial() = _Initial;
-  const factory ClienteAdjuntoState.loading() = _Loading;
-  const factory ClienteAdjuntoState.data(File? file) = _Data;
-  const factory ClienteAdjuntoState.error(String failure) = _Error;
-}
+@riverpod
+class ClienteAdjuntoListById extends _$ClienteAdjuntoListById {
+  @override
+  Future<List<ClienteAdjunto>> build(String clienteId) async {
+    final clienteRepository = ref.watch(clienteRepositoryProvider);
+    final usuario = await ref
+        .watch(usuarioServiceProvider)
+        .getSignedInUsuario();
+    return clienteRepository.getClienteAdjuntoById(
+      clienteId: clienteId,
+      provisionalToken: usuario!.provisionalToken,
+      test: usuario.test,
+    );
+  }
 
-final clienteAdjuntoControllerProvider =
-    StateNotifierProvider.autoDispose<
-      ClienteAdjuntoController,
-      ClienteAdjuntoState
-    >((ref) => ClienteAdjuntoController(ref));
+  Future<File?> getAttachmentFile({required AdjuntoParam adjuntoParam}) async {
+    final user = await ref.read(usuarioServiceProvider).getSignedInUsuario();
 
-class ClienteAdjuntoController extends StateNotifier<ClienteAdjuntoState> {
-  final Ref _ref;
-
-  ClienteAdjuntoController(this._ref)
-    : super(const ClienteAdjuntoState.initial());
-
-  Future<void> getAttachmentFile({required AdjuntoParam adjuntoParam}) async {
-    try {
-      state = const ClienteAdjuntoState.loading();
-      final user = await _ref.read(usuarioServiceProvider).getSignedInUsuario();
-
-      final file = await _ref
-          .read(clienteRepositoryProvider)
-          .getDocumentFile(
-            adjuntoParam: adjuntoParam,
-            provisionalToken: user!.provisionalToken,
-            test: user.test,
-          );
-      state = ClienteAdjuntoState.data(file);
-    } on AppException catch (e) {
-      state = ClienteAdjuntoState.error(e.details.message);
-    } catch (e) {
-      rethrow;
-    }
+    final file = await ref
+        .read(clienteRepositoryProvider)
+        .getDocumentFile(
+          adjuntoParam: adjuntoParam,
+          provisionalToken: user!.provisionalToken,
+          test: user.test,
+        );
+    return file;
   }
 }
+
+final clienteAdjuntoMutation = Mutation<File?>();

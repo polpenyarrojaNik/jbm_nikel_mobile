@@ -1,4 +1,3 @@
-import 'package:flutter_riverpod/legacy.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../../domain/visita.dart';
@@ -6,11 +5,18 @@ import '../../infrastructure/visita_repository.dart';
 
 part 'visita_search_controller.g.dart';
 
-final visitasSearchQueryStateProvider = StateProvider.autoDispose<String>((
-  ref,
-) {
-  return '';
-});
+@riverpod
+class VisitaSearchQueryParamsController
+    extends _$VisitaSearchQueryParamsController {
+  @override
+  String build() {
+    return '';
+  }
+
+  void setSearchQuery(String searchQuery) {
+    state = searchQuery;
+  }
+}
 
 @riverpod
 class VisitaIndexScreenController extends _$VisitaIndexScreenController {
@@ -21,7 +27,7 @@ class VisitaIndexScreenController extends _$VisitaIndexScreenController {
     return ref
         .read(visitaRepositoryProvider)
         .getVisitasCountList(
-          searchText: ref.watch(visitasSearchQueryStateProvider),
+          searchText: ref.watch(visitaSearchQueryParamsControllerProvider),
         );
   }
 }
@@ -37,7 +43,7 @@ class VisitaIndexScreenPaginatedController
         .read(visitaRepositoryProvider)
         .getVisitaList(
           page: page,
-          searchText: ref.watch(visitasSearchQueryStateProvider),
+          searchText: ref.watch(visitaSearchQueryParamsControllerProvider),
         );
   }
 }

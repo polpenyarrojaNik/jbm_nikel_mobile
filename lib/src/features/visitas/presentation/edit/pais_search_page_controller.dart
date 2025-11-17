@@ -1,4 +1,3 @@
-import 'package:flutter_riverpod/legacy.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../../../../core/domain/pais.dart';
@@ -6,13 +5,18 @@ import '../../infrastructure/visita_repository.dart';
 
 part 'pais_search_page_controller.g.dart';
 
-final paisesSearchQueryStateProvider = StateProvider.autoDispose<String>((ref) {
-  return '';
-});
+@riverpod
+class PaisesSearchQueryParamsController
+    extends _$PaisesSearchQueryParamsController {
+  @override
+  String build() {
+    return '';
+  }
 
-final paisForFromStateProvider = StateProvider.autoDispose<Pais?>((ref) {
-  return null;
-});
+  void setSearchQuery(String searchQuery) {
+    state = searchQuery;
+  }
+}
 
 @riverpod
 class PaisSearchPageController extends _$PaisSearchPageController {
@@ -22,6 +26,6 @@ class PaisSearchPageController extends _$PaisSearchPageController {
   Future<List<Pais>> build() {
     return ref
         .read(visitaRepositoryProvider)
-        .getPaises(ref.watch(paisesSearchQueryStateProvider));
+        .getPaises(ref.watch(paisesSearchQueryParamsControllerProvider));
   }
 }

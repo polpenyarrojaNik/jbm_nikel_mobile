@@ -1,8 +1,12 @@
+import 'dart:io';
+
 import 'package:auto_route/auto_route.dart';
 import 'package:better_open_file/better_open_file.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/experimental/mutation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gap/gap.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../../../../../generated/l10n.dart';
 import '../../../../core/domain/adjunto_param.dart';
@@ -14,9 +18,41 @@ import '../../../../core/presentation/common_widgets/header_datos_relacionados.d
 import '../../../../core/presentation/common_widgets/progress_indicator_widget.dart';
 import '../../../../core/presentation/theme/app_sizes.dart';
 import '../../../../core/presentation/toasts.dart';
+import '../../../usuario/infrastructure/usuario_service.dart';
 import '../../domain/articulo_documento.dart';
 import '../../infrastructure/articulo_repository.dart';
-import 'articulo_documento_controller.dart';
+
+part 'articulo_documento_page.g.dart';
+
+@riverpod
+class GetArticuloDocumentoListaById extends _$GetArticuloDocumentoListaById {
+  @override
+  Future<List<ArticuloDocumento>> build(String articuloId) async {
+    final articuloRepository = ref.watch(articuloRepositoryProvider);
+    final usuario = await ref
+        .watch(usuarioServiceProvider)
+        .getSignedInUsuario();
+    return articuloRepository.getArticuloDocumentoListById(
+      articuloId: articuloId,
+      provisionalToken: usuario!.provisionalToken,
+      test: usuario.test,
+    );
+  }
+
+  Future<File?> getDocumentFile(AdjuntoParam adjuntoParam) async {
+    final articuloRepository = ref.watch(articuloRepositoryProvider);
+    final usuario = await ref
+        .watch(usuarioServiceProvider)
+        .getSignedInUsuario();
+    return articuloRepository.getArticuloDocumentFile(
+      adjuntoParam: adjuntoParam,
+      provisionalToken: usuario!.provisionalToken,
+      test: usuario.test,
+    );
+  }
+}
+
+final getArticuloDocumentFileMutation = Mutation<File?>();
 
 @RoutePage()
 class ArticuloDocumentoPage extends ConsumerWidget {
@@ -31,21 +67,23 @@ class ArticuloDocumentoPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    ref.listen<ArticuloDocumentoState>(articuloDocumentoControllerProvider, (
-      _,
-      state,
-    ) {
-      state.when(
-        data: (file) => (file != null) ? OpenFile.open(file.path) : null,
-        error: (error) => showToast(error.toString(), context),
-        loading: () => showToast(
+    ref.listen(getArticuloDocumentFileMutation, (_, state) {
+      if (state is MutationSuccess<File?>) {
+        final file = state.value;
+        if (file != null) {
+          OpenFile.open(file.path);
+        }
+      } else if (state is MutationError<File?>) {
+        final error = state.error;
+        showToast(error.toString(), context);
+      } else if (state is MutationPending<File?>) {
+        showToast(
           S.of(context).cliente_show_clienteAdjunto_abriendoArchivo,
           context,
-        ),
-        initial: () => null,
-      );
+        );
+      }
     });
-    final state = ref.watch(articuloDocumentListProvider(articuloId));
+    final state = ref.watch(getArticuloDocumentoListaByIdProvider(articuloId));
 
     return Scaffold(
       appBar: CommonAppBar(
@@ -134,13 +172,15 @@ class ArticuloDocumentoTile extends ConsumerWidget {
     required String? nombreArchivo,
     required WidgetRef ref,
   }) {
-    ref
-        .read(articuloDocumentoControllerProvider.notifier)
-        .getDocumentFile(
-          adjuntoParam: AdjuntoParam(
-            id: articuloId,
-            nombreArchivo: nombreArchivo,
-          ),
-        );
+    getArticuloDocumentFileMutation.run(ref, (tsx) async {
+      final getArticuloDocumentoListaByIdStateNotifier = tsx.get(
+        getArticuloDocumentoListaByIdProvider(articuloId).notifier,
+      );
+      final result = await getArticuloDocumentoListaByIdStateNotifier
+          .getDocumentFile(
+            AdjuntoParam(id: articuloId, nombreArchivo: nombreArchivo),
+          );
+      return result;
+    });
   }
 }

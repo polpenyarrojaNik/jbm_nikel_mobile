@@ -25,7 +25,9 @@ class ArticuloSustitutivoPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final state = ref.watch(articuloSustitutivoListProvider(articuloId));
+    final state = ref.watch(
+      getArticuloSustitutivoListaByIdProvider(articuloId),
+    );
     return Scaffold(
       appBar: CommonAppBar(
         titleText: (S.of(context).articulo_show_articuloSustitutivo_titulo),

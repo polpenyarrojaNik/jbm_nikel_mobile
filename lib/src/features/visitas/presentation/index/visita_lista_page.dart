@@ -38,7 +38,7 @@ class _VisitaListaPageState extends ConsumerState<VisitaListaPage> {
     ref
         .read(syncNotifierProvider.notifier)
         .syncAllInCompute(initAppProcess: false);
-    ref.read(notificationNotifierProvider.notifier).haveNotification();
+    ref.read(notificationProvider.notifier).build();
   }
 
   @override
@@ -46,7 +46,7 @@ class _VisitaListaPageState extends ConsumerState<VisitaListaPage> {
     final stateSync = ref.watch(syncNotifierProvider);
 
     ref.listen<AsyncValue<String?>>(
-      notificationNotifierProvider,
+      notificationProvider,
       (_, state) => state.whenData((notificationId) {
         if (notificationId != null) {
           context.router.push(
@@ -70,7 +70,9 @@ class _VisitaListaPageState extends ConsumerState<VisitaListaPage> {
         title: S.of(context).visita_index_titulo,
         searchTitle: S.of(context).visita_index_buscarVisitas,
         onChanged: (searchText) => _debouncer.run(() {
-          ref.read(visitasSearchQueryStateProvider.notifier).state = searchText;
+          ref
+              .read(visitaSearchQueryParamsControllerProvider.notifier)
+              .setSearchQuery(searchText);
         }),
       ),
       body: stateSync.maybeWhen(

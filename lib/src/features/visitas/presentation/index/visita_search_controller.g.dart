@@ -9,6 +9,63 @@ part of 'visita_search_controller.dart';
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint, type=warning
 
+@ProviderFor(VisitaSearchQueryParamsController)
+const visitaSearchQueryParamsControllerProvider =
+    VisitaSearchQueryParamsControllerProvider._();
+
+final class VisitaSearchQueryParamsControllerProvider
+    extends $NotifierProvider<VisitaSearchQueryParamsController, String> {
+  const VisitaSearchQueryParamsControllerProvider._()
+    : super(
+        from: null,
+        argument: null,
+        retry: null,
+        name: r'visitaSearchQueryParamsControllerProvider',
+        isAutoDispose: true,
+        dependencies: null,
+        $allTransitiveDependencies: null,
+      );
+
+  @override
+  String debugGetCreateSourceHash() =>
+      _$visitaSearchQueryParamsControllerHash();
+
+  @$internal
+  @override
+  VisitaSearchQueryParamsController create() =>
+      VisitaSearchQueryParamsController();
+
+  /// {@macro riverpod.override_with_value}
+  Override overrideWithValue(String value) {
+    return $ProviderOverride(
+      origin: this,
+      providerOverride: $SyncValueProvider<String>(value),
+    );
+  }
+}
+
+String _$visitaSearchQueryParamsControllerHash() =>
+    r'377db4bd0352eb3ab958d6f868876c4411093771';
+
+abstract class _$VisitaSearchQueryParamsController extends $Notifier<String> {
+  String build();
+  @$mustCallSuper
+  @override
+  void runBuild() {
+    final created = build();
+    final ref = this.ref as $Ref<String, String>;
+    final element =
+        ref.element
+            as $ClassProviderElement<
+              AnyNotifier<String, String>,
+              String,
+              Object?,
+              Object?
+            >;
+    element.handleValue(ref, created);
+  }
+}
+
 @ProviderFor(VisitaIndexScreenController)
 const visitaIndexScreenControllerProvider =
     VisitaIndexScreenControllerProvider._();
@@ -35,7 +92,7 @@ final class VisitaIndexScreenControllerProvider
 }
 
 String _$visitaIndexScreenControllerHash() =>
-    r'6aa47f60efab2d24a7ea4a12cb55560850c78eec';
+    r'fc2014653641f7e8d0cb52a8a1e9f4b55e506dd6';
 
 abstract class _$VisitaIndexScreenController extends $AsyncNotifier<int> {
   FutureOr<int> build();
@@ -106,7 +163,7 @@ final class VisitaIndexScreenPaginatedControllerProvider
 }
 
 String _$visitaIndexScreenPaginatedControllerHash() =>
-    r'652caea9461bb21cd5cf3b6e0e79c11f2f58da92';
+    r'b9d1fbdea42d8fd9ae07fbaef6bbd024c5ebf328';
 
 final class VisitaIndexScreenPaginatedControllerFamily extends $Family
     with

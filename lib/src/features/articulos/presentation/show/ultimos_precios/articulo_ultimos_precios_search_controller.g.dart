@@ -9,6 +9,68 @@ part of 'articulo_ultimos_precios_search_controller.dart';
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint, type=warning
 
+@ProviderFor(ArticuloUltimosPreciosSearchQueryParamsController)
+const articuloUltimosPreciosSearchQueryParamsControllerProvider =
+    ArticuloUltimosPreciosSearchQueryParamsControllerProvider._();
+
+final class ArticuloUltimosPreciosSearchQueryParamsControllerProvider
+    extends
+        $NotifierProvider<
+          ArticuloUltimosPreciosSearchQueryParamsController,
+          String
+        > {
+  const ArticuloUltimosPreciosSearchQueryParamsControllerProvider._()
+    : super(
+        from: null,
+        argument: null,
+        retry: null,
+        name: r'articuloUltimosPreciosSearchQueryParamsControllerProvider',
+        isAutoDispose: true,
+        dependencies: null,
+        $allTransitiveDependencies: null,
+      );
+
+  @override
+  String debugGetCreateSourceHash() =>
+      _$articuloUltimosPreciosSearchQueryParamsControllerHash();
+
+  @$internal
+  @override
+  ArticuloUltimosPreciosSearchQueryParamsController create() =>
+      ArticuloUltimosPreciosSearchQueryParamsController();
+
+  /// {@macro riverpod.override_with_value}
+  Override overrideWithValue(String value) {
+    return $ProviderOverride(
+      origin: this,
+      providerOverride: $SyncValueProvider<String>(value),
+    );
+  }
+}
+
+String _$articuloUltimosPreciosSearchQueryParamsControllerHash() =>
+    r'561a81ef3084b81844895b8fffac59dd75ce8a97';
+
+abstract class _$ArticuloUltimosPreciosSearchQueryParamsController
+    extends $Notifier<String> {
+  String build();
+  @$mustCallSuper
+  @override
+  void runBuild() {
+    final created = build();
+    final ref = this.ref as $Ref<String, String>;
+    final element =
+        ref.element
+            as $ClassProviderElement<
+              AnyNotifier<String, String>,
+              String,
+              Object?,
+              Object?
+            >;
+    element.handleValue(ref, created);
+  }
+}
+
 @ProviderFor(ArticuloUltimosPreciosIndexScreenController)
 const articuloUltimosPreciosIndexScreenControllerProvider =
     ArticuloUltimosPreciosIndexScreenControllerFamily._();
@@ -59,7 +121,7 @@ final class ArticuloUltimosPreciosIndexScreenControllerProvider
 }
 
 String _$articuloUltimosPreciosIndexScreenControllerHash() =>
-    r'1dd1821f890011dfa5278fa991bfc60093d5d7cf';
+    r'4038537607c9e20d4b6170918de964f63ec4bb24';
 
 final class ArticuloUltimosPreciosIndexScreenControllerFamily extends $Family
     with
@@ -165,7 +227,7 @@ final class ArticuloUltimosPreciosIndexScreenPaginatedControllerProvider
 }
 
 String _$articuloUltimosPreciosIndexScreenPaginatedControllerHash() =>
-    r'463df4f655692cec411990f3b1d20e68fe28cc71';
+    r'fa58a65de3292c5f4533814d88730d3affe5bfb9';
 
 final class ArticuloUltimosPreciosIndexScreenPaginatedControllerFamily
     extends $Family

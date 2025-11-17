@@ -24,7 +24,7 @@ class CommonAppBar extends ConsumerWidget implements PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final state = ref.watch(packageInfoProvider);
+    final state = ref.watch(getPackageInfoProvider);
 
     return AppBar(
       leading: scaffoldKey != null ? IconMenuBadge(scaffoldKey!) : null,

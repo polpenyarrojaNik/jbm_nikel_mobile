@@ -26,7 +26,7 @@ class ArticuloGrupoNetoPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final state = ref.watch(articuloGrupoNetoPriceListProvider(articuloId));
+    final state = ref.watch(getArticuloGrupoNetoListaByIdProvider(articuloId));
     return Scaffold(
       appBar: CommonAppBar(
         titleText: (S.of(context).articulo_show_articuloGruposNetos_titulo),

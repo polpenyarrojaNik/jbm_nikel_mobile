@@ -9,6 +9,64 @@ part of 'expedicion_search_controller.dart';
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint, type=warning
 
+@ProviderFor(ExpedicionSearchQueryParamsController)
+const expedicionSearchQueryParamsControllerProvider =
+    ExpedicionSearchQueryParamsControllerProvider._();
+
+final class ExpedicionSearchQueryParamsControllerProvider
+    extends $NotifierProvider<ExpedicionSearchQueryParamsController, String> {
+  const ExpedicionSearchQueryParamsControllerProvider._()
+    : super(
+        from: null,
+        argument: null,
+        retry: null,
+        name: r'expedicionSearchQueryParamsControllerProvider',
+        isAutoDispose: true,
+        dependencies: null,
+        $allTransitiveDependencies: null,
+      );
+
+  @override
+  String debugGetCreateSourceHash() =>
+      _$expedicionSearchQueryParamsControllerHash();
+
+  @$internal
+  @override
+  ExpedicionSearchQueryParamsController create() =>
+      ExpedicionSearchQueryParamsController();
+
+  /// {@macro riverpod.override_with_value}
+  Override overrideWithValue(String value) {
+    return $ProviderOverride(
+      origin: this,
+      providerOverride: $SyncValueProvider<String>(value),
+    );
+  }
+}
+
+String _$expedicionSearchQueryParamsControllerHash() =>
+    r'69af89ac4f4ab40bfd0833b29abb83ac81945d00';
+
+abstract class _$ExpedicionSearchQueryParamsController
+    extends $Notifier<String> {
+  String build();
+  @$mustCallSuper
+  @override
+  void runBuild() {
+    final created = build();
+    final ref = this.ref as $Ref<String, String>;
+    final element =
+        ref.element
+            as $ClassProviderElement<
+              AnyNotifier<String, String>,
+              String,
+              Object?,
+              Object?
+            >;
+    element.handleValue(ref, created);
+  }
+}
+
 @ProviderFor(ExpedicionIndexScreenController)
 const expedicionIndexScreenControllerProvider =
     ExpedicionIndexScreenControllerProvider._();
@@ -39,7 +97,7 @@ final class ExpedicionIndexScreenControllerProvider
 }
 
 String _$expedicionIndexScreenControllerHash() =>
-    r'4cf1613ac20c93cc1130ea36ff88a5071b57b5ae';
+    r'1313107f643ce0c5d05889576104da92e1657bff';
 
 abstract class _$ExpedicionIndexScreenController
     extends $AsyncNotifier<List<Expedicion>> {

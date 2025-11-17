@@ -9,6 +9,118 @@ part of 'articulo_search_controller.dart';
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint, type=warning
 
+@ProviderFor(ArticuloSearchQueryParamsController)
+const articuloSearchQueryParamsControllerProvider =
+    ArticuloSearchQueryParamsControllerProvider._();
+
+final class ArticuloSearchQueryParamsControllerProvider
+    extends $NotifierProvider<ArticuloSearchQueryParamsController, String> {
+  const ArticuloSearchQueryParamsControllerProvider._()
+    : super(
+        from: null,
+        argument: null,
+        retry: null,
+        name: r'articuloSearchQueryParamsControllerProvider',
+        isAutoDispose: true,
+        dependencies: null,
+        $allTransitiveDependencies: null,
+      );
+
+  @override
+  String debugGetCreateSourceHash() =>
+      _$articuloSearchQueryParamsControllerHash();
+
+  @$internal
+  @override
+  ArticuloSearchQueryParamsController create() =>
+      ArticuloSearchQueryParamsController();
+
+  /// {@macro riverpod.override_with_value}
+  Override overrideWithValue(String value) {
+    return $ProviderOverride(
+      origin: this,
+      providerOverride: $SyncValueProvider<String>(value),
+    );
+  }
+}
+
+String _$articuloSearchQueryParamsControllerHash() =>
+    r'75121c0b3513626199fcf62521089ddd002ead86';
+
+abstract class _$ArticuloSearchQueryParamsController extends $Notifier<String> {
+  String build();
+  @$mustCallSuper
+  @override
+  void runBuild() {
+    final created = build();
+    final ref = this.ref as $Ref<String, String>;
+    final element =
+        ref.element
+            as $ClassProviderElement<
+              AnyNotifier<String, String>,
+              String,
+              Object?,
+              Object?
+            >;
+    element.handleValue(ref, created);
+  }
+}
+
+@ProviderFor(ArticuloFromFormController)
+const articuloFromFormControllerProvider =
+    ArticuloFromFormControllerProvider._();
+
+final class ArticuloFromFormControllerProvider
+    extends $NotifierProvider<ArticuloFromFormController, Articulo?> {
+  const ArticuloFromFormControllerProvider._()
+    : super(
+        from: null,
+        argument: null,
+        retry: null,
+        name: r'articuloFromFormControllerProvider',
+        isAutoDispose: true,
+        dependencies: null,
+        $allTransitiveDependencies: null,
+      );
+
+  @override
+  String debugGetCreateSourceHash() => _$articuloFromFormControllerHash();
+
+  @$internal
+  @override
+  ArticuloFromFormController create() => ArticuloFromFormController();
+
+  /// {@macro riverpod.override_with_value}
+  Override overrideWithValue(Articulo? value) {
+    return $ProviderOverride(
+      origin: this,
+      providerOverride: $SyncValueProvider<Articulo?>(value),
+    );
+  }
+}
+
+String _$articuloFromFormControllerHash() =>
+    r'21895cac9f9d3375cb96ebc96d85bd982cb7271f';
+
+abstract class _$ArticuloFromFormController extends $Notifier<Articulo?> {
+  Articulo? build();
+  @$mustCallSuper
+  @override
+  void runBuild() {
+    final created = build();
+    final ref = this.ref as $Ref<Articulo?, Articulo?>;
+    final element =
+        ref.element
+            as $ClassProviderElement<
+              AnyNotifier<Articulo?, Articulo?>,
+              Articulo?,
+              Object?,
+              Object?
+            >;
+    element.handleValue(ref, created);
+  }
+}
+
 @ProviderFor(ArticuloIndexScreenController)
 const articuloIndexScreenControllerProvider =
     ArticuloIndexScreenControllerFamily._();
@@ -53,7 +165,7 @@ final class ArticuloIndexScreenControllerProvider
 }
 
 String _$articuloIndexScreenControllerHash() =>
-    r'd55801f35878035b84da5eee57e63b27db6f70b8';
+    r'67ce1138d16ce3b27377082d9aed33b861898081';
 
 final class ArticuloIndexScreenControllerFamily extends $Family
     with
@@ -155,7 +267,7 @@ final class ArticuloIndexScreenPaginatedControllerProvider
 }
 
 String _$articuloIndexScreenPaginatedControllerHash() =>
-    r'4d897b7c419ab41acd639151a649f5f917183836';
+    r'416c20f1d939a5ab922a7f51db71b91c27ed7602';
 
 final class ArticuloIndexScreenPaginatedControllerFamily extends $Family
     with

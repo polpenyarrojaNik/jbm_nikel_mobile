@@ -50,11 +50,11 @@ class ClienteUltimosPreciosPage extends ConsumerWidget {
         onChanged: (searchText) {
           _debouncer.run(() {
             ref
-                    .read(
-                      clienteUltimosPreciosSearchQueryStateProvider.notifier,
-                    )
-                    .state =
-                searchText;
+                .read(
+                  clienteUltimosPreciosSearchQueryParamsControllerProvider
+                      .notifier,
+                )
+                .setSearchQuery(searchText);
           });
         },
       ),

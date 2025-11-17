@@ -249,7 +249,7 @@ class _GoogleMapsContainerState extends ConsumerState<GoogleMapsContainer> {
   @override
   Widget build(BuildContext context) {
     final stateMarkers = ref.watch(
-      clientesDireccionesAlrededorListStream(
+      clientesDireccionesAlrededorListStreamProvider(
         GetClienteAlrededorArg(
           latLng: mapLatLng!,
           radiusDistance: widget.radiusKm,

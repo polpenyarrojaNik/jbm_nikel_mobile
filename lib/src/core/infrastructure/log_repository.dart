@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:dio/dio.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../../features/usuario/application/usuario_notifier.dart';
 import '../../features/usuario/domain/usuario.dart';
@@ -13,13 +13,15 @@ import '../presentation/app.dart';
 import 'local_database.dart';
 import 'log_dto.dart';
 
-final logRepositoryProvider = Provider.autoDispose<LogRepository>(
-  (ref) => LogRepository(
-    ref.watch(dioProvider),
-    ref.watch(appLocalDatabaseProvider),
-    ref.watch(usuarioNotifierProvider),
-  ),
-);
+part 'log_repository.g.dart';
+
+@riverpod
+LogRepository logRepository(Ref ref) {
+  final dio = ref.watch(dioProvider);
+  final localDb = ref.watch(appLocalDatabaseProvider);
+  final user = ref.watch(usuarioNotifierProvider);
+  return LogRepository(dio, localDb, user);
+}
 
 class LogRepository {
   final Dio dio;

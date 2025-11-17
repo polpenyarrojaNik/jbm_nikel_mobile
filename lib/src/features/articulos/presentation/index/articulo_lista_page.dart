@@ -41,7 +41,7 @@ class _ArticuloListaPageState extends ConsumerState<ArticuloListaPage> {
   void initState() {
     super.initState();
 
-    ref.read(notificationNotifierProvider.notifier).haveNotification();
+    ref.read(notificationProvider.notifier).build();
   }
 
   @override
@@ -54,7 +54,7 @@ class _ArticuloListaPageState extends ConsumerState<ArticuloListaPage> {
     );
 
     ref.listen<AsyncValue<String?>>(
-      notificationNotifierProvider,
+      notificationProvider,
       (_, state) => state.whenOrNull(
         data: (notificationId) {
           if (notificationId != null) {
@@ -79,8 +79,9 @@ class _ArticuloListaPageState extends ConsumerState<ArticuloListaPage> {
           title: S.of(context).articulo_index_titulo,
           searchTitle: S.of(context).articulo_index_buscarArticulos,
           onChanged: (searchText) => _debouncer.run(
-            () => ref.read(articulosSearchQueryStateProvider.notifier).state =
-                searchText,
+            () => ref
+                .read(articuloSearchQueryParamsControllerProvider.notifier)
+                .setSearchQuery(searchText),
           ),
         ),
         body: stateSync.maybeWhen(
@@ -205,7 +206,9 @@ class ArticleListViewWidget extends StatelessWidget {
     WidgetRef ref,
     Articulo articulo,
   ) {
-    ref.read(articuloForFromStateProvider.notifier).state = articulo;
+    ref
+        .read(articuloFromFormControllerProvider.notifier)
+        .setArticuloFromForm(articulo);
     context.router.maybePop();
   }
 }

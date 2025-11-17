@@ -3,10 +3,10 @@ import 'dart:io';
 import 'package:dio/dio.dart';
 import 'package:drift/drift.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:intl/intl.dart';
 import 'package:money2/money2.dart';
 import 'package:path_provider/path_provider.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../../../core/application/log_service.dart';
 import '../../../core/domain/adjunto_param.dart';
@@ -16,7 +16,6 @@ import '../../../core/helpers/error_logger.dart';
 import '../../../core/helpers/formatters.dart';
 import '../../../core/infrastructure/local_database.dart';
 import '../../../core/infrastructure/remote_database.dart';
-import '../../../core/infrastructure/sync_service.dart';
 import '../../../core/presentation/app.dart';
 import '../../estadisticas/domain/estadisticas_ultimos_precios.dart';
 import '../../pedido_venta/domain/pedido_venta_linea_ultimos_precios_param.dart';
@@ -42,191 +41,208 @@ import 'articulo_ventas_cliente_dto.dart';
 import 'articulo_ventas_mes_dto.dart';
 import 'articulo_ventas_mes_todos_dto.dart';
 
-final articuloRepositoryProvider = Provider.autoDispose<ArticuloRepository>((
-  ref,
-) {
-  final remoteDb = ref.watch(appRemoteDatabaseProvider);
+part 'articulo_repository.g.dart';
+
+@riverpod
+ArticuloRepository articuloRepository(Ref ref) {
+  final db = ref.watch(appRemoteDatabaseProvider);
   final localDb = ref.watch(appLocalDatabaseProvider);
-  final usuarioService = ref.watch(usuarioServiceProvider);
-
+  final userService = ref.watch(usuarioServiceProvider);
   final dio = ref.watch(dioProvider);
-  return ArticuloRepository(
-    remoteDb,
-    localDb,
-    dio,
-    usuarioService,
-    ref.watch(errorLoggerProvider),
-  );
-});
+  final errorLogger = ref.watch(errorLoggerProvider);
 
-final articuloLastSyncDateProvider = FutureProvider.autoDispose<DateTime>((
-  ref,
-) async {
-  final articuloRepository = ref.watch(articuloRepositoryProvider);
-  return articuloRepository.getLastSyncDate();
-});
+  return ArticuloRepository(db, localDb, dio, userService, errorLogger);
+}
 
-final articuloProvider = FutureProvider.autoDispose.family<Articulo, String>((
-  ref,
-  articuloId,
-) {
-  final articuloRepository = ref.watch(articuloRepositoryProvider);
-  return articuloRepository.getArticuloById(articuloId: articuloId);
-});
+@riverpod
+class ArticuloLastSyncDate extends _$ArticuloLastSyncDate {
+  @override
+  Future<DateTime> build() {
+    final articuloRepository = ref.watch(articuloRepositoryProvider);
+    return articuloRepository.getLastSyncDate();
+  }
+}
 
-final articuloComponenteListProvider = FutureProvider.autoDispose
-    .family<List<ArticuloComponente>, String>((ref, articuloId) {
-      final articuloRepository = ref.watch(articuloRepositoryProvider);
-      return articuloRepository.getArticuloComponenteListaById(
-        articuloId: articuloId,
-      );
-    });
+@riverpod
+class GetArticuloById extends _$GetArticuloById {
+  @override
+  Future<Articulo> build(String articuloId) {
+    final articuloRepository = ref.watch(articuloRepositoryProvider);
+    return articuloRepository.getArticuloById(articuloId: articuloId);
+  }
+}
 
-final articuloPrecioTarifaListProvider = FutureProvider.autoDispose
-    .family<List<ArticuloPrecioTarifa>, String>((ref, articuloId) async {
-      final articuloRepository = ref.watch(articuloRepositoryProvider);
+@riverpod
+class GetArticuloComponenteListaById extends _$GetArticuloComponenteListaById {
+  @override
+  Future<List<ArticuloComponente>> build(String articuloId) {
+    final articuloRepository = ref.watch(articuloRepositoryProvider);
+    return articuloRepository.getArticuloComponenteListaById(
+      articuloId: articuloId,
+    );
+  }
+}
 
-      return articuloRepository.getArticuloPrecioTarifaListaById(
-        articuloId: articuloId,
-      );
-    });
+@riverpod
+class GetArticuloPrecioTarifaListaById
+    extends _$GetArticuloPrecioTarifaListaById {
+  @override
+  Future<List<ArticuloPrecioTarifa>> build(String articuloId) {
+    final articuloRepository = ref.watch(articuloRepositoryProvider);
+    return articuloRepository.getArticuloPrecioTarifaListaById(
+      articuloId: articuloId,
+    );
+  }
+}
 
-final articuloGrupoNetoPriceListProvider = FutureProvider.autoDispose
-    .family<List<ArticuloGrupoNeto>, String>((ref, articuloId) async {
-      final articuloRepository = ref.watch(articuloRepositoryProvider);
-      final usuario = await ref
-          .watch(usuarioServiceProvider)
-          .getSignedInUsuario();
+@riverpod
+class GetArticuloGrupoNetoListaById extends _$GetArticuloGrupoNetoListaById {
+  @override
+  Future<List<ArticuloGrupoNeto>> build(String articuloId) async {
+    final articuloRepository = ref.watch(articuloRepositoryProvider);
+    final usuario = await ref
+        .watch(usuarioServiceProvider)
+        .getSignedInUsuario();
 
-      return articuloRepository.getArticuloGrupoNetoListaById(
-        articuloId: articuloId,
-        usuarioId: usuario!.id,
-      );
-    });
+    return articuloRepository.getArticuloGrupoNetoListaById(
+      articuloId: articuloId,
+      usuarioId: usuario!.id,
+    );
+  }
+}
 
-final articuloSustitutivoListProvider = FutureProvider.autoDispose
-    .family<List<ArticuloSustitutivo>, String>((ref, articuloId) {
-      final articuloRepository = ref.watch(articuloRepositoryProvider);
-      return articuloRepository.getArticuloSustitutivoListaById(
-        articuloId: articuloId,
-      );
-    });
+@riverpod
+class GetArticuloSustitutivoListaById
+    extends _$GetArticuloSustitutivoListaById {
+  @override
+  Future<List<ArticuloSustitutivo>> build(String articuloId) {
+    final articuloRepository = ref.watch(articuloRepositoryProvider);
+    return articuloRepository.getArticuloSustitutivoListaById(
+      articuloId: articuloId,
+    );
+  }
+}
 
-final articuloRecambioListProvider = FutureProvider.autoDispose
-    .family<List<ArticuloRecambio>, String>((ref, articuloId) {
-      final articuloRepository = ref.watch(articuloRepositoryProvider);
-      return articuloRepository.getArticuloRecambioListaById(
-        articuloId: articuloId,
-      );
-    });
+@riverpod
+class GetArticuloRecambioListaById extends _$GetArticuloRecambioListaById {
+  @override
+  Future<List<ArticuloRecambio>> build(String articuloId) {
+    final articuloRepository = ref.watch(articuloRepositoryProvider);
+    return articuloRepository.getArticuloRecambioListaById(
+      articuloId: articuloId,
+    );
+  }
+}
 
-final articuloImageListProvider = FutureProvider.autoDispose
-    .family<List<ArticuloImagen>, String>((ref, articuloId) async {
-      final articuloRepository = ref.watch(articuloRepositoryProvider);
-      final usuario = await ref
-          .watch(usuarioServiceProvider)
-          .getSignedInUsuario();
-      return articuloRepository.getArticuloImagenesListaById(
-        articuloId: articuloId,
-        provisionalToken: usuario!.provisionalToken,
-        test: usuario.test,
-      );
-    });
+@riverpod
+class GetArticuloImagenListaById extends _$GetArticuloImagenListaById {
+  @override
+  Future<List<ArticuloImagen>> build(String articuloId) async {
+    final articuloRepository = ref.watch(articuloRepositoryProvider);
+    final usuario = await ref
+        .watch(usuarioServiceProvider)
+        .getSignedInUsuario();
+    return articuloRepository.getArticuloImagenesListaById(
+      articuloId: articuloId,
+      provisionalToken: usuario!.provisionalToken,
+      test: usuario.test,
+    );
+  }
+}
 
-final articuloDocumentListProvider = FutureProvider.autoDispose
-    .family<List<ArticuloDocumento>, String>((ref, articuloId) async {
-      final articuloRepository = ref.watch(articuloRepositoryProvider);
-      final usuario = await ref
-          .watch(usuarioServiceProvider)
-          .getSignedInUsuario();
-      return articuloRepository.getArticuloDocumentoListById(
-        articuloId: articuloId,
-        provisionalToken: usuario!.provisionalToken,
-        test: usuario.test,
-      );
-    });
+@riverpod
+class GetArticuloDocumentoListaById extends _$GetArticuloDocumentoListaById {
+  @override
+  Future<List<ArticuloDocumento>> build(String articuloId) async {
+    final articuloRepository = ref.watch(articuloRepositoryProvider);
+    final usuario = await ref
+        .watch(usuarioServiceProvider)
+        .getSignedInUsuario();
+    return articuloRepository.getArticuloDocumentoListById(
+      articuloId: articuloId,
+      provisionalToken: usuario!.provisionalToken,
+      test: usuario.test,
+    );
+  }
+}
 
-final articuloDocumentFileProvider = FutureProvider.autoDispose
-    .family<File?, AdjuntoParam>((ref, adjuntoParam) async {
-      final articuloRepository = ref.watch(articuloRepositoryProvider);
-      final usuario = await ref
-          .watch(usuarioServiceProvider)
-          .getSignedInUsuario();
-      return articuloRepository.getArticuloDocumentFile(
-        adjuntoParam: adjuntoParam,
-        provisionalToken: usuario!.provisionalToken,
-        test: usuario.test,
-      );
-    });
+@riverpod
+class GetArticuloImageFile extends _$GetArticuloImageFile {
+  @override
+  Future<Uint8List?> build(AdjuntoParam adjuntoParam) async {
+    final articuloRepository = ref.watch(articuloRepositoryProvider);
+    final usuario = await ref
+        .watch(usuarioServiceProvider)
+        .getSignedInUsuario();
+    return articuloRepository.getImageFile(
+      adjuntoParam: adjuntoParam,
+      provisionalToken: usuario!.provisionalToken,
+      test: usuario.test,
+    );
+  }
+}
 
-final articuloImageFileProvider = FutureProvider.autoDispose
-    .family<Uint8List?, AdjuntoParam>((ref, adjuntoParam) async {
-      final articuloRepository = ref.watch(articuloRepositoryProvider);
+@riverpod
+class GetArticuloPedidoVentaLineaListById
+    extends _$GetArticuloPedidoVentaLineaListById {
+  @override
+  Future<List<ArticuloPedidoVentaLinea>> build(String articuloId) async {
+    final articuloRepository = ref.watch(articuloRepositoryProvider);
 
-      final usuario = await ref
-          .watch(usuarioServiceProvider)
-          .getSignedInUsuario();
-      return articuloRepository.getImageFile(
-        adjuntoParam: adjuntoParam,
-        provisionalToken: usuario!.provisionalToken,
-        test: usuario.test,
-      );
-    });
+    final usuario = await ref
+        .watch(usuarioServiceProvider)
+        .getSignedInUsuario();
+    return articuloRepository.getArticuloPedidoVentaById(
+      articuloId: articuloId,
+      usuarioId: usuario!.id,
+    );
+  }
+}
 
-final articuloPedidoVentaLineaListProvider = FutureProvider.autoDispose
-    .family<List<ArticuloPedidoVentaLinea>, String>((ref, articuloId) async {
-      final articuloRepository = ref.watch(articuloRepositoryProvider);
+@riverpod
+class GetArticuloVentasMesById extends _$GetArticuloVentasMesById {
+  @override
+  Future<List<ArticuloVentasMes>> build(String articuloId) async {
+    final articuloRepository = ref.watch(articuloRepositoryProvider);
+    final usuario = await ref
+        .watch(usuarioServiceProvider)
+        .getSignedInUsuario();
+    return articuloRepository.getVentasMesById(
+      articuloId: articuloId,
+      usuarioId: usuario!.id,
+      verTotalVentas: usuario.verTotalVentas,
+    );
+  }
+}
 
-      final usuario = await ref
-          .watch(usuarioServiceProvider)
-          .getSignedInUsuario();
-      return articuloRepository.getArticuloPedidoVentaById(
-        articuloId: articuloId,
-        usuarioId: usuario!.id,
-      );
-    });
+@riverpod
+class GetArticuloVentasClienteById extends _$GetArticuloVentasClienteById {
+  @override
+  Future<List<ArticuloVentasCliente>> build(String articuloId) async {
+    final articuloRepository = ref.watch(articuloRepositoryProvider);
+    final usuario = await ref
+        .watch(usuarioServiceProvider)
+        .getSignedInUsuario();
+    return articuloRepository.getVentasClienteById(
+      articuloId: articuloId,
+      usuarioId: usuario!.id,
+    );
+  }
+}
 
-final articuloVentasMesProvider = FutureProvider.autoDispose
-    .family<List<ArticuloVentasMes>, String>((ref, articuloId) async {
-      final articuloRepository = ref.watch(articuloRepositoryProvider);
-      final usuario = await ref
-          .watch(usuarioServiceProvider)
-          .getSignedInUsuario();
-      return articuloRepository.getVentasMesById(
-        articuloId: articuloId,
-        usuarioId: usuario!.id,
-        verTotalVentas: usuario.verTotalVentas,
-      );
-    });
-
-final articuloVentasClienteProvider = FutureProvider.autoDispose
-    .family<List<ArticuloVentasCliente>, String>((ref, articuloId) async {
-      final articuloRepository = ref.watch(articuloRepositoryProvider);
-      final usuario = await ref
-          .watch(usuarioServiceProvider)
-          .getSignedInUsuario();
-      return articuloRepository.getVentasClienteById(
-        articuloId: articuloId,
-        usuarioId: usuario!.id,
-      );
-    });
-
-final articuloUltimosPreciosProvider = FutureProvider.autoDispose
-    .family<EstadisticasUltimosPrecios?, UltimosPreciosParam>((
-      ref,
-      ultimosPreciosParam,
-    ) async {
-      final articuloRepository = ref.watch(articuloRepositoryProvider);
-      return articuloRepository.getArticuloUltimosPrecios(
-        articuloId: ultimosPreciosParam.articuloId,
-        clienteId: ultimosPreciosParam.clienteId,
-      );
-    });
-
-final syncAllArticuloDb = FutureProvider.autoDispose<void>((ref) async {
-  final syncRepository = ref.watch(syncServiceProvider);
-  return syncRepository.syncArticulos();
-});
+@riverpod
+class GetArticuloUltimosPreciosById extends _$GetArticuloUltimosPreciosById {
+  @override
+  Future<EstadisticasUltimosPrecios?> build(
+    UltimosPreciosParam ultimosPreciosParam,
+  ) {
+    final articuloRepository = ref.watch(articuloRepositoryProvider);
+    return articuloRepository.getArticuloUltimosPrecios(
+      articuloId: ultimosPreciosParam.articuloId,
+      clienteId: ultimosPreciosParam.clienteId,
+    );
+  }
+}
 
 class ArticuloRepository {
   static const pageSize = 100;

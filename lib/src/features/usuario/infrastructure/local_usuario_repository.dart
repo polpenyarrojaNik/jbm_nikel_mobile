@@ -1,20 +1,22 @@
 import 'dart:convert';
 
 import 'package:flutter/services.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../../../core/exceptions/app_exception.dart';
 import '../../../core/presentation/app.dart';
 import 'usuario_dto.dart';
 
+part 'local_usuario_repository.g.dart';
+
+@Riverpod(keepAlive: true)
+LocalUsuarioRepository localUsuarioRepository(Ref ref) =>
+    LocalUsuarioRepository(ref.watch(flutterSecureStorage));
+
 typedef Json = Map<String, dynamic>;
 
 const _kPreferenceKey = 'auth_credentials';
-
-final localUsuarioRepositoryProvider = Provider<LocalUsuarioRepository>((ref) {
-  return LocalUsuarioRepository(ref.watch(flutterSecureStorage));
-});
 
 class LocalUsuarioRepository {
   final FlutterSecureStorage storage;

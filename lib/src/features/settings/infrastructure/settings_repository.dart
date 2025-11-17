@@ -1,26 +1,32 @@
 import 'dart:io';
 
 import 'package:drift/isolate.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 import 'package:path/path.dart';
 import 'package:path_provider/path_provider.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../../../core/application/log_service.dart';
 import '../../../core/exceptions/app_exception.dart';
 import '../../../core/infrastructure/local_database.dart';
 
-final settingsRepositoryProvider = Provider.autoDispose<SettingsRepository>((
-  ref,
-) {
-  final localDatabase = ref.watch(appLocalDatabaseProvider);
-  return SettingsRepository(localDatabase);
-});
+part 'settings_repository.g.dart';
 
-final packageInfoProvider = FutureProvider.autoDispose<PackageInfo>((ref) {
-  final settingsRepository = ref.watch(settingsRepositoryProvider);
-  return settingsRepository.getPackageInfo();
-});
+@riverpod
+SettingsRepository settingsRepository(Ref ref) {
+  final localDb = ref.watch(appLocalDatabaseProvider);
+
+  return SettingsRepository(localDb);
+}
+
+@riverpod
+class GetPackageInfo extends _$GetPackageInfo {
+  @override
+  Future<PackageInfo> build() {
+    final settingsRepository = ref.watch(settingsRepositoryProvider);
+    return settingsRepository.getPackageInfo();
+  }
+}
 
 class SettingsRepository {
   final LocalAppDatabase localDb;

@@ -25,7 +25,7 @@ class VisitaEditSelectContactPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final state = ref.watch(clienteContactosListProvider(cliente.id));
+    final state = ref.watch(clienteContactosListByIdProvider(cliente.id));
 
     return Scaffold(
       appBar: CommonAppBar(

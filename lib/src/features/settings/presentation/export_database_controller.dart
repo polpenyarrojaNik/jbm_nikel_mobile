@@ -1,51 +1,25 @@
 import 'dart:io';
 
-import 'package:flutter_riverpod/legacy.dart';
-import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:flutter_riverpod/experimental/mutation.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-import '../../../core/exceptions/app_exception.dart';
 import '../infrastructure/settings_repository.dart';
 
-part 'export_database_controller.freezed.dart';
+part 'export_database_controller.g.dart';
 
-final exportDatabaseControllerProvider =
-    StateNotifierProvider.autoDispose<
-      ExportDatabaseController,
-      ExportDatabaseControllerState
-    >((ref) => ExportDatabaseController(ref.watch(settingsRepositoryProvider)));
+@riverpod
+class ExportDatabaseController extends _$ExportDatabaseController {
+  @override
+  Future<void> build() async {
+    return;
+  }
 
-@freezed
-class ExportDatabaseControllerState with _$ExportDatabaseControllerState {
-  const ExportDatabaseControllerState._();
-  const factory ExportDatabaseControllerState.loading() = _loading;
-
-  const factory ExportDatabaseControllerState.initial() = _initial;
-
-  const factory ExportDatabaseControllerState.error(
-    Object error, {
-    StackTrace? stackTrace,
-  }) = _error;
-  const factory ExportDatabaseControllerState.data(File file) = _data;
-}
-
-class ExportDatabaseController
-    extends StateNotifier<ExportDatabaseControllerState> {
-  final SettingsRepository _settingsRepository;
-
-  ExportDatabaseController(this._settingsRepository)
-    : super(const ExportDatabaseControllerState.initial());
-
-  Future<void> exportDatabaseIntoFile() async {
-    try {
-      state = const ExportDatabaseControllerState.loading();
-
-      final file = await _settingsRepository.exportDatabaseInto();
-
-      state = ExportDatabaseControllerState.data(file);
-    } on AppException catch (e, stackTrace) {
-      state = ExportDatabaseControllerState.error(e, stackTrace: stackTrace);
-    } catch (e) {
-      rethrow;
-    }
+  Future<File> exportDatabaseIntoFile() async {
+    final file = await ref
+        .read(settingsRepositoryProvider)
+        .exportDatabaseInto();
+    return file;
   }
 }
+
+final exportDatabaseMutation = Mutation<File>();

@@ -1,4 +1,3 @@
-import 'package:flutter_riverpod/legacy.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../../domain/articulo.dart';
@@ -6,17 +5,30 @@ import '../../infrastructure/articulo_repository.dart';
 
 part 'articulo_search_controller.g.dart';
 
-final articulosSearchQueryStateProvider = StateProvider.autoDispose<String>((
-  ref,
-) {
-  return '';
-});
+@riverpod
+class ArticuloSearchQueryParamsController
+    extends _$ArticuloSearchQueryParamsController {
+  @override
+  String build() {
+    return '';
+  }
 
-final articuloForFromStateProvider = StateProvider.autoDispose<Articulo?>((
-  ref,
-) {
-  return null;
-});
+  void setSearchQuery(String searchQuery) {
+    state = searchQuery;
+  }
+}
+
+@riverpod
+class ArticuloFromFormController extends _$ArticuloFromFormController {
+  @override
+  Articulo? build() {
+    return null;
+  }
+
+  void setArticuloFromForm(Articulo articulo) {
+    state = articulo;
+  }
+}
 
 @riverpod
 class ArticuloIndexScreenController extends _$ArticuloIndexScreenController {
@@ -27,7 +39,7 @@ class ArticuloIndexScreenController extends _$ArticuloIndexScreenController {
     return ref
         .read(articuloRepositoryProvider)
         .getArticuloCountList(
-          searchText: ref.watch(articulosSearchQueryStateProvider),
+          searchText: ref.watch(articuloSearchQueryParamsControllerProvider),
         );
   }
 }
@@ -47,7 +59,7 @@ class ArticuloIndexScreenPaginatedController
         .getArticuloLista(
           page: page,
           isSearchArticuloForForm: isSearchArticuloForForm,
-          searchText: ref.watch(articulosSearchQueryStateProvider),
+          searchText: ref.watch(articuloSearchQueryParamsControllerProvider),
         );
   }
 }

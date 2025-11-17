@@ -24,7 +24,7 @@ class ClientePedidosPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final state = ref.watch(clientePedidosProvider(clienteId));
+    final state = ref.watch(clientePedidosListByIdProvider(clienteId));
     return Scaffold(
       appBar: CommonAppBar(
         titleText: (S.of(context).cliente_show_clientePedidos_titulo),

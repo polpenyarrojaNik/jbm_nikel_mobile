@@ -4,9 +4,9 @@ import 'dart:isolate';
 import 'package:drift/drift.dart';
 import 'package:drift/isolate.dart';
 import 'package:drift/native.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:path/path.dart' as p;
 import 'package:path_provider/path_provider.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../../features/catalogos/infrastructure/catalogo_dto.dart';
 import '../../features/catalogos/infrastructure/catalogo_orden_dto.dart';
@@ -25,9 +25,10 @@ part 'local_database.g.dart';
 
 SendPort? isolateLocalDatabaseConnectPort;
 
-final appLocalDatabaseProvider = Provider<LocalAppDatabase>((ref) {
+@Riverpod(keepAlive: true)
+LocalAppDatabase appLocalDatabase(Ref ref) {
   final connection = DatabaseConnection.delayed(() async {
-    late DriftIsolate isolate;
+    DriftIsolate isolate;
     if (isolateLocalDatabaseConnectPort != null) {
       isolate = DriftIsolate.fromConnectPort(isolateLocalDatabaseConnectPort!);
     } else {
@@ -40,7 +41,8 @@ final appLocalDatabaseProvider = Provider<LocalAppDatabase>((ref) {
   final database = LocalAppDatabase.connect(connection);
   ref.onDispose(() => database.close());
   return database;
-});
+}
+
 const kLocalDatabaseName = 'local_jbm.sqlite';
 
 @DriftDatabase(

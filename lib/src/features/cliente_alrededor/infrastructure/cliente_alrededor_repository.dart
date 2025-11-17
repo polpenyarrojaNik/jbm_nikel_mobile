@@ -1,6 +1,6 @@
 import 'package:drift/drift.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:geolocator/geolocator.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../../../core/exceptions/app_exception.dart';
 import '../../../core/infrastructure/pais_dto.dart';
@@ -13,33 +13,43 @@ import '../domain/cliente_alrededor.dart';
 import '../domain/get_cliente_alrededor_arg.dart';
 import 'cliente_alrededor_dto.dart';
 
-final clientesAlrededorRepositoryProvider =
-    Provider.autoDispose<ClienteAlrededorRepository>((ref) {
-      final remoteDb = ref.watch(appRemoteDatabaseProvider);
-      final usuario = ref.watch(usuarioNotifierProvider);
-      return ClienteAlrededorRepository(remoteDb, usuario!);
-    });
+part 'cliente_alrededor_repository.g.dart';
 
-final ubicacionActualProvider = FutureProvider.autoDispose<Position>((ref) {
-  final clientesAlrededorRepository = ref.watch(
-    clientesAlrededorRepositoryProvider,
-  );
+@riverpod
+ClienteAlrededorRepository clienteAlrededorRepository(Ref ref) {
+  final remoteDb = ref.watch(appRemoteDatabaseProvider);
+  final usuario = ref.watch(usuarioNotifierProvider);
 
-  return clientesAlrededorRepository.getUbicacionActual();
-});
+  return ClienteAlrededorRepository(remoteDb, usuario!);
+}
 
-final clientesDireccionesAlrededorListStream = FutureProvider.autoDispose
-    .family<List<ClienteAlrededor>, GetClienteAlrededorArg>((
-      ref,
-      clienteAlrededorArg,
-    ) async {
-      final clientesAlrededorRepository = ref.watch(
-        clientesAlrededorRepositoryProvider,
-      );
-      return clientesAlrededorRepository.getClienteAlrededoresLista(
-        clienteAlrededorArg: clienteAlrededorArg,
-      );
-    });
+@riverpod
+class UbicacionActual extends _$UbicacionActual {
+  @override
+  Future<Position> build() {
+    final clientesAlrededorRepository = ref.watch(
+      clienteAlrededorRepositoryProvider,
+    );
+
+    return clientesAlrededorRepository.getUbicacionActual();
+  }
+}
+
+@riverpod
+class ClientesDireccionesAlrededorListStream
+    extends _$ClientesDireccionesAlrededorListStream {
+  @override
+  Future<List<ClienteAlrededor>> build(
+    GetClienteAlrededorArg clienteAlrededorArg,
+  ) {
+    final clientesAlrededorRepository = ref.watch(
+      clienteAlrededorRepositoryProvider,
+    );
+    return clientesAlrededorRepository.getClienteAlrededoresLista(
+      clienteAlrededorArg: clienteAlrededorArg,
+    );
+  }
+}
 
 class ClienteAlrededorRepository {
   RemoteAppDatabase remoteDb;

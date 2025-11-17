@@ -26,7 +26,7 @@ class ClientePrecioNetoPage extends ConsumerWidget {
   final String? nombreCliente;
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final state = ref.watch(clientePrecioNetoProvider(clienteId));
+    final state = ref.watch(clientePrecioNetoListByIdProvider(clienteId));
     return Scaffold(
       appBar: CommonAppBar(
         titleText: (S.of(context).cliente_show_clientePrecioNeto_titulo),

@@ -46,7 +46,7 @@ class ClienteDetallePage extends ConsumerWidget {
       ),
       body: Consumer(
         builder: (context, ref, _) {
-          final articuloValue = ref.watch(clienteProvider(clienteId));
+          final articuloValue = ref.watch(clienteByIdProvider(clienteId));
           return AsyncValueWidget<Cliente>(
             value: articuloValue,
             onData: (cliente) => ListView(

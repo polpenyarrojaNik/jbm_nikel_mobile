@@ -4,9 +4,9 @@ import 'dart:isolate';
 import 'package:drift/drift.dart';
 import 'package:drift/isolate.dart';
 import 'package:drift/native.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:path/path.dart' as p;
 import 'package:path_provider/path_provider.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../../features/articulos/infrastructure/articulo_componente_dto.dart';
 import '../../features/articulos/infrastructure/articulo_dto.dart';
@@ -64,9 +64,10 @@ part 'remote_database.g.dart';
 
 SendPort? isolateRemoteDatabaseConnectPort;
 
-final appRemoteDatabaseProvider = Provider<RemoteAppDatabase>((ref) {
+@Riverpod(keepAlive: true)
+RemoteAppDatabase appRemoteDatabase(Ref ref) {
   final connection = DatabaseConnection.delayed(() async {
-    late DriftIsolate isolate;
+    DriftIsolate isolate;
 
     if (isolateRemoteDatabaseConnectPort != null) {
       isolate = DriftIsolate.fromConnectPort(isolateRemoteDatabaseConnectPort!);
@@ -82,7 +83,7 @@ final appRemoteDatabaseProvider = Provider<RemoteAppDatabase>((ref) {
 
   ref.onDispose(() => onDisposeDatabase(database));
   return database;
-});
+}
 
 void onDisposeDatabase(RemoteAppDatabase database) async {
   await DriftIsolate.fromConnectPort(

@@ -1,4 +1,3 @@
-import 'package:flutter_riverpod/legacy.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../../../../estadisticas/domain/estadisticas_ultimos_precios.dart';
@@ -6,10 +5,18 @@ import '../../../infrastructure/cliente_repository.dart';
 
 part 'cliente_ultimos_precios_search_controller.g.dart';
 
-final clienteUltimosPreciosSearchQueryStateProvider =
-    StateProvider.autoDispose<String>((ref) {
-      return '';
-    });
+@riverpod
+class ClienteUltimosPreciosSearchQueryParamsController
+    extends _$ClienteUltimosPreciosSearchQueryParamsController {
+  @override
+  String build() {
+    return '';
+  }
+
+  void setSearchQuery(String searchQuery) {
+    state = searchQuery;
+  }
+}
 
 @riverpod
 class ClienteUltimosPreciosIndexScreenController
@@ -22,7 +29,9 @@ class ClienteUltimosPreciosIndexScreenController
         .read(clienteRepositoryProvider)
         .getClienteUltimosPreciosCountList(
           clienteId: clienteId,
-          searchText: ref.watch(clienteUltimosPreciosSearchQueryStateProvider),
+          searchText: ref.watch(
+            clienteUltimosPreciosSearchQueryParamsControllerProvider,
+          ),
         );
   }
 }
@@ -42,7 +51,9 @@ class ClienteUltimosPreciosIndexScreenPaginatedController
         .getClienteUltimosPreciosList(
           clienteId: clienteId,
           page: page,
-          searchText: ref.watch(clienteUltimosPreciosSearchQueryStateProvider),
+          searchText: ref.watch(
+            clienteUltimosPreciosSearchQueryParamsControllerProvider,
+          ),
         );
   }
 }

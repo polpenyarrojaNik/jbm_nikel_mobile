@@ -1,4 +1,3 @@
-import 'package:flutter_riverpod/legacy.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../../domain/cliente_ventas_articulo.dart';
@@ -6,10 +5,18 @@ import '../../infrastructure/cliente_repository.dart';
 
 part 'cliente_ventas_articulo_controller.g.dart';
 
-final clienteVentasArticuloSearchQueryStateProvider =
-    StateProvider.autoDispose<String>((ref) {
-      return '';
-    });
+@riverpod
+class ClienteVentasArticuloQueryParamsController
+    extends _$ClienteVentasArticuloQueryParamsController {
+  @override
+  String build() {
+    return '';
+  }
+
+  void setSearchQuery(String searchQuery) {
+    state = searchQuery;
+  }
+}
 
 @riverpod
 class ClienteVentasArticuloIndexScreenPaginatedController
@@ -22,7 +29,9 @@ class ClienteVentasArticuloIndexScreenPaginatedController
         .read(clienteRepositoryProvider)
         .getClienteVentasArticuloList(
           clienteId: clienteId,
-          searchText: ref.watch(clienteVentasArticuloSearchQueryStateProvider),
+          searchText: ref.watch(
+            clienteVentasArticuloQueryParamsControllerProvider,
+          ),
         );
   }
 }

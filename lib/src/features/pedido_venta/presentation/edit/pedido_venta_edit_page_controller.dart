@@ -1,5 +1,6 @@
 import 'package:flutter_riverpod/legacy.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
 
 import '../../../../core/exceptions/app_exception.dart';
@@ -12,11 +13,20 @@ import '../../domain/pedido_venta_linea.dart';
 import '../../infrastructure/pedido_venta_repository.dart';
 
 part 'pedido_venta_edit_page_controller.freezed.dart';
+part 'pedido_venta_edit_page_controller.g.dart';
 
-final customerAddressSearchQueryStateProvider =
-    StateProvider.autoDispose<String>((ref) {
-      return '';
-    });
+@riverpod
+class CustomerAddressSearchQueryParamsController
+    extends _$CustomerAddressSearchQueryParamsController {
+  @override
+  String build() {
+    return '';
+  }
+
+  void setSearchQuery(String searchQuery) {
+    state = searchQuery;
+  }
+}
 
 @freezed
 class PedidoVentaEditPageControllerState

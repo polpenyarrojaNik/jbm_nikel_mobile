@@ -25,7 +25,7 @@ class ArticuloVentasClientePage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final state = ref.watch(articuloVentasClienteProvider(articuloId));
+    final state = ref.watch(getArticuloVentasClienteByIdProvider(articuloId));
     return Scaffold(
       appBar: CommonAppBar(
         titleText: (S.of(context).articulo_show_articuloVentasCliente_titulo),

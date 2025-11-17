@@ -24,7 +24,7 @@ class ClienteDevolucionPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final state = ref.watch(clienteDevolucionesProvider(clienteId));
+    final state = ref.watch(clienteDevolucionesListByIdProvider(clienteId));
     return Scaffold(
       appBar: CommonAppBar(
         titleText: (S.of(context).cliente_show_clienteDevolucion_titulo),

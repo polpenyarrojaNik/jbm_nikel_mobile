@@ -1,6 +1,9 @@
+import 'dart:io';
+
 import 'package:auto_route/auto_route.dart';
 import 'package:better_open_file/better_open_file.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/experimental/mutation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gap/gap.dart';
 
@@ -14,7 +17,6 @@ import '../../../../core/presentation/common_widgets/progress_indicator_widget.d
 import '../../../../core/presentation/theme/app_sizes.dart';
 import '../../../../core/presentation/toasts.dart';
 import '../../domain/cliente_rappel.dart';
-import '../../infrastructure/cliente_repository.dart';
 import 'cliente_rappel_controller.dart';
 
 @RoutePage()
@@ -30,21 +32,7 @@ class ClienteRappelPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    ref.listen<ClienteRappelControllerState>(clienteRappelControllerProvider, (
-      _,
-      state,
-    ) {
-      state.when(
-        data: (file) => (file != null) ? OpenFile.open(file.path) : null,
-        error: (error) => showToast(error.toString(), context),
-        loading: () => showToast(
-          S.of(context).cliente_show_clienteAdjunto_abriendoArchivo,
-          context,
-        ),
-        initial: () => null,
-      );
-    });
-    final state = ref.watch(clienteRappelProvider(clienteId));
+    final state = ref.watch(clienteRappelListByIdProvider(clienteId));
     return Scaffold(
       appBar: CommonAppBar(
         titleText: (S.of(context).cliente_show_clienteRappel_titulo),
@@ -87,6 +75,25 @@ class ClienteRappelTile extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    ref.listen(clienteRappelDocumentMutation(clienteRappel.rappelId), (
+      _,
+      state,
+    ) {
+      if (state is MutationPending<File?>) {
+        showToast(
+          S.of(context).catalogos_index_catalogoAdjunto_abriendoArchivo,
+          context,
+        );
+      } else if (state is MutationError<File?>) {
+        showToast(state.error.toString(), context);
+      } else if (state is MutationSuccess<File?>) {
+        final data = state.value;
+        if (data != null) {
+          OpenFile.open(data.path);
+        }
+      }
+    });
+
     return GestureDetector(
       onTap: () => (clienteRappel.nombreArchivo != null)
           ? openFile(
@@ -166,13 +173,19 @@ class ClienteRappelTile extends ConsumerWidget {
     required String nombreArchivo,
     required WidgetRef ref,
   }) {
-    ref
-        .read(clienteRappelControllerProvider.notifier)
-        .getRappelDocumentFile(
-          adjuntoParam: AdjuntoParam(
-            id: rappelId,
-            nombreArchivo: nombreArchivo,
-          ),
-        );
+    clienteRappelDocumentMutation(rappelId).run(ref, (tsx) async {
+      final clienteRappelListByIdStateNotifier = tsx.get(
+        clienteRappelListByIdProvider(clienteRappel.clienteId).notifier,
+      );
+
+      final result = await clienteRappelListByIdStateNotifier
+          .getRappelDocumentFile(
+            adjuntoParam: AdjuntoParam(
+              id: rappelId,
+              nombreArchivo: nombreArchivo,
+            ),
+          );
+      return result;
+    });
   }
 }

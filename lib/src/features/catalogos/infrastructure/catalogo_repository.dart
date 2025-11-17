@@ -4,10 +4,10 @@ import 'dart:ui';
 import 'package:dio/dio.dart';
 import 'package:drift/drift.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:fpdart/fpdart.dart';
 import 'package:intl/intl.dart';
 import 'package:path_provider/path_provider.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:syncfusion_flutter_pdf/pdf.dart';
 
 import '../../../core/application/log_service.dart';
@@ -29,44 +29,46 @@ import 'idioma_catalogo_dto.dart';
 import 'tipo_catalogo_dto.dart';
 import 'tipo_catalogo_precio_dto.dart';
 
+part 'catalogo_repository.g.dart';
+
 typedef Json = Map<String, dynamic>;
 
-final catalogoRepositoryProvider = Provider.autoDispose<CatalogoRepository>((
-  ref,
-) {
+@riverpod
+CatalogoRepository catalogoRepository(Ref ref) {
   final localDb = ref.watch(appLocalDatabaseProvider);
   final dio = ref.watch(dioProvider);
   final usuario = ref.watch(usuarioNotifierProvider)!;
+  final errorLogger = ref.watch(errorLoggerProvider);
 
-  return CatalogoRepository(
-    dio,
-    localDb,
-    usuario,
-    ref.watch(errorLoggerProvider),
-  );
-});
+  return CatalogoRepository(dio, localDb, usuario, errorLogger);
+}
 
-final tipoCatalogoListProvider = FutureProvider.autoDispose<List<TipoCatalogo>>(
-  (ref) async {
+@riverpod
+class TipoCatalogoList extends _$TipoCatalogoList {
+  @override
+  Future<List<TipoCatalogo>> build() {
     final catalogoRepsitory = ref.watch(catalogoRepositoryProvider);
-
     return catalogoRepsitory.getTipoCatalogoList();
-  },
-);
+  }
+}
 
-final tipoPrecioCatalogoListProvider =
-    FutureProvider.autoDispose<List<TipoPrecioCatalogo>>((ref) async {
-      final catalogoRepsitory = ref.watch(catalogoRepositoryProvider);
+@riverpod
+class TipoPrecioCatalogoList extends _$TipoPrecioCatalogoList {
+  @override
+  Future<List<TipoPrecioCatalogo>> build() {
+    final catalogoRepsitory = ref.watch(catalogoRepositoryProvider);
+    return catalogoRepsitory.getTipoPrecioCatalogoList();
+  }
+}
 
-      return catalogoRepsitory.getTipoPrecioCatalogoList();
-    });
-
-final idiomaCatalogoListProvider =
-    FutureProvider.autoDispose<List<IdiomaCatalogo>>((ref) async {
-      final catalogoRepsitory = ref.watch(catalogoRepositoryProvider);
-
-      return catalogoRepsitory.getIdiomaCatalogoList();
-    });
+@riverpod
+class IdiomaCatalogoList extends _$IdiomaCatalogoList {
+  @override
+  Future<List<IdiomaCatalogo>> build() {
+    final catalogoRepsitory = ref.watch(catalogoRepositoryProvider);
+    return catalogoRepsitory.getIdiomaCatalogoList();
+  }
+}
 
 class CatalogoRepository {
   final Dio _dio;

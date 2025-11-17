@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../../../../core/application/log_service.dart';
 import '../../../../core/exceptions/app_exception.dart';
@@ -14,13 +14,18 @@ import '../domain/notification_list.dart';
 import 'notification_dto.dart';
 import 'notification_list_dto.dart';
 
-typedef Json = Map<String, dynamic>;
+part 'notification_repository.g.dart';
 
-final notificationRepositoryProvider = Provider<NotificationRepository>((ref) {
-  final dio = ref.watch(dioProvider);
+@Riverpod(keepAlive: true)
+NotificationRepository notificationRepository(Ref ref) {
   final user = ref.watch(usuarioNotifierProvider);
-  return NotificationRepository(dio, user, ref.watch(errorLoggerProvider));
-});
+  final dio = ref.watch(dioProvider);
+  final errorLogger = ref.watch(errorLoggerProvider);
+
+  return NotificationRepository(dio, user!, errorLogger);
+}
+
+typedef Json = Map<String, dynamic>;
 
 class NotificationRepository {
   final Dio dio;

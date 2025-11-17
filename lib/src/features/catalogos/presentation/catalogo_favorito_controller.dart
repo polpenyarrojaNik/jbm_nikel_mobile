@@ -1,109 +1,33 @@
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:flutter_riverpod/legacy.dart';
-import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:flutter_riverpod/experimental/mutation.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../../../core/domain/adjunto_param.dart';
-import '../../../core/exceptions/app_exception.dart';
 import '../domain/catalogo.dart';
 import '../infrastructure/catalogo_repository.dart';
-import 'catalogo_search_controller.dart';
 
-part 'catalogo_favorito_controller.freezed.dart';
+part 'catalogo_favorito_controller.g.dart';
 
-@freezed
-class CatalogoFavoritoControllerState with _$CatalogoFavoritoControllerState {
-  const CatalogoFavoritoControllerState._();
-
-  const factory CatalogoFavoritoControllerState.checking() = _loading;
-  const factory CatalogoFavoritoControllerState.favorite() = _favorite;
-
-  const factory CatalogoFavoritoControllerState.error(
-    Object error, {
-    StackTrace? stackTrace,
-  }) = _error;
-  const factory CatalogoFavoritoControllerState.noFavorite() = _noFavorite;
-}
-
-final catalogoFavoritoControllerProvider = StateNotifierProvider.autoDispose
-    .family<CatalogoFavoritoController, CatalogoFavoritoControllerState, int>(
-      (ref, catalogoId) => CatalogoFavoritoController(
-        ref.watch(catalogoRepositoryProvider),
-        catalogoId,
-        ref,
-      ),
-    );
-
-class CatalogoFavoritoController
-    extends StateNotifier<CatalogoFavoritoControllerState> {
-  CatalogoFavoritoController(this.catalogoRepository, this.catalogoId, this.ref)
-    : super(const CatalogoFavoritoControllerState.checking()) {
-    isModuleFavorite();
-  }
-
-  final CatalogoRepository catalogoRepository;
-  final int catalogoId;
-  final Ref ref;
-
-  Future<void> isModuleFavorite() async {
-    try {
-      if (state != const CatalogoFavoritoControllerState.checking()) {
-        state = const CatalogoFavoritoControllerState.checking();
-      }
-      final isFavorite = await catalogoRepository.isCatalogoFavorite(
-        catalogoId: catalogoId,
-      );
-
-      state = isFavorite
-          ? const CatalogoFavoritoControllerState.favorite()
-          : const CatalogoFavoritoControllerState.noFavorite();
-    } on AppException catch (e, stackTrace) {
-      state = CatalogoFavoritoControllerState.error(
-        e.details.message,
-        stackTrace: stackTrace,
-      );
-    } catch (e) {
-      rethrow;
-    }
+@riverpod
+class CatalogoFavoritoController extends _$CatalogoFavoritoController {
+  @override
+  Future<bool> build(int catalogoId) {
+    return ref
+        .read(catalogoRepositoryProvider)
+        .isCatalogoFavorite(catalogoId: catalogoId);
   }
 
   Future<void> removeCatalogoFavorite(String nombreArchivo) async {
-    try {
-      if (state != const CatalogoFavoritoControllerState.checking()) {
-        state = const CatalogoFavoritoControllerState.checking();
-      }
-      await catalogoRepository.removeCatalogoFavorito(
-        AdjuntoParam(id: catalogoId.toString(), nombreArchivo: nombreArchivo),
-      );
-      ref.invalidate(catalogoIndexScreenControllerProvider);
-
-      await isModuleFavorite();
-    } on AppException catch (e, stackTrace) {
-      state = CatalogoFavoritoControllerState.error(
-        e.details.message,
-        stackTrace: stackTrace,
-      );
-    } catch (e) {
-      rethrow;
-    }
+    await ref
+        .read(catalogoRepositoryProvider)
+        .removeCatalogoFavorito(
+          AdjuntoParam(id: catalogoId.toString(), nombreArchivo: nombreArchivo),
+        );
   }
 
   Future<void> setCatalogoFavorite(Catalogo catalogo) async {
-    try {
-      if (state != const CatalogoFavoritoControllerState.checking()) {
-        state = const CatalogoFavoritoControllerState.checking();
-      }
-
-      await catalogoRepository.setCatalogoToFavorite(catalogo);
-      ref.invalidate(catalogoIndexScreenControllerProvider);
-
-      await isModuleFavorite();
-    } on AppException catch (e, stackTrace) {
-      state = CatalogoFavoritoControllerState.error(
-        e.details.message,
-        stackTrace: stackTrace,
-      );
-    } catch (e) {
-      rethrow;
-    }
+    await ref.read(catalogoRepositoryProvider).setCatalogoToFavorite(catalogo);
   }
 }
+
+final setCatalogoFavoriteMutation = Mutation<void>();
+final removeCatalogoFavoriteMutation = Mutation<void>();

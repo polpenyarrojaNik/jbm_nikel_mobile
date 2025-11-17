@@ -86,7 +86,7 @@ class _SelecionarCantidadPageState
     if (widget.seleccionarCantidadParam.addNewLineaDesdeArticulo) {
       Future.microtask(
         () => ref.invalidate(
-          articuloProvider(widget.seleccionarCantidadParam.articuloId),
+          getArticuloByIdProvider(widget.seleccionarCantidadParam.articuloId),
         ),
       );
     }
@@ -107,19 +107,19 @@ class _SelecionarCantidadPageState
   Widget build(BuildContext context) {
     if (widget.seleccionarCantidadParam.createdFromCliente ?? false) {
       final clienteState = ref.watch(
-        clienteProvider(widget.seleccionarCantidadParam.clienteId),
+        clienteByIdProvider(widget.seleccionarCantidadParam.clienteId),
       );
       clienteState.whenData((value) => setClienteValue(newClienteValue: value));
     } else {
       ref.listen<AsyncValue<Cliente>>(
-        clienteProvider(widget.seleccionarCantidadParam.clienteId),
+        clienteByIdProvider(widget.seleccionarCantidadParam.clienteId),
         (_, state) =>
             state.whenData((value) => setClienteValue(newClienteValue: value)),
       );
     }
 
     ref.listen<AsyncValue<Articulo>>(
-      articuloProvider(articuloId!),
+      getArticuloByIdProvider(articuloId!),
       (_, state) =>
           state.whenData((value) => setArtiucloValue(newArticuloValue: value)),
     );
@@ -135,7 +135,7 @@ class _SelecionarCantidadPageState
     });
     final stateArticuloPrecio = ref.watch(articuloPrecioProvider);
     final statePrecioTarifa = ref.watch(
-      articuloPrecioTarifaListProvider(articuloId!),
+      getArticuloPrecioTarifaListaByIdProvider(articuloId!),
     );
     return Scaffold(
       appBar: AppBar(
@@ -537,7 +537,9 @@ class _ArticuloInfo extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final state = ref.watch(articuloSustitutivoListProvider(articulo.id));
+    final state = ref.watch(
+      getArticuloSustitutivoListaByIdProvider(articulo.id),
+    );
 
     return Container(
       padding: const EdgeInsets.all(16),
@@ -1119,7 +1121,7 @@ class _ArticuloPrecioContainer extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final articuloPrecioValue = ref.watch(
-      articuloUltimosPreciosProvider(
+      getArticuloUltimosPreciosByIdProvider(
         UltimosPreciosParam(clienteId: clienteId, articuloId: articuloId),
       ),
     );

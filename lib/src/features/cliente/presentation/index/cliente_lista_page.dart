@@ -44,7 +44,7 @@ class _ClienteListPageState extends ConsumerState<ClienteListaPage> {
         .read(syncNotifierProvider.notifier)
         .syncAllInCompute(initAppProcess: false);
 
-    ref.read(notificationNotifierProvider.notifier).haveNotification();
+    ref.read(notificationProvider.notifier).build();
   }
 
   @override
@@ -52,7 +52,7 @@ class _ClienteListPageState extends ConsumerState<ClienteListaPage> {
     final stateSync = ref.watch(syncNotifierProvider);
 
     ref.listen<AsyncValue<String?>>(
-      notificationNotifierProvider,
+      notificationProvider,
       (_, state) => state.whenData((notificationId) {
         if (notificationId != null) {
           context.router.push(
@@ -118,8 +118,9 @@ class _ClienteListPageState extends ConsumerState<ClienteListaPage> {
   void filterClientesPotenciales() {
     searchClientesPotenciales = !searchClientesPotenciales;
 
-    ref.read(clientesPotencialesQueryStateProvider.notifier).state =
-        searchClientesPotenciales;
+    ref
+        .read(clientesPotencialesQueryParamControllerProvider.notifier)
+        .setFilter(searchClientesPotenciales);
   }
 
   void navigateToClientesAlrededor(BuildContext context) {

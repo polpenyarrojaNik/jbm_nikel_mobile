@@ -1,11 +1,11 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+
 import '../../../../../generated/l10n.dart';
+import '../../../../core/helpers/formatters.dart';
 import '../../../../core/routing/app_auto_router.dart';
 import '../../../articulos/infrastructure/articulo_repository.dart';
-
-import '../../../../core/helpers/formatters.dart';
 import '../../domain/pedido_venta_linea.dart';
 import '../../domain/pedido_venta_linea_ultimos_precios_param.dart';
 
@@ -24,7 +24,7 @@ class PedidoVentaLineaNuevoTile extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final articuloPrecioValue = ref.watch(
-      articuloUltimosPreciosProvider(
+      getArticuloUltimosPreciosByIdProvider(
         UltimosPreciosParam(
           clienteId: clienteId,
           articuloId: pedidoVentaLinea.articuloId,

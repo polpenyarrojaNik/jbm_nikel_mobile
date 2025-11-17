@@ -1,4 +1,3 @@
-import 'package:flutter_riverpod/legacy.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../../../../core/domain/pais.dart';
@@ -6,10 +5,18 @@ import '../../infrastructure/cliente_repository.dart';
 
 part 'cliente_direccion_seleccionar_pais_search_controller.g.dart';
 
-final clienteDireccionSeleccionarPaisSearchQueryStateProvider =
-    StateProvider.autoDispose<String>((ref) {
-      return '';
-    });
+@riverpod
+class ClienteDireccionSeleccionarPaisSearchQueryParamsController
+    extends _$ClienteDireccionSeleccionarPaisSearchQueryParamsController {
+  @override
+  String build() {
+    return '';
+  }
+
+  void setSearchQuery(String searchQuery) {
+    state = searchQuery;
+  }
+}
 
 @riverpod
 class ClienteDireccionSeleccionarPaisPageController
@@ -22,7 +29,7 @@ class ClienteDireccionSeleccionarPaisPageController
         .read(clienteRepositoryProvider)
         .getPaisList(
           searchText: ref.watch(
-            clienteDireccionSeleccionarPaisSearchQueryStateProvider,
+            clienteDireccionSeleccionarPaisSearchQueryParamsControllerProvider,
           ),
         );
   }

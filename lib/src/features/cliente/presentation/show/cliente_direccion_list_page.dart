@@ -60,15 +60,16 @@ class _ClienteDireccionesListPageState
 
   @override
   Widget build(BuildContext context) {
-    final state = ref.watch(clienteDireccionListProvider(widget.clienteId));
+    final state = ref.watch(clienteDireccionListByIdProvider(widget.clienteId));
     return Scaffold(
       appBar: CustomSearchAppBar(
         isSearchingFirst: false,
         title: S.of(context).cliente_show_clienteDireccion_titulo,
         searchTitle: S.of(context).search,
         onChanged: (searchText) => _debouncer.run(() {
-          ref.read(customerAddressSearchQueryStateProvider.notifier).state =
-              searchText;
+          ref
+              .read(customerAddressSearchQueryParamsControllerProvider.notifier)
+              .setSearchQuery(searchText);
         }),
       ),
       body: Column(
@@ -238,7 +239,7 @@ class _ClienteDireccionActionButtons extends ConsumerWidget {
           data: (isDeleted) {
             if (isDeleted) {
               ref.invalidate(
-                clienteDireccionListProvider(clienteImpParam.clienteId),
+                clienteDireccionListByIdProvider(clienteImpParam.clienteId),
               );
               ref.invalidate(
                 clienteDireccionImpListInSyncByClienteProvider(clienteImpParam),

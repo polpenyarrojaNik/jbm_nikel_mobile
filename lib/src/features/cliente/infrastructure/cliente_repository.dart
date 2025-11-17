@@ -5,10 +5,10 @@ import 'dart:io';
 import 'package:dio/dio.dart';
 import 'package:drift/drift.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:fpdart/fpdart.dart';
 import 'package:intl/intl.dart';
 import 'package:path_provider/path_provider.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:uuid/uuid.dart';
 
 import '../../../core/application/log_service.dart';
@@ -28,7 +28,6 @@ import '../../devoluciones/domain/devolucion_linea.dart';
 import '../../estadisticas/domain/estadisticas_ultimos_precios.dart';
 import '../../pedido_venta/domain/pedido_venta.dart';
 import '../../pedido_venta/infrastructure/pedido_venta_repository.dart';
-import '../../pedido_venta/presentation/edit/pedido_venta_edit_page_controller.dart';
 import '../../usuario/application/usuario_notifier.dart';
 import '../../usuario/domain/usuario.dart';
 import '../../usuario/infrastructure/usuario_service.dart';
@@ -63,160 +62,173 @@ import 'cliente_imp_dto.dart';
 import 'cliente_ventas_articulo_dto.dart';
 import 'cliente_ventas_mes_dto.dart';
 
-final clienteRepositoryProvider = Provider.autoDispose<ClienteRepository>((
-  ref,
-) {
-  final remoteDb = ref.watch(appRemoteDatabaseProvider);
+part 'cliente_repository.g.dart';
+
+@riverpod
+ClienteRepository clienteRepository(Ref ref) {
+  final db = ref.watch(appRemoteDatabaseProvider);
   final localDb = ref.watch(appLocalDatabaseProvider);
-
+  final user = ref.watch(usuarioNotifierProvider);
   final dio = ref.watch(dioProvider);
-  final usuario = ref.watch(usuarioNotifierProvider)!;
-  return ClienteRepository(
-    remoteDb,
-    localDb,
-    dio,
-    usuario,
-    ref.watch(errorLoggerProvider),
-    ref,
-  );
-});
+  final errorLogger = ref.watch(errorLoggerProvider);
 
-final clienteProvider = FutureProvider.autoDispose.family<Cliente, String>((
-  ref,
-  clienteId,
-) {
-  final clienteRepository = ref.watch(clienteRepositoryProvider);
-  return clienteRepository.getClienteById(clienteId: clienteId);
-});
+  return ClienteRepository(db, localDb, dio, user!, errorLogger, ref);
+}
 
-final clienteLastSyncDateProvider = FutureProvider.autoDispose<DateTime>((
-  ref,
-) async {
-  final clienteRepository = ref.watch(clienteRepositoryProvider);
-  return clienteRepository.getLastSyncDate();
-});
+@riverpod
+class ClienteById extends _$ClienteById {
+  @override
+  Future<Cliente> build(String clienteId) {
+    final clienteRepository = ref.watch(clienteRepositoryProvider);
+    return clienteRepository.getClienteById(clienteId: clienteId);
+  }
+}
 
-final clienteDireccionListProvider = FutureProvider.autoDispose
-    .family<List<ClienteDireccion>, String>((ref, clienteId) {
-      final clienteRepository = ref.watch(clienteRepositoryProvider);
+@riverpod
+class ClienteLastSyncDate extends _$ClienteLastSyncDate {
+  @override
+  Future<DateTime> build() {
+    final clienteRepository = ref.watch(clienteRepositoryProvider);
+    return clienteRepository.getLastSyncDate();
+  }
+}
 
-      return clienteRepository.getClienteDireccionesListById(
-        clienteId: clienteId,
-        searchText: ref.watch(customerAddressSearchQueryStateProvider),
-      );
-    });
+@riverpod
+class ClienteDireccionListById extends _$ClienteDireccionListById {
+  @override
+  Future<List<ClienteDireccion>> build(String clienteId) {
+    final clienteRepository = ref.watch(clienteRepositoryProvider);
+    return clienteRepository.getClienteDireccionesListById(
+      clienteId: clienteId,
+    );
+  }
+}
 
-final clienteContactosListProvider = FutureProvider.autoDispose
-    .family<List<ClienteContacto>, String>((ref, clienteId) {
-      final clienteRepository = ref.watch(clienteRepositoryProvider);
-      return clienteRepository.getClienteContactosListById(
-        clienteId: clienteId,
-      );
-    });
+@riverpod
+class ClienteContactosListById extends _$ClienteContactosListById {
+  @override
+  Future<List<ClienteContacto>> build(String clienteId) {
+    final clienteRepository = ref.watch(clienteRepositoryProvider);
+    return clienteRepository.getClienteContactosListById(clienteId: clienteId);
+  }
+}
 
-final clienteDescuentoProvider = FutureProvider.autoDispose
-    .family<List<ClienteDescuento>, String>((ref, clienteId) {
-      final clienteRepository = ref.watch(clienteRepositoryProvider);
-      return clienteRepository.getClienteDescuentoById(clienteId: clienteId);
-    });
+@riverpod
+class ClienteDescuentosListById extends _$ClienteDescuentosListById {
+  @override
+  Future<List<ClienteDescuento>> build(String clienteId) {
+    final clienteRepository = ref.watch(clienteRepositoryProvider);
+    return clienteRepository.getClienteDescuentoById(clienteId: clienteId);
+  }
+}
 
-final clienteGrupoNetoProvider = FutureProvider.autoDispose
-    .family<List<ClienteGrupoNeto>, String>((ref, clienteId) {
-      final clienteRepository = ref.watch(clienteRepositoryProvider);
-      return clienteRepository.getClienteGrupoNetoById(clienteId: clienteId);
-    });
+@riverpod
+class ClienteGrupoNetoListById extends _$ClienteGrupoNetoListById {
+  @override
+  Future<List<ClienteGrupoNeto>> build(String clienteId) {
+    final clienteRepository = ref.watch(clienteRepositoryProvider);
+    return clienteRepository.getClienteGrupoNetoById(clienteId: clienteId);
+  }
+}
 
-final clientePrecioNetoProvider = FutureProvider.autoDispose
-    .family<List<ClientePrecioNeto>, String>((ref, clienteId) {
-      final clienteRepository = ref.watch(clienteRepositoryProvider);
-      return clienteRepository.getClientePrecioNetoById(clienteId: clienteId);
-    });
+@riverpod
+class ClientePrecioNetoListById extends _$ClientePrecioNetoListById {
+  @override
+  Future<List<ClientePrecioNeto>> build(String clienteId) {
+    final clienteRepository = ref.watch(clienteRepositoryProvider);
+    return clienteRepository.getClientePrecioNetoById(clienteId: clienteId);
+  }
+}
 
-final clientePendientePagoProvider = FutureProvider.autoDispose
-    .family<List<ClientePagoPendiente>, String>((ref, clienteId) {
-      final clienteRepository = ref.watch(clienteRepositoryProvider);
-      return clienteRepository.getClientePagoPendienteById(
-        clienteId: clienteId,
-      );
-    });
+@riverpod
+class ClientePendientePagoListById extends _$ClientePendientePagoListById {
+  @override
+  Future<List<ClientePagoPendiente>> build(String clienteId) {
+    final clienteRepository = ref.watch(clienteRepositoryProvider);
+    return clienteRepository.getClientePagoPendienteById(clienteId: clienteId);
+  }
+}
 
-final clienteRappelProvider = FutureProvider.autoDispose
-    .family<List<ClienteRappel>, String>((ref, clienteId) {
-      final clienteRepository = ref.watch(clienteRepositoryProvider);
-      return clienteRepository.getClienteRappelById(clienteId: clienteId);
-    });
+@riverpod
+class ClienteVentasMesListById extends _$ClienteVentasMesListById {
+  @override
+  Future<List<ClienteVentasMes>> build(String clienteId) {
+    final clienteRepository = ref.watch(clienteRepositoryProvider);
+    return clienteRepository.getVentasMesById(clienteId: clienteId);
+  }
+}
 
-final clienteVentasMesProvider = FutureProvider.autoDispose
-    .family<List<ClienteVentasMes>, String>((ref, clienteId) {
-      final clienteRepository = ref.watch(clienteRepositoryProvider);
-      return clienteRepository.getVentasMesById(clienteId: clienteId);
-    });
+@riverpod
+class ClienteVisitasListById extends _$ClienteVisitasListById {
+  @override
+  Future<List<Visita>> build(String clienteId) {
+    final visitaRepository = ref.watch(visitaRepositoryProvider);
+    return visitaRepository.getVisitaListByCliente(clienteId: clienteId);
+  }
+}
 
-final clienteVisitasProvider = FutureProvider.autoDispose
-    .family<List<Visita>, String>((ref, clienteId) {
-      final visitaRepository = ref.watch(visitaRepositoryProvider);
-      return visitaRepository.getVisitaListByCliente(clienteId: clienteId);
-    });
+@riverpod
+class ClientePedidosListById extends _$ClientePedidosListById {
+  @override
+  Future<List<PedidoVenta>> build(String clienteId) {
+    final pedidoVentaRepository = ref.watch(pedidoVentaRepositoryProvider);
+    return pedidoVentaRepository.getPedidoVentaListaByCliente(
+      clienteId: clienteId,
+    );
+  }
+}
 
-final clientePedidosProvider = FutureProvider.autoDispose
-    .family<List<PedidoVenta>, String>((ref, clienteId) {
-      final pedidoVentaRepository = ref.watch(pedidoVentaRepositoryProvider);
-      return pedidoVentaRepository.getPedidoVentaListaByCliente(
-        clienteId: clienteId,
-      );
-    });
+@riverpod
+class ClienteDevolucionesListById extends _$ClienteDevolucionesListById {
+  @override
+  Future<List<Devolucion>> build(String clienteId) {
+    final clienteRepository = ref.watch(clienteRepositoryProvider);
+    return clienteRepository.getDevolucionByCliente(clienteId: clienteId);
+  }
+}
 
-final clienteDevolucionesProvider = FutureProvider.autoDispose
-    .family<List<Devolucion>, String>((ref, clienteId) {
-      final clienteRepository = ref.watch(clienteRepositoryProvider);
-      return clienteRepository.getDevolucionByCliente(clienteId: clienteId);
-    });
+@riverpod
+class ClienteDevolucionesLineaListById
+    extends _$ClienteDevolucionesLineaListById {
+  @override
+  Future<List<DevolucionLinea>> build(String devolucionId) {
+    final clienteRepository = ref.watch(clienteRepositoryProvider);
+    return clienteRepository.getDevolucionLineaList(devolucionId: devolucionId);
+  }
+}
 
-final clienteDevolucionesLineaProvider = FutureProvider.autoDispose
-    .family<List<DevolucionLinea>, String>((ref, devolucionId) {
-      final clienteRepository = ref.watch(clienteRepositoryProvider);
-      return clienteRepository.getDevolucionLineaList(
-        devolucionId: devolucionId,
-      );
-    });
+@riverpod
+class ClientePais extends _$ClientePais {
+  @override
+  Future<Pais?> build(String clienteId) {
+    final clienteRepository = ref.watch(clienteRepositoryProvider);
+    return clienteRepository._getPaisCliente(clienteId: clienteId);
+  }
+}
 
-final clienteAdjuntoProvider = FutureProvider.autoDispose
-    .family<List<ClienteAdjunto>, String>((ref, clienteId) async {
-      final clienteRepository = ref.watch(clienteRepositoryProvider);
-      final usuario = await ref
-          .watch(usuarioServiceProvider)
-          .getSignedInUsuario();
-      return clienteRepository.getClienteAdjuntoById(
-        clienteId: clienteId,
-        provisionalToken: usuario!.provisionalToken,
-        test: usuario.test,
-      );
-    });
+@riverpod
+class ClienteContactoImpListInSyncByCliente
+    extends _$ClienteContactoImpListInSyncByCliente {
+  @override
+  Future<List<ClienteContactoImp>> build(ClienteImpParam clienteImpParam) {
+    final clienteRepository = ref.watch(clienteRepositoryProvider);
+    return clienteRepository.getClienteContactosImpListInSyncByCliente(
+      clienteImpParam,
+    );
+  }
+}
 
-final clientePaisProvider = FutureProvider.autoDispose.family<Pais?, String>((
-  ref,
-  clienteId,
-) {
-  final clienteRepository = ref.watch(clienteRepositoryProvider);
-  return clienteRepository._getPaisCliente(clienteId: clienteId);
-});
-
-final clienteContactoImpListInSyncByClienteProvider = FutureProvider.autoDispose
-    .family<List<ClienteContactoImp>, ClienteImpParam>((ref, clienteImpParam) {
-      final clienteRepository = ref.watch(clienteRepositoryProvider);
-      return clienteRepository.getClienteContactosImpListInSyncByCliente(
-        clienteImpParam,
-      );
-    });
-
-final clienteDireccionImpListInSyncByClienteProvider = FutureProvider
-    .autoDispose
-    .family<List<ClienteDireccionImp>, ClienteImpParam>((ref, clienteImpParam) {
-      final clienteRepository = ref.watch(clienteRepositoryProvider);
-      return clienteRepository.getClienteDireccionesImpListInSyncByCliente(
-        clienteImpParam,
-      );
-    });
+@riverpod
+class ClienteDireccionImpListInSyncByCliente
+    extends _$ClienteDireccionImpListInSyncByCliente {
+  @override
+  Future<List<ClienteDireccionImp>> build(ClienteImpParam clienteImpParam) {
+    final clienteRepository = ref.watch(clienteRepositoryProvider);
+    return clienteRepository.getClienteDireccionesImpListInSyncByCliente(
+      clienteImpParam,
+    );
+  }
+}
 
 class ClienteRepository {
   static const pageSize = 100;

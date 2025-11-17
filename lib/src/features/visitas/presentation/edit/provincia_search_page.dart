@@ -1,13 +1,13 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import '../../../../core/presentation/common_widgets/error_message_widget.dart';
-import '../../../../core/presentation/common_widgets/progress_indicator_widget.dart';
-import 'provincia_search_page_controller.dart';
 
 import '../../../../../generated/l10n.dart';
 import '../../../../core/helpers/debouncer.dart';
 import '../../../../core/presentation/common_widgets/custom_search_app_bar.dart';
+import '../../../../core/presentation/common_widgets/error_message_widget.dart';
+import '../../../../core/presentation/common_widgets/progress_indicator_widget.dart';
+import 'provincia_search_page_controller.dart';
 
 class ProvinciaSearchDialog extends ConsumerWidget {
   final String? paisId;
@@ -24,8 +24,9 @@ class ProvinciaSearchDialog extends ConsumerWidget {
         title: S.of(context).search,
         searchTitle: S.of(context).search,
         onChanged: (searchText) => _debouncer.run(
-          () => ref.read(provinciasSearchQueryStateProvider.notifier).state =
-              searchText,
+          () => ref
+              .read(provinciasSearchQueryParamsControllerProvider.notifier)
+              .setSearchQuery(searchText),
         ),
       ),
       content: SizedBox(

@@ -6,10 +6,10 @@ import 'package:csv/csv.dart';
 import 'package:dio/dio.dart';
 import 'package:drift/drift.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:money2/money2.dart';
 import 'package:path/path.dart';
 import 'package:path_provider/path_provider.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
 
 import '../../../core/application/log_service.dart';
@@ -36,83 +36,114 @@ import '../domain/precio_promocion.dart';
 import 'pedido_venta_linea_local_dto.dart';
 import 'pedido_venta_local_dto.dart';
 
-final pedidoVentaRepositoryProvider =
-    Provider.autoDispose<PedidoVentaRepository>((ref) {
-      final remoteDb = ref.watch(appRemoteDatabaseProvider);
-      final localDb = ref.watch(local.appLocalDatabaseProvider);
-      final dio = ref.watch(dioProvider);
-      final usuario = ref.watch(usuarioNotifierProvider)!;
-      return PedidoVentaRepository(
-        remoteDb,
-        localDb,
-        dio,
-        usuario,
-        ref.watch(errorLoggerProvider),
-      );
-    });
+part 'pedido_venta_repository.g.dart';
 
-final pedidoVentaProvider = FutureProvider.autoDispose
-    .family<PedidoVenta, PedidoLocalParam>((ref, pedidoLocalParam) {
-      final pedidoVentaRepository = ref.watch(pedidoVentaRepositoryProvider);
-      return pedidoVentaRepository.getPedidoVentaById(
-        pedidoVentaIdIsLocalParam: pedidoLocalParam,
-      );
-    });
+@riverpod
+PedidoVentaRepository pedidoVentaRepository(Ref ref) {
+  final db = ref.watch(appRemoteDatabaseProvider);
+  final localDb = ref.watch(local.appLocalDatabaseProvider);
+  final user = ref.watch(usuarioNotifierProvider);
+  final dio = ref.watch(dioProvider);
+  final errorLogger = ref.watch(errorLoggerProvider);
 
-final pedidoVentaAlbaranProvider = FutureProvider.autoDispose
-    .family<List<PedidoAlbaran>, String>((ref, pedidoVentaId) {
-      final pedidoVentaRepository = ref.watch(pedidoVentaRepositoryProvider);
-      return pedidoVentaRepository.getPedidoVentaAlbaranListById(
-        pedidoVentaId: pedidoVentaId,
-      );
-    });
+  return PedidoVentaRepository(db, localDb, dio, user!, errorLogger);
+}
 
-final pedidoVentaEstadoProvider =
-    FutureProvider.autoDispose<List<PedidoVentaEstado>>((ref) {
-      final pedidoVentaRepository = ref.watch(pedidoVentaRepositoryProvider);
-      return pedidoVentaRepository.getPedidoVentaEstadoList();
-    });
+@riverpod
+class PedidoVentaById extends _$PedidoVentaById {
+  @override
+  Future<PedidoVenta> build(PedidoLocalParam pedidoLocalParam) {
+    final pedidoVentaRepository = ref.watch(pedidoVentaRepositoryProvider);
+    return pedidoVentaRepository.getPedidoVentaById(
+      pedidoVentaIdIsLocalParam: pedidoLocalParam,
+    );
+  }
 
-final deletePedidoVentaProvider = FutureProvider.autoDispose
-    .family<void, String>((ref, pedidoVentaAppId) {
-      final pedidoVentaRepository = ref.watch(pedidoVentaRepositoryProvider);
-      return pedidoVentaRepository.deletePedidoVenta(
-        pedidoVentaAppId: pedidoVentaAppId,
-      );
-    });
+  Future<File?> getAttachmentFile({required String pedidoVentaId}) async {
+    final file = await ref
+        .read(pedidoVentaRepositoryProvider)
+        .getDocumentFile(pedidoVentaId: pedidoVentaId);
+    return file;
+  }
+}
 
-final pedidoVentaLastSyncDateProvider = FutureProvider.autoDispose<DateTime>((
-  ref,
-) async {
-  final pedidoVentaRepository = ref.watch(pedidoVentaRepositoryProvider);
-  return pedidoVentaRepository.getLastSyncDate();
-});
+@riverpod
+class PedidoVentaAlbaranById extends _$PedidoVentaAlbaranById {
+  @override
+  Future<List<PedidoAlbaran>> build(String pedidoVentaId) {
+    final pedidoVentaRepository = ref.watch(pedidoVentaRepositoryProvider);
+    return pedidoVentaRepository.getPedidoVentaAlbaranListById(
+      pedidoVentaId: pedidoVentaId,
+    );
+  }
+}
 
-final pedidoVentaLineaProvider = FutureProvider.autoDispose
-    .family<List<PedidoVentaLinea>, PedidoLocalParam>((ref, pedidoLocalParam) {
-      final pedidoVentaRepository = ref.watch(pedidoVentaRepositoryProvider);
-      return pedidoVentaRepository.getPedidoVentaLineaListById(
-        pedidoLocalParam: pedidoLocalParam,
-      );
-    });
+@riverpod
+class PedidoVentaEstadoList extends _$PedidoVentaEstadoList {
+  @override
+  Future<List<PedidoVentaEstado>> build() {
+    final pedidoVentaRepository = ref.watch(pedidoVentaRepositoryProvider);
+    return pedidoVentaRepository.getPedidoVentaEstadoList();
+  }
+}
 
-final getStockDisponibleProvider = FutureProvider.autoDispose
-    .family<int, String>((ref, articuloId) {
-      final pedidoVentaRepository = ref.watch(pedidoVentaRepositoryProvider);
-      return pedidoVentaRepository.getStockActual(articuloId: articuloId);
-    });
+@riverpod
+class PedidoVentaLastSyncDate extends _$PedidoVentaLastSyncDate {
+  @override
+  Future<DateTime> build() {
+    final pedidoVentaRepository = ref.watch(pedidoVentaRepositoryProvider);
+    return pedidoVentaRepository.getLastSyncDate();
+  }
+}
 
-final getPedidoVentaBorradoresList =
-    FutureProvider.autoDispose<List<PedidoVenta>>((ref) {
-      final pedidoVentaRepository = ref.watch(pedidoVentaRepositoryProvider);
-      return pedidoVentaRepository.getPedidoVentaBorradoresList();
-    });
+@riverpod
+class GetPedidoVentaLineaList extends _$GetPedidoVentaLineaList {
+  @override
+  Future<List<PedidoVentaLinea>> build(PedidoLocalParam pedidoLocalParam) {
+    final pedidoVentaRepository = ref.watch(pedidoVentaRepositoryProvider);
+    return pedidoVentaRepository.getPedidoVentaLineaListById(
+      pedidoLocalParam: pedidoLocalParam,
+    );
+  }
+}
 
-final ofertaHaveAttachmentProvider = FutureProvider.autoDispose
-    .family<bool, String>((ref, pedidoVentaId) {
-      final pedidoVentaRepository = ref.watch(pedidoVentaRepositoryProvider);
-      return pedidoVentaRepository.ofertaHaveAttachment(pedidoVentaId);
-    });
+@riverpod
+class GetStockDisponible extends _$GetStockDisponible {
+  @override
+  Future<int> build(String articuloId) {
+    final pedidoVentaRepository = ref.watch(pedidoVentaRepositoryProvider);
+    return pedidoVentaRepository.getStockActual(articuloId: articuloId);
+  }
+}
+
+@riverpod
+class GetPedidoVentaBorradoresList extends _$GetPedidoVentaBorradoresList {
+  @override
+  Future<List<PedidoVenta>> build() {
+    final pedidoVentaRepository = ref.watch(pedidoVentaRepositoryProvider);
+    return pedidoVentaRepository.getPedidoVentaBorradoresList();
+  }
+}
+
+@riverpod
+class OfertaHaveAttachment extends _$OfertaHaveAttachment {
+  @override
+  Future<bool> build(String pedidoVentaId) {
+    final pedidoVentaRepository = ref.watch(pedidoVentaRepositoryProvider);
+    return pedidoVentaRepository.ofertaHaveAttachment(pedidoVentaId);
+  }
+}
+
+@riverpod
+class DeletePedidoVenta extends _$DeletePedidoVenta {
+  @override
+  Future<void> build(String pedidoVentaAppId) async {
+    final pedidoVentaRepository = ref.watch(pedidoVentaRepositoryProvider);
+    return pedidoVentaRepository.deletePedidoVenta(
+      pedidoVentaAppId: pedidoVentaAppId,
+    );
+  }
+}
 
 class PedidoVentaRepository {
   static const pageSize = 100;

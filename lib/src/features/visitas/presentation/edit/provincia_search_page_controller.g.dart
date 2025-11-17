@@ -9,6 +9,64 @@ part of 'provincia_search_page_controller.dart';
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint, type=warning
 
+@ProviderFor(ProvinciasSearchQueryParamsController)
+const provinciasSearchQueryParamsControllerProvider =
+    ProvinciasSearchQueryParamsControllerProvider._();
+
+final class ProvinciasSearchQueryParamsControllerProvider
+    extends $NotifierProvider<ProvinciasSearchQueryParamsController, String> {
+  const ProvinciasSearchQueryParamsControllerProvider._()
+    : super(
+        from: null,
+        argument: null,
+        retry: null,
+        name: r'provinciasSearchQueryParamsControllerProvider',
+        isAutoDispose: true,
+        dependencies: null,
+        $allTransitiveDependencies: null,
+      );
+
+  @override
+  String debugGetCreateSourceHash() =>
+      _$provinciasSearchQueryParamsControllerHash();
+
+  @$internal
+  @override
+  ProvinciasSearchQueryParamsController create() =>
+      ProvinciasSearchQueryParamsController();
+
+  /// {@macro riverpod.override_with_value}
+  Override overrideWithValue(String value) {
+    return $ProviderOverride(
+      origin: this,
+      providerOverride: $SyncValueProvider<String>(value),
+    );
+  }
+}
+
+String _$provinciasSearchQueryParamsControllerHash() =>
+    r'5f93c997646456237e54365697d421a8b91c5fbb';
+
+abstract class _$ProvinciasSearchQueryParamsController
+    extends $Notifier<String> {
+  String build();
+  @$mustCallSuper
+  @override
+  void runBuild() {
+    final created = build();
+    final ref = this.ref as $Ref<String, String>;
+    final element =
+        ref.element
+            as $ClassProviderElement<
+              AnyNotifier<String, String>,
+              String,
+              Object?,
+              Object?
+            >;
+    element.handleValue(ref, created);
+  }
+}
+
 @ProviderFor(ProvinciaSearchPageController)
 const provinciaSearchPageControllerProvider =
     ProvinciaSearchPageControllerFamily._();
@@ -54,7 +112,7 @@ final class ProvinciaSearchPageControllerProvider
 }
 
 String _$provinciaSearchPageControllerHash() =>
-    r'd615327c94a2c8bfd5f5240f75c3b4819acbcf7a';
+    r'33727bab51dec495ebd91dd6458c09e2a61529ad';
 
 final class ProvinciaSearchPageControllerFamily extends $Family
     with

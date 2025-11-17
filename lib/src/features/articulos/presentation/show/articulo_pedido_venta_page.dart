@@ -26,7 +26,9 @@ class ArticuloPedidoVentaPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final state = ref.watch(articuloPedidoVentaLineaListProvider(articuloId));
+    final state = ref.watch(
+      getArticuloPedidoVentaLineaListByIdProvider(articuloId),
+    );
     return Scaffold(
       appBar: CommonAppBar(
         titleText: (S.of(context).articulo_show_articuloPedidoVenta_titulo),

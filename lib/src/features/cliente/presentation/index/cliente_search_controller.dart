@@ -1,4 +1,3 @@
-import 'package:flutter_riverpod/legacy.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../../domain/cliente.dart';
@@ -19,11 +18,18 @@ class ClienteIndexControllerSearchTextParameter
   }
 }
 
-final clientesPotencialesQueryStateProvider = StateProvider.autoDispose<bool>((
-  ref,
-) {
-  return false;
-});
+@riverpod
+class ClientesPotencialesQueryParamController
+    extends _$ClientesPotencialesQueryParamController {
+  @override
+  bool build() {
+    return false;
+  }
+
+  void setFilter(bool searchPotenciales) {
+    state = searchPotenciales;
+  }
+}
 
 @riverpod
 class ClienteIndexScreenController extends _$ClienteIndexScreenController {
@@ -34,7 +40,9 @@ class ClienteIndexScreenController extends _$ClienteIndexScreenController {
     return ref
         .read(clienteRepositoryProvider)
         .getClienteCountList(
-          searchPotenciales: ref.watch(clientesPotencialesQueryStateProvider),
+          searchPotenciales: ref.watch(
+            clientesPotencialesQueryParamControllerProvider,
+          ),
           searchText: ref.watch(
             clienteIndexControllerSearchTextParameterProvider,
           ),
@@ -52,7 +60,9 @@ class ClienteIndexScreenPaginatedController
     return ref
         .read(clienteRepositoryProvider)
         .getClienteLista(
-          searchPotenciales: ref.watch(clientesPotencialesQueryStateProvider),
+          searchPotenciales: ref.watch(
+            clientesPotencialesQueryParamControllerProvider,
+          ),
           page: page,
           searchText: ref.watch(
             clienteIndexControllerSearchTextParameterProvider,

@@ -6,11 +6,11 @@ import 'dart:io';
 import 'package:dio/dio.dart';
 import 'package:drift/drift.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:fpdart/fpdart.dart';
 import 'package:google_mlkit_entity_extraction/google_mlkit_entity_extraction.dart';
 import 'package:google_mlkit_text_recognition/google_mlkit_text_recognition.dart';
 import 'package:intl/intl.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../../../core/application/log_service.dart';
 import '../../../core/domain/pais.dart';
@@ -38,21 +38,26 @@ import 'geolocation_entity_dto.dart';
 import 'visita_competencia_local_dto.dart';
 import 'visita_local_dto.dart';
 
-final visitaRepositoryProvider = Provider.autoDispose<VisitaRepository>((ref) {
-  final remoteDb = ref.watch(appRemoteDatabaseProvider);
+part 'visita_repository.g.dart';
+
+@riverpod
+VisitaRepository visitaRepository(Ref ref) {
+  final db = ref.watch(appRemoteDatabaseProvider);
   final localDb = ref.watch(local.appLocalDatabaseProvider);
-
-  final dio = ref.watch(dioProvider);
   final user = ref.watch(usuarioNotifierProvider);
-  return VisitaRepository(remoteDb, localDb, dio, user);
-});
+  final dio = ref.watch(dioProvider);
 
-final visitaLastSyncDateProvider = FutureProvider.autoDispose<DateTime>((
-  ref,
-) async {
-  final visitaRepository = ref.watch(visitaRepositoryProvider);
-  return visitaRepository.getLastSyncDate();
-});
+  return VisitaRepository(db, localDb, dio, user!);
+}
+
+@riverpod
+class VisitaLastSyncDate extends _$VisitaLastSyncDate {
+  @override
+  Future<DateTime> build() {
+    final visitaRepository = ref.watch(visitaRepositoryProvider);
+    return visitaRepository.getLastSyncDate();
+  }
+}
 
 class VisitaRepository {
   static const pageSize = 100;

@@ -9,6 +9,63 @@ part of 'pais_search_page_controller.dart';
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint, type=warning
 
+@ProviderFor(PaisesSearchQueryParamsController)
+const paisesSearchQueryParamsControllerProvider =
+    PaisesSearchQueryParamsControllerProvider._();
+
+final class PaisesSearchQueryParamsControllerProvider
+    extends $NotifierProvider<PaisesSearchQueryParamsController, String> {
+  const PaisesSearchQueryParamsControllerProvider._()
+    : super(
+        from: null,
+        argument: null,
+        retry: null,
+        name: r'paisesSearchQueryParamsControllerProvider',
+        isAutoDispose: true,
+        dependencies: null,
+        $allTransitiveDependencies: null,
+      );
+
+  @override
+  String debugGetCreateSourceHash() =>
+      _$paisesSearchQueryParamsControllerHash();
+
+  @$internal
+  @override
+  PaisesSearchQueryParamsController create() =>
+      PaisesSearchQueryParamsController();
+
+  /// {@macro riverpod.override_with_value}
+  Override overrideWithValue(String value) {
+    return $ProviderOverride(
+      origin: this,
+      providerOverride: $SyncValueProvider<String>(value),
+    );
+  }
+}
+
+String _$paisesSearchQueryParamsControllerHash() =>
+    r'b93bdab159e1219aff482bf20f1a5f7f2062ee21';
+
+abstract class _$PaisesSearchQueryParamsController extends $Notifier<String> {
+  String build();
+  @$mustCallSuper
+  @override
+  void runBuild() {
+    final created = build();
+    final ref = this.ref as $Ref<String, String>;
+    final element =
+        ref.element
+            as $ClassProviderElement<
+              AnyNotifier<String, String>,
+              String,
+              Object?,
+              Object?
+            >;
+    element.handleValue(ref, created);
+  }
+}
+
 @ProviderFor(PaisSearchPageController)
 const paisSearchPageControllerProvider = PaisSearchPageControllerProvider._();
 
@@ -34,7 +91,7 @@ final class PaisSearchPageControllerProvider
 }
 
 String _$paisSearchPageControllerHash() =>
-    r'c7f0c7dd3d2aeb59abb3cc6ab597825a1829e70f';
+    r'94423959f5a6756a19fe8b98df12bf3b3afd163a';
 
 abstract class _$PaisSearchPageController extends $AsyncNotifier<List<Pais>> {
   FutureOr<List<Pais>> build();

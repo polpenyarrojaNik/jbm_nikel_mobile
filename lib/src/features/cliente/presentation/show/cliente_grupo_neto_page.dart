@@ -25,7 +25,7 @@ class ClienteGrupoNetoPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final state = ref.watch(clienteGrupoNetoProvider(clienteId));
+    final state = ref.watch(clienteGrupoNetoListByIdProvider(clienteId));
     return Scaffold(
       appBar: CommonAppBar(
         titleText: (S.of(context).cliente_show_clienteGrupoNeto_titulo),

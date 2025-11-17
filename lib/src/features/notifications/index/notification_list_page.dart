@@ -23,7 +23,7 @@ class NotificationIndexPage extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final state = ref.watch(notificationIndexScreenControllerProvider);
 
-    final stateNotification = ref.watch(notificationNotifierProvider);
+    final stateNotification = ref.watch(notificationProvider);
     return Scaffold(
       key: scaffoldKey,
       drawer: const AppDrawer(),

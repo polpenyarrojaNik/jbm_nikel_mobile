@@ -10123,3 +10123,56 @@ class $LocalAppDatabaseManager {
         _db.visitaCompetenciaLocalTable,
       );
 }
+
+// **************************************************************************
+// RiverpodGenerator
+// **************************************************************************
+
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint, type=warning
+
+@ProviderFor(appLocalDatabase)
+const appLocalDatabaseProvider = AppLocalDatabaseProvider._();
+
+final class AppLocalDatabaseProvider
+    extends
+        $FunctionalProvider<
+          LocalAppDatabase,
+          LocalAppDatabase,
+          LocalAppDatabase
+        >
+    with $Provider<LocalAppDatabase> {
+  const AppLocalDatabaseProvider._()
+    : super(
+        from: null,
+        argument: null,
+        retry: null,
+        name: r'appLocalDatabaseProvider',
+        isAutoDispose: false,
+        dependencies: null,
+        $allTransitiveDependencies: null,
+      );
+
+  @override
+  String debugGetCreateSourceHash() => _$appLocalDatabaseHash();
+
+  @$internal
+  @override
+  $ProviderElement<LocalAppDatabase> $createElement($ProviderPointer pointer) =>
+      $ProviderElement(pointer);
+
+  @override
+  LocalAppDatabase create(Ref ref) {
+    return appLocalDatabase(ref);
+  }
+
+  /// {@macro riverpod.override_with_value}
+  Override overrideWithValue(LocalAppDatabase value) {
+    return $ProviderOverride(
+      origin: this,
+      providerOverride: $SyncValueProvider<LocalAppDatabase>(value),
+    );
+  }
+}
+
+String _$appLocalDatabaseHash() => r'5d82136fffbd13e72f67992bac84b23746ed2098';

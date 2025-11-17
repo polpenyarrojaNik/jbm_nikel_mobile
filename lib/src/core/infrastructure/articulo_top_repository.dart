@@ -1,5 +1,5 @@
 import 'package:drift/drift.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../../features/articulos/domain/articulo.dart';
 import '../../features/cliente/domain/articulo_top.dart';
@@ -7,17 +7,22 @@ import '../../features/cliente/infrastructure/articulo_top_dto.dart';
 import '../exceptions/app_exception.dart';
 import 'remote_database.dart';
 
-final articuloTopRepositoryProvider =
-    Provider.autoDispose<ArticuloTopRepository>((ref) {
-      final db = ref.watch(appRemoteDatabaseProvider);
-      return ArticuloTopRepository(db);
-    });
+part 'articulo_top_repository.g.dart';
 
-final articuloTopProvider = FutureProvider.family
-    .autoDispose<List<ArticuloTop>, String>((ref, clienteId) {
-      final articuloTopRepository = ref.watch(articuloTopRepositoryProvider);
-      return articuloTopRepository.getArticuloTopList(clienteId: clienteId);
-    });
+@riverpod
+ArticuloTopRepository articuloTopRepository(Ref ref) {
+  final db = ref.watch(appRemoteDatabaseProvider);
+  return ArticuloTopRepository(db);
+}
+
+@riverpod
+class ArticuloTopList extends _$ArticuloTopList {
+  @override
+  Future<List<ArticuloTop>> build(String clienteId) {
+    final articuloTopRepository = ref.watch(articuloTopRepositoryProvider);
+    return articuloTopRepository.getArticuloTopList(clienteId: clienteId);
+  }
+}
 
 class ArticuloTopRepository {
   final RemoteAppDatabase db;

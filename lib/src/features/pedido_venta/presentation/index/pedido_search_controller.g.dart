@@ -9,6 +9,125 @@ part of 'pedido_search_controller.dart';
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint, type=warning
 
+@ProviderFor(PedidosSearchQueryParamController)
+const pedidosSearchQueryParamControllerProvider =
+    PedidosSearchQueryParamControllerProvider._();
+
+final class PedidosSearchQueryParamControllerProvider
+    extends $NotifierProvider<PedidosSearchQueryParamController, String> {
+  const PedidosSearchQueryParamControllerProvider._()
+    : super(
+        from: null,
+        argument: null,
+        retry: null,
+        name: r'pedidosSearchQueryParamControllerProvider',
+        isAutoDispose: true,
+        dependencies: null,
+        $allTransitiveDependencies: null,
+      );
+
+  @override
+  String debugGetCreateSourceHash() =>
+      _$pedidosSearchQueryParamControllerHash();
+
+  @$internal
+  @override
+  PedidosSearchQueryParamController create() =>
+      PedidosSearchQueryParamController();
+
+  /// {@macro riverpod.override_with_value}
+  Override overrideWithValue(String value) {
+    return $ProviderOverride(
+      origin: this,
+      providerOverride: $SyncValueProvider<String>(value),
+    );
+  }
+}
+
+String _$pedidosSearchQueryParamControllerHash() =>
+    r'073a17048af2037e325993ce334614041a410278';
+
+abstract class _$PedidosSearchQueryParamController extends $Notifier<String> {
+  String build();
+  @$mustCallSuper
+  @override
+  void runBuild() {
+    final created = build();
+    final ref = this.ref as $Ref<String, String>;
+    final element =
+        ref.element
+            as $ClassProviderElement<
+              AnyNotifier<String, String>,
+              String,
+              Object?,
+              Object?
+            >;
+    element.handleValue(ref, created);
+  }
+}
+
+@ProviderFor(PedidoVentaEstadoQueryParamController)
+const pedidoVentaEstadoQueryParamControllerProvider =
+    PedidoVentaEstadoQueryParamControllerProvider._();
+
+final class PedidoVentaEstadoQueryParamControllerProvider
+    extends
+        $NotifierProvider<
+          PedidoVentaEstadoQueryParamController,
+          PedidoVentaEstado?
+        > {
+  const PedidoVentaEstadoQueryParamControllerProvider._()
+    : super(
+        from: null,
+        argument: null,
+        retry: null,
+        name: r'pedidoVentaEstadoQueryParamControllerProvider',
+        isAutoDispose: true,
+        dependencies: null,
+        $allTransitiveDependencies: null,
+      );
+
+  @override
+  String debugGetCreateSourceHash() =>
+      _$pedidoVentaEstadoQueryParamControllerHash();
+
+  @$internal
+  @override
+  PedidoVentaEstadoQueryParamController create() =>
+      PedidoVentaEstadoQueryParamController();
+
+  /// {@macro riverpod.override_with_value}
+  Override overrideWithValue(PedidoVentaEstado? value) {
+    return $ProviderOverride(
+      origin: this,
+      providerOverride: $SyncValueProvider<PedidoVentaEstado?>(value),
+    );
+  }
+}
+
+String _$pedidoVentaEstadoQueryParamControllerHash() =>
+    r'3478ebb50211c6569768eb9bf5acf366482cc61e';
+
+abstract class _$PedidoVentaEstadoQueryParamController
+    extends $Notifier<PedidoVentaEstado?> {
+  PedidoVentaEstado? build();
+  @$mustCallSuper
+  @override
+  void runBuild() {
+    final created = build();
+    final ref = this.ref as $Ref<PedidoVentaEstado?, PedidoVentaEstado?>;
+    final element =
+        ref.element
+            as $ClassProviderElement<
+              AnyNotifier<PedidoVentaEstado?, PedidoVentaEstado?>,
+              PedidoVentaEstado?,
+              Object?,
+              Object?
+            >;
+    element.handleValue(ref, created);
+  }
+}
+
 @ProviderFor(PedidoVentaIndexScreenController)
 const pedidoVentaIndexScreenControllerProvider =
     PedidoVentaIndexScreenControllerProvider._();
@@ -36,7 +155,7 @@ final class PedidoVentaIndexScreenControllerProvider
 }
 
 String _$pedidoVentaIndexScreenControllerHash() =>
-    r'bcb2dc10f3c39b5c53798e4f8f1e7c6b8665347b';
+    r'b5ab3f3e49d51be709ffb5058ac61c332db59241';
 
 abstract class _$PedidoVentaIndexScreenController extends $AsyncNotifier<int> {
   FutureOr<int> build();
@@ -107,7 +226,7 @@ final class PedidoVentaIndexScreenPaginatedControllerProvider
 }
 
 String _$pedidoVentaIndexScreenPaginatedControllerHash() =>
-    r'98ec005bc9b56d783b01ce8ae8e34de3b1c13043';
+    r'989559e0333fad6330cf669e9394ab3742c7b9d0';
 
 final class PedidoVentaIndexScreenPaginatedControllerFamily extends $Family
     with

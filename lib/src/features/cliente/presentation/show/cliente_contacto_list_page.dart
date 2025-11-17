@@ -33,7 +33,7 @@ class ClienteContactoListPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final state = ref.watch(clienteContactosListProvider(clienteId));
+    final state = ref.watch(clienteContactosListByIdProvider(clienteId));
 
     return Scaffold(
       appBar: CommonAppBar(
@@ -265,7 +265,7 @@ class _ClienteContactoActionButtons extends ConsumerWidget {
           data: (isDeleted) {
             if (isDeleted) {
               ref.invalidate(
-                clienteContactosListProvider(clienteImpParam.clienteId),
+                clienteContactosListByIdProvider(clienteImpParam.clienteId),
               );
               ref.invalidate(
                 clienteContactoImpListInSyncByClienteProvider(clienteImpParam),

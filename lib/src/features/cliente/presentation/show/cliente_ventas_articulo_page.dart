@@ -36,9 +36,8 @@ class ClienteVentasArticuloPage extends ConsumerWidget {
         searchTitle: S.of(context).cliente_show_clienteVentasArticulo_buscar,
         onChanged: (searchText) => _debouncer.run(() {
           ref
-                  .read(clienteVentasArticuloSearchQueryStateProvider.notifier)
-                  .state =
-              searchText;
+              .read(clienteVentasArticuloQueryParamsControllerProvider.notifier)
+              .setSearchQuery(searchText);
         }),
       ),
       body: Column(

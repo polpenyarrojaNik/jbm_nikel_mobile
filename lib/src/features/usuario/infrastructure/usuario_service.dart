@@ -1,8 +1,8 @@
 import 'dart:io';
 
 import 'package:device_info_plus/device_info_plus.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:package_info_plus/package_info_plus.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
 
 import '../../../core/exceptions/app_exception.dart';
@@ -10,14 +10,15 @@ import '../domain/usuario.dart';
 import 'local_usuario_repository.dart';
 import 'remote_usuario_repository.dart';
 
+part 'usuario_service.g.dart';
+
 typedef Json = Map<String, dynamic>;
 
-final usuarioServiceProvider = Provider<UsuarioService>((ref) {
-  return UsuarioService(
-    ref.watch(localUsuarioRepositoryProvider),
-    ref.watch(remoteUsuarioRepositoryProvider),
-  );
-});
+@Riverpod(keepAlive: true)
+UsuarioService usuarioService(Ref ref) => UsuarioService(
+  ref.watch(localUsuarioRepositoryProvider),
+  ref.watch(remoteUsuarioRepositoryProvider),
+);
 
 class UsuarioService {
   final LocalUsuarioRepository _localUsuarioRepository;

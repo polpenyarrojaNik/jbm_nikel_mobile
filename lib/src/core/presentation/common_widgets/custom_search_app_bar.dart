@@ -57,7 +57,7 @@ class _CustomSearchAppBarState extends ConsumerState<CustomSearchAppBar> {
 
   @override
   Widget build(BuildContext context) {
-    final state = ref.watch(packageInfoProvider);
+    final state = ref.watch(getPackageInfoProvider);
 
     return AppBar(
       leading: !widget.isSearchingFirst && widget.scaffoldKey != null

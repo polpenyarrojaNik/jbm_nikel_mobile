@@ -1,4 +1,3 @@
-import 'package:flutter_riverpod/legacy.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../../domain/pedido_venta.dart';
@@ -7,16 +6,31 @@ import '../../infrastructure/pedido_venta_repository.dart';
 
 part 'pedido_search_controller.g.dart';
 
-final pedidosSearchQueryStateProvider = StateProvider.autoDispose<String>((
-  ref,
-) {
-  return '';
-});
+@riverpod
+class PedidosSearchQueryParamController
+    extends _$PedidosSearchQueryParamController {
+  @override
+  String build() {
+    return '';
+  }
 
-final pedidoVentaEstadoQueryStateProvider =
-    StateProvider.autoDispose<PedidoVentaEstado?>((ref) {
-      return null;
-    });
+  void setSearchQuery(String searchQuery) {
+    state = searchQuery;
+  }
+}
+
+@riverpod
+class PedidoVentaEstadoQueryParamController
+    extends _$PedidoVentaEstadoQueryParamController {
+  @override
+  PedidoVentaEstado? build() {
+    return null;
+  }
+
+  void setFilter(PedidoVentaEstado? estado) {
+    state = estado;
+  }
+}
 
 @riverpod
 class PedidoVentaIndexScreenController
@@ -28,8 +42,10 @@ class PedidoVentaIndexScreenController
     return ref
         .read(pedidoVentaRepositoryProvider)
         .getPedidoVentaCountList(
-          pedidoVentaEstado: ref.watch(pedidoVentaEstadoQueryStateProvider),
-          searchText: ref.watch(pedidosSearchQueryStateProvider),
+          pedidoVentaEstado: ref.watch(
+            pedidoVentaEstadoQueryParamControllerProvider,
+          ),
+          searchText: ref.watch(pedidosSearchQueryParamControllerProvider),
         );
   }
 }
@@ -45,8 +61,10 @@ class PedidoVentaIndexScreenPaginatedController
         .read(pedidoVentaRepositoryProvider)
         .getPedidoVentaLista(
           page: page,
-          searchText: ref.watch(pedidosSearchQueryStateProvider),
-          pedidoVentaEstado: ref.watch(pedidoVentaEstadoQueryStateProvider),
+          searchText: ref.watch(pedidosSearchQueryParamControllerProvider),
+          pedidoVentaEstado: ref.watch(
+            pedidoVentaEstadoQueryParamControllerProvider,
+          ),
         );
   }
 }

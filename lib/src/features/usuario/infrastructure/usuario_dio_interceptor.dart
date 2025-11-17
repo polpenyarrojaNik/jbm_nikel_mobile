@@ -1,16 +1,17 @@
 import 'package:dio/dio.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
+
+import '../../../core/presentation/app.dart';
 import '../application/usuario_notifier.dart';
 import 'usuario_service.dart';
 
-import '../../../core/presentation/app.dart';
+part 'usuario_dio_interceptor.g.dart';
 
-final usuarioDioInterceptorProvider = Provider(
-  (ref) => UsuarioDioInterceptor(
-    ref.watch(usuarioServiceProvider),
-    ref.watch(usuarioNotifierProvider.notifier),
-    ref.watch(dioForAuthProvider),
-  ),
+@Riverpod(keepAlive: true)
+UsuarioDioInterceptor usuarioDioInterceptor(Ref ref) => UsuarioDioInterceptor(
+  ref.watch(usuarioServiceProvider),
+  ref.watch(usuarioNotifierProvider.notifier),
+  ref.watch(dioForAuthProvider),
 );
 
 class UsuarioDioInterceptor extends Interceptor {

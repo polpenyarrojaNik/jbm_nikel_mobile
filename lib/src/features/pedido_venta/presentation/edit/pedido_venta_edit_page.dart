@@ -6,6 +6,7 @@ import 'package:better_open_file/better_open_file.dart';
 import 'package:flash/flash_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
+import 'package:flutter_riverpod/experimental/mutation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:gap/gap.dart';
@@ -144,17 +145,22 @@ class _PedidoVentaEditPageState extends ConsumerState<PedidoVentaEditPage> {
       },
     );
 
-    ref.listen<CrearCsvControllerState>(
-      crearCsvControllerProvider,
-      (_, state) => state.maybeWhen(
-        orElse: () => null,
-        loading: () => showToast(
-          S.of(context).pedido_edit_pedidoEdit_creandoCsvFile,
-          context,
-        ),
-        data: (csvFile) => openFile(csvFile),
-      ),
-    );
+    ref.listen(crearCsvMutation, (_, state) {
+      if (state is MutationPending<File>) {
+        showToast(S.of(context).pedido_edit_pedidoEdit_creandoCsvFile, context);
+      } else if (state is MutationError<File>) {
+        unawaited(
+          context.showErrorBar(
+            duration: const Duration(seconds: 5),
+            content: ErrorMessageWidget(state.error.toString()),
+          ),
+        );
+      } else if (state is MutationSuccess<File>) {
+        openFile(state.value);
+      }
+    });
+
+    final stateCsv = ref.watch(crearCsvMutation);
 
     return Scaffold(
       appBar: CommonAppBar(
@@ -204,12 +210,14 @@ class _PedidoVentaEditPageState extends ConsumerState<PedidoVentaEditPage> {
                   stackTrace,
                 ) => IconButton(
                   icon: const Icon(Icons.share),
-                  onPressed: () => createCsvFile(
-                    pedidoLocalParam.isLocal
-                        ? pedidoLocalParam.pedidoAppId!
-                        : pedidoLocalParam.pedidoId!,
-                    pedidoVentaLineaList,
-                  ),
+                  onPressed: stateCsv.isPending
+                      ? null
+                      : () => createCsvFile(
+                          pedidoLocalParam.isLocal
+                              ? pedidoLocalParam.pedidoAppId!
+                              : pedidoLocalParam.pedidoId!,
+                          pedidoVentaLineaList,
+                        ),
                 ),
           ),
         ],
@@ -281,12 +289,18 @@ class _PedidoVentaEditPageState extends ConsumerState<PedidoVentaEditPage> {
     String pedidoVentaAppId,
     List<PedidoVentaLinea> pedidoVentaLineaList,
   ) async {
-    await ref
-        .read(crearCsvControllerProvider.notifier)
-        .crearCsvController(
-          pedidoVentaAppId: pedidoVentaAppId,
-          pedidoVentaLineaList: pedidoVentaLineaList,
-        );
+    await crearCsvMutation.run(ref, (tsx) async {
+      final createCsvControllerStateNotifier = tsx.get(
+        crearCsvControllerProvider.notifier,
+      );
+
+      final result = await createCsvControllerStateNotifier.crearCsvController(
+        pedidoVentaAppId: pedidoVentaAppId,
+        pedidoVentaLineaList: pedidoVentaLineaList,
+      );
+
+      return result;
+    });
   }
 
   void openFile(File csvFile) async {
@@ -327,7 +341,7 @@ class _PedidoVentaEditPageState extends ConsumerState<PedidoVentaEditPage> {
           transaction: transaction,
         );
 
-    ref.invalidate(pedidoVentaProvider(pedidoLocalParam));
+    ref.invalidate(pedidoVentaByIdProvider(pedidoLocalParam));
     ref.invalidate(pedidoVentaIndexScreenControllerProvider);
     ref.invalidate(pedidoVentaIndexScreenPaginatedControllerProvider);
     await transaction.finish();
@@ -346,8 +360,8 @@ class _PedidoVentaEditPageState extends ConsumerState<PedidoVentaEditPage> {
     }
     if (widget.isEdit) {
       if (pedidoLocalParam.isLocal) {
-        ref.invalidate(pedidoVentaProvider(pedidoLocalParam));
-        ref.invalidate(pedidoVentaLineaProvider(pedidoLocalParam));
+        ref.invalidate(pedidoVentaByIdProvider(pedidoLocalParam));
+        ref.invalidate(getPedidoVentaLineaListProvider(pedidoLocalParam));
       }
     }
     ref.invalidate(pedidoVentaIndexScreenPaginatedControllerProvider);
@@ -832,7 +846,7 @@ class _StepSelectClienteDireccionContentState
   @override
   Widget build(BuildContext context) {
     ref.listen<AsyncValue<List<ClienteDireccion>>>(
-      clienteDireccionListProvider(widget.cliente!.id),
+      clienteDireccionListByIdProvider(widget.cliente!.id),
       (_, state) {
         state.whenData((clienteDireccionesList) {
           for (var i = 0; i < clienteDireccionesList.length; i++) {
@@ -853,7 +867,9 @@ class _StepSelectClienteDireccionContentState
         });
       },
     );
-    final state = ref.watch(clienteDireccionListProvider(widget.cliente!.id));
+    final state = ref.watch(
+      clienteDireccionListByIdProvider(widget.cliente!.id),
+    );
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16),
       child: Column(
@@ -861,13 +877,11 @@ class _StepSelectClienteDireccionContentState
           SearchListTile(
             searchTitle: S.of(context).search,
             onChanged: (searchText) => _debouncer.run(
-              () =>
-                  ref
-                          .read(
-                            customerAddressSearchQueryStateProvider.notifier,
-                          )
-                          .state =
-                      searchText,
+              () => ref
+                  .read(
+                    customerAddressSearchQueryParamsControllerProvider.notifier,
+                  )
+                  .setSearchQuery(searchText),
             ),
             focusNode: focusNode,
           ),
@@ -935,7 +949,7 @@ class StepArticuloListContent extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     ref.listen<Articulo?>(
-      articuloForFromStateProvider,
+      articuloFromFormControllerProvider,
       (_, state) => setArtiucloValue(
         context: context,
         clienteId: cliente!.id,

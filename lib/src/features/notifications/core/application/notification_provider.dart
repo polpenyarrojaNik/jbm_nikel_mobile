@@ -1,28 +1,17 @@
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:flutter_riverpod/legacy.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-import '../../../usuario/application/usuario_notifier.dart';
-import '../../../usuario/domain/usuario.dart';
 import '../infrastructure/notification_repository.dart';
 
-final notificationNotifierProvider =
-    StateNotifierProvider<NotificationNotifier, AsyncValue<String?>>((ref) {
-      final user = ref.watch(usuarioNotifierProvider);
-      final notificationRepository = ref.watch(notificationRepositoryProvider);
+part 'notification_provider.g.dart';
 
-      return NotificationNotifier(user, notificationRepository);
-    });
+@Riverpod(keepAlive: true)
+class NotificationNotifier extends _$NotificationNotifier {
+  @override
+  Future<String?> build() async {
+    final notificationId = await ref
+        .watch(notificationRepositoryProvider)
+        .haveNotification();
 
-class NotificationNotifier extends StateNotifier<AsyncValue<String?>> {
-  final Usuario? user;
-  final NotificationRepository notificationRepository;
-
-  NotificationNotifier(this.user, this.notificationRepository)
-    : super(const AsyncValue.loading());
-
-  Future<void> haveNotification() async {
-    final notificationId = await notificationRepository.haveNotification();
-
-    state = AsyncData(notificationId);
+    return notificationId;
   }
 }

@@ -26,7 +26,9 @@ class ArticuloPrecioTarifaPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final state = ref.watch(articuloPrecioTarifaListProvider(articuloId));
+    final state = ref.watch(
+      getArticuloPrecioTarifaListaByIdProvider(articuloId),
+    );
     return Scaffold(
       appBar: CommonAppBar(
         titleText: (S.of(context).articulo_show_articuloPreciosTarifa_titulo),

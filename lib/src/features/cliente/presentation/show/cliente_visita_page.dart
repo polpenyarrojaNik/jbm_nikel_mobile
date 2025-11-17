@@ -27,7 +27,7 @@ class ClienteVisitasPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final state = ref.watch(clienteVisitasProvider(clienteId));
+    final state = ref.watch(clienteVisitasListByIdProvider(clienteId));
     return Scaffold(
       appBar: CommonAppBar(
         titleText: (S.of(context).cliente_show_clienteVisitas_titulo),

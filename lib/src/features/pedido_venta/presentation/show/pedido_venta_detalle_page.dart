@@ -1,6 +1,9 @@
+import 'dart:io';
+
 import 'package:auto_route/auto_route.dart';
 import 'package:better_open_file/better_open_file.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/experimental/mutation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gap/gap.dart';
 
@@ -20,8 +23,9 @@ import '../../domain/pedido_local_param.dart';
 import '../../domain/pedido_venta.dart';
 import '../../infrastructure/pedido_venta_repository.dart';
 import '../index/pedido_search_controller.dart';
-import 'pedido_venta_adjunto_controller.dart';
 import 'pedido_venta_linea_tile.dart';
+
+final pedidoVentaAdjuntoMutation = Mutation<File?>();
 
 @RoutePage()
 class PedidoVentaDetallePage extends ConsumerWidget {
@@ -31,20 +35,23 @@ class PedidoVentaDetallePage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final state = ref.watch(pedidoVentaProvider(pedidoLocalParam));
+    final state = ref.watch(pedidoVentaByIdProvider(pedidoLocalParam));
 
-    ref.listen<PedidoVentaAdjuntoState>(
-      pedidoVentaAdjuntoControllerProvider,
-      (_, state) => state.when(
-        data: (file) => (file != null) ? OpenFile.open(file.path) : null,
-        error: (error) => showToast(error.toString(), context),
-        loading: () => showToast(
-          S.of(context).cliente_show_clienteAdjunto_abriendoArchivo,
+    ref.listen(pedidoVentaAdjuntoMutation, (_, state) {
+      if (state is MutationPending<File?>) {
+        showToast(
+          S.of(context).catalogos_index_catalogoAdjunto_abriendoArchivo,
           context,
-        ),
-        initial: () => null,
-      ),
-    );
+        );
+      } else if (state is MutationError<File?>) {
+        showToast(state.error.toString(), context);
+      } else if (state is MutationSuccess<File?>) {
+        final file = state.value;
+        if (file != null) {
+          OpenFile.open(file.path);
+        }
+      }
+    });
 
     return Scaffold(
       appBar: CommonAppBar(
@@ -69,10 +76,8 @@ class PedidoVentaDetallePage extends ConsumerWidget {
                 data: (ofertaHaveAttachment) => ofertaHaveAttachment
                     ? [
                         IconButton(
-                          onPressed: () => _donwloadOfertaAttachment(
-                            ref,
-                            pedidoLocalParam.pedidoId!,
-                          ),
+                          onPressed: () =>
+                              _donwloadOfertaAttachment(ref, pedidoLocalParam),
                           icon: const Icon(Icons.picture_as_pdf),
                         ),
                         if (pedidoVenta.isEditable)
@@ -116,14 +121,21 @@ class PedidoVentaDetallePage extends ConsumerWidget {
                 IconButton(
                   icon: const Icon(Icons.delete),
                   onPressed: () {
-                    ref.read(
-                      deletePedidoVentaProvider(pedidoLocalParam.pedidoAppId!),
-                    );
-                    ref.invalidate(
-                      pedidoVentaIndexScreenPaginatedControllerProvider,
-                    );
-                    ref.invalidate(pedidoVentaIndexScreenControllerProvider);
-                    context.router.maybePop();
+                    ref
+                        .read(
+                          deletePedidoVentaProvider(
+                            pedidoLocalParam.pedidoAppId!,
+                          ).future,
+                        )
+                        .then((_) {
+                          ref.invalidate(
+                            pedidoVentaIndexScreenPaginatedControllerProvider,
+                          );
+                          ref.invalidate(
+                            pedidoVentaIndexScreenControllerProvider,
+                          );
+                          context.router.maybePop();
+                        });
                   },
                 ),
               ];
@@ -162,10 +174,20 @@ class PedidoVentaDetallePage extends ConsumerWidget {
     );
   }
 
-  void _donwloadOfertaAttachment(WidgetRef ref, String pedidoVentaId) {
-    ref
-        .read(pedidoVentaAdjuntoControllerProvider.notifier)
-        .getAttachmentFile(pedidoVentaId: pedidoVentaId);
+  void _donwloadOfertaAttachment(
+    WidgetRef ref,
+    PedidoLocalParam pedidoLocalParam,
+  ) {
+    pedidoVentaAdjuntoMutation.run(ref, (tsx) async {
+      final pedidoVentaByIdStateNotifier = tsx.get(
+        pedidoVentaByIdProvider(pedidoLocalParam).notifier,
+      );
+
+      final result = await pedidoVentaByIdStateNotifier.getAttachmentFile(
+        pedidoVentaId: pedidoLocalParam.pedidoId!,
+      );
+      return result;
+    });
   }
 }
 
@@ -312,7 +334,7 @@ class AlbaranesContainer extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final state = ref.watch(pedidoVentaAlbaranProvider(pedidoVentaId));
+    final state = ref.watch(pedidoVentaAlbaranByIdProvider(pedidoVentaId));
     return state.when(
       data: (albaranes) => (albaranes.isNotEmpty)
           ? Column(
@@ -384,7 +406,7 @@ class PedidoVentaLineaContainer extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final state = ref.watch(pedidoVentaLineaProvider(pedidoLocalParam));
+    final state = ref.watch(getPedidoVentaLineaListProvider(pedidoLocalParam));
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [

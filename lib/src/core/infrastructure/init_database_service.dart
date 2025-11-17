@@ -3,9 +3,9 @@ import 'dart:io';
 import 'package:dio/dio.dart';
 import 'package:drift/drift.dart';
 import 'package:flutter_archive/flutter_archive.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:path/path.dart';
 import 'package:path_provider/path_provider.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../../features/usuario/application/usuario_notifier.dart';
 import '../../features/usuario/domain/usuario.dart';
@@ -18,9 +18,10 @@ import '../presentation/app.dart';
 import 'local_database.dart';
 import 'remote_database.dart';
 
-final initDatabaseServiceProvider = Provider.autoDispose<InitDatabaseService>((
-  ref,
-) {
+part 'init_database_service.g.dart';
+
+@riverpod
+InitDatabaseService initDatabaseService(Ref ref) {
   ref.read(appRemoteDatabaseProvider);
   return InitDatabaseService(
     ref.watch(dioProvider),
@@ -28,7 +29,7 @@ final initDatabaseServiceProvider = Provider.autoDispose<InitDatabaseService>((
     ref.watch(usuarioNotifierProvider),
     ref.watch(errorLoggerProvider),
   );
-});
+}
 
 class InitDatabaseService {
   final Dio dio;

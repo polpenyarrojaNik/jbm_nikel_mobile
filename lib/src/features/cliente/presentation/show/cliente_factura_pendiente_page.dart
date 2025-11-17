@@ -25,7 +25,7 @@ class ClientePagoPendientePage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final state = ref.watch(clientePendientePagoProvider(clienteId));
+    final state = ref.watch(clientePendientePagoListByIdProvider(clienteId));
 
     return Scaffold(
       appBar: AppBar(

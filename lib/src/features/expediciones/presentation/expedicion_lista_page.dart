@@ -43,7 +43,7 @@ class _ExpedicionListPageListPageState
         .read(syncNotifierProvider.notifier)
         .syncAllInCompute(initAppProcess: false);
 
-    ref.read(notificationNotifierProvider.notifier).haveNotification();
+    ref.read(notificationProvider.notifier).build();
   }
 
   @override
@@ -51,7 +51,7 @@ class _ExpedicionListPageListPageState
     final stateSync = ref.watch(syncNotifierProvider);
 
     ref.listen<AsyncValue<String?>>(
-      notificationNotifierProvider,
+      notificationProvider,
       (_, state) => state.whenData((notificationId) {
         if (notificationId != null) {
           context.router.push(
@@ -75,8 +75,9 @@ class _ExpedicionListPageListPageState
         title: S.of(context).commonWidgets_appDrawer_expediciones,
         searchTitle: S.of(context).pedido_index_buscarPedidos,
         onChanged: (searchText) => _debouncer.run(() {
-          ref.read(expedicionSearchQueryStateProvider.notifier).state =
-              searchText;
+          ref
+              .read(expedicionSearchQueryParamsControllerProvider.notifier)
+              .setSearchQuery(searchText);
         }),
       ),
       body: stateSync.maybeWhen(

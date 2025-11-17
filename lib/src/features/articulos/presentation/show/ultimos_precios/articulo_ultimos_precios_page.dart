@@ -53,11 +53,12 @@ class ArticuloUltimosPreciosPage extends ConsumerWidget {
         onChanged: (searchText) {
           _debouncer.run(() {
             ref
-                    .read(
-                      articuloUltimosPreciosSearchQueryStateProvider.notifier,
-                    )
-                    .state =
-                searchText;
+                .read(
+                  articuloUltimosPreciosSearchQueryParamsControllerProvider
+                      .notifier,
+                )
+                .setSearchQuery(searchText);
+            searchText;
           });
         },
       ),

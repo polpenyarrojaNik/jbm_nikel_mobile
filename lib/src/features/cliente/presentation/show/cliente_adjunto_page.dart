@@ -1,6 +1,9 @@
+import 'dart:io';
+
 import 'package:auto_route/auto_route.dart';
 import 'package:better_open_file/better_open_file.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/experimental/mutation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gap/gap.dart';
 
@@ -15,7 +18,6 @@ import '../../../../core/presentation/common_widgets/progress_indicator_widget.d
 import '../../../../core/presentation/theme/app_sizes.dart';
 import '../../../../core/presentation/toasts.dart';
 import '../../domain/cliente_adjunto.dart';
-import '../../infrastructure/cliente_repository.dart';
 import 'cliente_adjunto_controller.dart';
 
 @RoutePage()
@@ -31,21 +33,7 @@ class ClienteAdjuntoPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    ref.listen<ClienteAdjuntoState>(clienteAdjuntoControllerProvider, (
-      _,
-      state,
-    ) {
-      state.when(
-        data: (file) => (file != null) ? OpenFile.open(file.path) : null,
-        error: (error) => showToast(error.toString(), context),
-        loading: () => showToast(
-          S.of(context).cliente_show_clienteAdjunto_abriendoArchivo,
-          context,
-        ),
-        initial: () => null,
-      );
-    });
-    final state = ref.watch(clienteAdjuntoProvider(clienteId));
+    final state = ref.watch(clienteAdjuntoListByIdProvider(clienteId));
     return Scaffold(
       appBar: CommonAppBar(
         titleText: (S.of(context).cliente_show_clienteAdjunto_titulo),
@@ -97,14 +85,39 @@ class ClienteAdjuntoTile extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    ref.listen(clienteAdjuntoMutation(clienteAdjunto.nombreAdjunto), (
+      _,
+      state,
+    ) {
+      if (state is MutationPending<File?>) {
+        showToast(
+          S.of(context).cliente_show_clienteAdjunto_abriendoArchivo,
+          context,
+        );
+      } else if (state is MutationError<File?>) {
+        showToast(state.error.toString(), context);
+      } else if (state is MutationSuccess<File?>) {
+        final file = state.value;
+        if (file != null) {
+          OpenFile.open(file.path);
+        }
+      }
+    });
+
+    final state = ref.watch(
+      clienteAdjuntoMutation(clienteAdjunto.nombreAdjunto),
+    );
+
     return Padding(
       padding: kPaddingList,
       child: GestureDetector(
-        onTap: () => openFile(
-          clienteId: clienteAdjunto.clienteId,
-          nombreAdjunto: clienteAdjunto.nombreAdjunto,
-          ref: ref,
-        ),
+        onTap: state.isPending
+            ? null
+            : () => openFile(
+                clienteId: clienteAdjunto.clienteId,
+                nombreAdjunto: clienteAdjunto.nombreAdjunto,
+                ref: ref,
+              ),
         child: Card(
           elevation: 0,
           shape: RoundedRectangleBorder(
@@ -137,13 +150,19 @@ class ClienteAdjuntoTile extends ConsumerWidget {
     required String nombreAdjunto,
     required WidgetRef ref,
   }) {
-    ref
-        .read(clienteAdjuntoControllerProvider.notifier)
-        .getAttachmentFile(
-          adjuntoParam: AdjuntoParam(
-            id: clienteId,
-            nombreArchivo: nombreAdjunto,
-          ),
-        );
+    clienteAdjuntoMutation(nombreAdjunto).run(ref, (tsx) async {
+      final clienteAdjuntoListByIdStateNotifier = tsx.get(
+        clienteAdjuntoListByIdProvider(clienteId).notifier,
+      );
+
+      final result = await clienteAdjuntoListByIdStateNotifier
+          .getAttachmentFile(
+            adjuntoParam: AdjuntoParam(
+              id: clienteId,
+              nombreArchivo: nombreAdjunto,
+            ),
+          );
+      return result;
+    });
   }
 }

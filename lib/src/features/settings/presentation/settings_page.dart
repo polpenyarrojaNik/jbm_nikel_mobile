@@ -1,8 +1,9 @@
-import 'dart:async';
+import 'dart:io';
 
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
+import 'package:flutter_riverpod/experimental/mutation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:gap/gap.dart';
@@ -37,11 +38,11 @@ class SettingsPage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final usuario = ref.watch(usuarioNotifierProvider);
-    final statePackageInfo = ref.watch(packageInfoProvider);
+    final statePackageInfo = ref.watch(getPackageInfoProvider);
     final stateSync = ref.watch(syncNotifierProvider);
 
     ref.listen<AsyncValue<String?>>(
-      notificationNotifierProvider,
+      notificationProvider,
       (_, state) => state.whenData((notificationId) {
         if (notificationId != null) {
           context.router.push(
@@ -51,20 +52,15 @@ class SettingsPage extends ConsumerWidget {
       }),
     );
 
-    ref.listen<ExportDatabaseControllerState>(
-      exportDatabaseControllerProvider,
-      (_, state) {
-        state.maybeWhen(
-          orElse: () => null,
-          loading: () => unawaited(
-            showToast(S.of(context).settings_creandoArchivo, context),
-          ),
-          data: (file) =>
-              enviarDatabase(context: context, usuarioId: usuario!.id),
-          error: (error, _) => unawaited(showToast(error.toString(), context)),
-        );
-      },
-    );
+    ref.listen(exportDatabaseMutation, (_, state) {
+      if (state is MutationPending<File>) {
+        showToast(S.of(context).settings_creandoArchivo, context);
+      } else if (state is MutationSuccess<File>) {
+        enviarDatabase(context: context, usuarioId: usuario!.id);
+      } else if (state is MutationError<File>) {
+        showToast(state.error.toString(), context);
+      }
+    });
 
     return Scaffold(
       key: scaffoldKey,
@@ -157,21 +153,16 @@ class _ActualizarArchivoBaseDeDatosButton extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    ref.listen<DeleteDatabaseControllerState>(
-      deleteDatabaseControllerProvider,
-      (_, state) {
-        state.whenOrNull(
-          data: (deleted) {
-            if (deleted) {
-              ref.invalidate(syncNotifierProvider);
-              ref.invalidate(appRemoteDatabaseProvider);
-              ref.invalidate(syncServiceProvider);
-              ref.read(usuarioNotifierProvider.notifier).signOut();
-            }
-          },
-        );
-      },
-    );
+    ref.listen(deleteDatabaseMutation, (_, state) {
+      if (state is MutationSuccess<bool>) {
+        if (state.value) {
+          ref.invalidate(syncNotifierProvider);
+          ref.invalidate(appRemoteDatabaseProvider);
+          ref.invalidate(syncServiceProvider);
+          ref.read(usuarioNotifierProvider.notifier).signOut();
+        }
+      }
+    });
     return ElevatedButton(
       onPressed: () => deleteDatabase(ref),
       child: Row(
@@ -188,7 +179,16 @@ class _ActualizarArchivoBaseDeDatosButton extends ConsumerWidget {
   void deleteDatabase(WidgetRef ref) {
     ref.invalidate(appRemoteDatabaseProvider);
 
-    ref.read(deleteDatabaseControllerProvider.notifier).deleteRemoteDatabase();
+    deleteDatabaseMutation.run(ref, (tsx) async {
+      final deleteDatabaseControllerStateNotifier = tsx.get(
+        deleteDatabaseControllerProvider.notifier,
+      );
+
+      final result = await deleteDatabaseControllerStateNotifier
+          .deleteRemoteDatabase();
+
+      return result;
+    });
   }
 }
 
@@ -197,22 +197,17 @@ class _ReemplazarArchivoBaseDeDatosLocalButton extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    ref.listen<DeleteLocalDatabaseControllerState>(
-      deleteLocalDatabaseControllerProvider,
-      (_, state) {
-        state.whenOrNull(
-          data: (deleted) {
-            if (deleted) {
-              ref.invalidate(syncNotifierProvider);
-              ref.invalidate(appLocalDatabaseProvider);
-              // ref.invalidate(appRemoteDatabaseProvider);
-              ref.invalidate(syncServiceProvider);
-              ref.read(usuarioNotifierProvider.notifier).signOut();
-            }
-          },
-        );
-      },
-    );
+    ref.listen(deleteLocalDatabaseMutation, (_, state) {
+      if (state is MutationSuccess<bool>) {
+        if (state.value) {
+          ref.invalidate(syncNotifierProvider);
+          ref.invalidate(appLocalDatabaseProvider);
+          // ref.invalidate(appRemoteDatabaseProvider);
+          ref.invalidate(syncServiceProvider);
+          ref.read(usuarioNotifierProvider.notifier).signOut();
+        }
+      }
+    });
     return ElevatedButton(
       onPressed: () => replaceLocalDatabase(context, ref),
       style: ButtonStyle(backgroundColor: WidgetStateProperty.all(Colors.red)),
@@ -247,9 +242,16 @@ class _ReemplazarArchivoBaseDeDatosLocalButton extends ConsumerWidget {
       );
 
       if (correctKey != null && correctKey) {
-        await ref
-            .read(deleteLocalDatabaseControllerProvider.notifier)
-            .deleteLocalDatabase();
+        await deleteLocalDatabaseMutation.run(ref, (tsx) async {
+          final deleteLocalDatabaseControllerStateNotifier = tsx.get(
+            deleteLocalDatabaseControllerProvider.notifier,
+          );
+
+          final result = await deleteLocalDatabaseControllerStateNotifier
+              .deleteLocalDatabase();
+
+          return result;
+        });
       }
     }
   }
@@ -340,9 +342,16 @@ class _EnviarBaseDeDatosLocalButton extends ConsumerWidget {
   }
 
   void exportDatabaseIntoFile(WidgetRef ref) {
-    ref
-        .read(exportDatabaseControllerProvider.notifier)
-        .exportDatabaseIntoFile();
+    exportDatabaseMutation.run(ref, (tsx) async {
+      final exportDatabaseControllerStateNotifier = tsx.get(
+        exportDatabaseControllerProvider.notifier,
+      );
+
+      final result = await exportDatabaseControllerStateNotifier
+          .exportDatabaseIntoFile();
+
+      return result;
+    });
   }
 }
 

@@ -1,4 +1,3 @@
-import 'package:flutter_riverpod/legacy.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../../../../estadisticas/domain/estadisticas_ultimos_precios.dart';
@@ -7,10 +6,18 @@ import '../../../infrastructure/articulo_repository.dart';
 
 part 'articulo_ultimos_precios_search_controller.g.dart';
 
-final articuloUltimosPreciosSearchQueryStateProvider =
-    StateProvider.autoDispose<String>((ref) {
-      return '';
-    });
+@riverpod
+class ArticuloUltimosPreciosSearchQueryParamsController
+    extends _$ArticuloUltimosPreciosSearchQueryParamsController {
+  @override
+  String build() {
+    return '';
+  }
+
+  void setSearchQuery(String searchQuery) {
+    state = searchQuery;
+  }
+}
 
 @riverpod
 class ArticuloUltimosPreciosIndexScreenController
@@ -24,7 +31,9 @@ class ArticuloUltimosPreciosIndexScreenController
         .getArticuloUltimosPreciosCountList(
           articuloId: articuloId,
           usuarioId: ref.watch(usuarioNotifierProvider)!.id,
-          searchText: ref.watch(articuloUltimosPreciosSearchQueryStateProvider),
+          searchText: ref.watch(
+            articuloUltimosPreciosSearchQueryParamsControllerProvider,
+          ),
         );
   }
 }
@@ -45,7 +54,9 @@ class ArticuloUltimosPreciosIndexScreenPaginatedController
           articuloId: articuloId,
           usuarioId: ref.watch(usuarioNotifierProvider)!.id,
           page: page,
-          searchText: ref.watch(articuloUltimosPreciosSearchQueryStateProvider),
+          searchText: ref.watch(
+            articuloUltimosPreciosSearchQueryParamsControllerProvider,
+          ),
         );
   }
 }
