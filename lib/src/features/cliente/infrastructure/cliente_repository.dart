@@ -880,7 +880,7 @@ class ClienteRepository {
       final data = await _remoteGetAttachment(
         requestUri: (test)
             ? Uri.http(
-                dotenv.get('URL', fallback: 'localhost:3001'),
+                dotenv.get('URL_TEST', fallback: 'localhost:3001'),
                 'api/v1/online/adjunto/cliente/${adjuntoParam.id}',
                 query,
               )
@@ -2490,7 +2490,7 @@ GROUP BY ARTICULO_ID, DESCRIPCION
       final data = await _remoteGetAttachment(
         requestUri: (test)
             ? Uri.http(
-                dotenv.get('URL', fallback: 'localhost:3001'),
+                dotenv.get('URL_TEST', fallback: 'localhost:3001'),
                 'api/v1/online/adjunto/albaran/${adjuntoParam.id}',
                 query,
               )
@@ -2533,7 +2533,7 @@ GROUP BY ARTICULO_ID, DESCRIPCION
       final data = await _remoteGetAttachment(
         requestUri: (test)
             ? Uri.http(
-                dotenv.get('URL', fallback: 'localhost:3001'),
+                dotenv.get('URL_TEST', fallback: 'localhost:3001'),
                 'api/v1/online/adjunto/factura/${adjuntoParam.id}',
                 query,
               )

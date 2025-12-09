@@ -1294,6 +1294,8 @@ class PedidoVentaRepository {
               'api/v4/online/pedidos',
             );
 
+      log.i('JSON: ${jsonEncode(pedidoVentaLineasLocalListToJson)}');
+
       final response = await _dio.postUri(
         requestUri,
         options: Options(

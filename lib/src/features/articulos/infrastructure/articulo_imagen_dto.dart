@@ -29,7 +29,7 @@ abstract class ArticuloImagenDTO with _$ArticuloImagenDTO {
 
   String getImageUrl(String articuloId, String nombreArchivo, bool test) {
     return (test)
-        ? 'http://${dotenv.get('URL', fallback: 'localhost:3001')}/api/v1/online/adjunto/articulo/$articuloId/img?NOMBRE_ARCHIVO=$nombreArchivo'
+        ? 'http://${dotenv.get('URL_TEST', fallback: 'localhost:3001')}/api/v1/online/adjunto/articulo/$articuloId/img?NOMBRE_ARCHIVO=$nombreArchivo'
         : 'https://${dotenv.get('URL', fallback: 'localhost:3001')}/api/v1/online/adjunto/articulo/$articuloId/img?NOMBRE_ARCHIVO=$nombreArchivo';
   }
 }

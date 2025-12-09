@@ -167,22 +167,6 @@ class GetArticuloDocumentoListaById extends _$GetArticuloDocumentoListaById {
 }
 
 @riverpod
-class GetArticuloImageFile extends _$GetArticuloImageFile {
-  @override
-  Future<Uint8List?> build(AdjuntoParam adjuntoParam) async {
-    final articuloRepository = ref.watch(articuloRepositoryProvider);
-    final usuario = await ref
-        .watch(usuarioServiceProvider)
-        .getSignedInUsuario();
-    return articuloRepository.getImageFile(
-      adjuntoParam: adjuntoParam,
-      provisionalToken: usuario!.provisionalToken,
-      test: usuario.test,
-    );
-  }
-}
-
-@riverpod
 class GetArticuloPedidoVentaLineaListById
     extends _$GetArticuloPedidoVentaLineaListById {
   @override
@@ -712,7 +696,7 @@ SELECT *
       final dataImage = await _remoteGetAttachment(
         requestUri: (test)
             ? Uri.http(
-                dotenv.get('URL', fallback: 'localhost:3001'),
+                dotenv.get('URL_TEST', fallback: 'localhost:3001'),
                 'api/v1/online/adjunto/articulo/${adjuntoParam.id}/img',
                 query,
               )
@@ -740,7 +724,7 @@ SELECT *
       final data = await _remoteGetAttachment(
         requestUri: (test)
             ? Uri.http(
-                dotenv.get('URL', fallback: 'localhost:3001'),
+                dotenv.get('URL_TEST', fallback: 'localhost:3001'),
                 'api/v1/online/adjunto/articulo/${adjuntoParam.id}/doc',
                 query,
               )
@@ -783,7 +767,7 @@ SELECT *
       final data = await _remoteGetAttachment(
         requestUri: (test)
             ? Uri.http(
-                dotenv.get('URL', fallback: 'localhost:3001'),
+                dotenv.get('URL_TEST', fallback: 'localhost:3001'),
                 'api/v1/online/adjunto/cliente/${adjuntoParam.id}',
                 query,
               )
