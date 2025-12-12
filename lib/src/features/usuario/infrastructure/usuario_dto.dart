@@ -30,6 +30,7 @@ abstract class UsuarioDTO with _$UsuarioDTO {
     @JsonKey(name: 'MARGEN_COMERCIAL') double? margenComercial,
     @JsonKey(name: 'COSTE_SN') required String costeSn,
     @JsonKey(name: 'FILTRO_REPRESENTANTE') required String filtroRepresentante,
+    @JsonKey(name: 'IA_ACTIVA') required String iaActiva,
   }) = _UsuarioDTO;
 
   DateTime get expiration {
@@ -67,6 +68,7 @@ abstract class UsuarioDTO with _$UsuarioDTO {
       deviceInfo: usuario.deviceInfo,
       costeSn: usuario.costeSn ? 'S' : 'N',
       filtroRepresentante: usuario.filtroRepresentante ? 'S' : 'N',
+      iaActiva: usuario.iaActiva ? 'S' : 'N',
     );
   }
 
@@ -89,6 +91,7 @@ abstract class UsuarioDTO with _$UsuarioDTO {
       deviceInfo: deviceInfo!,
       costeSn: costeSn == 'S',
       filtroRepresentante: filtroRepresentante == 'S',
+      iaActiva: iaActiva == 'S',
     );
   }
 }

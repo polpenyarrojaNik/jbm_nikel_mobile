@@ -14,7 +14,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$Usuario {
 
- String get id; String get usuario; String get contrasenya; String? get nombreUsuario; String? get refreshToken; String get provisionalToken; bool get test; String get idiomaId; bool get modificarPedido; bool get verTotalVentas; double get margenComercial; String get packageName; String get version; String get buildNumber; String get deviceInfo; bool get costeSn; bool get filtroRepresentante;
+ String get id; String get usuario; String get contrasenya; String? get nombreUsuario; String? get refreshToken; String get provisionalToken; bool get test; String get idiomaId; bool get modificarPedido; bool get verTotalVentas; double get margenComercial; String get packageName; String get version; String get buildNumber; String get deviceInfo; bool get costeSn; bool get filtroRepresentante; bool get iaActiva;
 /// Create a copy of Usuario
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -25,16 +25,16 @@ $UsuarioCopyWith<Usuario> get copyWith => _$UsuarioCopyWithImpl<Usuario>(this as
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is Usuario&&(identical(other.id, id) || other.id == id)&&(identical(other.usuario, usuario) || other.usuario == usuario)&&(identical(other.contrasenya, contrasenya) || other.contrasenya == contrasenya)&&(identical(other.nombreUsuario, nombreUsuario) || other.nombreUsuario == nombreUsuario)&&(identical(other.refreshToken, refreshToken) || other.refreshToken == refreshToken)&&(identical(other.provisionalToken, provisionalToken) || other.provisionalToken == provisionalToken)&&(identical(other.test, test) || other.test == test)&&(identical(other.idiomaId, idiomaId) || other.idiomaId == idiomaId)&&(identical(other.modificarPedido, modificarPedido) || other.modificarPedido == modificarPedido)&&(identical(other.verTotalVentas, verTotalVentas) || other.verTotalVentas == verTotalVentas)&&(identical(other.margenComercial, margenComercial) || other.margenComercial == margenComercial)&&(identical(other.packageName, packageName) || other.packageName == packageName)&&(identical(other.version, version) || other.version == version)&&(identical(other.buildNumber, buildNumber) || other.buildNumber == buildNumber)&&(identical(other.deviceInfo, deviceInfo) || other.deviceInfo == deviceInfo)&&(identical(other.costeSn, costeSn) || other.costeSn == costeSn)&&(identical(other.filtroRepresentante, filtroRepresentante) || other.filtroRepresentante == filtroRepresentante));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is Usuario&&(identical(other.id, id) || other.id == id)&&(identical(other.usuario, usuario) || other.usuario == usuario)&&(identical(other.contrasenya, contrasenya) || other.contrasenya == contrasenya)&&(identical(other.nombreUsuario, nombreUsuario) || other.nombreUsuario == nombreUsuario)&&(identical(other.refreshToken, refreshToken) || other.refreshToken == refreshToken)&&(identical(other.provisionalToken, provisionalToken) || other.provisionalToken == provisionalToken)&&(identical(other.test, test) || other.test == test)&&(identical(other.idiomaId, idiomaId) || other.idiomaId == idiomaId)&&(identical(other.modificarPedido, modificarPedido) || other.modificarPedido == modificarPedido)&&(identical(other.verTotalVentas, verTotalVentas) || other.verTotalVentas == verTotalVentas)&&(identical(other.margenComercial, margenComercial) || other.margenComercial == margenComercial)&&(identical(other.packageName, packageName) || other.packageName == packageName)&&(identical(other.version, version) || other.version == version)&&(identical(other.buildNumber, buildNumber) || other.buildNumber == buildNumber)&&(identical(other.deviceInfo, deviceInfo) || other.deviceInfo == deviceInfo)&&(identical(other.costeSn, costeSn) || other.costeSn == costeSn)&&(identical(other.filtroRepresentante, filtroRepresentante) || other.filtroRepresentante == filtroRepresentante)&&(identical(other.iaActiva, iaActiva) || other.iaActiva == iaActiva));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,id,usuario,contrasenya,nombreUsuario,refreshToken,provisionalToken,test,idiomaId,modificarPedido,verTotalVentas,margenComercial,packageName,version,buildNumber,deviceInfo,costeSn,filtroRepresentante);
+int get hashCode => Object.hash(runtimeType,id,usuario,contrasenya,nombreUsuario,refreshToken,provisionalToken,test,idiomaId,modificarPedido,verTotalVentas,margenComercial,packageName,version,buildNumber,deviceInfo,costeSn,filtroRepresentante,iaActiva);
 
 @override
 String toString() {
-  return 'Usuario(id: $id, usuario: $usuario, contrasenya: $contrasenya, nombreUsuario: $nombreUsuario, refreshToken: $refreshToken, provisionalToken: $provisionalToken, test: $test, idiomaId: $idiomaId, modificarPedido: $modificarPedido, verTotalVentas: $verTotalVentas, margenComercial: $margenComercial, packageName: $packageName, version: $version, buildNumber: $buildNumber, deviceInfo: $deviceInfo, costeSn: $costeSn, filtroRepresentante: $filtroRepresentante)';
+  return 'Usuario(id: $id, usuario: $usuario, contrasenya: $contrasenya, nombreUsuario: $nombreUsuario, refreshToken: $refreshToken, provisionalToken: $provisionalToken, test: $test, idiomaId: $idiomaId, modificarPedido: $modificarPedido, verTotalVentas: $verTotalVentas, margenComercial: $margenComercial, packageName: $packageName, version: $version, buildNumber: $buildNumber, deviceInfo: $deviceInfo, costeSn: $costeSn, filtroRepresentante: $filtroRepresentante, iaActiva: $iaActiva)';
 }
 
 
@@ -45,7 +45,7 @@ abstract mixin class $UsuarioCopyWith<$Res>  {
   factory $UsuarioCopyWith(Usuario value, $Res Function(Usuario) _then) = _$UsuarioCopyWithImpl;
 @useResult
 $Res call({
- String id, String usuario, String contrasenya, String? nombreUsuario, String? refreshToken, String provisionalToken, bool test, String idiomaId, bool modificarPedido, bool verTotalVentas, double margenComercial, String packageName, String version, String buildNumber, String deviceInfo, bool costeSn, bool filtroRepresentante
+ String id, String usuario, String contrasenya, String? nombreUsuario, String? refreshToken, String provisionalToken, bool test, String idiomaId, bool modificarPedido, bool verTotalVentas, double margenComercial, String packageName, String version, String buildNumber, String deviceInfo, bool costeSn, bool filtroRepresentante, bool iaActiva
 });
 
 
@@ -62,7 +62,7 @@ class _$UsuarioCopyWithImpl<$Res>
 
 /// Create a copy of Usuario
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? usuario = null,Object? contrasenya = null,Object? nombreUsuario = freezed,Object? refreshToken = freezed,Object? provisionalToken = null,Object? test = null,Object? idiomaId = null,Object? modificarPedido = null,Object? verTotalVentas = null,Object? margenComercial = null,Object? packageName = null,Object? version = null,Object? buildNumber = null,Object? deviceInfo = null,Object? costeSn = null,Object? filtroRepresentante = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? usuario = null,Object? contrasenya = null,Object? nombreUsuario = freezed,Object? refreshToken = freezed,Object? provisionalToken = null,Object? test = null,Object? idiomaId = null,Object? modificarPedido = null,Object? verTotalVentas = null,Object? margenComercial = null,Object? packageName = null,Object? version = null,Object? buildNumber = null,Object? deviceInfo = null,Object? costeSn = null,Object? filtroRepresentante = null,Object? iaActiva = null,}) {
   return _then(_self.copyWith(
 id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as String,usuario: null == usuario ? _self.usuario : usuario // ignore: cast_nullable_to_non_nullable
@@ -81,6 +81,7 @@ as String,buildNumber: null == buildNumber ? _self.buildNumber : buildNumber // 
 as String,deviceInfo: null == deviceInfo ? _self.deviceInfo : deviceInfo // ignore: cast_nullable_to_non_nullable
 as String,costeSn: null == costeSn ? _self.costeSn : costeSn // ignore: cast_nullable_to_non_nullable
 as bool,filtroRepresentante: null == filtroRepresentante ? _self.filtroRepresentante : filtroRepresentante // ignore: cast_nullable_to_non_nullable
+as bool,iaActiva: null == iaActiva ? _self.iaActiva : iaActiva // ignore: cast_nullable_to_non_nullable
 as bool,
   ));
 }
@@ -166,10 +167,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String id,  String usuario,  String contrasenya,  String? nombreUsuario,  String? refreshToken,  String provisionalToken,  bool test,  String idiomaId,  bool modificarPedido,  bool verTotalVentas,  double margenComercial,  String packageName,  String version,  String buildNumber,  String deviceInfo,  bool costeSn,  bool filtroRepresentante)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String id,  String usuario,  String contrasenya,  String? nombreUsuario,  String? refreshToken,  String provisionalToken,  bool test,  String idiomaId,  bool modificarPedido,  bool verTotalVentas,  double margenComercial,  String packageName,  String version,  String buildNumber,  String deviceInfo,  bool costeSn,  bool filtroRepresentante,  bool iaActiva)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _Usuario() when $default != null:
-return $default(_that.id,_that.usuario,_that.contrasenya,_that.nombreUsuario,_that.refreshToken,_that.provisionalToken,_that.test,_that.idiomaId,_that.modificarPedido,_that.verTotalVentas,_that.margenComercial,_that.packageName,_that.version,_that.buildNumber,_that.deviceInfo,_that.costeSn,_that.filtroRepresentante);case _:
+return $default(_that.id,_that.usuario,_that.contrasenya,_that.nombreUsuario,_that.refreshToken,_that.provisionalToken,_that.test,_that.idiomaId,_that.modificarPedido,_that.verTotalVentas,_that.margenComercial,_that.packageName,_that.version,_that.buildNumber,_that.deviceInfo,_that.costeSn,_that.filtroRepresentante,_that.iaActiva);case _:
   return orElse();
 
 }
@@ -187,10 +188,10 @@ return $default(_that.id,_that.usuario,_that.contrasenya,_that.nombreUsuario,_th
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String id,  String usuario,  String contrasenya,  String? nombreUsuario,  String? refreshToken,  String provisionalToken,  bool test,  String idiomaId,  bool modificarPedido,  bool verTotalVentas,  double margenComercial,  String packageName,  String version,  String buildNumber,  String deviceInfo,  bool costeSn,  bool filtroRepresentante)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String id,  String usuario,  String contrasenya,  String? nombreUsuario,  String? refreshToken,  String provisionalToken,  bool test,  String idiomaId,  bool modificarPedido,  bool verTotalVentas,  double margenComercial,  String packageName,  String version,  String buildNumber,  String deviceInfo,  bool costeSn,  bool filtroRepresentante,  bool iaActiva)  $default,) {final _that = this;
 switch (_that) {
 case _Usuario():
-return $default(_that.id,_that.usuario,_that.contrasenya,_that.nombreUsuario,_that.refreshToken,_that.provisionalToken,_that.test,_that.idiomaId,_that.modificarPedido,_that.verTotalVentas,_that.margenComercial,_that.packageName,_that.version,_that.buildNumber,_that.deviceInfo,_that.costeSn,_that.filtroRepresentante);case _:
+return $default(_that.id,_that.usuario,_that.contrasenya,_that.nombreUsuario,_that.refreshToken,_that.provisionalToken,_that.test,_that.idiomaId,_that.modificarPedido,_that.verTotalVentas,_that.margenComercial,_that.packageName,_that.version,_that.buildNumber,_that.deviceInfo,_that.costeSn,_that.filtroRepresentante,_that.iaActiva);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -207,10 +208,10 @@ return $default(_that.id,_that.usuario,_that.contrasenya,_that.nombreUsuario,_th
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String id,  String usuario,  String contrasenya,  String? nombreUsuario,  String? refreshToken,  String provisionalToken,  bool test,  String idiomaId,  bool modificarPedido,  bool verTotalVentas,  double margenComercial,  String packageName,  String version,  String buildNumber,  String deviceInfo,  bool costeSn,  bool filtroRepresentante)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String id,  String usuario,  String contrasenya,  String? nombreUsuario,  String? refreshToken,  String provisionalToken,  bool test,  String idiomaId,  bool modificarPedido,  bool verTotalVentas,  double margenComercial,  String packageName,  String version,  String buildNumber,  String deviceInfo,  bool costeSn,  bool filtroRepresentante,  bool iaActiva)?  $default,) {final _that = this;
 switch (_that) {
 case _Usuario() when $default != null:
-return $default(_that.id,_that.usuario,_that.contrasenya,_that.nombreUsuario,_that.refreshToken,_that.provisionalToken,_that.test,_that.idiomaId,_that.modificarPedido,_that.verTotalVentas,_that.margenComercial,_that.packageName,_that.version,_that.buildNumber,_that.deviceInfo,_that.costeSn,_that.filtroRepresentante);case _:
+return $default(_that.id,_that.usuario,_that.contrasenya,_that.nombreUsuario,_that.refreshToken,_that.provisionalToken,_that.test,_that.idiomaId,_that.modificarPedido,_that.verTotalVentas,_that.margenComercial,_that.packageName,_that.version,_that.buildNumber,_that.deviceInfo,_that.costeSn,_that.filtroRepresentante,_that.iaActiva);case _:
   return null;
 
 }
@@ -222,7 +223,7 @@ return $default(_that.id,_that.usuario,_that.contrasenya,_that.nombreUsuario,_th
 
 
 class _Usuario extends Usuario {
-  const _Usuario({required this.id, required this.usuario, required this.contrasenya, this.nombreUsuario, this.refreshToken, required this.provisionalToken, required this.test, required this.idiomaId, required this.modificarPedido, required this.verTotalVentas, required this.margenComercial, required this.packageName, required this.version, required this.buildNumber, required this.deviceInfo, required this.costeSn, required this.filtroRepresentante}): super._();
+  const _Usuario({required this.id, required this.usuario, required this.contrasenya, this.nombreUsuario, this.refreshToken, required this.provisionalToken, required this.test, required this.idiomaId, required this.modificarPedido, required this.verTotalVentas, required this.margenComercial, required this.packageName, required this.version, required this.buildNumber, required this.deviceInfo, required this.costeSn, required this.filtroRepresentante, required this.iaActiva}): super._();
   
 
 @override final  String id;
@@ -242,6 +243,7 @@ class _Usuario extends Usuario {
 @override final  String deviceInfo;
 @override final  bool costeSn;
 @override final  bool filtroRepresentante;
+@override final  bool iaActiva;
 
 /// Create a copy of Usuario
 /// with the given fields replaced by the non-null parameter values.
@@ -253,16 +255,16 @@ _$UsuarioCopyWith<_Usuario> get copyWith => __$UsuarioCopyWithImpl<_Usuario>(thi
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Usuario&&(identical(other.id, id) || other.id == id)&&(identical(other.usuario, usuario) || other.usuario == usuario)&&(identical(other.contrasenya, contrasenya) || other.contrasenya == contrasenya)&&(identical(other.nombreUsuario, nombreUsuario) || other.nombreUsuario == nombreUsuario)&&(identical(other.refreshToken, refreshToken) || other.refreshToken == refreshToken)&&(identical(other.provisionalToken, provisionalToken) || other.provisionalToken == provisionalToken)&&(identical(other.test, test) || other.test == test)&&(identical(other.idiomaId, idiomaId) || other.idiomaId == idiomaId)&&(identical(other.modificarPedido, modificarPedido) || other.modificarPedido == modificarPedido)&&(identical(other.verTotalVentas, verTotalVentas) || other.verTotalVentas == verTotalVentas)&&(identical(other.margenComercial, margenComercial) || other.margenComercial == margenComercial)&&(identical(other.packageName, packageName) || other.packageName == packageName)&&(identical(other.version, version) || other.version == version)&&(identical(other.buildNumber, buildNumber) || other.buildNumber == buildNumber)&&(identical(other.deviceInfo, deviceInfo) || other.deviceInfo == deviceInfo)&&(identical(other.costeSn, costeSn) || other.costeSn == costeSn)&&(identical(other.filtroRepresentante, filtroRepresentante) || other.filtroRepresentante == filtroRepresentante));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Usuario&&(identical(other.id, id) || other.id == id)&&(identical(other.usuario, usuario) || other.usuario == usuario)&&(identical(other.contrasenya, contrasenya) || other.contrasenya == contrasenya)&&(identical(other.nombreUsuario, nombreUsuario) || other.nombreUsuario == nombreUsuario)&&(identical(other.refreshToken, refreshToken) || other.refreshToken == refreshToken)&&(identical(other.provisionalToken, provisionalToken) || other.provisionalToken == provisionalToken)&&(identical(other.test, test) || other.test == test)&&(identical(other.idiomaId, idiomaId) || other.idiomaId == idiomaId)&&(identical(other.modificarPedido, modificarPedido) || other.modificarPedido == modificarPedido)&&(identical(other.verTotalVentas, verTotalVentas) || other.verTotalVentas == verTotalVentas)&&(identical(other.margenComercial, margenComercial) || other.margenComercial == margenComercial)&&(identical(other.packageName, packageName) || other.packageName == packageName)&&(identical(other.version, version) || other.version == version)&&(identical(other.buildNumber, buildNumber) || other.buildNumber == buildNumber)&&(identical(other.deviceInfo, deviceInfo) || other.deviceInfo == deviceInfo)&&(identical(other.costeSn, costeSn) || other.costeSn == costeSn)&&(identical(other.filtroRepresentante, filtroRepresentante) || other.filtroRepresentante == filtroRepresentante)&&(identical(other.iaActiva, iaActiva) || other.iaActiva == iaActiva));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,id,usuario,contrasenya,nombreUsuario,refreshToken,provisionalToken,test,idiomaId,modificarPedido,verTotalVentas,margenComercial,packageName,version,buildNumber,deviceInfo,costeSn,filtroRepresentante);
+int get hashCode => Object.hash(runtimeType,id,usuario,contrasenya,nombreUsuario,refreshToken,provisionalToken,test,idiomaId,modificarPedido,verTotalVentas,margenComercial,packageName,version,buildNumber,deviceInfo,costeSn,filtroRepresentante,iaActiva);
 
 @override
 String toString() {
-  return 'Usuario(id: $id, usuario: $usuario, contrasenya: $contrasenya, nombreUsuario: $nombreUsuario, refreshToken: $refreshToken, provisionalToken: $provisionalToken, test: $test, idiomaId: $idiomaId, modificarPedido: $modificarPedido, verTotalVentas: $verTotalVentas, margenComercial: $margenComercial, packageName: $packageName, version: $version, buildNumber: $buildNumber, deviceInfo: $deviceInfo, costeSn: $costeSn, filtroRepresentante: $filtroRepresentante)';
+  return 'Usuario(id: $id, usuario: $usuario, contrasenya: $contrasenya, nombreUsuario: $nombreUsuario, refreshToken: $refreshToken, provisionalToken: $provisionalToken, test: $test, idiomaId: $idiomaId, modificarPedido: $modificarPedido, verTotalVentas: $verTotalVentas, margenComercial: $margenComercial, packageName: $packageName, version: $version, buildNumber: $buildNumber, deviceInfo: $deviceInfo, costeSn: $costeSn, filtroRepresentante: $filtroRepresentante, iaActiva: $iaActiva)';
 }
 
 
@@ -273,7 +275,7 @@ abstract mixin class _$UsuarioCopyWith<$Res> implements $UsuarioCopyWith<$Res> {
   factory _$UsuarioCopyWith(_Usuario value, $Res Function(_Usuario) _then) = __$UsuarioCopyWithImpl;
 @override @useResult
 $Res call({
- String id, String usuario, String contrasenya, String? nombreUsuario, String? refreshToken, String provisionalToken, bool test, String idiomaId, bool modificarPedido, bool verTotalVentas, double margenComercial, String packageName, String version, String buildNumber, String deviceInfo, bool costeSn, bool filtroRepresentante
+ String id, String usuario, String contrasenya, String? nombreUsuario, String? refreshToken, String provisionalToken, bool test, String idiomaId, bool modificarPedido, bool verTotalVentas, double margenComercial, String packageName, String version, String buildNumber, String deviceInfo, bool costeSn, bool filtroRepresentante, bool iaActiva
 });
 
 
@@ -290,7 +292,7 @@ class __$UsuarioCopyWithImpl<$Res>
 
 /// Create a copy of Usuario
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? usuario = null,Object? contrasenya = null,Object? nombreUsuario = freezed,Object? refreshToken = freezed,Object? provisionalToken = null,Object? test = null,Object? idiomaId = null,Object? modificarPedido = null,Object? verTotalVentas = null,Object? margenComercial = null,Object? packageName = null,Object? version = null,Object? buildNumber = null,Object? deviceInfo = null,Object? costeSn = null,Object? filtroRepresentante = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? usuario = null,Object? contrasenya = null,Object? nombreUsuario = freezed,Object? refreshToken = freezed,Object? provisionalToken = null,Object? test = null,Object? idiomaId = null,Object? modificarPedido = null,Object? verTotalVentas = null,Object? margenComercial = null,Object? packageName = null,Object? version = null,Object? buildNumber = null,Object? deviceInfo = null,Object? costeSn = null,Object? filtroRepresentante = null,Object? iaActiva = null,}) {
   return _then(_Usuario(
 id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as String,usuario: null == usuario ? _self.usuario : usuario // ignore: cast_nullable_to_non_nullable
@@ -309,6 +311,7 @@ as String,buildNumber: null == buildNumber ? _self.buildNumber : buildNumber // 
 as String,deviceInfo: null == deviceInfo ? _self.deviceInfo : deviceInfo // ignore: cast_nullable_to_non_nullable
 as String,costeSn: null == costeSn ? _self.costeSn : costeSn // ignore: cast_nullable_to_non_nullable
 as bool,filtroRepresentante: null == filtroRepresentante ? _self.filtroRepresentante : filtroRepresentante // ignore: cast_nullable_to_non_nullable
+as bool,iaActiva: null == iaActiva ? _self.iaActiva : iaActiva // ignore: cast_nullable_to_non_nullable
 as bool,
   ));
 }
