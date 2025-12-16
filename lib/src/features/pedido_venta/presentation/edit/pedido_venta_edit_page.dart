@@ -187,11 +187,11 @@ class _PedidoVentaEditPageState extends ConsumerState<PedidoVentaEditPage> {
                   oferta,
                   ofertaFechaHasta,
                   isBorrador,
-                ) => (!widget.isEdit || isBorrador)
+                ) => ((!widget.isEdit || isBorrador) && cliente != null)
                 ? IconButton(
                     icon: const Icon(Icons.save_as),
                     onPressed: () => saveBorrador(
-                      cliente: cliente!,
+                      cliente: cliente,
                       clienteDireccion: clienteDireccion,
                       pedidoVentaLineaList: pedidoVentaLineaList,
 

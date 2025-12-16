@@ -318,7 +318,8 @@ class _SelecionarCantidadPageState
         ],
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () => (articulo != null && cliente != null)
+        onPressed: () =>
+            (articuloPrecio != null && articulo != null && cliente != null)
             ? navigateToCrearPedido(
                 context,
                 articuloPrecio!,
