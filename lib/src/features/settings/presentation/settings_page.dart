@@ -169,7 +169,7 @@ class _ActualizarArchivoBaseDeDatosButton extends ConsumerWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           const Icon(Icons.refresh),
-          const SizedBox(width: 5),
+          const Gap(5),
           Text(S.of(context).settings_reemplazarBaseDeDatos),
         ],
       ),
@@ -215,7 +215,7 @@ class _ReemplazarArchivoBaseDeDatosLocalButton extends ConsumerWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Icon(Icons.refresh, color: Theme.of(context).colorScheme.onError),
-          const SizedBox(width: 5),
+          const Gap(5),
           Flexible(
             child: Text(
               S.of(context).settings_reemplazarBaseDeDatosLocal,
@@ -334,7 +334,7 @@ class _EnviarBaseDeDatosLocalButton extends ConsumerWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           const Icon(Icons.email),
-          const SizedBox(width: 5),
+          const Gap(5),
           Text(S.of(context).settings_enviarBaseDeDatos),
         ],
       ),
@@ -366,7 +366,7 @@ class _SignoutButton extends ConsumerWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           const Icon(Icons.logout),
-          const SizedBox(width: 5),
+          const Gap(5),
           Text(S.of(context).settings_cerrar_sesion),
         ],
       ),

@@ -112,56 +112,41 @@ class _VentasMesDataTableState extends State<VentasMesDataTable> {
   List<DataColumn> _createColumns() {
     return [
       DataColumn(
-        label: Expanded(
-          child: Text(
-            S.of(context).cliente_show_clienteVentasMes_mes,
-            textAlign: TextAlign.left,
-          ),
+        label: Text(
+          S.of(context).cliente_show_clienteVentasMes_mes,
+          textAlign: TextAlign.left,
         ),
         numeric: true,
       ),
       DataColumn(
-        label: Expanded(
-          child: Text(
-            DateTime.now().year.toString(),
-            textAlign: TextAlign.right,
-          ),
+        label: Text(DateTime.now().year.toString(), textAlign: TextAlign.right),
+        numeric: false,
+      ),
+      DataColumn(
+        label: Text(
+          (DateTime.now().year - 1).toString(),
+          textAlign: TextAlign.right,
         ),
         numeric: false,
       ),
       DataColumn(
-        label: Expanded(
-          child: Text(
-            (DateTime.now().year - 1).toString(),
-            textAlign: TextAlign.right,
-          ),
+        label: Text(
+          (DateTime.now().year - 2).toString(),
+          textAlign: TextAlign.right,
         ),
         numeric: false,
       ),
       DataColumn(
-        label: Expanded(
-          child: Text(
-            (DateTime.now().year - 2).toString(),
-            textAlign: TextAlign.right,
-          ),
+        label: Text(
+          (DateTime.now().year - 3).toString(),
+          textAlign: TextAlign.right,
         ),
         numeric: false,
       ),
       DataColumn(
-        label: Expanded(
-          child: Text(
-            (DateTime.now().year - 3).toString(),
-            textAlign: TextAlign.right,
-          ),
-        ),
-        numeric: false,
-      ),
-      DataColumn(
-        label: Expanded(
-          child: Text(
-            (DateTime.now().year - 4).toString(),
-            textAlign: TextAlign.right,
-          ),
+        label: Text(
+          (DateTime.now().year - 4).toString(),
+          textAlign: TextAlign.right,
         ),
         numeric: false,
       ),

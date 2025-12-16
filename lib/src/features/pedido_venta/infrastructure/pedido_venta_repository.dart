@@ -139,7 +139,7 @@ class OfertaHaveAttachment extends _$OfertaHaveAttachment {
 @riverpod
 class DeletePedidoVenta extends _$DeletePedidoVenta {
   @override
-  Future<void> build(String pedidoVentaAppId) async {
+  Future<void> build(String pedidoVentaAppId) {
     final pedidoVentaRepository = ref.watch(pedidoVentaRepositoryProvider);
     return pedidoVentaRepository.deletePedidoVenta(
       pedidoVentaAppId: pedidoVentaAppId,

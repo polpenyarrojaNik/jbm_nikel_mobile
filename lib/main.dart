@@ -19,9 +19,6 @@ void main() async {
       await dotenv.load();
       Currencies().registerList(currencies);
 
-      //TODO REMOVE this for release builds
-      // await Upgrader.clearSavedSettings();
-
       if (kReleaseMode) {
         await SentryFlutter.init((options) {
           options.dsn = dotenv.get('SENTRY_DNS');

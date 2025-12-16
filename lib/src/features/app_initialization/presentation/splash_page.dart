@@ -104,7 +104,7 @@ class _ReintentarSyncButton extends ConsumerWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           const Icon(Icons.refresh),
-          const SizedBox(width: 5),
+          const Gap(5),
           Text(S.of(context).settings_reemplazarBaseDeDatos),
         ],
       ),

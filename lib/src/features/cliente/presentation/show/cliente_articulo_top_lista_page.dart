@@ -88,11 +88,9 @@ class _ArticulosTopDataTableState extends State<ArticulosTopDataTable> {
   List<DataColumn> _createColumns() {
     return [
       DataColumn(
-        label: Expanded(
-          child: Text(
-            S.of(context).cliente_show_clienteArticulosTop_num,
-            textAlign: TextAlign.center,
-          ),
+        label: Text(
+          S.of(context).cliente_show_clienteArticulosTop_num,
+          textAlign: TextAlign.center,
         ),
         numeric: true,
       ),
@@ -104,29 +102,23 @@ class _ArticulosTopDataTableState extends State<ArticulosTopDataTable> {
         numeric: false,
       ),
       DataColumn(
-        label: Expanded(
-          child: Text(
-            S.of(context).cliente_show_clienteArticulosTop_descripcion,
-            textAlign: TextAlign.left,
-          ),
+        label: Text(
+          S.of(context).cliente_show_clienteArticulosTop_descripcion,
+          textAlign: TextAlign.left,
         ),
         numeric: false,
       ),
       DataColumn(
-        label: Expanded(
-          child: Text(
-            S.of(context).cliente_show_clienteArticulosTop_ventasTotal,
-            textAlign: TextAlign.right,
-          ),
+        label: Text(
+          S.of(context).cliente_show_clienteArticulosTop_ventasTotal,
+          textAlign: TextAlign.right,
         ),
         numeric: false,
       ),
       DataColumn(
-        label: Expanded(
-          child: Text(
-            S.of(context).cliente_show_clienteArticulosTop_ventasCliente,
-            textAlign: TextAlign.right,
-          ),
+        label: Text(
+          S.of(context).cliente_show_clienteArticulosTop_ventasCliente,
+          textAlign: TextAlign.right,
         ),
         numeric: false,
       ),

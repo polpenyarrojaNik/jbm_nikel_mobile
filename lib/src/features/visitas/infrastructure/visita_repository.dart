@@ -1004,6 +1004,7 @@ class VisitaRepository {
                     RecognizedTextType.unknown,
                   ),
                 );
+                break;
             }
           }
         }

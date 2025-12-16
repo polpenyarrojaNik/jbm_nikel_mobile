@@ -8,6 +8,8 @@ import '../../../../core/presentation/common_widgets/common_app_bar.dart';
 import '../../../../core/presentation/common_widgets/error_message_widget.dart';
 import '../../../../core/presentation/common_widgets/header_datos_relacionados.dart';
 import '../../../../core/presentation/common_widgets/progress_indicator_widget.dart';
+import '../../../../core/routing/app_auto_router.dart';
+import '../../../pedido_venta/domain/pedido_local_param.dart';
 import '../../../pedido_venta/presentation/index/pedido_venta_lista_tile.dart';
 import '../../infrastructure/cliente_repository.dart';
 
@@ -47,7 +49,11 @@ class ClientePedidosPage extends ConsumerWidget {
                         padding: const EdgeInsets.symmetric(horizontal: 16.0),
                         child: PedidoVentaListaTile(
                           pedidoVenta: clientePedidoVentaList[i],
-                          onTap: () => navigateToPedidoVentaDetalle(),
+                          onTap: () => navigateToPedidoVentaDetalle(
+                            context,
+                            clientePedidoVentaList[i].pedidoVentaId,
+                            clientePedidoVentaList[i].empresaId,
+                          ),
                         ),
                       ),
                       separatorBuilder: (context, i) => const Divider(),
@@ -64,7 +70,19 @@ class ClientePedidosPage extends ConsumerWidget {
     );
   }
 
-  void navigateToPedidoVentaDetalle() {
-    return;
+  void navigateToPedidoVentaDetalle(
+    BuildContext context,
+    String? pedidoId,
+    String? empresaId,
+  ) {
+    context.router.push(
+      PedidoVentaDetalleRoute(
+        pedidoLocalParam: PedidoLocalParam(
+          isEdit: false,
+          pedidoId: pedidoId,
+          empresaId: empresaId,
+        ),
+      ),
+    );
   }
 }
