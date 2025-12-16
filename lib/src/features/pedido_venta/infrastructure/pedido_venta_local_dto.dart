@@ -8,7 +8,6 @@ import '../../../core/infrastructure/local_database.dart';
 import '../../cliente/domain/cliente.dart';
 import '../../cliente/domain/cliente_direccion.dart';
 import '../domain/pedido_venta.dart';
-import 'recomendacion_producto_dto.dart';
 
 part 'pedido_venta_local_dto.freezed.dart';
 part 'pedido_venta_local_dto.g.dart';
@@ -41,7 +40,6 @@ abstract class PedidoVentaLocalDTO
     @JsonKey(name: 'FECHA_ALTA') required DateTime fechaAlta,
     @JsonKey(name: 'IVA') required double iva,
     @JsonKey(name: 'DTO_BONIFICACION') required double dtoBonificacion,
-    @JsonKey(name: 'RECOMENDACION_STR') String? recomendacionStr,
     @JsonKey(name: 'ENVIADA') required String enviada,
     @JsonKey(name: 'TRATADA') required String tratada,
     @JsonKey(name: 'BORRADOR') required String borrador,
@@ -74,7 +72,6 @@ abstract class PedidoVentaLocalDTO
       divisaId: pedidoVenta.divisa.id,
       iva: pedidoVenta.iva,
       dtoBonificacion: pedidoVenta.dtoBonificacion!,
-      recomendacionStr: null,
       enviada: (pedidoVenta.enviada) ? 'S' : 'N',
       tratada: (pedidoVenta.tratada) ? 'S' : 'N',
       borrador: (pedidoVenta.borrador) ? 'S' : 'N',
@@ -93,7 +90,6 @@ abstract class PedidoVentaLocalDTO
     String? observaciones,
     bool oferta,
     DateTime? ofertaFechaHasta,
-    List<RecomendacionProductoDTO>? recomendacionesProductoDTOList,
     bool isBorrador,
   ) {
     return PedidoVentaLocalDTO(
@@ -119,9 +115,6 @@ abstract class PedidoVentaLocalDTO
       divisaId: cliente.divisa!.id,
       iva: cliente.iva,
       dtoBonificacion: 0,
-      recomendacionStr: recomendacionesProductoDTOList
-          ?.map((e) => e.toJson())
-          .toString(),
       enviada: 'N',
       tratada: 'N',
       borrador: isBorrador ? 'S' : 'N',
@@ -198,7 +191,6 @@ abstract class PedidoVentaLocalDTO
       divisaId: Value(divisaId),
       iva: Value(iva),
       dtoBonificacion: Value(dtoBonificacion),
-      recomendacionStr: Value(recomendacionStr),
       enviada: Value(enviada),
       tratada: Value(tratada),
       borrador: Value(borrador),
@@ -231,8 +223,6 @@ class PedidoVentaLocalTable extends Table {
       dateTime().nullable().named('OFERTA_FECHA_HASTA')();
   RealColumn get iva => real().named('IVA')();
   RealColumn get dtoBonificacion => real().named('DTO_BONIFICACION')();
-  TextColumn get recomendacionStr =>
-      text().nullable().named('RECOMENDACION_STR')();
   TextColumn get enviada =>
       text().withDefault(const Constant('N')).named('ENVIADA')();
   TextColumn get tratada =>

@@ -24,9 +24,16 @@ class RecomendacionProductoAlertDialogController
     String clienteId,
     List<PedidoVentaLinea> pedidoVentaLineaList,
   ) async {
+    if (pedidoLocalParam.pedidoAppId == null) {
+      return [];
+    }
     final recomendacionProductoList = await ref
         .read(pedidoVentaRepositoryProvider)
-        .getRecomendacionProductoList(clienteId, pedidoVentaLineaList);
+        .getRecomendacionProductoList(
+          pedidoLocalParam.pedidoAppId!,
+          clienteId,
+          pedidoVentaLineaList,
+        );
 
     ref
         .read(pedidoVentaEditPageControllerProvider(pedidoLocalParam).notifier)
@@ -145,13 +152,28 @@ class _RecomendacionProductoListDialogState
           separatorBuilder: (context, index) => const Divider(),
         ),
       ),
+      actionsAlignment: MainAxisAlignment.center,
+      actionsOverflowAlignment: OverflowBarAlignment.center,
 
       actions: [
         TextButton(
           onPressed: () {
             Navigator.of(context).pop();
           },
-          child: Text(MaterialLocalizations.of(context).closeButtonLabel),
+
+          style: ButtonStyle(
+            foregroundColor: WidgetStatePropertyAll(
+              Theme.of(context).colorScheme.onPrimary,
+            ),
+            backgroundColor: WidgetStatePropertyAll(
+              Theme.of(context).colorScheme.primary,
+            ),
+          ),
+
+          child: Text(
+            S.of(context).imNotInterestedInAnyArticles,
+            textAlign: TextAlign.center,
+          ),
         ),
       ],
     );

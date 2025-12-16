@@ -722,7 +722,7 @@ final class DeletePedidoVentaProvider
   }
 }
 
-String _$deletePedidoVentaHash() => r'07945c23bc76b4166444d766628f454d05470396';
+String _$deletePedidoVentaHash() => r'e711406a142811f51c38739feb9660b9b3a7ebaa';
 
 final class DeletePedidoVentaFamily extends $Family
     with

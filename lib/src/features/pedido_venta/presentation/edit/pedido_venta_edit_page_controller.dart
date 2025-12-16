@@ -208,7 +208,6 @@ class PedidoVentaEditPageController
         cliente: cliente,
         clienteDireccion: clienteDireccion,
         pedidoVentaLineaList: pedidoVentaLineaList,
-        recomendacionesProductoList: recomendacionesProductoList,
         pedidoCliente: pedidoCliente,
         observaciones: observaciones,
         oferta: oferta,
@@ -534,19 +533,6 @@ class PedidoVentaEditPageController
       newPedidoVentaLineaList.add(newPedidoVentaLinea);
     }
     return newPedidoVentaLineaList;
-  }
-
-  Future<void> getRecomendacionProductoList() async {
-    state = const PedidoVentaEditPageControllerState.loading();
-
-    try {
-      await pedidoVentaRepository.getRecomendacionProductoList(
-        _cliente!.id,
-        pedidoVentaLineaList,
-      );
-    } catch (err, stack) {
-      state = PedidoVentaEditPageControllerState.error(err, stackTrace: stack);
-    }
   }
 
   void setRecomendacionProductoList(

@@ -426,5 +426,6 @@
   "searchingRecommendations": "Searching recommendations...",
   "productRecommendations": "Product recommendations",
   "probability": "Probability",
-  "unknownDescription": "Unknown description"
+  "unknownDescription": "Unknown description",
+  "imNotInterestedInAnyArticles": "I'm not interested in any articles"
 }

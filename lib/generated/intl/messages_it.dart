@@ -572,6 +572,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "haOcurridoUnError": MessageLookupByLibrary.simpleMessage(
       "C\'è stato un errore",
     ),
+    "imNotInterestedInAnyArticles": MessageLookupByLibrary.simpleMessage(
+      "Non sono interessato a nessun articolo",
+    ),
     "interesCliente": MessageLookupByLibrary.simpleMessage(
       "Interesse del cliente",
     ),

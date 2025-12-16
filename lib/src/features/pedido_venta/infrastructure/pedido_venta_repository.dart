@@ -869,14 +869,9 @@ class PedidoVentaRepository {
     String? pedidoCliente,
     required bool oferta,
     DateTime? ofertaFechaHasta,
-    required List<RecomendacionProducto>? recomendacionesProductoList,
     required bool isBorrador,
     required ISentrySpan transaction,
   }) async {
-    final recomendacionesProductoDTOList = recomendacionesProductoList
-        ?.map((e) => RecomendacionProductoDTO.fromDomain(e))
-        .toList();
-
     final pedidoVentaLocalDTO = PedidoVentaLocalDTO.fromForm(
       pedidoVentaAppId,
       pedidoId,
@@ -888,7 +883,6 @@ class PedidoVentaRepository {
       observaciones,
       oferta,
       ofertaFechaHasta?.toUtc(),
-      recomendacionesProductoDTOList,
       isBorrador,
     );
 
@@ -1281,6 +1275,7 @@ class PedidoVentaRepository {
   }
 
   Future<List<RecomendacionProducto>> getRecomendacionProductoList(
+    String pedidoVentaAppId,
     String clienteId,
     List<PedidoVentaLinea> pedidoVentaLineaList,
   ) async {
@@ -1289,6 +1284,7 @@ class PedidoVentaRepository {
 
       final remoteRecomendacionProductoDTOList =
           await _remoteRecomendacionProductoDtoList(
+            pedidoVentaAppId,
             clienteId,
             pedidoVentaLineaList,
             usuario.test,
@@ -1318,20 +1314,28 @@ class PedidoVentaRepository {
 
       return recomendacionProductoList;
     } catch (e, stackTrace) {
-      Error.throwWithStackTrace(
-        AppException.fetchLocalDataFailure(e.toString()),
-        stackTrace,
-      );
+      if (e is AppException) {
+        return e.maybeWhen(
+          notConnection: () => <RecomendacionProducto>[],
+          orElse: () => Error.throwWithStackTrace(
+            AppException.fetchLocalDataFailure(e.toString()),
+            stackTrace,
+          ),
+        );
+      }
+      rethrow;
     }
   }
 
   Future<List<RecomendacionProductoDTO>> _remoteRecomendacionProductoDtoList(
+    String pedidoVentaAppId,
     String clienteId,
     List<PedidoVentaLinea> pedidoVentaLineaList,
     bool test,
   ) async {
     try {
       final recomendacionProductoBody = {
+        'PEDIDO_VENTA_APP_ID': pedidoVentaAppId,
         'ARTICULOS': pedidoVentaLineaList
             .map((e) => {'ARTICULO_ID': e.articuloId, 'CANTIDAD': e.cantidad})
             .toList(),

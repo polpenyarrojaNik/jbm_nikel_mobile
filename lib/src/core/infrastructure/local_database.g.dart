@@ -2340,17 +2340,6 @@ class $PedidoVentaLocalTableTable extends PedidoVentaLocalTable
     type: DriftSqlType.double,
     requiredDuringInsert: true,
   );
-  static const VerificationMeta _recomendacionStrMeta = const VerificationMeta(
-    'recomendacionStr',
-  );
-  @override
-  late final GeneratedColumn<String> recomendacionStr = GeneratedColumn<String>(
-    'RECOMENDACION_STR',
-    aliasedName,
-    true,
-    type: DriftSqlType.string,
-    requiredDuringInsert: false,
-  );
   static const VerificationMeta _enviadaMeta = const VerificationMeta(
     'enviada',
   );
@@ -2421,7 +2410,6 @@ class $PedidoVentaLocalTableTable extends PedidoVentaLocalTable
     ofertaFechaHasta,
     iva,
     dtoBonificacion,
-    recomendacionStr,
     enviada,
     tratada,
     borrador,
@@ -2603,15 +2591,6 @@ class $PedidoVentaLocalTableTable extends PedidoVentaLocalTable
     } else if (isInserting) {
       context.missing(_dtoBonificacionMeta);
     }
-    if (data.containsKey('RECOMENDACION_STR')) {
-      context.handle(
-        _recomendacionStrMeta,
-        recomendacionStr.isAcceptableOrUnknown(
-          data['RECOMENDACION_STR']!,
-          _recomendacionStrMeta,
-        ),
-      );
-    }
     if (data.containsKey('ENVIADA')) {
       context.handle(
         _enviadaMeta,
@@ -2732,10 +2711,6 @@ class $PedidoVentaLocalTableTable extends PedidoVentaLocalTable
         DriftSqlType.double,
         data['${effectivePrefix}DTO_BONIFICACION'],
       )!,
-      recomendacionStr: attachedDatabase.typeMapping.read(
-        DriftSqlType.string,
-        data['${effectivePrefix}RECOMENDACION_STR'],
-      ),
       enviada: attachedDatabase.typeMapping.read(
         DriftSqlType.string,
         data['${effectivePrefix}ENVIADA'],
@@ -2784,7 +2759,6 @@ class PedidoVentaLocalTableCompanion
   final Value<DateTime?> ofertaFechaHasta;
   final Value<double> iva;
   final Value<double> dtoBonificacion;
-  final Value<String?> recomendacionStr;
   final Value<String> enviada;
   final Value<String> tratada;
   final Value<String> borrador;
@@ -2812,7 +2786,6 @@ class PedidoVentaLocalTableCompanion
     this.ofertaFechaHasta = const Value.absent(),
     this.iva = const Value.absent(),
     this.dtoBonificacion = const Value.absent(),
-    this.recomendacionStr = const Value.absent(),
     this.enviada = const Value.absent(),
     this.tratada = const Value.absent(),
     this.borrador = const Value.absent(),
@@ -2841,7 +2814,6 @@ class PedidoVentaLocalTableCompanion
     this.ofertaFechaHasta = const Value.absent(),
     required double iva,
     required double dtoBonificacion,
-    this.recomendacionStr = const Value.absent(),
     this.enviada = const Value.absent(),
     this.tratada = const Value.absent(),
     this.borrador = const Value.absent(),
@@ -2876,7 +2848,6 @@ class PedidoVentaLocalTableCompanion
     Expression<DateTime>? ofertaFechaHasta,
     Expression<double>? iva,
     Expression<double>? dtoBonificacion,
-    Expression<String>? recomendacionStr,
     Expression<String>? enviada,
     Expression<String>? tratada,
     Expression<String>? borrador,
@@ -2905,7 +2876,6 @@ class PedidoVentaLocalTableCompanion
       if (ofertaFechaHasta != null) 'OFERTA_FECHA_HASTA': ofertaFechaHasta,
       if (iva != null) 'IVA': iva,
       if (dtoBonificacion != null) 'DTO_BONIFICACION': dtoBonificacion,
-      if (recomendacionStr != null) 'RECOMENDACION_STR': recomendacionStr,
       if (enviada != null) 'ENVIADA': enviada,
       if (tratada != null) 'TRATADA': tratada,
       if (borrador != null) 'BORRADOR': borrador,
@@ -2936,7 +2906,6 @@ class PedidoVentaLocalTableCompanion
     Value<DateTime?>? ofertaFechaHasta,
     Value<double>? iva,
     Value<double>? dtoBonificacion,
-    Value<String?>? recomendacionStr,
     Value<String>? enviada,
     Value<String>? tratada,
     Value<String>? borrador,
@@ -2965,7 +2934,6 @@ class PedidoVentaLocalTableCompanion
       ofertaFechaHasta: ofertaFechaHasta ?? this.ofertaFechaHasta,
       iva: iva ?? this.iva,
       dtoBonificacion: dtoBonificacion ?? this.dtoBonificacion,
-      recomendacionStr: recomendacionStr ?? this.recomendacionStr,
       enviada: enviada ?? this.enviada,
       tratada: tratada ?? this.tratada,
       borrador: borrador ?? this.borrador,
@@ -3040,9 +3008,6 @@ class PedidoVentaLocalTableCompanion
     if (dtoBonificacion.present) {
       map['DTO_BONIFICACION'] = Variable<double>(dtoBonificacion.value);
     }
-    if (recomendacionStr.present) {
-      map['RECOMENDACION_STR'] = Variable<String>(recomendacionStr.value);
-    }
     if (enviada.present) {
       map['ENVIADA'] = Variable<String>(enviada.value);
     }
@@ -3085,7 +3050,6 @@ class PedidoVentaLocalTableCompanion
           ..write('ofertaFechaHasta: $ofertaFechaHasta, ')
           ..write('iva: $iva, ')
           ..write('dtoBonificacion: $dtoBonificacion, ')
-          ..write('recomendacionStr: $recomendacionStr, ')
           ..write('enviada: $enviada, ')
           ..write('tratada: $tratada, ')
           ..write('borrador: $borrador, ')
@@ -7375,7 +7339,6 @@ typedef $$PedidoVentaLocalTableTableCreateCompanionBuilder =
       Value<DateTime?> ofertaFechaHasta,
       required double iva,
       required double dtoBonificacion,
-      Value<String?> recomendacionStr,
       Value<String> enviada,
       Value<String> tratada,
       Value<String> borrador,
@@ -7405,7 +7368,6 @@ typedef $$PedidoVentaLocalTableTableUpdateCompanionBuilder =
       Value<DateTime?> ofertaFechaHasta,
       Value<double> iva,
       Value<double> dtoBonificacion,
-      Value<String?> recomendacionStr,
       Value<String> enviada,
       Value<String> tratada,
       Value<String> borrador,
@@ -7524,11 +7486,6 @@ class $$PedidoVentaLocalTableTableFilterComposer
 
   ColumnFilters<double> get dtoBonificacion => $composableBuilder(
     column: $table.dtoBonificacion,
-    builder: (column) => ColumnFilters(column),
-  );
-
-  ColumnFilters<String> get recomendacionStr => $composableBuilder(
-    column: $table.recomendacionStr,
     builder: (column) => ColumnFilters(column),
   );
 
@@ -7667,11 +7624,6 @@ class $$PedidoVentaLocalTableTableOrderingComposer
     builder: (column) => ColumnOrderings(column),
   );
 
-  ColumnOrderings<String> get recomendacionStr => $composableBuilder(
-    column: $table.recomendacionStr,
-    builder: (column) => ColumnOrderings(column),
-  );
-
   ColumnOrderings<String> get enviada => $composableBuilder(
     column: $table.enviada,
     builder: (column) => ColumnOrderings(column),
@@ -7785,11 +7737,6 @@ class $$PedidoVentaLocalTableTableAnnotationComposer
     builder: (column) => column,
   );
 
-  GeneratedColumn<String> get recomendacionStr => $composableBuilder(
-    column: $table.recomendacionStr,
-    builder: (column) => column,
-  );
-
   GeneratedColumn<String> get enviada =>
       $composableBuilder(column: $table.enviada, builder: (column) => column);
 
@@ -7872,7 +7819,6 @@ class $$PedidoVentaLocalTableTableTableManager
                 Value<DateTime?> ofertaFechaHasta = const Value.absent(),
                 Value<double> iva = const Value.absent(),
                 Value<double> dtoBonificacion = const Value.absent(),
-                Value<String?> recomendacionStr = const Value.absent(),
                 Value<String> enviada = const Value.absent(),
                 Value<String> tratada = const Value.absent(),
                 Value<String> borrador = const Value.absent(),
@@ -7900,7 +7846,6 @@ class $$PedidoVentaLocalTableTableTableManager
                 ofertaFechaHasta: ofertaFechaHasta,
                 iva: iva,
                 dtoBonificacion: dtoBonificacion,
-                recomendacionStr: recomendacionStr,
                 enviada: enviada,
                 tratada: tratada,
                 borrador: borrador,
@@ -7930,7 +7875,6 @@ class $$PedidoVentaLocalTableTableTableManager
                 Value<DateTime?> ofertaFechaHasta = const Value.absent(),
                 required double iva,
                 required double dtoBonificacion,
-                Value<String?> recomendacionStr = const Value.absent(),
                 Value<String> enviada = const Value.absent(),
                 Value<String> tratada = const Value.absent(),
                 Value<String> borrador = const Value.absent(),
@@ -7958,7 +7902,6 @@ class $$PedidoVentaLocalTableTableTableManager
                 ofertaFechaHasta: ofertaFechaHasta,
                 iva: iva,
                 dtoBonificacion: dtoBonificacion,
-                recomendacionStr: recomendacionStr,
                 enviada: enviada,
                 tratada: tratada,
                 borrador: borrador,

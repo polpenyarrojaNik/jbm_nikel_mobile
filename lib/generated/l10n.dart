@@ -4112,6 +4112,16 @@ class S {
       args: [],
     );
   }
+
+  /// `I'm not interested in any articles`
+  String get imNotInterestedInAnyArticles {
+    return Intl.message(
+      'I\'m not interested in any articles',
+      name: 'imNotInterestedInAnyArticles',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

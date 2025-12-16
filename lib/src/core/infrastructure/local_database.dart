@@ -227,14 +227,6 @@ class LocalAppDatabase extends _$LocalAppDatabase {
         if (from < 18) {
           await m.createTable(visitaCompetenciaLocalTable);
         }
-        if (from < 19) {
-          await m.alterTable(
-            TableMigration(
-              pedidoVentaLocalTable,
-              newColumns: [pedidoVentaLocalTable.recomendacionStr],
-            ),
-          );
-        }
 
         if (from < 20) {
           await m.alterTable(

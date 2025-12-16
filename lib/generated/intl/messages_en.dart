@@ -548,6 +548,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "haOcurridoUnError": MessageLookupByLibrary.simpleMessage(
       "An error occurred",
     ),
+    "imNotInterestedInAnyArticles": MessageLookupByLibrary.simpleMessage(
+      "I\'m not interested in any articles",
+    ),
     "interesCliente": MessageLookupByLibrary.simpleMessage("Customer interest"),
     "introduceClaveDeNikel": MessageLookupByLibrary.simpleMessage(
       "Introduce Nikel key",
