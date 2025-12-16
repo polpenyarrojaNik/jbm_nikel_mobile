@@ -14,7 +14,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$SeleccionarCantidadParam {
 
- PedidoLocalParam get pedidoVentaParam; String get clienteId; String get articuloId; int? get cantidad; double? get precio; double? get descuento1; double? get descuento2; bool? get createdFromCliente; int get posicionLinea; bool get addNewLineaDesdeArticulo;
+ PedidoLocalParam get pedidoVentaParam; String get clienteId; String get articuloId; int? get cantidad; double? get precio; double? get descuento1; double? get descuento2; bool? get createdFromCliente; int get posicionLinea; bool get addNewLineaDesdeArticulo; bool get recomendado;
 /// Create a copy of SeleccionarCantidadParam
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -25,16 +25,16 @@ $SeleccionarCantidadParamCopyWith<SeleccionarCantidadParam> get copyWith => _$Se
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is SeleccionarCantidadParam&&(identical(other.pedidoVentaParam, pedidoVentaParam) || other.pedidoVentaParam == pedidoVentaParam)&&(identical(other.clienteId, clienteId) || other.clienteId == clienteId)&&(identical(other.articuloId, articuloId) || other.articuloId == articuloId)&&(identical(other.cantidad, cantidad) || other.cantidad == cantidad)&&(identical(other.precio, precio) || other.precio == precio)&&(identical(other.descuento1, descuento1) || other.descuento1 == descuento1)&&(identical(other.descuento2, descuento2) || other.descuento2 == descuento2)&&(identical(other.createdFromCliente, createdFromCliente) || other.createdFromCliente == createdFromCliente)&&(identical(other.posicionLinea, posicionLinea) || other.posicionLinea == posicionLinea)&&(identical(other.addNewLineaDesdeArticulo, addNewLineaDesdeArticulo) || other.addNewLineaDesdeArticulo == addNewLineaDesdeArticulo));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is SeleccionarCantidadParam&&(identical(other.pedidoVentaParam, pedidoVentaParam) || other.pedidoVentaParam == pedidoVentaParam)&&(identical(other.clienteId, clienteId) || other.clienteId == clienteId)&&(identical(other.articuloId, articuloId) || other.articuloId == articuloId)&&(identical(other.cantidad, cantidad) || other.cantidad == cantidad)&&(identical(other.precio, precio) || other.precio == precio)&&(identical(other.descuento1, descuento1) || other.descuento1 == descuento1)&&(identical(other.descuento2, descuento2) || other.descuento2 == descuento2)&&(identical(other.createdFromCliente, createdFromCliente) || other.createdFromCliente == createdFromCliente)&&(identical(other.posicionLinea, posicionLinea) || other.posicionLinea == posicionLinea)&&(identical(other.addNewLineaDesdeArticulo, addNewLineaDesdeArticulo) || other.addNewLineaDesdeArticulo == addNewLineaDesdeArticulo)&&(identical(other.recomendado, recomendado) || other.recomendado == recomendado));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,pedidoVentaParam,clienteId,articuloId,cantidad,precio,descuento1,descuento2,createdFromCliente,posicionLinea,addNewLineaDesdeArticulo);
+int get hashCode => Object.hash(runtimeType,pedidoVentaParam,clienteId,articuloId,cantidad,precio,descuento1,descuento2,createdFromCliente,posicionLinea,addNewLineaDesdeArticulo,recomendado);
 
 @override
 String toString() {
-  return 'SeleccionarCantidadParam(pedidoVentaParam: $pedidoVentaParam, clienteId: $clienteId, articuloId: $articuloId, cantidad: $cantidad, precio: $precio, descuento1: $descuento1, descuento2: $descuento2, createdFromCliente: $createdFromCliente, posicionLinea: $posicionLinea, addNewLineaDesdeArticulo: $addNewLineaDesdeArticulo)';
+  return 'SeleccionarCantidadParam(pedidoVentaParam: $pedidoVentaParam, clienteId: $clienteId, articuloId: $articuloId, cantidad: $cantidad, precio: $precio, descuento1: $descuento1, descuento2: $descuento2, createdFromCliente: $createdFromCliente, posicionLinea: $posicionLinea, addNewLineaDesdeArticulo: $addNewLineaDesdeArticulo, recomendado: $recomendado)';
 }
 
 
@@ -45,7 +45,7 @@ abstract mixin class $SeleccionarCantidadParamCopyWith<$Res>  {
   factory $SeleccionarCantidadParamCopyWith(SeleccionarCantidadParam value, $Res Function(SeleccionarCantidadParam) _then) = _$SeleccionarCantidadParamCopyWithImpl;
 @useResult
 $Res call({
- PedidoLocalParam pedidoVentaParam, String clienteId, String articuloId, int? cantidad, double? precio, double? descuento1, double? descuento2, bool? createdFromCliente, int posicionLinea, bool addNewLineaDesdeArticulo
+ PedidoLocalParam pedidoVentaParam, String clienteId, String articuloId, int? cantidad, double? precio, double? descuento1, double? descuento2, bool? createdFromCliente, int posicionLinea, bool addNewLineaDesdeArticulo, bool recomendado
 });
 
 
@@ -62,7 +62,7 @@ class _$SeleccionarCantidadParamCopyWithImpl<$Res>
 
 /// Create a copy of SeleccionarCantidadParam
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? pedidoVentaParam = null,Object? clienteId = null,Object? articuloId = null,Object? cantidad = freezed,Object? precio = freezed,Object? descuento1 = freezed,Object? descuento2 = freezed,Object? createdFromCliente = freezed,Object? posicionLinea = null,Object? addNewLineaDesdeArticulo = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? pedidoVentaParam = null,Object? clienteId = null,Object? articuloId = null,Object? cantidad = freezed,Object? precio = freezed,Object? descuento1 = freezed,Object? descuento2 = freezed,Object? createdFromCliente = freezed,Object? posicionLinea = null,Object? addNewLineaDesdeArticulo = null,Object? recomendado = null,}) {
   return _then(_self.copyWith(
 pedidoVentaParam: null == pedidoVentaParam ? _self.pedidoVentaParam : pedidoVentaParam // ignore: cast_nullable_to_non_nullable
 as PedidoLocalParam,clienteId: null == clienteId ? _self.clienteId : clienteId // ignore: cast_nullable_to_non_nullable
@@ -74,6 +74,7 @@ as double?,descuento2: freezed == descuento2 ? _self.descuento2 : descuento2 // 
 as double?,createdFromCliente: freezed == createdFromCliente ? _self.createdFromCliente : createdFromCliente // ignore: cast_nullable_to_non_nullable
 as bool?,posicionLinea: null == posicionLinea ? _self.posicionLinea : posicionLinea // ignore: cast_nullable_to_non_nullable
 as int,addNewLineaDesdeArticulo: null == addNewLineaDesdeArticulo ? _self.addNewLineaDesdeArticulo : addNewLineaDesdeArticulo // ignore: cast_nullable_to_non_nullable
+as bool,recomendado: null == recomendado ? _self.recomendado : recomendado // ignore: cast_nullable_to_non_nullable
 as bool,
   ));
 }
@@ -168,10 +169,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( PedidoLocalParam pedidoVentaParam,  String clienteId,  String articuloId,  int? cantidad,  double? precio,  double? descuento1,  double? descuento2,  bool? createdFromCliente,  int posicionLinea,  bool addNewLineaDesdeArticulo)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( PedidoLocalParam pedidoVentaParam,  String clienteId,  String articuloId,  int? cantidad,  double? precio,  double? descuento1,  double? descuento2,  bool? createdFromCliente,  int posicionLinea,  bool addNewLineaDesdeArticulo,  bool recomendado)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _SeleccionarCantidadParam() when $default != null:
-return $default(_that.pedidoVentaParam,_that.clienteId,_that.articuloId,_that.cantidad,_that.precio,_that.descuento1,_that.descuento2,_that.createdFromCliente,_that.posicionLinea,_that.addNewLineaDesdeArticulo);case _:
+return $default(_that.pedidoVentaParam,_that.clienteId,_that.articuloId,_that.cantidad,_that.precio,_that.descuento1,_that.descuento2,_that.createdFromCliente,_that.posicionLinea,_that.addNewLineaDesdeArticulo,_that.recomendado);case _:
   return orElse();
 
 }
@@ -189,10 +190,10 @@ return $default(_that.pedidoVentaParam,_that.clienteId,_that.articuloId,_that.ca
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( PedidoLocalParam pedidoVentaParam,  String clienteId,  String articuloId,  int? cantidad,  double? precio,  double? descuento1,  double? descuento2,  bool? createdFromCliente,  int posicionLinea,  bool addNewLineaDesdeArticulo)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( PedidoLocalParam pedidoVentaParam,  String clienteId,  String articuloId,  int? cantidad,  double? precio,  double? descuento1,  double? descuento2,  bool? createdFromCliente,  int posicionLinea,  bool addNewLineaDesdeArticulo,  bool recomendado)  $default,) {final _that = this;
 switch (_that) {
 case _SeleccionarCantidadParam():
-return $default(_that.pedidoVentaParam,_that.clienteId,_that.articuloId,_that.cantidad,_that.precio,_that.descuento1,_that.descuento2,_that.createdFromCliente,_that.posicionLinea,_that.addNewLineaDesdeArticulo);case _:
+return $default(_that.pedidoVentaParam,_that.clienteId,_that.articuloId,_that.cantidad,_that.precio,_that.descuento1,_that.descuento2,_that.createdFromCliente,_that.posicionLinea,_that.addNewLineaDesdeArticulo,_that.recomendado);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -209,10 +210,10 @@ return $default(_that.pedidoVentaParam,_that.clienteId,_that.articuloId,_that.ca
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( PedidoLocalParam pedidoVentaParam,  String clienteId,  String articuloId,  int? cantidad,  double? precio,  double? descuento1,  double? descuento2,  bool? createdFromCliente,  int posicionLinea,  bool addNewLineaDesdeArticulo)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( PedidoLocalParam pedidoVentaParam,  String clienteId,  String articuloId,  int? cantidad,  double? precio,  double? descuento1,  double? descuento2,  bool? createdFromCliente,  int posicionLinea,  bool addNewLineaDesdeArticulo,  bool recomendado)?  $default,) {final _that = this;
 switch (_that) {
 case _SeleccionarCantidadParam() when $default != null:
-return $default(_that.pedidoVentaParam,_that.clienteId,_that.articuloId,_that.cantidad,_that.precio,_that.descuento1,_that.descuento2,_that.createdFromCliente,_that.posicionLinea,_that.addNewLineaDesdeArticulo);case _:
+return $default(_that.pedidoVentaParam,_that.clienteId,_that.articuloId,_that.cantidad,_that.precio,_that.descuento1,_that.descuento2,_that.createdFromCliente,_that.posicionLinea,_that.addNewLineaDesdeArticulo,_that.recomendado);case _:
   return null;
 
 }
@@ -224,7 +225,7 @@ return $default(_that.pedidoVentaParam,_that.clienteId,_that.articuloId,_that.ca
 
 
 class _SeleccionarCantidadParam extends SeleccionarCantidadParam {
-  const _SeleccionarCantidadParam({required this.pedidoVentaParam, required this.clienteId, required this.articuloId, this.cantidad, this.precio, this.descuento1, this.descuento2, this.createdFromCliente, required this.posicionLinea, required this.addNewLineaDesdeArticulo}): super._();
+  const _SeleccionarCantidadParam({required this.pedidoVentaParam, required this.clienteId, required this.articuloId, this.cantidad, this.precio, this.descuento1, this.descuento2, this.createdFromCliente, required this.posicionLinea, required this.addNewLineaDesdeArticulo, required this.recomendado}): super._();
   
 
 @override final  PedidoLocalParam pedidoVentaParam;
@@ -237,6 +238,7 @@ class _SeleccionarCantidadParam extends SeleccionarCantidadParam {
 @override final  bool? createdFromCliente;
 @override final  int posicionLinea;
 @override final  bool addNewLineaDesdeArticulo;
+@override final  bool recomendado;
 
 /// Create a copy of SeleccionarCantidadParam
 /// with the given fields replaced by the non-null parameter values.
@@ -248,16 +250,16 @@ _$SeleccionarCantidadParamCopyWith<_SeleccionarCantidadParam> get copyWith => __
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _SeleccionarCantidadParam&&(identical(other.pedidoVentaParam, pedidoVentaParam) || other.pedidoVentaParam == pedidoVentaParam)&&(identical(other.clienteId, clienteId) || other.clienteId == clienteId)&&(identical(other.articuloId, articuloId) || other.articuloId == articuloId)&&(identical(other.cantidad, cantidad) || other.cantidad == cantidad)&&(identical(other.precio, precio) || other.precio == precio)&&(identical(other.descuento1, descuento1) || other.descuento1 == descuento1)&&(identical(other.descuento2, descuento2) || other.descuento2 == descuento2)&&(identical(other.createdFromCliente, createdFromCliente) || other.createdFromCliente == createdFromCliente)&&(identical(other.posicionLinea, posicionLinea) || other.posicionLinea == posicionLinea)&&(identical(other.addNewLineaDesdeArticulo, addNewLineaDesdeArticulo) || other.addNewLineaDesdeArticulo == addNewLineaDesdeArticulo));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _SeleccionarCantidadParam&&(identical(other.pedidoVentaParam, pedidoVentaParam) || other.pedidoVentaParam == pedidoVentaParam)&&(identical(other.clienteId, clienteId) || other.clienteId == clienteId)&&(identical(other.articuloId, articuloId) || other.articuloId == articuloId)&&(identical(other.cantidad, cantidad) || other.cantidad == cantidad)&&(identical(other.precio, precio) || other.precio == precio)&&(identical(other.descuento1, descuento1) || other.descuento1 == descuento1)&&(identical(other.descuento2, descuento2) || other.descuento2 == descuento2)&&(identical(other.createdFromCliente, createdFromCliente) || other.createdFromCliente == createdFromCliente)&&(identical(other.posicionLinea, posicionLinea) || other.posicionLinea == posicionLinea)&&(identical(other.addNewLineaDesdeArticulo, addNewLineaDesdeArticulo) || other.addNewLineaDesdeArticulo == addNewLineaDesdeArticulo)&&(identical(other.recomendado, recomendado) || other.recomendado == recomendado));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,pedidoVentaParam,clienteId,articuloId,cantidad,precio,descuento1,descuento2,createdFromCliente,posicionLinea,addNewLineaDesdeArticulo);
+int get hashCode => Object.hash(runtimeType,pedidoVentaParam,clienteId,articuloId,cantidad,precio,descuento1,descuento2,createdFromCliente,posicionLinea,addNewLineaDesdeArticulo,recomendado);
 
 @override
 String toString() {
-  return 'SeleccionarCantidadParam(pedidoVentaParam: $pedidoVentaParam, clienteId: $clienteId, articuloId: $articuloId, cantidad: $cantidad, precio: $precio, descuento1: $descuento1, descuento2: $descuento2, createdFromCliente: $createdFromCliente, posicionLinea: $posicionLinea, addNewLineaDesdeArticulo: $addNewLineaDesdeArticulo)';
+  return 'SeleccionarCantidadParam(pedidoVentaParam: $pedidoVentaParam, clienteId: $clienteId, articuloId: $articuloId, cantidad: $cantidad, precio: $precio, descuento1: $descuento1, descuento2: $descuento2, createdFromCliente: $createdFromCliente, posicionLinea: $posicionLinea, addNewLineaDesdeArticulo: $addNewLineaDesdeArticulo, recomendado: $recomendado)';
 }
 
 
@@ -268,7 +270,7 @@ abstract mixin class _$SeleccionarCantidadParamCopyWith<$Res> implements $Selecc
   factory _$SeleccionarCantidadParamCopyWith(_SeleccionarCantidadParam value, $Res Function(_SeleccionarCantidadParam) _then) = __$SeleccionarCantidadParamCopyWithImpl;
 @override @useResult
 $Res call({
- PedidoLocalParam pedidoVentaParam, String clienteId, String articuloId, int? cantidad, double? precio, double? descuento1, double? descuento2, bool? createdFromCliente, int posicionLinea, bool addNewLineaDesdeArticulo
+ PedidoLocalParam pedidoVentaParam, String clienteId, String articuloId, int? cantidad, double? precio, double? descuento1, double? descuento2, bool? createdFromCliente, int posicionLinea, bool addNewLineaDesdeArticulo, bool recomendado
 });
 
 
@@ -285,7 +287,7 @@ class __$SeleccionarCantidadParamCopyWithImpl<$Res>
 
 /// Create a copy of SeleccionarCantidadParam
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? pedidoVentaParam = null,Object? clienteId = null,Object? articuloId = null,Object? cantidad = freezed,Object? precio = freezed,Object? descuento1 = freezed,Object? descuento2 = freezed,Object? createdFromCliente = freezed,Object? posicionLinea = null,Object? addNewLineaDesdeArticulo = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? pedidoVentaParam = null,Object? clienteId = null,Object? articuloId = null,Object? cantidad = freezed,Object? precio = freezed,Object? descuento1 = freezed,Object? descuento2 = freezed,Object? createdFromCliente = freezed,Object? posicionLinea = null,Object? addNewLineaDesdeArticulo = null,Object? recomendado = null,}) {
   return _then(_SeleccionarCantidadParam(
 pedidoVentaParam: null == pedidoVentaParam ? _self.pedidoVentaParam : pedidoVentaParam // ignore: cast_nullable_to_non_nullable
 as PedidoLocalParam,clienteId: null == clienteId ? _self.clienteId : clienteId // ignore: cast_nullable_to_non_nullable
@@ -297,6 +299,7 @@ as double?,descuento2: freezed == descuento2 ? _self.descuento2 : descuento2 // 
 as double?,createdFromCliente: freezed == createdFromCliente ? _self.createdFromCliente : createdFromCliente // ignore: cast_nullable_to_non_nullable
 as bool?,posicionLinea: null == posicionLinea ? _self.posicionLinea : posicionLinea // ignore: cast_nullable_to_non_nullable
 as int,addNewLineaDesdeArticulo: null == addNewLineaDesdeArticulo ? _self.addNewLineaDesdeArticulo : addNewLineaDesdeArticulo // ignore: cast_nullable_to_non_nullable
+as bool,recomendado: null == recomendado ? _self.recomendado : recomendado // ignore: cast_nullable_to_non_nullable
 as bool,
   ));
 }

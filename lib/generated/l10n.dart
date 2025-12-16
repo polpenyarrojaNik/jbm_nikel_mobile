@@ -4077,6 +4077,41 @@ class S {
   String get unitCost {
     return Intl.message('Unit cost', name: 'unitCost', desc: '', args: []);
   }
+
+  /// `Searching recommendations...`
+  String get searchingRecommendations {
+    return Intl.message(
+      'Searching recommendations...',
+      name: 'searchingRecommendations',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Product recommendations`
+  String get productRecommendations {
+    return Intl.message(
+      'Product recommendations',
+      name: 'productRecommendations',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Probability`
+  String get probability {
+    return Intl.message('Probability', name: 'probability', desc: '', args: []);
+  }
+
+  /// `Unknown description`
+  String get unknownDescription {
+    return Intl.message(
+      'Unknown description',
+      name: 'unknownDescription',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

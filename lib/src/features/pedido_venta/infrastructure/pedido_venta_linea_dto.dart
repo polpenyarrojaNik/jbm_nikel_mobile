@@ -41,6 +41,7 @@ abstract class PedidoVentaLineaDTO
     required String divisaId,
     required double iva,
     required double descuentoProntoPago,
+    required bool aiRecomendado,
     String? pedidoVentaAppId,
     int? stockDisponible,
   }) {
@@ -67,6 +68,7 @@ abstract class PedidoVentaLineaDTO
       cantidadPendiente: cantidad - cantidadServida,
       stockDisponible: stockDisponible,
       stockDisponibleSN: stockDisponible != null && stockDisponible > 0,
+      aiRecomendado: aiRecomendado,
       lastUpdated: lastUpdated,
       deleted: (deleted == 'S'),
     );

@@ -1,5 +1,6 @@
 import 'package:drift/drift.dart' hide JsonKey;
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:intl/intl.dart';
 import 'package:money2/money2.dart';
 
 import '../../../core/domain/familia.dart';
@@ -184,6 +185,21 @@ abstract class ArticuloDTO
       lastUpdated: lastUpdated,
       deleted: (deleted == 'S'),
     );
+  }
+
+  String getDescriptionInLocalLanguage() {
+    final currentLocale = Intl.getCurrentLocale();
+    if (currentLocale == 'en' && descripcionEN != null) {
+      return descripcionEN!;
+    } else if (currentLocale == 'fr' && descripcionFR != null) {
+      return descripcionFR!;
+    } else if (currentLocale == 'it' && descripcionIT != null) {
+      return descripcionIT!;
+    } else if (currentLocale == 'pt' && descripcionPT != null) {
+      return descripcionPT!;
+    }
+
+    return descripcionES;
   }
 
   @override

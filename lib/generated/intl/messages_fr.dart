@@ -788,12 +788,19 @@ class MessageLookup extends MessageLookupByLibrary {
     "precioNoPuedeSerMenorAlPrecioMinimo": MessageLookupByLibrary.simpleMessage(
       "Le prix ne peut être inférieur au prix minimum",
     ),
+    "probability": MessageLookupByLibrary.simpleMessage("Probabilité"),
+    "productRecommendations": MessageLookupByLibrary.simpleMessage(
+      "Recommandations de produits",
+    ),
     "reemplazarBaseDeDatosTextMesaje": MessageLookupByLibrary.simpleMessage(
       "Ce champ ne correspond pas à la clé Nikel",
     ),
     "retry": MessageLookupByLibrary.simpleMessage("Réessayer"),
     "save": MessageLookupByLibrary.simpleMessage("Garder"),
     "search": MessageLookupByLibrary.simpleMessage("Rechercher ..."),
+    "searchingRecommendations": MessageLookupByLibrary.simpleMessage(
+      "Recherche des recommandations...",
+    ),
     "sector": MessageLookupByLibrary.simpleMessage("Secteur"),
     "sectorUnsubscribededSectorMessage": MessageLookupByLibrary.simpleMessage(
       "Secteur désabonné. Veuillez sélectionner un nouveau secteur",
@@ -870,6 +877,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "unidad": MessageLookupByLibrary.simpleMessage("uté."),
     "unitCost": MessageLookupByLibrary.simpleMessage("Coût unitaire"),
     "unknown": MessageLookupByLibrary.simpleMessage("Inconnu"),
+    "unknownDescription": MessageLookupByLibrary.simpleMessage(
+      "Description inconnue",
+    ),
     "until": MessageLookupByLibrary.simpleMessage("Jusqu\'à"),
     "visita_enviada": MessageLookupByLibrary.simpleMessage("Envoyé"),
     "visita_index_buscarVisitas": MessageLookupByLibrary.simpleMessage(

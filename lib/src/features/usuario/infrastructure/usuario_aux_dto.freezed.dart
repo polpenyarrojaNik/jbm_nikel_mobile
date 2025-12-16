@@ -15,7 +15,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$UsuarioAuxDTO {
 
-@JsonKey(name: 'USUARIO_ID') String get id;@JsonKey(name: 'USUARIO') String get usuario;@JsonKey(name: 'NOMBRE_MOSTRAR', defaultValue: '') String? get nombreUsuario;@JsonKey(name: 'IDIOMA_ID') String get idiomaId;@JsonKey(name: 'MODIFICAR_PRECIO_PEDIDO_SN') String get modificarPedido;@JsonKey(name: 'APP_VER_TOTAL_VENTAS') String get verTotalVentas;@JsonKey(name: 'MARGEN_COMERCIAL') double get margenComercial;@JsonKey(name: 'COSTE_SN') String get costeSn;@JsonKey(name: 'FILTRO_REPRESENTANTE') String get filtroRepresentante;@JsonKey(name: 'IA_ACTIVA') String get iaActiva;
+@JsonKey(name: 'USUARIO_ID') String get id;@JsonKey(name: 'USUARIO') String get usuario;@JsonKey(name: 'NOMBRE_MOSTRAR', defaultValue: '') String? get nombreUsuario;@JsonKey(name: 'IDIOMA_ID') String get idiomaId;@JsonKey(name: 'MODIFICAR_PRECIO_PEDIDO_SN') String get modificarPedido;@JsonKey(name: 'APP_VER_TOTAL_VENTAS') String get verTotalVentas;@JsonKey(name: 'MARGEN_COMERCIAL') double get margenComercial;@JsonKey(name: 'COSTE_SN') String get costeSn;@JsonKey(name: 'FILTRO_REPRESENTANTE') String get filtroRepresentante;@JsonKey(name: 'AI_SN') String get aiSN;
 /// Create a copy of UsuarioAuxDTO
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -28,16 +28,16 @@ $UsuarioAuxDTOCopyWith<UsuarioAuxDTO> get copyWith => _$UsuarioAuxDTOCopyWithImp
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is UsuarioAuxDTO&&(identical(other.id, id) || other.id == id)&&(identical(other.usuario, usuario) || other.usuario == usuario)&&(identical(other.nombreUsuario, nombreUsuario) || other.nombreUsuario == nombreUsuario)&&(identical(other.idiomaId, idiomaId) || other.idiomaId == idiomaId)&&(identical(other.modificarPedido, modificarPedido) || other.modificarPedido == modificarPedido)&&(identical(other.verTotalVentas, verTotalVentas) || other.verTotalVentas == verTotalVentas)&&(identical(other.margenComercial, margenComercial) || other.margenComercial == margenComercial)&&(identical(other.costeSn, costeSn) || other.costeSn == costeSn)&&(identical(other.filtroRepresentante, filtroRepresentante) || other.filtroRepresentante == filtroRepresentante)&&(identical(other.iaActiva, iaActiva) || other.iaActiva == iaActiva));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is UsuarioAuxDTO&&(identical(other.id, id) || other.id == id)&&(identical(other.usuario, usuario) || other.usuario == usuario)&&(identical(other.nombreUsuario, nombreUsuario) || other.nombreUsuario == nombreUsuario)&&(identical(other.idiomaId, idiomaId) || other.idiomaId == idiomaId)&&(identical(other.modificarPedido, modificarPedido) || other.modificarPedido == modificarPedido)&&(identical(other.verTotalVentas, verTotalVentas) || other.verTotalVentas == verTotalVentas)&&(identical(other.margenComercial, margenComercial) || other.margenComercial == margenComercial)&&(identical(other.costeSn, costeSn) || other.costeSn == costeSn)&&(identical(other.filtroRepresentante, filtroRepresentante) || other.filtroRepresentante == filtroRepresentante)&&(identical(other.aiSN, aiSN) || other.aiSN == aiSN));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,id,usuario,nombreUsuario,idiomaId,modificarPedido,verTotalVentas,margenComercial,costeSn,filtroRepresentante,iaActiva);
+int get hashCode => Object.hash(runtimeType,id,usuario,nombreUsuario,idiomaId,modificarPedido,verTotalVentas,margenComercial,costeSn,filtroRepresentante,aiSN);
 
 @override
 String toString() {
-  return 'UsuarioAuxDTO(id: $id, usuario: $usuario, nombreUsuario: $nombreUsuario, idiomaId: $idiomaId, modificarPedido: $modificarPedido, verTotalVentas: $verTotalVentas, margenComercial: $margenComercial, costeSn: $costeSn, filtroRepresentante: $filtroRepresentante, iaActiva: $iaActiva)';
+  return 'UsuarioAuxDTO(id: $id, usuario: $usuario, nombreUsuario: $nombreUsuario, idiomaId: $idiomaId, modificarPedido: $modificarPedido, verTotalVentas: $verTotalVentas, margenComercial: $margenComercial, costeSn: $costeSn, filtroRepresentante: $filtroRepresentante, aiSN: $aiSN)';
 }
 
 
@@ -48,7 +48,7 @@ abstract mixin class $UsuarioAuxDTOCopyWith<$Res>  {
   factory $UsuarioAuxDTOCopyWith(UsuarioAuxDTO value, $Res Function(UsuarioAuxDTO) _then) = _$UsuarioAuxDTOCopyWithImpl;
 @useResult
 $Res call({
-@JsonKey(name: 'USUARIO_ID') String id,@JsonKey(name: 'USUARIO') String usuario,@JsonKey(name: 'NOMBRE_MOSTRAR', defaultValue: '') String? nombreUsuario,@JsonKey(name: 'IDIOMA_ID') String idiomaId,@JsonKey(name: 'MODIFICAR_PRECIO_PEDIDO_SN') String modificarPedido,@JsonKey(name: 'APP_VER_TOTAL_VENTAS') String verTotalVentas,@JsonKey(name: 'MARGEN_COMERCIAL') double margenComercial,@JsonKey(name: 'COSTE_SN') String costeSn,@JsonKey(name: 'FILTRO_REPRESENTANTE') String filtroRepresentante,@JsonKey(name: 'IA_ACTIVA') String iaActiva
+@JsonKey(name: 'USUARIO_ID') String id,@JsonKey(name: 'USUARIO') String usuario,@JsonKey(name: 'NOMBRE_MOSTRAR', defaultValue: '') String? nombreUsuario,@JsonKey(name: 'IDIOMA_ID') String idiomaId,@JsonKey(name: 'MODIFICAR_PRECIO_PEDIDO_SN') String modificarPedido,@JsonKey(name: 'APP_VER_TOTAL_VENTAS') String verTotalVentas,@JsonKey(name: 'MARGEN_COMERCIAL') double margenComercial,@JsonKey(name: 'COSTE_SN') String costeSn,@JsonKey(name: 'FILTRO_REPRESENTANTE') String filtroRepresentante,@JsonKey(name: 'AI_SN') String aiSN
 });
 
 
@@ -65,7 +65,7 @@ class _$UsuarioAuxDTOCopyWithImpl<$Res>
 
 /// Create a copy of UsuarioAuxDTO
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? usuario = null,Object? nombreUsuario = freezed,Object? idiomaId = null,Object? modificarPedido = null,Object? verTotalVentas = null,Object? margenComercial = null,Object? costeSn = null,Object? filtroRepresentante = null,Object? iaActiva = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? usuario = null,Object? nombreUsuario = freezed,Object? idiomaId = null,Object? modificarPedido = null,Object? verTotalVentas = null,Object? margenComercial = null,Object? costeSn = null,Object? filtroRepresentante = null,Object? aiSN = null,}) {
   return _then(_self.copyWith(
 id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as String,usuario: null == usuario ? _self.usuario : usuario // ignore: cast_nullable_to_non_nullable
@@ -76,7 +76,7 @@ as String,verTotalVentas: null == verTotalVentas ? _self.verTotalVentas : verTot
 as String,margenComercial: null == margenComercial ? _self.margenComercial : margenComercial // ignore: cast_nullable_to_non_nullable
 as double,costeSn: null == costeSn ? _self.costeSn : costeSn // ignore: cast_nullable_to_non_nullable
 as String,filtroRepresentante: null == filtroRepresentante ? _self.filtroRepresentante : filtroRepresentante // ignore: cast_nullable_to_non_nullable
-as String,iaActiva: null == iaActiva ? _self.iaActiva : iaActiva // ignore: cast_nullable_to_non_nullable
+as String,aiSN: null == aiSN ? _self.aiSN : aiSN // ignore: cast_nullable_to_non_nullable
 as String,
   ));
 }
@@ -162,10 +162,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function(@JsonKey(name: 'USUARIO_ID')  String id, @JsonKey(name: 'USUARIO')  String usuario, @JsonKey(name: 'NOMBRE_MOSTRAR', defaultValue: '')  String? nombreUsuario, @JsonKey(name: 'IDIOMA_ID')  String idiomaId, @JsonKey(name: 'MODIFICAR_PRECIO_PEDIDO_SN')  String modificarPedido, @JsonKey(name: 'APP_VER_TOTAL_VENTAS')  String verTotalVentas, @JsonKey(name: 'MARGEN_COMERCIAL')  double margenComercial, @JsonKey(name: 'COSTE_SN')  String costeSn, @JsonKey(name: 'FILTRO_REPRESENTANTE')  String filtroRepresentante, @JsonKey(name: 'IA_ACTIVA')  String iaActiva)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function(@JsonKey(name: 'USUARIO_ID')  String id, @JsonKey(name: 'USUARIO')  String usuario, @JsonKey(name: 'NOMBRE_MOSTRAR', defaultValue: '')  String? nombreUsuario, @JsonKey(name: 'IDIOMA_ID')  String idiomaId, @JsonKey(name: 'MODIFICAR_PRECIO_PEDIDO_SN')  String modificarPedido, @JsonKey(name: 'APP_VER_TOTAL_VENTAS')  String verTotalVentas, @JsonKey(name: 'MARGEN_COMERCIAL')  double margenComercial, @JsonKey(name: 'COSTE_SN')  String costeSn, @JsonKey(name: 'FILTRO_REPRESENTANTE')  String filtroRepresentante, @JsonKey(name: 'AI_SN')  String aiSN)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _UsuarioAuxDTO() when $default != null:
-return $default(_that.id,_that.usuario,_that.nombreUsuario,_that.idiomaId,_that.modificarPedido,_that.verTotalVentas,_that.margenComercial,_that.costeSn,_that.filtroRepresentante,_that.iaActiva);case _:
+return $default(_that.id,_that.usuario,_that.nombreUsuario,_that.idiomaId,_that.modificarPedido,_that.verTotalVentas,_that.margenComercial,_that.costeSn,_that.filtroRepresentante,_that.aiSN);case _:
   return orElse();
 
 }
@@ -183,10 +183,10 @@ return $default(_that.id,_that.usuario,_that.nombreUsuario,_that.idiomaId,_that.
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function(@JsonKey(name: 'USUARIO_ID')  String id, @JsonKey(name: 'USUARIO')  String usuario, @JsonKey(name: 'NOMBRE_MOSTRAR', defaultValue: '')  String? nombreUsuario, @JsonKey(name: 'IDIOMA_ID')  String idiomaId, @JsonKey(name: 'MODIFICAR_PRECIO_PEDIDO_SN')  String modificarPedido, @JsonKey(name: 'APP_VER_TOTAL_VENTAS')  String verTotalVentas, @JsonKey(name: 'MARGEN_COMERCIAL')  double margenComercial, @JsonKey(name: 'COSTE_SN')  String costeSn, @JsonKey(name: 'FILTRO_REPRESENTANTE')  String filtroRepresentante, @JsonKey(name: 'IA_ACTIVA')  String iaActiva)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function(@JsonKey(name: 'USUARIO_ID')  String id, @JsonKey(name: 'USUARIO')  String usuario, @JsonKey(name: 'NOMBRE_MOSTRAR', defaultValue: '')  String? nombreUsuario, @JsonKey(name: 'IDIOMA_ID')  String idiomaId, @JsonKey(name: 'MODIFICAR_PRECIO_PEDIDO_SN')  String modificarPedido, @JsonKey(name: 'APP_VER_TOTAL_VENTAS')  String verTotalVentas, @JsonKey(name: 'MARGEN_COMERCIAL')  double margenComercial, @JsonKey(name: 'COSTE_SN')  String costeSn, @JsonKey(name: 'FILTRO_REPRESENTANTE')  String filtroRepresentante, @JsonKey(name: 'AI_SN')  String aiSN)  $default,) {final _that = this;
 switch (_that) {
 case _UsuarioAuxDTO():
-return $default(_that.id,_that.usuario,_that.nombreUsuario,_that.idiomaId,_that.modificarPedido,_that.verTotalVentas,_that.margenComercial,_that.costeSn,_that.filtroRepresentante,_that.iaActiva);case _:
+return $default(_that.id,_that.usuario,_that.nombreUsuario,_that.idiomaId,_that.modificarPedido,_that.verTotalVentas,_that.margenComercial,_that.costeSn,_that.filtroRepresentante,_that.aiSN);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -203,10 +203,10 @@ return $default(_that.id,_that.usuario,_that.nombreUsuario,_that.idiomaId,_that.
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function(@JsonKey(name: 'USUARIO_ID')  String id, @JsonKey(name: 'USUARIO')  String usuario, @JsonKey(name: 'NOMBRE_MOSTRAR', defaultValue: '')  String? nombreUsuario, @JsonKey(name: 'IDIOMA_ID')  String idiomaId, @JsonKey(name: 'MODIFICAR_PRECIO_PEDIDO_SN')  String modificarPedido, @JsonKey(name: 'APP_VER_TOTAL_VENTAS')  String verTotalVentas, @JsonKey(name: 'MARGEN_COMERCIAL')  double margenComercial, @JsonKey(name: 'COSTE_SN')  String costeSn, @JsonKey(name: 'FILTRO_REPRESENTANTE')  String filtroRepresentante, @JsonKey(name: 'IA_ACTIVA')  String iaActiva)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function(@JsonKey(name: 'USUARIO_ID')  String id, @JsonKey(name: 'USUARIO')  String usuario, @JsonKey(name: 'NOMBRE_MOSTRAR', defaultValue: '')  String? nombreUsuario, @JsonKey(name: 'IDIOMA_ID')  String idiomaId, @JsonKey(name: 'MODIFICAR_PRECIO_PEDIDO_SN')  String modificarPedido, @JsonKey(name: 'APP_VER_TOTAL_VENTAS')  String verTotalVentas, @JsonKey(name: 'MARGEN_COMERCIAL')  double margenComercial, @JsonKey(name: 'COSTE_SN')  String costeSn, @JsonKey(name: 'FILTRO_REPRESENTANTE')  String filtroRepresentante, @JsonKey(name: 'AI_SN')  String aiSN)?  $default,) {final _that = this;
 switch (_that) {
 case _UsuarioAuxDTO() when $default != null:
-return $default(_that.id,_that.usuario,_that.nombreUsuario,_that.idiomaId,_that.modificarPedido,_that.verTotalVentas,_that.margenComercial,_that.costeSn,_that.filtroRepresentante,_that.iaActiva);case _:
+return $default(_that.id,_that.usuario,_that.nombreUsuario,_that.idiomaId,_that.modificarPedido,_that.verTotalVentas,_that.margenComercial,_that.costeSn,_that.filtroRepresentante,_that.aiSN);case _:
   return null;
 
 }
@@ -218,7 +218,7 @@ return $default(_that.id,_that.usuario,_that.nombreUsuario,_that.idiomaId,_that.
 @JsonSerializable()
 
 class _UsuarioAuxDTO extends UsuarioAuxDTO {
-  const _UsuarioAuxDTO({@JsonKey(name: 'USUARIO_ID') required this.id, @JsonKey(name: 'USUARIO') required this.usuario, @JsonKey(name: 'NOMBRE_MOSTRAR', defaultValue: '') required this.nombreUsuario, @JsonKey(name: 'IDIOMA_ID') required this.idiomaId, @JsonKey(name: 'MODIFICAR_PRECIO_PEDIDO_SN') required this.modificarPedido, @JsonKey(name: 'APP_VER_TOTAL_VENTAS') required this.verTotalVentas, @JsonKey(name: 'MARGEN_COMERCIAL') required this.margenComercial, @JsonKey(name: 'COSTE_SN') required this.costeSn, @JsonKey(name: 'FILTRO_REPRESENTANTE') required this.filtroRepresentante, @JsonKey(name: 'IA_ACTIVA') required this.iaActiva}): super._();
+  const _UsuarioAuxDTO({@JsonKey(name: 'USUARIO_ID') required this.id, @JsonKey(name: 'USUARIO') required this.usuario, @JsonKey(name: 'NOMBRE_MOSTRAR', defaultValue: '') required this.nombreUsuario, @JsonKey(name: 'IDIOMA_ID') required this.idiomaId, @JsonKey(name: 'MODIFICAR_PRECIO_PEDIDO_SN') required this.modificarPedido, @JsonKey(name: 'APP_VER_TOTAL_VENTAS') required this.verTotalVentas, @JsonKey(name: 'MARGEN_COMERCIAL') required this.margenComercial, @JsonKey(name: 'COSTE_SN') required this.costeSn, @JsonKey(name: 'FILTRO_REPRESENTANTE') required this.filtroRepresentante, @JsonKey(name: 'AI_SN') required this.aiSN}): super._();
   factory _UsuarioAuxDTO.fromJson(Map<String, dynamic> json) => _$UsuarioAuxDTOFromJson(json);
 
 @override@JsonKey(name: 'USUARIO_ID') final  String id;
@@ -230,7 +230,7 @@ class _UsuarioAuxDTO extends UsuarioAuxDTO {
 @override@JsonKey(name: 'MARGEN_COMERCIAL') final  double margenComercial;
 @override@JsonKey(name: 'COSTE_SN') final  String costeSn;
 @override@JsonKey(name: 'FILTRO_REPRESENTANTE') final  String filtroRepresentante;
-@override@JsonKey(name: 'IA_ACTIVA') final  String iaActiva;
+@override@JsonKey(name: 'AI_SN') final  String aiSN;
 
 /// Create a copy of UsuarioAuxDTO
 /// with the given fields replaced by the non-null parameter values.
@@ -245,16 +245,16 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _UsuarioAuxDTO&&(identical(other.id, id) || other.id == id)&&(identical(other.usuario, usuario) || other.usuario == usuario)&&(identical(other.nombreUsuario, nombreUsuario) || other.nombreUsuario == nombreUsuario)&&(identical(other.idiomaId, idiomaId) || other.idiomaId == idiomaId)&&(identical(other.modificarPedido, modificarPedido) || other.modificarPedido == modificarPedido)&&(identical(other.verTotalVentas, verTotalVentas) || other.verTotalVentas == verTotalVentas)&&(identical(other.margenComercial, margenComercial) || other.margenComercial == margenComercial)&&(identical(other.costeSn, costeSn) || other.costeSn == costeSn)&&(identical(other.filtroRepresentante, filtroRepresentante) || other.filtroRepresentante == filtroRepresentante)&&(identical(other.iaActiva, iaActiva) || other.iaActiva == iaActiva));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _UsuarioAuxDTO&&(identical(other.id, id) || other.id == id)&&(identical(other.usuario, usuario) || other.usuario == usuario)&&(identical(other.nombreUsuario, nombreUsuario) || other.nombreUsuario == nombreUsuario)&&(identical(other.idiomaId, idiomaId) || other.idiomaId == idiomaId)&&(identical(other.modificarPedido, modificarPedido) || other.modificarPedido == modificarPedido)&&(identical(other.verTotalVentas, verTotalVentas) || other.verTotalVentas == verTotalVentas)&&(identical(other.margenComercial, margenComercial) || other.margenComercial == margenComercial)&&(identical(other.costeSn, costeSn) || other.costeSn == costeSn)&&(identical(other.filtroRepresentante, filtroRepresentante) || other.filtroRepresentante == filtroRepresentante)&&(identical(other.aiSN, aiSN) || other.aiSN == aiSN));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,id,usuario,nombreUsuario,idiomaId,modificarPedido,verTotalVentas,margenComercial,costeSn,filtroRepresentante,iaActiva);
+int get hashCode => Object.hash(runtimeType,id,usuario,nombreUsuario,idiomaId,modificarPedido,verTotalVentas,margenComercial,costeSn,filtroRepresentante,aiSN);
 
 @override
 String toString() {
-  return 'UsuarioAuxDTO(id: $id, usuario: $usuario, nombreUsuario: $nombreUsuario, idiomaId: $idiomaId, modificarPedido: $modificarPedido, verTotalVentas: $verTotalVentas, margenComercial: $margenComercial, costeSn: $costeSn, filtroRepresentante: $filtroRepresentante, iaActiva: $iaActiva)';
+  return 'UsuarioAuxDTO(id: $id, usuario: $usuario, nombreUsuario: $nombreUsuario, idiomaId: $idiomaId, modificarPedido: $modificarPedido, verTotalVentas: $verTotalVentas, margenComercial: $margenComercial, costeSn: $costeSn, filtroRepresentante: $filtroRepresentante, aiSN: $aiSN)';
 }
 
 
@@ -265,7 +265,7 @@ abstract mixin class _$UsuarioAuxDTOCopyWith<$Res> implements $UsuarioAuxDTOCopy
   factory _$UsuarioAuxDTOCopyWith(_UsuarioAuxDTO value, $Res Function(_UsuarioAuxDTO) _then) = __$UsuarioAuxDTOCopyWithImpl;
 @override @useResult
 $Res call({
-@JsonKey(name: 'USUARIO_ID') String id,@JsonKey(name: 'USUARIO') String usuario,@JsonKey(name: 'NOMBRE_MOSTRAR', defaultValue: '') String? nombreUsuario,@JsonKey(name: 'IDIOMA_ID') String idiomaId,@JsonKey(name: 'MODIFICAR_PRECIO_PEDIDO_SN') String modificarPedido,@JsonKey(name: 'APP_VER_TOTAL_VENTAS') String verTotalVentas,@JsonKey(name: 'MARGEN_COMERCIAL') double margenComercial,@JsonKey(name: 'COSTE_SN') String costeSn,@JsonKey(name: 'FILTRO_REPRESENTANTE') String filtroRepresentante,@JsonKey(name: 'IA_ACTIVA') String iaActiva
+@JsonKey(name: 'USUARIO_ID') String id,@JsonKey(name: 'USUARIO') String usuario,@JsonKey(name: 'NOMBRE_MOSTRAR', defaultValue: '') String? nombreUsuario,@JsonKey(name: 'IDIOMA_ID') String idiomaId,@JsonKey(name: 'MODIFICAR_PRECIO_PEDIDO_SN') String modificarPedido,@JsonKey(name: 'APP_VER_TOTAL_VENTAS') String verTotalVentas,@JsonKey(name: 'MARGEN_COMERCIAL') double margenComercial,@JsonKey(name: 'COSTE_SN') String costeSn,@JsonKey(name: 'FILTRO_REPRESENTANTE') String filtroRepresentante,@JsonKey(name: 'AI_SN') String aiSN
 });
 
 
@@ -282,7 +282,7 @@ class __$UsuarioAuxDTOCopyWithImpl<$Res>
 
 /// Create a copy of UsuarioAuxDTO
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? usuario = null,Object? nombreUsuario = freezed,Object? idiomaId = null,Object? modificarPedido = null,Object? verTotalVentas = null,Object? margenComercial = null,Object? costeSn = null,Object? filtroRepresentante = null,Object? iaActiva = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? usuario = null,Object? nombreUsuario = freezed,Object? idiomaId = null,Object? modificarPedido = null,Object? verTotalVentas = null,Object? margenComercial = null,Object? costeSn = null,Object? filtroRepresentante = null,Object? aiSN = null,}) {
   return _then(_UsuarioAuxDTO(
 id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as String,usuario: null == usuario ? _self.usuario : usuario // ignore: cast_nullable_to_non_nullable
@@ -293,7 +293,7 @@ as String,verTotalVentas: null == verTotalVentas ? _self.verTotalVentas : verTot
 as String,margenComercial: null == margenComercial ? _self.margenComercial : margenComercial // ignore: cast_nullable_to_non_nullable
 as double,costeSn: null == costeSn ? _self.costeSn : costeSn // ignore: cast_nullable_to_non_nullable
 as String,filtroRepresentante: null == filtroRepresentante ? _self.filtroRepresentante : filtroRepresentante // ignore: cast_nullable_to_non_nullable
-as String,iaActiva: null == iaActiva ? _self.iaActiva : iaActiva // ignore: cast_nullable_to_non_nullable
+as String,aiSN: null == aiSN ? _self.aiSN : aiSN // ignore: cast_nullable_to_non_nullable
 as String,
   ));
 }

@@ -21,7 +21,7 @@ abstract class UsuarioAuxDTO with _$UsuarioAuxDTO {
     @JsonKey(name: 'MARGEN_COMERCIAL') required double margenComercial,
     @JsonKey(name: 'COSTE_SN') required String costeSn,
     @JsonKey(name: 'FILTRO_REPRESENTANTE') required String filtroRepresentante,
-    @JsonKey(name: 'IA_ACTIVA') required String iaActiva,
+    @JsonKey(name: 'AI_SN') required String aiSN,
   }) = _UsuarioAuxDTO;
 
   factory UsuarioAuxDTO.fromJson(Map<String, dynamic> json) =>
@@ -38,7 +38,7 @@ abstract class UsuarioAuxDTO with _$UsuarioAuxDTO {
       margenComercial: usuario.margenComercial,
       costeSn: usuario.costeSn ? 'S' : 'N',
       filtroRepresentante: usuario.filtroRepresentante ? 'S' : 'N',
-      iaActiva: usuario.iaActiva ? 'S' : 'N',
+      aiSN: usuario.aiSN ? 'S' : 'N',
     );
   }
 }

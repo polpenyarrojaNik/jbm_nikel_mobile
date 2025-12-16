@@ -48,4 +48,4 @@ final class UsuarioServiceProvider
   }
 }
 
-String _$usuarioServiceHash() => r'18f79399b0619e625e827d539958efcae113b304';
+String _$usuarioServiceHash() => r'e5097d5d6ba393f1fc70cc4e5ff122b68c203e33';

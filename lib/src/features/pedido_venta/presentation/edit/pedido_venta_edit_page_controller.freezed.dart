@@ -134,15 +134,15 @@ return savedError(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  loading,TResult Function( Cliente? cliente,  ClienteDireccion? clienteDireccion,  List<PedidoVentaLinea> pedidoVentaLinea,  int currentStep,  String? observaciones,  String? pedidoCliente,  bool oferta,  DateTime? ofertaFechaHasta,  bool isBorrador)?  data,TResult Function( Object error,  StackTrace? stackTrace)?  error,TResult Function()?  deleted,TResult Function( String pedidoVentaAppId,  bool isBorrador)?  saved,TResult Function( Cliente? cliente,  ClienteDireccion? clienteDireccion,  List<PedidoVentaLinea> pedidoVentaLinea,  int currentStep,  String? observaciones,  String? pedidoCliente,  bool oferta,  DateTime? ofertaFechaHasta,  bool isBorrador,  Object error,  StackTrace? stackTrace)?  savedError,required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  loading,TResult Function( Cliente? cliente,  ClienteDireccion? clienteDireccion,  List<PedidoVentaLinea> pedidoVentaLinea,  List<RecomendacionProducto>? recomendacionesProductoList,  int currentStep,  String? observaciones,  String? pedidoCliente,  bool oferta,  DateTime? ofertaFechaHasta,  bool isBorrador)?  data,TResult Function( Object error,  StackTrace? stackTrace)?  error,TResult Function()?  deleted,TResult Function( String pedidoVentaAppId,  bool isBorrador)?  saved,TResult Function( Cliente? cliente,  ClienteDireccion? clienteDireccion,  List<PedidoVentaLinea> pedidoVentaLinea,  List<RecomendacionProducto>? recomendacionesProductoList,  int currentStep,  String? observaciones,  String? pedidoCliente,  bool oferta,  DateTime? ofertaFechaHasta,  bool isBorrador,  Object error,  StackTrace? stackTrace)?  savedError,required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _loading() when loading != null:
 return loading();case _data() when data != null:
-return data(_that.cliente,_that.clienteDireccion,_that.pedidoVentaLinea,_that.currentStep,_that.observaciones,_that.pedidoCliente,_that.oferta,_that.ofertaFechaHasta,_that.isBorrador);case _error() when error != null:
+return data(_that.cliente,_that.clienteDireccion,_that.pedidoVentaLinea,_that.recomendacionesProductoList,_that.currentStep,_that.observaciones,_that.pedidoCliente,_that.oferta,_that.ofertaFechaHasta,_that.isBorrador);case _error() when error != null:
 return error(_that.error,_that.stackTrace);case _deleted() when deleted != null:
 return deleted();case _saved() when saved != null:
 return saved(_that.pedidoVentaAppId,_that.isBorrador);case _savedError() when savedError != null:
-return savedError(_that.cliente,_that.clienteDireccion,_that.pedidoVentaLinea,_that.currentStep,_that.observaciones,_that.pedidoCliente,_that.oferta,_that.ofertaFechaHasta,_that.isBorrador,_that.error,_that.stackTrace);case _:
+return savedError(_that.cliente,_that.clienteDireccion,_that.pedidoVentaLinea,_that.recomendacionesProductoList,_that.currentStep,_that.observaciones,_that.pedidoCliente,_that.oferta,_that.ofertaFechaHasta,_that.isBorrador,_that.error,_that.stackTrace);case _:
   return orElse();
 
 }
@@ -160,15 +160,15 @@ return savedError(_that.cliente,_that.clienteDireccion,_that.pedidoVentaLinea,_t
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  loading,required TResult Function( Cliente? cliente,  ClienteDireccion? clienteDireccion,  List<PedidoVentaLinea> pedidoVentaLinea,  int currentStep,  String? observaciones,  String? pedidoCliente,  bool oferta,  DateTime? ofertaFechaHasta,  bool isBorrador)  data,required TResult Function( Object error,  StackTrace? stackTrace)  error,required TResult Function()  deleted,required TResult Function( String pedidoVentaAppId,  bool isBorrador)  saved,required TResult Function( Cliente? cliente,  ClienteDireccion? clienteDireccion,  List<PedidoVentaLinea> pedidoVentaLinea,  int currentStep,  String? observaciones,  String? pedidoCliente,  bool oferta,  DateTime? ofertaFechaHasta,  bool isBorrador,  Object error,  StackTrace? stackTrace)  savedError,}) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  loading,required TResult Function( Cliente? cliente,  ClienteDireccion? clienteDireccion,  List<PedidoVentaLinea> pedidoVentaLinea,  List<RecomendacionProducto>? recomendacionesProductoList,  int currentStep,  String? observaciones,  String? pedidoCliente,  bool oferta,  DateTime? ofertaFechaHasta,  bool isBorrador)  data,required TResult Function( Object error,  StackTrace? stackTrace)  error,required TResult Function()  deleted,required TResult Function( String pedidoVentaAppId,  bool isBorrador)  saved,required TResult Function( Cliente? cliente,  ClienteDireccion? clienteDireccion,  List<PedidoVentaLinea> pedidoVentaLinea,  List<RecomendacionProducto>? recomendacionesProductoList,  int currentStep,  String? observaciones,  String? pedidoCliente,  bool oferta,  DateTime? ofertaFechaHasta,  bool isBorrador,  Object error,  StackTrace? stackTrace)  savedError,}) {final _that = this;
 switch (_that) {
 case _loading():
 return loading();case _data():
-return data(_that.cliente,_that.clienteDireccion,_that.pedidoVentaLinea,_that.currentStep,_that.observaciones,_that.pedidoCliente,_that.oferta,_that.ofertaFechaHasta,_that.isBorrador);case _error():
+return data(_that.cliente,_that.clienteDireccion,_that.pedidoVentaLinea,_that.recomendacionesProductoList,_that.currentStep,_that.observaciones,_that.pedidoCliente,_that.oferta,_that.ofertaFechaHasta,_that.isBorrador);case _error():
 return error(_that.error,_that.stackTrace);case _deleted():
 return deleted();case _saved():
 return saved(_that.pedidoVentaAppId,_that.isBorrador);case _savedError():
-return savedError(_that.cliente,_that.clienteDireccion,_that.pedidoVentaLinea,_that.currentStep,_that.observaciones,_that.pedidoCliente,_that.oferta,_that.ofertaFechaHasta,_that.isBorrador,_that.error,_that.stackTrace);case _:
+return savedError(_that.cliente,_that.clienteDireccion,_that.pedidoVentaLinea,_that.recomendacionesProductoList,_that.currentStep,_that.observaciones,_that.pedidoCliente,_that.oferta,_that.ofertaFechaHasta,_that.isBorrador,_that.error,_that.stackTrace);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -185,15 +185,15 @@ return savedError(_that.cliente,_that.clienteDireccion,_that.pedidoVentaLinea,_t
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  loading,TResult? Function( Cliente? cliente,  ClienteDireccion? clienteDireccion,  List<PedidoVentaLinea> pedidoVentaLinea,  int currentStep,  String? observaciones,  String? pedidoCliente,  bool oferta,  DateTime? ofertaFechaHasta,  bool isBorrador)?  data,TResult? Function( Object error,  StackTrace? stackTrace)?  error,TResult? Function()?  deleted,TResult? Function( String pedidoVentaAppId,  bool isBorrador)?  saved,TResult? Function( Cliente? cliente,  ClienteDireccion? clienteDireccion,  List<PedidoVentaLinea> pedidoVentaLinea,  int currentStep,  String? observaciones,  String? pedidoCliente,  bool oferta,  DateTime? ofertaFechaHasta,  bool isBorrador,  Object error,  StackTrace? stackTrace)?  savedError,}) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  loading,TResult? Function( Cliente? cliente,  ClienteDireccion? clienteDireccion,  List<PedidoVentaLinea> pedidoVentaLinea,  List<RecomendacionProducto>? recomendacionesProductoList,  int currentStep,  String? observaciones,  String? pedidoCliente,  bool oferta,  DateTime? ofertaFechaHasta,  bool isBorrador)?  data,TResult? Function( Object error,  StackTrace? stackTrace)?  error,TResult? Function()?  deleted,TResult? Function( String pedidoVentaAppId,  bool isBorrador)?  saved,TResult? Function( Cliente? cliente,  ClienteDireccion? clienteDireccion,  List<PedidoVentaLinea> pedidoVentaLinea,  List<RecomendacionProducto>? recomendacionesProductoList,  int currentStep,  String? observaciones,  String? pedidoCliente,  bool oferta,  DateTime? ofertaFechaHasta,  bool isBorrador,  Object error,  StackTrace? stackTrace)?  savedError,}) {final _that = this;
 switch (_that) {
 case _loading() when loading != null:
 return loading();case _data() when data != null:
-return data(_that.cliente,_that.clienteDireccion,_that.pedidoVentaLinea,_that.currentStep,_that.observaciones,_that.pedidoCliente,_that.oferta,_that.ofertaFechaHasta,_that.isBorrador);case _error() when error != null:
+return data(_that.cliente,_that.clienteDireccion,_that.pedidoVentaLinea,_that.recomendacionesProductoList,_that.currentStep,_that.observaciones,_that.pedidoCliente,_that.oferta,_that.ofertaFechaHasta,_that.isBorrador);case _error() when error != null:
 return error(_that.error,_that.stackTrace);case _deleted() when deleted != null:
 return deleted();case _saved() when saved != null:
 return saved(_that.pedidoVentaAppId,_that.isBorrador);case _savedError() when savedError != null:
-return savedError(_that.cliente,_that.clienteDireccion,_that.pedidoVentaLinea,_that.currentStep,_that.observaciones,_that.pedidoCliente,_that.oferta,_that.ofertaFechaHasta,_that.isBorrador,_that.error,_that.stackTrace);case _:
+return savedError(_that.cliente,_that.clienteDireccion,_that.pedidoVentaLinea,_that.recomendacionesProductoList,_that.currentStep,_that.observaciones,_that.pedidoCliente,_that.oferta,_that.ofertaFechaHasta,_that.isBorrador,_that.error,_that.stackTrace);case _:
   return null;
 
 }
@@ -237,7 +237,7 @@ String toString() {
 
 
 class _data extends PedidoVentaEditPageControllerState {
-  const _data(this.cliente, this.clienteDireccion, final  List<PedidoVentaLinea> pedidoVentaLinea, this.currentStep, this.observaciones, this.pedidoCliente, this.oferta, this.ofertaFechaHasta, this.isBorrador): _pedidoVentaLinea = pedidoVentaLinea,super._();
+  const _data(this.cliente, this.clienteDireccion, final  List<PedidoVentaLinea> pedidoVentaLinea, final  List<RecomendacionProducto>? recomendacionesProductoList, this.currentStep, this.observaciones, this.pedidoCliente, this.oferta, this.ofertaFechaHasta, this.isBorrador): _pedidoVentaLinea = pedidoVentaLinea,_recomendacionesProductoList = recomendacionesProductoList,super._();
   
 
  final  Cliente? cliente;
@@ -247,6 +247,15 @@ class _data extends PedidoVentaEditPageControllerState {
   if (_pedidoVentaLinea is EqualUnmodifiableListView) return _pedidoVentaLinea;
   // ignore: implicit_dynamic_type
   return EqualUnmodifiableListView(_pedidoVentaLinea);
+}
+
+ final  List<RecomendacionProducto>? _recomendacionesProductoList;
+ List<RecomendacionProducto>? get recomendacionesProductoList {
+  final value = _recomendacionesProductoList;
+  if (value == null) return null;
+  if (_recomendacionesProductoList is EqualUnmodifiableListView) return _recomendacionesProductoList;
+  // ignore: implicit_dynamic_type
+  return EqualUnmodifiableListView(value);
 }
 
  final  int currentStep;
@@ -266,16 +275,16 @@ _$dataCopyWith<_data> get copyWith => __$dataCopyWithImpl<_data>(this, _$identit
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _data&&(identical(other.cliente, cliente) || other.cliente == cliente)&&(identical(other.clienteDireccion, clienteDireccion) || other.clienteDireccion == clienteDireccion)&&const DeepCollectionEquality().equals(other._pedidoVentaLinea, _pedidoVentaLinea)&&(identical(other.currentStep, currentStep) || other.currentStep == currentStep)&&(identical(other.observaciones, observaciones) || other.observaciones == observaciones)&&(identical(other.pedidoCliente, pedidoCliente) || other.pedidoCliente == pedidoCliente)&&(identical(other.oferta, oferta) || other.oferta == oferta)&&(identical(other.ofertaFechaHasta, ofertaFechaHasta) || other.ofertaFechaHasta == ofertaFechaHasta)&&(identical(other.isBorrador, isBorrador) || other.isBorrador == isBorrador));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _data&&(identical(other.cliente, cliente) || other.cliente == cliente)&&(identical(other.clienteDireccion, clienteDireccion) || other.clienteDireccion == clienteDireccion)&&const DeepCollectionEquality().equals(other._pedidoVentaLinea, _pedidoVentaLinea)&&const DeepCollectionEquality().equals(other._recomendacionesProductoList, _recomendacionesProductoList)&&(identical(other.currentStep, currentStep) || other.currentStep == currentStep)&&(identical(other.observaciones, observaciones) || other.observaciones == observaciones)&&(identical(other.pedidoCliente, pedidoCliente) || other.pedidoCliente == pedidoCliente)&&(identical(other.oferta, oferta) || other.oferta == oferta)&&(identical(other.ofertaFechaHasta, ofertaFechaHasta) || other.ofertaFechaHasta == ofertaFechaHasta)&&(identical(other.isBorrador, isBorrador) || other.isBorrador == isBorrador));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,cliente,clienteDireccion,const DeepCollectionEquality().hash(_pedidoVentaLinea),currentStep,observaciones,pedidoCliente,oferta,ofertaFechaHasta,isBorrador);
+int get hashCode => Object.hash(runtimeType,cliente,clienteDireccion,const DeepCollectionEquality().hash(_pedidoVentaLinea),const DeepCollectionEquality().hash(_recomendacionesProductoList),currentStep,observaciones,pedidoCliente,oferta,ofertaFechaHasta,isBorrador);
 
 @override
 String toString() {
-  return 'PedidoVentaEditPageControllerState.data(cliente: $cliente, clienteDireccion: $clienteDireccion, pedidoVentaLinea: $pedidoVentaLinea, currentStep: $currentStep, observaciones: $observaciones, pedidoCliente: $pedidoCliente, oferta: $oferta, ofertaFechaHasta: $ofertaFechaHasta, isBorrador: $isBorrador)';
+  return 'PedidoVentaEditPageControllerState.data(cliente: $cliente, clienteDireccion: $clienteDireccion, pedidoVentaLinea: $pedidoVentaLinea, recomendacionesProductoList: $recomendacionesProductoList, currentStep: $currentStep, observaciones: $observaciones, pedidoCliente: $pedidoCliente, oferta: $oferta, ofertaFechaHasta: $ofertaFechaHasta, isBorrador: $isBorrador)';
 }
 
 
@@ -286,7 +295,7 @@ abstract mixin class _$dataCopyWith<$Res> implements $PedidoVentaEditPageControl
   factory _$dataCopyWith(_data value, $Res Function(_data) _then) = __$dataCopyWithImpl;
 @useResult
 $Res call({
- Cliente? cliente, ClienteDireccion? clienteDireccion, List<PedidoVentaLinea> pedidoVentaLinea, int currentStep, String? observaciones, String? pedidoCliente, bool oferta, DateTime? ofertaFechaHasta, bool isBorrador
+ Cliente? cliente, ClienteDireccion? clienteDireccion, List<PedidoVentaLinea> pedidoVentaLinea, List<RecomendacionProducto>? recomendacionesProductoList, int currentStep, String? observaciones, String? pedidoCliente, bool oferta, DateTime? ofertaFechaHasta, bool isBorrador
 });
 
 
@@ -303,12 +312,13 @@ class __$dataCopyWithImpl<$Res>
 
 /// Create a copy of PedidoVentaEditPageControllerState
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') $Res call({Object? cliente = freezed,Object? clienteDireccion = freezed,Object? pedidoVentaLinea = null,Object? currentStep = null,Object? observaciones = freezed,Object? pedidoCliente = freezed,Object? oferta = null,Object? ofertaFechaHasta = freezed,Object? isBorrador = null,}) {
+@pragma('vm:prefer-inline') $Res call({Object? cliente = freezed,Object? clienteDireccion = freezed,Object? pedidoVentaLinea = null,Object? recomendacionesProductoList = freezed,Object? currentStep = null,Object? observaciones = freezed,Object? pedidoCliente = freezed,Object? oferta = null,Object? ofertaFechaHasta = freezed,Object? isBorrador = null,}) {
   return _then(_data(
 freezed == cliente ? _self.cliente : cliente // ignore: cast_nullable_to_non_nullable
 as Cliente?,freezed == clienteDireccion ? _self.clienteDireccion : clienteDireccion // ignore: cast_nullable_to_non_nullable
 as ClienteDireccion?,null == pedidoVentaLinea ? _self._pedidoVentaLinea : pedidoVentaLinea // ignore: cast_nullable_to_non_nullable
-as List<PedidoVentaLinea>,null == currentStep ? _self.currentStep : currentStep // ignore: cast_nullable_to_non_nullable
+as List<PedidoVentaLinea>,freezed == recomendacionesProductoList ? _self._recomendacionesProductoList : recomendacionesProductoList // ignore: cast_nullable_to_non_nullable
+as List<RecomendacionProducto>?,null == currentStep ? _self.currentStep : currentStep // ignore: cast_nullable_to_non_nullable
 as int,freezed == observaciones ? _self.observaciones : observaciones // ignore: cast_nullable_to_non_nullable
 as String?,freezed == pedidoCliente ? _self.pedidoCliente : pedidoCliente // ignore: cast_nullable_to_non_nullable
 as String?,null == oferta ? _self.oferta : oferta // ignore: cast_nullable_to_non_nullable
@@ -516,7 +526,7 @@ as bool,
 
 
 class _savedError extends PedidoVentaEditPageControllerState {
-  const _savedError(this.cliente, this.clienteDireccion, final  List<PedidoVentaLinea> pedidoVentaLinea, this.currentStep, this.observaciones, this.pedidoCliente, this.oferta, this.ofertaFechaHasta, this.isBorrador, this.error, {this.stackTrace}): _pedidoVentaLinea = pedidoVentaLinea,super._();
+  const _savedError(this.cliente, this.clienteDireccion, final  List<PedidoVentaLinea> pedidoVentaLinea, final  List<RecomendacionProducto>? recomendacionesProductoList, this.currentStep, this.observaciones, this.pedidoCliente, this.oferta, this.ofertaFechaHasta, this.isBorrador, this.error, {this.stackTrace}): _pedidoVentaLinea = pedidoVentaLinea,_recomendacionesProductoList = recomendacionesProductoList,super._();
   
 
  final  Cliente? cliente;
@@ -526,6 +536,15 @@ class _savedError extends PedidoVentaEditPageControllerState {
   if (_pedidoVentaLinea is EqualUnmodifiableListView) return _pedidoVentaLinea;
   // ignore: implicit_dynamic_type
   return EqualUnmodifiableListView(_pedidoVentaLinea);
+}
+
+ final  List<RecomendacionProducto>? _recomendacionesProductoList;
+ List<RecomendacionProducto>? get recomendacionesProductoList {
+  final value = _recomendacionesProductoList;
+  if (value == null) return null;
+  if (_recomendacionesProductoList is EqualUnmodifiableListView) return _recomendacionesProductoList;
+  // ignore: implicit_dynamic_type
+  return EqualUnmodifiableListView(value);
 }
 
  final  int currentStep;
@@ -547,16 +566,16 @@ _$savedErrorCopyWith<_savedError> get copyWith => __$savedErrorCopyWithImpl<_sav
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _savedError&&(identical(other.cliente, cliente) || other.cliente == cliente)&&(identical(other.clienteDireccion, clienteDireccion) || other.clienteDireccion == clienteDireccion)&&const DeepCollectionEquality().equals(other._pedidoVentaLinea, _pedidoVentaLinea)&&(identical(other.currentStep, currentStep) || other.currentStep == currentStep)&&(identical(other.observaciones, observaciones) || other.observaciones == observaciones)&&(identical(other.pedidoCliente, pedidoCliente) || other.pedidoCliente == pedidoCliente)&&(identical(other.oferta, oferta) || other.oferta == oferta)&&(identical(other.ofertaFechaHasta, ofertaFechaHasta) || other.ofertaFechaHasta == ofertaFechaHasta)&&(identical(other.isBorrador, isBorrador) || other.isBorrador == isBorrador)&&const DeepCollectionEquality().equals(other.error, error)&&(identical(other.stackTrace, stackTrace) || other.stackTrace == stackTrace));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _savedError&&(identical(other.cliente, cliente) || other.cliente == cliente)&&(identical(other.clienteDireccion, clienteDireccion) || other.clienteDireccion == clienteDireccion)&&const DeepCollectionEquality().equals(other._pedidoVentaLinea, _pedidoVentaLinea)&&const DeepCollectionEquality().equals(other._recomendacionesProductoList, _recomendacionesProductoList)&&(identical(other.currentStep, currentStep) || other.currentStep == currentStep)&&(identical(other.observaciones, observaciones) || other.observaciones == observaciones)&&(identical(other.pedidoCliente, pedidoCliente) || other.pedidoCliente == pedidoCliente)&&(identical(other.oferta, oferta) || other.oferta == oferta)&&(identical(other.ofertaFechaHasta, ofertaFechaHasta) || other.ofertaFechaHasta == ofertaFechaHasta)&&(identical(other.isBorrador, isBorrador) || other.isBorrador == isBorrador)&&const DeepCollectionEquality().equals(other.error, error)&&(identical(other.stackTrace, stackTrace) || other.stackTrace == stackTrace));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,cliente,clienteDireccion,const DeepCollectionEquality().hash(_pedidoVentaLinea),currentStep,observaciones,pedidoCliente,oferta,ofertaFechaHasta,isBorrador,const DeepCollectionEquality().hash(error),stackTrace);
+int get hashCode => Object.hash(runtimeType,cliente,clienteDireccion,const DeepCollectionEquality().hash(_pedidoVentaLinea),const DeepCollectionEquality().hash(_recomendacionesProductoList),currentStep,observaciones,pedidoCliente,oferta,ofertaFechaHasta,isBorrador,const DeepCollectionEquality().hash(error),stackTrace);
 
 @override
 String toString() {
-  return 'PedidoVentaEditPageControllerState.savedError(cliente: $cliente, clienteDireccion: $clienteDireccion, pedidoVentaLinea: $pedidoVentaLinea, currentStep: $currentStep, observaciones: $observaciones, pedidoCliente: $pedidoCliente, oferta: $oferta, ofertaFechaHasta: $ofertaFechaHasta, isBorrador: $isBorrador, error: $error, stackTrace: $stackTrace)';
+  return 'PedidoVentaEditPageControllerState.savedError(cliente: $cliente, clienteDireccion: $clienteDireccion, pedidoVentaLinea: $pedidoVentaLinea, recomendacionesProductoList: $recomendacionesProductoList, currentStep: $currentStep, observaciones: $observaciones, pedidoCliente: $pedidoCliente, oferta: $oferta, ofertaFechaHasta: $ofertaFechaHasta, isBorrador: $isBorrador, error: $error, stackTrace: $stackTrace)';
 }
 
 
@@ -567,7 +586,7 @@ abstract mixin class _$savedErrorCopyWith<$Res> implements $PedidoVentaEditPageC
   factory _$savedErrorCopyWith(_savedError value, $Res Function(_savedError) _then) = __$savedErrorCopyWithImpl;
 @useResult
 $Res call({
- Cliente? cliente, ClienteDireccion? clienteDireccion, List<PedidoVentaLinea> pedidoVentaLinea, int currentStep, String? observaciones, String? pedidoCliente, bool oferta, DateTime? ofertaFechaHasta, bool isBorrador, Object error, StackTrace? stackTrace
+ Cliente? cliente, ClienteDireccion? clienteDireccion, List<PedidoVentaLinea> pedidoVentaLinea, List<RecomendacionProducto>? recomendacionesProductoList, int currentStep, String? observaciones, String? pedidoCliente, bool oferta, DateTime? ofertaFechaHasta, bool isBorrador, Object error, StackTrace? stackTrace
 });
 
 
@@ -584,12 +603,13 @@ class __$savedErrorCopyWithImpl<$Res>
 
 /// Create a copy of PedidoVentaEditPageControllerState
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') $Res call({Object? cliente = freezed,Object? clienteDireccion = freezed,Object? pedidoVentaLinea = null,Object? currentStep = null,Object? observaciones = freezed,Object? pedidoCliente = freezed,Object? oferta = null,Object? ofertaFechaHasta = freezed,Object? isBorrador = null,Object? error = null,Object? stackTrace = freezed,}) {
+@pragma('vm:prefer-inline') $Res call({Object? cliente = freezed,Object? clienteDireccion = freezed,Object? pedidoVentaLinea = null,Object? recomendacionesProductoList = freezed,Object? currentStep = null,Object? observaciones = freezed,Object? pedidoCliente = freezed,Object? oferta = null,Object? ofertaFechaHasta = freezed,Object? isBorrador = null,Object? error = null,Object? stackTrace = freezed,}) {
   return _then(_savedError(
 freezed == cliente ? _self.cliente : cliente // ignore: cast_nullable_to_non_nullable
 as Cliente?,freezed == clienteDireccion ? _self.clienteDireccion : clienteDireccion // ignore: cast_nullable_to_non_nullable
 as ClienteDireccion?,null == pedidoVentaLinea ? _self._pedidoVentaLinea : pedidoVentaLinea // ignore: cast_nullable_to_non_nullable
-as List<PedidoVentaLinea>,null == currentStep ? _self.currentStep : currentStep // ignore: cast_nullable_to_non_nullable
+as List<PedidoVentaLinea>,freezed == recomendacionesProductoList ? _self._recomendacionesProductoList : recomendacionesProductoList // ignore: cast_nullable_to_non_nullable
+as List<RecomendacionProducto>?,null == currentStep ? _self.currentStep : currentStep // ignore: cast_nullable_to_non_nullable
 as int,freezed == observaciones ? _self.observaciones : observaciones // ignore: cast_nullable_to_non_nullable
 as String?,freezed == pedidoCliente ? _self.pedidoCliente : pedidoCliente // ignore: cast_nullable_to_non_nullable
 as String?,null == oferta ? _self.oferta : oferta // ignore: cast_nullable_to_non_nullable

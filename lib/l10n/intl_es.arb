@@ -421,5 +421,9 @@
   "unknownFamily": "Familia desconocida",
   "PDFdeliveryNotes": "PDF Albaranes",
   "PDFinvoices": "PDF Facturas",
-  "unitCost": "Coste unitario"
+  "unitCost": "Coste unitario",
+  "searchingRecommendations": "Buscando recomendaciones...",
+  "productRecommendations": "Recomendaciones de productos",
+  "probability": "Probabilidad",
+  "unknownDescription": "Descripción desconocida"
 }

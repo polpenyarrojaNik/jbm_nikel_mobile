@@ -18,13 +18,19 @@ typedef Json = Map<String, dynamic>;
 UsuarioService usuarioService(Ref ref) => UsuarioService(
   ref.watch(localUsuarioRepositoryProvider),
   ref.watch(remoteUsuarioRepositoryProvider),
+  ref,
 );
 
 class UsuarioService {
   final LocalUsuarioRepository _localUsuarioRepository;
   final RemoteUsuarioRepository _remoteUsuarioRepository;
+  final Ref ref;
 
-  UsuarioService(this._localUsuarioRepository, this._remoteUsuarioRepository);
+  UsuarioService(
+    this._localUsuarioRepository,
+    this._remoteUsuarioRepository,
+    this.ref,
+  );
 
   Future<Usuario?> getSignedInUsuario() async {
     final storedCredentials = await _localUsuarioRepository.read();
@@ -164,8 +170,10 @@ class UsuarioService {
           version: '${packageInfo.appName} ${packageInfo.version}',
           buildNumber: packageInfo.buildNumber,
           deviceInfo: deviceInfoStr,
+          aiSN: userDto.aiSN,
         );
         await _localUsuarioRepository.save(usuarioDto);
+
         await Sentry.configureScope(
           (scope) => scope.setUser(
             SentryUser(

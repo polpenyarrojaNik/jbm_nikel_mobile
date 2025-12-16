@@ -10,6 +10,7 @@ import '../../../cliente/infrastructure/cliente_repository.dart';
 import '../../domain/pedido_local_param.dart';
 import '../../domain/pedido_venta.dart';
 import '../../domain/pedido_venta_linea.dart';
+import '../../domain/recomendacion_producto.dart';
 import '../../infrastructure/pedido_venta_repository.dart';
 
 part 'pedido_venta_edit_page_controller.freezed.dart';
@@ -38,6 +39,7 @@ class PedidoVentaEditPageControllerState
     Cliente? cliente,
     ClienteDireccion? clienteDireccion,
     List<PedidoVentaLinea> pedidoVentaLinea,
+    List<RecomendacionProducto>? recomendacionesProductoList,
     int currentStep,
     String? observaciones,
     String? pedidoCliente,
@@ -59,6 +61,8 @@ class PedidoVentaEditPageControllerState
     Cliente? cliente,
     ClienteDireccion? clienteDireccion,
     List<PedidoVentaLinea> pedidoVentaLinea,
+    List<RecomendacionProducto>? recomendacionesProductoList,
+
     int currentStep,
     String? observaciones,
     String? pedidoCliente,
@@ -92,6 +96,7 @@ class PedidoVentaEditPageController
   Cliente? _cliente;
   ClienteDireccion? _clienteDireccion;
   List<PedidoVentaLinea> pedidoVentaLineaList = [];
+  List<RecomendacionProducto>? _recomendacionesProductoList;
   int _currentStep = 0;
   String? _observaciones;
   String? _pedidoCliente;
@@ -120,6 +125,7 @@ class PedidoVentaEditPageController
           _cliente,
           _clienteDireccion,
           pedidoVentaLineaList,
+          _recomendacionesProductoList,
           _currentStep,
           _observaciones,
           _pedidoCliente,
@@ -161,6 +167,7 @@ class PedidoVentaEditPageController
           _cliente,
           _clienteDireccion,
           pedidoVentaLineaList,
+          _recomendacionesProductoList,
           _currentStep,
           _observaciones,
           _pedidoCliente,
@@ -182,6 +189,8 @@ class PedidoVentaEditPageController
     required Cliente cliente,
     required ClienteDireccion? clienteDireccion,
     required List<PedidoVentaLinea> pedidoVentaLineaList,
+    required List<RecomendacionProducto>? recomendacionesProductoList,
+
     String? observaciones,
     String? pedidoCliente,
     required bool oferta,
@@ -199,6 +208,7 @@ class PedidoVentaEditPageController
         cliente: cliente,
         clienteDireccion: clienteDireccion,
         pedidoVentaLineaList: pedidoVentaLineaList,
+        recomendacionesProductoList: recomendacionesProductoList,
         pedidoCliente: pedidoCliente,
         observaciones: observaciones,
         oferta: oferta,
@@ -218,6 +228,8 @@ class PedidoVentaEditPageController
                 _cliente,
                 _clienteDireccion,
                 pedidoVentaLineaList,
+                recomendacionesProductoList,
+
                 _currentStep,
                 _observaciones,
                 _pedidoCliente,
@@ -232,6 +244,8 @@ class PedidoVentaEditPageController
                 _cliente,
                 _clienteDireccion,
                 pedidoVentaLineaList,
+                recomendacionesProductoList,
+
                 _currentStep,
                 _observaciones,
                 _pedidoCliente,
@@ -271,6 +285,8 @@ class PedidoVentaEditPageController
       _cliente,
       _clienteDireccion,
       pedidoVentaLineaList,
+      _recomendacionesProductoList,
+
       _currentStep,
       _observaciones,
       _pedidoCliente,
@@ -286,6 +302,8 @@ class PedidoVentaEditPageController
       _cliente,
       _clienteDireccion,
       pedidoVentaLineaList,
+      _recomendacionesProductoList,
+
       _currentStep,
       _observaciones,
       _pedidoCliente,
@@ -304,6 +322,8 @@ class PedidoVentaEditPageController
       _cliente,
       _clienteDireccion,
       pedidoVentaLineaList,
+      _recomendacionesProductoList,
+
       _currentStep,
       _observaciones,
       _pedidoCliente,
@@ -323,6 +343,8 @@ class PedidoVentaEditPageController
       _cliente,
       _clienteDireccion,
       pedidoVentaLineaList,
+      _recomendacionesProductoList,
+
       _currentStep,
       _observaciones,
       _pedidoCliente,
@@ -338,6 +360,8 @@ class PedidoVentaEditPageController
       _cliente,
       _clienteDireccion,
       pedidoVentaLineaList,
+      _recomendacionesProductoList,
+
       _currentStep,
       _observaciones,
       _pedidoCliente,
@@ -354,6 +378,8 @@ class PedidoVentaEditPageController
       _cliente,
       _clienteDireccion,
       pedidoVentaLineaList,
+      _recomendacionesProductoList,
+
       _currentStep,
       _observaciones,
       _pedidoCliente,
@@ -373,6 +399,8 @@ class PedidoVentaEditPageController
       _cliente,
       _clienteDireccion,
       pedidoVentaLineaList,
+      _recomendacionesProductoList,
+
       _currentStep,
       _observaciones,
       _pedidoCliente,
@@ -393,6 +421,8 @@ class PedidoVentaEditPageController
       _cliente,
       _clienteDireccion,
       pedidoVentaLineaList,
+      _recomendacionesProductoList,
+
       _currentStep,
       _observaciones,
       _pedidoCliente,
@@ -408,6 +438,8 @@ class PedidoVentaEditPageController
       _cliente,
       _clienteDireccion,
       pedidoVentaLineaList,
+      _recomendacionesProductoList,
+
       _currentStep,
       _observaciones,
       _pedidoCliente,
@@ -423,6 +455,8 @@ class PedidoVentaEditPageController
       _cliente,
       _clienteDireccion,
       pedidoVentaLineaList,
+      _recomendacionesProductoList,
+
       _currentStep,
       _observaciones,
       _pedidoCliente,
@@ -438,6 +472,8 @@ class PedidoVentaEditPageController
       _cliente,
       _clienteDireccion,
       pedidoVentaLineaList,
+      _recomendacionesProductoList,
+
       _currentStep,
       _observaciones,
       _pedidoCliente,
@@ -456,6 +492,8 @@ class PedidoVentaEditPageController
       _cliente,
       _clienteDireccion,
       pedidoVentaLineaList,
+      _recomendacionesProductoList,
+
       _currentStep,
       _observaciones,
       _pedidoCliente,
@@ -488,6 +526,7 @@ class PedidoVentaEditPageController
         iva: pedidoVentaLineaList[i].iva,
         importeLinea: pedidoVentaLineaList[i].importeLinea,
         cantidadPendiente: pedidoVentaLineaList[i].cantidad,
+        aiRecomendado: pedidoVentaLineaList[i].aiRecomendado,
         lastUpdated: pedidoVentaLineaList[i].lastUpdated,
         deleted: pedidoVentaLineaList[i].deleted,
       );
@@ -495,5 +534,36 @@ class PedidoVentaEditPageController
       newPedidoVentaLineaList.add(newPedidoVentaLinea);
     }
     return newPedidoVentaLineaList;
+  }
+
+  Future<void> getRecomendacionProductoList() async {
+    state = const PedidoVentaEditPageControllerState.loading();
+
+    try {
+      await pedidoVentaRepository.getRecomendacionProductoList(
+        _cliente!.id,
+        pedidoVentaLineaList,
+      );
+    } catch (err, stack) {
+      state = PedidoVentaEditPageControllerState.error(err, stackTrace: stack);
+    }
+  }
+
+  void setRecomendacionProductoList(
+    List<RecomendacionProducto>? recomendacionesProductoList,
+  ) {
+    _recomendacionesProductoList = recomendacionesProductoList;
+    state = PedidoVentaEditPageControllerState.data(
+      _cliente,
+      _clienteDireccion,
+      pedidoVentaLineaList,
+      _recomendacionesProductoList,
+      _currentStep,
+      _observaciones,
+      _pedidoCliente,
+      _oferta,
+      _ofertaFechaHasta,
+      _isBorrador,
+    );
   }
 }

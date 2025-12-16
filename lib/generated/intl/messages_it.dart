@@ -780,12 +780,19 @@ class MessageLookup extends MessageLookupByLibrary {
     "precioNoPuedeSerMenorAlPrecioMinimo": MessageLookupByLibrary.simpleMessage(
       "Il prezzo non può essere inferiore al prezzo minimo",
     ),
+    "probability": MessageLookupByLibrary.simpleMessage("Probabilità"),
+    "productRecommendations": MessageLookupByLibrary.simpleMessage(
+      "Raccomandazioni sui prodotti",
+    ),
     "reemplazarBaseDeDatosTextMesaje": MessageLookupByLibrary.simpleMessage(
       "Questo campo non corrisponde alla chiave Nikel",
     ),
     "retry": MessageLookupByLibrary.simpleMessage("Riprova"),
     "save": MessageLookupByLibrary.simpleMessage("Salva"),
     "search": MessageLookupByLibrary.simpleMessage("Cerca ..."),
+    "searchingRecommendations": MessageLookupByLibrary.simpleMessage(
+      "Ricerca delle raccomandazioni...",
+    ),
     "sector": MessageLookupByLibrary.simpleMessage("Settore"),
     "sectorUnsubscribededSectorMessage": MessageLookupByLibrary.simpleMessage(
       "Settore annullato. Seleziona un nuovo settore",
@@ -860,6 +867,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "unidad": MessageLookupByLibrary.simpleMessage("Unità"),
     "unitCost": MessageLookupByLibrary.simpleMessage("Custo unitario"),
     "unknown": MessageLookupByLibrary.simpleMessage("Sconosciuto"),
+    "unknownDescription": MessageLookupByLibrary.simpleMessage(
+      "Descrizione sconosciuta",
+    ),
     "until": MessageLookupByLibrary.simpleMessage("Fino a"),
     "visita_enviada": MessageLookupByLibrary.simpleMessage("Inviata"),
     "visita_index_buscarVisitas": MessageLookupByLibrary.simpleMessage(

@@ -750,12 +750,19 @@ class MessageLookup extends MessageLookupByLibrary {
     "precioNoPuedeSerMenorAlPrecioMinimo": MessageLookupByLibrary.simpleMessage(
       "The price cannot be less than the minimum price",
     ),
+    "probability": MessageLookupByLibrary.simpleMessage("Probability"),
+    "productRecommendations": MessageLookupByLibrary.simpleMessage(
+      "Product recommendations",
+    ),
     "reemplazarBaseDeDatosTextMesaje": MessageLookupByLibrary.simpleMessage(
       "This field not match with Nikel key",
     ),
     "retry": MessageLookupByLibrary.simpleMessage("Retry"),
     "save": MessageLookupByLibrary.simpleMessage("Save"),
     "search": MessageLookupByLibrary.simpleMessage("Search..."),
+    "searchingRecommendations": MessageLookupByLibrary.simpleMessage(
+      "Searching recommendations...",
+    ),
     "sector": MessageLookupByLibrary.simpleMessage("Sector"),
     "sectorUnsubscribededSectorMessage": MessageLookupByLibrary.simpleMessage(
       "Sector unsubscribed. Please, select a new sector",
@@ -825,6 +832,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "unitCost": MessageLookupByLibrary.simpleMessage("Unit cost"),
     "unknown": MessageLookupByLibrary.simpleMessage("Unknown"),
     "unknownCustomer": MessageLookupByLibrary.simpleMessage("Unknown customer"),
+    "unknownDescription": MessageLookupByLibrary.simpleMessage(
+      "Unknown description",
+    ),
     "unknownFamily": MessageLookupByLibrary.simpleMessage("Unknown family"),
     "until": MessageLookupByLibrary.simpleMessage("Until"),
     "visita_enviada": MessageLookupByLibrary.simpleMessage("Sent"),

@@ -766,12 +766,19 @@ class MessageLookup extends MessageLookupByLibrary {
     "precioNoPuedeSerMenorAlPrecioMinimo": MessageLookupByLibrary.simpleMessage(
       "El precio no puede ser menor al precio mínimo",
     ),
+    "probability": MessageLookupByLibrary.simpleMessage("Probabilidad"),
+    "productRecommendations": MessageLookupByLibrary.simpleMessage(
+      "Recomendaciones de productos",
+    ),
     "reemplazarBaseDeDatosTextMesaje": MessageLookupByLibrary.simpleMessage(
       "Este campo no coincide con la clave Nikel",
     ),
     "retry": MessageLookupByLibrary.simpleMessage("Reintentar"),
     "save": MessageLookupByLibrary.simpleMessage("Guardar"),
     "search": MessageLookupByLibrary.simpleMessage("Buscar..."),
+    "searchingRecommendations": MessageLookupByLibrary.simpleMessage(
+      "Buscando recomendaciones...",
+    ),
     "sector": MessageLookupByLibrary.simpleMessage("Sector"),
     "sectorUnsubscribededSectorMessage": MessageLookupByLibrary.simpleMessage(
       "Sector dado de baja. Por favor, seleccione un nuevo sector",
@@ -848,6 +855,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "unidad": MessageLookupByLibrary.simpleMessage("ud."),
     "unitCost": MessageLookupByLibrary.simpleMessage("Coste unitario"),
     "unknown": MessageLookupByLibrary.simpleMessage("Desconocido"),
+    "unknownDescription": MessageLookupByLibrary.simpleMessage(
+      "Descripción desconocida",
+    ),
     "unknownFamily": MessageLookupByLibrary.simpleMessage(
       "Familia desconocida",
     ),

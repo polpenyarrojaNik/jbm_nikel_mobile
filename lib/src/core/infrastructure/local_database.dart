@@ -66,7 +66,7 @@ class LocalAppDatabase extends _$LocalAppDatabase {
   LocalAppDatabase.connect(super.connection) : test = false, super.connect();
   LocalAppDatabase.test() : test = true, super(NativeDatabase.memory());
   @override
-  int get schemaVersion => 18;
+  int get schemaVersion => 20;
 
   @override
   MigrationStrategy get migration {
@@ -226,6 +226,26 @@ class LocalAppDatabase extends _$LocalAppDatabase {
         }
         if (from < 18) {
           await m.createTable(visitaCompetenciaLocalTable);
+        }
+        if (from < 19) {
+          await m.alterTable(
+            TableMigration(
+              pedidoVentaLocalTable,
+              newColumns: [pedidoVentaLocalTable.recomendacionStr],
+            ),
+          );
+        }
+
+        if (from < 20) {
+          await m.alterTable(
+            TableMigration(
+              pedidoVentaLineaLocalTable,
+              newColumns: [pedidoVentaLineaLocalTable.aiRecomendado],
+              columnTransformer: {
+                pedidoVentaLineaLocalTable.aiRecomendado: const Constant('N'),
+              },
+            ),
+          );
         }
       }),
     );

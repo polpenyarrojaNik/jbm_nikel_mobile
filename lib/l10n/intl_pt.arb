@@ -420,5 +420,9 @@
   "until": "Até",
   "PDFdeliveryNotes": "PDF Bons de entrega",
   "PDFinvoices": "PDF Faturas",
-  "unitCost": "Custo unitário"
+  "unitCost": "Custo unitário",
+  "searchingRecommendations": "A procurar recomendações...",
+  "productRecommendations": "Recomendações de produtos",
+  "probability": "Probabilidade",
+  "unknownDescription": "Descrição desconhecida"
 }

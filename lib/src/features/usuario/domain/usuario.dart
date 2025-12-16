@@ -23,6 +23,6 @@ abstract class Usuario with _$Usuario {
     required String deviceInfo,
     required bool costeSn,
     required bool filtroRepresentante,
-    required bool iaActiva,
+    required bool aiSN,
   }) = _Usuario;
 }

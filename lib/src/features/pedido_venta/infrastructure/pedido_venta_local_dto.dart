@@ -8,6 +8,7 @@ import '../../../core/infrastructure/local_database.dart';
 import '../../cliente/domain/cliente.dart';
 import '../../cliente/domain/cliente_direccion.dart';
 import '../domain/pedido_venta.dart';
+import 'recomendacion_producto_dto.dart';
 
 part 'pedido_venta_local_dto.freezed.dart';
 part 'pedido_venta_local_dto.g.dart';
@@ -40,6 +41,7 @@ abstract class PedidoVentaLocalDTO
     @JsonKey(name: 'FECHA_ALTA') required DateTime fechaAlta,
     @JsonKey(name: 'IVA') required double iva,
     @JsonKey(name: 'DTO_BONIFICACION') required double dtoBonificacion,
+    @JsonKey(name: 'RECOMENDACION_STR') String? recomendacionStr,
     @JsonKey(name: 'ENVIADA') required String enviada,
     @JsonKey(name: 'TRATADA') required String tratada,
     @JsonKey(name: 'BORRADOR') required String borrador,
@@ -49,33 +51,34 @@ abstract class PedidoVentaLocalDTO
   factory PedidoVentaLocalDTO.fromJson(Map<String, dynamic> json) =>
       _$PedidoVentaLocalDTOFromJson(json);
 
-  factory PedidoVentaLocalDTO.fromDomain(PedidoVenta pedidoVetna) {
+  factory PedidoVentaLocalDTO.fromDomain(PedidoVenta pedidoVenta) {
     return PedidoVentaLocalDTO(
-      usuarioId: pedidoVetna.usuarioId,
-      pedidoVentaAppId: pedidoVetna.pedidoVentaAppId!,
-      pedidoId: pedidoVetna.pedidoVentaId,
-      empresaId: pedidoVetna.empresaId,
-      fechaAlta: pedidoVetna.pedidoVentaDate,
-      clienteId: pedidoVetna.clienteId!,
-      direccionId: pedidoVetna.direccionId,
-      nombreCliente: pedidoVetna.nombreCliente,
-      direccion1: pedidoVetna.direccionEntrga1,
-      direccion2: pedidoVetna.direccionEntrga2,
-      codigoPostal: pedidoVetna.codigoPostal,
-      poblacion: pedidoVetna.poblacion,
-      provincia: pedidoVetna.provincia,
-      paisId: pedidoVetna.pais?.id,
-      pedidoCliente: pedidoVetna.pedidoCliente,
-      observaciones: pedidoVetna.observaciones,
-      oferta: (pedidoVetna.oferta ?? false) ? 'S' : 'N',
-      ofertaFechaHasta: pedidoVetna.ofertaFechaHasta,
-      divisaId: pedidoVetna.divisa.id,
-      iva: pedidoVetna.iva,
-      dtoBonificacion: pedidoVetna.dtoBonificacion!,
-      enviada: (pedidoVetna.enviada) ? 'S' : 'N',
-      tratada: (pedidoVetna.tratada) ? 'S' : 'N',
-      borrador: (pedidoVetna.borrador) ? 'S' : 'N',
-      errorSyncMessage: pedidoVetna.errorSyncMessage,
+      usuarioId: pedidoVenta.usuarioId,
+      pedidoVentaAppId: pedidoVenta.pedidoVentaAppId!,
+      pedidoId: pedidoVenta.pedidoVentaId,
+      empresaId: pedidoVenta.empresaId,
+      fechaAlta: pedidoVenta.pedidoVentaDate,
+      clienteId: pedidoVenta.clienteId!,
+      direccionId: pedidoVenta.direccionId,
+      nombreCliente: pedidoVenta.nombreCliente,
+      direccion1: pedidoVenta.direccionEntrga1,
+      direccion2: pedidoVenta.direccionEntrga2,
+      codigoPostal: pedidoVenta.codigoPostal,
+      poblacion: pedidoVenta.poblacion,
+      provincia: pedidoVenta.provincia,
+      paisId: pedidoVenta.pais?.id,
+      pedidoCliente: pedidoVenta.pedidoCliente,
+      observaciones: pedidoVenta.observaciones,
+      oferta: (pedidoVenta.oferta ?? false) ? 'S' : 'N',
+      ofertaFechaHasta: pedidoVenta.ofertaFechaHasta,
+      divisaId: pedidoVenta.divisa.id,
+      iva: pedidoVenta.iva,
+      dtoBonificacion: pedidoVenta.dtoBonificacion!,
+      recomendacionStr: null,
+      enviada: (pedidoVenta.enviada) ? 'S' : 'N',
+      tratada: (pedidoVenta.tratada) ? 'S' : 'N',
+      borrador: (pedidoVenta.borrador) ? 'S' : 'N',
+      errorSyncMessage: pedidoVenta.errorSyncMessage,
     );
   }
 
@@ -90,6 +93,7 @@ abstract class PedidoVentaLocalDTO
     String? observaciones,
     bool oferta,
     DateTime? ofertaFechaHasta,
+    List<RecomendacionProductoDTO>? recomendacionesProductoDTOList,
     bool isBorrador,
   ) {
     return PedidoVentaLocalDTO(
@@ -115,6 +119,9 @@ abstract class PedidoVentaLocalDTO
       divisaId: cliente.divisa!.id,
       iva: cliente.iva,
       dtoBonificacion: 0,
+      recomendacionStr: recomendacionesProductoDTOList
+          ?.map((e) => e.toJson())
+          .toString(),
       enviada: 'N',
       tratada: 'N',
       borrador: isBorrador ? 'S' : 'N',
@@ -191,6 +198,7 @@ abstract class PedidoVentaLocalDTO
       divisaId: Value(divisaId),
       iva: Value(iva),
       dtoBonificacion: Value(dtoBonificacion),
+      recomendacionStr: Value(recomendacionStr),
       enviada: Value(enviada),
       tratada: Value(tratada),
       borrador: Value(borrador),
@@ -223,6 +231,8 @@ class PedidoVentaLocalTable extends Table {
       dateTime().nullable().named('OFERTA_FECHA_HASTA')();
   RealColumn get iva => real().named('IVA')();
   RealColumn get dtoBonificacion => real().named('DTO_BONIFICACION')();
+  TextColumn get recomendacionStr =>
+      text().nullable().named('RECOMENDACION_STR')();
   TextColumn get enviada =>
       text().withDefault(const Constant('N')).named('ENVIADA')();
   TextColumn get tratada =>

@@ -33,8 +33,10 @@ import '../domain/pedido_venta_estado.dart';
 import '../domain/pedido_venta_linea.dart';
 import '../domain/precio.dart';
 import '../domain/precio_promocion.dart';
+import '../domain/recomendacion_producto.dart';
 import 'pedido_venta_linea_local_dto.dart';
 import 'pedido_venta_local_dto.dart';
+import 'recomendacion_producto_dto.dart';
 
 part 'pedido_venta_repository.g.dart';
 
@@ -765,6 +767,7 @@ class PedidoVentaRepository {
           descuentoProntoPago: descuentoProntoPago,
           divisaId: pedidoVentaDTO.divisaId,
           stockDisponible: stockDisponible,
+          aiRecomendado: false,
         );
       }).get();
     } catch (e, stackTrace) {
@@ -866,9 +869,14 @@ class PedidoVentaRepository {
     String? pedidoCliente,
     required bool oferta,
     DateTime? ofertaFechaHasta,
+    required List<RecomendacionProducto>? recomendacionesProductoList,
     required bool isBorrador,
     required ISentrySpan transaction,
   }) async {
+    final recomendacionesProductoDTOList = recomendacionesProductoList
+        ?.map((e) => RecomendacionProductoDTO.fromDomain(e))
+        .toList();
+
     final pedidoVentaLocalDTO = PedidoVentaLocalDTO.fromForm(
       pedidoVentaAppId,
       pedidoId,
@@ -880,6 +888,7 @@ class PedidoVentaRepository {
       observaciones,
       oferta,
       ofertaFechaHasta?.toUtc(),
+      recomendacionesProductoDTOList,
       isBorrador,
     );
 
@@ -1266,6 +1275,105 @@ class PedidoVentaRepository {
     } catch (e, stackTrace) {
       Error.throwWithStackTrace(
         AppException.insertDataFailure(e.toString()),
+        stackTrace,
+      );
+    }
+  }
+
+  Future<List<RecomendacionProducto>> getRecomendacionProductoList(
+    String clienteId,
+    List<PedidoVentaLinea> pedidoVentaLineaList,
+  ) async {
+    try {
+      final recomendacionProductoList = <RecomendacionProducto>[];
+
+      final remoteRecomendacionProductoDTOList =
+          await _remoteRecomendacionProductoDtoList(
+            clienteId,
+            pedidoVentaLineaList,
+            usuario.test,
+          );
+
+      remoteRecomendacionProductoDTOList.sort(
+        (a, b) => b.probabilidad.compareTo(a.probabilidad),
+      );
+
+      for (
+        var i = 0;
+        i <
+            (remoteRecomendacionProductoDTOList.length > 3
+                ? 3
+                : remoteRecomendacionProductoDTOList.length);
+        i++
+      ) {
+        if (remoteRecomendacionProductoDTOList[i].probabilidad >= 0.8) {
+          final articuloDescripcion = await getArticuloDescripcionById(
+            articuloId: remoteRecomendacionProductoDTOList[i].articuloId,
+          );
+          recomendacionProductoList.add(
+            remoteRecomendacionProductoDTOList[i].toDomain(articuloDescripcion),
+          );
+        }
+      }
+
+      return recomendacionProductoList;
+    } catch (e, stackTrace) {
+      Error.throwWithStackTrace(
+        AppException.fetchLocalDataFailure(e.toString()),
+        stackTrace,
+      );
+    }
+  }
+
+  Future<List<RecomendacionProductoDTO>> _remoteRecomendacionProductoDtoList(
+    String clienteId,
+    List<PedidoVentaLinea> pedidoVentaLineaList,
+    bool test,
+  ) async {
+    try {
+      final recomendacionProductoBody = {
+        'ARTICULOS': pedidoVentaLineaList
+            .map((e) => {'ARTICULO_ID': e.articuloId, 'CANTIDAD': e.cantidad})
+            .toList(),
+      };
+
+      final requestUri = (test)
+          ? Uri.http(
+              dotenv.get('URL_TEST', fallback: 'localhost:3001'),
+              'api/v6/online/ia/recomendacion-producto/$clienteId',
+            )
+          : Uri.https(
+              dotenv.get('URL', fallback: 'localhost:3001'),
+              'api/v6/online/ia/recomendacion-producto/$clienteId',
+            );
+
+      log.i('JSON: ${jsonEncode(recomendacionProductoBody)}');
+
+      final response = await _dio.postUri(
+        requestUri,
+        options: Options(
+          headers: {'authorization': 'Bearer ${usuario.provisionalToken}'},
+        ),
+        data: jsonEncode(recomendacionProductoBody),
+      );
+      if (response.statusCode == 200) {
+        final json = response.data['data'] as List<dynamic>;
+
+        return json
+            .map(
+              (e) =>
+                  RecomendacionProductoDTO.fromJson(e as Map<String, dynamic>),
+            )
+            .toList();
+      }
+
+      throw AppException.restApiFailure(
+        response.statusCode ?? 400,
+        response.statusMessage ?? '',
+      );
+    } catch (e, stackTrace) {
+      Error.throwWithStackTrace(
+        getApiError(e, stackTrace, errorLogger),
         stackTrace,
       );
     }
@@ -2458,5 +2566,15 @@ class PedidoVentaRepository {
       return true;
     }
     return false;
+  }
+
+  Future<String?> getArticuloDescripcionById({
+    required String articuloId,
+  }) async {
+    final articuloDto = await (_remoteDb.select(
+      _remoteDb.articuloTable,
+    )..where((tbl) => tbl.id.equals(articuloId))).getSingleOrNull();
+
+    return articuloDto?.getDescriptionInLocalLanguage();
   }
 }

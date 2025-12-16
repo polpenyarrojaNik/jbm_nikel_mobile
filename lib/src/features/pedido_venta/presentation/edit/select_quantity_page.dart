@@ -388,6 +388,7 @@ class _SelecionarCantidadPageState
           iva: articuloPrecio.iva,
           importeLinea: importeLinea,
           cantidadPendiente: totalQuantity,
+          aiRecomendado: widget.seleccionarCantidadParam.recomendado,
           lastUpdated: DateTime.now().toUtc(),
           deleted: false,
         );
@@ -430,7 +431,9 @@ class _SelecionarCantidadPageState
           );
         } else {
           if (context.mounted) {
-            await context.router.maybePop();
+            await context.router.maybePop(
+              widget.seleccionarCantidadParam.recomendado,
+            );
           }
         }
       } else {

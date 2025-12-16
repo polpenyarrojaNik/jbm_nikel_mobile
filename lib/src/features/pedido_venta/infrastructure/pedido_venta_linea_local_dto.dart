@@ -34,6 +34,7 @@ abstract class PedidoVentaLineaLocalDTO
     @JsonKey(name: 'IVA') required double iva,
     @JsonKey(name: 'PEDIDO_LINEA_ID_COMPONENTE')
     String? pedidoLineaComponenteId,
+    @JsonKey(name: 'AI_RECOMENDADO') required String aiRecomendado,
   }) = _PedidoVentaLineaLocalDTO;
 
   factory PedidoVentaLineaLocalDTO.fromJson(Map<String, dynamic> json) =>
@@ -61,6 +62,7 @@ abstract class PedidoVentaLineaLocalDTO
           : 'N',
       iva: pedidoVentaLinea.iva!,
       pedidoLineaComponenteId: pedidoVentaLinea.pedidoLineaIdComponente,
+      aiRecomendado: pedidoVentaLinea.aiRecomendado ? 'S' : 'N',
     );
   }
 
@@ -87,6 +89,7 @@ abstract class PedidoVentaLineaLocalDTO
       iva: iva,
       cantidadPendiente: cantidad,
       lastUpdated: DateTime.now().toUtc(),
+      aiRecomendado: aiRecomendado == 'S',
       deleted: false,
     );
   }
@@ -111,6 +114,7 @@ abstract class PedidoVentaLineaLocalDTO
       fechaDisponible: Value(fechaDisponible),
       iva: Value(iva),
       pedidoLineaIdComponente: Value(pedidoLineaComponenteId),
+      aiRecomendado: Value(aiRecomendado),
     ).toColumns(nullToAbsent);
   }
 }
@@ -136,6 +140,7 @@ class PedidoVentaLineaLocalTable extends Table {
   RealColumn get iva => real().named('IVA')();
   TextColumn get pedidoLineaIdComponente =>
       text().nullable().named('PEDIDO_LINEA_ID_COMPONENTE')();
+  TextColumn get aiRecomendado => text().named('AI_RECOMENDADO')();
   @override
   Set<Column> get primaryKey => {pedidoVentaAppId, pedidoVentaLineaAppId};
 

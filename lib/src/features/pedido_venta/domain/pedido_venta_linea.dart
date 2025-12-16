@@ -28,6 +28,7 @@ abstract class PedidoVentaLinea with _$PedidoVentaLinea {
     int? stockDisponible,
     DateTime? fechaDisponible,
     double? iva,
+    required bool aiRecomendado,
     required int cantidadPendiente,
     required DateTime lastUpdated,
     required bool deleted,

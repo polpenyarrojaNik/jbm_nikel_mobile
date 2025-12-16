@@ -17,7 +17,7 @@ _UsuarioAuxDTO _$UsuarioAuxDTOFromJson(Map<String, dynamic> json) =>
       margenComercial: (json['MARGEN_COMERCIAL'] as num).toDouble(),
       costeSn: json['COSTE_SN'] as String,
       filtroRepresentante: json['FILTRO_REPRESENTANTE'] as String,
-      iaActiva: json['IA_ACTIVA'] as String,
+      aiSN: json['AI_SN'] as String,
     );
 
 Map<String, dynamic> _$UsuarioAuxDTOToJson(_UsuarioAuxDTO instance) =>
@@ -31,5 +31,5 @@ Map<String, dynamic> _$UsuarioAuxDTOToJson(_UsuarioAuxDTO instance) =>
       'MARGEN_COMERCIAL': instance.margenComercial,
       'COSTE_SN': instance.costeSn,
       'FILTRO_REPRESENTANTE': instance.filtroRepresentante,
-      'IA_ACTIVA': instance.iaActiva,
+      'AI_SN': instance.aiSN,
     };

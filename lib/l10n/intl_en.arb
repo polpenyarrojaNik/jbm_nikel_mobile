@@ -422,5 +422,9 @@
   "unknownCustomer": "Unknown customer",
   "PDFdeliveryNotes": "PDF Delivery notes",
   "PDFinvoices": "PDF Invoices",
-  "unitCost": "Unit cost"
+  "unitCost": "Unit cost",
+  "searchingRecommendations": "Searching recommendations...",
+  "productRecommendations": "Product recommendations",
+  "probability": "Probability",
+  "unknownDescription": "Unknown description"
 }

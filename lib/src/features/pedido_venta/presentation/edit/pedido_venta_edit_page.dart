@@ -38,8 +38,10 @@ import '../../../cliente/domain/cliente_imp_param.dart';
 import '../../../cliente/infrastructure/cliente_repository.dart';
 import '../../../cliente/presentation/index/cliente_lista_tile.dart';
 import '../../../cliente/presentation/show/cliente_direccion_list_page.dart';
+import '../../../usuario/infrastructure/usuario_service.dart';
 import '../../domain/pedido_local_param.dart';
 import '../../domain/pedido_venta_linea.dart';
+import '../../domain/recomendacion_producto.dart';
 import '../../domain/seleccionar_cantidad_param.dart';
 import '../../infrastructure/pedido_venta_repository.dart';
 import '../index/pedido_search_controller.dart';
@@ -48,6 +50,7 @@ import 'crear_csv_controller.dart';
 import 'icon_stepper.dart';
 import 'pedido_venta_edit_page_controller.dart';
 import 'pedido_venta_linea_nuevo_tile.dart';
+import 'recomendacion_producto_alert_dialog.dart';
 
 @RoutePage()
 class PedidoVentaEditPage extends ConsumerStatefulWidget {
@@ -120,6 +123,7 @@ class _PedidoVentaEditPageState extends ConsumerState<PedidoVentaEditPage> {
                 cliente,
                 clienteDireccion,
                 pedidoVentaLineaList,
+                recomendacionesProductoList,
                 currentStep,
                 observaciones,
                 pedidoCliente,
@@ -175,6 +179,8 @@ class _PedidoVentaEditPageState extends ConsumerState<PedidoVentaEditPage> {
                   cliente,
                   clienteDireccion,
                   pedidoVentaLineaList,
+                  recomendacionesProductoList,
+
                   currentStep,
                   observaciones,
                   pedidoCliente,
@@ -188,10 +194,12 @@ class _PedidoVentaEditPageState extends ConsumerState<PedidoVentaEditPage> {
                       cliente: cliente!,
                       clienteDireccion: clienteDireccion,
                       pedidoVentaLineaList: pedidoVentaLineaList,
+
                       observaciones: observaciones,
                       pedidoCliente: pedidoCliente,
                       oferta: oferta,
                       ofertaFechaHasta: ofertaFechaHasta,
+                      recomendacionesProductoList: recomendacionesProductoList,
                     ),
                   )
                 : Container(),
@@ -200,11 +208,14 @@ class _PedidoVentaEditPageState extends ConsumerState<PedidoVentaEditPage> {
                   cliente,
                   clienteDireccion,
                   pedidoVentaLineaList,
+                  recomendacionesProductoList,
+
                   currentStep,
                   observaciones,
                   pedidoCliente,
                   oferta,
                   ofertaFechaHasta,
+
                   isBorrador,
                   error,
                   stackTrace,
@@ -230,6 +241,7 @@ class _PedidoVentaEditPageState extends ConsumerState<PedidoVentaEditPage> {
                 cliente,
                 clienteDireccion,
                 pedidoVentaLineaList,
+                recomendacionesProductoList,
                 currentStep,
                 observaciones,
                 pedidoCliente,
@@ -242,6 +254,7 @@ class _PedidoVentaEditPageState extends ConsumerState<PedidoVentaEditPage> {
                 cliente: cliente,
                 clienteDireccion: clienteDireccion,
                 pedidoVentaLineaList: pedidoVentaLineaList,
+                recomendacionesProductoList: recomendacionesProductoList,
                 currentStep: currentStep,
                 observaciones: observaciones,
                 pedidoCliente: pedidoCliente,
@@ -258,6 +271,8 @@ class _PedidoVentaEditPageState extends ConsumerState<PedidoVentaEditPage> {
                 cliente,
                 clienteDireccion,
                 pedidoVentaLineaList,
+                recomendacionesProductoList,
+
                 currentStep,
                 observaciones,
                 pedidoCliente,
@@ -272,6 +287,7 @@ class _PedidoVentaEditPageState extends ConsumerState<PedidoVentaEditPage> {
                 cliente: cliente,
                 clienteDireccion: clienteDireccion,
                 pedidoVentaLineaList: pedidoVentaLineaList,
+                recomendacionesProductoList: recomendacionesProductoList,
                 currentStep: currentStep,
                 observaciones: observaciones,
                 pedidoCliente: pedidoCliente,
@@ -323,6 +339,7 @@ class _PedidoVentaEditPageState extends ConsumerState<PedidoVentaEditPage> {
     String? pedidoCliente,
     required bool oferta,
     DateTime? ofertaFechaHasta,
+    required List<RecomendacionProducto>? recomendacionesProductoList,
   }) async {
     await transaction.startChild('UI:BotónGuardarBorrador').finish();
 
@@ -337,6 +354,7 @@ class _PedidoVentaEditPageState extends ConsumerState<PedidoVentaEditPage> {
           pedidoCliente: pedidoCliente,
           oferta: oferta,
           ofertaFechaHasta: ofertaFechaHasta,
+          recomendacionesProductoList: recomendacionesProductoList,
           isBorrador: true,
           transaction: transaction,
         );
@@ -388,6 +406,7 @@ class PedidoVentaEditForm extends ConsumerWidget {
     required this.cliente,
     required this.clienteDireccion,
     required this.pedidoVentaLineaList,
+    required this.recomendacionesProductoList,
     this.articuloIdNuevaLinea,
     required this.currentStep,
     required this.observaciones,
@@ -403,6 +422,7 @@ class PedidoVentaEditForm extends ConsumerWidget {
   final Cliente? cliente;
   final ClienteDireccion? clienteDireccion;
   final List<PedidoVentaLinea> pedidoVentaLineaList;
+  final List<RecomendacionProducto>? recomendacionesProductoList;
   final String? articuloIdNuevaLinea;
   final int currentStep;
   final String? observaciones;
@@ -439,15 +459,9 @@ class PedidoVentaEditForm extends ConsumerWidget {
               builder: (ctx) {
                 return AskPopAlertDialog(
                   contextEditPage: context,
-                  text:
-                      // (!isBorrador)
-                      //     ?
-                      S
-                          .of(ctx)
-                          .pedido_edit_askPopAlertDialog_seguroQuieresSales,
-                  // : S
-                  //     .of(context)
-                  //     .pedido_edit_askPopAlertDialog_seguroQuieresSalesBorrador
+                  text: S
+                      .of(ctx)
+                      .pedido_edit_askPopAlertDialog_seguroQuieresSales,
                 );
               },
             )
@@ -517,8 +531,24 @@ class PedidoVentaEditForm extends ConsumerWidget {
         .navigateToNextStep();
   }
 
-  void selectLineasValidate(BuildContext context, WidgetRef ref) {
+  Future<void> selectLineasValidate(BuildContext context, WidgetRef ref) async {
     if (pedidoVentaLineaList.isNotEmpty) {
+      final usuario = await ref
+          .read(usuarioServiceProvider)
+          .getSignedInUsuario();
+      if ((usuario?.aiSN ?? false) &&
+          !pedidoLocalParam.isEdit &&
+          recomendacionesProductoList == null) {
+        await showDialog(
+          context: context,
+          builder: (ctx) => RecomendacionProductoAlertDialog(
+            pedidoLocalParam: pedidoLocalParam,
+            clienteId: cliente!.id,
+            pedidoVentaLineaList: pedidoVentaLineaList,
+          ),
+        );
+      }
+
       ref
           .read(
             pedidoVentaEditPageControllerProvider(pedidoLocalParam).notifier,
@@ -668,6 +698,7 @@ class PedidoVentaEditForm extends ConsumerWidget {
           pedidoCliente: pedidoCliente,
           oferta: oferta,
           ofertaFechaHasta: ofertaFechaHasta,
+          recomendacionesProductoList: recomendacionesProductoList,
           isBorrador: false,
           transaction: transaction,
         );
@@ -1061,6 +1092,7 @@ class StepArticuloListContent extends ConsumerWidget {
       posicionLinea: i,
       createdFromCliente: pedidoLocalParam.createPedidoFromClienteId != null,
       addNewLineaDesdeArticulo: false,
+      recomendado: pedidoVentaLinea.aiRecomendado,
     );
     context.router.push(
       SeleccionarCantidadRoute(
@@ -1087,6 +1119,7 @@ class StepArticuloListContent extends ConsumerWidget {
         posicionLinea: pedidoVentaLineaList.length,
         createdFromCliente: pedidoLocalParam.createPedidoFromClienteId != null,
         addNewLineaDesdeArticulo: false,
+        recomendado: false,
       );
 
       context.router.push(
