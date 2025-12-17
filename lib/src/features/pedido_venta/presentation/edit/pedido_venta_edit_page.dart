@@ -536,15 +536,17 @@ class PedidoVentaEditForm extends ConsumerWidget {
       final usuario = await ref
           .read(usuarioServiceProvider)
           .getSignedInUsuario();
-      if ((usuario?.aiSN ?? false) &&
-          !pedidoLocalParam.isEdit &&
-          recomendacionesProductoList == null) {
+      if ((usuario?.aiSN ?? false) && !pedidoLocalParam.isEdit
+      // &&
+      // recomendacionesProductoList == null
+      ) {
         await showDialog(
           context: context,
           builder: (ctx) => RecomendacionProductoAlertDialog(
             pedidoLocalParam: pedidoLocalParam,
             clienteId: cliente!.id,
             pedidoVentaLineaList: pedidoVentaLineaList,
+            dialogContext: ctx,
           ),
         );
       }

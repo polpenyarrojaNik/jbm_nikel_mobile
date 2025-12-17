@@ -49,11 +49,13 @@ class RecomendacionProductoAlertDialog extends ConsumerWidget {
     required this.pedidoLocalParam,
     required this.clienteId,
     required this.pedidoVentaLineaList,
+    required this.dialogContext,
   });
 
   final PedidoLocalParam pedidoLocalParam;
   final String clienteId;
   final List<PedidoVentaLinea> pedidoVentaLineaList;
+  final BuildContext dialogContext;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -68,7 +70,9 @@ class RecomendacionProductoAlertDialog extends ConsumerWidget {
     return state.when(
       data: (recomendacionProductoList) {
         if (recomendacionProductoList.isEmpty) {
-          Navigator.pop(context);
+          WidgetsBinding.instance.addPostFrameCallback((_) {
+            Navigator.pop(dialogContext);
+          });
           return SizedBox.shrink();
         }
         return RecomendacionProductoListDialog(
@@ -76,6 +80,7 @@ class RecomendacionProductoAlertDialog extends ConsumerWidget {
           pedidoLocalParam: pedidoLocalParam,
           clienteId: clienteId,
           pedidoVentaLineaList: pedidoVentaLineaList,
+          dialogContext: dialogContext,
         );
       },
       loading: () => AlertDialog(
@@ -106,12 +111,14 @@ class RecomendacionProductoListDialog extends StatefulWidget {
     required this.pedidoLocalParam,
     required this.clienteId,
     required this.pedidoVentaLineaList,
+    required this.dialogContext,
   });
 
   final List<RecomendacionProducto> recomendacionesProductoList;
   final PedidoLocalParam pedidoLocalParam;
   final String clienteId;
   final List<PedidoVentaLinea> pedidoVentaLineaList;
+  final BuildContext dialogContext;
 
   @override
   State<RecomendacionProductoListDialog> createState() =>
@@ -158,7 +165,7 @@ class _RecomendacionProductoListDialogState
       actions: [
         TextButton(
           onPressed: () {
-            Navigator.of(context).pop();
+            Navigator.of(widget.dialogContext).pop();
           },
 
           style: ButtonStyle(
@@ -196,7 +203,7 @@ class _RecomendacionProductoListDialogState
     );
 
     final added = await Navigator.push<bool>(
-      context,
+      widget.dialogContext,
       MaterialPageRoute(
         builder: (context) => SeleccionarCantidadPage(
           seleccionarCantidadParam: seleccionarCantidadParam,
@@ -208,7 +215,7 @@ class _RecomendacionProductoListDialogState
       setState(() {
         currentRecomendacionesProductoList.remove(recomendacionProducto);
         if (currentRecomendacionesProductoList.isEmpty) {
-          Navigator.of(context).pop();
+          Navigator.of(widget.dialogContext).pop();
         }
       });
     }
