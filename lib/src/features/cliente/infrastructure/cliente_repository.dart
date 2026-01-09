@@ -28,6 +28,7 @@ import '../../devoluciones/domain/devolucion_linea.dart';
 import '../../estadisticas/domain/estadisticas_ultimos_precios.dart';
 import '../../pedido_venta/domain/pedido_venta.dart';
 import '../../pedido_venta/infrastructure/pedido_venta_repository.dart';
+import '../../pedido_venta/presentation/edit/pedido_venta_edit_page_controller.dart';
 import '../../usuario/application/usuario_notifier.dart';
 import '../../usuario/domain/usuario.dart';
 import '../../visitas/domain/visita.dart';
@@ -99,6 +100,7 @@ class ClienteDireccionListById extends _$ClienteDireccionListById {
     final clienteRepository = ref.watch(clienteRepositoryProvider);
     return clienteRepository.getClienteDireccionesListById(
       clienteId: clienteId,
+      searchText: ref.watch(customerAddressSearchQueryParamsControllerProvider),
     );
   }
 }
