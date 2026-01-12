@@ -1,7 +1,7 @@
 .PHONY: all run run_test install_pubspec upgrade_pubspec install_pubspec deploy_mobile icons run_dependency_validator run_build_runner watch_build_runner deploy_windows update_i18n help
 
-FLUTTER=flutter
-DART=dart
+FLUTTER=puro flutter
+DART=puro dart
 RIMRAF=rimraf
 PERL=perl
 GIT=git
@@ -20,7 +20,7 @@ help: ## This help dialog.
 	done
 
 update_i18n: ## Update i18n files
-	@$(DART) pub global run intl_utils:generate
+	@$(FLUTTER) pub global run intl_utils:generate
 
 run_test: ## Runs all unit tests
 	@echo ":: Running unit tests..."
@@ -36,12 +36,12 @@ lint: ## Lints the code
 
 create_icons: ## Create App icons
 	@echo ":: Creating App icons..."
-	@$(DART) run flutter_launcher_icons
+	@$(FLUTTER) pub run flutter_launcher_icons
 
 build_runner: ## Generates automatic code
 	@echo ":: Creating generated code..."
-	@$(DART) run build_runner clean
-	@$(DART) run build_runner build --delete-conflicting-outputs
+	@$(FLUTTER) pub run build_runner clean
+	@$(FLUTTER) pub run build_runner build --delete-conflicting-outputs
 
 pub_get: ## Install pubspec dependencies
 	@echo ":: Installing dependencies..."
@@ -56,7 +56,7 @@ pub_major_upgrade: ## Upgrades pubspec dependencies
 
 sentry_dart_plugin: ## Generates sentry dart plugin
 	@echo ":: Generating sentry dart plugin..."
-	@$(DART) run sentry_dart_plugin --ignore-missing
+	@$(FLUTTER) pub run sentry_dart_plugin --ignore-missing
 
 upgrade_pubspec: pub_major_upgrade build_runner format update_i18n lint icons ## Upgrades pubspec dependencies
 
