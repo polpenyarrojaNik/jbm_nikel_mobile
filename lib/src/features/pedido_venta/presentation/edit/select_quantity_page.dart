@@ -135,9 +135,7 @@ class _SelecionarCantidadPageState
       );
     });
     final stateArticuloPrecio = ref.watch(articuloPrecioProvider);
-    final statePrecioTarifa = ref.watch(
-      getArticuloPrecioTarifaListaByIdProvider(articuloId!),
-    );
+
     return Scaffold(
       appBar: AppBar(
         title: Text(
@@ -645,7 +643,7 @@ class TotalQuantityWidget extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Padding(
-      padding: const EdgeInsets.all(8),
+      padding: const EdgeInsets.all(4),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
@@ -653,7 +651,7 @@ class TotalQuantityWidget extends ConsumerWidget {
             child: Card(
               color: Theme.of(context).colorScheme.primaryContainer,
               child: Padding(
-                padding: const EdgeInsets.all(24.0),
+                padding: const EdgeInsets.all(8.0),
                 child: Column(
                   children: [
                     Text(
@@ -662,7 +660,6 @@ class TotalQuantityWidget extends ConsumerWidget {
                         color: Theme.of(context).colorScheme.onPrimaryContainer,
                       ),
                     ),
-                    const Gap(8),
                     Text(
                       '${numberFormatCantidades(totalQuantity)} ${S.of(context).unidad}',
                       style: Theme.of(context).textTheme.titleSmall?.copyWith(
@@ -678,7 +675,7 @@ class TotalQuantityWidget extends ConsumerWidget {
             child: Card(
               color: Theme.of(context).colorScheme.primaryContainer,
               child: Padding(
-                padding: const EdgeInsets.all(24),
+                padding: const EdgeInsets.all(8),
                 child: Column(
                   children: [
                     Text(
@@ -687,7 +684,6 @@ class TotalQuantityWidget extends ConsumerWidget {
                         color: Theme.of(context).colorScheme.onPrimaryContainer,
                       ),
                     ),
-                    const Gap(8),
                     Text(
                       ref
                           .read(pedidoVentaRepositoryProvider)
@@ -1377,7 +1373,7 @@ class _ArticuloGrupoNetoSelectQuantityTile extends StatelessWidget {
             precio: articuloGrupoNeto.precio,
             tipoPrecio: articuloGrupoNeto.tipoPrecio,
           ),
-          style: Theme.of(context).textTheme.bodyMedium?.copyWith(fontSize: 9),
+          style: Theme.of(context).textTheme.bodyMedium?.copyWith(fontSize: 12),
         ),
       ],
     );
@@ -1425,7 +1421,7 @@ class _ArticuloPrecioTarifaSelectQuantityTile extends StatelessWidget {
             precio: articuloPrecioTarifa.precio,
             tipoPrecio: articuloPrecioTarifa.tipoPrecio,
           ),
-          style: Theme.of(context).textTheme.bodyMedium?.copyWith(fontSize: 9),
+          style: Theme.of(context).textTheme.bodyMedium?.copyWith(fontSize: 12),
         ),
       ],
     );

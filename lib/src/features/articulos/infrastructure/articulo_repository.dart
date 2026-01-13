@@ -516,6 +516,7 @@ AND estadisticas_venta.cliente_id IN (SELECT clientes_usuario.cliente_id
           WHERE ARTICULOS_TARIFA_PRECIO.VISIBLE_SN = 'S'
                 AND ARTICULOS_TARIFA_PRECIO.ARTICULO_ID = :articuloId
                 AND USUARIO_TARIFA.USUARIO_ID = :usuarioId
+          ORDER BY ARTICULOS_TARIFA_PRECIO.TARIFA_DESCRIPCION, ARTICULOS_TARIFA_PRECIO.CANTIDAD_DESDE
                 ;
       ''',
                   variables: [Variable(articuloId), Variable(usuario.id)],
@@ -532,6 +533,7 @@ SELECT *
   FROM ARTICULOS_TARIFA_PRECIO
  WHERE ARTICULOS_TARIFA_PRECIO.VISIBLE_SN = 'S'
       AND ARTICULOS_TARIFA_PRECIO.ARTICULO_ID = :articuloId
+ ORDER BY ARTICULOS_TARIFA_PRECIO.TARIFA_DESCRIPCION, ARTICULOS_TARIFA_PRECIO.CANTIDAD_DESDE
        ;
 ''',
                   variables: [Variable(articuloId)],
@@ -567,6 +569,7 @@ SELECT *
            WHERE clientes_grupos_netos.grupo_neto_id = articulos_grupos_netos_precio.grupo_neto_id
              AND clientes_usuario.usuario_id = :usuarioId)
    AND articulos_grupos_netos_precio.articulo_id = :articuloId
+ORDER BY articulos_grupos_netos_precio.grupo_neto_descripcion, articulos_grupos_netos_precio.cantidad_desde
 ''',
             variables: [Variable(usuarioId), Variable(articuloId)],
             readsFrom: {
