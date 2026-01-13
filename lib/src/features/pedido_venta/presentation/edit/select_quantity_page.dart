@@ -14,9 +14,10 @@ import '../../../../core/presentation/common_widgets/error_message_widget.dart';
 import '../../../../core/presentation/common_widgets/progress_indicator_widget.dart';
 import '../../../../core/routing/app_auto_router.dart';
 import '../../../articulos/domain/articulo.dart';
+import '../../../articulos/domain/articulo_grupo_neto.dart';
+import '../../../articulos/domain/articulo_precio_tarifa.dart';
 import '../../../articulos/domain/articulo_sustitutivo.dart';
 import '../../../articulos/infrastructure/articulo_repository.dart';
-import '../../../articulos/presentation/show/articulo_precio_tarifa_page.dart';
 import '../../../cliente/domain/cliente.dart';
 import '../../../cliente/infrastructure/cliente_repository.dart';
 import '../../../usuario/application/usuario_notifier.dart';
@@ -297,20 +298,7 @@ class _SelecionarCantidadPageState
                             : Container(),
                       ),
                     const Gap(8),
-                    statePrecioTarifa.when(
-                      data: (preciosTarifaList) => ListView.builder(
-                        shrinkWrap: true,
-                        physics: const NeverScrollableScrollPhysics(),
-                        itemCount: preciosTarifaList.length,
-                        itemBuilder: (context, i) => ArticuloPrecioTarifaTile(
-                          articuloPrecioTarifa: preciosTarifaList[i],
-                        ),
-                      ),
-                      error: (error, _) =>
-                          Center(child: ErrorMessageWidget(error.toString())),
-                      loading: () =>
-                          const Center(child: CircularProgressIndicator()),
-                    ),
+                    InfoPreciosWidget(articuloId: articuloId!),
                   ],
                 ),
               ),
@@ -1242,6 +1230,204 @@ class _ArticuloPrecioContainer extends ConsumerWidget {
           ],
         ),
       ),
+    );
+  }
+}
+
+class InfoPreciosWidget extends StatelessWidget {
+  const InfoPreciosWidget({super.key, required this.articuloId});
+
+  final String articuloId;
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      child: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+            Expanded(child: GruposNetosListWidget(articuloId: articuloId)),
+            const VerticalDivider(),
+            Expanded(child: PreciosTarifaListWidget(articuloId: articuloId)),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class PreciosTarifaListWidget extends ConsumerWidget {
+  const PreciosTarifaListWidget({super.key, required this.articuloId});
+
+  final String articuloId;
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final statePrecioTarifa = ref.watch(
+      getArticuloPrecioTarifaListaByIdProvider(articuloId),
+    );
+
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          S.of(context).articulo_show_articuloPreciosTarifa_titulo,
+          style: Theme.of(context).textTheme.bodySmall,
+        ),
+        const Gap(2),
+
+        statePrecioTarifa.when(
+          data: (preciosTarifaList) => ListView.separated(
+            padding: const EdgeInsets.only(left: 8),
+            separatorBuilder: (context, index) => const Divider(),
+            shrinkWrap: true,
+            physics: const NeverScrollableScrollPhysics(),
+            itemCount: preciosTarifaList.length,
+            itemBuilder: (context, i) =>
+                _ArticuloPrecioTarifaSelectQuantityTile(
+                  articuloPrecioTarifa: preciosTarifaList[i],
+                ),
+          ),
+          error: (error, _) =>
+              Center(child: ErrorMessageWidget(error.toString())),
+          loading: () => const Center(child: CircularProgressIndicator()),
+        ),
+      ],
+    );
+  }
+}
+
+class GruposNetosListWidget extends ConsumerWidget {
+  const GruposNetosListWidget({super.key, required this.articuloId});
+
+  final String articuloId;
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final stateGruposNetos = ref.watch(
+      getArticuloGrupoNetoListaByIdProvider(articuloId),
+    );
+
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          S.of(context).articulo_show_articuloGruposNetos_titulo,
+          style: Theme.of(context).textTheme.bodySmall,
+        ),
+        const Gap(2),
+
+        stateGruposNetos.when(
+          data: (gruposNetosList) => ListView.separated(
+            padding: const EdgeInsets.only(left: 8),
+            separatorBuilder: (context, index) => const Divider(),
+            shrinkWrap: true,
+            physics: const NeverScrollableScrollPhysics(),
+            itemCount: gruposNetosList.length,
+            itemBuilder: (context, i) => _ArticuloGrupoNetoSelectQuantityTile(
+              articuloGrupoNeto: gruposNetosList[i],
+            ),
+          ),
+          error: (error, _) =>
+              Center(child: ErrorMessageWidget(error.toString())),
+          loading: () => const Center(child: CircularProgressIndicator()),
+        ),
+      ],
+    );
+  }
+}
+
+class _ArticuloGrupoNetoSelectQuantityTile extends StatelessWidget {
+  const _ArticuloGrupoNetoSelectQuantityTile({required this.articuloGrupoNeto});
+
+  final ArticuloGrupoNeto articuloGrupoNeto;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+
+      children: [
+        Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Flexible(
+              child: Text(
+                articuloGrupoNeto.grupoNetoDescripcion,
+                style: Theme.of(
+                  context,
+                ).textTheme.bodySmall?.copyWith(fontSize: 9),
+              ),
+            ),
+            if (articuloGrupoNeto.cantidadDesde != 1) ...[
+              const Gap(4),
+              Text(
+                '≥ ${numberFormatCantidades(articuloGrupoNeto.cantidadDesde)} ${S.of(context).unidad}',
+                style: Theme.of(
+                  context,
+                ).textTheme.bodySmall?.copyWith(fontSize: 9),
+              ),
+            ],
+          ],
+        ),
+        Text(
+          formatPrecios(
+            precio: articuloGrupoNeto.precio,
+            tipoPrecio: articuloGrupoNeto.tipoPrecio,
+          ),
+          style: Theme.of(context).textTheme.bodyMedium?.copyWith(fontSize: 9),
+        ),
+      ],
+    );
+  }
+}
+
+class _ArticuloPrecioTarifaSelectQuantityTile extends StatelessWidget {
+  const _ArticuloPrecioTarifaSelectQuantityTile({
+    required this.articuloPrecioTarifa,
+  });
+
+  final ArticuloPrecioTarifa articuloPrecioTarifa;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+
+      children: [
+        Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            if (articuloPrecioTarifa.tarifaDescripcion != null)
+              Flexible(
+                child: Text(
+                  articuloPrecioTarifa.tarifaDescripcion!,
+                  style: Theme.of(
+                    context,
+                  ).textTheme.bodySmall?.copyWith(fontSize: 9),
+                ),
+              ),
+            if (articuloPrecioTarifa.cantidadDesde != 1) ...[
+              const Gap(4),
+              Text(
+                '≥ ${numberFormatCantidades(articuloPrecioTarifa.cantidadDesde)} ${S.of(context).unidad}',
+                style: Theme.of(
+                  context,
+                ).textTheme.bodySmall?.copyWith(fontSize: 9),
+              ),
+            ],
+          ],
+        ),
+        Text(
+          formatPrecios(
+            precio: articuloPrecioTarifa.precio,
+            tipoPrecio: articuloPrecioTarifa.tipoPrecio,
+          ),
+          style: Theme.of(context).textTheme.bodyMedium?.copyWith(fontSize: 9),
+        ),
+      ],
     );
   }
 }
