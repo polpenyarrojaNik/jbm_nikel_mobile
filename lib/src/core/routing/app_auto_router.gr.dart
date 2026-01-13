@@ -2598,6 +2598,82 @@ class PedidoVentaDetalleRouteArgs {
 }
 
 /// generated route for
+/// [PedidoVentaEditDireccionManualPage]
+class PedidoVentaEditDireccionManualRoute
+    extends PageRouteInfo<PedidoVentaEditDireccionManualRouteArgs> {
+  PedidoVentaEditDireccionManualRoute({
+    Key? key,
+    required Cliente cliente,
+    required ClienteDireccion? clienteDireccion,
+    required bool isEdit,
+    List<PageRouteInfo>? children,
+  }) : super(
+         PedidoVentaEditDireccionManualRoute.name,
+         args: PedidoVentaEditDireccionManualRouteArgs(
+           key: key,
+           cliente: cliente,
+           clienteDireccion: clienteDireccion,
+           isEdit: isEdit,
+         ),
+         initialChildren: children,
+       );
+
+  static const String name = 'PedidoVentaEditDireccionManualRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      final args = data.argsAs<PedidoVentaEditDireccionManualRouteArgs>();
+      return PedidoVentaEditDireccionManualPage(
+        key: args.key,
+        cliente: args.cliente,
+        clienteDireccion: args.clienteDireccion,
+        isEdit: args.isEdit,
+      );
+    },
+  );
+}
+
+class PedidoVentaEditDireccionManualRouteArgs {
+  const PedidoVentaEditDireccionManualRouteArgs({
+    this.key,
+    required this.cliente,
+    required this.clienteDireccion,
+    required this.isEdit,
+  });
+
+  final Key? key;
+
+  final Cliente cliente;
+
+  final ClienteDireccion? clienteDireccion;
+
+  final bool isEdit;
+
+  @override
+  String toString() {
+    return 'PedidoVentaEditDireccionManualRouteArgs{key: $key, cliente: $cliente, clienteDireccion: $clienteDireccion, isEdit: $isEdit}';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
+    if (other is! PedidoVentaEditDireccionManualRouteArgs) return false;
+    return key == other.key &&
+        cliente == other.cliente &&
+        clienteDireccion == other.clienteDireccion &&
+        isEdit == other.isEdit;
+  }
+
+  @override
+  int get hashCode =>
+      key.hashCode ^
+      cliente.hashCode ^
+      clienteDireccion.hashCode ^
+      isEdit.hashCode;
+}
+
+/// generated route for
 /// [PedidoVentaEditPage]
 class PedidoVentaEditRoute extends PageRouteInfo<PedidoVentaEditRouteArgs> {
   PedidoVentaEditRoute({

@@ -14,7 +14,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$ClienteDireccion {
 
- String get clienteId; String? get direccionId; String? get direccionImpGuid; String? get nombre; String? get direccion1; String? get direccion2; String? get codigoPostal; String? get poblacion; String? get provincia; Pais? get pais; String? get telefono; double get latitud; double get longitud; bool get predeterminada; DateTime get lastUpdated; bool get enviada; bool get tratada; bool get deleted;
+ String get clienteId; String? get direccionId; String? get direccionImpGuid; String? get nombre; String? get direccion1; String? get direccion2; String? get codigoPostal; String? get poblacion; String? get provincia; Pais? get pais; String? get telefono; double get latitud; double get longitud; bool get predeterminada; DateTime get lastUpdated; bool get enviada; bool get tratada; bool get deleted; bool get isManual;
 /// Create a copy of ClienteDireccion
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -25,16 +25,16 @@ $ClienteDireccionCopyWith<ClienteDireccion> get copyWith => _$ClienteDireccionCo
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ClienteDireccion&&(identical(other.clienteId, clienteId) || other.clienteId == clienteId)&&(identical(other.direccionId, direccionId) || other.direccionId == direccionId)&&(identical(other.direccionImpGuid, direccionImpGuid) || other.direccionImpGuid == direccionImpGuid)&&(identical(other.nombre, nombre) || other.nombre == nombre)&&(identical(other.direccion1, direccion1) || other.direccion1 == direccion1)&&(identical(other.direccion2, direccion2) || other.direccion2 == direccion2)&&(identical(other.codigoPostal, codigoPostal) || other.codigoPostal == codigoPostal)&&(identical(other.poblacion, poblacion) || other.poblacion == poblacion)&&(identical(other.provincia, provincia) || other.provincia == provincia)&&(identical(other.pais, pais) || other.pais == pais)&&(identical(other.telefono, telefono) || other.telefono == telefono)&&(identical(other.latitud, latitud) || other.latitud == latitud)&&(identical(other.longitud, longitud) || other.longitud == longitud)&&(identical(other.predeterminada, predeterminada) || other.predeterminada == predeterminada)&&(identical(other.lastUpdated, lastUpdated) || other.lastUpdated == lastUpdated)&&(identical(other.enviada, enviada) || other.enviada == enviada)&&(identical(other.tratada, tratada) || other.tratada == tratada)&&(identical(other.deleted, deleted) || other.deleted == deleted));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ClienteDireccion&&(identical(other.clienteId, clienteId) || other.clienteId == clienteId)&&(identical(other.direccionId, direccionId) || other.direccionId == direccionId)&&(identical(other.direccionImpGuid, direccionImpGuid) || other.direccionImpGuid == direccionImpGuid)&&(identical(other.nombre, nombre) || other.nombre == nombre)&&(identical(other.direccion1, direccion1) || other.direccion1 == direccion1)&&(identical(other.direccion2, direccion2) || other.direccion2 == direccion2)&&(identical(other.codigoPostal, codigoPostal) || other.codigoPostal == codigoPostal)&&(identical(other.poblacion, poblacion) || other.poblacion == poblacion)&&(identical(other.provincia, provincia) || other.provincia == provincia)&&(identical(other.pais, pais) || other.pais == pais)&&(identical(other.telefono, telefono) || other.telefono == telefono)&&(identical(other.latitud, latitud) || other.latitud == latitud)&&(identical(other.longitud, longitud) || other.longitud == longitud)&&(identical(other.predeterminada, predeterminada) || other.predeterminada == predeterminada)&&(identical(other.lastUpdated, lastUpdated) || other.lastUpdated == lastUpdated)&&(identical(other.enviada, enviada) || other.enviada == enviada)&&(identical(other.tratada, tratada) || other.tratada == tratada)&&(identical(other.deleted, deleted) || other.deleted == deleted)&&(identical(other.isManual, isManual) || other.isManual == isManual));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,clienteId,direccionId,direccionImpGuid,nombre,direccion1,direccion2,codigoPostal,poblacion,provincia,pais,telefono,latitud,longitud,predeterminada,lastUpdated,enviada,tratada,deleted);
+int get hashCode => Object.hashAll([runtimeType,clienteId,direccionId,direccionImpGuid,nombre,direccion1,direccion2,codigoPostal,poblacion,provincia,pais,telefono,latitud,longitud,predeterminada,lastUpdated,enviada,tratada,deleted,isManual]);
 
 @override
 String toString() {
-  return 'ClienteDireccion(clienteId: $clienteId, direccionId: $direccionId, direccionImpGuid: $direccionImpGuid, nombre: $nombre, direccion1: $direccion1, direccion2: $direccion2, codigoPostal: $codigoPostal, poblacion: $poblacion, provincia: $provincia, pais: $pais, telefono: $telefono, latitud: $latitud, longitud: $longitud, predeterminada: $predeterminada, lastUpdated: $lastUpdated, enviada: $enviada, tratada: $tratada, deleted: $deleted)';
+  return 'ClienteDireccion(clienteId: $clienteId, direccionId: $direccionId, direccionImpGuid: $direccionImpGuid, nombre: $nombre, direccion1: $direccion1, direccion2: $direccion2, codigoPostal: $codigoPostal, poblacion: $poblacion, provincia: $provincia, pais: $pais, telefono: $telefono, latitud: $latitud, longitud: $longitud, predeterminada: $predeterminada, lastUpdated: $lastUpdated, enviada: $enviada, tratada: $tratada, deleted: $deleted, isManual: $isManual)';
 }
 
 
@@ -45,7 +45,7 @@ abstract mixin class $ClienteDireccionCopyWith<$Res>  {
   factory $ClienteDireccionCopyWith(ClienteDireccion value, $Res Function(ClienteDireccion) _then) = _$ClienteDireccionCopyWithImpl;
 @useResult
 $Res call({
- String clienteId, String? direccionId, String? direccionImpGuid, String? nombre, String? direccion1, String? direccion2, String? codigoPostal, String? poblacion, String? provincia, Pais? pais, String? telefono, double latitud, double longitud, bool predeterminada, DateTime lastUpdated, bool enviada, bool tratada, bool deleted
+ String clienteId, String? direccionId, String? direccionImpGuid, String? nombre, String? direccion1, String? direccion2, String? codigoPostal, String? poblacion, String? provincia, Pais? pais, String? telefono, double latitud, double longitud, bool predeterminada, DateTime lastUpdated, bool enviada, bool tratada, bool deleted, bool isManual
 });
 
 
@@ -62,7 +62,7 @@ class _$ClienteDireccionCopyWithImpl<$Res>
 
 /// Create a copy of ClienteDireccion
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? clienteId = null,Object? direccionId = freezed,Object? direccionImpGuid = freezed,Object? nombre = freezed,Object? direccion1 = freezed,Object? direccion2 = freezed,Object? codigoPostal = freezed,Object? poblacion = freezed,Object? provincia = freezed,Object? pais = freezed,Object? telefono = freezed,Object? latitud = null,Object? longitud = null,Object? predeterminada = null,Object? lastUpdated = null,Object? enviada = null,Object? tratada = null,Object? deleted = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? clienteId = null,Object? direccionId = freezed,Object? direccionImpGuid = freezed,Object? nombre = freezed,Object? direccion1 = freezed,Object? direccion2 = freezed,Object? codigoPostal = freezed,Object? poblacion = freezed,Object? provincia = freezed,Object? pais = freezed,Object? telefono = freezed,Object? latitud = null,Object? longitud = null,Object? predeterminada = null,Object? lastUpdated = null,Object? enviada = null,Object? tratada = null,Object? deleted = null,Object? isManual = null,}) {
   return _then(_self.copyWith(
 clienteId: null == clienteId ? _self.clienteId : clienteId // ignore: cast_nullable_to_non_nullable
 as String,direccionId: freezed == direccionId ? _self.direccionId : direccionId // ignore: cast_nullable_to_non_nullable
@@ -82,6 +82,7 @@ as bool,lastUpdated: null == lastUpdated ? _self.lastUpdated : lastUpdated // ig
 as DateTime,enviada: null == enviada ? _self.enviada : enviada // ignore: cast_nullable_to_non_nullable
 as bool,tratada: null == tratada ? _self.tratada : tratada // ignore: cast_nullable_to_non_nullable
 as bool,deleted: null == deleted ? _self.deleted : deleted // ignore: cast_nullable_to_non_nullable
+as bool,isManual: null == isManual ? _self.isManual : isManual // ignore: cast_nullable_to_non_nullable
 as bool,
   ));
 }
@@ -179,10 +180,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String clienteId,  String? direccionId,  String? direccionImpGuid,  String? nombre,  String? direccion1,  String? direccion2,  String? codigoPostal,  String? poblacion,  String? provincia,  Pais? pais,  String? telefono,  double latitud,  double longitud,  bool predeterminada,  DateTime lastUpdated,  bool enviada,  bool tratada,  bool deleted)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String clienteId,  String? direccionId,  String? direccionImpGuid,  String? nombre,  String? direccion1,  String? direccion2,  String? codigoPostal,  String? poblacion,  String? provincia,  Pais? pais,  String? telefono,  double latitud,  double longitud,  bool predeterminada,  DateTime lastUpdated,  bool enviada,  bool tratada,  bool deleted,  bool isManual)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _ClienteDireccion() when $default != null:
-return $default(_that.clienteId,_that.direccionId,_that.direccionImpGuid,_that.nombre,_that.direccion1,_that.direccion2,_that.codigoPostal,_that.poblacion,_that.provincia,_that.pais,_that.telefono,_that.latitud,_that.longitud,_that.predeterminada,_that.lastUpdated,_that.enviada,_that.tratada,_that.deleted);case _:
+return $default(_that.clienteId,_that.direccionId,_that.direccionImpGuid,_that.nombre,_that.direccion1,_that.direccion2,_that.codigoPostal,_that.poblacion,_that.provincia,_that.pais,_that.telefono,_that.latitud,_that.longitud,_that.predeterminada,_that.lastUpdated,_that.enviada,_that.tratada,_that.deleted,_that.isManual);case _:
   return orElse();
 
 }
@@ -200,10 +201,10 @@ return $default(_that.clienteId,_that.direccionId,_that.direccionImpGuid,_that.n
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String clienteId,  String? direccionId,  String? direccionImpGuid,  String? nombre,  String? direccion1,  String? direccion2,  String? codigoPostal,  String? poblacion,  String? provincia,  Pais? pais,  String? telefono,  double latitud,  double longitud,  bool predeterminada,  DateTime lastUpdated,  bool enviada,  bool tratada,  bool deleted)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String clienteId,  String? direccionId,  String? direccionImpGuid,  String? nombre,  String? direccion1,  String? direccion2,  String? codigoPostal,  String? poblacion,  String? provincia,  Pais? pais,  String? telefono,  double latitud,  double longitud,  bool predeterminada,  DateTime lastUpdated,  bool enviada,  bool tratada,  bool deleted,  bool isManual)  $default,) {final _that = this;
 switch (_that) {
 case _ClienteDireccion():
-return $default(_that.clienteId,_that.direccionId,_that.direccionImpGuid,_that.nombre,_that.direccion1,_that.direccion2,_that.codigoPostal,_that.poblacion,_that.provincia,_that.pais,_that.telefono,_that.latitud,_that.longitud,_that.predeterminada,_that.lastUpdated,_that.enviada,_that.tratada,_that.deleted);case _:
+return $default(_that.clienteId,_that.direccionId,_that.direccionImpGuid,_that.nombre,_that.direccion1,_that.direccion2,_that.codigoPostal,_that.poblacion,_that.provincia,_that.pais,_that.telefono,_that.latitud,_that.longitud,_that.predeterminada,_that.lastUpdated,_that.enviada,_that.tratada,_that.deleted,_that.isManual);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -220,10 +221,10 @@ return $default(_that.clienteId,_that.direccionId,_that.direccionImpGuid,_that.n
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String clienteId,  String? direccionId,  String? direccionImpGuid,  String? nombre,  String? direccion1,  String? direccion2,  String? codigoPostal,  String? poblacion,  String? provincia,  Pais? pais,  String? telefono,  double latitud,  double longitud,  bool predeterminada,  DateTime lastUpdated,  bool enviada,  bool tratada,  bool deleted)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String clienteId,  String? direccionId,  String? direccionImpGuid,  String? nombre,  String? direccion1,  String? direccion2,  String? codigoPostal,  String? poblacion,  String? provincia,  Pais? pais,  String? telefono,  double latitud,  double longitud,  bool predeterminada,  DateTime lastUpdated,  bool enviada,  bool tratada,  bool deleted,  bool isManual)?  $default,) {final _that = this;
 switch (_that) {
 case _ClienteDireccion() when $default != null:
-return $default(_that.clienteId,_that.direccionId,_that.direccionImpGuid,_that.nombre,_that.direccion1,_that.direccion2,_that.codigoPostal,_that.poblacion,_that.provincia,_that.pais,_that.telefono,_that.latitud,_that.longitud,_that.predeterminada,_that.lastUpdated,_that.enviada,_that.tratada,_that.deleted);case _:
+return $default(_that.clienteId,_that.direccionId,_that.direccionImpGuid,_that.nombre,_that.direccion1,_that.direccion2,_that.codigoPostal,_that.poblacion,_that.provincia,_that.pais,_that.telefono,_that.latitud,_that.longitud,_that.predeterminada,_that.lastUpdated,_that.enviada,_that.tratada,_that.deleted,_that.isManual);case _:
   return null;
 
 }
@@ -235,7 +236,7 @@ return $default(_that.clienteId,_that.direccionId,_that.direccionImpGuid,_that.n
 
 
 class _ClienteDireccion extends ClienteDireccion {
-  const _ClienteDireccion({required this.clienteId, required this.direccionId, required this.direccionImpGuid, this.nombre, this.direccion1, this.direccion2, this.codigoPostal, this.poblacion, this.provincia, this.pais, this.telefono, required this.latitud, required this.longitud, required this.predeterminada, required this.lastUpdated, required this.enviada, required this.tratada, required this.deleted}): super._();
+  const _ClienteDireccion({required this.clienteId, required this.direccionId, required this.direccionImpGuid, this.nombre, this.direccion1, this.direccion2, this.codigoPostal, this.poblacion, this.provincia, this.pais, this.telefono, required this.latitud, required this.longitud, required this.predeterminada, required this.lastUpdated, required this.enviada, required this.tratada, required this.deleted, required this.isManual}): super._();
   
 
 @override final  String clienteId;
@@ -256,6 +257,7 @@ class _ClienteDireccion extends ClienteDireccion {
 @override final  bool enviada;
 @override final  bool tratada;
 @override final  bool deleted;
+@override final  bool isManual;
 
 /// Create a copy of ClienteDireccion
 /// with the given fields replaced by the non-null parameter values.
@@ -267,16 +269,16 @@ _$ClienteDireccionCopyWith<_ClienteDireccion> get copyWith => __$ClienteDireccio
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ClienteDireccion&&(identical(other.clienteId, clienteId) || other.clienteId == clienteId)&&(identical(other.direccionId, direccionId) || other.direccionId == direccionId)&&(identical(other.direccionImpGuid, direccionImpGuid) || other.direccionImpGuid == direccionImpGuid)&&(identical(other.nombre, nombre) || other.nombre == nombre)&&(identical(other.direccion1, direccion1) || other.direccion1 == direccion1)&&(identical(other.direccion2, direccion2) || other.direccion2 == direccion2)&&(identical(other.codigoPostal, codigoPostal) || other.codigoPostal == codigoPostal)&&(identical(other.poblacion, poblacion) || other.poblacion == poblacion)&&(identical(other.provincia, provincia) || other.provincia == provincia)&&(identical(other.pais, pais) || other.pais == pais)&&(identical(other.telefono, telefono) || other.telefono == telefono)&&(identical(other.latitud, latitud) || other.latitud == latitud)&&(identical(other.longitud, longitud) || other.longitud == longitud)&&(identical(other.predeterminada, predeterminada) || other.predeterminada == predeterminada)&&(identical(other.lastUpdated, lastUpdated) || other.lastUpdated == lastUpdated)&&(identical(other.enviada, enviada) || other.enviada == enviada)&&(identical(other.tratada, tratada) || other.tratada == tratada)&&(identical(other.deleted, deleted) || other.deleted == deleted));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ClienteDireccion&&(identical(other.clienteId, clienteId) || other.clienteId == clienteId)&&(identical(other.direccionId, direccionId) || other.direccionId == direccionId)&&(identical(other.direccionImpGuid, direccionImpGuid) || other.direccionImpGuid == direccionImpGuid)&&(identical(other.nombre, nombre) || other.nombre == nombre)&&(identical(other.direccion1, direccion1) || other.direccion1 == direccion1)&&(identical(other.direccion2, direccion2) || other.direccion2 == direccion2)&&(identical(other.codigoPostal, codigoPostal) || other.codigoPostal == codigoPostal)&&(identical(other.poblacion, poblacion) || other.poblacion == poblacion)&&(identical(other.provincia, provincia) || other.provincia == provincia)&&(identical(other.pais, pais) || other.pais == pais)&&(identical(other.telefono, telefono) || other.telefono == telefono)&&(identical(other.latitud, latitud) || other.latitud == latitud)&&(identical(other.longitud, longitud) || other.longitud == longitud)&&(identical(other.predeterminada, predeterminada) || other.predeterminada == predeterminada)&&(identical(other.lastUpdated, lastUpdated) || other.lastUpdated == lastUpdated)&&(identical(other.enviada, enviada) || other.enviada == enviada)&&(identical(other.tratada, tratada) || other.tratada == tratada)&&(identical(other.deleted, deleted) || other.deleted == deleted)&&(identical(other.isManual, isManual) || other.isManual == isManual));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,clienteId,direccionId,direccionImpGuid,nombre,direccion1,direccion2,codigoPostal,poblacion,provincia,pais,telefono,latitud,longitud,predeterminada,lastUpdated,enviada,tratada,deleted);
+int get hashCode => Object.hashAll([runtimeType,clienteId,direccionId,direccionImpGuid,nombre,direccion1,direccion2,codigoPostal,poblacion,provincia,pais,telefono,latitud,longitud,predeterminada,lastUpdated,enviada,tratada,deleted,isManual]);
 
 @override
 String toString() {
-  return 'ClienteDireccion(clienteId: $clienteId, direccionId: $direccionId, direccionImpGuid: $direccionImpGuid, nombre: $nombre, direccion1: $direccion1, direccion2: $direccion2, codigoPostal: $codigoPostal, poblacion: $poblacion, provincia: $provincia, pais: $pais, telefono: $telefono, latitud: $latitud, longitud: $longitud, predeterminada: $predeterminada, lastUpdated: $lastUpdated, enviada: $enviada, tratada: $tratada, deleted: $deleted)';
+  return 'ClienteDireccion(clienteId: $clienteId, direccionId: $direccionId, direccionImpGuid: $direccionImpGuid, nombre: $nombre, direccion1: $direccion1, direccion2: $direccion2, codigoPostal: $codigoPostal, poblacion: $poblacion, provincia: $provincia, pais: $pais, telefono: $telefono, latitud: $latitud, longitud: $longitud, predeterminada: $predeterminada, lastUpdated: $lastUpdated, enviada: $enviada, tratada: $tratada, deleted: $deleted, isManual: $isManual)';
 }
 
 
@@ -287,7 +289,7 @@ abstract mixin class _$ClienteDireccionCopyWith<$Res> implements $ClienteDirecci
   factory _$ClienteDireccionCopyWith(_ClienteDireccion value, $Res Function(_ClienteDireccion) _then) = __$ClienteDireccionCopyWithImpl;
 @override @useResult
 $Res call({
- String clienteId, String? direccionId, String? direccionImpGuid, String? nombre, String? direccion1, String? direccion2, String? codigoPostal, String? poblacion, String? provincia, Pais? pais, String? telefono, double latitud, double longitud, bool predeterminada, DateTime lastUpdated, bool enviada, bool tratada, bool deleted
+ String clienteId, String? direccionId, String? direccionImpGuid, String? nombre, String? direccion1, String? direccion2, String? codigoPostal, String? poblacion, String? provincia, Pais? pais, String? telefono, double latitud, double longitud, bool predeterminada, DateTime lastUpdated, bool enviada, bool tratada, bool deleted, bool isManual
 });
 
 
@@ -304,7 +306,7 @@ class __$ClienteDireccionCopyWithImpl<$Res>
 
 /// Create a copy of ClienteDireccion
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? clienteId = null,Object? direccionId = freezed,Object? direccionImpGuid = freezed,Object? nombre = freezed,Object? direccion1 = freezed,Object? direccion2 = freezed,Object? codigoPostal = freezed,Object? poblacion = freezed,Object? provincia = freezed,Object? pais = freezed,Object? telefono = freezed,Object? latitud = null,Object? longitud = null,Object? predeterminada = null,Object? lastUpdated = null,Object? enviada = null,Object? tratada = null,Object? deleted = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? clienteId = null,Object? direccionId = freezed,Object? direccionImpGuid = freezed,Object? nombre = freezed,Object? direccion1 = freezed,Object? direccion2 = freezed,Object? codigoPostal = freezed,Object? poblacion = freezed,Object? provincia = freezed,Object? pais = freezed,Object? telefono = freezed,Object? latitud = null,Object? longitud = null,Object? predeterminada = null,Object? lastUpdated = null,Object? enviada = null,Object? tratada = null,Object? deleted = null,Object? isManual = null,}) {
   return _then(_ClienteDireccion(
 clienteId: null == clienteId ? _self.clienteId : clienteId // ignore: cast_nullable_to_non_nullable
 as String,direccionId: freezed == direccionId ? _self.direccionId : direccionId // ignore: cast_nullable_to_non_nullable
@@ -324,6 +326,7 @@ as bool,lastUpdated: null == lastUpdated ? _self.lastUpdated : lastUpdated // ig
 as DateTime,enviada: null == enviada ? _self.enviada : enviada // ignore: cast_nullable_to_non_nullable
 as bool,tratada: null == tratada ? _self.tratada : tratada // ignore: cast_nullable_to_non_nullable
 as bool,deleted: null == deleted ? _self.deleted : deleted // ignore: cast_nullable_to_non_nullable
+as bool,isManual: null == isManual ? _self.isManual : isManual // ignore: cast_nullable_to_non_nullable
 as bool,
   ));
 }

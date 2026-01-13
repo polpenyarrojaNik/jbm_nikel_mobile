@@ -184,7 +184,8 @@
   "pedido_edit_pedidoEdit_stockDisponible": "Stock disponible:",
   "pedido_edit_pedidoEdit_totalLineas": "Lignes totales:",
   "pedido_edit_pedidoEdit_oferta": "Offer",
-  "pedido_edit_pedidoEdit_fechaValidez": "Date de validaté",
+  "pedido_edit_pedidoEdit_fechaValidez": "Date de validité de l’offre",
+  "pedido_edit_pedidoEdit_fechaValidezHasta": "Offre valable jusqu’au",
   "pedido_edit_pedidoEdit_fechaValidezNoPuedeEstarVacia": "La date de validation ne peut pas être vide",
   "pedido_edit_selectQuantity_artiuclosSustitutivos": "Article de remplacement:",
   "pedido_edit_selectQuantity_cantidad": "Quantité",
@@ -425,5 +426,10 @@
   "productRecommendations": "Recommandations de produits",
   "probability": "Probabilité",
   "unknownDescription": "Description inconnue",
-  "imNotInterestedInAnyArticles": "Je ne suis intéressé par aucun article"
+  "imNotInterestedInAnyArticles": "Je ne suis intéressé par aucun article",
+  "suggestedAddress": "Adresse suggérée",
+  "chooseAddress": "Choisir une adresse",
+  "currentAddress": "Adresse actuelle",
+  "couldntValidateAddressMessage": "Nous n’avons pas pu valider cette adresse. Elle peut contenir une erreur ou être incomplète. Voulez-vous continuer avant de la vérifier ?",
+  "seleccioneUnClienteParaContinuar": "Sélectionnez un client pour continuer."
 }

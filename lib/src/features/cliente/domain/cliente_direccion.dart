@@ -27,6 +27,7 @@ abstract class ClienteDireccion with _$ClienteDireccion {
     required bool enviada,
     required bool tratada,
     required bool deleted,
+    required bool isManual,
   }) = _ClienteDireccion;
 
   factory ClienteDireccion.fromClienteDireccionImp(
@@ -51,6 +52,7 @@ abstract class ClienteDireccion with _$ClienteDireccion {
       enviada: clienteDireccionImp.enviada,
       tratada: false,
       deleted: clienteDireccionImp.borrar,
+      isManual: false,
     );
   }
 }

@@ -29,6 +29,7 @@ dependencies:
   flutter_archive: ^6.0.4
   flutter_dotenv: ^6.0.0
   flutter_form_builder: ^10.2.0
+  flutter_hooks: ^0.21.3+1
   flutter_markdown: ^0.7.7+1
   flutter_riverpod: ^3.0.3
   flutter_secure_storage: ^10.0.0

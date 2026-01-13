@@ -6,10 +6,12 @@ import 'package:better_open_file/better_open_file.dart';
 import 'package:flash/flash_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_riverpod/experimental/mutation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:gap/gap.dart';
+import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
 import 'package:uuid/uuid.dart';
 
@@ -521,7 +523,7 @@ class PedidoVentaEditForm extends ConsumerWidget {
           )
           .navigateToNextStep();
     } else {
-      showToast('Seleccione un cliente para continuar.', context);
+      showToast(S.of(context).seleccioneUnClienteParaContinuar, context);
     }
   }
 
@@ -837,7 +839,7 @@ class _StepSelectClienteContentState
   }
 }
 
-class StepSelectClienteDireccionContent extends ConsumerStatefulWidget {
+class StepSelectClienteDireccionContent extends StatefulWidget {
   const StepSelectClienteDireccionContent({
     super.key,
     required this.cliente,
@@ -852,20 +854,18 @@ class StepSelectClienteDireccionContent extends ConsumerStatefulWidget {
   final bool isEdit;
 
   @override
-  ConsumerState<StepSelectClienteDireccionContent> createState() =>
+  State<StepSelectClienteDireccionContent> createState() =>
       _StepSelectClienteDireccionContentState();
 }
 
 class _StepSelectClienteDireccionContentState
-    extends ConsumerState<StepSelectClienteDireccionContent> {
+    extends State<StepSelectClienteDireccionContent> {
   final _debouncer = Debouncer(milliseconds: 500);
-
   final focusNode = FocusNode();
 
   @override
   void initState() {
     super.initState();
-
     focusNode.requestFocus();
   }
 
@@ -877,92 +877,232 @@ class _StepSelectClienteDireccionContentState
 
   @override
   Widget build(BuildContext context) {
-    ref.listen<AsyncValue<List<ClienteDireccion>>>(
-      clienteDireccionListByIdProvider(widget.cliente!.id),
-      (_, state) {
-        state.whenData((clienteDireccionesList) {
-          for (var i = 0; i < clienteDireccionesList.length; i++) {
-            if (!widget.isEdit) {
-              if (clienteDireccionesList[i].predeterminada) {
-                ref
-                    .read(
-                      pedidoVentaEditPageControllerProvider(
-                        widget.pedidoLocalParam,
-                      ).notifier,
-                    )
-                    .selectDireccion(
-                      clienteDireccion: clienteDireccionesList[i],
-                    );
-              }
-            }
-          }
-        });
-      },
-    );
-    final state = ref.watch(
-      clienteDireccionListByIdProvider(widget.cliente!.id),
-    );
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16),
-      child: Column(
-        children: [
-          SearchListTile(
-            searchTitle: S.of(context).search,
-            onChanged: (searchText) => _debouncer.run(
-              () => ref
-                  .read(
-                    customerAddressSearchQueryParamsControllerProvider.notifier,
-                  )
-                  .setSearchQuery(searchText),
-            ),
-            focusNode: focusNode,
-          ),
-          state.when(
-            data: (clienteDireccionesList) => Expanded(
-              child: ListView.separated(
-                shrinkWrap: true,
-                itemCount: clienteDireccionesList.length,
-                physics: const BouncingScrollPhysics(),
-                itemBuilder: (context, i) => GestureDetector(
-                  onTap: () => ref
-                      .read(
-                        pedidoVentaEditPageControllerProvider(
-                          widget.pedidoLocalParam,
-                        ).notifier,
-                      )
-                      .selectDireccion(
-                        clienteDireccion:
-                            (widget.clienteDireccion != null &&
-                                widget.clienteDireccion!.direccionId ==
-                                    clienteDireccionesList[i].direccionId)
-                            ? null
-                            : clienteDireccionesList[i],
+    return HookBuilder(
+      builder: (context) {
+        final userSelectAnyAddress = useState<bool>(
+          widget.clienteDireccion?.isManual ?? false,
+        );
+        final direccionManual = useState<ClienteDireccion?>(
+          (widget.clienteDireccion?.isManual ?? false)
+              ? widget.clienteDireccion
+              : null,
+        );
+
+        return Consumer(
+          builder: (context, ref, child) {
+            ref.listen<AsyncValue<List<ClienteDireccion>>>(
+              clienteDireccionListByIdProvider(widget.cliente!.id),
+              (_, state) {
+                state.whenData((clienteDireccionesList) {
+                  setDireccionPredeterminada(
+                    ref,
+                    clienteDireccionesList,
+                    userSelectAnyAddress.value,
+                  );
+                });
+              },
+            );
+            final state = ref.watch(
+              clienteDireccionListByIdProvider(widget.cliente!.id),
+            );
+            return Stack(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 16),
+                  child: Column(
+                    children: [
+                      SearchListTile(
+                        searchTitle: S.of(context).search,
+                        onChanged: (searchText) => _debouncer.run(
+                          () => ref
+                              .read(
+                                customerAddressSearchQueryParamsControllerProvider
+                                    .notifier,
+                              )
+                              .setSearchQuery(searchText),
+                        ),
+                        focusNode: focusNode,
                       ),
-                  child: Container(
-                    color:
-                        (widget.clienteDireccion != null &&
-                            widget.clienteDireccion!.direccionId ==
-                                clienteDireccionesList[i].direccionId)
-                        ? Theme.of(context).colorScheme.secondaryContainer
-                        : Colors.transparent,
-                    child: ClienteDireccionTile(
-                      clienteDireccion: clienteDireccionesList[i],
-                      clienteImpParam: ClienteImpParam(
-                        clienteDireccionesList[i].clienteId,
+                      if (direccionManual.value != null) ...[
+                        GestureDetector(
+                          behavior: HitTestBehavior.opaque,
+                          onTap: () => onSelectAddress(
+                            ref,
+                            direccionManual.value!,
+                            userSelectAnyAddress,
+                            direccionManual,
+                          ),
+                          child: Container(
+                            color:
+                                (widget.clienteDireccion != null &&
+                                    widget.clienteDireccion!.direccionId ==
+                                        direccionManual.value!.direccionId &&
+                                    widget.clienteDireccion!.isManual)
+                                ? Theme.of(
+                                    context,
+                                  ).colorScheme.secondaryContainer
+                                : Colors.transparent,
+                            child: ClienteDireccionTile(
+                              clienteDireccion: direccionManual.value!,
+                              clienteImpParam: ClienteImpParam(
+                                direccionManual.value!.clienteId,
+                              ),
+                              isFromPedido: true,
+                            ),
+                          ),
+                        ),
+
+                        const Divider(),
+                      ],
+                      state.when(
+                        data: (clienteDireccionesList) => Expanded(
+                          child: ListView.separated(
+                            shrinkWrap: true,
+                            itemCount: clienteDireccionesList.length,
+                            physics: const BouncingScrollPhysics(),
+                            itemBuilder: (context, i) => GestureDetector(
+                              onTap: () => onSelectAddress(
+                                ref,
+                                clienteDireccionesList[i],
+                                userSelectAnyAddress,
+                                direccionManual,
+                              ),
+                              child: Container(
+                                color:
+                                    (widget.clienteDireccion != null &&
+                                        widget.clienteDireccion!.direccionId ==
+                                            clienteDireccionesList[i]
+                                                .direccionId)
+                                    ? Theme.of(
+                                        context,
+                                      ).colorScheme.secondaryContainer
+                                    : Colors.transparent,
+                                child: ClienteDireccionTile(
+                                  clienteDireccion: clienteDireccionesList[i],
+                                  clienteImpParam: ClienteImpParam(
+                                    clienteDireccionesList[i].clienteId,
+                                  ),
+                                  isFromPedido: true,
+                                ),
+                              ),
+                            ),
+                            separatorBuilder: (context, i) => const Divider(),
+                          ),
+                        ),
+                        error: (error, _) =>
+                            ErrorMessageWidget(error.toString()),
+                        loading: () => const ProgressIndicatorWidget(),
                       ),
-                      isFromPedido: true,
+                    ],
+                  ),
+                ),
+
+                Positioned(
+                  bottom: 10,
+                  right: 20,
+                  child: FloatingActionButton(
+                    child: Icon(
+                      (direccionManual.value != null)
+                          ? Icons.edit
+                          : MdiIcons.mapMarkerPlus,
+                    ),
+                    onPressed: () => onAddDireccionManual(
+                      ref,
+                      widget.cliente!,
+                      direccionManual,
                     ),
                   ),
                 ),
-                separatorBuilder: (context, i) => const Divider(),
-              ),
-            ),
-            error: (error, _) => ErrorMessageWidget(error.toString()),
-            loading: () => const ProgressIndicatorWidget(),
-          ),
-        ],
+              ],
+            );
+          },
+        );
+      },
+    );
+  }
+
+  void onAddDireccionManual(
+    WidgetRef ref,
+    Cliente cliente,
+    ValueNotifier<ClienteDireccion?> direccionManual,
+  ) async {
+    ref
+        .read(customerAddressSearchQueryParamsControllerProvider.notifier)
+        .setSearchQuery('');
+
+    final newDireccionManual = await context.router.push<ClienteDireccion?>(
+      PedidoVentaEditDireccionManualRoute(
+        cliente: cliente,
+        clienteDireccion: direccionManual.value,
+        isEdit: widget.isEdit,
       ),
     );
+
+    if (newDireccionManual != null) {
+      direccionManual.value = newDireccionManual;
+
+      ref
+          .read(
+            pedidoVentaEditPageControllerProvider(
+              widget.pedidoLocalParam,
+            ).notifier,
+          )
+          .selectDireccion(clienteDireccion: newDireccionManual);
+    }
+  }
+
+  void setDireccionPredeterminada(
+    WidgetRef ref,
+    List<ClienteDireccion> clienteDireccionesList,
+    bool userSelectAnyAddress,
+  ) {
+    if (!widget.isEdit && !userSelectAnyAddress) {
+      for (var i = 0; i < clienteDireccionesList.length; i++) {
+        if (clienteDireccionesList[i].predeterminada) {
+          ref
+              .read(
+                pedidoVentaEditPageControllerProvider(
+                  widget.pedidoLocalParam,
+                ).notifier,
+              )
+              .selectDireccion(clienteDireccion: clienteDireccionesList[i]);
+          break;
+        }
+      }
+    }
+  }
+
+  void onSelectAddress(
+    WidgetRef ref,
+    ClienteDireccion clienteDireccion,
+    ValueNotifier<bool> userSelectAnyAddress,
+    ValueNotifier<ClienteDireccion?> direccionManual,
+  ) {
+    {
+      userSelectAnyAddress.value = true;
+
+      final isSameDireccionSelected =
+          (widget.clienteDireccion != null &&
+          widget.clienteDireccion!.direccionId ==
+              clienteDireccion.direccionId &&
+          widget.clienteDireccion!.isManual &&
+          clienteDireccion.isManual);
+
+      if (clienteDireccion.isManual) {
+        direccionManual.value = isSameDireccionSelected
+            ? null
+            : clienteDireccion;
+      }
+      ref
+          .read(
+            pedidoVentaEditPageControllerProvider(
+              widget.pedidoLocalParam,
+            ).notifier,
+          )
+          .selectDireccion(
+            clienteDireccion: isSameDireccionSelected ? null : clienteDireccion,
+          );
+    }
   }
 }
 
@@ -1201,8 +1341,8 @@ class _StepObservacionesContentState
               FormBuilderTextField(
                 name: 'ofertaFechaHasta',
                 keyboardType: TextInputType.datetime,
-                decoration: const InputDecoration(
-                  labelText: 'Fecha validez oferta',
+                decoration: InputDecoration(
+                  labelText: S.of(context).pedido_edit_pedidoEdit_fechaValidez,
                 ),
                 readOnly: true,
                 enabled: widget.oferta,
@@ -1347,7 +1487,9 @@ class StepResumenContent extends ConsumerWidget {
               ),
               if (oferta)
                 ColumnFieldTextDetalle(
-                  fieldTitleValue: 'Oferta fecha hasta',
+                  fieldTitleValue: S
+                      .of(context)
+                      .pedido_edit_pedidoEdit_fechaValidezHasta,
                   value: dateFormatter(
                     ofertaFechaHasta!.toLocal().toIso8601String(),
                   ),

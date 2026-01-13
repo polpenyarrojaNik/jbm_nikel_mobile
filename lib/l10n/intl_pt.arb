@@ -187,7 +187,8 @@
   "pedido_edit_pedidoEdit_sinArticulos": "Sem produtos",
   "pedido_edit_pedidoEdit_stockDisponible": "Stock disponível",
   "pedido_edit_pedidoEdit_totalLineas": "Total linhas",
-  "pedido_edit_pedidoEdit_fechaValidez": "Data de validação",
+  "pedido_edit_pedidoEdit_fechaValidez": "Data de validade da oferta",
+  "pedido_edit_pedidoEdit_fechaValidezHasta": "Oferta válida até",
   "pedido_edit_pedidoEdit_fechaValidezNoPuedeEstarVacia": "A data de validação não pode deve estar vazia",
   "pedido_edit_selectQuantity_artiuclosSustitutivos": "Itens substitutos:",
   "pedido_edit_selectQuantity_cantidad": "Quantidade",
@@ -425,5 +426,10 @@
   "productRecommendations": "Recomendações de produtos",
   "probability": "Probabilidade",
   "unknownDescription": "Descrição desconhecida",
-  "imNotInterestedInAnyArticles": "Não estou interessado em nenhum artigo"
+  "imNotInterestedInAnyArticles": "Não estou interessado em nenhum artigo",
+  "suggestedAddress": "Endereço sugerido",
+  "chooseAddress": "Escolher endereço",
+  "currentAddress": "Endereço atual",
+  "couldntValidateAddressMessage": "Não foi possível validar este endereço. Ele pode conter um erro ou estar incompleto. Deseja continuar antes de o rever?",
+  "seleccioneUnClienteParaContinuar": "Selecione um cliente para continuar."
 }

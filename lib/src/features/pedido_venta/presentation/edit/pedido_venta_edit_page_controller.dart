@@ -149,6 +149,11 @@ class PedidoVentaEditPageController
             .getClienteDireccionByDireccionId(
               clienteId: pedidoVenta.clienteId!,
               direccionId: pedidoVenta.direccionId,
+              direccion1: pedidoVenta.direccionEntrga1,
+              codigoPostal: pedidoVenta.codigoPostal,
+              poblacion: pedidoVenta.poblacion,
+              provincia: pedidoVenta.provincia,
+              pais: pedidoVenta.pais,
             );
 
         _currentStep = 2;

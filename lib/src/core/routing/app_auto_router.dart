@@ -20,6 +20,7 @@ import '../../features/articulos/presentation/show/ultimos_precios/articulo_ulti
 import '../../features/catalogos/presentation/catalogo_list_page.dart';
 import '../../features/catalogos/presentation/catalogo_pdf_viewer.dart';
 import '../../features/cliente/domain/cliente.dart';
+import '../../features/cliente/domain/cliente_direccion.dart';
 import '../../features/cliente/domain/cliente_imp_param.dart';
 import '../../features/cliente/presentation/index/cliente_lista_page.dart';
 import '../../features/cliente/presentation/show/cliente_adjunto_page.dart';
@@ -52,6 +53,7 @@ import '../../features/notifications/index/notification_list_page.dart';
 import '../../features/pedido_venta/domain/pedido_local_param.dart';
 import '../../features/pedido_venta/domain/pedido_venta_linea.dart';
 import '../../features/pedido_venta/domain/seleccionar_cantidad_param.dart';
+import '../../features/pedido_venta/presentation/edit/pedido_venta_edit_direccion_manual_page.dart';
 import '../../features/pedido_venta/presentation/edit/pedido_venta_edit_page.dart';
 import '../../features/pedido_venta/presentation/edit/select_quantity_page.dart';
 import '../../features/pedido_venta/presentation/index/pedido_venta_lista_page.dart';
@@ -185,6 +187,11 @@ class AppRouter extends RootStackRouter {
     AutoRoute(
       page: SeleccionarCantidadRoute.page,
       path: '/pedido/edit/seleccionar_cantidad',
+    ),
+    AutoRoute(
+      page: PedidoVentaEditDireccionManualRoute.page,
+      path: '/pedido/edit/direccion_manual',
+      fullscreenDialog: true,
     ),
     AutoRoute(page: ExpedicionListRoute.page, path: '/pedido_expedicion'),
     AutoRoute(page: ArticuloListaRoute.page, path: '/articulo'),

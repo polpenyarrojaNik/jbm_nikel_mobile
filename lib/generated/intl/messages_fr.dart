@@ -180,6 +180,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "catalogos_index_titulo": MessageLookupByLibrary.simpleMessage(
       "Catalogues",
     ),
+    "chooseAddress": MessageLookupByLibrary.simpleMessage(
+      "Choisir une adresse",
+    ),
     "claveNikel": MessageLookupByLibrary.simpleMessage("Code Nikel"),
     "cliente_alrededor_cargandoMapa": MessageLookupByLibrary.simpleMessage(
       "Chergement carte",
@@ -556,6 +559,10 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "company": MessageLookupByLibrary.simpleMessage("Entreprise"),
     "competencia": MessageLookupByLibrary.simpleMessage("Concurrent"),
+    "couldntValidateAddressMessage": MessageLookupByLibrary.simpleMessage(
+      "Nous n’avons pas pu valider cette adresse. Elle peut contenir une erreur ou être incomplète. Voulez-vous continuer avant de la vérifier ?",
+    ),
+    "currentAddress": MessageLookupByLibrary.simpleMessage("Adresse actuelle"),
     "email": MessageLookupByLibrary.simpleMessage("E-mail"),
     "empty": MessageLookupByLibrary.simpleMessage("Vide"),
     "estasSeguroQueQuieresReemplazarLaBaseDeDatos":
@@ -641,8 +648,10 @@ class MessageLookup extends MessageLookupByLibrary {
       "Éditer la comande",
     ),
     "pedido_edit_pedidoEdit_fechaValidez": MessageLookupByLibrary.simpleMessage(
-      "Date de validaté",
+      "Date de validité de l’offre",
     ),
+    "pedido_edit_pedidoEdit_fechaValidezHasta":
+        MessageLookupByLibrary.simpleMessage("Offre valable jusqu’au"),
     "pedido_edit_pedidoEdit_fechaValidezNoPuedeEstarVacia":
         MessageLookupByLibrary.simpleMessage(
           "La date de validation ne peut pas être vide",
@@ -811,6 +820,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "seleccionarBorrador": MessageLookupByLibrary.simpleMessage(
       "Sélectionner un brouillon",
     ),
+    "seleccioneUnClienteParaContinuar": MessageLookupByLibrary.simpleMessage(
+      "Sélectionnez un client pour continuer.",
+    ),
     "semanal": MessageLookupByLibrary.simpleMessage("Hebdomadaire"),
     "send": MessageLookupByLibrary.simpleMessage("Envoyer"),
     "settings_cerrar_sesion": MessageLookupByLibrary.simpleMessage(
@@ -867,6 +879,9 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "stock": MessageLookupByLibrary.simpleMessage("Stock"),
     "subfamilia": MessageLookupByLibrary.simpleMessage("Sous-famille"),
+    "suggestedAddress": MessageLookupByLibrary.simpleMessage(
+      "Adresse suggérée",
+    ),
     "telefono": MessageLookupByLibrary.simpleMessage("Téléphone"),
     "trackId": MessageLookupByLibrary.simpleMessage("Track ID"),
     "trimestral": MessageLookupByLibrary.simpleMessage("Trimestriel"),

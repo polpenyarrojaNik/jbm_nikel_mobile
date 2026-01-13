@@ -85,6 +85,7 @@ abstract class ClienteDireccionDTO
       telefono: telefono,
       tratada: tratada,
       deleted: (deleted == 'S'),
+      isManual: false,
     );
   }
 

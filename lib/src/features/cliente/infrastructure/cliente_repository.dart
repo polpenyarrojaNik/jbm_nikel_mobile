@@ -1962,6 +1962,11 @@ GROUP BY ARTICULO_ID, DESCRIPCION
   Future<ClienteDireccion?> getClienteDireccionByDireccionId({
     required String clienteId,
     required String? direccionId,
+    required String? direccion1,
+    String? codigoPostal,
+    String? poblacion,
+    String? provincia,
+    Pais? pais,
   }) async {
     try {
       if (direccionId != null) {
@@ -1995,6 +2000,35 @@ GROUP BY ARTICULO_ID, DESCRIPCION
             )
             .getSingle();
       }
+
+      final clienteDto = await (_remoteDb.select(
+        _remoteDb.clienteTable,
+      )..where((t) => t.id.equals(clienteId))).getSingle();
+
+      if (clienteDto.direccionFiscal1 != direccion1 ||
+          clienteDto.codigoPostalFiscal != codigoPostal ||
+          clienteDto.poblacionFiscal != poblacion ||
+          clienteDto.paisFiscalId != pais?.id) {
+        return ClienteDireccion(
+          clienteId: clienteId,
+          direccionId: direccionId,
+          direccionImpGuid: null,
+          direccion1: direccion1,
+          codigoPostal: codigoPostal,
+          poblacion: poblacion,
+          provincia: provincia,
+          pais: pais,
+          latitud: 0,
+          longitud: 0,
+          predeterminada: false,
+          lastUpdated: DateTime.now(),
+          enviada: false,
+          tratada: false,
+          deleted: false,
+          isManual: true,
+        );
+      }
+
       return null;
     } catch (e, stackTrace) {
       Error.throwWithStackTrace(

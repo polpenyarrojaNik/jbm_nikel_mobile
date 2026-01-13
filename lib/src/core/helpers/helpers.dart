@@ -87,3 +87,53 @@ Color getTendenciaClienteColor(TendenciaCliente tendencia) {
       return Colors.grey;
   }
 }
+
+String getAddressText(
+  String? streetAddress,
+  String? zipCode,
+  String? city,
+  String? state,
+  String? country,
+) {
+  var val = '';
+  if (streetAddress != null) {
+    val = streetAddress;
+  }
+  if (zipCode != null) {
+    if (streetAddress != null) {
+      val += '\n$zipCode';
+    } else {
+      val = zipCode;
+    }
+  }
+  if (city != null) {
+    if (streetAddress != null || zipCode != null) {
+      val += '\n$city';
+    } else {
+      val += city;
+    }
+  }
+  if (state != null) {
+    if (city != null) {
+      val += ' - $state';
+    } else {
+      if (streetAddress != null || zipCode != null) {
+        val += '\n$state';
+      } else {
+        val += state;
+      }
+    }
+  }
+
+  if (country != null) {
+    if (streetAddress != null ||
+        zipCode != null ||
+        city != null ||
+        state != null) {
+      val += '\n$country';
+    } else {
+      val += country;
+    }
+  }
+  return val;
+}

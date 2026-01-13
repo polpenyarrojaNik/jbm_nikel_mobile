@@ -268,7 +268,8 @@
   "pedido_edit_pedidoEdit_totalLineas": "Total lines",
   "pedido_edit_pedidoEdit_lineas": "Lines",
   "pedido_edit_pedidoEdit_oferta": "Offer",
-  "pedido_edit_pedidoEdit_fechaValidez": "Validate date",
+  "pedido_edit_pedidoEdit_fechaValidez": "Offer validity date",
+  "pedido_edit_pedidoEdit_fechaValidezHasta": "Offer valid until",
   "pedido_edit_pedidoEdit_fechaValidezNoPuedeEstarVacia": "Validate date cannot be empty",
   "pedido_edit_pedidoEdit_ultimoPrecioDeCompra": "Last purchase price",
   "pedido_edit_lineaNuevoTile_precio": "Price:",
@@ -427,5 +428,10 @@
   "productRecommendations": "Product recommendations",
   "probability": "Probability",
   "unknownDescription": "Unknown description",
-  "imNotInterestedInAnyArticles": "I'm not interested in any articles"
+  "imNotInterestedInAnyArticles": "I'm not interested in any articles",
+  "suggestedAddress": "Suggested address",
+  "chooseAddress": "Choose address",
+  "currentAddress": "Current address",
+  "couldntValidateAddressMessage": "We couldn’t validate this address. It may contain an error or be incomplete. Do you want to continue before reviewing it?",
+  "seleccioneUnClienteParaContinuar": "Select a customer to continue."
 }

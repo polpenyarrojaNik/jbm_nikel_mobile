@@ -540,6 +540,10 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "company": MessageLookupByLibrary.simpleMessage("Empresa"),
     "competencia": MessageLookupByLibrary.simpleMessage("Competencia"),
+    "couldntValidateAddressMessage": MessageLookupByLibrary.simpleMessage(
+      "No hemos podido validar esta dirección. Es posible que contenga un error o esté incompleta. ¿Quieres continuar antes de revisarla?",
+    ),
+    "currentAddress": MessageLookupByLibrary.simpleMessage("Dirección actual"),
     "email": MessageLookupByLibrary.simpleMessage("Correo electrónico"),
     "empty": MessageLookupByLibrary.simpleMessage("Vacío"),
     "estasSeguroQueQuieresReemplazarLaBaseDeDatos":
@@ -621,8 +625,10 @@ class MessageLookup extends MessageLookupByLibrary {
       "Editar pedido",
     ),
     "pedido_edit_pedidoEdit_fechaValidez": MessageLookupByLibrary.simpleMessage(
-      "Fecha de validez",
+      "Fecha validez oferta",
     ),
+    "pedido_edit_pedidoEdit_fechaValidezHasta":
+        MessageLookupByLibrary.simpleMessage("Validez oferta hasta"),
     "pedido_edit_pedidoEdit_fechaValidezNoPuedeEstarVacia":
         MessageLookupByLibrary.simpleMessage(
           "Fecha de validez no puede estar vacía",
@@ -789,6 +795,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "seleccionarBorrador": MessageLookupByLibrary.simpleMessage(
       "Seleccionar borrador",
     ),
+    "seleccioneUnClienteParaContinuar": MessageLookupByLibrary.simpleMessage(
+      "Seleccione un cliente para continuar.",
+    ),
     "semanal": MessageLookupByLibrary.simpleMessage("Semanal"),
     "send": MessageLookupByLibrary.simpleMessage("Enviar"),
     "settings_cerrar_sesion": MessageLookupByLibrary.simpleMessage(
@@ -845,6 +854,9 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "stock": MessageLookupByLibrary.simpleMessage("Stock"),
     "subfamilia": MessageLookupByLibrary.simpleMessage("Subfamilia"),
+    "suggestedAddress": MessageLookupByLibrary.simpleMessage(
+      "Dirección sugerida",
+    ),
     "telefono": MessageLookupByLibrary.simpleMessage("Teléfono"),
     "trackId": MessageLookupByLibrary.simpleMessage("Track ID"),
     "trimestral": MessageLookupByLibrary.simpleMessage("Trimestral"),

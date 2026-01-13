@@ -2758,11 +2758,21 @@ class S {
     );
   }
 
-  /// `Validate date`
+  /// `Offer validity date`
   String get pedido_edit_pedidoEdit_fechaValidez {
     return Intl.message(
-      'Validate date',
+      'Offer validity date',
       name: 'pedido_edit_pedidoEdit_fechaValidez',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Offer valid until`
+  String get pedido_edit_pedidoEdit_fechaValidezHasta {
+    return Intl.message(
+      'Offer valid until',
+      name: 'pedido_edit_pedidoEdit_fechaValidezHasta',
       desc: '',
       args: [],
     );
@@ -4118,6 +4128,56 @@ class S {
     return Intl.message(
       'I\'m not interested in any articles',
       name: 'imNotInterestedInAnyArticles',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Suggested address`
+  String get suggestedAddress {
+    return Intl.message(
+      'Suggested address',
+      name: 'suggestedAddress',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Choose address`
+  String get chooseAddress {
+    return Intl.message(
+      'Choose address',
+      name: 'chooseAddress',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Current address`
+  String get currentAddress {
+    return Intl.message(
+      'Current address',
+      name: 'currentAddress',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `We couldn’t validate this address. It may contain an error or be incomplete. Do you want to continue before reviewing it?`
+  String get couldntValidateAddressMessage {
+    return Intl.message(
+      'We couldn’t validate this address. It may contain an error or be incomplete. Do you want to continue before reviewing it?',
+      name: 'couldntValidateAddressMessage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Select a customer to continue.`
+  String get seleccioneUnClienteParaContinuar {
+    return Intl.message(
+      'Select a customer to continue.',
+      name: 'seleccioneUnClienteParaContinuar',
       desc: '',
       args: [],
     );
