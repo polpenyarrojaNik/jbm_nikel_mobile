@@ -148,6 +148,7 @@ class PedidoVentaEditPageController
         _clienteDireccion = await clienteRepository
             .getClienteDireccionByDireccionId(
               clienteId: pedidoVenta.clienteId!,
+              nombreCliente: pedidoVenta.nombreCliente,
               direccionId: pedidoVenta.direccionId,
               direccion1: pedidoVenta.direccionEntrga1,
               codigoPostal: pedidoVenta.codigoPostal,

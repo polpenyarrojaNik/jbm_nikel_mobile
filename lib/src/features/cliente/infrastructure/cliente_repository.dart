@@ -1961,6 +1961,7 @@ GROUP BY ARTICULO_ID, DESCRIPCION
 
   Future<ClienteDireccion?> getClienteDireccionByDireccionId({
     required String clienteId,
+    required String? nombreCliente,
     required String? direccionId,
     required String? direccion1,
     String? codigoPostal,
@@ -2013,6 +2014,7 @@ GROUP BY ARTICULO_ID, DESCRIPCION
           clienteId: clienteId,
           direccionId: direccionId,
           direccionImpGuid: null,
+          nombre: nombreCliente,
           direccion1: direccion1,
           codigoPostal: codigoPostal,
           poblacion: poblacion,

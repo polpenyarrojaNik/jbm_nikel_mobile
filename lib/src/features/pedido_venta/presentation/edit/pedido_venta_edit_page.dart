@@ -558,7 +558,12 @@ class PedidoVentaEditForm extends ConsumerWidget {
           )
           .navigateToNextStep();
     } else {
-      showToast(S.of(context).pedido_edit_pedidoEdit_anadeAlgunaLinea, context);
+      unawaited(
+        showToast(
+          S.of(context).pedido_edit_pedidoEdit_anadeAlgunaLinea,
+          context,
+        ),
+      );
     }
   }
 
@@ -1082,11 +1087,10 @@ class _StepSelectClienteDireccionContentState
       userSelectAnyAddress.value = true;
 
       final isSameDireccionSelected =
-          (widget.clienteDireccion != null &&
-          widget.clienteDireccion!.direccionId ==
-              clienteDireccion.direccionId &&
-          widget.clienteDireccion!.isManual &&
-          clienteDireccion.isManual);
+          widget.clienteDireccion != null &&
+          (widget.clienteDireccion!.direccionId ==
+                  clienteDireccion.direccionId &&
+              (widget.clienteDireccion!.isManual == clienteDireccion.isManual));
 
       if (clienteDireccion.isManual) {
         direccionManual.value = isSameDireccionSelected
