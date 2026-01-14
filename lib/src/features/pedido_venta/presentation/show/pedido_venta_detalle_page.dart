@@ -60,88 +60,47 @@ class PedidoVentaDetallePage extends ConsumerWidget {
         actions: state.maybeWhen(
           orElse: () => null,
           data: (pedidoVenta) {
-            if (pedidoLocalParam.pedidoId != null &&
-                pedidoVenta.oferta != null &&
-                pedidoVenta.oferta!) {
-              final ofertaAdjuntoValue = ref.watch(
-                ofertaHaveAttachmentProvider(pedidoLocalParam.pedidoId!),
-              );
-              return ofertaAdjuntoValue.maybeWhen(
-                orElse: () => [
-                  const SizedBox(
-                    height: 25,
-                    child: CircularProgressIndicator(strokeWidth: 2.5),
-                  ),
-                ],
-                data: (ofertaHaveAttachment) => ofertaHaveAttachment
-                    ? [
-                        IconButton(
-                          onPressed: () =>
-                              _donwloadOfertaAttachment(ref, pedidoLocalParam),
-                          icon: const Icon(Icons.picture_as_pdf),
-                        ),
-                        if (pedidoVenta.isEditable)
-                          IconButton(
-                            icon: const Icon(Icons.edit),
-                            onPressed: () => context.router.push(
-                              PedidoVentaEditRoute(
-                                pedidoId: pedidoVenta.pedidoVentaId,
-                                empresaId: pedidoVenta.empresaId,
-                                isLocal: false,
-                              ),
-                            ),
-                          ),
-                      ]
-                    : [
-                        IconButton(
-                          icon: const Icon(Icons.edit),
-                          onPressed: () => context.router.push(
-                            PedidoVentaEditRoute(
-                              pedidoId: pedidoVenta.pedidoVentaId,
-                              empresaId: pedidoVenta.empresaId,
-                              isLocal: false,
-                            ),
-                          ),
-                        ),
-                      ],
-              );
-            }
-            if (pedidoVenta.isEditable) {
-              return [
+            return [
+              if (!pedidoVenta.isLocal)
+                DescargarProformaButton(pedidoLocalParam: pedidoLocalParam),
+              if (!pedidoVenta.isLocal && (pedidoVenta.oferta ?? false))
+                DescargarOfertaButton(pedidoLocalParam: pedidoLocalParam),
+
+              if (pedidoVenta.isEditable) ...[
                 IconButton(
                   icon: const Icon(Icons.edit),
                   onPressed: () => context.router.push(
                     PedidoVentaEditRoute(
-                      pedidoAppId: pedidoVenta.pedidoVentaAppId,
+                      pedidoId: pedidoVenta.pedidoVentaId,
                       empresaId: pedidoVenta.empresaId,
-                      isLocal: true,
+                      isLocal: false,
                     ),
                   ),
                 ),
-                IconButton(
-                  icon: const Icon(Icons.delete),
-                  onPressed: () {
-                    ref
-                        .read(
-                          deletePedidoVentaProvider(
-                            pedidoLocalParam.pedidoAppId!,
-                          ).future,
-                        )
-                        .then((_) {
-                          ref.invalidate(
-                            pedidoVentaIndexScreenPaginatedControllerProvider,
-                          );
-                          ref.invalidate(
-                            pedidoVentaIndexScreenControllerProvider,
-                          );
-                          // ignore: use_build_context_synchronously
-                          context.router.maybePop();
-                        });
-                  },
-                ),
-              ];
-            }
-            return null;
+                if (pedidoVenta.isLocal)
+                  IconButton(
+                    icon: const Icon(Icons.delete),
+                    onPressed: () {
+                      ref
+                          .read(
+                            deletePedidoVentaProvider(
+                              pedidoLocalParam.pedidoAppId!,
+                            ).future,
+                          )
+                          .then((_) {
+                            ref.invalidate(
+                              pedidoVentaIndexScreenPaginatedControllerProvider,
+                            );
+                            ref.invalidate(
+                              pedidoVentaIndexScreenControllerProvider,
+                            );
+                            // ignore: use_build_context_synchronously
+                            context.router.maybePop();
+                          });
+                    },
+                  ),
+              ],
+            ];
           },
         ),
       ),
@@ -173,22 +132,6 @@ class PedidoVentaDetallePage extends ConsumerWidget {
         ),
       ),
     );
-  }
-
-  void _donwloadOfertaAttachment(
-    WidgetRef ref,
-    PedidoLocalParam pedidoLocalParam,
-  ) {
-    pedidoVentaAdjuntoMutation.run(ref, (tsx) async {
-      final pedidoVentaByIdStateNotifier = tsx.get(
-        pedidoVentaByIdProvider(pedidoLocalParam).notifier,
-      );
-
-      final result = await pedidoVentaByIdStateNotifier.getAttachmentFile(
-        pedidoVentaId: pedidoLocalParam.pedidoId!,
-      );
-      return result;
-    });
   }
 }
 
@@ -435,5 +378,90 @@ class PedidoVentaLineaContainer extends ConsumerWidget {
         ),
       ],
     );
+  }
+}
+
+class DescargarOfertaButton extends ConsumerWidget {
+  const DescargarOfertaButton({super.key, required this.pedidoLocalParam});
+
+  final PedidoLocalParam pedidoLocalParam;
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final ofertaAdjuntoValue = ref.watch(
+      ofertaHaveAttachmentProvider(pedidoLocalParam.pedidoId!),
+    );
+    return ofertaAdjuntoValue.maybeWhen(
+      orElse: () => const SizedBox(
+        height: 24,
+        child: CircularProgressIndicator(strokeWidth: 2.5),
+      ),
+
+      data: (ofertaHaveAttachment) => ofertaHaveAttachment
+          ? IconButton(
+              onPressed: () => _donwloadOfertaAttachment(ref, pedidoLocalParam),
+              icon: const Icon(Icons.picture_as_pdf),
+            )
+          : Container(),
+    );
+  }
+
+  void _donwloadOfertaAttachment(
+    WidgetRef ref,
+    PedidoLocalParam pedidoLocalParam,
+  ) {
+    pedidoVentaAdjuntoMutation.run(ref, (tsx) async {
+      final pedidoVentaByIdStateNotifier = tsx.get(
+        pedidoVentaByIdProvider(pedidoLocalParam).notifier,
+      );
+
+      final result = await pedidoVentaByIdStateNotifier.getAdjuntoOferta(
+        pedidoVentaId: pedidoLocalParam.pedidoId!,
+      );
+      return result;
+    });
+  }
+}
+
+class DescargarProformaButton extends ConsumerWidget {
+  const DescargarProformaButton({super.key, required this.pedidoLocalParam});
+
+  final PedidoLocalParam pedidoLocalParam;
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final proformaAdjuntoValue = ref.watch(
+      pedidoHaveProformaAdjuntaProvider(pedidoLocalParam.pedidoId!),
+    );
+    return proformaAdjuntoValue.maybeWhen(
+      orElse: () => const SizedBox(
+        height: 24,
+        child: CircularProgressIndicator(strokeWidth: 2.5),
+      ),
+
+      data: (proformaHaveAttachment) => proformaHaveAttachment
+          ? IconButton(
+              onPressed: () =>
+                  _donwloadProformaAttachment(ref, pedidoLocalParam),
+              icon: const Icon(Icons.request_quote),
+            )
+          : Container(),
+    );
+  }
+
+  void _donwloadProformaAttachment(
+    WidgetRef ref,
+    PedidoLocalParam pedidoLocalParam,
+  ) {
+    pedidoVentaAdjuntoMutation.run(ref, (tsx) async {
+      final pedidoVentaByIdStateNotifier = tsx.get(
+        pedidoVentaByIdProvider(pedidoLocalParam).notifier,
+      );
+
+      final result = await pedidoVentaByIdStateNotifier.getAdjuntoProforma(
+        pedidoVentaId: pedidoLocalParam.pedidoId!,
+      );
+      return result;
+    });
   }
 }

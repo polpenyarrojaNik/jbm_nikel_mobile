@@ -98,7 +98,7 @@ final class PedidoVentaByIdProvider
   }
 }
 
-String _$pedidoVentaByIdHash() => r'6ac684cf6a49b131b102aab0102eb94c1ca59576';
+String _$pedidoVentaByIdHash() => r'163fcecadccd44df9d4846f514940e0889725063';
 
 final class PedidoVentaByIdFamily extends $Family
     with
@@ -660,6 +660,98 @@ final class OfertaHaveAttachmentFamily extends $Family
 }
 
 abstract class _$OfertaHaveAttachment extends $AsyncNotifier<bool> {
+  late final _$args = ref.$arg as String;
+  String get pedidoVentaId => _$args;
+
+  FutureOr<bool> build(String pedidoVentaId);
+  @$mustCallSuper
+  @override
+  void runBuild() {
+    final created = build(_$args);
+    final ref = this.ref as $Ref<AsyncValue<bool>, bool>;
+    final element =
+        ref.element
+            as $ClassProviderElement<
+              AnyNotifier<AsyncValue<bool>, bool>,
+              AsyncValue<bool>,
+              Object?,
+              Object?
+            >;
+    element.handleValue(ref, created);
+  }
+}
+
+@ProviderFor(PedidoHaveProformaAdjunta)
+const pedidoHaveProformaAdjuntaProvider = PedidoHaveProformaAdjuntaFamily._();
+
+final class PedidoHaveProformaAdjuntaProvider
+    extends $AsyncNotifierProvider<PedidoHaveProformaAdjunta, bool> {
+  const PedidoHaveProformaAdjuntaProvider._({
+    required PedidoHaveProformaAdjuntaFamily super.from,
+    required String super.argument,
+  }) : super(
+         retry: null,
+         name: r'pedidoHaveProformaAdjuntaProvider',
+         isAutoDispose: true,
+         dependencies: null,
+         $allTransitiveDependencies: null,
+       );
+
+  @override
+  String debugGetCreateSourceHash() => _$pedidoHaveProformaAdjuntaHash();
+
+  @override
+  String toString() {
+    return r'pedidoHaveProformaAdjuntaProvider'
+        ''
+        '($argument)';
+  }
+
+  @$internal
+  @override
+  PedidoHaveProformaAdjunta create() => PedidoHaveProformaAdjunta();
+
+  @override
+  bool operator ==(Object other) {
+    return other is PedidoHaveProformaAdjuntaProvider &&
+        other.argument == argument;
+  }
+
+  @override
+  int get hashCode {
+    return argument.hashCode;
+  }
+}
+
+String _$pedidoHaveProformaAdjuntaHash() =>
+    r'e390ca07f802a466024609052c58406829ca73de';
+
+final class PedidoHaveProformaAdjuntaFamily extends $Family
+    with
+        $ClassFamilyOverride<
+          PedidoHaveProformaAdjunta,
+          AsyncValue<bool>,
+          bool,
+          FutureOr<bool>,
+          String
+        > {
+  const PedidoHaveProformaAdjuntaFamily._()
+    : super(
+        retry: null,
+        name: r'pedidoHaveProformaAdjuntaProvider',
+        dependencies: null,
+        $allTransitiveDependencies: null,
+        isAutoDispose: true,
+      );
+
+  PedidoHaveProformaAdjuntaProvider call(String pedidoVentaId) =>
+      PedidoHaveProformaAdjuntaProvider._(argument: pedidoVentaId, from: this);
+
+  @override
+  String toString() => r'pedidoHaveProformaAdjuntaProvider';
+}
+
+abstract class _$PedidoHaveProformaAdjunta extends $AsyncNotifier<bool> {
   late final _$args = ref.$arg as String;
   String get pedidoVentaId => _$args;
 

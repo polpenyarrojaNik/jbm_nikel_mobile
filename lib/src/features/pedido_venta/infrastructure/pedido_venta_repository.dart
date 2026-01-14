@@ -61,10 +61,17 @@ class PedidoVentaById extends _$PedidoVentaById {
     );
   }
 
-  Future<File?> getAttachmentFile({required String pedidoVentaId}) async {
+  Future<File?> getAdjuntoOferta({required String pedidoVentaId}) async {
     final file = await ref
         .read(pedidoVentaRepositoryProvider)
-        .getDocumentFile(pedidoVentaId: pedidoVentaId);
+        .getAdjuntoOferta(pedidoVentaId: pedidoVentaId);
+    return file;
+  }
+
+  Future<File?> getAdjuntoProforma({required String pedidoVentaId}) async {
+    final file = await ref
+        .read(pedidoVentaRepositoryProvider)
+        .getAdjuntoProforma(pedidoVentaId: pedidoVentaId);
     return file;
   }
 }
@@ -133,6 +140,15 @@ class OfertaHaveAttachment extends _$OfertaHaveAttachment {
   Future<bool> build(String pedidoVentaId) {
     final pedidoVentaRepository = ref.watch(pedidoVentaRepositoryProvider);
     return pedidoVentaRepository.ofertaHaveAttachment(pedidoVentaId);
+  }
+}
+
+@riverpod
+class PedidoHaveProformaAdjunta extends _$PedidoHaveProformaAdjunta {
+  @override
+  Future<bool> build(String pedidoVentaId) {
+    final pedidoVentaRepository = ref.watch(pedidoVentaRepositoryProvider);
+    return pedidoVentaRepository.pedidoHaveProformaAdjunta(pedidoVentaId);
   }
 }
 
@@ -1131,11 +1147,42 @@ class PedidoVentaRepository {
     return _remoteOfertaHaveAttachment(pedidoVentaId);
   }
 
-  Future<File?> getDocumentFile({required String pedidoVentaId}) async {
+  Future<bool> pedidoHaveProformaAdjunta(String pedidoVentaId) {
+    return _remotePedidoHaveProformaAdjunta(pedidoVentaId);
+  }
+
+  Future<File?> getAdjuntoOferta({required String pedidoVentaId}) async {
     final data = await _remoteGetAttachment(
       requestUri: Uri.https(
         dotenv.get('URL', fallback: 'localhost:3001'),
-        'api/v1/online/adjunto/pedido/$pedidoVentaId',
+        'api/v1/online/adjunto/pedido/$pedidoVentaId/oferta',
+      ),
+      provisionalToken: usuario.provisionalToken,
+    );
+
+    try {
+      final cahceDirectories = await getTemporaryDirectory();
+
+      final file = await File(
+        '${cahceDirectories.path}/pedido/$pedidoVentaId/PV$pedidoVentaId.PDF',
+      ).create(recursive: true);
+      final raf = file.openSync(mode: FileMode.write);
+      raf.writeFromSync(data);
+      await raf.close();
+      return file;
+    } catch (e, stackTrace) {
+      Error.throwWithStackTrace(
+        AppException.createFileInCacheFailure(e.toString()),
+        stackTrace,
+      );
+    }
+  }
+
+  Future<File?> getAdjuntoProforma({required String pedidoVentaId}) async {
+    final data = await _remoteGetAttachment(
+      requestUri: Uri.https(
+        dotenv.get('URL', fallback: 'localhost:3001'),
+        'api/v1/online/adjunto/pedido/$pedidoVentaId/proforma',
       ),
       provisionalToken: usuario.provisionalToken,
     );
@@ -2304,7 +2351,37 @@ class PedidoVentaRepository {
     try {
       final requestUri = Uri.https(
         dotenv.get('URL', fallback: 'localhost:3001'),
-        'api/v1/online/adjunto/pedido/$pedidoVentaId/exist',
+        'api/v1/online/adjunto/pedido/$pedidoVentaId/exist_oferta',
+      );
+
+      final response = await _dio.getUri(
+        requestUri,
+        options: Options(
+          headers: {'authorization': 'Bearer ${usuario.provisionalToken}'},
+        ),
+      );
+      if (response.statusCode == 200) {
+        final responsaData = response.data['data'] as bool;
+
+        return responsaData;
+      }
+      throw AppException.restApiFailure(
+        response.statusCode ?? 400,
+        response.statusMessage ?? '',
+      );
+    } catch (e, stackTrace) {
+      Error.throwWithStackTrace(
+        getApiError(e, stackTrace, errorLogger),
+        stackTrace,
+      );
+    }
+  }
+
+  Future<bool> _remotePedidoHaveProformaAdjunta(String pedidoVentaId) async {
+    try {
+      final requestUri = Uri.https(
+        dotenv.get('URL', fallback: 'localhost:3001'),
+        'api/v1/online/adjunto/pedido/$pedidoVentaId/exist_proforma',
       );
 
       final response = await _dio.getUri(
