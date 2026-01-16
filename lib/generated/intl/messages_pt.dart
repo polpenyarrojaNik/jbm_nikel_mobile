@@ -902,6 +902,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "templateDownloadedSuccessfully": MessageLookupByLibrary.simpleMessage(
       "Modelo descarregado com sucesso",
     ),
+    "totalRows": MessageLookupByLibrary.simpleMessage("Total de linhas"),
     "trackId": MessageLookupByLibrary.simpleMessage("Track ID"),
     "trimestral": MessageLookupByLibrary.simpleMessage("Trimestral"),
     "ultimosPrecios_buscarUltimosPrecios": MessageLookupByLibrary.simpleMessage(

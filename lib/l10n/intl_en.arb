@@ -453,5 +453,6 @@
   "articleNotFound": "Article not found",
   "replaceExistingLines": "Replace existing lines",
   "replaceExistingLinesMessage": "This will replace existing lines in the order. Are you sure you want to continue?",
-  "uploadExcel": "Upload Excel"
+  "uploadExcel": "Upload Excel",
+  "totalRows": "Total rows"
 }

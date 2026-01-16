@@ -318,7 +318,15 @@ class ImportExcelResultWidget extends StatelessWidget {
           title: S.of(context).sheetName,
           value: importResult.sheetName,
         ),
-        const Gap(8),
+        const Gap(4),
+        ImportExcelResultDetailTile(
+          title: S.of(context).totalRows,
+          value:
+              (importResult.pedidoImportLineas.length +
+                      importResult.pedidoImportLineaErrors.length)
+                  .toString(),
+        ),
+        const Gap(4),
         ImportExcelImportedRowsWidget(
           importedRows: importResult.pedidoImportLineas,
         ),
@@ -370,12 +378,11 @@ class ImportExcelImportedRowsWidget extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
 
       children: [
-        Text(
-          '${S.of(context).importedRows}: ${importedRows.length}',
-          style: Theme.of(context).textTheme.titleSmall?.copyWith(
-            color: Theme.of(context).colorScheme.onSurfaceVariant,
-          ),
+        ImportExcelResultDetailTile(
+          title: S.of(context).importedRows,
+          value: importedRows.length.toString(),
         ),
+
         const Gap(4),
         ListView.separated(
           shrinkWrap: true,
@@ -450,12 +457,11 @@ class ImportExcelErrorsWidget extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
 
       children: [
-        Text(
-          '${S.of(context).errors}: ${errors.length}',
-          style: Theme.of(context).textTheme.titleSmall?.copyWith(
-            color: Theme.of(context).colorScheme.onSurfaceVariant,
-          ),
+        ImportExcelResultDetailTile(
+          title: S.of(context).errors,
+          value: errors.length.toString(),
         ),
+
         ListView.builder(
           shrinkWrap: true,
           physics: const NeverScrollableScrollPhysics(),

@@ -4352,6 +4352,11 @@ class S {
       args: [],
     );
   }
+
+  /// `Total rows`
+  String get totalRows {
+    return Intl.message('Total rows', name: 'totalRows', desc: '', args: []);
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

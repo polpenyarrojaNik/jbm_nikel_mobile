@@ -451,5 +451,6 @@
   "articleNotFound": "Articolo non trovato",
   "replaceExistingLines": "Sostituisci le righe esistenti",
   "replaceExistingLinesMessage": "Questo sostituirà le righe esistenti nell'ordine. Sei sicuro di voler continuare?",
-  "uploadExcel": "Carica Excel"
+  "uploadExcel": "Carica Excel",
+  "totalRows": "Righe totali"
 }
