@@ -20,6 +20,7 @@ import '../../../../core/application/log_service.dart';
 import '../../../../core/exceptions/app_exception.dart';
 import '../../../../core/helpers/debouncer.dart';
 import '../../../../core/helpers/formatters.dart';
+import '../../../../core/helpers/helpers.dart';
 import '../../../../core/presentation/common_widgets/address_text_widget.dart';
 import '../../../../core/presentation/common_widgets/column_field_text_detail.dart';
 import '../../../../core/presentation/common_widgets/common_app_bar.dart';
@@ -41,6 +42,7 @@ import '../../../cliente/infrastructure/cliente_repository.dart';
 import '../../../cliente/presentation/index/cliente_lista_tile.dart';
 import '../../../cliente/presentation/show/cliente_direccion_list_page.dart';
 import '../../../usuario/infrastructure/usuario_service.dart';
+import '../../domain/pedido_import_result.dart';
 import '../../domain/pedido_local_param.dart';
 import '../../domain/pedido_venta_linea.dart';
 import '../../domain/recomendacion_producto.dart';
@@ -306,19 +308,22 @@ class _PedidoVentaEditPageState extends ConsumerState<PedidoVentaEditPage> {
   void createCsvFile(
     String pedidoVentaAppId,
     List<PedidoVentaLinea> pedidoVentaLineaList,
-  ) async {
-    await crearCsvMutation.run(ref, (tsx) async {
-      final createCsvControllerStateNotifier = tsx.get(
-        crearCsvControllerProvider.notifier,
-      );
+  ) {
+    unawaited(
+      runMutationSafe(ref, crearCsvMutation, (tsx) async {
+        final createCsvControllerStateNotifier = tsx.get(
+          crearCsvControllerProvider.notifier,
+        );
 
-      final result = await createCsvControllerStateNotifier.crearCsvController(
-        pedidoVentaAppId: pedidoVentaAppId,
-        pedidoVentaLineaList: pedidoVentaLineaList,
-      );
+        final result = await createCsvControllerStateNotifier
+            .crearCsvController(
+              pedidoVentaAppId: pedidoVentaAppId,
+              pedidoVentaLineaList: pedidoVentaLineaList,
+            );
 
-      return result;
-    });
+        return result;
+      }),
+    );
   }
 
   void openFile(File csvFile) async {
@@ -1201,9 +1206,22 @@ class StepArticuloListContent extends ConsumerWidget {
         Positioned(
           bottom: 10,
           right: 20,
-          child: FloatingActionButton(
-            child: const Icon(Icons.add),
-            onPressed: () => navigateToAddArticulo(context),
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.end,
+            children: [
+              FloatingActionButton.small(
+                heroTag: 'importExcel',
+                child: Icon(MdiIcons.fileExcel),
+                onPressed: () => navigateToImportExcel(context, ref),
+              ),
+              const Gap(4),
+              FloatingActionButton(
+                heroTag: 'addArticle',
+
+                child: const Icon(Icons.add),
+                onPressed: () => navigateToAddArticulo(context),
+              ),
+            ],
           ),
         ),
       ],
@@ -1248,6 +1266,35 @@ class StepArticuloListContent extends ConsumerWidget {
 
   void navigateToAddArticulo(BuildContext context) {
     context.router.push(ArticuloListaRoute(isSearchArticuloForForm: true));
+  }
+
+  Future<void> navigateToImportExcel(
+    BuildContext context,
+    WidgetRef ref,
+  ) async {
+    final reemplazarLineas = (pedidoVentaLineaList.isNotEmpty)
+        ? await showDialog<bool?>(
+            context: context,
+            builder: (ctx) => ReemplazarLineasAlertDialog(dialogContext: ctx),
+          )
+        : true;
+
+    if (context.mounted && (reemplazarLineas ?? false)) {
+      final pedidoImportResult = await context.router.push<PedidoImportResult?>(
+        PedidoVentaEditImportExcelRoute(clienteId: cliente!.id),
+      );
+
+      if (pedidoImportResult != null &&
+          pedidoImportResult.pedidoImportLineas.isNotEmpty) {
+        ref
+            .read(
+              pedidoVentaEditPageControllerProvider(pedidoLocalParam).notifier,
+            )
+            .importPedidoVentaLineasFromExcel(
+              pedidoImportLineas: pedidoImportResult.pedidoImportLineas,
+            );
+      }
+    }
   }
 
   void setArtiucloValue({
@@ -1590,6 +1637,30 @@ class _ClienteResumenTile extends StatelessWidget {
           ),
         ],
       ),
+    );
+  }
+}
+
+class ReemplazarLineasAlertDialog extends StatelessWidget {
+  const ReemplazarLineasAlertDialog({super.key, required this.dialogContext});
+
+  final BuildContext dialogContext;
+
+  @override
+  Widget build(BuildContext context) {
+    return AlertDialog(
+      title: Text(S.of(context).replaceExistingLines),
+      content: Text(S.of(context).replaceExistingLinesMessage),
+      actions: [
+        TextButton(
+          onPressed: () => Navigator.of(dialogContext).pop(false),
+          child: Text(S.of(context).cancel),
+        ),
+        TextButton(
+          onPressed: () => Navigator.of(dialogContext).pop(true),
+          child: Text(S.of(context).accept),
+        ),
+      ],
     );
   }
 }

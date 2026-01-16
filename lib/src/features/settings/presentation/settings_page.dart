@@ -11,6 +11,7 @@ import 'package:path_provider/path_provider.dart';
 import 'package:share_plus/share_plus.dart';
 
 import '../../../../generated/l10n.dart';
+import '../../../core/helpers/helpers.dart';
 import '../../../core/infrastructure/local_database.dart';
 import '../../../core/infrastructure/remote_database.dart';
 import '../../../core/infrastructure/sync_service.dart';
@@ -179,7 +180,7 @@ class _ActualizarArchivoBaseDeDatosButton extends ConsumerWidget {
   void deleteDatabase(WidgetRef ref) {
     ref.invalidate(appRemoteDatabaseProvider);
 
-    deleteDatabaseMutation.run(ref, (tsx) async {
+    runMutationSafe(ref, deleteDatabaseMutation, (tsx) async {
       final deleteDatabaseControllerStateNotifier = tsx.get(
         deleteDatabaseControllerProvider.notifier,
       );
@@ -242,7 +243,7 @@ class _ReemplazarArchivoBaseDeDatosLocalButton extends ConsumerWidget {
       );
 
       if (correctKey != null && correctKey) {
-        await deleteLocalDatabaseMutation.run(ref, (tsx) async {
+        await runMutationSafe(ref, deleteLocalDatabaseMutation, (tsx) async {
           final deleteLocalDatabaseControllerStateNotifier = tsx.get(
             deleteLocalDatabaseControllerProvider.notifier,
           );
@@ -342,7 +343,7 @@ class _EnviarBaseDeDatosLocalButton extends ConsumerWidget {
   }
 
   void exportDatabaseIntoFile(WidgetRef ref) {
-    exportDatabaseMutation.run(ref, (tsx) async {
+    runMutationSafe(ref, exportDatabaseMutation, (tsx) async {
       final exportDatabaseControllerStateNotifier = tsx.get(
         exportDatabaseControllerProvider.notifier,
       );

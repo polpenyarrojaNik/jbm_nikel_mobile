@@ -12,6 +12,7 @@ import '../../../../../generated/l10n.dart';
 import '../../../../core/domain/adjunto_param.dart';
 import '../../../../core/exceptions/app_exception.dart';
 import '../../../../core/helpers/formatters.dart';
+import '../../../../core/helpers/helpers.dart';
 import '../../../../core/presentation/common_widgets/common_app_bar.dart';
 import '../../../../core/presentation/common_widgets/error_message_widget.dart';
 import '../../../../core/presentation/common_widgets/header_datos_relacionados.dart';
@@ -172,7 +173,7 @@ class ArticuloDocumentoTile extends ConsumerWidget {
     required String? nombreArchivo,
     required WidgetRef ref,
   }) {
-    getArticuloDocumentFileMutation.run(ref, (tsx) async {
+    runMutationSafe(ref, getArticuloDocumentFileMutation, (tsx) async {
       final getArticuloDocumentoListaByIdStateNotifier = tsx.get(
         getArticuloDocumentoListaByIdProvider(articuloId).notifier,
       );

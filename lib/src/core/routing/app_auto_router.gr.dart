@@ -2674,6 +2674,63 @@ class PedidoVentaEditDireccionManualRouteArgs {
 }
 
 /// generated route for
+/// [PedidoVentaEditImportExcelPage]
+class PedidoVentaEditImportExcelRoute
+    extends PageRouteInfo<PedidoVentaEditImportExcelRouteArgs> {
+  PedidoVentaEditImportExcelRoute({
+    Key? key,
+    required String clienteId,
+    List<PageRouteInfo>? children,
+  }) : super(
+         PedidoVentaEditImportExcelRoute.name,
+         args: PedidoVentaEditImportExcelRouteArgs(
+           key: key,
+           clienteId: clienteId,
+         ),
+         initialChildren: children,
+       );
+
+  static const String name = 'PedidoVentaEditImportExcelRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      final args = data.argsAs<PedidoVentaEditImportExcelRouteArgs>();
+      return PedidoVentaEditImportExcelPage(
+        key: args.key,
+        clienteId: args.clienteId,
+      );
+    },
+  );
+}
+
+class PedidoVentaEditImportExcelRouteArgs {
+  const PedidoVentaEditImportExcelRouteArgs({
+    this.key,
+    required this.clienteId,
+  });
+
+  final Key? key;
+
+  final String clienteId;
+
+  @override
+  String toString() {
+    return 'PedidoVentaEditImportExcelRouteArgs{key: $key, clienteId: $clienteId}';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
+    if (other is! PedidoVentaEditImportExcelRouteArgs) return false;
+    return key == other.key && clienteId == other.clienteId;
+  }
+
+  @override
+  int get hashCode => key.hashCode ^ clienteId.hashCode;
+}
+
+/// generated route for
 /// [PedidoVentaEditPage]
 class PedidoVentaEditRoute extends PageRouteInfo<PedidoVentaEditRouteArgs> {
   PedidoVentaEditRoute({

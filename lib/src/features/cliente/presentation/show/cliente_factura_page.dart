@@ -268,7 +268,7 @@ class ClienteFacturaListTile extends ConsumerWidget {
       nombreArchivo: clienteFactura.documentoPdf,
     );
 
-    openFacturaDocumentMutation.run(ref, (tsx) async {
+    runMutationSafe(ref, openFacturaDocumentMutation, (tsx) async {
       final clienteFacturaDocumentControllerStateNotifier = tsx.get(
         clienteFacturaDocumentControllerProvider(
           facturaId: adjuntoParam.id,

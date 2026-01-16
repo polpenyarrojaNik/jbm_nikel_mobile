@@ -54,6 +54,7 @@ import '../../features/pedido_venta/domain/pedido_local_param.dart';
 import '../../features/pedido_venta/domain/pedido_venta_linea.dart';
 import '../../features/pedido_venta/domain/seleccionar_cantidad_param.dart';
 import '../../features/pedido_venta/presentation/edit/pedido_venta_edit_direccion_manual_page.dart';
+import '../../features/pedido_venta/presentation/edit/pedido_venta_edit_import_excel_screen.dart';
 import '../../features/pedido_venta/presentation/edit/pedido_venta_edit_page.dart';
 import '../../features/pedido_venta/presentation/edit/select_quantity_page.dart';
 import '../../features/pedido_venta/presentation/index/pedido_venta_lista_page.dart';
@@ -191,6 +192,11 @@ class AppRouter extends RootStackRouter {
     AutoRoute(
       page: PedidoVentaEditDireccionManualRoute.page,
       path: '/pedido/edit/direccion_manual',
+      fullscreenDialog: true,
+    ),
+    AutoRoute(
+      page: PedidoVentaEditImportExcelRoute.page,
+      path: '/pedido/edit/import_excel',
       fullscreenDialog: true,
     ),
     AutoRoute(page: ExpedicionListRoute.page, path: '/pedido_expedicion'),

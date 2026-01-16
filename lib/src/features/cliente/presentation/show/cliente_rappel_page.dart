@@ -10,6 +10,7 @@ import 'package:gap/gap.dart';
 import '../../../../../generated/l10n.dart';
 import '../../../../core/domain/adjunto_param.dart';
 import '../../../../core/helpers/formatters.dart';
+import '../../../../core/helpers/helpers.dart';
 import '../../../../core/presentation/common_widgets/common_app_bar.dart';
 import '../../../../core/presentation/common_widgets/error_message_widget.dart';
 import '../../../../core/presentation/common_widgets/header_datos_relacionados.dart';
@@ -176,7 +177,7 @@ class ClienteRappelTile extends ConsumerWidget {
     required String nombreArchivo,
     required WidgetRef ref,
   }) {
-    clienteRappelDocumentMutation(rappelId).run(ref, (tsx) async {
+    runMutationSafe(ref, clienteRappelDocumentMutation, (tsx) async {
       final clienteRappelListByIdStateNotifier = tsx.get(
         clienteRappelListByIdProvider(clienteRappel.clienteId).notifier,
       );

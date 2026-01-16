@@ -11,6 +11,7 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../../../../../generated/l10n.dart';
 import '../../../../core/exceptions/app_exception.dart';
+import '../../../../core/helpers/helpers.dart';
 import '../../../../core/presentation/common_widgets/common_app_bar.dart';
 import '../../../../core/presentation/common_widgets/error_message_widget.dart';
 import '../../domain/image_form_data.dart';
@@ -318,7 +319,7 @@ class _DraggableFormState extends ConsumerState<DraggableForm> {
       phoneList: phones,
     );
 
-    reconizedImageMutation.run(ref, (tsx) async {
+    runMutationSafe(ref, reconizedImageMutation, (tsx) async {
       final imageFromDataControllerStateNotifier = tsx.get(
         imageFormPageControllerProvider(widget.imageFile).notifier,
       );

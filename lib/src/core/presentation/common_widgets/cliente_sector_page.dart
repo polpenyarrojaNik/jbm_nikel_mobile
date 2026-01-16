@@ -16,6 +16,7 @@ import '../../../features/cliente/domain/cliente_imp.dart';
 import '../../../features/cliente/infrastructure/cliente_repository.dart';
 import '../../domain/sector.dart';
 import '../../exceptions/app_exception.dart';
+import '../../helpers/helpers.dart';
 import 'app_form_builder_searchable_dropdown.dart';
 import 'error_message_widget.dart';
 
@@ -176,7 +177,7 @@ class ClienteSectorPage extends ConsumerWidget {
     if (_formKey.currentState!.saveAndValidate()) {
       final sector = _formKey.currentState!.value['sector'] as Sector;
 
-      upsertClienteImpMutation.run(ref, (tsx) async {
+      runMutationSafe(ref, upsertClienteImpMutation, (tsx) async {
         final clienteSectorPageControllerStateNotifier = tsx.get(
           clienteSectorPageControllerProvider.notifier,
         );

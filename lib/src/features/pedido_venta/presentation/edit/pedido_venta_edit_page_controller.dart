@@ -7,6 +7,7 @@ import '../../../../core/exceptions/app_exception.dart';
 import '../../../cliente/domain/cliente.dart';
 import '../../../cliente/domain/cliente_direccion.dart';
 import '../../../cliente/infrastructure/cliente_repository.dart';
+import '../../domain/pedido_import_linea.dart';
 import '../../domain/pedido_local_param.dart';
 import '../../domain/pedido_venta.dart';
 import '../../domain/pedido_venta_linea.dart';
@@ -545,6 +546,52 @@ class PedidoVentaEditPageController
     List<RecomendacionProducto>? recomendacionesProductoList,
   ) {
     _recomendacionesProductoList = recomendacionesProductoList;
+    state = PedidoVentaEditPageControllerState.data(
+      _cliente,
+      _clienteDireccion,
+      pedidoVentaLineaList,
+      _recomendacionesProductoList,
+      _currentStep,
+      _observaciones,
+      _pedidoCliente,
+      _oferta,
+      _ofertaFechaHasta,
+      _isBorrador,
+    );
+  }
+
+  void importPedidoVentaLineasFromExcel({
+    required List<PedidoImportLinea> pedidoImportLineas,
+  }) {
+    pedidoVentaLineaList.clear();
+
+    for (var i = 0; i < pedidoImportLineas.length; i++) {
+      final newPedidoVentaLinea = PedidoVentaLinea(
+        pedidoVentaAppId: pedidoLocalParam.pedidoAppId,
+        pedidoVentaLineaId: (i + 1).toString().padLeft(3, '0'),
+        articuloId: pedidoImportLineas[i].articuloId,
+        articuloDescription: pedidoImportLineas[i].articuloDescription,
+        cantidad: pedidoImportLineas[i].cantidad,
+        precioDivisa: pedidoImportLineas[i].precioDivisa,
+        divisaId: pedidoImportLineas[i].divisaId,
+        tipoPrecio: pedidoImportLineas[i].tipoPrecio,
+        descuento1: pedidoImportLineas[i].descuento1,
+        descuento2: pedidoImportLineas[i].descuento2,
+        descuento3: pedidoImportLineas[i].descuento3,
+        stockDisponibleSN: pedidoImportLineas[i].stockDisponible != null
+            ? (pedidoImportLineas[i].stockDisponible! > 0)
+            : null,
+        iva: pedidoImportLineas[i].iva,
+        importeLinea: pedidoImportLineas[i].importeLinea,
+        cantidadPendiente: pedidoImportLineas[i].cantidad,
+        aiRecomendado: false,
+        lastUpdated: DateTime.now(),
+        deleted: false,
+      );
+
+      pedidoVentaLineaList.add(newPedidoVentaLinea);
+    }
+
     state = PedidoVentaEditPageControllerState.data(
       _cliente,
       _clienteDireccion,

@@ -10,6 +10,7 @@ import 'package:gap/gap.dart';
 
 import '../../../../generated/l10n.dart';
 import '../../../core/domain/adjunto_param.dart';
+import '../../../core/helpers/helpers.dart';
 import '../../../core/presentation/common_widgets/progress_indicator_widget.dart';
 import '../../../core/presentation/toasts.dart';
 import '../../../core/routing/app_auto_router.dart';
@@ -180,7 +181,7 @@ class CatalogoListTile extends ConsumerWidget {
 
   void downloadAttachment(WidgetRef ref) {
     unawaited(
-      saveCatalogoAbiertoMutation(catalogo.catalogoId).run(ref, (tsx) async {
+      runMutationSafe(ref, saveCatalogoAbiertoMutation, (tsx) async {
         final catalogoOrdenControllerStateNotifier = tsx.get(
           catalogoOrdenControllerProvider.notifier,
         );
@@ -192,7 +193,7 @@ class CatalogoListTile extends ConsumerWidget {
     );
 
     unawaited(
-      catalogoAdjuntoMutation(catalogo.catalogoId).run(ref, (tsx) async {
+      runMutationSafe(ref, catalogoAdjuntoMutation, (tsx) async {
         final catalogoIndexScreenControllerStateNotifier = tsx.get(
           catalogoIndexScreenControllerProvider.notifier,
         );
@@ -214,7 +215,7 @@ class CatalogoListTile extends ConsumerWidget {
     required WidgetRef ref,
     required Catalogo catalogo,
   }) {
-    setCatalogoFavoriteMutation(catalogo.catalogoId).run(ref, (tsx) async {
+    runMutationSafe(ref, setCatalogoFavoriteMutation, (tsx) async {
       final catalogoFavoritoControllerStateNotifier = tsx.get(
         catalogoFavoritoControllerProvider(catalogo.catalogoId).notifier,
       );
@@ -230,7 +231,7 @@ class CatalogoListTile extends ConsumerWidget {
     required WidgetRef ref,
     required Catalogo catalogo,
   }) {
-    removeCatalogoFavoriteMutation(catalogo.catalogoId).run(ref, (tsx) async {
+    runMutationSafe(ref, removeCatalogoFavoriteMutation, (tsx) async {
       final catalogoFavoritoControllerStateNotifier = tsx.get(
         catalogoFavoritoControllerProvider(catalogo.catalogoId).notifier,
       );

@@ -19,6 +19,7 @@ import '../../../../core/domain/pais.dart';
 import '../../../../core/domain/provincia.dart';
 import '../../../../core/exceptions/app_exception.dart';
 import '../../../../core/helpers/formatters.dart';
+import '../../../../core/helpers/helpers.dart';
 import '../../../../core/presentation/common_widgets/alert_dialogs.dart';
 import '../../../../core/presentation/common_widgets/app_form_builder_searchable_dropdown.dart';
 import '../../../../core/presentation/common_widgets/common_app_bar.dart';
@@ -277,7 +278,7 @@ class VisitaEditPage extends ConsumerWidget {
       );
 
       unawaited(
-        visitaSaveFormMutation.run(ref, (tsx) async {
+        runMutationSafe(ref, visitaSaveFormMutation, (tsx) async {
           final controller = tsx.get(
             visitEditPageControllerProvider(id, isLocal, isNew).notifier,
           );

@@ -11,6 +11,7 @@ import '../../../../../generated/l10n.dart';
 import '../../../../core/domain/adjunto_param.dart';
 import '../../../../core/exceptions/app_exception.dart';
 import '../../../../core/helpers/formatters.dart';
+import '../../../../core/helpers/helpers.dart';
 import '../../../../core/presentation/common_widgets/common_app_bar.dart';
 import '../../../../core/presentation/common_widgets/error_message_widget.dart';
 import '../../../../core/presentation/common_widgets/header_datos_relacionados.dart';
@@ -150,7 +151,7 @@ class ClienteAdjuntoTile extends ConsumerWidget {
     required String nombreAdjunto,
     required WidgetRef ref,
   }) {
-    clienteAdjuntoMutation(nombreAdjunto).run(ref, (tsx) async {
+    runMutationSafe(ref, clienteAdjuntoMutation, (tsx) async {
       final clienteAdjuntoListByIdStateNotifier = tsx.get(
         clienteAdjuntoListByIdProvider(clienteId).notifier,
       );

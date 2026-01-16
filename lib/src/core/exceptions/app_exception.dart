@@ -10,6 +10,9 @@ class AppException with _$AppException {
     String errorMessage,
   ) = RestApiFailure;
 
+  const factory AppException.importExcelFile(String errorMessage) =
+      ImportExcelFileFailure;
+
   const factory AppException.authLocalFailure(String errorMessage) =
       AuthLocalFailure;
   const factory AppException.fetchLocalDataFailure(String errorMessage) =
@@ -108,6 +111,10 @@ extension AppExceptionDetalles on AppException {
       ),
       unexpectedError: () =>
           AppExceptionData('unexpected-error', 'Unexpected error.'),
+      importExcelFile: (errorMessage) => AppExceptionData(
+        'import-excel-file-failure',
+        'Error importing excel file: $errorMessage',
+      ),
     );
   }
 }

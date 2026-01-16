@@ -295,7 +295,7 @@ class ClienteAlbaranListTile extends ConsumerWidget {
       nombreArchivo: clienteAlbaran.documentoPdf,
     );
 
-    openDeliveryNoteDocumentMutation.run(ref, (tsx) async {
+    runMutationSafe(ref, openDeliveryNoteDocumentMutation, (tsx) async {
       final clienteAlbaranDocumentControllerStateNotifier = tsx.get(
         clienteAlbaranDocumentControllerProvider(
           albaranId: adjuntoParam.id,

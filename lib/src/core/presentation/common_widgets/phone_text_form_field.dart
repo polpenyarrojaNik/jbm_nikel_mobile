@@ -9,6 +9,7 @@ import '../../../../generated/l10n.dart';
 import '../../../features/cliente/domain/cliente_telefono.dart';
 import '../../../features/cliente/infrastructure/cliente_repository.dart';
 import '../../exceptions/app_exception.dart';
+import '../../helpers/helpers.dart';
 import 'app_decoration.dart';
 
 part 'phone_text_form_field.g.dart';
@@ -58,7 +59,7 @@ class PhoneTextFormField extends ConsumerWidget {
           onChanged: (value) {
             ref.invalidate(phoneTextFormBuilderControllerProvider);
             if (value != null && value.isNotEmpty) {
-              verifyExistingPhoneMutation.run(ref, (tsx) async {
+              runMutationSafe(ref, verifyExistingPhoneMutation, (tsx) async {
                 final phoneTextFormBuilderControllerStateNotifier = tsx.get(
                   phoneTextFormBuilderControllerProvider.notifier,
                 );

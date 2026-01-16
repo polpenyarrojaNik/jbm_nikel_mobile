@@ -4182,6 +4182,176 @@ class S {
       args: [],
     );
   }
+
+  /// `Save as`
+  String get saveAs {
+    return Intl.message('Save as', name: 'saveAs', desc: '', args: []);
+  }
+
+  /// `Download template`
+  String get downloadTemplate {
+    return Intl.message(
+      'Download template',
+      name: 'downloadTemplate',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Downloading template...`
+  String get downloadingTemplate {
+    return Intl.message(
+      'Downloading template...',
+      name: 'downloadingTemplate',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Template downloaded successfully`
+  String get templateDownloadedSuccessfully {
+    return Intl.message(
+      'Template downloaded successfully',
+      name: 'templateDownloadedSuccessfully',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Import`
+  String get import {
+    return Intl.message('Import', name: 'import', desc: '', args: []);
+  }
+
+  /// `Select Excel file`
+  String get selectExcelFile {
+    return Intl.message(
+      'Select Excel file',
+      name: 'selectExcelFile',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Importing...`
+  String get importing {
+    return Intl.message('Importing...', name: 'importing', desc: '', args: []);
+  }
+
+  /// `Results`
+  String get results {
+    return Intl.message('Results', name: 'results', desc: '', args: []);
+  }
+
+  /// `Errors`
+  String get errors {
+    return Intl.message('Errors', name: 'errors', desc: '', args: []);
+  }
+
+  /// `Sheet name`
+  String get sheetName {
+    return Intl.message('Sheet name', name: 'sheetName', desc: '', args: []);
+  }
+
+  /// `Imported rows`
+  String get importedRows {
+    return Intl.message(
+      'Imported rows',
+      name: 'importedRows',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `The Excel file is empty`
+  String get excelIsEmpty {
+    return Intl.message(
+      'The Excel file is empty',
+      name: 'excelIsEmpty',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No articles specified`
+  String get anyArticlesSpecified {
+    return Intl.message(
+      'No articles specified',
+      name: 'anyArticlesSpecified',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Invalid Excel file`
+  String get invalidExcelFile {
+    return Intl.message(
+      'Invalid Excel file',
+      name: 'invalidExcelFile',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Invalid quantity`
+  String get invalidQuantity {
+    return Intl.message(
+      'Invalid quantity',
+      name: 'invalidQuantity',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Article reference empty`
+  String get articleReferenceEmpty {
+    return Intl.message(
+      'Article reference empty',
+      name: 'articleReferenceEmpty',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Article not found`
+  String get articleNotFound {
+    return Intl.message(
+      'Article not found',
+      name: 'articleNotFound',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Replace existing lines`
+  String get replaceExistingLines {
+    return Intl.message(
+      'Replace existing lines',
+      name: 'replaceExistingLines',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `This will replace existing lines in the order. Are you sure you want to continue?`
+  String get replaceExistingLinesMessage {
+    return Intl.message(
+      'This will replace existing lines in the order. Are you sure you want to continue?',
+      name: 'replaceExistingLinesMessage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Upload Excel`
+  String get uploadExcel {
+    return Intl.message(
+      'Upload Excel',
+      name: 'uploadExcel',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

@@ -30,6 +30,15 @@ class MessageLookup extends MessageLookupByLibrary {
     "almacenPropio": MessageLookupByLibrary.simpleMessage("Almacén propio"),
     "alto": MessageLookupByLibrary.simpleMessage("Alto"),
     "amount": MessageLookupByLibrary.simpleMessage("Importe"),
+    "anyArticlesSpecified": MessageLookupByLibrary.simpleMessage(
+      "No se especificaron artículos",
+    ),
+    "articleNotFound": MessageLookupByLibrary.simpleMessage(
+      "Artículo no encontrado",
+    ),
+    "articleReferenceEmpty": MessageLookupByLibrary.simpleMessage(
+      "Referencia del artículo vacía",
+    ),
     "articulo": MessageLookupByLibrary.simpleMessage("Artículo"),
     "articulo_index_buscarArticulos": MessageLookupByLibrary.simpleMessage(
       "Buscar artículos",
@@ -544,8 +553,15 @@ class MessageLookup extends MessageLookupByLibrary {
       "No hemos podido validar esta dirección. Es posible que contenga un error o esté incompleta. ¿Quieres continuar antes de revisarla?",
     ),
     "currentAddress": MessageLookupByLibrary.simpleMessage("Dirección actual"),
+    "downloadTemplate": MessageLookupByLibrary.simpleMessage(
+      "Descargar plantilla",
+    ),
+    "downloadingTemplate": MessageLookupByLibrary.simpleMessage(
+      "Descargando plantilla...",
+    ),
     "email": MessageLookupByLibrary.simpleMessage("Correo electrónico"),
     "empty": MessageLookupByLibrary.simpleMessage("Vacío"),
+    "errors": MessageLookupByLibrary.simpleMessage("Errores"),
     "estasSeguroQueQuieresReemplazarLaBaseDeDatos":
         MessageLookupByLibrary.simpleMessage(
           "¿Estás seguro que quieres reemplazar la base de datos? Perderás los datos guardados en local.",
@@ -554,6 +570,9 @@ class MessageLookup extends MessageLookupByLibrary {
         MessageLookupByLibrary.simpleMessage(
           "Teléfono existente en el cliente",
         ),
+    "excelIsEmpty": MessageLookupByLibrary.simpleMessage(
+      "El archivo Excel está vacío",
+    ),
     "familia": MessageLookupByLibrary.simpleMessage("Familia"),
     "formFromImage": MessageLookupByLibrary.simpleMessage(
       "Formulario a partir de imagen",
@@ -569,11 +588,20 @@ class MessageLookup extends MessageLookupByLibrary {
     "imNotInterestedInAnyArticles": MessageLookupByLibrary.simpleMessage(
       "No estoy interesado en ningún artículo",
     ),
+    "import": MessageLookupByLibrary.simpleMessage("Importar"),
+    "importedRows": MessageLookupByLibrary.simpleMessage("Filas importadas"),
+    "importing": MessageLookupByLibrary.simpleMessage("Importando..."),
     "interesCliente": MessageLookupByLibrary.simpleMessage(
       "Interés del cliente",
     ),
     "introduceClaveDeNikel": MessageLookupByLibrary.simpleMessage(
       "Introduce la clave de Nikel",
+    ),
+    "invalidExcelFile": MessageLookupByLibrary.simpleMessage(
+      "Archivo Excel inválido",
+    ),
+    "invalidQuantity": MessageLookupByLibrary.simpleMessage(
+      "Cantidad no válida",
     ),
     "media": MessageLookupByLibrary.simpleMessage("Media"),
     "medio": MessageLookupByLibrary.simpleMessage("Medio"),
@@ -782,8 +810,16 @@ class MessageLookup extends MessageLookupByLibrary {
     "reemplazarBaseDeDatosTextMesaje": MessageLookupByLibrary.simpleMessage(
       "Este campo no coincide con la clave Nikel",
     ),
+    "replaceExistingLines": MessageLookupByLibrary.simpleMessage(
+      "Reemplazar líneas existentes",
+    ),
+    "replaceExistingLinesMessage": MessageLookupByLibrary.simpleMessage(
+      "Esto reemplazará las líneas existentes del pedido. ¿Seguro que quieres continuar?",
+    ),
+    "results": MessageLookupByLibrary.simpleMessage("Resultados"),
     "retry": MessageLookupByLibrary.simpleMessage("Reintentar"),
     "save": MessageLookupByLibrary.simpleMessage("Guardar"),
+    "saveAs": MessageLookupByLibrary.simpleMessage("Guardar como"),
     "search": MessageLookupByLibrary.simpleMessage("Buscar..."),
     "searchingRecommendations": MessageLookupByLibrary.simpleMessage(
       "Buscando recomendaciones...",
@@ -797,6 +833,9 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "seleccioneUnClienteParaContinuar": MessageLookupByLibrary.simpleMessage(
       "Seleccione un cliente para continuar.",
+    ),
+    "selectExcelFile": MessageLookupByLibrary.simpleMessage(
+      "Seleccionar archivo Excel",
     ),
     "semanal": MessageLookupByLibrary.simpleMessage("Semanal"),
     "send": MessageLookupByLibrary.simpleMessage("Enviar"),
@@ -828,6 +867,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "settings_titulo": MessageLookupByLibrary.simpleMessage("Ajustes"),
     "settings_user": MessageLookupByLibrary.simpleMessage("Usuario"),
     "settings_version": MessageLookupByLibrary.simpleMessage("Versión"),
+    "sheetName": MessageLookupByLibrary.simpleMessage("Nombre de la hoja"),
     "sinResultados": MessageLookupByLibrary.simpleMessage("Sin resultados"),
     "sincConexion": MessageLookupByLibrary.simpleMessage("Sin conexión"),
     "splash_a": MessageLookupByLibrary.simpleMessage("a versión"),
@@ -858,6 +898,9 @@ class MessageLookup extends MessageLookupByLibrary {
       "Dirección sugerida",
     ),
     "telefono": MessageLookupByLibrary.simpleMessage("Teléfono"),
+    "templateDownloadedSuccessfully": MessageLookupByLibrary.simpleMessage(
+      "Plantilla descargada correctamente",
+    ),
     "trackId": MessageLookupByLibrary.simpleMessage("Track ID"),
     "trimestral": MessageLookupByLibrary.simpleMessage("Trimestral"),
     "ultimosPrecios_buscarUltimosPrecios": MessageLookupByLibrary.simpleMessage(
@@ -877,6 +920,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "Familia desconocida",
     ),
     "until": MessageLookupByLibrary.simpleMessage("Hasta"),
+    "uploadExcel": MessageLookupByLibrary.simpleMessage("Cargar Excel"),
     "visita_enviada": MessageLookupByLibrary.simpleMessage("Enviada"),
     "visita_index_buscarVisitas": MessageLookupByLibrary.simpleMessage(
       "Buscar visitas...",

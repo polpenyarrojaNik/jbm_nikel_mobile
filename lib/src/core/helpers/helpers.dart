@@ -1,8 +1,13 @@
+import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_riverpod/experimental/mutation.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+import '../../../generated/l10n.dart';
 import '../../features/cliente/domain/cliente.dart';
 
 void navigateToEmailApp(String mail) async {
@@ -136,4 +141,61 @@ String getAddressText(
     }
   }
   return val;
+}
+
+Future<String?> saveFromAssets(String filename, String mimeType) async {
+  // 1) Cargar bytes del asset
+  final data = await rootBundle.load('assets/templates/$filename');
+  final bytes = data.buffer.asUint8List();
+
+  // 2) Pedir al usuario dónde guardarlo (Save As)
+  final path = await FilePicker.platform.saveFile(
+    dialogTitle: S.current.saveAs,
+    fileName: filename,
+    type: FileType.custom,
+    allowedExtensions: [mimeType],
+    bytes: bytes,
+  );
+
+  return path;
+}
+
+IconData getIconFromExtension(String? extension) {
+  if (extension == null) {
+    return MdiIcons.fileOutline;
+  }
+  if (extension == 'pdf') {
+    return MdiIcons.filePdfBox;
+  } else if (extension.contains('doc') ||
+      extension.contains('docx') ||
+      extension.contains('odt')) {
+    return MdiIcons.fileWordOutline;
+  } else if (extension.contains('xls')) {
+    return MdiIcons.fileExcelOutline;
+  } else if (extension.contains('mp3') || extension.contains('wav')) {
+    return MdiIcons.musicBoxOutline;
+  } else if (extension.contains('zip') || extension.contains('rar')) {
+    return MdiIcons.folderZipOutline;
+  } else if (extension.contains('ppt')) {
+    return MdiIcons.filePowerpointOutline;
+  } else if (extension.contains('mp4')) {
+    return MdiIcons.fileVideoOutline;
+  } else if (extension.contains('csv')) {
+    return FontAwesomeIcons.fileCsv;
+  } else if (extension.contains('jpg') ||
+      extension.contains('png') ||
+      extension.contains('jpeg')) {
+    return MdiIcons.imageOutline;
+  }
+  return MdiIcons.fileOutline;
+}
+
+Future<void> runMutationSafe<T>(
+  WidgetRef ref,
+  Mutation<T> mutation,
+  Future<T> Function(MutationTransaction tsx) action,
+) async {
+  try {
+    await mutation.run(ref, action);
+  } catch (_) {}
 }

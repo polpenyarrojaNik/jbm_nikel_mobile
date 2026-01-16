@@ -13,6 +13,7 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 import '../../../../../generated/l10n.dart';
 import '../../../../core/exceptions/app_exception.dart';
 import '../../../../core/helpers/formatters.dart';
+import '../../../../core/helpers/helpers.dart';
 import '../../../../core/presentation/common_widgets/async_value_widget.dart';
 import '../../../../core/presentation/common_widgets/column_field_text_detail.dart';
 import '../../../../core/presentation/common_widgets/common_app_bar.dart';
@@ -155,27 +156,25 @@ class AddArticleToBorradorButton extends ConsumerWidget {
           ? null
           : () {
               if (pedidoVentaBorradoresList.length == 1) {
-                unawaited(
-                  getPedidoVentaLineaMutation.run(ref, (tsx) async {
-                    final articuloDetalleAddArticuloABorradorButtonControllerNotifier =
-                        tsx.get(
-                          articuloDetalleAddArticuloABorradorButtonControllerProvider
-                              .notifier,
-                        );
+                runMutationSafe(ref, getPedidoVentaLineaMutation, (tsx) async {
+                  final articuloDetalleAddArticuloABorradorButtonControllerNotifier =
+                      tsx.get(
+                        articuloDetalleAddArticuloABorradorButtonControllerProvider
+                            .notifier,
+                      );
 
-                    final result =
-                        await articuloDetalleAddArticuloABorradorButtonControllerNotifier
-                            .getPedidoVentaLinea(
-                              PedidoLocalParam(
-                                pedidoAppId: pedidoVentaBorradoresList
-                                    .first
-                                    .pedidoVentaAppId!,
-                                isEdit: false,
-                              ),
-                            );
-                    return result;
-                  }),
-                );
+                  final result =
+                      await articuloDetalleAddArticuloABorradorButtonControllerNotifier
+                          .getPedidoVentaLinea(
+                            PedidoLocalParam(
+                              pedidoAppId: pedidoVentaBorradoresList
+                                  .first
+                                  .pedidoVentaAppId!,
+                              isEdit: false,
+                            ),
+                          );
+                  return result;
+                });
               } else {
                 selectBorradorToAddArticle(
                   context,
@@ -208,20 +207,18 @@ class AddArticleToBorradorButton extends ConsumerWidget {
         tratada: false,
       );
 
-      unawaited(
-        getPedidoVentaLineaMutation.run(ref, (tsx) async {
-          final articuloDetalleAddArticuloABorradorButtonControllerNotifier =
-              tsx.get(
-                articuloDetalleAddArticuloABorradorButtonControllerProvider
-                    .notifier,
-              );
+      runMutationSafe(ref, getPedidoVentaLineaMutation, (tsx) async {
+        final articuloDetalleAddArticuloABorradorButtonControllerNotifier = tsx
+            .get(
+              articuloDetalleAddArticuloABorradorButtonControllerProvider
+                  .notifier,
+            );
 
-          final result =
-              await articuloDetalleAddArticuloABorradorButtonControllerNotifier
-                  .getPedidoVentaLinea(pedidoLocalParam);
-          return result;
-        }),
-      );
+        final result =
+            await articuloDetalleAddArticuloABorradorButtonControllerNotifier
+                .getPedidoVentaLinea(pedidoLocalParam);
+        return result;
+      });
     }
   }
 

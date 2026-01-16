@@ -5,6 +5,8 @@ import 'dart:math' as math;
 import 'package:csv/csv.dart';
 import 'package:dio/dio.dart';
 import 'package:drift/drift.dart';
+import 'package:excel/excel.dart';
+import 'package:file_picker/file_picker.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:money2/money2.dart';
 import 'package:path/path.dart';
@@ -12,6 +14,7 @@ import 'package:path_provider/path_provider.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
 
+import '../../../../generated/l10n.dart';
 import '../../../core/application/log_service.dart';
 import '../../../core/domain/articulo_precio.dart';
 import '../../../core/exceptions/app_exception.dart';
@@ -21,12 +24,15 @@ import '../../../core/helpers/extension.dart';
 import '../../../core/infrastructure/local_database.dart' as local;
 import '../../../core/infrastructure/remote_database.dart';
 import '../../../core/presentation/app.dart';
+import '../../articulos/infrastructure/articulo_dto.dart';
 import '../../cliente/domain/cliente.dart';
 import '../../cliente/domain/cliente_direccion.dart';
 import '../../cliente/infrastructure/cliente_dto.dart';
 import '../../usuario/application/usuario_notifier.dart';
 import '../../usuario/domain/usuario.dart';
 import '../domain/pedido_albaran.dart';
+import '../domain/pedido_import_linea.dart';
+import '../domain/pedido_import_result.dart';
 import '../domain/pedido_local_param.dart';
 import '../domain/pedido_venta.dart';
 import '../domain/pedido_venta_estado.dart';
@@ -2657,5 +2663,153 @@ class PedidoVentaRepository {
     )..where((tbl) => tbl.id.equals(articuloId))).getSingleOrNull();
 
     return articuloDto?.getDescriptionInLocalLanguage();
+  }
+
+  Future<ArticuloDTO?> getArticuloDTOById({required String articuloId}) {
+    return (_remoteDb.select(
+      _remoteDb.articuloTable,
+    )..where((tbl) => tbl.id.equals(articuloId))).getSingleOrNull();
+  }
+
+  Future<PedidoImportResult> importLines(
+    String clienteId,
+    PlatformFile excelFile,
+  ) async {
+    final bytes = await excelFile.xFile.readAsBytes();
+    final excel = Excel.decodeBytes(bytes);
+
+    // Coge la primera hoja con contenido
+    final sheetName = excel.tables.keys.firstWhere(
+      (k) => (excel.tables[k]?.rows.isNotEmpty ?? false),
+      orElse: () => '',
+    );
+    if (sheetName.isEmpty) {
+      throw AppException.importExcelFile(S.current.excelIsEmpty);
+    }
+
+    final sheet = excel.tables[sheetName]!;
+    if (sheet.rows.length <= 1) {
+      throw AppException.importExcelFile(S.current.anyArticlesSpecified);
+    } // solo header o vacío
+
+    final header = sheet.rows.first;
+    final h0 = header.isNotEmpty ? header[0]?.value?.toString().trim() : '';
+    final h1 = header.length > 1 ? header[1]?.value?.toString().trim() : '';
+    final headerOk =
+        (h0 == 'REF.' || h0?.toUpperCase() == 'REF.') && (h1 == 'u.');
+    if (!headerOk) {
+      throw AppException.importExcelFile(S.current.invalidExcelFile);
+    }
+
+    final pedidoImportLineas = <PedidoImportLinea>[];
+    final pedidoImportLineasErrors = <PedidoImportLineaError>[];
+
+    for (var i = 1; i < sheet.rows.length; i++) {
+      final row = sheet.rows[i];
+
+      final articuloId = row.isNotEmpty
+          ? row[0]?.value?.toString().trim()
+          : null;
+
+      if (articuloId == null || articuloId.isEmpty) {
+        pedidoImportLineasErrors.add(
+          PedidoImportLineaError(
+            lineNumber: i,
+            errorMessage: S.current.articleReferenceEmpty,
+          ),
+        );
+        continue;
+      }
+
+      final article = await getArticuloDTOById(articuloId: articuloId);
+
+      if (article == null) {
+        pedidoImportLineasErrors.add(
+          PedidoImportLineaError(
+            lineNumber: i,
+            errorMessage: '${S.current.articleNotFound}: $articuloId',
+          ),
+        );
+        continue;
+      }
+
+      final cantidadRaw = row.length > 1 ? row[1]?.value : null;
+
+      final cantidad = int.tryParse(cantidadRaw?.toString() ?? '');
+
+      if (cantidad == null) {
+        pedidoImportLineasErrors.add(
+          PedidoImportLineaError(
+            lineNumber: i,
+            errorMessage: S.current.invalidQuantity,
+          ),
+        );
+        continue;
+      }
+
+      try {
+        final articuloPrecio = await getArticuloPrecio(
+          articuloId: articuloId,
+          clienteId: clienteId,
+          cantidad: cantidad,
+        );
+
+        final importeLinea = getTotalLinea(
+          precio: articuloPrecio.precio,
+
+          cantidad: cantidad,
+          descuento1: articuloPrecio.descuento1,
+          descuento2: articuloPrecio.descuento2,
+          descuento3: articuloPrecio.descuento3,
+        );
+
+        final checkMinimumPriceResult = await checkMinimumPrice(
+          articuloId,
+          importeLinea,
+          cantidad,
+          articuloPrecio.divisaId,
+        );
+
+        if (checkMinimumPriceResult != null) {
+          pedidoImportLineasErrors.add(
+            PedidoImportLineaError(
+              lineNumber: i,
+              errorMessage: S.current.precioNoPuedeSerMenorAlPrecioMinimo,
+            ),
+          );
+          continue;
+        }
+
+        pedidoImportLineas.add(
+          PedidoImportLinea(
+            lineNumber: i,
+            articuloId: articuloId,
+            articuloDescription: article.getDescriptionInLocalLanguage(),
+            cantidad: cantidad,
+            precioDivisa: articuloPrecio.precio.precio,
+            tipoPrecio: articuloPrecio.precio.tipoPrecio,
+            divisaId: articuloPrecio.divisaId,
+            descuento1: articuloPrecio.descuento1,
+            descuento2: articuloPrecio.descuento2,
+            descuento3: articuloPrecio.descuento3,
+            iva: articuloPrecio.iva,
+            importeLinea: importeLinea,
+            stockDisponible: article.stockDisponible,
+          ),
+        );
+      } catch (e) {
+        pedidoImportLineasErrors.add(
+          PedidoImportLineaError(
+            lineNumber: i,
+            errorMessage: 'Error al obtener precio del artículo: $e',
+          ),
+        );
+      }
+    }
+    return PedidoImportResult(
+      sheetName: sheetName,
+      pedidoImportLineas: pedidoImportLineas,
+      pedidoImportLineaErrors: pedidoImportLineasErrors,
+    );
   }
 }

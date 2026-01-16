@@ -9,6 +9,7 @@ import 'package:gap/gap.dart';
 
 import '../../../../../generated/l10n.dart';
 import '../../../../core/helpers/formatters.dart';
+import '../../../../core/helpers/helpers.dart';
 import '../../../../core/presentation/common_widgets/async_value_widget.dart';
 import '../../../../core/presentation/common_widgets/chip_container.dart';
 import '../../../../core/presentation/common_widgets/column_field_text_detail.dart';
@@ -410,7 +411,7 @@ class DescargarOfertaButton extends ConsumerWidget {
     WidgetRef ref,
     PedidoLocalParam pedidoLocalParam,
   ) {
-    pedidoVentaAdjuntoMutation.run(ref, (tsx) async {
+    runMutationSafe(ref, pedidoVentaAdjuntoMutation, (tsx) async {
       final pedidoVentaByIdStateNotifier = tsx.get(
         pedidoVentaByIdProvider(pedidoLocalParam).notifier,
       );
@@ -453,7 +454,7 @@ class DescargarProformaButton extends ConsumerWidget {
     WidgetRef ref,
     PedidoLocalParam pedidoLocalParam,
   ) {
-    pedidoVentaAdjuntoMutation.run(ref, (tsx) async {
+    runMutationSafe(ref, pedidoVentaAdjuntoMutation, (tsx) async {
       final pedidoVentaByIdStateNotifier = tsx.get(
         pedidoVentaByIdProvider(pedidoLocalParam).notifier,
       );
