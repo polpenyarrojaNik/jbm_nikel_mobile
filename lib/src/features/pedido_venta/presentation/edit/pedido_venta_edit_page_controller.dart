@@ -578,6 +578,7 @@ class PedidoVentaEditPageController
         descuento1: pedidoImportLineas[i].descuento1,
         descuento2: pedidoImportLineas[i].descuento2,
         descuento3: pedidoImportLineas[i].descuento3,
+        descuentoProntoPago: _cliente?.descuentoProntoPago,
         stockDisponibleSN: pedidoImportLineas[i].stockDisponible != null
             ? (pedidoImportLineas[i].stockDisponible! > 0)
             : null,

@@ -12,6 +12,7 @@ import '../../../../core/helpers/extension.dart';
 import '../../../../core/helpers/formatters.dart';
 import '../../../../core/presentation/common_widgets/error_message_widget.dart';
 import '../../../../core/presentation/common_widgets/progress_indicator_widget.dart';
+import '../../../../core/presentation/common_widgets/sin_resultados_widget.dart';
 import '../../../../core/routing/app_auto_router.dart';
 import '../../../articulos/domain/articulo.dart';
 import '../../../articulos/domain/articulo_grupo_neto.dart';
@@ -1275,17 +1276,19 @@ class PreciosTarifaListWidget extends ConsumerWidget {
         const Gap(2),
 
         statePrecioTarifa.when(
-          data: (preciosTarifaList) => ListView.separated(
-            padding: const EdgeInsets.only(left: 8),
-            separatorBuilder: (context, index) => const Divider(),
-            shrinkWrap: true,
-            physics: const NeverScrollableScrollPhysics(),
-            itemCount: preciosTarifaList.length,
-            itemBuilder: (context, i) =>
-                _ArticuloPrecioTarifaSelectQuantityTile(
-                  articuloPrecioTarifa: preciosTarifaList[i],
+          data: (preciosTarifaList) => preciosTarifaList.isEmpty
+              ? SinResultadosWidget()
+              : ListView.separated(
+                  padding: const EdgeInsets.only(left: 8),
+                  separatorBuilder: (context, index) => const Divider(),
+                  shrinkWrap: true,
+                  physics: const NeverScrollableScrollPhysics(),
+                  itemCount: preciosTarifaList.length,
+                  itemBuilder: (context, i) =>
+                      _ArticuloPrecioTarifaSelectQuantityTile(
+                        articuloPrecioTarifa: preciosTarifaList[i],
+                      ),
                 ),
-          ),
           error: (error, _) =>
               Center(child: ErrorMessageWidget(error.toString())),
           loading: () => const Center(child: CircularProgressIndicator()),
@@ -1316,16 +1319,19 @@ class GruposNetosListWidget extends ConsumerWidget {
         const Gap(2),
 
         stateGruposNetos.when(
-          data: (gruposNetosList) => ListView.separated(
-            padding: const EdgeInsets.only(left: 8),
-            separatorBuilder: (context, index) => const Divider(),
-            shrinkWrap: true,
-            physics: const NeverScrollableScrollPhysics(),
-            itemCount: gruposNetosList.length,
-            itemBuilder: (context, i) => _ArticuloGrupoNetoSelectQuantityTile(
-              articuloGrupoNeto: gruposNetosList[i],
-            ),
-          ),
+          data: (gruposNetosList) => gruposNetosList.isEmpty
+              ? SinResultadosWidget()
+              : ListView.separated(
+                  padding: const EdgeInsets.only(left: 8),
+                  separatorBuilder: (context, index) => const Divider(),
+                  shrinkWrap: true,
+                  physics: const NeverScrollableScrollPhysics(),
+                  itemCount: gruposNetosList.length,
+                  itemBuilder: (context, i) =>
+                      _ArticuloGrupoNetoSelectQuantityTile(
+                        articuloGrupoNeto: gruposNetosList[i],
+                      ),
+                ),
           error: (error, _) =>
               Center(child: ErrorMessageWidget(error.toString())),
           loading: () => const Center(child: CircularProgressIndicator()),
