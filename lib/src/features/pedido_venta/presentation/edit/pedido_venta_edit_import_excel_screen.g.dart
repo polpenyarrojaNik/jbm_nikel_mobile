@@ -46,7 +46,7 @@ final class PedidoVentaEditImportExcelScreenControllerProvider
 }
 
 String _$pedidoVentaEditImportExcelScreenControllerHash() =>
-    r'35246e1c7d86d49ba6fd32b8e05299aaaa7dc133';
+    r'8a957bbdbd063e73b2b25fea327e448a3c51dc7d';
 
 abstract class _$PedidoVentaEditImportExcelScreenController
     extends $Notifier<void> {
