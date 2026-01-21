@@ -10,7 +10,7 @@ part of 'usuario_dio_interceptor.dart';
 // ignore_for_file: type=lint, type=warning
 
 @ProviderFor(usuarioDioInterceptor)
-const usuarioDioInterceptorProvider = UsuarioDioInterceptorProvider._();
+final usuarioDioInterceptorProvider = UsuarioDioInterceptorProvider._();
 
 final class UsuarioDioInterceptorProvider
     extends
@@ -20,7 +20,7 @@ final class UsuarioDioInterceptorProvider
           UsuarioDioInterceptor
         >
     with $Provider<UsuarioDioInterceptor> {
-  const UsuarioDioInterceptorProvider._()
+  UsuarioDioInterceptorProvider._()
     : super(
         from: null,
         argument: null,

@@ -10,12 +10,12 @@ part of 'articulo_search_controller.dart';
 // ignore_for_file: type=lint, type=warning
 
 @ProviderFor(ArticuloSearchQueryParamsController)
-const articuloSearchQueryParamsControllerProvider =
+final articuloSearchQueryParamsControllerProvider =
     ArticuloSearchQueryParamsControllerProvider._();
 
 final class ArticuloSearchQueryParamsControllerProvider
     extends $NotifierProvider<ArticuloSearchQueryParamsController, String> {
-  const ArticuloSearchQueryParamsControllerProvider._()
+  ArticuloSearchQueryParamsControllerProvider._()
     : super(
         from: null,
         argument: null,
@@ -52,7 +52,6 @@ abstract class _$ArticuloSearchQueryParamsController extends $Notifier<String> {
   @$mustCallSuper
   @override
   void runBuild() {
-    final created = build();
     final ref = this.ref as $Ref<String, String>;
     final element =
         ref.element
@@ -62,17 +61,17 @@ abstract class _$ArticuloSearchQueryParamsController extends $Notifier<String> {
               Object?,
               Object?
             >;
-    element.handleValue(ref, created);
+    element.handleCreate(ref, build);
   }
 }
 
 @ProviderFor(ArticuloFromFormController)
-const articuloFromFormControllerProvider =
+final articuloFromFormControllerProvider =
     ArticuloFromFormControllerProvider._();
 
 final class ArticuloFromFormControllerProvider
     extends $NotifierProvider<ArticuloFromFormController, Articulo?> {
-  const ArticuloFromFormControllerProvider._()
+  ArticuloFromFormControllerProvider._()
     : super(
         from: null,
         argument: null,
@@ -107,7 +106,6 @@ abstract class _$ArticuloFromFormController extends $Notifier<Articulo?> {
   @$mustCallSuper
   @override
   void runBuild() {
-    final created = build();
     final ref = this.ref as $Ref<Articulo?, Articulo?>;
     final element =
         ref.element
@@ -117,17 +115,17 @@ abstract class _$ArticuloFromFormController extends $Notifier<Articulo?> {
               Object?,
               Object?
             >;
-    element.handleValue(ref, created);
+    element.handleCreate(ref, build);
   }
 }
 
 @ProviderFor(ArticuloIndexScreenController)
-const articuloIndexScreenControllerProvider =
+final articuloIndexScreenControllerProvider =
     ArticuloIndexScreenControllerFamily._();
 
 final class ArticuloIndexScreenControllerProvider
     extends $AsyncNotifierProvider<ArticuloIndexScreenController, int> {
-  const ArticuloIndexScreenControllerProvider._({
+  ArticuloIndexScreenControllerProvider._({
     required ArticuloIndexScreenControllerFamily super.from,
     required bool super.argument,
   }) : super(
@@ -176,7 +174,7 @@ final class ArticuloIndexScreenControllerFamily extends $Family
           FutureOr<int>,
           bool
         > {
-  const ArticuloIndexScreenControllerFamily._()
+  ArticuloIndexScreenControllerFamily._()
     : super(
         retry: null,
         name: r'articuloIndexScreenControllerProvider',
@@ -203,7 +201,6 @@ abstract class _$ArticuloIndexScreenController extends $AsyncNotifier<int> {
   @$mustCallSuper
   @override
   void runBuild() {
-    final created = build(_$args);
     final ref = this.ref as $Ref<AsyncValue<int>, int>;
     final element =
         ref.element
@@ -213,12 +210,12 @@ abstract class _$ArticuloIndexScreenController extends $AsyncNotifier<int> {
               Object?,
               Object?
             >;
-    element.handleValue(ref, created);
+    element.handleCreate(ref, () => build(_$args));
   }
 }
 
 @ProviderFor(ArticuloIndexScreenPaginatedController)
-const articuloIndexScreenPaginatedControllerProvider =
+final articuloIndexScreenPaginatedControllerProvider =
     ArticuloIndexScreenPaginatedControllerFamily._();
 
 final class ArticuloIndexScreenPaginatedControllerProvider
@@ -227,7 +224,7 @@ final class ArticuloIndexScreenPaginatedControllerProvider
           ArticuloIndexScreenPaginatedController,
           List<Articulo>
         > {
-  const ArticuloIndexScreenPaginatedControllerProvider._({
+  ArticuloIndexScreenPaginatedControllerProvider._({
     required ArticuloIndexScreenPaginatedControllerFamily super.from,
     required ({int page, bool isSearchArticuloForForm}) super.argument,
   }) : super(
@@ -278,7 +275,7 @@ final class ArticuloIndexScreenPaginatedControllerFamily extends $Family
           FutureOr<List<Articulo>>,
           ({int page, bool isSearchArticuloForForm})
         > {
-  const ArticuloIndexScreenPaginatedControllerFamily._()
+  ArticuloIndexScreenPaginatedControllerFamily._()
     : super(
         retry: null,
         name: r'articuloIndexScreenPaginatedControllerProvider',
@@ -312,10 +309,6 @@ abstract class _$ArticuloIndexScreenPaginatedController
   @$mustCallSuper
   @override
   void runBuild() {
-    final created = build(
-      page: _$args.page,
-      isSearchArticuloForForm: _$args.isSearchArticuloForForm,
-    );
     final ref = this.ref as $Ref<AsyncValue<List<Articulo>>, List<Articulo>>;
     final element =
         ref.element
@@ -325,6 +318,12 @@ abstract class _$ArticuloIndexScreenPaginatedController
               Object?,
               Object?
             >;
-    element.handleValue(ref, created);
+    element.handleCreate(
+      ref,
+      () => build(
+        page: _$args.page,
+        isSearchArticuloForForm: _$args.isSearchArticuloForForm,
+      ),
+    );
   }
 }

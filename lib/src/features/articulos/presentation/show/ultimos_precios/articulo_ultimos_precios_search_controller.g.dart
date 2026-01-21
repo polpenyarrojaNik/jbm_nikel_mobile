@@ -10,7 +10,7 @@ part of 'articulo_ultimos_precios_search_controller.dart';
 // ignore_for_file: type=lint, type=warning
 
 @ProviderFor(ArticuloUltimosPreciosSearchQueryParamsController)
-const articuloUltimosPreciosSearchQueryParamsControllerProvider =
+final articuloUltimosPreciosSearchQueryParamsControllerProvider =
     ArticuloUltimosPreciosSearchQueryParamsControllerProvider._();
 
 final class ArticuloUltimosPreciosSearchQueryParamsControllerProvider
@@ -19,7 +19,7 @@ final class ArticuloUltimosPreciosSearchQueryParamsControllerProvider
           ArticuloUltimosPreciosSearchQueryParamsController,
           String
         > {
-  const ArticuloUltimosPreciosSearchQueryParamsControllerProvider._()
+  ArticuloUltimosPreciosSearchQueryParamsControllerProvider._()
     : super(
         from: null,
         argument: null,
@@ -57,7 +57,6 @@ abstract class _$ArticuloUltimosPreciosSearchQueryParamsController
   @$mustCallSuper
   @override
   void runBuild() {
-    final created = build();
     final ref = this.ref as $Ref<String, String>;
     final element =
         ref.element
@@ -67,12 +66,12 @@ abstract class _$ArticuloUltimosPreciosSearchQueryParamsController
               Object?,
               Object?
             >;
-    element.handleValue(ref, created);
+    element.handleCreate(ref, build);
   }
 }
 
 @ProviderFor(ArticuloUltimosPreciosIndexScreenController)
-const articuloUltimosPreciosIndexScreenControllerProvider =
+final articuloUltimosPreciosIndexScreenControllerProvider =
     ArticuloUltimosPreciosIndexScreenControllerFamily._();
 
 final class ArticuloUltimosPreciosIndexScreenControllerProvider
@@ -81,7 +80,7 @@ final class ArticuloUltimosPreciosIndexScreenControllerProvider
           ArticuloUltimosPreciosIndexScreenController,
           int
         > {
-  const ArticuloUltimosPreciosIndexScreenControllerProvider._({
+  ArticuloUltimosPreciosIndexScreenControllerProvider._({
     required ArticuloUltimosPreciosIndexScreenControllerFamily super.from,
     required String super.argument,
   }) : super(
@@ -132,7 +131,7 @@ final class ArticuloUltimosPreciosIndexScreenControllerFamily extends $Family
           FutureOr<int>,
           String
         > {
-  const ArticuloUltimosPreciosIndexScreenControllerFamily._()
+  ArticuloUltimosPreciosIndexScreenControllerFamily._()
     : super(
         retry: null,
         name: r'articuloUltimosPreciosIndexScreenControllerProvider',
@@ -161,7 +160,6 @@ abstract class _$ArticuloUltimosPreciosIndexScreenController
   @$mustCallSuper
   @override
   void runBuild() {
-    final created = build(articuloId: _$args);
     final ref = this.ref as $Ref<AsyncValue<int>, int>;
     final element =
         ref.element
@@ -171,12 +169,12 @@ abstract class _$ArticuloUltimosPreciosIndexScreenController
               Object?,
               Object?
             >;
-    element.handleValue(ref, created);
+    element.handleCreate(ref, () => build(articuloId: _$args));
   }
 }
 
 @ProviderFor(ArticuloUltimosPreciosIndexScreenPaginatedController)
-const articuloUltimosPreciosIndexScreenPaginatedControllerProvider =
+final articuloUltimosPreciosIndexScreenPaginatedControllerProvider =
     ArticuloUltimosPreciosIndexScreenPaginatedControllerFamily._();
 
 final class ArticuloUltimosPreciosIndexScreenPaginatedControllerProvider
@@ -185,7 +183,7 @@ final class ArticuloUltimosPreciosIndexScreenPaginatedControllerProvider
           ArticuloUltimosPreciosIndexScreenPaginatedController,
           List<EstadisticasUltimosPrecios>
         > {
-  const ArticuloUltimosPreciosIndexScreenPaginatedControllerProvider._({
+  ArticuloUltimosPreciosIndexScreenPaginatedControllerProvider._({
     required ArticuloUltimosPreciosIndexScreenPaginatedControllerFamily
     super.from,
     required ({int page, String articuloId}) super.argument,
@@ -239,7 +237,7 @@ final class ArticuloUltimosPreciosIndexScreenPaginatedControllerFamily
           FutureOr<List<EstadisticasUltimosPrecios>>,
           ({int page, String articuloId})
         > {
-  const ArticuloUltimosPreciosIndexScreenPaginatedControllerFamily._()
+  ArticuloUltimosPreciosIndexScreenPaginatedControllerFamily._()
     : super(
         retry: null,
         name: r'articuloUltimosPreciosIndexScreenPaginatedControllerProvider',
@@ -274,7 +272,6 @@ abstract class _$ArticuloUltimosPreciosIndexScreenPaginatedController
   @$mustCallSuper
   @override
   void runBuild() {
-    final created = build(page: _$args.page, articuloId: _$args.articuloId);
     final ref =
         this.ref
             as $Ref<
@@ -292,6 +289,9 @@ abstract class _$ArticuloUltimosPreciosIndexScreenPaginatedController
               Object?,
               Object?
             >;
-    element.handleValue(ref, created);
+    element.handleCreate(
+      ref,
+      () => build(page: _$args.page, articuloId: _$args.articuloId),
+    );
   }
 }

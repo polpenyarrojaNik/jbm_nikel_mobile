@@ -10,12 +10,12 @@ part of 'phone_text_form_field.dart';
 // ignore_for_file: type=lint, type=warning
 
 @ProviderFor(PhoneTextFormBuilderController)
-const phoneTextFormBuilderControllerProvider =
+final phoneTextFormBuilderControllerProvider =
     PhoneTextFormBuilderControllerProvider._();
 
 final class PhoneTextFormBuilderControllerProvider
     extends $NotifierProvider<PhoneTextFormBuilderController, String?> {
-  const PhoneTextFormBuilderControllerProvider._()
+  PhoneTextFormBuilderControllerProvider._()
     : super(
         from: null,
         argument: null,
@@ -50,7 +50,6 @@ abstract class _$PhoneTextFormBuilderController extends $Notifier<String?> {
   @$mustCallSuper
   @override
   void runBuild() {
-    final created = build();
     final ref = this.ref as $Ref<String?, String?>;
     final element =
         ref.element
@@ -60,6 +59,6 @@ abstract class _$PhoneTextFormBuilderController extends $Notifier<String?> {
               Object?,
               Object?
             >;
-    element.handleValue(ref, created);
+    element.handleCreate(ref, build);
   }
 }

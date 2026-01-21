@@ -10,11 +10,11 @@ part of 'export_database_controller.dart';
 // ignore_for_file: type=lint, type=warning
 
 @ProviderFor(ExportDatabaseController)
-const exportDatabaseControllerProvider = ExportDatabaseControllerProvider._();
+final exportDatabaseControllerProvider = ExportDatabaseControllerProvider._();
 
 final class ExportDatabaseControllerProvider
     extends $AsyncNotifierProvider<ExportDatabaseController, void> {
-  const ExportDatabaseControllerProvider._()
+  ExportDatabaseControllerProvider._()
     : super(
         from: null,
         argument: null,
@@ -41,7 +41,6 @@ abstract class _$ExportDatabaseController extends $AsyncNotifier<void> {
   @$mustCallSuper
   @override
   void runBuild() {
-    build();
     final ref = this.ref as $Ref<AsyncValue<void>, void>;
     final element =
         ref.element
@@ -51,6 +50,6 @@ abstract class _$ExportDatabaseController extends $AsyncNotifier<void> {
               Object?,
               Object?
             >;
-    element.handleValue(ref, null);
+    element.handleCreate(ref, build);
   }
 }

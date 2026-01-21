@@ -10,12 +10,12 @@ part of 'cliente_factura_page.dart';
 // ignore_for_file: type=lint, type=warning
 
 @ProviderFor(ClienteFacturaCountController)
-const clienteFacturaCountControllerProvider =
+final clienteFacturaCountControllerProvider =
     ClienteFacturaCountControllerFamily._();
 
 final class ClienteFacturaCountControllerProvider
     extends $AsyncNotifierProvider<ClienteFacturaCountController, int> {
-  const ClienteFacturaCountControllerProvider._({
+  ClienteFacturaCountControllerProvider._({
     required ClienteFacturaCountControllerFamily super.from,
     required String super.argument,
   }) : super(
@@ -64,7 +64,7 @@ final class ClienteFacturaCountControllerFamily extends $Family
           FutureOr<int>,
           String
         > {
-  const ClienteFacturaCountControllerFamily._()
+  ClienteFacturaCountControllerFamily._()
     : super(
         retry: null,
         name: r'clienteFacturaCountControllerProvider',
@@ -88,7 +88,6 @@ abstract class _$ClienteFacturaCountController extends $AsyncNotifier<int> {
   @$mustCallSuper
   @override
   void runBuild() {
-    final created = build(_$args);
     final ref = this.ref as $Ref<AsyncValue<int>, int>;
     final element =
         ref.element
@@ -98,12 +97,12 @@ abstract class _$ClienteFacturaCountController extends $AsyncNotifier<int> {
               Object?,
               Object?
             >;
-    element.handleValue(ref, created);
+    element.handleCreate(ref, () => build(_$args));
   }
 }
 
 @ProviderFor(ClienteFacturaPaginationController)
-const clienteFacturaPaginationControllerProvider =
+final clienteFacturaPaginationControllerProvider =
     ClienteFacturaPaginationControllerFamily._();
 
 final class ClienteFacturaPaginationControllerProvider
@@ -112,7 +111,7 @@ final class ClienteFacturaPaginationControllerProvider
           ClienteFacturaPaginationController,
           List<ClienteFactura>
         > {
-  const ClienteFacturaPaginationControllerProvider._({
+  ClienteFacturaPaginationControllerProvider._({
     required ClienteFacturaPaginationControllerFamily super.from,
     required ({int page, String customerId}) super.argument,
   }) : super(
@@ -163,7 +162,7 @@ final class ClienteFacturaPaginationControllerFamily extends $Family
           FutureOr<List<ClienteFactura>>,
           ({int page, String customerId})
         > {
-  const ClienteFacturaPaginationControllerFamily._()
+  ClienteFacturaPaginationControllerFamily._()
     : super(
         retry: null,
         name: r'clienteFacturaPaginationControllerProvider',
@@ -197,7 +196,6 @@ abstract class _$ClienteFacturaPaginationController
   @$mustCallSuper
   @override
   void runBuild() {
-    final created = build(page: _$args.page, customerId: _$args.customerId);
     final ref =
         this.ref
             as $Ref<AsyncValue<List<ClienteFactura>>, List<ClienteFactura>>;
@@ -212,17 +210,20 @@ abstract class _$ClienteFacturaPaginationController
               Object?,
               Object?
             >;
-    element.handleValue(ref, created);
+    element.handleCreate(
+      ref,
+      () => build(page: _$args.page, customerId: _$args.customerId),
+    );
   }
 }
 
 @ProviderFor(ClienteFacturaDocumentController)
-const clienteFacturaDocumentControllerProvider =
+final clienteFacturaDocumentControllerProvider =
     ClienteFacturaDocumentControllerFamily._();
 
 final class ClienteFacturaDocumentControllerProvider
     extends $NotifierProvider<ClienteFacturaDocumentController, void> {
-  const ClienteFacturaDocumentControllerProvider._({
+  ClienteFacturaDocumentControllerProvider._({
     required ClienteFacturaDocumentControllerFamily super.from,
     required String super.argument,
   }) : super(
@@ -280,7 +281,7 @@ final class ClienteFacturaDocumentControllerFamily extends $Family
           void,
           String
         > {
-  const ClienteFacturaDocumentControllerFamily._()
+  ClienteFacturaDocumentControllerFamily._()
     : super(
         retry: null,
         name: r'clienteFacturaDocumentControllerProvider',
@@ -307,7 +308,6 @@ abstract class _$ClienteFacturaDocumentController extends $Notifier<void> {
   @$mustCallSuper
   @override
   void runBuild() {
-    build(facturaId: _$args);
     final ref = this.ref as $Ref<void, void>;
     final element =
         ref.element
@@ -317,6 +317,6 @@ abstract class _$ClienteFacturaDocumentController extends $Notifier<void> {
               Object?,
               Object?
             >;
-    element.handleValue(ref, null);
+    element.handleCreate(ref, () => build(facturaId: _$args));
   }
 }

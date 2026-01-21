@@ -24,7 +24,7 @@ class RecomendacionProductoAlertDialogController
     String clienteId,
     List<PedidoVentaLinea> pedidoVentaLineaList,
   ) async {
-    if (pedidoLocalParam.pedidoAppId == null) {
+    if (pedidoLocalParam.isEdit) {
       return [];
     }
     final recomendacionProductoList = await ref
@@ -50,12 +50,14 @@ class RecomendacionProductoAlertDialog extends ConsumerWidget {
     required this.clienteId,
     required this.pedidoVentaLineaList,
     required this.dialogContext,
+    required this.isEdit,
   });
 
   final PedidoLocalParam pedidoLocalParam;
   final String clienteId;
   final List<PedidoVentaLinea> pedidoVentaLineaList;
   final BuildContext dialogContext;
+  final bool isEdit;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -149,12 +151,14 @@ class _RecomendacionProductoListDialogState
           itemCount: currentRecomendacionesProductoList.length,
           itemBuilder: (context, i) => RecomendacionProductoListTile(
             recomendacionProducto: currentRecomendacionesProductoList[i],
-            onTap: () => onTapRecomendacionProductoItem(
-              widget.pedidoLocalParam,
-              widget.clienteId,
-              widget.pedidoVentaLineaList,
-              currentRecomendacionesProductoList[i],
-            ),
+            onTap: widget.pedidoLocalParam.isEdit
+                ? () => onTapRecomendacionProductoItem(
+                    widget.pedidoLocalParam,
+                    widget.clienteId,
+                    widget.pedidoVentaLineaList,
+                    currentRecomendacionesProductoList[i],
+                  )
+                : () => {},
           ),
           separatorBuilder: (context, index) => const Divider(),
         ),

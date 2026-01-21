@@ -10,7 +10,7 @@ part of 'cliente_contacto_edit_page_controller.dart';
 // ignore_for_file: type=lint, type=warning
 
 @ProviderFor(ClienteContactoEditPageController)
-const clienteContactoEditPageControllerProvider =
+final clienteContactoEditPageControllerProvider =
     ClienteContactoEditPageControllerFamily._();
 
 final class ClienteContactoEditPageControllerProvider
@@ -19,7 +19,7 @@ final class ClienteContactoEditPageControllerProvider
           ClienteContactoEditPageController,
           ClienteContactoImpEditPageData
         > {
-  const ClienteContactoEditPageControllerProvider._({
+  ClienteContactoEditPageControllerProvider._({
     required ClienteContactoEditPageControllerFamily super.from,
     required ClienteImpParam super.argument,
   }) : super(
@@ -70,7 +70,7 @@ final class ClienteContactoEditPageControllerFamily extends $Family
           FutureOr<ClienteContactoImpEditPageData>,
           ClienteImpParam
         > {
-  const ClienteContactoEditPageControllerFamily._()
+  ClienteContactoEditPageControllerFamily._()
     : super(
         retry: null,
         name: r'clienteContactoEditPageControllerProvider',
@@ -101,7 +101,6 @@ abstract class _$ClienteContactoEditPageController
   @$mustCallSuper
   @override
   void runBuild() {
-    final created = build(_$args);
     final ref =
         this.ref
             as $Ref<
@@ -119,6 +118,6 @@ abstract class _$ClienteContactoEditPageController
               Object?,
               Object?
             >;
-    element.handleValue(ref, created);
+    element.handleCreate(ref, () => build(_$args));
   }
 }

@@ -10,13 +10,13 @@ part of 'pedido_venta_edit_page_controller.dart';
 // ignore_for_file: type=lint, type=warning
 
 @ProviderFor(CustomerAddressSearchQueryParamsController)
-const customerAddressSearchQueryParamsControllerProvider =
+final customerAddressSearchQueryParamsControllerProvider =
     CustomerAddressSearchQueryParamsControllerProvider._();
 
 final class CustomerAddressSearchQueryParamsControllerProvider
     extends
         $NotifierProvider<CustomerAddressSearchQueryParamsController, String> {
-  const CustomerAddressSearchQueryParamsControllerProvider._()
+  CustomerAddressSearchQueryParamsControllerProvider._()
     : super(
         from: null,
         argument: null,
@@ -54,7 +54,6 @@ abstract class _$CustomerAddressSearchQueryParamsController
   @$mustCallSuper
   @override
   void runBuild() {
-    final created = build();
     final ref = this.ref as $Ref<String, String>;
     final element =
         ref.element
@@ -64,6 +63,6 @@ abstract class _$CustomerAddressSearchQueryParamsController
               Object?,
               Object?
             >;
-    element.handleValue(ref, created);
+    element.handleCreate(ref, build);
   }
 }

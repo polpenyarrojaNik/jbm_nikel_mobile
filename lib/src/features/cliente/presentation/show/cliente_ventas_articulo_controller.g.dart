@@ -10,13 +10,13 @@ part of 'cliente_ventas_articulo_controller.dart';
 // ignore_for_file: type=lint, type=warning
 
 @ProviderFor(ClienteVentasArticuloQueryParamsController)
-const clienteVentasArticuloQueryParamsControllerProvider =
+final clienteVentasArticuloQueryParamsControllerProvider =
     ClienteVentasArticuloQueryParamsControllerProvider._();
 
 final class ClienteVentasArticuloQueryParamsControllerProvider
     extends
         $NotifierProvider<ClienteVentasArticuloQueryParamsController, String> {
-  const ClienteVentasArticuloQueryParamsControllerProvider._()
+  ClienteVentasArticuloQueryParamsControllerProvider._()
     : super(
         from: null,
         argument: null,
@@ -54,7 +54,6 @@ abstract class _$ClienteVentasArticuloQueryParamsController
   @$mustCallSuper
   @override
   void runBuild() {
-    final created = build();
     final ref = this.ref as $Ref<String, String>;
     final element =
         ref.element
@@ -64,12 +63,12 @@ abstract class _$ClienteVentasArticuloQueryParamsController
               Object?,
               Object?
             >;
-    element.handleValue(ref, created);
+    element.handleCreate(ref, build);
   }
 }
 
 @ProviderFor(ClienteVentasArticuloIndexScreenPaginatedController)
-const clienteVentasArticuloIndexScreenPaginatedControllerProvider =
+final clienteVentasArticuloIndexScreenPaginatedControllerProvider =
     ClienteVentasArticuloIndexScreenPaginatedControllerFamily._();
 
 final class ClienteVentasArticuloIndexScreenPaginatedControllerProvider
@@ -78,7 +77,7 @@ final class ClienteVentasArticuloIndexScreenPaginatedControllerProvider
           ClienteVentasArticuloIndexScreenPaginatedController,
           List<ClienteVentasArticulo>
         > {
-  const ClienteVentasArticuloIndexScreenPaginatedControllerProvider._({
+  ClienteVentasArticuloIndexScreenPaginatedControllerProvider._({
     required ClienteVentasArticuloIndexScreenPaginatedControllerFamily
     super.from,
     required String super.argument,
@@ -132,7 +131,7 @@ final class ClienteVentasArticuloIndexScreenPaginatedControllerFamily
           FutureOr<List<ClienteVentasArticulo>>,
           String
         > {
-  const ClienteVentasArticuloIndexScreenPaginatedControllerFamily._()
+  ClienteVentasArticuloIndexScreenPaginatedControllerFamily._()
     : super(
         retry: null,
         name: r'clienteVentasArticuloIndexScreenPaginatedControllerProvider',
@@ -162,7 +161,6 @@ abstract class _$ClienteVentasArticuloIndexScreenPaginatedController
   @$mustCallSuper
   @override
   void runBuild() {
-    final created = build(clienteId: _$args);
     final ref =
         this.ref
             as $Ref<
@@ -180,6 +178,6 @@ abstract class _$ClienteVentasArticuloIndexScreenPaginatedController
               Object?,
               Object?
             >;
-    element.handleValue(ref, created);
+    element.handleCreate(ref, () => build(clienteId: _$args));
   }
 }

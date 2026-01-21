@@ -10,7 +10,7 @@ part of 'cliente_repository.dart';
 // ignore_for_file: type=lint, type=warning
 
 @ProviderFor(clienteRepository)
-const clienteRepositoryProvider = ClienteRepositoryProvider._();
+final clienteRepositoryProvider = ClienteRepositoryProvider._();
 
 final class ClienteRepositoryProvider
     extends
@@ -20,7 +20,7 @@ final class ClienteRepositoryProvider
           ClienteRepository
         >
     with $Provider<ClienteRepository> {
-  const ClienteRepositoryProvider._()
+  ClienteRepositoryProvider._()
     : super(
         from: null,
         argument: null,
@@ -57,11 +57,11 @@ final class ClienteRepositoryProvider
 String _$clienteRepositoryHash() => r'6712e21637b1f1887bacaba0de0b62493f244770';
 
 @ProviderFor(ClienteById)
-const clienteByIdProvider = ClienteByIdFamily._();
+final clienteByIdProvider = ClienteByIdFamily._();
 
 final class ClienteByIdProvider
     extends $AsyncNotifierProvider<ClienteById, Cliente> {
-  const ClienteByIdProvider._({
+  ClienteByIdProvider._({
     required ClienteByIdFamily super.from,
     required String super.argument,
   }) : super(
@@ -108,7 +108,7 @@ final class ClienteByIdFamily extends $Family
           FutureOr<Cliente>,
           String
         > {
-  const ClienteByIdFamily._()
+  ClienteByIdFamily._()
     : super(
         retry: null,
         name: r'clienteByIdProvider',
@@ -132,7 +132,6 @@ abstract class _$ClienteById extends $AsyncNotifier<Cliente> {
   @$mustCallSuper
   @override
   void runBuild() {
-    final created = build(_$args);
     final ref = this.ref as $Ref<AsyncValue<Cliente>, Cliente>;
     final element =
         ref.element
@@ -142,16 +141,16 @@ abstract class _$ClienteById extends $AsyncNotifier<Cliente> {
               Object?,
               Object?
             >;
-    element.handleValue(ref, created);
+    element.handleCreate(ref, () => build(_$args));
   }
 }
 
 @ProviderFor(ClienteLastSyncDate)
-const clienteLastSyncDateProvider = ClienteLastSyncDateProvider._();
+final clienteLastSyncDateProvider = ClienteLastSyncDateProvider._();
 
 final class ClienteLastSyncDateProvider
     extends $AsyncNotifierProvider<ClienteLastSyncDate, DateTime> {
-  const ClienteLastSyncDateProvider._()
+  ClienteLastSyncDateProvider._()
     : super(
         from: null,
         argument: null,
@@ -178,7 +177,6 @@ abstract class _$ClienteLastSyncDate extends $AsyncNotifier<DateTime> {
   @$mustCallSuper
   @override
   void runBuild() {
-    final created = build();
     final ref = this.ref as $Ref<AsyncValue<DateTime>, DateTime>;
     final element =
         ref.element
@@ -188,12 +186,12 @@ abstract class _$ClienteLastSyncDate extends $AsyncNotifier<DateTime> {
               Object?,
               Object?
             >;
-    element.handleValue(ref, created);
+    element.handleCreate(ref, build);
   }
 }
 
 @ProviderFor(ClienteDireccionListById)
-const clienteDireccionListByIdProvider = ClienteDireccionListByIdFamily._();
+final clienteDireccionListByIdProvider = ClienteDireccionListByIdFamily._();
 
 final class ClienteDireccionListByIdProvider
     extends
@@ -201,7 +199,7 @@ final class ClienteDireccionListByIdProvider
           ClienteDireccionListById,
           List<ClienteDireccion>
         > {
-  const ClienteDireccionListByIdProvider._({
+  ClienteDireccionListByIdProvider._({
     required ClienteDireccionListByIdFamily super.from,
     required String super.argument,
   }) : super(
@@ -250,7 +248,7 @@ final class ClienteDireccionListByIdFamily extends $Family
           FutureOr<List<ClienteDireccion>>,
           String
         > {
-  const ClienteDireccionListByIdFamily._()
+  ClienteDireccionListByIdFamily._()
     : super(
         retry: null,
         name: r'clienteDireccionListByIdProvider',
@@ -275,7 +273,6 @@ abstract class _$ClienteDireccionListById
   @$mustCallSuper
   @override
   void runBuild() {
-    final created = build(_$args);
     final ref =
         this.ref
             as $Ref<AsyncValue<List<ClienteDireccion>>, List<ClienteDireccion>>;
@@ -290,12 +287,12 @@ abstract class _$ClienteDireccionListById
               Object?,
               Object?
             >;
-    element.handleValue(ref, created);
+    element.handleCreate(ref, () => build(_$args));
   }
 }
 
 @ProviderFor(ClienteContactosListById)
-const clienteContactosListByIdProvider = ClienteContactosListByIdFamily._();
+final clienteContactosListByIdProvider = ClienteContactosListByIdFamily._();
 
 final class ClienteContactosListByIdProvider
     extends
@@ -303,7 +300,7 @@ final class ClienteContactosListByIdProvider
           ClienteContactosListById,
           List<ClienteContacto>
         > {
-  const ClienteContactosListByIdProvider._({
+  ClienteContactosListByIdProvider._({
     required ClienteContactosListByIdFamily super.from,
     required String super.argument,
   }) : super(
@@ -352,7 +349,7 @@ final class ClienteContactosListByIdFamily extends $Family
           FutureOr<List<ClienteContacto>>,
           String
         > {
-  const ClienteContactosListByIdFamily._()
+  ClienteContactosListByIdFamily._()
     : super(
         retry: null,
         name: r'clienteContactosListByIdProvider',
@@ -377,7 +374,6 @@ abstract class _$ClienteContactosListById
   @$mustCallSuper
   @override
   void runBuild() {
-    final created = build(_$args);
     final ref =
         this.ref
             as $Ref<AsyncValue<List<ClienteContacto>>, List<ClienteContacto>>;
@@ -392,12 +388,12 @@ abstract class _$ClienteContactosListById
               Object?,
               Object?
             >;
-    element.handleValue(ref, created);
+    element.handleCreate(ref, () => build(_$args));
   }
 }
 
 @ProviderFor(ClienteDescuentosListById)
-const clienteDescuentosListByIdProvider = ClienteDescuentosListByIdFamily._();
+final clienteDescuentosListByIdProvider = ClienteDescuentosListByIdFamily._();
 
 final class ClienteDescuentosListByIdProvider
     extends
@@ -405,7 +401,7 @@ final class ClienteDescuentosListByIdProvider
           ClienteDescuentosListById,
           List<ClienteDescuento>
         > {
-  const ClienteDescuentosListByIdProvider._({
+  ClienteDescuentosListByIdProvider._({
     required ClienteDescuentosListByIdFamily super.from,
     required String super.argument,
   }) : super(
@@ -454,7 +450,7 @@ final class ClienteDescuentosListByIdFamily extends $Family
           FutureOr<List<ClienteDescuento>>,
           String
         > {
-  const ClienteDescuentosListByIdFamily._()
+  ClienteDescuentosListByIdFamily._()
     : super(
         retry: null,
         name: r'clienteDescuentosListByIdProvider',
@@ -479,7 +475,6 @@ abstract class _$ClienteDescuentosListById
   @$mustCallSuper
   @override
   void runBuild() {
-    final created = build(_$args);
     final ref =
         this.ref
             as $Ref<AsyncValue<List<ClienteDescuento>>, List<ClienteDescuento>>;
@@ -494,12 +489,12 @@ abstract class _$ClienteDescuentosListById
               Object?,
               Object?
             >;
-    element.handleValue(ref, created);
+    element.handleCreate(ref, () => build(_$args));
   }
 }
 
 @ProviderFor(ClienteGrupoNetoListById)
-const clienteGrupoNetoListByIdProvider = ClienteGrupoNetoListByIdFamily._();
+final clienteGrupoNetoListByIdProvider = ClienteGrupoNetoListByIdFamily._();
 
 final class ClienteGrupoNetoListByIdProvider
     extends
@@ -507,7 +502,7 @@ final class ClienteGrupoNetoListByIdProvider
           ClienteGrupoNetoListById,
           List<ClienteGrupoNeto>
         > {
-  const ClienteGrupoNetoListByIdProvider._({
+  ClienteGrupoNetoListByIdProvider._({
     required ClienteGrupoNetoListByIdFamily super.from,
     required String super.argument,
   }) : super(
@@ -556,7 +551,7 @@ final class ClienteGrupoNetoListByIdFamily extends $Family
           FutureOr<List<ClienteGrupoNeto>>,
           String
         > {
-  const ClienteGrupoNetoListByIdFamily._()
+  ClienteGrupoNetoListByIdFamily._()
     : super(
         retry: null,
         name: r'clienteGrupoNetoListByIdProvider',
@@ -581,7 +576,6 @@ abstract class _$ClienteGrupoNetoListById
   @$mustCallSuper
   @override
   void runBuild() {
-    final created = build(_$args);
     final ref =
         this.ref
             as $Ref<AsyncValue<List<ClienteGrupoNeto>>, List<ClienteGrupoNeto>>;
@@ -596,12 +590,12 @@ abstract class _$ClienteGrupoNetoListById
               Object?,
               Object?
             >;
-    element.handleValue(ref, created);
+    element.handleCreate(ref, () => build(_$args));
   }
 }
 
 @ProviderFor(ClientePrecioNetoListById)
-const clientePrecioNetoListByIdProvider = ClientePrecioNetoListByIdFamily._();
+final clientePrecioNetoListByIdProvider = ClientePrecioNetoListByIdFamily._();
 
 final class ClientePrecioNetoListByIdProvider
     extends
@@ -609,7 +603,7 @@ final class ClientePrecioNetoListByIdProvider
           ClientePrecioNetoListById,
           List<ClientePrecioNeto>
         > {
-  const ClientePrecioNetoListByIdProvider._({
+  ClientePrecioNetoListByIdProvider._({
     required ClientePrecioNetoListByIdFamily super.from,
     required String super.argument,
   }) : super(
@@ -658,7 +652,7 @@ final class ClientePrecioNetoListByIdFamily extends $Family
           FutureOr<List<ClientePrecioNeto>>,
           String
         > {
-  const ClientePrecioNetoListByIdFamily._()
+  ClientePrecioNetoListByIdFamily._()
     : super(
         retry: null,
         name: r'clientePrecioNetoListByIdProvider',
@@ -683,7 +677,6 @@ abstract class _$ClientePrecioNetoListById
   @$mustCallSuper
   @override
   void runBuild() {
-    final created = build(_$args);
     final ref =
         this.ref
             as $Ref<
@@ -701,12 +694,12 @@ abstract class _$ClientePrecioNetoListById
               Object?,
               Object?
             >;
-    element.handleValue(ref, created);
+    element.handleCreate(ref, () => build(_$args));
   }
 }
 
 @ProviderFor(ClientePendientePagoListById)
-const clientePendientePagoListByIdProvider =
+final clientePendientePagoListByIdProvider =
     ClientePendientePagoListByIdFamily._();
 
 final class ClientePendientePagoListByIdProvider
@@ -715,7 +708,7 @@ final class ClientePendientePagoListByIdProvider
           ClientePendientePagoListById,
           List<ClientePagoPendiente>
         > {
-  const ClientePendientePagoListByIdProvider._({
+  ClientePendientePagoListByIdProvider._({
     required ClientePendientePagoListByIdFamily super.from,
     required String super.argument,
   }) : super(
@@ -764,7 +757,7 @@ final class ClientePendientePagoListByIdFamily extends $Family
           FutureOr<List<ClientePagoPendiente>>,
           String
         > {
-  const ClientePendientePagoListByIdFamily._()
+  ClientePendientePagoListByIdFamily._()
     : super(
         retry: null,
         name: r'clientePendientePagoListByIdProvider',
@@ -789,7 +782,6 @@ abstract class _$ClientePendientePagoListById
   @$mustCallSuper
   @override
   void runBuild() {
-    final created = build(_$args);
     final ref =
         this.ref
             as $Ref<
@@ -807,12 +799,12 @@ abstract class _$ClientePendientePagoListById
               Object?,
               Object?
             >;
-    element.handleValue(ref, created);
+    element.handleCreate(ref, () => build(_$args));
   }
 }
 
 @ProviderFor(ClienteVentasMesListById)
-const clienteVentasMesListByIdProvider = ClienteVentasMesListByIdFamily._();
+final clienteVentasMesListByIdProvider = ClienteVentasMesListByIdFamily._();
 
 final class ClienteVentasMesListByIdProvider
     extends
@@ -820,7 +812,7 @@ final class ClienteVentasMesListByIdProvider
           ClienteVentasMesListById,
           List<ClienteVentasMes>
         > {
-  const ClienteVentasMesListByIdProvider._({
+  ClienteVentasMesListByIdProvider._({
     required ClienteVentasMesListByIdFamily super.from,
     required String super.argument,
   }) : super(
@@ -869,7 +861,7 @@ final class ClienteVentasMesListByIdFamily extends $Family
           FutureOr<List<ClienteVentasMes>>,
           String
         > {
-  const ClienteVentasMesListByIdFamily._()
+  ClienteVentasMesListByIdFamily._()
     : super(
         retry: null,
         name: r'clienteVentasMesListByIdProvider',
@@ -894,7 +886,6 @@ abstract class _$ClienteVentasMesListById
   @$mustCallSuper
   @override
   void runBuild() {
-    final created = build(_$args);
     final ref =
         this.ref
             as $Ref<AsyncValue<List<ClienteVentasMes>>, List<ClienteVentasMes>>;
@@ -909,16 +900,16 @@ abstract class _$ClienteVentasMesListById
               Object?,
               Object?
             >;
-    element.handleValue(ref, created);
+    element.handleCreate(ref, () => build(_$args));
   }
 }
 
 @ProviderFor(ClienteVisitasListById)
-const clienteVisitasListByIdProvider = ClienteVisitasListByIdFamily._();
+final clienteVisitasListByIdProvider = ClienteVisitasListByIdFamily._();
 
 final class ClienteVisitasListByIdProvider
     extends $AsyncNotifierProvider<ClienteVisitasListById, List<Visita>> {
-  const ClienteVisitasListByIdProvider._({
+  ClienteVisitasListByIdProvider._({
     required ClienteVisitasListByIdFamily super.from,
     required String super.argument,
   }) : super(
@@ -967,7 +958,7 @@ final class ClienteVisitasListByIdFamily extends $Family
           FutureOr<List<Visita>>,
           String
         > {
-  const ClienteVisitasListByIdFamily._()
+  ClienteVisitasListByIdFamily._()
     : super(
         retry: null,
         name: r'clienteVisitasListByIdProvider',
@@ -991,7 +982,6 @@ abstract class _$ClienteVisitasListById extends $AsyncNotifier<List<Visita>> {
   @$mustCallSuper
   @override
   void runBuild() {
-    final created = build(_$args);
     final ref = this.ref as $Ref<AsyncValue<List<Visita>>, List<Visita>>;
     final element =
         ref.element
@@ -1001,16 +991,16 @@ abstract class _$ClienteVisitasListById extends $AsyncNotifier<List<Visita>> {
               Object?,
               Object?
             >;
-    element.handleValue(ref, created);
+    element.handleCreate(ref, () => build(_$args));
   }
 }
 
 @ProviderFor(ClientePedidosListById)
-const clientePedidosListByIdProvider = ClientePedidosListByIdFamily._();
+final clientePedidosListByIdProvider = ClientePedidosListByIdFamily._();
 
 final class ClientePedidosListByIdProvider
     extends $AsyncNotifierProvider<ClientePedidosListById, List<PedidoVenta>> {
-  const ClientePedidosListByIdProvider._({
+  ClientePedidosListByIdProvider._({
     required ClientePedidosListByIdFamily super.from,
     required String super.argument,
   }) : super(
@@ -1059,7 +1049,7 @@ final class ClientePedidosListByIdFamily extends $Family
           FutureOr<List<PedidoVenta>>,
           String
         > {
-  const ClientePedidosListByIdFamily._()
+  ClientePedidosListByIdFamily._()
     : super(
         retry: null,
         name: r'clientePedidosListByIdProvider',
@@ -1084,7 +1074,6 @@ abstract class _$ClientePedidosListById
   @$mustCallSuper
   @override
   void runBuild() {
-    final created = build(_$args);
     final ref =
         this.ref as $Ref<AsyncValue<List<PedidoVenta>>, List<PedidoVenta>>;
     final element =
@@ -1095,18 +1084,18 @@ abstract class _$ClientePedidosListById
               Object?,
               Object?
             >;
-    element.handleValue(ref, created);
+    element.handleCreate(ref, () => build(_$args));
   }
 }
 
 @ProviderFor(ClienteDevolucionesListById)
-const clienteDevolucionesListByIdProvider =
+final clienteDevolucionesListByIdProvider =
     ClienteDevolucionesListByIdFamily._();
 
 final class ClienteDevolucionesListByIdProvider
     extends
         $AsyncNotifierProvider<ClienteDevolucionesListById, List<Devolucion>> {
-  const ClienteDevolucionesListByIdProvider._({
+  ClienteDevolucionesListByIdProvider._({
     required ClienteDevolucionesListByIdFamily super.from,
     required String super.argument,
   }) : super(
@@ -1155,7 +1144,7 @@ final class ClienteDevolucionesListByIdFamily extends $Family
           FutureOr<List<Devolucion>>,
           String
         > {
-  const ClienteDevolucionesListByIdFamily._()
+  ClienteDevolucionesListByIdFamily._()
     : super(
         retry: null,
         name: r'clienteDevolucionesListByIdProvider',
@@ -1180,7 +1169,6 @@ abstract class _$ClienteDevolucionesListById
   @$mustCallSuper
   @override
   void runBuild() {
-    final created = build(_$args);
     final ref =
         this.ref as $Ref<AsyncValue<List<Devolucion>>, List<Devolucion>>;
     final element =
@@ -1191,12 +1179,12 @@ abstract class _$ClienteDevolucionesListById
               Object?,
               Object?
             >;
-    element.handleValue(ref, created);
+    element.handleCreate(ref, () => build(_$args));
   }
 }
 
 @ProviderFor(ClienteDevolucionesLineaListById)
-const clienteDevolucionesLineaListByIdProvider =
+final clienteDevolucionesLineaListByIdProvider =
     ClienteDevolucionesLineaListByIdFamily._();
 
 final class ClienteDevolucionesLineaListByIdProvider
@@ -1205,7 +1193,7 @@ final class ClienteDevolucionesLineaListByIdProvider
           ClienteDevolucionesLineaListById,
           List<DevolucionLinea>
         > {
-  const ClienteDevolucionesLineaListByIdProvider._({
+  ClienteDevolucionesLineaListByIdProvider._({
     required ClienteDevolucionesLineaListByIdFamily super.from,
     required String super.argument,
   }) : super(
@@ -1255,7 +1243,7 @@ final class ClienteDevolucionesLineaListByIdFamily extends $Family
           FutureOr<List<DevolucionLinea>>,
           String
         > {
-  const ClienteDevolucionesLineaListByIdFamily._()
+  ClienteDevolucionesLineaListByIdFamily._()
     : super(
         retry: null,
         name: r'clienteDevolucionesLineaListByIdProvider',
@@ -1283,7 +1271,6 @@ abstract class _$ClienteDevolucionesLineaListById
   @$mustCallSuper
   @override
   void runBuild() {
-    final created = build(_$args);
     final ref =
         this.ref
             as $Ref<AsyncValue<List<DevolucionLinea>>, List<DevolucionLinea>>;
@@ -1298,16 +1285,16 @@ abstract class _$ClienteDevolucionesLineaListById
               Object?,
               Object?
             >;
-    element.handleValue(ref, created);
+    element.handleCreate(ref, () => build(_$args));
   }
 }
 
 @ProviderFor(ClientePais)
-const clientePaisProvider = ClientePaisFamily._();
+final clientePaisProvider = ClientePaisFamily._();
 
 final class ClientePaisProvider
     extends $AsyncNotifierProvider<ClientePais, Pais?> {
-  const ClientePaisProvider._({
+  ClientePaisProvider._({
     required ClientePaisFamily super.from,
     required String super.argument,
   }) : super(
@@ -1354,7 +1341,7 @@ final class ClientePaisFamily extends $Family
           FutureOr<Pais?>,
           String
         > {
-  const ClientePaisFamily._()
+  ClientePaisFamily._()
     : super(
         retry: null,
         name: r'clientePaisProvider',
@@ -1378,7 +1365,6 @@ abstract class _$ClientePais extends $AsyncNotifier<Pais?> {
   @$mustCallSuper
   @override
   void runBuild() {
-    final created = build(_$args);
     final ref = this.ref as $Ref<AsyncValue<Pais?>, Pais?>;
     final element =
         ref.element
@@ -1388,12 +1374,12 @@ abstract class _$ClientePais extends $AsyncNotifier<Pais?> {
               Object?,
               Object?
             >;
-    element.handleValue(ref, created);
+    element.handleCreate(ref, () => build(_$args));
   }
 }
 
 @ProviderFor(ClienteContactoImpListInSyncByCliente)
-const clienteContactoImpListInSyncByClienteProvider =
+final clienteContactoImpListInSyncByClienteProvider =
     ClienteContactoImpListInSyncByClienteFamily._();
 
 final class ClienteContactoImpListInSyncByClienteProvider
@@ -1402,7 +1388,7 @@ final class ClienteContactoImpListInSyncByClienteProvider
           ClienteContactoImpListInSyncByCliente,
           List<ClienteContactoImp>
         > {
-  const ClienteContactoImpListInSyncByClienteProvider._({
+  ClienteContactoImpListInSyncByClienteProvider._({
     required ClienteContactoImpListInSyncByClienteFamily super.from,
     required ClienteImpParam super.argument,
   }) : super(
@@ -1453,7 +1439,7 @@ final class ClienteContactoImpListInSyncByClienteFamily extends $Family
           FutureOr<List<ClienteContactoImp>>,
           ClienteImpParam
         > {
-  const ClienteContactoImpListInSyncByClienteFamily._()
+  ClienteContactoImpListInSyncByClienteFamily._()
     : super(
         retry: null,
         name: r'clienteContactoImpListInSyncByClienteProvider',
@@ -1482,7 +1468,6 @@ abstract class _$ClienteContactoImpListInSyncByCliente
   @$mustCallSuper
   @override
   void runBuild() {
-    final created = build(_$args);
     final ref =
         this.ref
             as $Ref<
@@ -1500,12 +1485,12 @@ abstract class _$ClienteContactoImpListInSyncByCliente
               Object?,
               Object?
             >;
-    element.handleValue(ref, created);
+    element.handleCreate(ref, () => build(_$args));
   }
 }
 
 @ProviderFor(ClienteDireccionImpListInSyncByCliente)
-const clienteDireccionImpListInSyncByClienteProvider =
+final clienteDireccionImpListInSyncByClienteProvider =
     ClienteDireccionImpListInSyncByClienteFamily._();
 
 final class ClienteDireccionImpListInSyncByClienteProvider
@@ -1514,7 +1499,7 @@ final class ClienteDireccionImpListInSyncByClienteProvider
           ClienteDireccionImpListInSyncByCliente,
           List<ClienteDireccionImp>
         > {
-  const ClienteDireccionImpListInSyncByClienteProvider._({
+  ClienteDireccionImpListInSyncByClienteProvider._({
     required ClienteDireccionImpListInSyncByClienteFamily super.from,
     required ClienteImpParam super.argument,
   }) : super(
@@ -1565,7 +1550,7 @@ final class ClienteDireccionImpListInSyncByClienteFamily extends $Family
           FutureOr<List<ClienteDireccionImp>>,
           ClienteImpParam
         > {
-  const ClienteDireccionImpListInSyncByClienteFamily._()
+  ClienteDireccionImpListInSyncByClienteFamily._()
     : super(
         retry: null,
         name: r'clienteDireccionImpListInSyncByClienteProvider',
@@ -1594,7 +1579,6 @@ abstract class _$ClienteDireccionImpListInSyncByCliente
   @$mustCallSuper
   @override
   void runBuild() {
-    final created = build(_$args);
     final ref =
         this.ref
             as $Ref<
@@ -1612,6 +1596,6 @@ abstract class _$ClienteDireccionImpListInSyncByCliente
               Object?,
               Object?
             >;
-    element.handleValue(ref, created);
+    element.handleCreate(ref, () => build(_$args));
   }
 }

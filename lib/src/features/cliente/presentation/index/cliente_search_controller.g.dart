@@ -10,13 +10,13 @@ part of 'cliente_search_controller.dart';
 // ignore_for_file: type=lint, type=warning
 
 @ProviderFor(ClienteIndexControllerSearchTextParameter)
-const clienteIndexControllerSearchTextParameterProvider =
+final clienteIndexControllerSearchTextParameterProvider =
     ClienteIndexControllerSearchTextParameterProvider._();
 
 final class ClienteIndexControllerSearchTextParameterProvider
     extends
         $NotifierProvider<ClienteIndexControllerSearchTextParameter, String> {
-  const ClienteIndexControllerSearchTextParameterProvider._()
+  ClienteIndexControllerSearchTextParameterProvider._()
     : super(
         from: null,
         argument: null,
@@ -54,7 +54,6 @@ abstract class _$ClienteIndexControllerSearchTextParameter
   @$mustCallSuper
   @override
   void runBuild() {
-    final created = build();
     final ref = this.ref as $Ref<String, String>;
     final element =
         ref.element
@@ -64,17 +63,17 @@ abstract class _$ClienteIndexControllerSearchTextParameter
               Object?,
               Object?
             >;
-    element.handleValue(ref, created);
+    element.handleCreate(ref, build);
   }
 }
 
 @ProviderFor(ClientesPotencialesQueryParamController)
-const clientesPotencialesQueryParamControllerProvider =
+final clientesPotencialesQueryParamControllerProvider =
     ClientesPotencialesQueryParamControllerProvider._();
 
 final class ClientesPotencialesQueryParamControllerProvider
     extends $NotifierProvider<ClientesPotencialesQueryParamController, bool> {
-  const ClientesPotencialesQueryParamControllerProvider._()
+  ClientesPotencialesQueryParamControllerProvider._()
     : super(
         from: null,
         argument: null,
@@ -112,7 +111,6 @@ abstract class _$ClientesPotencialesQueryParamController
   @$mustCallSuper
   @override
   void runBuild() {
-    final created = build();
     final ref = this.ref as $Ref<bool, bool>;
     final element =
         ref.element
@@ -122,17 +120,17 @@ abstract class _$ClientesPotencialesQueryParamController
               Object?,
               Object?
             >;
-    element.handleValue(ref, created);
+    element.handleCreate(ref, build);
   }
 }
 
 @ProviderFor(ClienteIndexScreenController)
-const clienteIndexScreenControllerProvider =
+final clienteIndexScreenControllerProvider =
     ClienteIndexScreenControllerProvider._();
 
 final class ClienteIndexScreenControllerProvider
     extends $AsyncNotifierProvider<ClienteIndexScreenController, int> {
-  const ClienteIndexScreenControllerProvider._()
+  ClienteIndexScreenControllerProvider._()
     : super(
         from: null,
         argument: null,
@@ -159,7 +157,6 @@ abstract class _$ClienteIndexScreenController extends $AsyncNotifier<int> {
   @$mustCallSuper
   @override
   void runBuild() {
-    final created = build();
     final ref = this.ref as $Ref<AsyncValue<int>, int>;
     final element =
         ref.element
@@ -169,12 +166,12 @@ abstract class _$ClienteIndexScreenController extends $AsyncNotifier<int> {
               Object?,
               Object?
             >;
-    element.handleValue(ref, created);
+    element.handleCreate(ref, build);
   }
 }
 
 @ProviderFor(ClienteIndexScreenPaginatedController)
-const clienteIndexScreenPaginatedControllerProvider =
+final clienteIndexScreenPaginatedControllerProvider =
     ClienteIndexScreenPaginatedControllerFamily._();
 
 final class ClienteIndexScreenPaginatedControllerProvider
@@ -183,7 +180,7 @@ final class ClienteIndexScreenPaginatedControllerProvider
           ClienteIndexScreenPaginatedController,
           List<Cliente>
         > {
-  const ClienteIndexScreenPaginatedControllerProvider._({
+  ClienteIndexScreenPaginatedControllerProvider._({
     required ClienteIndexScreenPaginatedControllerFamily super.from,
     required int super.argument,
   }) : super(
@@ -234,7 +231,7 @@ final class ClienteIndexScreenPaginatedControllerFamily extends $Family
           FutureOr<List<Cliente>>,
           int
         > {
-  const ClienteIndexScreenPaginatedControllerFamily._()
+  ClienteIndexScreenPaginatedControllerFamily._()
     : super(
         retry: null,
         name: r'clienteIndexScreenPaginatedControllerProvider',
@@ -262,7 +259,6 @@ abstract class _$ClienteIndexScreenPaginatedController
   @$mustCallSuper
   @override
   void runBuild() {
-    final created = build(page: _$args);
     final ref = this.ref as $Ref<AsyncValue<List<Cliente>>, List<Cliente>>;
     final element =
         ref.element
@@ -272,6 +268,6 @@ abstract class _$ClienteIndexScreenPaginatedController
               Object?,
               Object?
             >;
-    element.handleValue(ref, created);
+    element.handleCreate(ref, () => build(page: _$args));
   }
 }

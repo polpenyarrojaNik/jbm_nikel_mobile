@@ -55224,7 +55224,7 @@ class $RemoteAppDatabaseManager {
 // ignore_for_file: type=lint, type=warning
 
 @ProviderFor(appRemoteDatabase)
-const appRemoteDatabaseProvider = AppRemoteDatabaseProvider._();
+final appRemoteDatabaseProvider = AppRemoteDatabaseProvider._();
 
 final class AppRemoteDatabaseProvider
     extends
@@ -55234,7 +55234,7 @@ final class AppRemoteDatabaseProvider
           RemoteAppDatabase
         >
     with $Provider<RemoteAppDatabase> {
-  const AppRemoteDatabaseProvider._()
+  AppRemoteDatabaseProvider._()
     : super(
         from: null,
         argument: null,

@@ -10,12 +10,12 @@ part of 'pedido_search_controller.dart';
 // ignore_for_file: type=lint, type=warning
 
 @ProviderFor(PedidosSearchQueryParamController)
-const pedidosSearchQueryParamControllerProvider =
+final pedidosSearchQueryParamControllerProvider =
     PedidosSearchQueryParamControllerProvider._();
 
 final class PedidosSearchQueryParamControllerProvider
     extends $NotifierProvider<PedidosSearchQueryParamController, String> {
-  const PedidosSearchQueryParamControllerProvider._()
+  PedidosSearchQueryParamControllerProvider._()
     : super(
         from: null,
         argument: null,
@@ -52,7 +52,6 @@ abstract class _$PedidosSearchQueryParamController extends $Notifier<String> {
   @$mustCallSuper
   @override
   void runBuild() {
-    final created = build();
     final ref = this.ref as $Ref<String, String>;
     final element =
         ref.element
@@ -62,12 +61,12 @@ abstract class _$PedidosSearchQueryParamController extends $Notifier<String> {
               Object?,
               Object?
             >;
-    element.handleValue(ref, created);
+    element.handleCreate(ref, build);
   }
 }
 
 @ProviderFor(PedidoVentaEstadoQueryParamController)
-const pedidoVentaEstadoQueryParamControllerProvider =
+final pedidoVentaEstadoQueryParamControllerProvider =
     PedidoVentaEstadoQueryParamControllerProvider._();
 
 final class PedidoVentaEstadoQueryParamControllerProvider
@@ -76,7 +75,7 @@ final class PedidoVentaEstadoQueryParamControllerProvider
           PedidoVentaEstadoQueryParamController,
           PedidoVentaEstado?
         > {
-  const PedidoVentaEstadoQueryParamControllerProvider._()
+  PedidoVentaEstadoQueryParamControllerProvider._()
     : super(
         from: null,
         argument: null,
@@ -114,7 +113,6 @@ abstract class _$PedidoVentaEstadoQueryParamController
   @$mustCallSuper
   @override
   void runBuild() {
-    final created = build();
     final ref = this.ref as $Ref<PedidoVentaEstado?, PedidoVentaEstado?>;
     final element =
         ref.element
@@ -124,17 +122,17 @@ abstract class _$PedidoVentaEstadoQueryParamController
               Object?,
               Object?
             >;
-    element.handleValue(ref, created);
+    element.handleCreate(ref, build);
   }
 }
 
 @ProviderFor(PedidoVentaIndexScreenController)
-const pedidoVentaIndexScreenControllerProvider =
+final pedidoVentaIndexScreenControllerProvider =
     PedidoVentaIndexScreenControllerProvider._();
 
 final class PedidoVentaIndexScreenControllerProvider
     extends $AsyncNotifierProvider<PedidoVentaIndexScreenController, int> {
-  const PedidoVentaIndexScreenControllerProvider._()
+  PedidoVentaIndexScreenControllerProvider._()
     : super(
         from: null,
         argument: null,
@@ -162,7 +160,6 @@ abstract class _$PedidoVentaIndexScreenController extends $AsyncNotifier<int> {
   @$mustCallSuper
   @override
   void runBuild() {
-    final created = build();
     final ref = this.ref as $Ref<AsyncValue<int>, int>;
     final element =
         ref.element
@@ -172,12 +169,12 @@ abstract class _$PedidoVentaIndexScreenController extends $AsyncNotifier<int> {
               Object?,
               Object?
             >;
-    element.handleValue(ref, created);
+    element.handleCreate(ref, build);
   }
 }
 
 @ProviderFor(PedidoVentaIndexScreenPaginatedController)
-const pedidoVentaIndexScreenPaginatedControllerProvider =
+final pedidoVentaIndexScreenPaginatedControllerProvider =
     PedidoVentaIndexScreenPaginatedControllerFamily._();
 
 final class PedidoVentaIndexScreenPaginatedControllerProvider
@@ -186,7 +183,7 @@ final class PedidoVentaIndexScreenPaginatedControllerProvider
           PedidoVentaIndexScreenPaginatedController,
           List<PedidoVenta>
         > {
-  const PedidoVentaIndexScreenPaginatedControllerProvider._({
+  PedidoVentaIndexScreenPaginatedControllerProvider._({
     required PedidoVentaIndexScreenPaginatedControllerFamily super.from,
     required int super.argument,
   }) : super(
@@ -237,7 +234,7 @@ final class PedidoVentaIndexScreenPaginatedControllerFamily extends $Family
           FutureOr<List<PedidoVenta>>,
           int
         > {
-  const PedidoVentaIndexScreenPaginatedControllerFamily._()
+  PedidoVentaIndexScreenPaginatedControllerFamily._()
     : super(
         retry: null,
         name: r'pedidoVentaIndexScreenPaginatedControllerProvider',
@@ -265,7 +262,6 @@ abstract class _$PedidoVentaIndexScreenPaginatedController
   @$mustCallSuper
   @override
   void runBuild() {
-    final created = build(page: _$args);
     final ref =
         this.ref as $Ref<AsyncValue<List<PedidoVenta>>, List<PedidoVenta>>;
     final element =
@@ -276,6 +272,6 @@ abstract class _$PedidoVentaIndexScreenPaginatedController
               Object?,
               Object?
             >;
-    element.handleValue(ref, created);
+    element.handleCreate(ref, () => build(page: _$args));
   }
 }

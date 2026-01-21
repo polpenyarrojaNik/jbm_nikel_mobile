@@ -10,7 +10,7 @@ part of 'remote_usuario_repository.dart';
 // ignore_for_file: type=lint, type=warning
 
 @ProviderFor(remoteUsuarioRepository)
-const remoteUsuarioRepositoryProvider = RemoteUsuarioRepositoryProvider._();
+final remoteUsuarioRepositoryProvider = RemoteUsuarioRepositoryProvider._();
 
 final class RemoteUsuarioRepositoryProvider
     extends
@@ -20,7 +20,7 @@ final class RemoteUsuarioRepositoryProvider
           RemoteUsuarioRepository
         >
     with $Provider<RemoteUsuarioRepository> {
-  const RemoteUsuarioRepositoryProvider._()
+  RemoteUsuarioRepositoryProvider._()
     : super(
         from: null,
         argument: null,

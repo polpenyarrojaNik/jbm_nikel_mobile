@@ -10,7 +10,7 @@ part of 'catalogo_repository.dart';
 // ignore_for_file: type=lint, type=warning
 
 @ProviderFor(catalogoRepository)
-const catalogoRepositoryProvider = CatalogoRepositoryProvider._();
+final catalogoRepositoryProvider = CatalogoRepositoryProvider._();
 
 final class CatalogoRepositoryProvider
     extends
@@ -20,7 +20,7 @@ final class CatalogoRepositoryProvider
           CatalogoRepository
         >
     with $Provider<CatalogoRepository> {
-  const CatalogoRepositoryProvider._()
+  CatalogoRepositoryProvider._()
     : super(
         from: null,
         argument: null,
@@ -58,11 +58,11 @@ String _$catalogoRepositoryHash() =>
     r'40f3baddfbd2749a7b720f8bedaa9d3f01ca5538';
 
 @ProviderFor(TipoCatalogoList)
-const tipoCatalogoListProvider = TipoCatalogoListProvider._();
+final tipoCatalogoListProvider = TipoCatalogoListProvider._();
 
 final class TipoCatalogoListProvider
     extends $AsyncNotifierProvider<TipoCatalogoList, List<TipoCatalogo>> {
-  const TipoCatalogoListProvider._()
+  TipoCatalogoListProvider._()
     : super(
         from: null,
         argument: null,
@@ -88,7 +88,6 @@ abstract class _$TipoCatalogoList extends $AsyncNotifier<List<TipoCatalogo>> {
   @$mustCallSuper
   @override
   void runBuild() {
-    final created = build();
     final ref =
         this.ref as $Ref<AsyncValue<List<TipoCatalogo>>, List<TipoCatalogo>>;
     final element =
@@ -99,12 +98,12 @@ abstract class _$TipoCatalogoList extends $AsyncNotifier<List<TipoCatalogo>> {
               Object?,
               Object?
             >;
-    element.handleValue(ref, created);
+    element.handleCreate(ref, build);
   }
 }
 
 @ProviderFor(TipoPrecioCatalogoList)
-const tipoPrecioCatalogoListProvider = TipoPrecioCatalogoListProvider._();
+final tipoPrecioCatalogoListProvider = TipoPrecioCatalogoListProvider._();
 
 final class TipoPrecioCatalogoListProvider
     extends
@@ -112,7 +111,7 @@ final class TipoPrecioCatalogoListProvider
           TipoPrecioCatalogoList,
           List<TipoPrecioCatalogo>
         > {
-  const TipoPrecioCatalogoListProvider._()
+  TipoPrecioCatalogoListProvider._()
     : super(
         from: null,
         argument: null,
@@ -140,7 +139,6 @@ abstract class _$TipoPrecioCatalogoList
   @$mustCallSuper
   @override
   void runBuild() {
-    final created = build();
     final ref =
         this.ref
             as $Ref<
@@ -158,16 +156,16 @@ abstract class _$TipoPrecioCatalogoList
               Object?,
               Object?
             >;
-    element.handleValue(ref, created);
+    element.handleCreate(ref, build);
   }
 }
 
 @ProviderFor(IdiomaCatalogoList)
-const idiomaCatalogoListProvider = IdiomaCatalogoListProvider._();
+final idiomaCatalogoListProvider = IdiomaCatalogoListProvider._();
 
 final class IdiomaCatalogoListProvider
     extends $AsyncNotifierProvider<IdiomaCatalogoList, List<IdiomaCatalogo>> {
-  const IdiomaCatalogoListProvider._()
+  IdiomaCatalogoListProvider._()
     : super(
         from: null,
         argument: null,
@@ -195,7 +193,6 @@ abstract class _$IdiomaCatalogoList
   @$mustCallSuper
   @override
   void runBuild() {
-    final created = build();
     final ref =
         this.ref
             as $Ref<AsyncValue<List<IdiomaCatalogo>>, List<IdiomaCatalogo>>;
@@ -210,6 +207,6 @@ abstract class _$IdiomaCatalogoList
               Object?,
               Object?
             >;
-    element.handleValue(ref, created);
+    element.handleCreate(ref, build);
   }
 }

@@ -10,7 +10,7 @@ part of 'init_database_service.dart';
 // ignore_for_file: type=lint, type=warning
 
 @ProviderFor(initDatabaseService)
-const initDatabaseServiceProvider = InitDatabaseServiceProvider._();
+final initDatabaseServiceProvider = InitDatabaseServiceProvider._();
 
 final class InitDatabaseServiceProvider
     extends
@@ -20,7 +20,7 @@ final class InitDatabaseServiceProvider
           InitDatabaseService
         >
     with $Provider<InitDatabaseService> {
-  const InitDatabaseServiceProvider._()
+  InitDatabaseServiceProvider._()
     : super(
         from: null,
         argument: null,

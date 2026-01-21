@@ -10,12 +10,12 @@ part of 'error_logger.dart';
 // ignore_for_file: type=lint, type=warning
 
 @ProviderFor(errorLogger)
-const errorLoggerProvider = ErrorLoggerProvider._();
+final errorLoggerProvider = ErrorLoggerProvider._();
 
 final class ErrorLoggerProvider
     extends $FunctionalProvider<ErrorLogger, ErrorLogger, ErrorLogger>
     with $Provider<ErrorLogger> {
-  const ErrorLoggerProvider._()
+  ErrorLoggerProvider._()
     : super(
         from: null,
         argument: null,

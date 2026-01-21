@@ -10,12 +10,12 @@ part of 'visita_search_controller.dart';
 // ignore_for_file: type=lint, type=warning
 
 @ProviderFor(VisitaSearchQueryParamsController)
-const visitaSearchQueryParamsControllerProvider =
+final visitaSearchQueryParamsControllerProvider =
     VisitaSearchQueryParamsControllerProvider._();
 
 final class VisitaSearchQueryParamsControllerProvider
     extends $NotifierProvider<VisitaSearchQueryParamsController, String> {
-  const VisitaSearchQueryParamsControllerProvider._()
+  VisitaSearchQueryParamsControllerProvider._()
     : super(
         from: null,
         argument: null,
@@ -52,7 +52,6 @@ abstract class _$VisitaSearchQueryParamsController extends $Notifier<String> {
   @$mustCallSuper
   @override
   void runBuild() {
-    final created = build();
     final ref = this.ref as $Ref<String, String>;
     final element =
         ref.element
@@ -62,17 +61,17 @@ abstract class _$VisitaSearchQueryParamsController extends $Notifier<String> {
               Object?,
               Object?
             >;
-    element.handleValue(ref, created);
+    element.handleCreate(ref, build);
   }
 }
 
 @ProviderFor(VisitaIndexScreenController)
-const visitaIndexScreenControllerProvider =
+final visitaIndexScreenControllerProvider =
     VisitaIndexScreenControllerProvider._();
 
 final class VisitaIndexScreenControllerProvider
     extends $AsyncNotifierProvider<VisitaIndexScreenController, int> {
-  const VisitaIndexScreenControllerProvider._()
+  VisitaIndexScreenControllerProvider._()
     : super(
         from: null,
         argument: null,
@@ -99,7 +98,6 @@ abstract class _$VisitaIndexScreenController extends $AsyncNotifier<int> {
   @$mustCallSuper
   @override
   void runBuild() {
-    final created = build();
     final ref = this.ref as $Ref<AsyncValue<int>, int>;
     final element =
         ref.element
@@ -109,12 +107,12 @@ abstract class _$VisitaIndexScreenController extends $AsyncNotifier<int> {
               Object?,
               Object?
             >;
-    element.handleValue(ref, created);
+    element.handleCreate(ref, build);
   }
 }
 
 @ProviderFor(VisitaIndexScreenPaginatedController)
-const visitaIndexScreenPaginatedControllerProvider =
+final visitaIndexScreenPaginatedControllerProvider =
     VisitaIndexScreenPaginatedControllerFamily._();
 
 final class VisitaIndexScreenPaginatedControllerProvider
@@ -123,7 +121,7 @@ final class VisitaIndexScreenPaginatedControllerProvider
           VisitaIndexScreenPaginatedController,
           List<Visita>
         > {
-  const VisitaIndexScreenPaginatedControllerProvider._({
+  VisitaIndexScreenPaginatedControllerProvider._({
     required VisitaIndexScreenPaginatedControllerFamily super.from,
     required int super.argument,
   }) : super(
@@ -174,7 +172,7 @@ final class VisitaIndexScreenPaginatedControllerFamily extends $Family
           FutureOr<List<Visita>>,
           int
         > {
-  const VisitaIndexScreenPaginatedControllerFamily._()
+  VisitaIndexScreenPaginatedControllerFamily._()
     : super(
         retry: null,
         name: r'visitaIndexScreenPaginatedControllerProvider',
@@ -202,7 +200,6 @@ abstract class _$VisitaIndexScreenPaginatedController
   @$mustCallSuper
   @override
   void runBuild() {
-    final created = build(page: _$args);
     final ref = this.ref as $Ref<AsyncValue<List<Visita>>, List<Visita>>;
     final element =
         ref.element
@@ -212,6 +209,6 @@ abstract class _$VisitaIndexScreenPaginatedController
               Object?,
               Object?
             >;
-    element.handleValue(ref, created);
+    element.handleCreate(ref, () => build(page: _$args));
   }
 }

@@ -10,12 +10,12 @@ part of 'cliente_sector_page.dart';
 // ignore_for_file: type=lint, type=warning
 
 @ProviderFor(ClienteSectorPageController)
-const clienteSectorPageControllerProvider =
+final clienteSectorPageControllerProvider =
     ClienteSectorPageControllerProvider._();
 
 final class ClienteSectorPageControllerProvider
     extends $AsyncNotifierProvider<ClienteSectorPageController, List<Sector>> {
-  const ClienteSectorPageControllerProvider._()
+  ClienteSectorPageControllerProvider._()
     : super(
         from: null,
         argument: null,
@@ -43,7 +43,6 @@ abstract class _$ClienteSectorPageController
   @$mustCallSuper
   @override
   void runBuild() {
-    final created = build();
     final ref = this.ref as $Ref<AsyncValue<List<Sector>>, List<Sector>>;
     final element =
         ref.element
@@ -53,6 +52,6 @@ abstract class _$ClienteSectorPageController
               Object?,
               Object?
             >;
-    element.handleValue(ref, created);
+    element.handleCreate(ref, build);
   }
 }

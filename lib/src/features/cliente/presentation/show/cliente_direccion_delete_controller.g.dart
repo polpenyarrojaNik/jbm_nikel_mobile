@@ -10,12 +10,12 @@ part of 'cliente_direccion_delete_controller.dart';
 // ignore_for_file: type=lint, type=warning
 
 @ProviderFor(ClienteDireccionDeleteController)
-const clienteDireccionDeleteControllerProvider =
+final clienteDireccionDeleteControllerProvider =
     ClienteDireccionDeleteControllerFamily._();
 
 final class ClienteDireccionDeleteControllerProvider
     extends $AsyncNotifierProvider<ClienteDireccionDeleteController, bool> {
-  const ClienteDireccionDeleteControllerProvider._({
+  ClienteDireccionDeleteControllerProvider._({
     required ClienteDireccionDeleteControllerFamily super.from,
     required ClienteImpParam super.argument,
   }) : super(
@@ -65,7 +65,7 @@ final class ClienteDireccionDeleteControllerFamily extends $Family
           FutureOr<bool>,
           ClienteImpParam
         > {
-  const ClienteDireccionDeleteControllerFamily._()
+  ClienteDireccionDeleteControllerFamily._()
     : super(
         retry: null,
         name: r'clienteDireccionDeleteControllerProvider',
@@ -93,7 +93,6 @@ abstract class _$ClienteDireccionDeleteController extends $AsyncNotifier<bool> {
   @$mustCallSuper
   @override
   void runBuild() {
-    final created = build(_$args);
     final ref = this.ref as $Ref<AsyncValue<bool>, bool>;
     final element =
         ref.element
@@ -103,6 +102,6 @@ abstract class _$ClienteDireccionDeleteController extends $AsyncNotifier<bool> {
               Object?,
               Object?
             >;
-    element.handleValue(ref, created);
+    element.handleCreate(ref, () => build(_$args));
   }
 }

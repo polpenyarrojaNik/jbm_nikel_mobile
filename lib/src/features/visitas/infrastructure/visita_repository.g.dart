@@ -10,7 +10,7 @@ part of 'visita_repository.dart';
 // ignore_for_file: type=lint, type=warning
 
 @ProviderFor(visitaRepository)
-const visitaRepositoryProvider = VisitaRepositoryProvider._();
+final visitaRepositoryProvider = VisitaRepositoryProvider._();
 
 final class VisitaRepositoryProvider
     extends
@@ -20,7 +20,7 @@ final class VisitaRepositoryProvider
           VisitaRepository
         >
     with $Provider<VisitaRepository> {
-  const VisitaRepositoryProvider._()
+  VisitaRepositoryProvider._()
     : super(
         from: null,
         argument: null,
@@ -56,11 +56,11 @@ final class VisitaRepositoryProvider
 String _$visitaRepositoryHash() => r'6c9248514c6ae0d1340b2ea6db54a3c1401ae8d2';
 
 @ProviderFor(VisitaLastSyncDate)
-const visitaLastSyncDateProvider = VisitaLastSyncDateProvider._();
+final visitaLastSyncDateProvider = VisitaLastSyncDateProvider._();
 
 final class VisitaLastSyncDateProvider
     extends $AsyncNotifierProvider<VisitaLastSyncDate, DateTime> {
-  const VisitaLastSyncDateProvider._()
+  VisitaLastSyncDateProvider._()
     : super(
         from: null,
         argument: null,
@@ -87,7 +87,6 @@ abstract class _$VisitaLastSyncDate extends $AsyncNotifier<DateTime> {
   @$mustCallSuper
   @override
   void runBuild() {
-    final created = build();
     final ref = this.ref as $Ref<AsyncValue<DateTime>, DateTime>;
     final element =
         ref.element
@@ -97,6 +96,6 @@ abstract class _$VisitaLastSyncDate extends $AsyncNotifier<DateTime> {
               Object?,
               Object?
             >;
-    element.handleValue(ref, created);
+    element.handleCreate(ref, build);
   }
 }

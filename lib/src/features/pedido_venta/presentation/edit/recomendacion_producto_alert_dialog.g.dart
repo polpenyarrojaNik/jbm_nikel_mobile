@@ -10,7 +10,7 @@ part of 'recomendacion_producto_alert_dialog.dart';
 // ignore_for_file: type=lint, type=warning
 
 @ProviderFor(RecomendacionProductoAlertDialogController)
-const recomendacionProductoAlertDialogControllerProvider =
+final recomendacionProductoAlertDialogControllerProvider =
     RecomendacionProductoAlertDialogControllerFamily._();
 
 final class RecomendacionProductoAlertDialogControllerProvider
@@ -19,7 +19,7 @@ final class RecomendacionProductoAlertDialogControllerProvider
           RecomendacionProductoAlertDialogController,
           List<RecomendacionProducto>
         > {
-  const RecomendacionProductoAlertDialogControllerProvider._({
+  RecomendacionProductoAlertDialogControllerProvider._({
     required RecomendacionProductoAlertDialogControllerFamily super.from,
     required (PedidoLocalParam, String, List<PedidoVentaLinea>) super.argument,
   }) : super(
@@ -59,7 +59,7 @@ final class RecomendacionProductoAlertDialogControllerProvider
 }
 
 String _$recomendacionProductoAlertDialogControllerHash() =>
-    r'c7999aef8477fdecde9e7ac87a167d91880bf0aa';
+    r'51326e9cff25c7a792c8f42ac4f01af32b5f3f0b';
 
 final class RecomendacionProductoAlertDialogControllerFamily extends $Family
     with
@@ -70,7 +70,7 @@ final class RecomendacionProductoAlertDialogControllerFamily extends $Family
           FutureOr<List<RecomendacionProducto>>,
           (PedidoLocalParam, String, List<PedidoVentaLinea>)
         > {
-  const RecomendacionProductoAlertDialogControllerFamily._()
+  RecomendacionProductoAlertDialogControllerFamily._()
     : super(
         retry: null,
         name: r'recomendacionProductoAlertDialogControllerProvider',
@@ -108,7 +108,6 @@ abstract class _$RecomendacionProductoAlertDialogController
   @$mustCallSuper
   @override
   void runBuild() {
-    final created = build(_$args.$1, _$args.$2, _$args.$3);
     final ref =
         this.ref
             as $Ref<
@@ -126,6 +125,6 @@ abstract class _$RecomendacionProductoAlertDialogController
               Object?,
               Object?
             >;
-    element.handleValue(ref, created);
+    element.handleCreate(ref, () => build(_$args.$1, _$args.$2, _$args.$3));
   }
 }

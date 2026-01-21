@@ -10,7 +10,7 @@ part of 'local_usuario_repository.dart';
 // ignore_for_file: type=lint, type=warning
 
 @ProviderFor(localUsuarioRepository)
-const localUsuarioRepositoryProvider = LocalUsuarioRepositoryProvider._();
+final localUsuarioRepositoryProvider = LocalUsuarioRepositoryProvider._();
 
 final class LocalUsuarioRepositoryProvider
     extends
@@ -20,7 +20,7 @@ final class LocalUsuarioRepositoryProvider
           LocalUsuarioRepository
         >
     with $Provider<LocalUsuarioRepository> {
-  const LocalUsuarioRepositoryProvider._()
+  LocalUsuarioRepositoryProvider._()
     : super(
         from: null,
         argument: null,

@@ -10,12 +10,12 @@ part of 'pais_search_page_controller.dart';
 // ignore_for_file: type=lint, type=warning
 
 @ProviderFor(PaisesSearchQueryParamsController)
-const paisesSearchQueryParamsControllerProvider =
+final paisesSearchQueryParamsControllerProvider =
     PaisesSearchQueryParamsControllerProvider._();
 
 final class PaisesSearchQueryParamsControllerProvider
     extends $NotifierProvider<PaisesSearchQueryParamsController, String> {
-  const PaisesSearchQueryParamsControllerProvider._()
+  PaisesSearchQueryParamsControllerProvider._()
     : super(
         from: null,
         argument: null,
@@ -52,7 +52,6 @@ abstract class _$PaisesSearchQueryParamsController extends $Notifier<String> {
   @$mustCallSuper
   @override
   void runBuild() {
-    final created = build();
     final ref = this.ref as $Ref<String, String>;
     final element =
         ref.element
@@ -62,16 +61,16 @@ abstract class _$PaisesSearchQueryParamsController extends $Notifier<String> {
               Object?,
               Object?
             >;
-    element.handleValue(ref, created);
+    element.handleCreate(ref, build);
   }
 }
 
 @ProviderFor(PaisSearchPageController)
-const paisSearchPageControllerProvider = PaisSearchPageControllerProvider._();
+final paisSearchPageControllerProvider = PaisSearchPageControllerProvider._();
 
 final class PaisSearchPageControllerProvider
     extends $AsyncNotifierProvider<PaisSearchPageController, List<Pais>> {
-  const PaisSearchPageControllerProvider._()
+  PaisSearchPageControllerProvider._()
     : super(
         from: null,
         argument: null,
@@ -98,7 +97,6 @@ abstract class _$PaisSearchPageController extends $AsyncNotifier<List<Pais>> {
   @$mustCallSuper
   @override
   void runBuild() {
-    final created = build();
     final ref = this.ref as $Ref<AsyncValue<List<Pais>>, List<Pais>>;
     final element =
         ref.element
@@ -108,6 +106,6 @@ abstract class _$PaisSearchPageController extends $AsyncNotifier<List<Pais>> {
               Object?,
               Object?
             >;
-    element.handleValue(ref, created);
+    element.handleCreate(ref, build);
   }
 }

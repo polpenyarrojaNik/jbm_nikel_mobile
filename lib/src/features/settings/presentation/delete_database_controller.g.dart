@@ -10,11 +10,11 @@ part of 'delete_database_controller.dart';
 // ignore_for_file: type=lint, type=warning
 
 @ProviderFor(DeleteDatabaseController)
-const deleteDatabaseControllerProvider = DeleteDatabaseControllerProvider._();
+final deleteDatabaseControllerProvider = DeleteDatabaseControllerProvider._();
 
 final class DeleteDatabaseControllerProvider
     extends $AsyncNotifierProvider<DeleteDatabaseController, void> {
-  const DeleteDatabaseControllerProvider._()
+  DeleteDatabaseControllerProvider._()
     : super(
         from: null,
         argument: null,
@@ -41,7 +41,6 @@ abstract class _$DeleteDatabaseController extends $AsyncNotifier<void> {
   @$mustCallSuper
   @override
   void runBuild() {
-    build();
     final ref = this.ref as $Ref<AsyncValue<void>, void>;
     final element =
         ref.element
@@ -51,6 +50,6 @@ abstract class _$DeleteDatabaseController extends $AsyncNotifier<void> {
               Object?,
               Object?
             >;
-    element.handleValue(ref, null);
+    element.handleCreate(ref, build);
   }
 }

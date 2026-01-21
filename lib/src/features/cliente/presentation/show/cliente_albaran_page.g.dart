@@ -10,12 +10,12 @@ part of 'cliente_albaran_page.dart';
 // ignore_for_file: type=lint, type=warning
 
 @ProviderFor(ClienteAlbaranCountController)
-const clienteAlbaranCountControllerProvider =
+final clienteAlbaranCountControllerProvider =
     ClienteAlbaranCountControllerFamily._();
 
 final class ClienteAlbaranCountControllerProvider
     extends $AsyncNotifierProvider<ClienteAlbaranCountController, int> {
-  const ClienteAlbaranCountControllerProvider._({
+  ClienteAlbaranCountControllerProvider._({
     required ClienteAlbaranCountControllerFamily super.from,
     required String super.argument,
   }) : super(
@@ -64,7 +64,7 @@ final class ClienteAlbaranCountControllerFamily extends $Family
           FutureOr<int>,
           String
         > {
-  const ClienteAlbaranCountControllerFamily._()
+  ClienteAlbaranCountControllerFamily._()
     : super(
         retry: null,
         name: r'clienteAlbaranCountControllerProvider',
@@ -88,7 +88,6 @@ abstract class _$ClienteAlbaranCountController extends $AsyncNotifier<int> {
   @$mustCallSuper
   @override
   void runBuild() {
-    final created = build(_$args);
     final ref = this.ref as $Ref<AsyncValue<int>, int>;
     final element =
         ref.element
@@ -98,12 +97,12 @@ abstract class _$ClienteAlbaranCountController extends $AsyncNotifier<int> {
               Object?,
               Object?
             >;
-    element.handleValue(ref, created);
+    element.handleCreate(ref, () => build(_$args));
   }
 }
 
 @ProviderFor(ClienteAlbaranPaginationController)
-const clienteAlbaranPaginationControllerProvider =
+final clienteAlbaranPaginationControllerProvider =
     ClienteAlbaranPaginationControllerFamily._();
 
 final class ClienteAlbaranPaginationControllerProvider
@@ -112,7 +111,7 @@ final class ClienteAlbaranPaginationControllerProvider
           ClienteAlbaranPaginationController,
           List<ClienteAlbaran>
         > {
-  const ClienteAlbaranPaginationControllerProvider._({
+  ClienteAlbaranPaginationControllerProvider._({
     required ClienteAlbaranPaginationControllerFamily super.from,
     required ({int page, String customerId}) super.argument,
   }) : super(
@@ -163,7 +162,7 @@ final class ClienteAlbaranPaginationControllerFamily extends $Family
           FutureOr<List<ClienteAlbaran>>,
           ({int page, String customerId})
         > {
-  const ClienteAlbaranPaginationControllerFamily._()
+  ClienteAlbaranPaginationControllerFamily._()
     : super(
         retry: null,
         name: r'clienteAlbaranPaginationControllerProvider',
@@ -197,7 +196,6 @@ abstract class _$ClienteAlbaranPaginationController
   @$mustCallSuper
   @override
   void runBuild() {
-    final created = build(page: _$args.page, customerId: _$args.customerId);
     final ref =
         this.ref
             as $Ref<AsyncValue<List<ClienteAlbaran>>, List<ClienteAlbaran>>;
@@ -212,17 +210,20 @@ abstract class _$ClienteAlbaranPaginationController
               Object?,
               Object?
             >;
-    element.handleValue(ref, created);
+    element.handleCreate(
+      ref,
+      () => build(page: _$args.page, customerId: _$args.customerId),
+    );
   }
 }
 
 @ProviderFor(ClienteAlbaranDocumentController)
-const clienteAlbaranDocumentControllerProvider =
+final clienteAlbaranDocumentControllerProvider =
     ClienteAlbaranDocumentControllerFamily._();
 
 final class ClienteAlbaranDocumentControllerProvider
     extends $NotifierProvider<ClienteAlbaranDocumentController, void> {
-  const ClienteAlbaranDocumentControllerProvider._({
+  ClienteAlbaranDocumentControllerProvider._({
     required ClienteAlbaranDocumentControllerFamily super.from,
     required String super.argument,
   }) : super(
@@ -280,7 +281,7 @@ final class ClienteAlbaranDocumentControllerFamily extends $Family
           void,
           String
         > {
-  const ClienteAlbaranDocumentControllerFamily._()
+  ClienteAlbaranDocumentControllerFamily._()
     : super(
         retry: null,
         name: r'clienteAlbaranDocumentControllerProvider',
@@ -307,7 +308,6 @@ abstract class _$ClienteAlbaranDocumentController extends $Notifier<void> {
   @$mustCallSuper
   @override
   void runBuild() {
-    build(albaranId: _$args);
     final ref = this.ref as $Ref<void, void>;
     final element =
         ref.element
@@ -317,6 +317,6 @@ abstract class _$ClienteAlbaranDocumentController extends $Notifier<void> {
               Object?,
               Object?
             >;
-    element.handleValue(ref, null);
+    element.handleCreate(ref, () => build(albaranId: _$args));
   }
 }

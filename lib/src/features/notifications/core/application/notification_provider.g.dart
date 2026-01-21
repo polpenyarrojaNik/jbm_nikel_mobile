@@ -10,11 +10,11 @@ part of 'notification_provider.dart';
 // ignore_for_file: type=lint, type=warning
 
 @ProviderFor(NotificationNotifier)
-const notificationProvider = NotificationNotifierProvider._();
+final notificationProvider = NotificationNotifierProvider._();
 
 final class NotificationNotifierProvider
     extends $AsyncNotifierProvider<NotificationNotifier, String?> {
-  const NotificationNotifierProvider._()
+  NotificationNotifierProvider._()
     : super(
         from: null,
         argument: null,
@@ -41,7 +41,6 @@ abstract class _$NotificationNotifier extends $AsyncNotifier<String?> {
   @$mustCallSuper
   @override
   void runBuild() {
-    final created = build();
     final ref = this.ref as $Ref<AsyncValue<String?>, String?>;
     final element =
         ref.element
@@ -51,6 +50,6 @@ abstract class _$NotificationNotifier extends $AsyncNotifier<String?> {
               Object?,
               Object?
             >;
-    element.handleValue(ref, created);
+    element.handleCreate(ref, build);
   }
 }

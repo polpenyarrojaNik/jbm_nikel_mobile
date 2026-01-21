@@ -10,7 +10,7 @@ part of 'pedido_venta_edit_direccion_manual_page.dart';
 // ignore_for_file: type=lint, type=warning
 
 @ProviderFor(DireccionManualScreenController)
-const direccionManualScreenControllerProvider =
+final direccionManualScreenControllerProvider =
     DireccionManualScreenControllerProvider._();
 
 final class DireccionManualScreenControllerProvider
@@ -19,7 +19,7 @@ final class DireccionManualScreenControllerProvider
           DireccionManualScreenController,
           DireccionManualScreenData
         > {
-  const DireccionManualScreenControllerProvider._()
+  DireccionManualScreenControllerProvider._()
     : super(
         from: null,
         argument: null,
@@ -47,7 +47,6 @@ abstract class _$DireccionManualScreenController
   @$mustCallSuper
   @override
   void runBuild() {
-    final created = build();
     final ref =
         this.ref
             as $Ref<
@@ -65,6 +64,6 @@ abstract class _$DireccionManualScreenController
               Object?,
               Object?
             >;
-    element.handleValue(ref, created);
+    element.handleCreate(ref, build);
   }
 }

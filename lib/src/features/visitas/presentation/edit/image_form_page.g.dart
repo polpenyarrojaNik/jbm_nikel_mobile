@@ -10,7 +10,7 @@ part of 'image_form_page.dart';
 // ignore_for_file: type=lint, type=warning
 
 @ProviderFor(ImageFormPageController)
-const imageFormPageControllerProvider = ImageFormPageControllerFamily._();
+final imageFormPageControllerProvider = ImageFormPageControllerFamily._();
 
 final class ImageFormPageControllerProvider
     extends
@@ -18,7 +18,7 @@ final class ImageFormPageControllerProvider
           ImageFormPageController,
           List<OcrRecognizedText>
         > {
-  const ImageFormPageControllerProvider._({
+  ImageFormPageControllerProvider._({
     required ImageFormPageControllerFamily super.from,
     required File super.argument,
   }) : super(
@@ -67,7 +67,7 @@ final class ImageFormPageControllerFamily extends $Family
           FutureOr<List<OcrRecognizedText>>,
           File
         > {
-  const ImageFormPageControllerFamily._()
+  ImageFormPageControllerFamily._()
     : super(
         retry: null,
         name: r'imageFormPageControllerProvider',
@@ -92,7 +92,6 @@ abstract class _$ImageFormPageController
   @$mustCallSuper
   @override
   void runBuild() {
-    final created = build(_$args);
     final ref =
         this.ref
             as $Ref<
@@ -110,6 +109,6 @@ abstract class _$ImageFormPageController
               Object?,
               Object?
             >;
-    element.handleValue(ref, created);
+    element.handleCreate(ref, () => build(_$args));
   }
 }

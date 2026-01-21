@@ -10,12 +10,12 @@ part of 'visit_edit_page.dart';
 // ignore_for_file: type=lint, type=warning
 
 @ProviderFor(VisitEditPageController)
-const visitEditPageControllerProvider = VisitEditPageControllerFamily._();
+final visitEditPageControllerProvider = VisitEditPageControllerFamily._();
 
 final class VisitEditPageControllerProvider
     extends
         $AsyncNotifierProvider<VisitEditPageController, VisitEditScreenData> {
-  const VisitEditPageControllerProvider._({
+  VisitEditPageControllerProvider._({
     required VisitEditPageControllerFamily super.from,
     required (String, bool, bool) super.argument,
   }) : super(
@@ -64,7 +64,7 @@ final class VisitEditPageControllerFamily extends $Family
           FutureOr<VisitEditScreenData>,
           (String, bool, bool)
         > {
-  const VisitEditPageControllerFamily._()
+  VisitEditPageControllerFamily._()
     : super(
         retry: null,
         name: r'visitEditPageControllerProvider',
@@ -101,7 +101,6 @@ abstract class _$VisitEditPageController
   @$mustCallSuper
   @override
   void runBuild() {
-    final created = build(_$args.$1, _$args.$2, _$args.$3);
     final ref =
         this.ref as $Ref<AsyncValue<VisitEditScreenData>, VisitEditScreenData>;
     final element =
@@ -112,6 +111,6 @@ abstract class _$VisitEditPageController
               Object?,
               Object?
             >;
-    element.handleValue(ref, created);
+    element.handleCreate(ref, () => build(_$args.$1, _$args.$2, _$args.$3));
   }
 }

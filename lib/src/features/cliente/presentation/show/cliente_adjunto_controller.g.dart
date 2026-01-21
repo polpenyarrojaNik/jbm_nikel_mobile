@@ -10,12 +10,12 @@ part of 'cliente_adjunto_controller.dart';
 // ignore_for_file: type=lint, type=warning
 
 @ProviderFor(ClienteAdjuntoListById)
-const clienteAdjuntoListByIdProvider = ClienteAdjuntoListByIdFamily._();
+final clienteAdjuntoListByIdProvider = ClienteAdjuntoListByIdFamily._();
 
 final class ClienteAdjuntoListByIdProvider
     extends
         $AsyncNotifierProvider<ClienteAdjuntoListById, List<ClienteAdjunto>> {
-  const ClienteAdjuntoListByIdProvider._({
+  ClienteAdjuntoListByIdProvider._({
     required ClienteAdjuntoListByIdFamily super.from,
     required String super.argument,
   }) : super(
@@ -64,7 +64,7 @@ final class ClienteAdjuntoListByIdFamily extends $Family
           FutureOr<List<ClienteAdjunto>>,
           String
         > {
-  const ClienteAdjuntoListByIdFamily._()
+  ClienteAdjuntoListByIdFamily._()
     : super(
         retry: null,
         name: r'clienteAdjuntoListByIdProvider',
@@ -89,7 +89,6 @@ abstract class _$ClienteAdjuntoListById
   @$mustCallSuper
   @override
   void runBuild() {
-    final created = build(_$args);
     final ref =
         this.ref
             as $Ref<AsyncValue<List<ClienteAdjunto>>, List<ClienteAdjunto>>;
@@ -104,6 +103,6 @@ abstract class _$ClienteAdjuntoListById
               Object?,
               Object?
             >;
-    element.handleValue(ref, created);
+    element.handleCreate(ref, () => build(_$args));
   }
 }

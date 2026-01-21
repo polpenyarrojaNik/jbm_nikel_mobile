@@ -10,7 +10,7 @@ part of 'articulo_repository.dart';
 // ignore_for_file: type=lint, type=warning
 
 @ProviderFor(articuloRepository)
-const articuloRepositoryProvider = ArticuloRepositoryProvider._();
+final articuloRepositoryProvider = ArticuloRepositoryProvider._();
 
 final class ArticuloRepositoryProvider
     extends
@@ -20,7 +20,7 @@ final class ArticuloRepositoryProvider
           ArticuloRepository
         >
     with $Provider<ArticuloRepository> {
-  const ArticuloRepositoryProvider._()
+  ArticuloRepositoryProvider._()
     : super(
         from: null,
         argument: null,
@@ -58,11 +58,11 @@ String _$articuloRepositoryHash() =>
     r'8c4ff59ea7f3b7ba23eee7de4f85cc82e49d3c7d';
 
 @ProviderFor(ArticuloLastSyncDate)
-const articuloLastSyncDateProvider = ArticuloLastSyncDateProvider._();
+final articuloLastSyncDateProvider = ArticuloLastSyncDateProvider._();
 
 final class ArticuloLastSyncDateProvider
     extends $AsyncNotifierProvider<ArticuloLastSyncDate, DateTime> {
-  const ArticuloLastSyncDateProvider._()
+  ArticuloLastSyncDateProvider._()
     : super(
         from: null,
         argument: null,
@@ -89,7 +89,6 @@ abstract class _$ArticuloLastSyncDate extends $AsyncNotifier<DateTime> {
   @$mustCallSuper
   @override
   void runBuild() {
-    final created = build();
     final ref = this.ref as $Ref<AsyncValue<DateTime>, DateTime>;
     final element =
         ref.element
@@ -99,16 +98,16 @@ abstract class _$ArticuloLastSyncDate extends $AsyncNotifier<DateTime> {
               Object?,
               Object?
             >;
-    element.handleValue(ref, created);
+    element.handleCreate(ref, build);
   }
 }
 
 @ProviderFor(GetArticuloById)
-const getArticuloByIdProvider = GetArticuloByIdFamily._();
+final getArticuloByIdProvider = GetArticuloByIdFamily._();
 
 final class GetArticuloByIdProvider
     extends $AsyncNotifierProvider<GetArticuloById, Articulo> {
-  const GetArticuloByIdProvider._({
+  GetArticuloByIdProvider._({
     required GetArticuloByIdFamily super.from,
     required String super.argument,
   }) : super(
@@ -155,7 +154,7 @@ final class GetArticuloByIdFamily extends $Family
           FutureOr<Articulo>,
           String
         > {
-  const GetArticuloByIdFamily._()
+  GetArticuloByIdFamily._()
     : super(
         retry: null,
         name: r'getArticuloByIdProvider',
@@ -179,7 +178,6 @@ abstract class _$GetArticuloById extends $AsyncNotifier<Articulo> {
   @$mustCallSuper
   @override
   void runBuild() {
-    final created = build(_$args);
     final ref = this.ref as $Ref<AsyncValue<Articulo>, Articulo>;
     final element =
         ref.element
@@ -189,12 +187,12 @@ abstract class _$GetArticuloById extends $AsyncNotifier<Articulo> {
               Object?,
               Object?
             >;
-    element.handleValue(ref, created);
+    element.handleCreate(ref, () => build(_$args));
   }
 }
 
 @ProviderFor(GetArticuloComponenteListaById)
-const getArticuloComponenteListaByIdProvider =
+final getArticuloComponenteListaByIdProvider =
     GetArticuloComponenteListaByIdFamily._();
 
 final class GetArticuloComponenteListaByIdProvider
@@ -203,7 +201,7 @@ final class GetArticuloComponenteListaByIdProvider
           GetArticuloComponenteListaById,
           List<ArticuloComponente>
         > {
-  const GetArticuloComponenteListaByIdProvider._({
+  GetArticuloComponenteListaByIdProvider._({
     required GetArticuloComponenteListaByIdFamily super.from,
     required String super.argument,
   }) : super(
@@ -252,7 +250,7 @@ final class GetArticuloComponenteListaByIdFamily extends $Family
           FutureOr<List<ArticuloComponente>>,
           String
         > {
-  const GetArticuloComponenteListaByIdFamily._()
+  GetArticuloComponenteListaByIdFamily._()
     : super(
         retry: null,
         name: r'getArticuloComponenteListaByIdProvider',
@@ -280,7 +278,6 @@ abstract class _$GetArticuloComponenteListaById
   @$mustCallSuper
   @override
   void runBuild() {
-    final created = build(_$args);
     final ref =
         this.ref
             as $Ref<
@@ -298,12 +295,12 @@ abstract class _$GetArticuloComponenteListaById
               Object?,
               Object?
             >;
-    element.handleValue(ref, created);
+    element.handleCreate(ref, () => build(_$args));
   }
 }
 
 @ProviderFor(GetArticuloPrecioTarifaListaById)
-const getArticuloPrecioTarifaListaByIdProvider =
+final getArticuloPrecioTarifaListaByIdProvider =
     GetArticuloPrecioTarifaListaByIdFamily._();
 
 final class GetArticuloPrecioTarifaListaByIdProvider
@@ -312,7 +309,7 @@ final class GetArticuloPrecioTarifaListaByIdProvider
           GetArticuloPrecioTarifaListaById,
           List<ArticuloPrecioTarifa>
         > {
-  const GetArticuloPrecioTarifaListaByIdProvider._({
+  GetArticuloPrecioTarifaListaByIdProvider._({
     required GetArticuloPrecioTarifaListaByIdFamily super.from,
     required String super.argument,
   }) : super(
@@ -362,7 +359,7 @@ final class GetArticuloPrecioTarifaListaByIdFamily extends $Family
           FutureOr<List<ArticuloPrecioTarifa>>,
           String
         > {
-  const GetArticuloPrecioTarifaListaByIdFamily._()
+  GetArticuloPrecioTarifaListaByIdFamily._()
     : super(
         retry: null,
         name: r'getArticuloPrecioTarifaListaByIdProvider',
@@ -390,7 +387,6 @@ abstract class _$GetArticuloPrecioTarifaListaById
   @$mustCallSuper
   @override
   void runBuild() {
-    final created = build(_$args);
     final ref =
         this.ref
             as $Ref<
@@ -408,12 +404,12 @@ abstract class _$GetArticuloPrecioTarifaListaById
               Object?,
               Object?
             >;
-    element.handleValue(ref, created);
+    element.handleCreate(ref, () => build(_$args));
   }
 }
 
 @ProviderFor(GetArticuloGrupoNetoListaById)
-const getArticuloGrupoNetoListaByIdProvider =
+final getArticuloGrupoNetoListaByIdProvider =
     GetArticuloGrupoNetoListaByIdFamily._();
 
 final class GetArticuloGrupoNetoListaByIdProvider
@@ -422,7 +418,7 @@ final class GetArticuloGrupoNetoListaByIdProvider
           GetArticuloGrupoNetoListaById,
           List<ArticuloGrupoNeto>
         > {
-  const GetArticuloGrupoNetoListaByIdProvider._({
+  GetArticuloGrupoNetoListaByIdProvider._({
     required GetArticuloGrupoNetoListaByIdFamily super.from,
     required String super.argument,
   }) : super(
@@ -471,7 +467,7 @@ final class GetArticuloGrupoNetoListaByIdFamily extends $Family
           FutureOr<List<ArticuloGrupoNeto>>,
           String
         > {
-  const GetArticuloGrupoNetoListaByIdFamily._()
+  GetArticuloGrupoNetoListaByIdFamily._()
     : super(
         retry: null,
         name: r'getArticuloGrupoNetoListaByIdProvider',
@@ -496,7 +492,6 @@ abstract class _$GetArticuloGrupoNetoListaById
   @$mustCallSuper
   @override
   void runBuild() {
-    final created = build(_$args);
     final ref =
         this.ref
             as $Ref<
@@ -514,12 +509,12 @@ abstract class _$GetArticuloGrupoNetoListaById
               Object?,
               Object?
             >;
-    element.handleValue(ref, created);
+    element.handleCreate(ref, () => build(_$args));
   }
 }
 
 @ProviderFor(GetArticuloSustitutivoListaById)
-const getArticuloSustitutivoListaByIdProvider =
+final getArticuloSustitutivoListaByIdProvider =
     GetArticuloSustitutivoListaByIdFamily._();
 
 final class GetArticuloSustitutivoListaByIdProvider
@@ -528,7 +523,7 @@ final class GetArticuloSustitutivoListaByIdProvider
           GetArticuloSustitutivoListaById,
           List<ArticuloSustitutivo>
         > {
-  const GetArticuloSustitutivoListaByIdProvider._({
+  GetArticuloSustitutivoListaByIdProvider._({
     required GetArticuloSustitutivoListaByIdFamily super.from,
     required String super.argument,
   }) : super(
@@ -577,7 +572,7 @@ final class GetArticuloSustitutivoListaByIdFamily extends $Family
           FutureOr<List<ArticuloSustitutivo>>,
           String
         > {
-  const GetArticuloSustitutivoListaByIdFamily._()
+  GetArticuloSustitutivoListaByIdFamily._()
     : super(
         retry: null,
         name: r'getArticuloSustitutivoListaByIdProvider',
@@ -605,7 +600,6 @@ abstract class _$GetArticuloSustitutivoListaById
   @$mustCallSuper
   @override
   void runBuild() {
-    final created = build(_$args);
     final ref =
         this.ref
             as $Ref<
@@ -623,12 +617,12 @@ abstract class _$GetArticuloSustitutivoListaById
               Object?,
               Object?
             >;
-    element.handleValue(ref, created);
+    element.handleCreate(ref, () => build(_$args));
   }
 }
 
 @ProviderFor(GetArticuloRecambioListaById)
-const getArticuloRecambioListaByIdProvider =
+final getArticuloRecambioListaByIdProvider =
     GetArticuloRecambioListaByIdFamily._();
 
 final class GetArticuloRecambioListaByIdProvider
@@ -637,7 +631,7 @@ final class GetArticuloRecambioListaByIdProvider
           GetArticuloRecambioListaById,
           List<ArticuloRecambio>
         > {
-  const GetArticuloRecambioListaByIdProvider._({
+  GetArticuloRecambioListaByIdProvider._({
     required GetArticuloRecambioListaByIdFamily super.from,
     required String super.argument,
   }) : super(
@@ -686,7 +680,7 @@ final class GetArticuloRecambioListaByIdFamily extends $Family
           FutureOr<List<ArticuloRecambio>>,
           String
         > {
-  const GetArticuloRecambioListaByIdFamily._()
+  GetArticuloRecambioListaByIdFamily._()
     : super(
         retry: null,
         name: r'getArticuloRecambioListaByIdProvider',
@@ -711,7 +705,6 @@ abstract class _$GetArticuloRecambioListaById
   @$mustCallSuper
   @override
   void runBuild() {
-    final created = build(_$args);
     final ref =
         this.ref
             as $Ref<AsyncValue<List<ArticuloRecambio>>, List<ArticuloRecambio>>;
@@ -726,12 +719,12 @@ abstract class _$GetArticuloRecambioListaById
               Object?,
               Object?
             >;
-    element.handleValue(ref, created);
+    element.handleCreate(ref, () => build(_$args));
   }
 }
 
 @ProviderFor(GetArticuloImagenListaById)
-const getArticuloImagenListaByIdProvider = GetArticuloImagenListaByIdFamily._();
+final getArticuloImagenListaByIdProvider = GetArticuloImagenListaByIdFamily._();
 
 final class GetArticuloImagenListaByIdProvider
     extends
@@ -739,7 +732,7 @@ final class GetArticuloImagenListaByIdProvider
           GetArticuloImagenListaById,
           List<ArticuloImagen>
         > {
-  const GetArticuloImagenListaByIdProvider._({
+  GetArticuloImagenListaByIdProvider._({
     required GetArticuloImagenListaByIdFamily super.from,
     required String super.argument,
   }) : super(
@@ -788,7 +781,7 @@ final class GetArticuloImagenListaByIdFamily extends $Family
           FutureOr<List<ArticuloImagen>>,
           String
         > {
-  const GetArticuloImagenListaByIdFamily._()
+  GetArticuloImagenListaByIdFamily._()
     : super(
         retry: null,
         name: r'getArticuloImagenListaByIdProvider',
@@ -813,7 +806,6 @@ abstract class _$GetArticuloImagenListaById
   @$mustCallSuper
   @override
   void runBuild() {
-    final created = build(_$args);
     final ref =
         this.ref
             as $Ref<AsyncValue<List<ArticuloImagen>>, List<ArticuloImagen>>;
@@ -828,12 +820,12 @@ abstract class _$GetArticuloImagenListaById
               Object?,
               Object?
             >;
-    element.handleValue(ref, created);
+    element.handleCreate(ref, () => build(_$args));
   }
 }
 
 @ProviderFor(GetArticuloDocumentoListaById)
-const getArticuloDocumentoListaByIdProvider =
+final getArticuloDocumentoListaByIdProvider =
     GetArticuloDocumentoListaByIdFamily._();
 
 final class GetArticuloDocumentoListaByIdProvider
@@ -842,7 +834,7 @@ final class GetArticuloDocumentoListaByIdProvider
           GetArticuloDocumentoListaById,
           List<ArticuloDocumento>
         > {
-  const GetArticuloDocumentoListaByIdProvider._({
+  GetArticuloDocumentoListaByIdProvider._({
     required GetArticuloDocumentoListaByIdFamily super.from,
     required String super.argument,
   }) : super(
@@ -891,7 +883,7 @@ final class GetArticuloDocumentoListaByIdFamily extends $Family
           FutureOr<List<ArticuloDocumento>>,
           String
         > {
-  const GetArticuloDocumentoListaByIdFamily._()
+  GetArticuloDocumentoListaByIdFamily._()
     : super(
         retry: null,
         name: r'getArticuloDocumentoListaByIdProvider',
@@ -916,7 +908,6 @@ abstract class _$GetArticuloDocumentoListaById
   @$mustCallSuper
   @override
   void runBuild() {
-    final created = build(_$args);
     final ref =
         this.ref
             as $Ref<
@@ -934,12 +925,12 @@ abstract class _$GetArticuloDocumentoListaById
               Object?,
               Object?
             >;
-    element.handleValue(ref, created);
+    element.handleCreate(ref, () => build(_$args));
   }
 }
 
 @ProviderFor(GetArticuloPedidoVentaLineaListById)
-const getArticuloPedidoVentaLineaListByIdProvider =
+final getArticuloPedidoVentaLineaListByIdProvider =
     GetArticuloPedidoVentaLineaListByIdFamily._();
 
 final class GetArticuloPedidoVentaLineaListByIdProvider
@@ -948,7 +939,7 @@ final class GetArticuloPedidoVentaLineaListByIdProvider
           GetArticuloPedidoVentaLineaListById,
           List<ArticuloPedidoVentaLinea>
         > {
-  const GetArticuloPedidoVentaLineaListByIdProvider._({
+  GetArticuloPedidoVentaLineaListByIdProvider._({
     required GetArticuloPedidoVentaLineaListByIdFamily super.from,
     required String super.argument,
   }) : super(
@@ -999,7 +990,7 @@ final class GetArticuloPedidoVentaLineaListByIdFamily extends $Family
           FutureOr<List<ArticuloPedidoVentaLinea>>,
           String
         > {
-  const GetArticuloPedidoVentaLineaListByIdFamily._()
+  GetArticuloPedidoVentaLineaListByIdFamily._()
     : super(
         retry: null,
         name: r'getArticuloPedidoVentaLineaListByIdProvider',
@@ -1027,7 +1018,6 @@ abstract class _$GetArticuloPedidoVentaLineaListById
   @$mustCallSuper
   @override
   void runBuild() {
-    final created = build(_$args);
     final ref =
         this.ref
             as $Ref<
@@ -1045,12 +1035,12 @@ abstract class _$GetArticuloPedidoVentaLineaListById
               Object?,
               Object?
             >;
-    element.handleValue(ref, created);
+    element.handleCreate(ref, () => build(_$args));
   }
 }
 
 @ProviderFor(GetArticuloVentasMesById)
-const getArticuloVentasMesByIdProvider = GetArticuloVentasMesByIdFamily._();
+final getArticuloVentasMesByIdProvider = GetArticuloVentasMesByIdFamily._();
 
 final class GetArticuloVentasMesByIdProvider
     extends
@@ -1058,7 +1048,7 @@ final class GetArticuloVentasMesByIdProvider
           GetArticuloVentasMesById,
           List<ArticuloVentasMes>
         > {
-  const GetArticuloVentasMesByIdProvider._({
+  GetArticuloVentasMesByIdProvider._({
     required GetArticuloVentasMesByIdFamily super.from,
     required String super.argument,
   }) : super(
@@ -1107,7 +1097,7 @@ final class GetArticuloVentasMesByIdFamily extends $Family
           FutureOr<List<ArticuloVentasMes>>,
           String
         > {
-  const GetArticuloVentasMesByIdFamily._()
+  GetArticuloVentasMesByIdFamily._()
     : super(
         retry: null,
         name: r'getArticuloVentasMesByIdProvider',
@@ -1132,7 +1122,6 @@ abstract class _$GetArticuloVentasMesById
   @$mustCallSuper
   @override
   void runBuild() {
-    final created = build(_$args);
     final ref =
         this.ref
             as $Ref<
@@ -1150,12 +1139,12 @@ abstract class _$GetArticuloVentasMesById
               Object?,
               Object?
             >;
-    element.handleValue(ref, created);
+    element.handleCreate(ref, () => build(_$args));
   }
 }
 
 @ProviderFor(GetArticuloVentasClienteById)
-const getArticuloVentasClienteByIdProvider =
+final getArticuloVentasClienteByIdProvider =
     GetArticuloVentasClienteByIdFamily._();
 
 final class GetArticuloVentasClienteByIdProvider
@@ -1164,7 +1153,7 @@ final class GetArticuloVentasClienteByIdProvider
           GetArticuloVentasClienteById,
           List<ArticuloVentasCliente>
         > {
-  const GetArticuloVentasClienteByIdProvider._({
+  GetArticuloVentasClienteByIdProvider._({
     required GetArticuloVentasClienteByIdFamily super.from,
     required String super.argument,
   }) : super(
@@ -1213,7 +1202,7 @@ final class GetArticuloVentasClienteByIdFamily extends $Family
           FutureOr<List<ArticuloVentasCliente>>,
           String
         > {
-  const GetArticuloVentasClienteByIdFamily._()
+  GetArticuloVentasClienteByIdFamily._()
     : super(
         retry: null,
         name: r'getArticuloVentasClienteByIdProvider',
@@ -1238,7 +1227,6 @@ abstract class _$GetArticuloVentasClienteById
   @$mustCallSuper
   @override
   void runBuild() {
-    final created = build(_$args);
     final ref =
         this.ref
             as $Ref<
@@ -1256,12 +1244,12 @@ abstract class _$GetArticuloVentasClienteById
               Object?,
               Object?
             >;
-    element.handleValue(ref, created);
+    element.handleCreate(ref, () => build(_$args));
   }
 }
 
 @ProviderFor(GetArticuloUltimosPreciosById)
-const getArticuloUltimosPreciosByIdProvider =
+final getArticuloUltimosPreciosByIdProvider =
     GetArticuloUltimosPreciosByIdFamily._();
 
 final class GetArticuloUltimosPreciosByIdProvider
@@ -1270,7 +1258,7 @@ final class GetArticuloUltimosPreciosByIdProvider
           GetArticuloUltimosPreciosById,
           EstadisticasUltimosPrecios?
         > {
-  const GetArticuloUltimosPreciosByIdProvider._({
+  GetArticuloUltimosPreciosByIdProvider._({
     required GetArticuloUltimosPreciosByIdFamily super.from,
     required UltimosPreciosParam super.argument,
   }) : super(
@@ -1319,7 +1307,7 @@ final class GetArticuloUltimosPreciosByIdFamily extends $Family
           FutureOr<EstadisticasUltimosPrecios?>,
           UltimosPreciosParam
         > {
-  const GetArticuloUltimosPreciosByIdFamily._()
+  GetArticuloUltimosPreciosByIdFamily._()
     : super(
         retry: null,
         name: r'getArticuloUltimosPreciosByIdProvider',
@@ -1350,7 +1338,6 @@ abstract class _$GetArticuloUltimosPreciosById
   @$mustCallSuper
   @override
   void runBuild() {
-    final created = build(_$args);
     final ref =
         this.ref
             as $Ref<
@@ -1368,6 +1355,6 @@ abstract class _$GetArticuloUltimosPreciosById
               Object?,
               Object?
             >;
-    element.handleValue(ref, created);
+    element.handleCreate(ref, () => build(_$args));
   }
 }

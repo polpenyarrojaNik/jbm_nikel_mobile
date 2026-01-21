@@ -10,7 +10,7 @@ part of 'settings_repository.dart';
 // ignore_for_file: type=lint, type=warning
 
 @ProviderFor(settingsRepository)
-const settingsRepositoryProvider = SettingsRepositoryProvider._();
+final settingsRepositoryProvider = SettingsRepositoryProvider._();
 
 final class SettingsRepositoryProvider
     extends
@@ -20,7 +20,7 @@ final class SettingsRepositoryProvider
           SettingsRepository
         >
     with $Provider<SettingsRepository> {
-  const SettingsRepositoryProvider._()
+  SettingsRepositoryProvider._()
     : super(
         from: null,
         argument: null,
@@ -58,11 +58,11 @@ String _$settingsRepositoryHash() =>
     r'1834bcc633f6460b6b031a7c723c1996aea2d8e4';
 
 @ProviderFor(GetPackageInfo)
-const getPackageInfoProvider = GetPackageInfoProvider._();
+final getPackageInfoProvider = GetPackageInfoProvider._();
 
 final class GetPackageInfoProvider
     extends $AsyncNotifierProvider<GetPackageInfo, PackageInfo> {
-  const GetPackageInfoProvider._()
+  GetPackageInfoProvider._()
     : super(
         from: null,
         argument: null,
@@ -88,7 +88,6 @@ abstract class _$GetPackageInfo extends $AsyncNotifier<PackageInfo> {
   @$mustCallSuper
   @override
   void runBuild() {
-    final created = build();
     final ref = this.ref as $Ref<AsyncValue<PackageInfo>, PackageInfo>;
     final element =
         ref.element
@@ -98,6 +97,6 @@ abstract class _$GetPackageInfo extends $AsyncNotifier<PackageInfo> {
               Object?,
               Object?
             >;
-    element.handleValue(ref, created);
+    element.handleCreate(ref, build);
   }
 }

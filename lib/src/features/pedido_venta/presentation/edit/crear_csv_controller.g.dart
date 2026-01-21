@@ -10,11 +10,11 @@ part of 'crear_csv_controller.dart';
 // ignore_for_file: type=lint, type=warning
 
 @ProviderFor(CrearCsvController)
-const crearCsvControllerProvider = CrearCsvControllerProvider._();
+final crearCsvControllerProvider = CrearCsvControllerProvider._();
 
 final class CrearCsvControllerProvider
     extends $AsyncNotifierProvider<CrearCsvController, void> {
-  const CrearCsvControllerProvider._()
+  CrearCsvControllerProvider._()
     : super(
         from: null,
         argument: null,
@@ -41,7 +41,6 @@ abstract class _$CrearCsvController extends $AsyncNotifier<void> {
   @$mustCallSuper
   @override
   void runBuild() {
-    build();
     final ref = this.ref as $Ref<AsyncValue<void>, void>;
     final element =
         ref.element
@@ -51,6 +50,6 @@ abstract class _$CrearCsvController extends $AsyncNotifier<void> {
               Object?,
               Object?
             >;
-    element.handleValue(ref, null);
+    element.handleCreate(ref, build);
   }
 }

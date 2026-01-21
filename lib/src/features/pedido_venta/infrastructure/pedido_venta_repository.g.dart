@@ -10,7 +10,7 @@ part of 'pedido_venta_repository.dart';
 // ignore_for_file: type=lint, type=warning
 
 @ProviderFor(pedidoVentaRepository)
-const pedidoVentaRepositoryProvider = PedidoVentaRepositoryProvider._();
+final pedidoVentaRepositoryProvider = PedidoVentaRepositoryProvider._();
 
 final class PedidoVentaRepositoryProvider
     extends
@@ -20,7 +20,7 @@ final class PedidoVentaRepositoryProvider
           PedidoVentaRepository
         >
     with $Provider<PedidoVentaRepository> {
-  const PedidoVentaRepositoryProvider._()
+  PedidoVentaRepositoryProvider._()
     : super(
         from: null,
         argument: null,
@@ -58,11 +58,11 @@ String _$pedidoVentaRepositoryHash() =>
     r'c9b4acd875ec893cf9055f201bd50544138cf60b';
 
 @ProviderFor(PedidoVentaById)
-const pedidoVentaByIdProvider = PedidoVentaByIdFamily._();
+final pedidoVentaByIdProvider = PedidoVentaByIdFamily._();
 
 final class PedidoVentaByIdProvider
     extends $AsyncNotifierProvider<PedidoVentaById, PedidoVenta> {
-  const PedidoVentaByIdProvider._({
+  PedidoVentaByIdProvider._({
     required PedidoVentaByIdFamily super.from,
     required PedidoLocalParam super.argument,
   }) : super(
@@ -109,7 +109,7 @@ final class PedidoVentaByIdFamily extends $Family
           FutureOr<PedidoVenta>,
           PedidoLocalParam
         > {
-  const PedidoVentaByIdFamily._()
+  PedidoVentaByIdFamily._()
     : super(
         retry: null,
         name: r'pedidoVentaByIdProvider',
@@ -133,7 +133,6 @@ abstract class _$PedidoVentaById extends $AsyncNotifier<PedidoVenta> {
   @$mustCallSuper
   @override
   void runBuild() {
-    final created = build(_$args);
     final ref = this.ref as $Ref<AsyncValue<PedidoVenta>, PedidoVenta>;
     final element =
         ref.element
@@ -143,17 +142,17 @@ abstract class _$PedidoVentaById extends $AsyncNotifier<PedidoVenta> {
               Object?,
               Object?
             >;
-    element.handleValue(ref, created);
+    element.handleCreate(ref, () => build(_$args));
   }
 }
 
 @ProviderFor(PedidoVentaAlbaranById)
-const pedidoVentaAlbaranByIdProvider = PedidoVentaAlbaranByIdFamily._();
+final pedidoVentaAlbaranByIdProvider = PedidoVentaAlbaranByIdFamily._();
 
 final class PedidoVentaAlbaranByIdProvider
     extends
         $AsyncNotifierProvider<PedidoVentaAlbaranById, List<PedidoAlbaran>> {
-  const PedidoVentaAlbaranByIdProvider._({
+  PedidoVentaAlbaranByIdProvider._({
     required PedidoVentaAlbaranByIdFamily super.from,
     required String super.argument,
   }) : super(
@@ -202,7 +201,7 @@ final class PedidoVentaAlbaranByIdFamily extends $Family
           FutureOr<List<PedidoAlbaran>>,
           String
         > {
-  const PedidoVentaAlbaranByIdFamily._()
+  PedidoVentaAlbaranByIdFamily._()
     : super(
         retry: null,
         name: r'pedidoVentaAlbaranByIdProvider',
@@ -227,7 +226,6 @@ abstract class _$PedidoVentaAlbaranById
   @$mustCallSuper
   @override
   void runBuild() {
-    final created = build(_$args);
     final ref =
         this.ref as $Ref<AsyncValue<List<PedidoAlbaran>>, List<PedidoAlbaran>>;
     final element =
@@ -238,17 +236,17 @@ abstract class _$PedidoVentaAlbaranById
               Object?,
               Object?
             >;
-    element.handleValue(ref, created);
+    element.handleCreate(ref, () => build(_$args));
   }
 }
 
 @ProviderFor(PedidoVentaEstadoList)
-const pedidoVentaEstadoListProvider = PedidoVentaEstadoListProvider._();
+final pedidoVentaEstadoListProvider = PedidoVentaEstadoListProvider._();
 
 final class PedidoVentaEstadoListProvider
     extends
         $AsyncNotifierProvider<PedidoVentaEstadoList, List<PedidoVentaEstado>> {
-  const PedidoVentaEstadoListProvider._()
+  PedidoVentaEstadoListProvider._()
     : super(
         from: null,
         argument: null,
@@ -276,7 +274,6 @@ abstract class _$PedidoVentaEstadoList
   @$mustCallSuper
   @override
   void runBuild() {
-    final created = build();
     final ref =
         this.ref
             as $Ref<
@@ -294,16 +291,16 @@ abstract class _$PedidoVentaEstadoList
               Object?,
               Object?
             >;
-    element.handleValue(ref, created);
+    element.handleCreate(ref, build);
   }
 }
 
 @ProviderFor(PedidoVentaLastSyncDate)
-const pedidoVentaLastSyncDateProvider = PedidoVentaLastSyncDateProvider._();
+final pedidoVentaLastSyncDateProvider = PedidoVentaLastSyncDateProvider._();
 
 final class PedidoVentaLastSyncDateProvider
     extends $AsyncNotifierProvider<PedidoVentaLastSyncDate, DateTime> {
-  const PedidoVentaLastSyncDateProvider._()
+  PedidoVentaLastSyncDateProvider._()
     : super(
         from: null,
         argument: null,
@@ -330,7 +327,6 @@ abstract class _$PedidoVentaLastSyncDate extends $AsyncNotifier<DateTime> {
   @$mustCallSuper
   @override
   void runBuild() {
-    final created = build();
     final ref = this.ref as $Ref<AsyncValue<DateTime>, DateTime>;
     final element =
         ref.element
@@ -340,12 +336,12 @@ abstract class _$PedidoVentaLastSyncDate extends $AsyncNotifier<DateTime> {
               Object?,
               Object?
             >;
-    element.handleValue(ref, created);
+    element.handleCreate(ref, build);
   }
 }
 
 @ProviderFor(GetPedidoVentaLineaList)
-const getPedidoVentaLineaListProvider = GetPedidoVentaLineaListFamily._();
+final getPedidoVentaLineaListProvider = GetPedidoVentaLineaListFamily._();
 
 final class GetPedidoVentaLineaListProvider
     extends
@@ -353,7 +349,7 @@ final class GetPedidoVentaLineaListProvider
           GetPedidoVentaLineaList,
           List<PedidoVentaLinea>
         > {
-  const GetPedidoVentaLineaListProvider._({
+  GetPedidoVentaLineaListProvider._({
     required GetPedidoVentaLineaListFamily super.from,
     required PedidoLocalParam super.argument,
   }) : super(
@@ -402,7 +398,7 @@ final class GetPedidoVentaLineaListFamily extends $Family
           FutureOr<List<PedidoVentaLinea>>,
           PedidoLocalParam
         > {
-  const GetPedidoVentaLineaListFamily._()
+  GetPedidoVentaLineaListFamily._()
     : super(
         retry: null,
         name: r'getPedidoVentaLineaListProvider',
@@ -427,7 +423,6 @@ abstract class _$GetPedidoVentaLineaList
   @$mustCallSuper
   @override
   void runBuild() {
-    final created = build(_$args);
     final ref =
         this.ref
             as $Ref<AsyncValue<List<PedidoVentaLinea>>, List<PedidoVentaLinea>>;
@@ -442,16 +437,16 @@ abstract class _$GetPedidoVentaLineaList
               Object?,
               Object?
             >;
-    element.handleValue(ref, created);
+    element.handleCreate(ref, () => build(_$args));
   }
 }
 
 @ProviderFor(GetStockDisponible)
-const getStockDisponibleProvider = GetStockDisponibleFamily._();
+final getStockDisponibleProvider = GetStockDisponibleFamily._();
 
 final class GetStockDisponibleProvider
     extends $AsyncNotifierProvider<GetStockDisponible, int> {
-  const GetStockDisponibleProvider._({
+  GetStockDisponibleProvider._({
     required GetStockDisponibleFamily super.from,
     required String super.argument,
   }) : super(
@@ -499,7 +494,7 @@ final class GetStockDisponibleFamily extends $Family
           FutureOr<int>,
           String
         > {
-  const GetStockDisponibleFamily._()
+  GetStockDisponibleFamily._()
     : super(
         retry: null,
         name: r'getStockDisponibleProvider',
@@ -523,7 +518,6 @@ abstract class _$GetStockDisponible extends $AsyncNotifier<int> {
   @$mustCallSuper
   @override
   void runBuild() {
-    final created = build(_$args);
     final ref = this.ref as $Ref<AsyncValue<int>, int>;
     final element =
         ref.element
@@ -533,12 +527,12 @@ abstract class _$GetStockDisponible extends $AsyncNotifier<int> {
               Object?,
               Object?
             >;
-    element.handleValue(ref, created);
+    element.handleCreate(ref, () => build(_$args));
   }
 }
 
 @ProviderFor(GetPedidoVentaBorradoresList)
-const getPedidoVentaBorradoresListProvider =
+final getPedidoVentaBorradoresListProvider =
     GetPedidoVentaBorradoresListProvider._();
 
 final class GetPedidoVentaBorradoresListProvider
@@ -547,7 +541,7 @@ final class GetPedidoVentaBorradoresListProvider
           GetPedidoVentaBorradoresList,
           List<PedidoVenta>
         > {
-  const GetPedidoVentaBorradoresListProvider._()
+  GetPedidoVentaBorradoresListProvider._()
     : super(
         from: null,
         argument: null,
@@ -575,7 +569,6 @@ abstract class _$GetPedidoVentaBorradoresList
   @$mustCallSuper
   @override
   void runBuild() {
-    final created = build();
     final ref =
         this.ref as $Ref<AsyncValue<List<PedidoVenta>>, List<PedidoVenta>>;
     final element =
@@ -586,16 +579,16 @@ abstract class _$GetPedidoVentaBorradoresList
               Object?,
               Object?
             >;
-    element.handleValue(ref, created);
+    element.handleCreate(ref, build);
   }
 }
 
 @ProviderFor(OfertaHaveAttachment)
-const ofertaHaveAttachmentProvider = OfertaHaveAttachmentFamily._();
+final ofertaHaveAttachmentProvider = OfertaHaveAttachmentFamily._();
 
 final class OfertaHaveAttachmentProvider
     extends $AsyncNotifierProvider<OfertaHaveAttachment, bool> {
-  const OfertaHaveAttachmentProvider._({
+  OfertaHaveAttachmentProvider._({
     required OfertaHaveAttachmentFamily super.from,
     required String super.argument,
   }) : super(
@@ -643,7 +636,7 @@ final class OfertaHaveAttachmentFamily extends $Family
           FutureOr<bool>,
           String
         > {
-  const OfertaHaveAttachmentFamily._()
+  OfertaHaveAttachmentFamily._()
     : super(
         retry: null,
         name: r'ofertaHaveAttachmentProvider',
@@ -667,7 +660,6 @@ abstract class _$OfertaHaveAttachment extends $AsyncNotifier<bool> {
   @$mustCallSuper
   @override
   void runBuild() {
-    final created = build(_$args);
     final ref = this.ref as $Ref<AsyncValue<bool>, bool>;
     final element =
         ref.element
@@ -677,16 +669,16 @@ abstract class _$OfertaHaveAttachment extends $AsyncNotifier<bool> {
               Object?,
               Object?
             >;
-    element.handleValue(ref, created);
+    element.handleCreate(ref, () => build(_$args));
   }
 }
 
 @ProviderFor(PedidoHaveProformaAdjunta)
-const pedidoHaveProformaAdjuntaProvider = PedidoHaveProformaAdjuntaFamily._();
+final pedidoHaveProformaAdjuntaProvider = PedidoHaveProformaAdjuntaFamily._();
 
 final class PedidoHaveProformaAdjuntaProvider
     extends $AsyncNotifierProvider<PedidoHaveProformaAdjunta, bool> {
-  const PedidoHaveProformaAdjuntaProvider._({
+  PedidoHaveProformaAdjuntaProvider._({
     required PedidoHaveProformaAdjuntaFamily super.from,
     required String super.argument,
   }) : super(
@@ -735,7 +727,7 @@ final class PedidoHaveProformaAdjuntaFamily extends $Family
           FutureOr<bool>,
           String
         > {
-  const PedidoHaveProformaAdjuntaFamily._()
+  PedidoHaveProformaAdjuntaFamily._()
     : super(
         retry: null,
         name: r'pedidoHaveProformaAdjuntaProvider',
@@ -759,7 +751,6 @@ abstract class _$PedidoHaveProformaAdjunta extends $AsyncNotifier<bool> {
   @$mustCallSuper
   @override
   void runBuild() {
-    final created = build(_$args);
     final ref = this.ref as $Ref<AsyncValue<bool>, bool>;
     final element =
         ref.element
@@ -769,16 +760,16 @@ abstract class _$PedidoHaveProformaAdjunta extends $AsyncNotifier<bool> {
               Object?,
               Object?
             >;
-    element.handleValue(ref, created);
+    element.handleCreate(ref, () => build(_$args));
   }
 }
 
 @ProviderFor(DeletePedidoVenta)
-const deletePedidoVentaProvider = DeletePedidoVentaFamily._();
+final deletePedidoVentaProvider = DeletePedidoVentaFamily._();
 
 final class DeletePedidoVentaProvider
     extends $AsyncNotifierProvider<DeletePedidoVenta, void> {
-  const DeletePedidoVentaProvider._({
+  DeletePedidoVentaProvider._({
     required DeletePedidoVentaFamily super.from,
     required String super.argument,
   }) : super(
@@ -825,7 +816,7 @@ final class DeletePedidoVentaFamily extends $Family
           FutureOr<void>,
           String
         > {
-  const DeletePedidoVentaFamily._()
+  DeletePedidoVentaFamily._()
     : super(
         retry: null,
         name: r'deletePedidoVentaProvider',
@@ -849,7 +840,6 @@ abstract class _$DeletePedidoVenta extends $AsyncNotifier<void> {
   @$mustCallSuper
   @override
   void runBuild() {
-    build(_$args);
     final ref = this.ref as $Ref<AsyncValue<void>, void>;
     final element =
         ref.element
@@ -859,6 +849,6 @@ abstract class _$DeletePedidoVenta extends $AsyncNotifier<void> {
               Object?,
               Object?
             >;
-    element.handleValue(ref, null);
+    element.handleCreate(ref, () => build(_$args));
   }
 }

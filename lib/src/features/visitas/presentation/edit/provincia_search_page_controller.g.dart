@@ -10,12 +10,12 @@ part of 'provincia_search_page_controller.dart';
 // ignore_for_file: type=lint, type=warning
 
 @ProviderFor(ProvinciasSearchQueryParamsController)
-const provinciasSearchQueryParamsControllerProvider =
+final provinciasSearchQueryParamsControllerProvider =
     ProvinciasSearchQueryParamsControllerProvider._();
 
 final class ProvinciasSearchQueryParamsControllerProvider
     extends $NotifierProvider<ProvinciasSearchQueryParamsController, String> {
-  const ProvinciasSearchQueryParamsControllerProvider._()
+  ProvinciasSearchQueryParamsControllerProvider._()
     : super(
         from: null,
         argument: null,
@@ -53,7 +53,6 @@ abstract class _$ProvinciasSearchQueryParamsController
   @$mustCallSuper
   @override
   void runBuild() {
-    final created = build();
     final ref = this.ref as $Ref<String, String>;
     final element =
         ref.element
@@ -63,18 +62,18 @@ abstract class _$ProvinciasSearchQueryParamsController
               Object?,
               Object?
             >;
-    element.handleValue(ref, created);
+    element.handleCreate(ref, build);
   }
 }
 
 @ProviderFor(ProvinciaSearchPageController)
-const provinciaSearchPageControllerProvider =
+final provinciaSearchPageControllerProvider =
     ProvinciaSearchPageControllerFamily._();
 
 final class ProvinciaSearchPageControllerProvider
     extends
         $AsyncNotifierProvider<ProvinciaSearchPageController, List<Provincia>> {
-  const ProvinciaSearchPageControllerProvider._({
+  ProvinciaSearchPageControllerProvider._({
     required ProvinciaSearchPageControllerFamily super.from,
     required String? super.argument,
   }) : super(
@@ -123,7 +122,7 @@ final class ProvinciaSearchPageControllerFamily extends $Family
           FutureOr<List<Provincia>>,
           String?
         > {
-  const ProvinciaSearchPageControllerFamily._()
+  ProvinciaSearchPageControllerFamily._()
     : super(
         retry: null,
         name: r'provinciaSearchPageControllerProvider',
@@ -148,7 +147,6 @@ abstract class _$ProvinciaSearchPageController
   @$mustCallSuper
   @override
   void runBuild() {
-    final created = build(_$args);
     final ref = this.ref as $Ref<AsyncValue<List<Provincia>>, List<Provincia>>;
     final element =
         ref.element
@@ -158,6 +156,6 @@ abstract class _$ProvinciaSearchPageController
               Object?,
               Object?
             >;
-    element.handleValue(ref, created);
+    element.handleCreate(ref, () => build(_$args));
   }
 }

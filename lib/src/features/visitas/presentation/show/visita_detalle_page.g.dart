@@ -10,11 +10,11 @@ part of 'visita_detalle_page.dart';
 // ignore_for_file: type=lint, type=warning
 
 @ProviderFor(VisitaDetalleController)
-const visitaDetalleControllerProvider = VisitaDetalleControllerFamily._();
+final visitaDetalleControllerProvider = VisitaDetalleControllerFamily._();
 
 final class VisitaDetalleControllerProvider
     extends $AsyncNotifierProvider<VisitaDetalleController, Visita> {
-  const VisitaDetalleControllerProvider._({
+  VisitaDetalleControllerProvider._({
     required VisitaDetalleControllerFamily super.from,
     required (String, bool, String?) super.argument,
   }) : super(
@@ -63,7 +63,7 @@ final class VisitaDetalleControllerFamily extends $Family
           FutureOr<Visita>,
           (String, bool, String?)
         > {
-  const VisitaDetalleControllerFamily._()
+  VisitaDetalleControllerFamily._()
     : super(
         retry: null,
         name: r'visitaDetalleControllerProvider',
@@ -99,7 +99,6 @@ abstract class _$VisitaDetalleController extends $AsyncNotifier<Visita> {
   @$mustCallSuper
   @override
   void runBuild() {
-    final created = build(_$args.$1, _$args.$2, _$args.$3);
     final ref = this.ref as $Ref<AsyncValue<Visita>, Visita>;
     final element =
         ref.element
@@ -109,6 +108,6 @@ abstract class _$VisitaDetalleController extends $AsyncNotifier<Visita> {
               Object?,
               Object?
             >;
-    element.handleValue(ref, created);
+    element.handleCreate(ref, () => build(_$args.$1, _$args.$2, _$args.$3));
   }
 }

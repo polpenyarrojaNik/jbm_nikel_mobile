@@ -10,7 +10,7 @@ part of 'notification_detail_controller.dart';
 // ignore_for_file: type=lint, type=warning
 
 @ProviderFor(NotificationDetailScreenController)
-const notificationDetailScreenControllerProvider =
+final notificationDetailScreenControllerProvider =
     NotificationDetailScreenControllerFamily._();
 
 final class NotificationDetailScreenControllerProvider
@@ -19,7 +19,7 @@ final class NotificationDetailScreenControllerProvider
           NotificationDetailScreenController,
           Notificacion
         > {
-  const NotificationDetailScreenControllerProvider._({
+  NotificationDetailScreenControllerProvider._({
     required NotificationDetailScreenControllerFamily super.from,
     required String super.argument,
   }) : super(
@@ -70,7 +70,7 @@ final class NotificationDetailScreenControllerFamily extends $Family
           FutureOr<Notificacion>,
           String
         > {
-  const NotificationDetailScreenControllerFamily._()
+  NotificationDetailScreenControllerFamily._()
     : super(
         retry: null,
         name: r'notificationDetailScreenControllerProvider',
@@ -95,7 +95,6 @@ abstract class _$NotificationDetailScreenController
   @$mustCallSuper
   @override
   void runBuild() {
-    final created = build(_$args);
     final ref = this.ref as $Ref<AsyncValue<Notificacion>, Notificacion>;
     final element =
         ref.element
@@ -105,6 +104,6 @@ abstract class _$NotificationDetailScreenController
               Object?,
               Object?
             >;
-    element.handleValue(ref, created);
+    element.handleCreate(ref, () => build(_$args));
   }
 }

@@ -20,9 +20,11 @@ import '../../../../core/presentation/common_widgets/progress_indicator_widget.d
 import '../../../../core/presentation/common_widgets/row_field_text_detail.dart';
 import '../../../../core/presentation/toasts.dart';
 import '../../../../core/routing/app_auto_router.dart';
+import '../../../usuario/application/usuario_notifier.dart';
 import '../../domain/pedido_local_param.dart';
 import '../../domain/pedido_venta.dart';
 import '../../infrastructure/pedido_venta_repository.dart';
+import '../edit/recomendacion_producto_alert_dialog.dart';
 import '../index/pedido_search_controller.dart';
 import 'pedido_venta_linea_tile.dart';
 
@@ -62,6 +64,19 @@ class PedidoVentaDetallePage extends ConsumerWidget {
           orElse: () => null,
           data: (pedidoVenta) {
             return [
+              if ((ref.watch(usuarioNotifierProvider)?.aiSN ?? false) &&
+                  pedidoVenta.clienteId != null)
+                IconButton(
+                  onPressed: () =>
+                      _abrirRecomanedadorProductios(context, ref, pedidoVenta),
+                  icon: Image.asset(
+                    semanticLabel: 'openAiLogo',
+                    'assets/app_icons/OpenAI-black-monoblossom.png',
+                    width: 24,
+                    height: 24,
+                    color: Theme.of(context).colorScheme.onPrimaryFixed,
+                  ),
+                ),
               if (!pedidoVenta.isLocal)
                 DescargarProformaButton(pedidoLocalParam: pedidoLocalParam),
               if (!pedidoVenta.isLocal && (pedidoVenta.oferta ?? false))
@@ -131,6 +146,27 @@ class PedidoVentaDetallePage extends ConsumerWidget {
             ],
           ),
         ),
+      ),
+    );
+  }
+
+  void _abrirRecomanedadorProductios(
+    BuildContext context,
+    WidgetRef ref,
+    PedidoVenta pedidoVenta,
+  ) async {
+    final pedidoVentaLineaList = await ref.read(
+      getPedidoVentaLineaListProvider(pedidoLocalParam).future,
+    );
+
+    await showDialog(
+      context: context,
+      builder: (ctx) => RecomendacionProductoAlertDialog(
+        pedidoLocalParam: pedidoLocalParam,
+        clienteId: pedidoVenta.clienteId!,
+        pedidoVentaLineaList: pedidoVentaLineaList,
+        dialogContext: ctx,
+        isEdit: false,
       ),
     );
   }

@@ -10,7 +10,7 @@ part of 'articulo_documento_page.dart';
 // ignore_for_file: type=lint, type=warning
 
 @ProviderFor(GetArticuloDocumentoListaById)
-const getArticuloDocumentoListaByIdProvider =
+final getArticuloDocumentoListaByIdProvider =
     GetArticuloDocumentoListaByIdFamily._();
 
 final class GetArticuloDocumentoListaByIdProvider
@@ -19,7 +19,7 @@ final class GetArticuloDocumentoListaByIdProvider
           GetArticuloDocumentoListaById,
           List<ArticuloDocumento>
         > {
-  const GetArticuloDocumentoListaByIdProvider._({
+  GetArticuloDocumentoListaByIdProvider._({
     required GetArticuloDocumentoListaByIdFamily super.from,
     required String super.argument,
   }) : super(
@@ -68,7 +68,7 @@ final class GetArticuloDocumentoListaByIdFamily extends $Family
           FutureOr<List<ArticuloDocumento>>,
           String
         > {
-  const GetArticuloDocumentoListaByIdFamily._()
+  GetArticuloDocumentoListaByIdFamily._()
     : super(
         retry: null,
         name: r'getArticuloDocumentoListaByIdProvider',
@@ -93,7 +93,6 @@ abstract class _$GetArticuloDocumentoListaById
   @$mustCallSuper
   @override
   void runBuild() {
-    final created = build(_$args);
     final ref =
         this.ref
             as $Ref<
@@ -111,6 +110,6 @@ abstract class _$GetArticuloDocumentoListaById
               Object?,
               Object?
             >;
-    element.handleValue(ref, created);
+    element.handleCreate(ref, () => build(_$args));
   }
 }

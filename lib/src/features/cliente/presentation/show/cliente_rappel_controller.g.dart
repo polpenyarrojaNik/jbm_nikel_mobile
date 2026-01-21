@@ -10,11 +10,11 @@ part of 'cliente_rappel_controller.dart';
 // ignore_for_file: type=lint, type=warning
 
 @ProviderFor(ClienteRappelListById)
-const clienteRappelListByIdProvider = ClienteRappelListByIdFamily._();
+final clienteRappelListByIdProvider = ClienteRappelListByIdFamily._();
 
 final class ClienteRappelListByIdProvider
     extends $AsyncNotifierProvider<ClienteRappelListById, List<ClienteRappel>> {
-  const ClienteRappelListByIdProvider._({
+  ClienteRappelListByIdProvider._({
     required ClienteRappelListByIdFamily super.from,
     required String super.argument,
   }) : super(
@@ -62,7 +62,7 @@ final class ClienteRappelListByIdFamily extends $Family
           FutureOr<List<ClienteRappel>>,
           String
         > {
-  const ClienteRappelListByIdFamily._()
+  ClienteRappelListByIdFamily._()
     : super(
         retry: null,
         name: r'clienteRappelListByIdProvider',
@@ -87,7 +87,6 @@ abstract class _$ClienteRappelListById
   @$mustCallSuper
   @override
   void runBuild() {
-    final created = build(_$args);
     final ref =
         this.ref as $Ref<AsyncValue<List<ClienteRappel>>, List<ClienteRappel>>;
     final element =
@@ -98,6 +97,6 @@ abstract class _$ClienteRappelListById
               Object?,
               Object?
             >;
-    element.handleValue(ref, created);
+    element.handleCreate(ref, () => build(_$args));
   }
 }

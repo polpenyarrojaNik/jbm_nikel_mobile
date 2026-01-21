@@ -10,7 +10,7 @@ part of 'suggestion_address_repository.dart';
 // ignore_for_file: type=lint, type=warning
 
 @ProviderFor(suggestionAddressRepository)
-const suggestionAddressRepositoryProvider =
+final suggestionAddressRepositoryProvider =
     SuggestionAddressRepositoryProvider._();
 
 final class SuggestionAddressRepositoryProvider
@@ -21,7 +21,7 @@ final class SuggestionAddressRepositoryProvider
           SuggestionAddressRepository
         >
     with $Provider<SuggestionAddressRepository> {
-  const SuggestionAddressRepositoryProvider._()
+  SuggestionAddressRepositoryProvider._()
     : super(
         from: null,
         argument: null,

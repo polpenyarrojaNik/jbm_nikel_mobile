@@ -10,7 +10,7 @@ part of 'articulo_top_repository.dart';
 // ignore_for_file: type=lint, type=warning
 
 @ProviderFor(articuloTopRepository)
-const articuloTopRepositoryProvider = ArticuloTopRepositoryProvider._();
+final articuloTopRepositoryProvider = ArticuloTopRepositoryProvider._();
 
 final class ArticuloTopRepositoryProvider
     extends
@@ -20,7 +20,7 @@ final class ArticuloTopRepositoryProvider
           ArticuloTopRepository
         >
     with $Provider<ArticuloTopRepository> {
-  const ArticuloTopRepositoryProvider._()
+  ArticuloTopRepositoryProvider._()
     : super(
         from: null,
         argument: null,
@@ -58,11 +58,11 @@ String _$articuloTopRepositoryHash() =>
     r'585152a87c3889c7ebd101d862ba731caf5bfca9';
 
 @ProviderFor(ArticuloTopList)
-const articuloTopListProvider = ArticuloTopListFamily._();
+final articuloTopListProvider = ArticuloTopListFamily._();
 
 final class ArticuloTopListProvider
     extends $AsyncNotifierProvider<ArticuloTopList, List<ArticuloTop>> {
-  const ArticuloTopListProvider._({
+  ArticuloTopListProvider._({
     required ArticuloTopListFamily super.from,
     required String super.argument,
   }) : super(
@@ -109,7 +109,7 @@ final class ArticuloTopListFamily extends $Family
           FutureOr<List<ArticuloTop>>,
           String
         > {
-  const ArticuloTopListFamily._()
+  ArticuloTopListFamily._()
     : super(
         retry: null,
         name: r'articuloTopListProvider',
@@ -133,7 +133,6 @@ abstract class _$ArticuloTopList extends $AsyncNotifier<List<ArticuloTop>> {
   @$mustCallSuper
   @override
   void runBuild() {
-    final created = build(_$args);
     final ref =
         this.ref as $Ref<AsyncValue<List<ArticuloTop>>, List<ArticuloTop>>;
     final element =
@@ -144,6 +143,6 @@ abstract class _$ArticuloTopList extends $AsyncNotifier<List<ArticuloTop>> {
               Object?,
               Object?
             >;
-    element.handleValue(ref, created);
+    element.handleCreate(ref, () => build(_$args));
   }
 }

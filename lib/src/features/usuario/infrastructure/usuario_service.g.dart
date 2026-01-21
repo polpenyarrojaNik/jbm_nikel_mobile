@@ -10,12 +10,12 @@ part of 'usuario_service.dart';
 // ignore_for_file: type=lint, type=warning
 
 @ProviderFor(usuarioService)
-const usuarioServiceProvider = UsuarioServiceProvider._();
+final usuarioServiceProvider = UsuarioServiceProvider._();
 
 final class UsuarioServiceProvider
     extends $FunctionalProvider<UsuarioService, UsuarioService, UsuarioService>
     with $Provider<UsuarioService> {
-  const UsuarioServiceProvider._()
+  UsuarioServiceProvider._()
     : super(
         from: null,
         argument: null,

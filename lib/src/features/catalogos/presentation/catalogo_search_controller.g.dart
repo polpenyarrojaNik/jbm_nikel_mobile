@@ -10,12 +10,12 @@ part of 'catalogo_search_controller.dart';
 // ignore_for_file: type=lint, type=warning
 
 @ProviderFor(CatalogoSearchQueryParamsController)
-const catalogoSearchQueryParamsControllerProvider =
+final catalogoSearchQueryParamsControllerProvider =
     CatalogoSearchQueryParamsControllerProvider._();
 
 final class CatalogoSearchQueryParamsControllerProvider
     extends $NotifierProvider<CatalogoSearchQueryParamsController, String> {
-  const CatalogoSearchQueryParamsControllerProvider._()
+  CatalogoSearchQueryParamsControllerProvider._()
     : super(
         from: null,
         argument: null,
@@ -52,7 +52,6 @@ abstract class _$CatalogoSearchQueryParamsController extends $Notifier<String> {
   @$mustCallSuper
   @override
   void runBuild() {
-    final created = build();
     final ref = this.ref as $Ref<String, String>;
     final element =
         ref.element
@@ -62,17 +61,17 @@ abstract class _$CatalogoSearchQueryParamsController extends $Notifier<String> {
               Object?,
               Object?
             >;
-    element.handleValue(ref, created);
+    element.handleCreate(ref, build);
   }
 }
 
 @ProviderFor(TipoCatalogoQueryParamController)
-const tipoCatalogoQueryParamControllerProvider =
+final tipoCatalogoQueryParamControllerProvider =
     TipoCatalogoQueryParamControllerProvider._();
 
 final class TipoCatalogoQueryParamControllerProvider
     extends $NotifierProvider<TipoCatalogoQueryParamController, TipoCatalogo?> {
-  const TipoCatalogoQueryParamControllerProvider._()
+  TipoCatalogoQueryParamControllerProvider._()
     : super(
         from: null,
         argument: null,
@@ -109,7 +108,6 @@ abstract class _$TipoCatalogoQueryParamController
   @$mustCallSuper
   @override
   void runBuild() {
-    final created = build();
     final ref = this.ref as $Ref<TipoCatalogo?, TipoCatalogo?>;
     final element =
         ref.element
@@ -119,12 +117,12 @@ abstract class _$TipoCatalogoQueryParamController
               Object?,
               Object?
             >;
-    element.handleValue(ref, created);
+    element.handleCreate(ref, build);
   }
 }
 
 @ProviderFor(TipoPrecioCatalogoQueryParamController)
-const tipoPrecioCatalogoQueryParamControllerProvider =
+final tipoPrecioCatalogoQueryParamControllerProvider =
     TipoPrecioCatalogoQueryParamControllerProvider._();
 
 final class TipoPrecioCatalogoQueryParamControllerProvider
@@ -133,7 +131,7 @@ final class TipoPrecioCatalogoQueryParamControllerProvider
           TipoPrecioCatalogoQueryParamController,
           TipoPrecioCatalogo?
         > {
-  const TipoPrecioCatalogoQueryParamControllerProvider._()
+  TipoPrecioCatalogoQueryParamControllerProvider._()
     : super(
         from: null,
         argument: null,
@@ -171,7 +169,6 @@ abstract class _$TipoPrecioCatalogoQueryParamController
   @$mustCallSuper
   @override
   void runBuild() {
-    final created = build();
     final ref = this.ref as $Ref<TipoPrecioCatalogo?, TipoPrecioCatalogo?>;
     final element =
         ref.element
@@ -181,18 +178,18 @@ abstract class _$TipoPrecioCatalogoQueryParamController
               Object?,
               Object?
             >;
-    element.handleValue(ref, created);
+    element.handleCreate(ref, build);
   }
 }
 
 @ProviderFor(IdiomaCatalogoQueryParamController)
-const idiomaCatalogoQueryParamControllerProvider =
+final idiomaCatalogoQueryParamControllerProvider =
     IdiomaCatalogoQueryParamControllerProvider._();
 
 final class IdiomaCatalogoQueryParamControllerProvider
     extends
         $NotifierProvider<IdiomaCatalogoQueryParamController, IdiomaCatalogo?> {
-  const IdiomaCatalogoQueryParamControllerProvider._()
+  IdiomaCatalogoQueryParamControllerProvider._()
     : super(
         from: null,
         argument: null,
@@ -230,7 +227,6 @@ abstract class _$IdiomaCatalogoQueryParamController
   @$mustCallSuper
   @override
   void runBuild() {
-    final created = build();
     final ref = this.ref as $Ref<IdiomaCatalogo?, IdiomaCatalogo?>;
     final element =
         ref.element
@@ -240,18 +236,18 @@ abstract class _$IdiomaCatalogoQueryParamController
               Object?,
               Object?
             >;
-    element.handleValue(ref, created);
+    element.handleCreate(ref, build);
   }
 }
 
 @ProviderFor(CatalogoIndexScreenController)
-const catalogoIndexScreenControllerProvider =
+final catalogoIndexScreenControllerProvider =
     CatalogoIndexScreenControllerProvider._();
 
 final class CatalogoIndexScreenControllerProvider
     extends
         $AsyncNotifierProvider<CatalogoIndexScreenController, List<Catalogo>> {
-  const CatalogoIndexScreenControllerProvider._()
+  CatalogoIndexScreenControllerProvider._()
     : super(
         from: null,
         argument: null,
@@ -279,7 +275,6 @@ abstract class _$CatalogoIndexScreenController
   @$mustCallSuper
   @override
   void runBuild() {
-    final created = build();
     final ref = this.ref as $Ref<AsyncValue<List<Catalogo>>, List<Catalogo>>;
     final element =
         ref.element
@@ -289,6 +284,6 @@ abstract class _$CatalogoIndexScreenController
               Object?,
               Object?
             >;
-    element.handleValue(ref, created);
+    element.handleCreate(ref, build);
   }
 }

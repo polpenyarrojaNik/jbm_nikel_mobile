@@ -10,11 +10,11 @@ part of 'catalogo_favorito_controller.dart';
 // ignore_for_file: type=lint, type=warning
 
 @ProviderFor(CatalogoFavoritoController)
-const catalogoFavoritoControllerProvider = CatalogoFavoritoControllerFamily._();
+final catalogoFavoritoControllerProvider = CatalogoFavoritoControllerFamily._();
 
 final class CatalogoFavoritoControllerProvider
     extends $AsyncNotifierProvider<CatalogoFavoritoController, bool> {
-  const CatalogoFavoritoControllerProvider._({
+  CatalogoFavoritoControllerProvider._({
     required CatalogoFavoritoControllerFamily super.from,
     required int super.argument,
   }) : super(
@@ -63,7 +63,7 @@ final class CatalogoFavoritoControllerFamily extends $Family
           FutureOr<bool>,
           int
         > {
-  const CatalogoFavoritoControllerFamily._()
+  CatalogoFavoritoControllerFamily._()
     : super(
         retry: null,
         name: r'catalogoFavoritoControllerProvider',
@@ -87,7 +87,6 @@ abstract class _$CatalogoFavoritoController extends $AsyncNotifier<bool> {
   @$mustCallSuper
   @override
   void runBuild() {
-    final created = build(_$args);
     final ref = this.ref as $Ref<AsyncValue<bool>, bool>;
     final element =
         ref.element
@@ -97,6 +96,6 @@ abstract class _$CatalogoFavoritoController extends $AsyncNotifier<bool> {
               Object?,
               Object?
             >;
-    element.handleValue(ref, created);
+    element.handleCreate(ref, () => build(_$args));
   }
 }

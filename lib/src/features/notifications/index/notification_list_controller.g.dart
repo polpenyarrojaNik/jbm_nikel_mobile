@@ -10,7 +10,7 @@ part of 'notification_list_controller.dart';
 // ignore_for_file: type=lint, type=warning
 
 @ProviderFor(NotificationIndexScreenController)
-const notificationIndexScreenControllerProvider =
+final notificationIndexScreenControllerProvider =
     NotificationIndexScreenControllerProvider._();
 
 final class NotificationIndexScreenControllerProvider
@@ -19,7 +19,7 @@ final class NotificationIndexScreenControllerProvider
           NotificationIndexScreenController,
           List<NotificationList>
         > {
-  const NotificationIndexScreenControllerProvider._()
+  NotificationIndexScreenControllerProvider._()
     : super(
         from: null,
         argument: null,
@@ -49,7 +49,6 @@ abstract class _$NotificationIndexScreenController
   @$mustCallSuper
   @override
   void runBuild() {
-    final created = build();
     final ref =
         this.ref
             as $Ref<AsyncValue<List<NotificationList>>, List<NotificationList>>;
@@ -64,6 +63,6 @@ abstract class _$NotificationIndexScreenController
               Object?,
               Object?
             >;
-    element.handleValue(ref, created);
+    element.handleCreate(ref, build);
   }
 }

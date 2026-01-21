@@ -553,6 +553,7 @@ class PedidoVentaEditForm extends ConsumerWidget {
             clienteId: cliente!.id,
             pedidoVentaLineaList: pedidoVentaLineaList,
             dialogContext: ctx,
+            isEdit: isEdit,
           ),
         );
       }

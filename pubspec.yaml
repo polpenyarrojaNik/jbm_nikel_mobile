@@ -113,6 +113,7 @@ flutter:
     - .env
     - assets/
     - assets/templates/
+    - assets/app_icons/
 
 flutter_intl:
   enabled: true

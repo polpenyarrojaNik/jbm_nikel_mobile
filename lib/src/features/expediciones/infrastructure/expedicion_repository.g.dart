@@ -10,7 +10,7 @@ part of 'expedicion_repository.dart';
 // ignore_for_file: type=lint, type=warning
 
 @ProviderFor(expedicionRepository)
-const expedicionRepositoryProvider = ExpedicionRepositoryProvider._();
+final expedicionRepositoryProvider = ExpedicionRepositoryProvider._();
 
 final class ExpedicionRepositoryProvider
     extends
@@ -20,7 +20,7 @@ final class ExpedicionRepositoryProvider
           ExpedicionRepository
         >
     with $Provider<ExpedicionRepository> {
-  const ExpedicionRepositoryProvider._()
+  ExpedicionRepositoryProvider._()
     : super(
         from: null,
         argument: null,

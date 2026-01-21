@@ -10,7 +10,7 @@ part of 'articulo_detalle_page.dart';
 // ignore_for_file: type=lint, type=warning
 
 @ProviderFor(ArticuloDetalleAddArticuloABorradorButtonController)
-const articuloDetalleAddArticuloABorradorButtonControllerProvider =
+final articuloDetalleAddArticuloABorradorButtonControllerProvider =
     ArticuloDetalleAddArticuloABorradorButtonControllerProvider._();
 
 final class ArticuloDetalleAddArticuloABorradorButtonControllerProvider
@@ -19,7 +19,7 @@ final class ArticuloDetalleAddArticuloABorradorButtonControllerProvider
           ArticuloDetalleAddArticuloABorradorButtonController,
           void
         > {
-  const ArticuloDetalleAddArticuloABorradorButtonControllerProvider._()
+  ArticuloDetalleAddArticuloABorradorButtonControllerProvider._()
     : super(
         from: null,
         argument: null,
@@ -57,7 +57,6 @@ abstract class _$ArticuloDetalleAddArticuloABorradorButtonController
   @$mustCallSuper
   @override
   void runBuild() {
-    build();
     final ref = this.ref as $Ref<void, void>;
     final element =
         ref.element
@@ -67,6 +66,6 @@ abstract class _$ArticuloDetalleAddArticuloABorradorButtonController
               Object?,
               Object?
             >;
-    element.handleValue(ref, null);
+    element.handleCreate(ref, build);
   }
 }

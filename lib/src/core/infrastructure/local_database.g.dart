@@ -10192,7 +10192,7 @@ class $LocalAppDatabaseManager {
 // ignore_for_file: type=lint, type=warning
 
 @ProviderFor(appLocalDatabase)
-const appLocalDatabaseProvider = AppLocalDatabaseProvider._();
+final appLocalDatabaseProvider = AppLocalDatabaseProvider._();
 
 final class AppLocalDatabaseProvider
     extends
@@ -10202,7 +10202,7 @@ final class AppLocalDatabaseProvider
           LocalAppDatabase
         >
     with $Provider<LocalAppDatabase> {
-  const AppLocalDatabaseProvider._()
+  AppLocalDatabaseProvider._()
     : super(
         from: null,
         argument: null,

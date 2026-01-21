@@ -10,7 +10,7 @@ part of 'visita_edit_page_controller.dart';
 // ignore_for_file: type=lint, type=warning
 
 @ProviderFor(VisitaSectorListFormDropdownController)
-const visitaSectorListFormDropdownControllerProvider =
+final visitaSectorListFormDropdownControllerProvider =
     VisitaSectorListFormDropdownControllerProvider._();
 
 final class VisitaSectorListFormDropdownControllerProvider
@@ -19,7 +19,7 @@ final class VisitaSectorListFormDropdownControllerProvider
           VisitaSectorListFormDropdownController,
           List<VisitaSector>
         > {
-  const VisitaSectorListFormDropdownControllerProvider._()
+  VisitaSectorListFormDropdownControllerProvider._()
     : super(
         from: null,
         argument: null,
@@ -49,7 +49,6 @@ abstract class _$VisitaSectorListFormDropdownController
   @$mustCallSuper
   @override
   void runBuild() {
-    final created = build();
     final ref =
         this.ref as $Ref<AsyncValue<List<VisitaSector>>, List<VisitaSector>>;
     final element =
@@ -60,12 +59,12 @@ abstract class _$VisitaSectorListFormDropdownController
               Object?,
               Object?
             >;
-    element.handleValue(ref, created);
+    element.handleCreate(ref, build);
   }
 }
 
 @ProviderFor(VisitaCompetidorListFormDropdownController)
-const visitaCompetidorListFormDropdownControllerProvider =
+final visitaCompetidorListFormDropdownControllerProvider =
     VisitaCompetidorListFormDropdownControllerProvider._();
 
 final class VisitaCompetidorListFormDropdownControllerProvider
@@ -74,7 +73,7 @@ final class VisitaCompetidorListFormDropdownControllerProvider
           VisitaCompetidorListFormDropdownController,
           List<VisitaCompetidor>
         > {
-  const VisitaCompetidorListFormDropdownControllerProvider._()
+  VisitaCompetidorListFormDropdownControllerProvider._()
     : super(
         from: null,
         argument: null,
@@ -104,7 +103,6 @@ abstract class _$VisitaCompetidorListFormDropdownController
   @$mustCallSuper
   @override
   void runBuild() {
-    final created = build();
     final ref =
         this.ref
             as $Ref<AsyncValue<List<VisitaCompetidor>>, List<VisitaCompetidor>>;
@@ -119,12 +117,12 @@ abstract class _$VisitaCompetidorListFormDropdownController
               Object?,
               Object?
             >;
-    element.handleValue(ref, created);
+    element.handleCreate(ref, build);
   }
 }
 
 @ProviderFor(VisitaMotivosNoVentaListFormDropdownController)
-const visitaMotivosNoVentaListFormDropdownControllerProvider =
+final visitaMotivosNoVentaListFormDropdownControllerProvider =
     VisitaMotivosNoVentaListFormDropdownControllerProvider._();
 
 final class VisitaMotivosNoVentaListFormDropdownControllerProvider
@@ -133,7 +131,7 @@ final class VisitaMotivosNoVentaListFormDropdownControllerProvider
           VisitaMotivosNoVentaListFormDropdownController,
           List<VisitaMotivoNoVenta>
         > {
-  const VisitaMotivosNoVentaListFormDropdownControllerProvider._()
+  VisitaMotivosNoVentaListFormDropdownControllerProvider._()
     : super(
         from: null,
         argument: null,
@@ -163,7 +161,6 @@ abstract class _$VisitaMotivosNoVentaListFormDropdownController
   @$mustCallSuper
   @override
   void runBuild() {
-    final created = build();
     final ref =
         this.ref
             as $Ref<
@@ -181,6 +178,6 @@ abstract class _$VisitaMotivosNoVentaListFormDropdownController
               Object?,
               Object?
             >;
-    element.handleValue(ref, created);
+    element.handleCreate(ref, build);
   }
 }

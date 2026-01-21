@@ -10,7 +10,7 @@ part of 'cliente_direccion_seleccionar_pais_search_controller.dart';
 // ignore_for_file: type=lint, type=warning
 
 @ProviderFor(ClienteDireccionSeleccionarPaisSearchQueryParamsController)
-const clienteDireccionSeleccionarPaisSearchQueryParamsControllerProvider =
+final clienteDireccionSeleccionarPaisSearchQueryParamsControllerProvider =
     ClienteDireccionSeleccionarPaisSearchQueryParamsControllerProvider._();
 
 final class ClienteDireccionSeleccionarPaisSearchQueryParamsControllerProvider
@@ -19,7 +19,7 @@ final class ClienteDireccionSeleccionarPaisSearchQueryParamsControllerProvider
           ClienteDireccionSeleccionarPaisSearchQueryParamsController,
           String
         > {
-  const ClienteDireccionSeleccionarPaisSearchQueryParamsControllerProvider._()
+  ClienteDireccionSeleccionarPaisSearchQueryParamsControllerProvider._()
     : super(
         from: null,
         argument: null,
@@ -58,7 +58,6 @@ abstract class _$ClienteDireccionSeleccionarPaisSearchQueryParamsController
   @$mustCallSuper
   @override
   void runBuild() {
-    final created = build();
     final ref = this.ref as $Ref<String, String>;
     final element =
         ref.element
@@ -68,12 +67,12 @@ abstract class _$ClienteDireccionSeleccionarPaisSearchQueryParamsController
               Object?,
               Object?
             >;
-    element.handleValue(ref, created);
+    element.handleCreate(ref, build);
   }
 }
 
 @ProviderFor(ClienteDireccionSeleccionarPaisPageController)
-const clienteDireccionSeleccionarPaisPageControllerProvider =
+final clienteDireccionSeleccionarPaisPageControllerProvider =
     ClienteDireccionSeleccionarPaisPageControllerProvider._();
 
 final class ClienteDireccionSeleccionarPaisPageControllerProvider
@@ -82,7 +81,7 @@ final class ClienteDireccionSeleccionarPaisPageControllerProvider
           ClienteDireccionSeleccionarPaisPageController,
           List<Pais>
         > {
-  const ClienteDireccionSeleccionarPaisPageControllerProvider._()
+  ClienteDireccionSeleccionarPaisPageControllerProvider._()
     : super(
         from: null,
         argument: null,
@@ -112,7 +111,6 @@ abstract class _$ClienteDireccionSeleccionarPaisPageController
   @$mustCallSuper
   @override
   void runBuild() {
-    final created = build();
     final ref = this.ref as $Ref<AsyncValue<List<Pais>>, List<Pais>>;
     final element =
         ref.element
@@ -122,6 +120,6 @@ abstract class _$ClienteDireccionSeleccionarPaisPageController
               Object?,
               Object?
             >;
-    element.handleValue(ref, created);
+    element.handleCreate(ref, build);
   }
 }

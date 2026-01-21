@@ -10,12 +10,12 @@ part of 'expedicion_search_controller.dart';
 // ignore_for_file: type=lint, type=warning
 
 @ProviderFor(ExpedicionSearchQueryParamsController)
-const expedicionSearchQueryParamsControllerProvider =
+final expedicionSearchQueryParamsControllerProvider =
     ExpedicionSearchQueryParamsControllerProvider._();
 
 final class ExpedicionSearchQueryParamsControllerProvider
     extends $NotifierProvider<ExpedicionSearchQueryParamsController, String> {
-  const ExpedicionSearchQueryParamsControllerProvider._()
+  ExpedicionSearchQueryParamsControllerProvider._()
     : super(
         from: null,
         argument: null,
@@ -53,7 +53,6 @@ abstract class _$ExpedicionSearchQueryParamsController
   @$mustCallSuper
   @override
   void runBuild() {
-    final created = build();
     final ref = this.ref as $Ref<String, String>;
     final element =
         ref.element
@@ -63,12 +62,12 @@ abstract class _$ExpedicionSearchQueryParamsController
               Object?,
               Object?
             >;
-    element.handleValue(ref, created);
+    element.handleCreate(ref, build);
   }
 }
 
 @ProviderFor(ExpedicionIndexScreenController)
-const expedicionIndexScreenControllerProvider =
+final expedicionIndexScreenControllerProvider =
     ExpedicionIndexScreenControllerProvider._();
 
 final class ExpedicionIndexScreenControllerProvider
@@ -77,7 +76,7 @@ final class ExpedicionIndexScreenControllerProvider
           ExpedicionIndexScreenController,
           List<Expedicion>
         > {
-  const ExpedicionIndexScreenControllerProvider._()
+  ExpedicionIndexScreenControllerProvider._()
     : super(
         from: null,
         argument: null,
@@ -105,7 +104,6 @@ abstract class _$ExpedicionIndexScreenController
   @$mustCallSuper
   @override
   void runBuild() {
-    final created = build();
     final ref =
         this.ref as $Ref<AsyncValue<List<Expedicion>>, List<Expedicion>>;
     final element =
@@ -116,6 +114,6 @@ abstract class _$ExpedicionIndexScreenController
               Object?,
               Object?
             >;
-    element.handleValue(ref, created);
+    element.handleCreate(ref, build);
   }
 }

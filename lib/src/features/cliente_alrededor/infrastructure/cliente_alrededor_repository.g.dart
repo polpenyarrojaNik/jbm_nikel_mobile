@@ -10,7 +10,7 @@ part of 'cliente_alrededor_repository.dart';
 // ignore_for_file: type=lint, type=warning
 
 @ProviderFor(clienteAlrededorRepository)
-const clienteAlrededorRepositoryProvider =
+final clienteAlrededorRepositoryProvider =
     ClienteAlrededorRepositoryProvider._();
 
 final class ClienteAlrededorRepositoryProvider
@@ -21,7 +21,7 @@ final class ClienteAlrededorRepositoryProvider
           ClienteAlrededorRepository
         >
     with $Provider<ClienteAlrededorRepository> {
-  const ClienteAlrededorRepositoryProvider._()
+  ClienteAlrededorRepositoryProvider._()
     : super(
         from: null,
         argument: null,
@@ -59,11 +59,11 @@ String _$clienteAlrededorRepositoryHash() =>
     r'cbcf68956280116d36e2042f0036528fd9c276b1';
 
 @ProviderFor(UbicacionActual)
-const ubicacionActualProvider = UbicacionActualProvider._();
+final ubicacionActualProvider = UbicacionActualProvider._();
 
 final class UbicacionActualProvider
     extends $AsyncNotifierProvider<UbicacionActual, Position> {
-  const UbicacionActualProvider._()
+  UbicacionActualProvider._()
     : super(
         from: null,
         argument: null,
@@ -89,7 +89,6 @@ abstract class _$UbicacionActual extends $AsyncNotifier<Position> {
   @$mustCallSuper
   @override
   void runBuild() {
-    final created = build();
     final ref = this.ref as $Ref<AsyncValue<Position>, Position>;
     final element =
         ref.element
@@ -99,12 +98,12 @@ abstract class _$UbicacionActual extends $AsyncNotifier<Position> {
               Object?,
               Object?
             >;
-    element.handleValue(ref, created);
+    element.handleCreate(ref, build);
   }
 }
 
 @ProviderFor(ClientesDireccionesAlrededorListStream)
-const clientesDireccionesAlrededorListStreamProvider =
+final clientesDireccionesAlrededorListStreamProvider =
     ClientesDireccionesAlrededorListStreamFamily._();
 
 final class ClientesDireccionesAlrededorListStreamProvider
@@ -113,7 +112,7 @@ final class ClientesDireccionesAlrededorListStreamProvider
           ClientesDireccionesAlrededorListStream,
           List<ClienteAlrededor>
         > {
-  const ClientesDireccionesAlrededorListStreamProvider._({
+  ClientesDireccionesAlrededorListStreamProvider._({
     required ClientesDireccionesAlrededorListStreamFamily super.from,
     required GetClienteAlrededorArg super.argument,
   }) : super(
@@ -164,7 +163,7 @@ final class ClientesDireccionesAlrededorListStreamFamily extends $Family
           FutureOr<List<ClienteAlrededor>>,
           GetClienteAlrededorArg
         > {
-  const ClientesDireccionesAlrededorListStreamFamily._()
+  ClientesDireccionesAlrededorListStreamFamily._()
     : super(
         retry: null,
         name: r'clientesDireccionesAlrededorListStreamProvider',
@@ -195,7 +194,6 @@ abstract class _$ClientesDireccionesAlrededorListStream
   @$mustCallSuper
   @override
   void runBuild() {
-    final created = build(_$args);
     final ref =
         this.ref
             as $Ref<AsyncValue<List<ClienteAlrededor>>, List<ClienteAlrededor>>;
@@ -210,6 +208,6 @@ abstract class _$ClientesDireccionesAlrededorListStream
               Object?,
               Object?
             >;
-    element.handleValue(ref, created);
+    element.handleCreate(ref, () => build(_$args));
   }
 }
