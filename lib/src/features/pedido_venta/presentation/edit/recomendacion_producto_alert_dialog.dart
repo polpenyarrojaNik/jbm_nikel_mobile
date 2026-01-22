@@ -30,8 +30,9 @@ class RecomendacionProductoAlertDialogController
     final recomendacionProductoList = await ref
         .read(pedidoVentaRepositoryProvider)
         .getRecomendacionProductoList(
-          pedidoLocalParam.pedidoAppId!,
+          pedidoLocalParam.pedidoAppId,
           clienteId,
+          pedidoLocalParam.isEdit,
           pedidoVentaLineaList,
         );
 

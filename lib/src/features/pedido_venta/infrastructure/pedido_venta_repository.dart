@@ -1328,18 +1328,18 @@ class PedidoVentaRepository {
   }
 
   Future<List<RecomendacionProducto>> getRecomendacionProductoList(
-    String pedidoVentaAppId,
+    String? pedidoVentaAppId,
     String clienteId,
+    bool isEdit,
     List<PedidoVentaLinea> pedidoVentaLineaList,
   ) async {
     try {
-      final recomendacionProductoList = <RecomendacionProducto>[];
-
       final remoteRecomendacionProductoDTOList =
           await _remoteRecomendacionProductoDtoList(
             pedidoVentaAppId,
             clienteId,
             pedidoVentaLineaList,
+            isEdit,
             usuario.test,
           );
 
@@ -1347,25 +1347,15 @@ class PedidoVentaRepository {
         (a, b) => b.probabilidad.compareTo(a.probabilidad),
       );
 
-      for (
-        var i = 0;
-        i <
-            (remoteRecomendacionProductoDTOList.length > 3
-                ? 3
-                : remoteRecomendacionProductoDTOList.length);
-        i++
-      ) {
-        if (remoteRecomendacionProductoDTOList[i].probabilidad >= 0.8) {
-          final articuloDescripcion = await getArticuloDescripcionById(
-            articuloId: remoteRecomendacionProductoDTOList[i].articuloId,
-          );
-          recomendacionProductoList.add(
-            remoteRecomendacionProductoDTOList[i].toDomain(articuloDescripcion),
-          );
-        }
-      }
-
-      return recomendacionProductoList;
+      return await Future.wait(
+        remoteRecomendacionProductoDTOList
+            .map(
+              (e) async => e.toDomain(
+                await getArticuloDescripcionById(articuloId: e.articuloId),
+              ),
+            )
+            .toList(),
+      );
     } catch (e, stackTrace) {
       if (e is AppException) {
         return e.maybeWhen(
@@ -1381,14 +1371,16 @@ class PedidoVentaRepository {
   }
 
   Future<List<RecomendacionProductoDTO>> _remoteRecomendacionProductoDtoList(
-    String pedidoVentaAppId,
+    String? pedidoVentaAppId,
     String clienteId,
     List<PedidoVentaLinea> pedidoVentaLineaList,
+    bool isEdit,
     bool test,
   ) async {
     try {
       final recomendacionProductoBody = {
         'PEDIDO_VENTA_APP_ID': pedidoVentaAppId,
+        'GUARDAR_LOG_SN': isEdit ? 'S' : 'N',
         'ARTICULOS': pedidoVentaLineaList
             .map((e) => {'ARTICULO_ID': e.articuloId, 'CANTIDAD': e.cantidad})
             .toList(),

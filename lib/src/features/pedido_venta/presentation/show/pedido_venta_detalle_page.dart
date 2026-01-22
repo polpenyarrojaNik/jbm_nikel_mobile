@@ -354,19 +354,20 @@ class AlbaranesContainer extends ConsumerWidget {
                       ),
                       if (albaranes[i].trackId != null ||
                           albaranes[i].agencia != null)
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        Wrap(
                           children: [
                             if (albaranes[i].trackId != null)
                               SelectableText(
                                 'Tracking: ${albaranes[i].trackId!}',
                                 style: Theme.of(context).textTheme.bodySmall,
                               ),
-                            if (albaranes[i].agencia != null)
+                            if (albaranes[i].agencia != null) ...[
+                              const Gap(8),
                               Text(
                                 albaranes[i].agencia!,
                                 style: Theme.of(context).textTheme.bodySmall,
                               ),
+                            ],
                           ],
                         ),
                     ],
