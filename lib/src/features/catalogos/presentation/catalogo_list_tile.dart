@@ -181,7 +181,9 @@ class CatalogoListTile extends ConsumerWidget {
 
   void downloadAttachment(WidgetRef ref) {
     unawaited(
-      runMutationSafe(ref, saveCatalogoAbiertoMutation, (tsx) async {
+      runMutationSafe(ref, saveCatalogoAbiertoMutation(catalogo.catalogoId), (
+        tsx,
+      ) async {
         final catalogoOrdenControllerStateNotifier = tsx.get(
           catalogoOrdenControllerProvider.notifier,
         );
@@ -193,7 +195,9 @@ class CatalogoListTile extends ConsumerWidget {
     );
 
     unawaited(
-      runMutationSafe(ref, catalogoAdjuntoMutation, (tsx) async {
+      runMutationSafe(ref, catalogoAdjuntoMutation(catalogo.catalogoId), (
+        tsx,
+      ) async {
         final catalogoIndexScreenControllerStateNotifier = tsx.get(
           catalogoIndexScreenControllerProvider.notifier,
         );
@@ -215,7 +219,9 @@ class CatalogoListTile extends ConsumerWidget {
     required WidgetRef ref,
     required Catalogo catalogo,
   }) {
-    runMutationSafe(ref, setCatalogoFavoriteMutation, (tsx) async {
+    runMutationSafe(ref, setCatalogoFavoriteMutation(catalogo.catalogoId), (
+      tsx,
+    ) async {
       final catalogoFavoritoControllerStateNotifier = tsx.get(
         catalogoFavoritoControllerProvider(catalogo.catalogoId).notifier,
       );
@@ -231,7 +237,9 @@ class CatalogoListTile extends ConsumerWidget {
     required WidgetRef ref,
     required Catalogo catalogo,
   }) {
-    runMutationSafe(ref, removeCatalogoFavoriteMutation, (tsx) async {
+    runMutationSafe(ref, removeCatalogoFavoriteMutation(catalogo.catalogoId), (
+      tsx,
+    ) async {
       final catalogoFavoritoControllerStateNotifier = tsx.get(
         catalogoFavoritoControllerProvider(catalogo.catalogoId).notifier,
       );

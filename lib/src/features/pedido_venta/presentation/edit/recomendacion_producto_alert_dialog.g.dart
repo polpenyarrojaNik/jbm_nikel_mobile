@@ -59,7 +59,7 @@ final class RecomendacionProductoAlertDialogControllerProvider
 }
 
 String _$recomendacionProductoAlertDialogControllerHash() =>
-    r'51326e9cff25c7a792c8f42ac4f01af32b5f3f0b';
+    r'9289cb3903256c8f53524950e2454f3e4d19418d';
 
 final class RecomendacionProductoAlertDialogControllerFamily extends $Family
     with
