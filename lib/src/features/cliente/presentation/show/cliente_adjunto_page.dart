@@ -151,7 +151,9 @@ class ClienteAdjuntoTile extends ConsumerWidget {
     required String nombreAdjunto,
     required WidgetRef ref,
   }) {
-    runMutationSafe(ref, clienteAdjuntoMutation, (tsx) async {
+    runMutationSafe(ref, clienteAdjuntoMutation(clienteAdjunto.nombreAdjunto), (
+      tsx,
+    ) async {
       final clienteAdjuntoListByIdStateNotifier = tsx.get(
         clienteAdjuntoListByIdProvider(clienteId).notifier,
       );

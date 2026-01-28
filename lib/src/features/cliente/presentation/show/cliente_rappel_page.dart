@@ -177,19 +177,23 @@ class ClienteRappelTile extends ConsumerWidget {
     required String nombreArchivo,
     required WidgetRef ref,
   }) {
-    runMutationSafe(ref, clienteRappelDocumentMutation, (tsx) async {
-      final clienteRappelListByIdStateNotifier = tsx.get(
-        clienteRappelListByIdProvider(clienteRappel.clienteId).notifier,
-      );
+    runMutationSafe(
+      ref,
+      clienteRappelDocumentMutation(clienteRappel.rappelId),
+      (tsx) async {
+        final clienteRappelListByIdStateNotifier = tsx.get(
+          clienteRappelListByIdProvider(clienteRappel.clienteId).notifier,
+        );
 
-      final result = await clienteRappelListByIdStateNotifier
-          .getRappelDocumentFile(
-            adjuntoParam: AdjuntoParam(
-              id: rappelId,
-              nombreArchivo: nombreArchivo,
-            ),
-          );
-      return result;
-    });
+        final result = await clienteRappelListByIdStateNotifier
+            .getRappelDocumentFile(
+              adjuntoParam: AdjuntoParam(
+                id: rappelId,
+                nombreArchivo: nombreArchivo,
+              ),
+            );
+        return result;
+      },
+    );
   }
 }
