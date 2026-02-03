@@ -700,11 +700,13 @@ class SyncService {
       final transaction = Sentry.startTransaction(
         'Enviar pedido no enviado',
         'sync',
-        customSamplingContext: {
-          'pedidoVentaAppId': pedidosNoEnviados[i].pedidoVentaAppId,
-          'isBorrador': pedidosNoEnviados[i].borrador,
-        },
       );
+      transaction.setData(
+        'pedidoVentaAppId',
+        pedidosNoEnviados[i].pedidoVentaAppId,
+      );
+      transaction.setData('isBorrador', pedidosNoEnviados[i].borrador);
+
       try {
         final pedidoLocalEnviado = await _remoteCreatePedidos(
           pedidosNoEnviados[i],

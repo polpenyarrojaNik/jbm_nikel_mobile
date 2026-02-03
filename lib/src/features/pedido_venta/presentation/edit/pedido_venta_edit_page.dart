@@ -98,16 +98,14 @@ class _PedidoVentaEditPageState extends ConsumerState<PedidoVentaEditPage> {
       createPedidoFromClienteId: widget.createPedidoFromClienteId,
       addLineaDesdeArticulo: widget.addLineaDesdeArticulo,
     );
-    transaction = Sentry.startTransaction(
-      'Crear/Edtiar pedido',
-      'task',
-      customSamplingContext: {
-        'pedidoAppId': widget.pedidoAppId,
-        'pedidoId': widget.pedidoId,
-        'isBorrador': widget.pedidoAppId != null && widget.isEdit ? 'S' : 'N',
-        'isEdit': widget.isEdit ? 'S' : 'N',
-      },
+    transaction = Sentry.startTransaction('Crear/Editar pedido', 'task');
+    transaction.setData('pedidoVentaAppId', widget.pedidoAppId);
+    transaction.setData('pedidoId', widget.pedidoId);
+    transaction.setData(
+      'isBorrador',
+      widget.pedidoAppId != null && widget.isLocal && widget.isEdit ? 'S' : 'N',
     );
+    transaction.setData('isEdit', widget.isEdit ? 'S' : 'N');
   }
 
   @override
