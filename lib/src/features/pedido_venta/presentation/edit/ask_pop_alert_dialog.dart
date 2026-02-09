@@ -1,4 +1,3 @@
-import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../../generated/l10n.dart';
@@ -6,25 +5,25 @@ import '../../../../../generated/l10n.dart';
 class AskPopAlertDialog extends StatelessWidget {
   const AskPopAlertDialog({
     super.key,
-    required this.contextEditPage,
+    required this.contextDialog,
     required this.text,
   });
-  final BuildContext contextEditPage;
+  final BuildContext contextDialog;
   final String text;
 
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      title: Text(S.of(context).askPopAlertDialog_atencion),
+      title: Text(S.of(contextDialog).askPopAlertDialog_atencion),
       content: Text(text),
       actions: [
         TextButton(
-          onPressed: () => context.router.maybePop(false),
-          child: Text(S.of(context).askPopAlertDialog_cancelar),
+          onPressed: () => Navigator.pop(contextDialog, false),
+          child: Text(S.of(contextDialog).askPopAlertDialog_cancelar),
         ),
         TextButton(
-          onPressed: () => context.router.maybePop(true),
-          child: Text(S.of(context).askPopAlertDialog_aceptar),
+          onPressed: () => Navigator.pop(contextDialog, true),
+          child: Text(S.of(contextDialog).askPopAlertDialog_aceptar),
         ),
       ],
     );

@@ -441,7 +441,10 @@ class PedidoVentaEditForm extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     // ignore: deprecated_member_use
     return WillPopScope(
-      onWillPop: () async => _askIfUserPop(context, transaction),
+      onWillPop: () async {
+        final shouldExit = await _askIfUserPop(context, transaction);
+        return shouldExit;
+      },
 
       child: IconStepper(
         currentStep: currentStep,
@@ -460,10 +463,11 @@ class PedidoVentaEditForm extends ConsumerWidget {
   ) async {
     final result =
         await showDialog(
+              barrierDismissible: false,
               context: context,
               builder: (ctx) {
                 return AskPopAlertDialog(
-                  contextEditPage: context,
+                  contextDialog: ctx,
                   text: S
                       .of(ctx)
                       .pedido_edit_askPopAlertDialog_seguroQuieresSales,
