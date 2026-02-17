@@ -1308,7 +1308,7 @@ class PedidoVentaRepository {
 
           rows.add(row);
         }
-        final res = const ListToCsvConverter(fieldDelimiter: ';').convert(rows);
+        final res = CsvEncoder(fieldDelimiter: ';').convert(rows);
         log.d(res);
 
         final csvFile = await File(

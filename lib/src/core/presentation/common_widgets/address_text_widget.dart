@@ -36,7 +36,7 @@ class AddressTextWidget extends StatelessWidget {
         Text(
           formatProvinciaAndPais(province: provincia, pais: pais),
           maxLines: 1,
-          overflow: TextOverflow.ellipsis,
+          overflow: .ellipsis,
           style: Theme.of(context).textTheme.bodyMedium!.copyWith(
             color: Theme.of(context).textTheme.bodySmall!.color,
           ),
