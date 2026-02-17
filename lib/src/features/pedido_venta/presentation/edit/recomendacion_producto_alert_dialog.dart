@@ -170,7 +170,7 @@ class _RecomendacionProductoListDialogState
       actions: [
         TextButton(
           onPressed: () {
-            Navigator.of(widget.dialogContext).pop();
+            Navigator.pop(widget.dialogContext);
           },
 
           style: ButtonStyle(
@@ -220,7 +220,7 @@ class _RecomendacionProductoListDialogState
       setState(() {
         currentRecomendacionesProductoList.remove(recomendacionProducto);
         if (currentRecomendacionesProductoList.isEmpty) {
-          Navigator.of(widget.dialogContext).pop();
+          Navigator.pop(widget.dialogContext);
         }
       });
     }

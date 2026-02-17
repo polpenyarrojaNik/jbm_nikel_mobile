@@ -161,6 +161,7 @@ class PedidoVentaDetallePage extends ConsumerWidget {
 
     await showDialog(
       context: context,
+      barrierDismissible: false,
       builder: (ctx) => RecomendacionProductoAlertDialog(
         pedidoLocalParam: pedidoLocalParam,
         clienteId: pedidoVenta.clienteId!,
