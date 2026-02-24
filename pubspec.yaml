@@ -121,6 +121,11 @@ flutter_intl:
 sentry:
   upload_debug_symbols: true
   upload_source_maps: true
+  upload_sources: true
   project: flutter-jbm-nikel-mobile
   org: nikel-consultores-sl
+  auth_token: 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
+  wait_for_processing: true
+  log_level: error # possible values: trace, debug, info, warn, error
+  commits: auto
   ignore_missing: true
