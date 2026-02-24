@@ -4,6 +4,7 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:form_builder_validators/localization/l10n.dart';
+import 'package:sentry_flutter/sentry_flutter.dart';
 
 import '../../../generated/l10n.dart';
 import '../../features/usuario/infrastructure/usuario_dio_interceptor.dart';
@@ -48,7 +49,10 @@ class App extends ConsumerWidget {
       darkTheme: AppTheme.theme(Brightness.dark),
       themeMode: ThemeMode.system,
       routerConfig: appRouter.config(
-        navigatorObservers: () => [AutoRouteLogObserver()],
+        navigatorObservers: () => [
+          AutoRouteLogObserver(),
+          SentryNavigatorObserver(),
+        ],
       ),
     );
   }

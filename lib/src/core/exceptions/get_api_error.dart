@@ -10,8 +10,8 @@ Error getApiError(Object e, StackTrace stackTrace, ErrorLogger logger) {
   if (e is DioException) {
     if (e.isNoConnectionError) {
       throw const AppException.notConnection();
-    } else if (e.response != null && e.response!.data != null) {
-      final responseData = e.response!.data;
+    } else if (e.response != null && e.response?.data != null) {
+      final responseData = e.response?.data;
       try {
         final responseJson = _parseResponseData(responseData);
         final responseErrorJson = _extractErrorMessage(responseJson);
@@ -26,7 +26,7 @@ Error getApiError(Object e, StackTrace stackTrace, ErrorLogger logger) {
         }
         Error.throwWithStackTrace(
           AppException.restApiFailure(
-            e.response!.statusCode ?? 500,
+            e.response?.statusCode ?? 500,
             e.response?.statusMessage ?? '',
           ),
           stackTrace,

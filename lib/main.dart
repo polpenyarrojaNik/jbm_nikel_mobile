@@ -30,6 +30,7 @@ void main() async {
               _sentryBeforeSendOptions(event);
           options.tracesSampleRate = 1;
           options.enableAutoPerformanceTracing = false;
+          options.attachStacktrace = true;
         });
       }
 
@@ -41,6 +42,12 @@ void main() async {
           Sentry.captureException(
             detalles.exception,
             stackTrace: detalles.stack,
+            withScope: (scope) {
+              scope.setContexts('flutter_error', {
+                'library': detalles.library,
+                'context': detalles.context?.toDescription(),
+              });
+            },
           );
         }
       };

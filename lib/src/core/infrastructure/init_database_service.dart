@@ -109,7 +109,7 @@ class InitDatabaseService {
   Future<void> _getRemoteInitialDatabase({required Directory directory}) async {
     try {
       final response = await dio.downloadUri(
-        (usuario!.test)
+        (usuario?.test ?? false)
             ? remoteInitDatabaseTestEndpoint
             : remoteInitDatabaseEndpoint,
         '${directory.path}/jbm_sqlite.zip',
