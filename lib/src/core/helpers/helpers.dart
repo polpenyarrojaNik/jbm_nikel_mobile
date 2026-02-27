@@ -199,3 +199,7 @@ Future<void> runMutationSafe<T>(
     await mutation.run(ref, action);
   } catch (_) {}
 }
+
+bool isDarkMode(BuildContext context) {
+  return Theme.of(context).brightness == Brightness.dark;
+}

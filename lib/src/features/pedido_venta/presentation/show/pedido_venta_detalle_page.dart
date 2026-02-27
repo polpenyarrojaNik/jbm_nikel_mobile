@@ -71,10 +71,11 @@ class PedidoVentaDetallePage extends ConsumerWidget {
                       _abrirRecomanedadorProductios(context, ref, pedidoVenta),
                   icon: Image.asset(
                     semanticLabel: 'openAiLogo',
-                    'assets/app_icons/OpenAI-black-monoblossom.png',
+                    isDarkMode(context)
+                        ? 'assets/app_icons/OpenAI-white-monoblossom.png'
+                        : 'assets/app_icons/OpenAI-black-monoblossom.png',
                     width: 24,
                     height: 24,
-                    color: Theme.of(context).colorScheme.onPrimaryFixed,
                   ),
                 ),
               if (!pedidoVenta.isLocal)
