@@ -404,10 +404,11 @@ class _CambiosPendientesDeTramitarListView extends ConsumerWidget {
   ) {
     showDialog(
       context: context,
-      builder: (context) => AlertDialog(
+      barrierDismissible: false,
+      builder: (ctx) => AlertDialog(
         title: Text(
           S
-              .of(context)
+              .of(ctx)
               .cliente_show_clienteContacto_clienteContactoListPage_cambiosPendientesDeTramitar,
         ),
         content: SizedBox(
@@ -421,6 +422,12 @@ class _CambiosPendientesDeTramitarListView extends ConsumerWidget {
             itemCount: clienteContactoImpList.length,
           ),
         ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(ctx),
+            child: Text(S.of(ctx).close),
+          ),
+        ],
       ),
     );
   }

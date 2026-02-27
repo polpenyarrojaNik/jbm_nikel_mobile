@@ -452,5 +452,6 @@
   "replaceExistingLines": "Remplacer les lignes existantes",
   "replaceExistingLinesMessage": "Cela remplacera les lignes existantes de la commande. Êtes-vous sûr de vouloir continuer?",
   "uploadExcel": "Télécharger Excel",
-  "totalRows": "Lignes totales"
+  "totalRows": "Lignes totales",
+  "close": "Fermer"
 }

@@ -521,6 +521,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "cliente_show_clienteVisitas_titulo": MessageLookupByLibrary.simpleMessage(
       "Visitas",
     ),
+    "close": MessageLookupByLibrary.simpleMessage("Fechar"),
     "commonWidgets_appDrawer_ajustes": MessageLookupByLibrary.simpleMessage(
       "Ajustes",
     ),

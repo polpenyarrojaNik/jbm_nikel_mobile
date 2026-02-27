@@ -87,6 +87,12 @@ class DefaultSuggestionAddressDialog extends ConsumerWidget {
           ),
         ],
       ),
+      actions: [
+        TextButton(
+          onPressed: () => Navigator.pop(dialogContext, false),
+          child: Text(S.of(context).cancel),
+        ),
+      ],
     );
   }
 }

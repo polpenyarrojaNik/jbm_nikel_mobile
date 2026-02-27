@@ -19,7 +19,8 @@ Future<bool?> showAlertDialog({
   if (kIsWeb || !Platform.isIOS) {
     return showDialog(
       context: context,
-      barrierDismissible: cancelActionText != null,
+
+      barrierDismissible: false,
       builder: (context) => AlertDialog(
         title: Text(title),
         content: content != null ? Text(content) : null,
@@ -40,7 +41,7 @@ Future<bool?> showAlertDialog({
   }
   return showCupertinoDialog(
     context: context,
-    barrierDismissible: cancelActionText != null,
+    barrierDismissible: false,
     builder: (context) => CupertinoAlertDialog(
       title: Text(title),
       content: content != null ? Text(content) : null,
@@ -67,6 +68,7 @@ Future<void> showExceptionAlertDialog({
   required dynamic exception,
 }) => showAlertDialog(
   context: context,
+
   title: title,
   content: exception.toString(),
   defaultActionText: 'OK',
@@ -80,6 +82,7 @@ Future<bool?> showDialogSaveVisitAnyway(
   String contentText,
 ) => showAlertDialog(
   context: context,
+
   title: S.of(context).commonWidgets_visitDialogue_saving,
   content: contentText,
   defaultActionText: S.of(context).yes,

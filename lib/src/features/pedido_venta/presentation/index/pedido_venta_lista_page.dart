@@ -136,8 +136,11 @@ class _PedidoVentaListPageState extends ConsumerState<PedidoVentaListPage> {
     final filterEstado =
         await showDialog(
               context: context,
-              builder: (context) =>
-                  PedidoVentaFilterDialog(filteredStatus: filteredStatus),
+              barrierDismissible: false,
+              builder: (ctx) => PedidoVentaFilterDialog(
+                filteredStatus: filteredStatus,
+                dialogContext: ctx,
+              ),
             )
             as PedidoVentaEstado?;
 
@@ -258,9 +261,14 @@ class PedidosListViewWidget extends StatelessWidget {
 }
 
 class PedidoVentaFilterDialog extends ConsumerStatefulWidget {
-  const PedidoVentaFilterDialog({super.key, required this.filteredStatus});
+  const PedidoVentaFilterDialog({
+    super.key,
+    required this.filteredStatus,
+    required this.dialogContext,
+  });
 
   final PedidoVentaEstado? filteredStatus;
+  final BuildContext dialogContext;
 
   @override
   ConsumerState<PedidoVentaFilterDialog> createState() =>
@@ -300,7 +308,7 @@ class _PedidoVentaFilterDialogState
       actions: [
         MaterialButton(
           color: Theme.of(context).colorScheme.secondary,
-          onPressed: () => resetFilter(context),
+          onPressed: () => resetFilter(widget.dialogContext),
           child: Text(
             S.of(context).pedido_index_reset,
             style: const TextStyle(color: Colors.white),
@@ -308,7 +316,7 @@ class _PedidoVentaFilterDialogState
         ),
         MaterialButton(
           color: Theme.of(context).colorScheme.secondary,
-          onPressed: () => applyFilters(context),
+          onPressed: () => applyFilters(widget.dialogContext),
           child: Text(
             S.of(context).pedido_index_filtrar,
             style: const TextStyle(color: Colors.white),

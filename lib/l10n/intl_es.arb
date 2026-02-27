@@ -453,5 +453,6 @@
   "replaceExistingLines": "Reemplazar líneas existentes",
   "replaceExistingLinesMessage": "Esto reemplazará las líneas existentes del pedido. ¿Seguro que quieres continuar?",
   "uploadExcel": "Cargar Excel",
-  "totalRows": "Filas totales"
+  "totalRows": "Filas totales",
+  "close": "Cerrar"
 }

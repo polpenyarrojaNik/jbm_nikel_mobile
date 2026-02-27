@@ -535,6 +535,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "cliente_show_clienteVisitas_titulo": MessageLookupByLibrary.simpleMessage(
       "Visites",
     ),
+    "close": MessageLookupByLibrary.simpleMessage("Fermer"),
     "commonWidgets_appDrawer_ajustes": MessageLookupByLibrary.simpleMessage(
       "Paramètres",
     ),

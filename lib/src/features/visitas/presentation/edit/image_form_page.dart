@@ -370,8 +370,11 @@ class _DraggableFormState extends ConsumerState<DraggableForm> {
     final recognizedTexType =
         await showDialog(
               context: context,
-              builder: (context) =>
-                  SelectTextTypeDialog(selectedText: selectedText),
+              barrierDismissible: false,
+              builder: (ctx) => SelectTextTypeDialog(
+                selectedText: selectedText,
+                dialogContext: ctx,
+              ),
             )
             as RecognizedTextType?;
 
@@ -473,8 +476,11 @@ class TargetTextField extends StatelessWidget {
     final recognizedTexType =
         await showDialog(
               context: context,
-              builder: (context) =>
-                  SelectTextTypeDialog(selectedText: selectedText!),
+              barrierDismissible: false,
+              builder: (ctx) => SelectTextTypeDialog(
+                selectedText: selectedText!,
+                dialogContext: ctx,
+              ),
             )
             as RecognizedTextType?;
 
@@ -552,8 +558,11 @@ class TargetListView extends StatelessWidget {
     final recognizedTexType =
         await showDialog(
               context: context,
-              builder: (context) =>
-                  SelectTextTypeDialog(selectedText: selectedText),
+              barrierDismissible: false,
+              builder: (ctx) => SelectTextTypeDialog(
+                selectedText: selectedText,
+                dialogContext: ctx,
+              ),
             )
             as RecognizedTextType?;
 
@@ -579,9 +588,14 @@ class ImageFileWidget extends StatelessWidget {
 }
 
 class SelectTextTypeDialog extends StatelessWidget {
-  SelectTextTypeDialog({super.key, required this.selectedText});
+  SelectTextTypeDialog({
+    super.key,
+    required this.selectedText,
+    required this.dialogContext,
+  });
 
   final String selectedText;
+  final BuildContext dialogContext;
 
   final List<RecognizedTextType> regognizedTypeList = [
     RecognizedTextType.name,
@@ -615,6 +629,12 @@ class SelectTextTypeDialog extends StatelessWidget {
           itemCount: regognizedTypeList.length,
         ),
       ),
+      actions: [
+        TextButton(
+          onPressed: () => Navigator.of(dialogContext).pop(),
+          child: Text(S.of(context).cancel),
+        ),
+      ],
     );
   }
 

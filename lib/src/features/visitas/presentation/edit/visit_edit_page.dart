@@ -690,9 +690,11 @@ class _VisitaFormState extends ConsumerState<_VisitaForm> {
   ) async {
     final newCompetenciaFilterList = await showDialog<List<VisitaCompetidor>?>(
       context: context,
-      builder: (context) => VisitaCompetidorListFilterDialog(
+      barrierDismissible: false,
+      builder: (ctx) => VisitaCompetidorListFilterDialog(
         visitCompetitorList: competenciaList,
         currentVisitCompetitorList: competenciaFilterList,
+        dialogContext: ctx,
       ),
     );
 
@@ -1120,12 +1122,13 @@ class VisitaCompetidorListFilterDialog extends ConsumerStatefulWidget {
     super.key,
     required this.visitCompetitorList,
     required this.currentVisitCompetitorList,
+    required this.dialogContext,
   });
 
   final List<VisitaCompetidor> currentVisitCompetitorList;
   final List<VisitaCompetidor> visitCompetitorList;
-
   final formKey = GlobalKey<FormBuilderState>();
+  final BuildContext dialogContext;
 
   @override
   ConsumerState<VisitaCompetidorListFilterDialog> createState() =>
@@ -1220,11 +1223,12 @@ class _UserAuxListFilterDialogState
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             TextButton(
-              onPressed: () => Navigator.pop(context),
+              onPressed: () => Navigator.pop(widget.dialogContext),
               child: Text(S.of(context).cancel),
             ),
             TextButton(
-              onPressed: () => Navigator.pop(context, competitorFilterList),
+              onPressed: () =>
+                  Navigator.pop(widget.dialogContext, competitorFilterList),
               child: Text(S.of(context).accept),
             ),
           ],

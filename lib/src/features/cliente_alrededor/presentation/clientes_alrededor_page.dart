@@ -332,8 +332,11 @@ class _GoogleMapsContainerState extends ConsumerState<GoogleMapsContainer> {
           zIndexInt: 1,
           onTap: () => showDialog(
             context: context,
-            builder: (ctx) =>
-                _ClienteAlrededorDialog(clienteAlrededor: cliente),
+            barrierDismissible: false,
+            builder: (ctx) => _ClienteAlrededorDialog(
+              clienteAlrededor: cliente,
+              dialogContext: ctx,
+            ),
           ),
         ),
       );
@@ -519,9 +522,13 @@ class _CheckboxPotenciales extends StatelessWidget {
 }
 
 class _ClienteAlrededorDialog extends StatelessWidget {
-  const _ClienteAlrededorDialog({required this.clienteAlrededor});
+  const _ClienteAlrededorDialog({
+    required this.clienteAlrededor,
+    required this.dialogContext,
+  });
 
   final ClienteAlrededor clienteAlrededor;
+  final BuildContext dialogContext;
 
   @override
   Widget build(BuildContext context) {
@@ -595,6 +602,12 @@ class _ClienteAlrededorDialog extends StatelessWidget {
           ),
         ],
       ),
+      actions: [
+        TextButton(
+          onPressed: () => Navigator.pop(dialogContext),
+          child: Text(S.of(context).close),
+        ),
+      ],
     );
   }
 }

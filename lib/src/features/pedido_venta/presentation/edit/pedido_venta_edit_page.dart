@@ -550,6 +550,7 @@ class PedidoVentaEditForm extends ConsumerWidget {
           recomendacionesProductoList == null) {
         await showDialog(
           context: context,
+          barrierDismissible: false,
           builder: (ctx) => RecomendacionProductoAlertDialog(
             pedidoLocalParam: pedidoLocalParam,
             clienteId: cliente!.id,
@@ -1278,6 +1279,7 @@ class StepArticuloListContent extends ConsumerWidget {
     final reemplazarLineas = (pedidoVentaLineaList.isNotEmpty)
         ? await showDialog<bool?>(
             context: context,
+            barrierDismissible: false,
             builder: (ctx) => ReemplazarLineasAlertDialog(dialogContext: ctx),
           )
         : true;

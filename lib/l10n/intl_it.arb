@@ -452,5 +452,6 @@
   "replaceExistingLines": "Sostituisci le righe esistenti",
   "replaceExistingLinesMessage": "Questo sostituirà le righe esistenti nell'ordine. Sei sicuro di voler continuare?",
   "uploadExcel": "Carica Excel",
-  "totalRows": "Righe totali"
+  "totalRows": "Righe totali",
+  "close": "Chiudi"
 }

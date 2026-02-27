@@ -233,13 +233,15 @@ class _ReemplazarArchivoBaseDeDatosLocalButton extends ConsumerWidget {
   void replaceLocalDatabase(BuildContext context, WidgetRef ref) async {
     final replaceDatabase = await showDialog<bool?>(
       context: context,
-      builder: (context) => const ReplaceDatabaseAlertDialog(),
+      barrierDismissible: false,
+      builder: (ctx) => ReplaceDatabaseAlertDialog(dialogContext: ctx),
     );
 
     if (replaceDatabase != null && replaceDatabase && context.mounted) {
       final correctKey = await showDialog<bool?>(
         context: context,
-        builder: (context) => ReplaceDatabaseKeyAlertDialog(),
+        barrierDismissible: false,
+        builder: (ctx) => ReplaceDatabaseKeyAlertDialog(dialogContext: ctx),
       );
 
       if (correctKey != null && correctKey) {
@@ -259,7 +261,9 @@ class _ReemplazarArchivoBaseDeDatosLocalButton extends ConsumerWidget {
 }
 
 class ReplaceDatabaseAlertDialog extends StatelessWidget {
-  const ReplaceDatabaseAlertDialog({super.key});
+  const ReplaceDatabaseAlertDialog({super.key, required this.dialogContext});
+
+  final BuildContext dialogContext;
 
   @override
   Widget build(BuildContext context) {
@@ -267,12 +271,12 @@ class ReplaceDatabaseAlertDialog extends StatelessWidget {
       content: Text(S.of(context).estasSeguroQueQuieresReemplazarLaBaseDeDatos),
       actions: [
         ElevatedButton(
-          onPressed: () => Navigator.of(context).pop(false),
+          onPressed: () => Navigator.of(dialogContext).pop(false),
           child: Text(S.of(context).cancelar),
         ),
         const SizedBox(width: 5),
         ElevatedButton(
-          onPressed: () => Navigator.of(context).pop(true),
+          onPressed: () => Navigator.of(dialogContext).pop(true),
           child: Text(S.of(context).aceptar),
         ),
       ],
@@ -281,9 +285,11 @@ class ReplaceDatabaseAlertDialog extends StatelessWidget {
 }
 
 class ReplaceDatabaseKeyAlertDialog extends StatelessWidget {
-  ReplaceDatabaseKeyAlertDialog({super.key});
+  ReplaceDatabaseKeyAlertDialog({super.key, required this.dialogContext});
 
   final GlobalKey<FormBuilderState> _formKey = GlobalKey<FormBuilderState>();
+
+  final BuildContext dialogContext;
 
   @override
   Widget build(BuildContext context) {
@@ -305,14 +311,14 @@ class ReplaceDatabaseKeyAlertDialog extends StatelessWidget {
       ),
       actions: [
         ElevatedButton(
-          onPressed: () => Navigator.of(context).pop(false),
+          onPressed: () => Navigator.of(dialogContext).pop(false),
           child: Text(S.of(context).cancelar),
         ),
         const SizedBox(width: 5),
         ElevatedButton(
           onPressed: () {
             if (_formKey.currentState!.saveAndValidate()) {
-              Navigator.of(context).pop(true);
+              Navigator.of(dialogContext).pop(true);
             }
           },
           child: Text(S.of(context).aceptar),

@@ -195,8 +195,10 @@ class AddArticleToBorradorButton extends ConsumerWidget {
   ) async {
     final pedidoVentaBorrador = await showDialog<PedidoVenta?>(
       context: context,
-      builder: (context) => SelectPedidoVentaBorradorAlertDialog(
+      barrierDismissible: false,
+      builder: (ctx) => SelectPedidoVentaBorradorAlertDialog(
         pedidoVentaBorradoresList: pedidoVentaBorradoresList,
+        dialogContext: ctx,
       ),
     );
 
@@ -247,9 +249,11 @@ class SelectPedidoVentaBorradorAlertDialog extends StatelessWidget {
   const SelectPedidoVentaBorradorAlertDialog({
     super.key,
     required this.pedidoVentaBorradoresList,
+    required this.dialogContext,
   });
 
   final List<PedidoVenta> pedidoVentaBorradoresList;
+  final BuildContext dialogContext;
 
   @override
   Widget build(BuildContext context) {
@@ -266,7 +270,7 @@ class SelectPedidoVentaBorradorAlertDialog extends StatelessWidget {
               itemBuilder: (context, i) => PedidoVentaListaTile(
                 pedidoVenta: pedidoVentaBorradoresList[i],
                 onTap: () =>
-                    Navigator.pop(context, pedidoVentaBorradoresList[i]),
+                    Navigator.pop(dialogContext, pedidoVentaBorradoresList[i]),
               ),
               separatorBuilder: (context, index) => const Gap(4),
               itemCount: pedidoVentaBorradoresList.length,
@@ -274,6 +278,12 @@ class SelectPedidoVentaBorradorAlertDialog extends StatelessWidget {
           ],
         ),
       ),
+      actions: [
+        TextButton(
+          onPressed: () => Navigator.pop(dialogContext),
+          child: Text(S.of(context).cancel),
+        ),
+      ],
     );
   }
 }
@@ -719,15 +729,21 @@ class _ArticuloInfoContainer extends ConsumerWidget {
   }) {
     showDialog(
       context: context,
-      builder: (context) => _ArticleDescriptionDialog(articulo: articulo),
+      barrierDismissible: false,
+      builder: (ctx) =>
+          _ArticleDescriptionDialog(articulo: articulo, dialogContext: ctx),
     );
   }
 }
 
 class _ArticleDescriptionDialog extends StatelessWidget {
-  const _ArticleDescriptionDialog({required this.articulo});
+  const _ArticleDescriptionDialog({
+    required this.articulo,
+    required this.dialogContext,
+  });
 
   final Articulo articulo;
+  final BuildContext dialogContext;
 
   @override
   Widget build(BuildContext context) {
@@ -829,14 +845,24 @@ class _ArticleDescriptionDialog extends StatelessWidget {
           ],
         ),
       ),
+      actions: [
+        TextButton(
+          onPressed: () => Navigator.pop(dialogContext),
+          child: Text(S.of(context).close),
+        ),
+      ],
     );
   }
 }
 
 class _ArticluloResumenDialog extends StatelessWidget {
-  const _ArticluloResumenDialog({required this.articulo});
+  const _ArticluloResumenDialog({
+    required this.articulo,
+    required this.dialogContext,
+  });
 
   final Articulo articulo;
+  final BuildContext dialogContext;
 
   @override
   Widget build(BuildContext context) {
@@ -939,6 +965,12 @@ class _ArticluloResumenDialog extends StatelessWidget {
           ],
         ),
       ),
+      actions: [
+        TextButton(
+          onPressed: () => Navigator.pop(dialogContext),
+          child: Text(S.of(context).close),
+        ),
+      ],
     );
   }
 }
@@ -1317,7 +1349,9 @@ class _SummaryTextWidgetState extends ConsumerState<SummaryTextWidget> {
   }) {
     showDialog(
       context: context,
-      builder: (context) => _ArticluloResumenDialog(articulo: articulo),
+      barrierDismissible: false,
+      builder: (ctx) =>
+          _ArticluloResumenDialog(articulo: articulo, dialogContext: ctx),
     );
   }
 }
