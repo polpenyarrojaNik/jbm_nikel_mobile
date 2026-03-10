@@ -126,24 +126,18 @@ class CatalogoListTile extends ConsumerWidget {
                             stateSetFavorite.isPending ||
                                 stateRemoveFavorite.isPending
                             ? const ProgressIndicatorWidget()
-                            : favorite
-                            ? IconButton(
-                                onPressed: () => removeCatlalogoFavorite(
-                                  ref: ref,
-                                  catalogo: catalogo,
-                                ),
-                                icon: Icon(
-                                  Icons.star,
-                                  color: Theme.of(context).colorScheme.primary,
-                                ),
-                              )
                             : IconButton(
-                                onPressed: () => setCatlalogoToFavorite(
-                                  ref: ref,
-                                  catalogo: catalogo,
-                                ),
+                                onPressed: () => favorite
+                                    ? removeCatlalogoFavorite(
+                                        ref: ref,
+                                        catalogo: catalogo,
+                                      )
+                                    : setCatlalogoToFavorite(
+                                        ref: ref,
+                                        catalogo: catalogo,
+                                      ),
                                 icon: Icon(
-                                  Icons.star_outline,
+                                  favorite ? Icons.star : Icons.star_outline,
                                   color: Theme.of(context).colorScheme.primary,
                                 ),
                               ),

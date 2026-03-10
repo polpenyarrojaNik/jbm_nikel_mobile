@@ -271,10 +271,7 @@ class _IconStepperState extends State<IconStepper>
   @override
   void initState() {
     super.initState();
-    _keys = List<GlobalKey>.generate(
-      widget.steps.length,
-      (int i) => GlobalKey(),
-    );
+    _keys = List.generate(widget.steps.length, (int i) => GlobalKey());
 
     for (var i = 0; i < widget.steps.length; i += 1) {
       _oldStates[i] = widget.steps[i].state;

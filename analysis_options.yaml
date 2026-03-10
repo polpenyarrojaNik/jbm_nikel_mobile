@@ -66,3 +66,7 @@ dart_code_metrics:
     - avoid-unsafe-collection-methods: false
     - prefer-trailing-comma: false
     - prefer-correct-callback-field-name: false
+    - prefer-shorthands-with-enums: false
+    - prefer-shorthands-with-constructors: false
+    - prefer-shorthands-with-static-fields: false
+    - prefer-returning-shorthands: false

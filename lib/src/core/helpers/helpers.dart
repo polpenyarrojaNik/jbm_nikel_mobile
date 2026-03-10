@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/experimental/mutation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -41,8 +40,6 @@ IconData getIconFromFileName(String? fileName) {
     return MdiIcons.filePowerpointOutline;
   } else if (extension.contains('mp4')) {
     return MdiIcons.fileVideoOutline;
-  } else if (extension.contains('csv')) {
-    return FontAwesomeIcons.fileCsv;
   } else if (extension.contains('jpg') ||
       extension.contains('png') ||
       extension.contains('jpeg')) {
@@ -180,8 +177,6 @@ IconData getIconFromExtension(String? extension) {
     return MdiIcons.filePowerpointOutline;
   } else if (extension.contains('mp4')) {
     return MdiIcons.fileVideoOutline;
-  } else if (extension.contains('csv')) {
-    return FontAwesomeIcons.fileCsv;
   } else if (extension.contains('jpg') ||
       extension.contains('png') ||
       extension.contains('jpeg')) {

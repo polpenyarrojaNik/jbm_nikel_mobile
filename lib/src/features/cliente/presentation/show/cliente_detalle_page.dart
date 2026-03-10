@@ -243,7 +243,7 @@ class _ClienteHeader extends StatelessWidget {
   }
 
   void navigateToGoogleMapsAddress(
-    String? nombre,
+    String nombre,
     double? latitude,
     double? longitude,
   ) async {
@@ -253,7 +253,7 @@ class _ClienteHeader extends StatelessWidget {
         await MapLauncher.showMarker(
           mapType: MapType.google,
           coords: Coords(latitude, longitude),
-          title: nombre ?? '',
+          title: nombre,
         );
       } else {
         final isAvailable = await MapLauncher.isMapAvailable(MapType.apple);
@@ -261,7 +261,7 @@ class _ClienteHeader extends StatelessWidget {
           await MapLauncher.showMarker(
             mapType: MapType.apple,
             coords: Coords(latitude, longitude),
-            title: nombre ?? '',
+            title: nombre,
           );
         }
       }

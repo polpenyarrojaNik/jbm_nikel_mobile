@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:intl/intl.dart';
+import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:money2/money2.dart';
 
 import '../../../generated/l10n.dart';
@@ -102,29 +102,27 @@ String formatProvinciaAndPais({String? province, Pais? pais}) {
 IconData getIconoFromExtension(String path) {
   final extension = path.split('.').last;
   if (extension == 'pdf') {
-    return FontAwesomeIcons.filePdf;
+    return MdiIcons.filePdfBox;
   } else if (extension == 'doc' || extension == 'docx' || extension == 'odt') {
-    return FontAwesomeIcons.fileWord;
+    return MdiIcons.fileWord;
   } else if (extension == 'xls') {
-    return FontAwesomeIcons.fileExcel;
+    return MdiIcons.fileExcel;
   } else if (extension == 'mp3' || extension == 'wav') {
-    return FontAwesomeIcons.fileAudio;
+    return MdiIcons.fileMusic;
   } else if (extension == 'zip' || extension == 'rar') {
-    return FontAwesomeIcons.fileZipper;
+    return MdiIcons.folderZip;
   } else if (extension == 'ppt') {
-    return FontAwesomeIcons.filePowerpoint;
+    return MdiIcons.filePowerpoint;
   } else if (extension == 'mp4') {
-    return FontAwesomeIcons.fileVideo;
-  } else if (extension == 'csv') {
-    return FontAwesomeIcons.fileCsv;
+    return MdiIcons.fileVideo;
   } else if (extension == 'png' ||
       extension == 'jpg' ||
       extension == 'jpeg' ||
       extension == 'heic' ||
       extension == 'HEIC') {
-    return FontAwesomeIcons.image;
+    return MdiIcons.fileImage;
   }
-  return FontAwesomeIcons.file;
+  return MdiIcons.file;
 }
 
 String getNombreArchivo(String path) {

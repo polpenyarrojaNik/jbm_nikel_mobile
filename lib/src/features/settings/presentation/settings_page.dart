@@ -203,7 +203,6 @@ class _ReemplazarArchivoBaseDeDatosLocalButton extends ConsumerWidget {
         if (state.value) {
           ref.invalidate(syncNotifierProvider);
           ref.invalidate(appLocalDatabaseProvider);
-          // ref.invalidate(appRemoteDatabaseProvider);
           ref.invalidate(syncServiceProvider);
           ref.read(usuarioNotifierProvider.notifier).signOut();
         }
