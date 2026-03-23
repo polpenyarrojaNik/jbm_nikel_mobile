@@ -697,6 +697,9 @@ class SyncService {
       final pedidoVentaLineaDTOList = await getLocalPedidoVentaLineaList(
         pedidoVentaAppId: pedidosNoEnviados[i].pedidoVentaAppId,
       );
+      if (pedidoVentaLineaDTOList.isEmpty) {
+        continue;
+      }
       final transaction = Sentry.startTransaction(
         'Enviar pedido no enviado',
         'sync',

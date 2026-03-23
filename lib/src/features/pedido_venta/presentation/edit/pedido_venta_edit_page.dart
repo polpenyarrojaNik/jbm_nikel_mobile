@@ -346,6 +346,11 @@ class _PedidoVentaEditPageState extends ConsumerState<PedidoVentaEditPage> {
     DateTime? ofertaFechaHasta,
     required List<RecomendacionProducto>? recomendacionesProductoList,
   }) async {
+    if (pedidoVentaLineaList.isEmpty) {
+      showToast(S.of(context).pedido_edit_pedidoEdit_anadeAlgunaLinea, context);
+      return;
+    }
+
     await transaction.startChild('UI:BotónGuardarBorrador').finish();
 
     await ref
@@ -498,7 +503,7 @@ class PedidoVentaEditForm extends ConsumerWidget {
         remarksValidate(context, ref);
         break;
       case 4:
-        saveSalesOrder(ref);
+        saveSalesOrder(context, ref);
 
         break;
       default:
@@ -699,7 +704,12 @@ class PedidoVentaEditForm extends ConsumerWidget {
     ];
   }
 
-  void saveSalesOrder(WidgetRef ref) async {
+  void saveSalesOrder(BuildContext context, WidgetRef ref) async {
+    if (pedidoVentaLineaList.isEmpty) {
+      showToast(S.of(context).pedido_edit_pedidoEdit_anadeAlgunaLinea, context);
+      return;
+    }
+
     await transaction.startChild('UI:BotónGuardarPedido').finish();
 
     await ref
