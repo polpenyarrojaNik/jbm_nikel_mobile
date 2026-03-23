@@ -160,6 +160,8 @@ class PedidoVentaDetallePage extends ConsumerWidget {
       getPedidoVentaLineaListProvider(pedidoLocalParam).future,
     );
 
+    if (!context.mounted) return;
+
     await showDialog(
       context: context,
       barrierDismissible: false,

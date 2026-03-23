@@ -209,7 +209,7 @@ class AddArticleToBorradorButton extends ConsumerWidget {
         tratada: false,
       );
 
-      runMutationSafe(ref, getPedidoVentaLineaMutation, (tsx) async {
+      await runMutationSafe(ref, getPedidoVentaLineaMutation, (tsx) async {
         final articuloDetalleAddArticuloABorradorButtonControllerNotifier = tsx
             .get(
               articuloDetalleAddArticuloABorradorButtonControllerProvider

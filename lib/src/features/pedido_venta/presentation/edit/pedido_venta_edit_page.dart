@@ -347,7 +347,12 @@ class _PedidoVentaEditPageState extends ConsumerState<PedidoVentaEditPage> {
     required List<RecomendacionProducto>? recomendacionesProductoList,
   }) async {
     if (pedidoVentaLineaList.isEmpty) {
-      showToast(S.of(context).pedido_edit_pedidoEdit_anadeAlgunaLinea, context);
+      unawaited(
+        showToast(
+          S.of(context).pedido_edit_pedidoEdit_anadeAlgunaLinea,
+          context,
+        ),
+      );
       return;
     }
 
@@ -552,7 +557,8 @@ class PedidoVentaEditForm extends ConsumerWidget {
           .getSignedInUsuario();
       if ((usuario?.aiSN ?? false) &&
           !pedidoLocalParam.isEdit &&
-          recomendacionesProductoList == null) {
+          recomendacionesProductoList == null &&
+          context.mounted) {
         await showDialog(
           context: context,
           barrierDismissible: false,
@@ -706,7 +712,12 @@ class PedidoVentaEditForm extends ConsumerWidget {
 
   void saveSalesOrder(BuildContext context, WidgetRef ref) async {
     if (pedidoVentaLineaList.isEmpty) {
-      showToast(S.of(context).pedido_edit_pedidoEdit_anadeAlgunaLinea, context);
+      unawaited(
+        showToast(
+          S.of(context).pedido_edit_pedidoEdit_anadeAlgunaLinea,
+          context,
+        ),
+      );
       return;
     }
 

@@ -18,6 +18,7 @@ import '../../features/pedido_venta/infrastructure/pedido_venta_local_dto.dart';
 import '../../features/visitas/infrastructure/visita_competencia_local_dto.dart';
 import '../../features/visitas/infrastructure/visita_local_dto.dart';
 import '../domain/isolate_request.dart';
+import '../helpers/database_helper.dart';
 import 'log_dto.dart';
 import 'sync_datetime_dto.dart';
 
@@ -96,105 +97,233 @@ class LocalAppDatabase extends _$LocalAppDatabase {
           await m.deleteTable(pedidoVentaLineaLocalTable.tableName);
           await m.createTable(pedidoVentaLineaLocalTable);
         } else if (to == 7) {
-          await m.alterTable(
-            TableMigration(
-              pedidoVentaLineaLocalTable,
-              newColumns: [pedidoVentaLineaLocalTable.pedidoLineaIdComponente],
-            ),
+          await addColumnSafely(
+            m.database,
+            pedidoVentaLineaLocalTable.actualTableName,
+            'PEDIDO_LINEA_ID_COMPONENTE',
+            'TEXT',
           );
         }
         if (from < 8) {
-          await m.alterTable(
-            TableMigration(
-              visitaLocalTable,
-              newColumns: [
-                visitaLocalTable.ofertaRealizada,
-                visitaLocalTable.interesCliente,
-                visitaLocalTable.pedidoRealizado,
-                visitaLocalTable.codigoMotivoNoInteres,
-                visitaLocalTable.codigoMotivoNoPedido,
-                visitaLocalTable.codigoSector,
-                visitaLocalTable.codigoCompetencia,
-                visitaLocalTable.almacenPropio,
-                visitaLocalTable.capacidad,
-                visitaLocalTable.frecuenciaPedido,
-              ],
-              columnTransformer: {
-                visitaLocalTable.ofertaRealizada: const Constant('N'),
-                visitaLocalTable.interesCliente: const Constant('N'),
-                visitaLocalTable.pedidoRealizado: const Constant('N'),
-                visitaLocalTable.almacenPropio: const Constant('N'),
-                visitaLocalTable.capacidad: const Constant('M'),
-                visitaLocalTable.frecuenciaPedido: const Constant('M'),
-              },
-            ),
+          await addColumnSafely(
+            m.database,
+            visitaLocalTable.actualTableName,
+            'OFERTA_REALIZADA',
+            'TEXT',
+            defaultSqlLiteral: "'N'",
+          );
+          await addColumnSafely(
+            m.database,
+            visitaLocalTable.actualTableName,
+            'INTERES_CLIENTE',
+            'TEXT',
+            defaultSqlLiteral: "'N'",
+          );
+          await addColumnSafely(
+            m.database,
+            visitaLocalTable.actualTableName,
+            'PEDIDO_REALIZADO',
+            'TEXT',
+            defaultSqlLiteral: "'N'",
+          );
+          await addColumnSafely(
+            m.database,
+            visitaLocalTable.actualTableName,
+            'CODIGO_MOTIVO_NO_INTERES',
+            'NUMERIC',
+          );
+          await addColumnSafely(
+            m.database,
+            visitaLocalTable.actualTableName,
+            'CODIGO_MOTIVO_NO_PEDIDO',
+            'NUMERIC',
+          );
+          await addColumnSafely(
+            m.database,
+            visitaLocalTable.actualTableName,
+            'CODIGO_SECTOR',
+            'NUMERIC',
+          );
+          await addColumnSafely(
+            m.database,
+            visitaLocalTable.actualTableName,
+            'CODIGO_COMPETENCIA',
+            'NUMERIC',
+          );
+          await addColumnSafely(
+            m.database,
+            visitaLocalTable.actualTableName,
+            'ALMACEN_PROPIO',
+            'TEXT',
+            defaultSqlLiteral: "'N'",
+          );
+
+          await addColumnSafely(
+            m.database,
+            visitaLocalTable.actualTableName,
+            'CAPACIDAD',
+            'TEXT',
+            defaultSqlLiteral: "'M'",
+          );
+          await addColumnSafely(
+            m.database,
+            visitaLocalTable.actualTableName,
+            'FRECUENCIA_PEDIDO',
+            'TEXT',
+            defaultSqlLiteral: "'M'",
           );
         }
         if (from < 9) {
-          await m.alterTable(
-            TableMigration(
-              visitaLocalTable,
-              newColumns: [
-                visitaLocalTable.ofertaRealizada,
-                visitaLocalTable.interesCliente,
-                visitaLocalTable.pedidoRealizado,
-                visitaLocalTable.codigoMotivoNoInteres,
-                visitaLocalTable.codigoMotivoNoPedido,
-                visitaLocalTable.codigoSector,
-                visitaLocalTable.codigoCompetencia,
-                visitaLocalTable.almacenPropio,
-                visitaLocalTable.capacidad,
-                visitaLocalTable.frecuenciaPedido,
-              ],
-              columnTransformer: {
-                visitaLocalTable.ofertaRealizada: const Constant('N'),
-                visitaLocalTable.interesCliente: const Constant('N'),
-                visitaLocalTable.pedidoRealizado: const Constant('N'),
-                visitaLocalTable.almacenPropio: const Constant('N'),
-                visitaLocalTable.capacidad: const Constant('M'),
-                visitaLocalTable.frecuenciaPedido: const Constant('M'),
-              },
-            ),
+          await addColumnSafely(
+            m.database,
+            visitaLocalTable.actualTableName,
+            'OFERTA_REALIZADA',
+            'TEXT',
+            defaultSqlLiteral: "'N'",
           );
-          await m.alterTable(
-            TableMigration(
-              clienteDireccionImpTable,
-              newColumns: [clienteDireccionImpTable.telefono],
-            ),
+          await addColumnSafely(
+            m.database,
+            visitaLocalTable.actualTableName,
+            'INTERES_CLIENTE',
+            'TEXT',
+            defaultSqlLiteral: "'N'",
+          );
+          await addColumnSafely(
+            m.database,
+            visitaLocalTable.actualTableName,
+            'PEDIDO_REALIZADO',
+            'TEXT',
+            defaultSqlLiteral: "'N'",
+          );
+          await addColumnSafely(
+            m.database,
+            visitaLocalTable.actualTableName,
+            'CODIGO_MOTIVO_NO_INTERES',
+            'NUMERIC',
+          );
+          await addColumnSafely(
+            m.database,
+            visitaLocalTable.actualTableName,
+            'CODIGO_MOTIVO_NO_PEDIDO',
+            'NUMERIC',
+          );
+          await addColumnSafely(
+            m.database,
+            visitaLocalTable.actualTableName,
+            'CODIGO_SECTOR',
+            'NUMERIC',
+          );
+          await addColumnSafely(
+            m.database,
+            visitaLocalTable.actualTableName,
+            'CODIGO_COMPETENCIA',
+            'NUMERIC',
+          );
+          await addColumnSafely(
+            m.database,
+            visitaLocalTable.actualTableName,
+            'ALMACEN_PROPIO',
+            'TEXT',
+            defaultSqlLiteral: "'N'",
+          );
+
+          await addColumnSafely(
+            m.database,
+            visitaLocalTable.actualTableName,
+            'CAPACIDAD',
+            'TEXT',
+            defaultSqlLiteral: "'M'",
+          );
+          await addColumnSafely(
+            m.database,
+            visitaLocalTable.actualTableName,
+            'FRECUENCIA_PEDIDO',
+            'TEXT',
+            defaultSqlLiteral: "'M'",
+          );
+          await addColumnSafely(
+            m.database,
+            clienteDireccionImpTable.actualTableName,
+            'TELEFONO',
+            'TEXT',
           );
         }
         if (from < 11) {
-          await m.alterTable(
-            TableMigration(
-              visitaLocalTable,
-              newColumns: [
-                visitaLocalTable.ofertaRealizada,
-                visitaLocalTable.interesCliente,
-                visitaLocalTable.pedidoRealizado,
-                visitaLocalTable.codigoMotivoNoInteres,
-                visitaLocalTable.codigoMotivoNoPedido,
-                visitaLocalTable.codigoSector,
-                visitaLocalTable.codigoCompetencia,
-                visitaLocalTable.almacenPropio,
-                visitaLocalTable.capacidad,
-                visitaLocalTable.frecuenciaPedido,
-              ],
-              columnTransformer: {
-                visitaLocalTable.ofertaRealizada: const Constant('N'),
-                visitaLocalTable.interesCliente: const Constant('N'),
-                visitaLocalTable.pedidoRealizado: const Constant('N'),
-                visitaLocalTable.almacenPropio: const Constant('N'),
-                visitaLocalTable.capacidad: const Constant('M'),
-                visitaLocalTable.frecuenciaPedido: const Constant('M'),
-              },
-            ),
+          await addColumnSafely(
+            m.database,
+            visitaLocalTable.actualTableName,
+            'OFERTA_REALIZADA',
+            'TEXT',
+            defaultSqlLiteral: "'N'",
           );
-          await m.alterTable(
-            TableMigration(
-              clienteDireccionImpTable,
-              newColumns: [clienteDireccionImpTable.telefono],
-            ),
+          await addColumnSafely(
+            m.database,
+            visitaLocalTable.actualTableName,
+            'INTERES_CLIENTE',
+            'TEXT',
+            defaultSqlLiteral: "'N'",
           );
+          await addColumnSafely(
+            m.database,
+            visitaLocalTable.actualTableName,
+            'PEDIDO_REALIZADO',
+            'TEXT',
+            defaultSqlLiteral: "'N'",
+          );
+          await addColumnSafely(
+            m.database,
+            visitaLocalTable.actualTableName,
+            'CODIGO_MOTIVO_NO_INTERES',
+            'NUMERIC',
+          );
+          await addColumnSafely(
+            m.database,
+            visitaLocalTable.actualTableName,
+            'CODIGO_MOTIVO_NO_PEDIDO',
+            'NUMERIC',
+          );
+          await addColumnSafely(
+            m.database,
+            visitaLocalTable.actualTableName,
+            'CODIGO_SECTOR',
+            'NUMERIC',
+          );
+          await addColumnSafely(
+            m.database,
+            visitaLocalTable.actualTableName,
+            'CODIGO_COMPETENCIA',
+            'NUMERIC',
+          );
+          await addColumnSafely(
+            m.database,
+            visitaLocalTable.actualTableName,
+            'ALMACEN_PROPIO',
+            'TEXT',
+            defaultSqlLiteral: "'N'",
+          );
+
+          await addColumnSafely(
+            m.database,
+            visitaLocalTable.actualTableName,
+            'CAPACIDAD',
+            'TEXT',
+            defaultSqlLiteral: "'M'",
+          );
+          await addColumnSafely(
+            m.database,
+            visitaLocalTable.actualTableName,
+            'FRECUENCIA_PEDIDO',
+            'TEXT',
+            defaultSqlLiteral: "'M'",
+          );
+
+          await addColumnSafely(
+            m.database,
+            clienteDireccionImpTable.actualTableName,
+            'TELEFONO',
+            'TEXT',
+          );
+
           await m.createTable(catalogoOrdenTable);
         }
 
@@ -229,14 +358,12 @@ class LocalAppDatabase extends _$LocalAppDatabase {
         }
 
         if (from < 20) {
-          await m.alterTable(
-            TableMigration(
-              pedidoVentaLineaLocalTable,
-              newColumns: [pedidoVentaLineaLocalTable.aiRecomendado],
-              columnTransformer: {
-                pedidoVentaLineaLocalTable.aiRecomendado: const Constant('N'),
-              },
-            ),
+          await addColumnSafely(
+            m.database,
+            pedidoVentaLineaLocalTable.tableName,
+            pedidoVentaLineaLocalTable.aiRecomendado.name,
+            'TEXT',
+            defaultSqlLiteral: "'N'",
           );
         }
       }),
