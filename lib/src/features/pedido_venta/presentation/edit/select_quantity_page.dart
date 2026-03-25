@@ -326,8 +326,19 @@ class _SelecionarCantidadPageState
     Cliente cliente,
   ) async {
     if (context.mounted &&
-        formKeyCantidad.currentState!.saveAndValidate() &&
-        formKeyArticuloPrecio.currentState!.saveAndValidate()) {
+        (formKeyCantidad.currentState?.saveAndValidate() ?? false) &&
+        (formKeyArticuloPrecio.currentState?.saveAndValidate() ?? false)) {
+      final isValidate = _validateCantidad(
+        formKeyCantidad,
+        articulo.ventaMinimo,
+        articulo.ventaMultiplo,
+        articulo.unidadesSubcaja,
+        articulo.unidadesCaja,
+        articulo.unidadesPalet,
+      );
+
+      if (!isValidate) return;
+
       final importeLinea = ref
           .read(pedidoVentaRepositoryProvider)
           .getTotalLinea(
@@ -435,37 +446,33 @@ class _SelecionarCantidadPageState
     }
   }
 
-  void setArtiucloValue({Articulo? newArticuloValue}) {
-    if (newArticuloValue != null) {
-      setState(() {
-        articulo = newArticuloValue;
-        if (!widget.seleccionarCantidadParam.isUpdatingLinea()) {
-          totalQuantity = newArticuloValue.ventaMinimo;
-          units = newArticuloValue.ventaMinimo;
-          unitsController.text = units.toString();
-          unitsController.selection = TextSelection(
-            baseOffset: 0,
-            extentOffset: unitsController.text.length,
-          );
-        }
-      });
+  void setArtiucloValue({required Articulo newArticuloValue}) {
+    setState(() {
+      articulo = newArticuloValue;
+      if (!widget.seleccionarCantidadParam.isUpdatingLinea()) {
+        totalQuantity = newArticuloValue.ventaMinimo;
+        units = newArticuloValue.ventaMinimo;
+        unitsController.text = units.toString();
+        unitsController.selection = TextSelection(
+          baseOffset: 0,
+          extentOffset: unitsController.text.length,
+        );
+      }
+    });
 
-      ref
-          .read(articuloPrecioProvider.notifier)
-          .getArticuloPrecio(
-            articuloId: articulo!.id,
-            clienteId: widget.seleccionarCantidadParam.clienteId,
-            cantidad: totalQuantity,
-          );
-    }
+    ref
+        .read(articuloPrecioProvider.notifier)
+        .getArticuloPrecio(
+          articuloId: articulo!.id,
+          clienteId: widget.seleccionarCantidadParam.clienteId,
+          cantidad: totalQuantity,
+        );
   }
 
-  void setClienteValue({Cliente? newClienteValue}) {
-    if (newClienteValue != null) {
-      setState(() {
-        cliente = newClienteValue;
-      });
-    }
+  void setClienteValue({required Cliente newClienteValue}) {
+    setState(() {
+      cliente = newClienteValue;
+    });
   }
 
   void setValoresIniciales() {
@@ -515,6 +522,191 @@ class _SelecionarCantidadPageState
           cantidad: totalQuantity,
         );
   }
+
+  bool _validateCantidad(
+    GlobalKey<FormBuilderState> formKey,
+    int ventaMinimo,
+    int ventaMultiplo,
+    int unidadesPorSubcaja,
+    int unidadesPorCaja,
+    int unidadesPorPalet,
+  ) {
+    if (totalQuantity < ventaMinimo) {
+      _validateVentaMinimo(formKey, ventaMinimo);
+      return false;
+    } else if (totalQuantity % ventaMultiplo != 0) {
+      _validateMultiplo(
+        formKey,
+        ventaMultiplo,
+        unidadesPorSubcaja,
+        unidadesPorCaja,
+        unidadesPorPalet,
+      );
+      return false;
+    }
+    return true;
+  }
+
+  void _validateVentaMinimo(
+    GlobalKey<FormBuilderState> formKey,
+    int ventaMinimo,
+  ) {
+    if ((getFormValue<String?>(formKey, 'unidades') != null &&
+            getFormValue<String?>(formKey, 'unidades')!.isNotEmpty &&
+            getFormValue<String?>(formKey, 'unidades') != '0') ||
+        ((getFormValue<String?>(formKey, 'unidades_subcaja') == null ||
+                (getFormValue<String?>(formKey, 'unidades_subcaja') != null &&
+                    getFormValue<String?>(
+                      formKey,
+                      'unidades_subcaja',
+                    )!.isNotEmpty &&
+                    getFormValue<String?>(formKey, 'unidades_subcaja') ==
+                        '0')) &&
+            ((getFormValue<String?>(formKey, 'unidades_caja') == null ||
+                    (getFormValue<String?>(formKey, 'unidades_caja') != null &&
+                        getFormValue<String?>(
+                          formKey,
+                          'unidades_caja',
+                        )!.isNotEmpty &&
+                        getFormValue<String?>(formKey, 'unidades_caja') ==
+                            '0')) &&
+                (getFormValue<String?>(formKey, 'unidades_palet') == null ||
+                    (getFormValue<String?>(formKey, 'unidades_palet') != null &&
+                        getFormValue<String?>(
+                          formKey,
+                          'unidades_palet',
+                        )!.isNotEmpty &&
+                        getFormValue<String?>(formKey, 'unidades_palet') ==
+                            '0'))))) {
+      formKey.currentState?.fields['unidades']?.invalidate(
+        '${S.of(context).pedido_edit_selectQuantity_minimo} $ventaMinimo ${S.of(context).unidad}',
+      );
+      formKey.currentState?.patchValue({'unidades': ventaMinimo.toString()});
+    }
+
+    if (getFormValue<String?>(formKey, 'unidades_subcaja') != null &&
+        getFormValue<String?>(formKey, 'unidades_subcaja')!.isNotEmpty &&
+        getFormValue<String?>(formKey, 'unidades_subcaja') != '0') {
+      formKey.currentState?.fields['unidades_subcaja']?.invalidate(
+        '${S.of(context).pedido_edit_selectQuantity_minimo} $ventaMinimo ${S.of(context).unidad}',
+      );
+    }
+
+    if (getFormValue<String?>(formKey, 'unidades_caja') != null &&
+        getFormValue<String?>(formKey, 'unidades_caja')!.isNotEmpty &&
+        getFormValue<String?>(formKey, 'unidades_caja') != '0') {
+      formKey.currentState?.fields['unidades_caja']?.invalidate(
+        '${S.of(context).pedido_edit_selectQuantity_minimo} $ventaMinimo ${S.of(context).unidad}',
+      );
+    }
+
+    if (getFormValue<String?>(formKey, 'unidades_palet') != null &&
+        getFormValue<String?>(formKey, 'unidades_palet')!.isNotEmpty &&
+        getFormValue<String?>(formKey, 'unidades_palet') != '0') {
+      formKey.currentState?.fields['unidades_palet']?.invalidate(
+        '${S.of(context).pedido_edit_selectQuantity_minimo} $ventaMinimo ${S.of(context).unidad}',
+      );
+    }
+  }
+
+  void _validateMultiplo(
+    GlobalKey<FormBuilderState> formKey,
+    int ventaMultiplo,
+    int unidadesPorSubcaja,
+    int unidadesPorCaja,
+    int unidadesPorPalet,
+  ) {
+    if (getFormValue<String?>(formKey, 'unidades') != null &&
+        getFormValue<String?>(formKey, 'unidades')!.isNotEmpty &&
+        getFormValue<String?>(formKey, 'unidades') != '0') {
+      final unidades = int.tryParse(getFormValue(formKey, 'unidades')) ?? 0;
+
+      if (unidades % ventaMultiplo != 0) {
+        formKey.currentState?.fields['unidades']?.invalidate(
+          '${S.of(context).pedido_edit_selectQuantity_tieneQueSerMultiploDe} $ventaMultiplo',
+        );
+      }
+    }
+
+    if (getFormValue<String?>(formKey, 'unidades_subcaja') != null &&
+        getFormValue<String?>(formKey, 'unidades_subcaja')!.isNotEmpty &&
+        getFormValue<String?>(formKey, 'unidades_subcaja') != '0') {
+      if ((unidadesPorSubcaja) *
+              int.parse(getFormValue(formKey, 'unidades_subcaja')) %
+              ventaMultiplo !=
+          0) {
+        formKey.currentState?.fields['unidades_subcaja']?.invalidate(
+          '${S.of(context).pedido_edit_selectQuantity_tieneQueSerMultiploDe} $ventaMultiplo',
+        );
+      }
+    }
+
+    if (getFormValue<String?>(formKey, 'unidades_caja') != null &&
+        getFormValue<String?>(formKey, 'unidades_caja')!.isNotEmpty &&
+        getFormValue<String?>(formKey, 'unidades_caja') != '0') {
+      if ((unidadesPorCaja) *
+              int.parse(getFormValue(formKey, 'unidades_caja')) %
+              ventaMultiplo !=
+          0) {
+        formKey.currentState?.fields['unidades_caja']?.invalidate(
+          '${S.of(context).pedido_edit_selectQuantity_tieneQueSerMultiploDe} $ventaMultiplo',
+        );
+      }
+    }
+
+    if (getFormValue<String?>(formKey, 'unidades_palet') != null &&
+        getFormValue<String?>(formKey, 'unidades_palet')!.isNotEmpty &&
+        getFormValue<String?>(formKey, 'unidades_palet') != '0') {
+      if ((unidadesPorPalet) *
+              int.parse(getFormValue(formKey, 'unidades_palet')) %
+              ventaMultiplo !=
+          0) {
+        formKey.currentState?.fields['unidades_palet']?.invalidate(
+          '${S.of(context).pedido_edit_selectQuantity_tieneQueSerMultiploDe} $ventaMultiplo',
+        );
+      }
+    }
+  }
+
+  int setMultiploMasCercano(int quantity, int ventaMultiplo) {
+    var nuevaCantidad = 0;
+    for (var i = 0; i < ventaMultiplo; i++) {
+      if ((quantity + i) % ventaMultiplo == 0) {
+        nuevaCantidad = quantity + i;
+      }
+    }
+    return nuevaCantidad;
+  }
+
+  // int setMultiploMasCercanoSubcaja(int ventaMultiplo, int unidadesPorSubcaja) {
+  //   var nuevaCantidad = 0;
+  //   for (var i = ventaMultiplo; i > 0; i--) {
+  //     if ((i * unidadesPorSubcaja) % ventaMultiplo == 0) {
+  //       nuevaCantidad = i;
+  //     }
+  //   }
+  //   return nuevaCantidad;
+  // }
+
+  // int setMultiploMasCercanoCaja(int ventaMultiplo, int unidadesPorCaja) {
+  //   var nuevaCantidad = 0;
+  //   for (var i = ventaMultiplo; i > 0; i--) {
+  //     if ((i * unidadesPorCaja) % ventaMultiplo == 0) {
+  //       nuevaCantidad = i;
+  //     }
+  //   }
+  //   return nuevaCantidad;
+  // }
+
+  // int setMultiploMasCercanoPalet(int ventaMultiplo, int unidadesPorPalet) {
+  //   var nuevaCantidad = 0;
+  //   for (var i = 0; i < ventaMultiplo; i++) {
+  //     if ((unidadesPorPalet + i) % ventaMultiplo == 0) {
+  //       nuevaCantidad = unidadesPorPalet + i;
+  //     }
+  //   }
+  //   return nuevaCantidad;
+  // }
 }
 
 class _ArticuloInfo extends ConsumerWidget {
@@ -748,6 +940,10 @@ class _UnitsFormField extends StatelessWidget {
             labelStyle: Theme.of(
               context,
             ).inputDecorationTheme.labelStyle?.copyWith(fontSize: 9),
+            errorStyle: Theme.of(context).textTheme.bodySmall?.copyWith(
+              fontSize: 9,
+              color: Theme.of(context).colorScheme.error,
+            ),
           ),
           validator: (value) => validateQuantity(context, value),
           onChanged: (value) {
@@ -776,34 +972,9 @@ class _UnitsFormField extends StatelessWidget {
 
   String? validateQuantity(BuildContext context, String? quantityStr) {
     if (quantityStr != null && quantityStr != '') {
-      final quantity = int.parse(quantityStr);
-      if (quantity < ventaMinimo) {
-        setUnitsQuantity(ventaMinimo);
-        return '${S.of(context).pedido_edit_selectQuantity_minimo} $ventaMinimo ${S.of(context).unidad}';
-      } else if (quantity % ventaMultiplo != 0) {
-        final multiploMasCercano = setMultiploMasCercano(
-          quantity,
-          ventaMultiplo,
-        );
-
-        unitsController.text = multiploMasCercano.toString();
-
-        setUnitsQuantity(multiploMasCercano);
-        return '${S.of(context).pedido_edit_selectQuantity_tieneQueSerMultiploDe} $ventaMultiplo';
-      }
       return null;
     }
     return S.of(context).pedido_edit_selectQuantity_noPuedeEstarVacio;
-  }
-
-  int setMultiploMasCercano(int quantity, int ventaMultiplo) {
-    var nuevaCantidad = 0;
-    for (var i = 0; i < ventaMultiplo; i++) {
-      if ((quantity + i) % ventaMultiplo == 0) {
-        nuevaCantidad = quantity + i;
-      }
-    }
-    return nuevaCantidad;
   }
 }
 
@@ -840,6 +1011,10 @@ class _CajaUnitsFormField extends StatelessWidget {
             labelStyle: Theme.of(
               context,
             ).inputDecorationTheme.labelStyle?.copyWith(fontSize: 9),
+            errorStyle: Theme.of(context).textTheme.bodySmall?.copyWith(
+              fontSize: 9,
+              color: Theme.of(context).colorScheme.error,
+            ),
           ),
           textAlign: TextAlign.right,
           validator: (value) => validateQuantityCaja(context, value),
@@ -869,30 +1044,20 @@ class _CajaUnitsFormField extends StatelessWidget {
   }
 
   String? validateQuantityCaja(BuildContext context, String? quantityStr) {
-    if (quantityStr != null && quantityStr != '' && quantityStr != '0') {
-      final quantity = int.parse(quantityStr);
-      if (quantity * unidadesPorCaja < ventaMinimo) {
-        setUnitCajaQuantity(ventaMinimo % unidadesPorCaja);
-        return '${S.of(context).pedido_edit_selectQuantity_minimo} $ventaMinimo ${S.of(context).unidad}';
-      } else if ((quantity * unidadesPorCaja) % ventaMultiplo != 0) {
-        final multiploMasCercano = setMultiploMasCercanoCaja(ventaMultiplo);
-        cajaController.text = multiploMasCercano.toString();
+    // if (quantityStr != null && quantityStr != '' && quantityStr != '0') {
+    //   final quantity = int.parse(quantityStr);
+    //   if (quantity * unidadesPorCaja < ventaMinimo) {
+    //     setUnitCajaQuantity(ventaMinimo % unidadesPorCaja);
+    //     return '${S.of(context).pedido_edit_selectQuantity_minimo} $ventaMinimo ${S.of(context).unidad}';
+    //   } else if ((quantity * unidadesPorCaja) % ventaMultiplo != 0) {
+    //     final multiploMasCercano = setMultiploMasCercanoCaja(ventaMultiplo);
+    //     cajaController.text = multiploMasCercano.toString();
 
-        setUnitCajaQuantity(multiploMasCercano * unidadesPorCaja);
-        return '${S.of(context).pedido_edit_selectQuantity_tieneQueSerMultiploDe} $ventaMultiplo';
-      }
-    }
+    //     setUnitCajaQuantity(multiploMasCercano * unidadesPorCaja);
+    //     return '${S.of(context).pedido_edit_selectQuantity_tieneQueSerMultiploDe} $ventaMultiplo';
+    //   }
+    // }
     return null;
-  }
-
-  int setMultiploMasCercanoCaja(int ventaMultiplo) {
-    var nuevaCantidad = 0;
-    for (var i = ventaMultiplo; i > 0; i--) {
-      if ((i * unidadesPorCaja) % ventaMultiplo == 0) {
-        nuevaCantidad = i;
-      }
-    }
-    return nuevaCantidad;
   }
 }
 
@@ -922,10 +1087,15 @@ class _SubcajaUnitsFormField extends StatelessWidget {
         FormBuilderTextField(
           name: 'unidades_subcaja',
           autofocus: true,
+
           keyboardType: TextInputType.number,
           controller: subcajaController,
           decoration: InputDecoration(
             labelText: S.of(context).pedido_edit_selectQuantity_subcajas,
+            errorStyle: Theme.of(context).textTheme.bodySmall?.copyWith(
+              fontSize: 9,
+              color: Theme.of(context).colorScheme.error,
+            ),
             labelStyle: Theme.of(
               context,
             ).inputDecorationTheme.labelStyle?.copyWith(fontSize: 9),
@@ -959,29 +1129,19 @@ class _SubcajaUnitsFormField extends StatelessWidget {
 
   String? validateQuantitySubcaja(BuildContext context, String? quantityStr) {
     if (quantityStr != null && quantityStr != '' && quantityStr != '0') {
-      final quantity = int.parse(quantityStr);
-      if (quantity * unidadesPorSubcaja < ventaMinimo) {
-        setUnitSubcajaQuantity(ventaMinimo % unidadesPorSubcaja);
-        return '${S.of(context).pedido_edit_selectQuantity_minimo} $ventaMinimo ${S.of(context).unidad}';
-      } else if ((quantity * unidadesPorSubcaja) % ventaMultiplo != 0) {
-        final multiploMasCercano = setMultiploMasCercanoSubcaja(ventaMultiplo);
-        subcajaController.text = multiploMasCercano.toString();
+      // final quantity = int.parse(quantityStr);
+      // if (quantity * unidadesPorSubcaja < ventaMinimo) {
+      //   setUnitSubcajaQuantity(ventaMinimo % unidadesPorSubcaja);
+      //   return '${S.of(context).pedido_edit_selectQuantity_minimo} $ventaMinimo ${S.of(context).unidad}';
+      // } else if ((quantity * unidadesPorSubcaja) % ventaMultiplo != 0) {
+      //   final multiploMasCercano = setMultiploMasCercanoSubcaja(ventaMultiplo);
+      //   subcajaController.text = multiploMasCercano.toString();
 
-        setUnitSubcajaQuantity(multiploMasCercano * unidadesPorSubcaja);
-        return '${S.of(context).pedido_edit_selectQuantity_tieneQueSerMultiploDe} $ventaMultiplo';
-      }
+      //   setUnitSubcajaQuantity(multiploMasCercano * unidadesPorSubcaja);
+      //   return '${S.of(context).pedido_edit_selectQuantity_tieneQueSerMultiploDe} $ventaMultiplo';
+      // }
     }
     return null;
-  }
-
-  int setMultiploMasCercanoSubcaja(int ventaMultiplo) {
-    var nuevaCantidad = 0;
-    for (var i = ventaMultiplo; i > 0; i--) {
-      if ((i * unidadesPorSubcaja) % ventaMultiplo == 0) {
-        nuevaCantidad = i;
-      }
-    }
-    return nuevaCantidad;
   }
 }
 
@@ -1047,34 +1207,26 @@ class _PaletUnitsFormField extends StatelessWidget {
   }
 
   String? validateQuantityPalet(BuildContext context, String? quantityStr) {
-    if (quantityStr != null && quantityStr != '' && quantityStr != '0') {
-      final quantity = int.parse(quantityStr);
-      if (quantity * unidadesPorPalet < ventaMinimo) {
-        setUnitPaletQuantity(ventaMinimo);
-        return '${S.of(context).pedido_edit_selectQuantity_minimo} $ventaMinimo ${S.of(context).unidad}';
-      } else if ((quantity * unidadesPorPalet) % ventaMultiplo != 0) {
-        final multiploMasCercano = setMultiploMasCercanoPalet(
-          quantity,
-          ventaMultiplo,
-        );
-        paletController.text = multiploMasCercano.toString();
+    // if (quantityStr != null && quantityStr != ''
+    // && quantityStr != '0'
+    // ) {
+    //   final quantity = int.parse(quantityStr);
+    //   if (quantity * unidadesPorPalet < ventaMinimo) {
+    //     setUnitPaletQuantity(ventaMinimo);
+    //     return '${S.of(context).pedido_edit_selectQuantity_minimo} $ventaMinimo ${S.of(context).unidad}';
+    //   } else if ((quantity * unidadesPorPalet) % ventaMultiplo != 0) {
+    //     final multiploMasCercano = setMultiploMasCercanoPalet(
+    //       quantity,
+    //       ventaMultiplo,
+    //     );
+    //     paletController.text = multiploMasCercano.toString();
 
-        setUnitPaletQuantity(multiploMasCercano);
+    //     setUnitPaletQuantity(multiploMasCercano);
 
-        return '${S.of(context).pedido_edit_selectQuantity_tieneQueSerMultiploDe} $ventaMultiplo';
-      }
-    }
+    //     return '${S.of(context).pedido_edit_selectQuantity_tieneQueSerMultiploDe} $ventaMultiplo';
+    //   }
+    // }
     return null;
-  }
-
-  int setMultiploMasCercanoPalet(int quantity, int ventaMultiplo) {
-    var nuevaCantidad = 0;
-    for (var i = 0; i < ventaMultiplo; i++) {
-      if ((quantity + i) % ventaMultiplo == 0) {
-        nuevaCantidad = quantity + i;
-      }
-    }
-    return nuevaCantidad;
   }
 }
 
@@ -1231,23 +1383,60 @@ class _ArticuloPrecioContainer extends ConsumerWidget {
   }
 }
 
-class InfoPreciosWidget extends StatelessWidget {
+class InfoPreciosWidget extends StatefulWidget {
   const InfoPreciosWidget({super.key, required this.articuloId});
 
   final String articuloId;
 
   @override
+  State<InfoPreciosWidget> createState() => _InfoPreciosWidgetState();
+}
+
+class _InfoPreciosWidgetState extends State<InfoPreciosWidget> {
+  bool showInfoPrecios = true;
+
+  @override
   Widget build(BuildContext context) {
     return Card(
       child: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Row(
+        padding: const EdgeInsets.fromLTRB(16.0, 16.0, 16.0, 0),
+        child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
-            Expanded(child: GruposNetosListWidget(articuloId: articuloId)),
-            const VerticalDivider(),
-            Expanded(child: PreciosTarifaListWidget(articuloId: articuloId)),
+            if (!showInfoPrecios)
+              Text(
+                S.of(context).pricesAndNetGroups,
+                style: Theme.of(context).textTheme.bodySmall,
+              ),
+
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                if (showInfoPrecios) ...[
+                  Expanded(
+                    child: GruposNetosListWidget(articuloId: widget.articuloId),
+                  ),
+                  const VerticalDivider(),
+                  Expanded(
+                    child: PreciosTarifaListWidget(
+                      articuloId: widget.articuloId,
+                    ),
+                  ),
+                ],
+              ],
+            ),
+
+            Center(
+              child: IconButton(
+                onPressed: () => setState(() {
+                  showInfoPrecios = !showInfoPrecios;
+                }),
+                icon: (showInfoPrecios)
+                    ? const Icon(Icons.arrow_drop_up)
+                    : const Icon(Icons.arrow_drop_down),
+              ),
+            ),
           ],
         ),
       ),

@@ -206,7 +206,7 @@ class VisitaEditPage extends ConsumerWidget {
   }
 
   void saveForm(BuildContext context, WidgetRef ref) async {
-    if (formKey.currentState!.saveAndValidate()) {
+    if (formKey.currentState?.saveAndValidate() ?? false) {
       final isClientePotencial =
           formKey.currentState!.value['cliente_provisional'] as bool;
       if (isClientePotencial) {
@@ -706,22 +706,25 @@ class _VisitaFormState extends ConsumerState<_VisitaForm> {
   }
 
   void onSearch(BuildContext context) async {
-    final clienteContacto = await context.router.push<ClienteContacto?>(
-      VisitaEditSelectContactRoute(
-        cliente:
-            getFormInstantValue(widget.formKey, 'cliente') ??
-            widget.visitaEditScreenData.visita!.cliente!,
-      ),
-    );
-
-    if (clienteContacto != null) {
-      widget.formKey.currentState?.patchValue({
-        'contacto': clienteContacto.getName(
-          clienteContacto.nombre,
-          clienteContacto.apellido1,
-          clienteContacto.apellido2,
+    if ((getFormInstantValue<Cliente?>(widget.formKey, 'cliente') != null ||
+        widget.visitaEditScreenData.visita?.cliente != null)) {
+      final clienteContacto = await context.router.push<ClienteContacto?>(
+        VisitaEditSelectContactRoute(
+          cliente:
+              getFormInstantValue(widget.formKey, 'cliente') ??
+              widget.visitaEditScreenData.visita!.cliente!,
         ),
-      });
+      );
+
+      if (clienteContacto != null) {
+        widget.formKey.currentState?.patchValue({
+          'contacto': clienteContacto.getName(
+            clienteContacto.nombre,
+            clienteContacto.apellido1,
+            clienteContacto.apellido2,
+          ),
+        });
+      }
     }
   }
 }

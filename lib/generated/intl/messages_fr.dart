@@ -776,7 +776,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "Sous-boîtes",
     ),
     "pedido_edit_selectQuantity_tieneQueSerMultiploDe":
-        MessageLookupByLibrary.simpleMessage("Doit être multiple de"),
+        MessageLookupByLibrary.simpleMessage("Multiple de"),
     "pedido_edit_selectQuantity_unidades": MessageLookupByLibrary.simpleMessage(
       "Unités",
     ),
@@ -828,6 +828,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "position": MessageLookupByLibrary.simpleMessage("Position"),
     "precioNoPuedeSerMenorAlPrecioMinimo": MessageLookupByLibrary.simpleMessage(
       "Le prix ne peut être inférieur au prix minimum",
+    ),
+    "pricesAndNetGroups": MessageLookupByLibrary.simpleMessage(
+      "Prix et Groupes Nets",
     ),
     "probability": MessageLookupByLibrary.simpleMessage("Probabilité"),
     "productRecommendations": MessageLookupByLibrary.simpleMessage(

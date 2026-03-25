@@ -199,7 +199,7 @@
   "pedido_edit_selectQuantity_precio": "Prix",
   "pedido_edit_selectQuantity_seleccionarCantidad": "Sélectionner quantité",
   "pedido_edit_selectQuantity_stockDisponible": "Stock disponible:",
-  "pedido_edit_selectQuantity_tieneQueSerMultiploDe": "Doit être multiple de",
+  "pedido_edit_selectQuantity_tieneQueSerMultiploDe": "Multiple de",
   "pedido_enviado": "Envoyé",
   "pedido_borrador": "Brouillon",
   "pedido_index_buscarPedidos": "Chercher commandes…",
@@ -453,5 +453,6 @@
   "replaceExistingLinesMessage": "Cela remplacera les lignes existantes de la commande. Êtes-vous sûr de vouloir continuer?",
   "uploadExcel": "Télécharger Excel",
   "totalRows": "Lignes totales",
-  "close": "Fermer"
+  "close": "Fermer",
+  "pricesAndNetGroups": "Prix et Groupes Nets"
 }

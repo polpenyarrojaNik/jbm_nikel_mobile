@@ -2938,10 +2938,10 @@ class S {
     );
   }
 
-  /// `Must be multiple of`
+  /// `Multiple of`
   String get pedido_edit_selectQuantity_tieneQueSerMultiploDe {
     return Intl.message(
-      'Must be multiple of',
+      'Multiple of',
       name: 'pedido_edit_selectQuantity_tieneQueSerMultiploDe',
       desc: '',
       args: [],
@@ -4361,6 +4361,16 @@ class S {
   /// `Close`
   String get close {
     return Intl.message('Close', name: 'close', desc: '', args: []);
+  }
+
+  /// `Prices & Net Groups`
+  String get pricesAndNetGroups {
+    return Intl.message(
+      'Prices & Net Groups',
+      name: 'pricesAndNetGroups',
+      desc: '',
+      args: [],
+    );
   }
 }
 

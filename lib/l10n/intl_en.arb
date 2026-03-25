@@ -286,7 +286,7 @@
   "pedido_edit_selectQuantity_stockDisponible": "Available stock:",
   "pedido_edit_selectQuantity_artiuclosSustitutivos": "Substitute articles:",
   "pedido_edit_selectQuantity_minimo": "Minimum",
-  "pedido_edit_selectQuantity_tieneQueSerMultiploDe": "Must be multiple of",
+  "pedido_edit_selectQuantity_tieneQueSerMultiploDe": "Multiple of",
   "pedido_edit_selectQuantity_noPuedeEstarVacio": "Must not be empty",
   "pedido_edit_selectQuantity_multiplo": "Multiple",
   "pedido_enviado": "Sent",
@@ -455,5 +455,6 @@
   "replaceExistingLinesMessage": "This will replace existing lines in the order. Are you sure you want to continue?",
   "uploadExcel": "Upload Excel",
   "totalRows": "Total rows",
-  "close": "Close"
+  "close": "Close",
+  "pricesAndNetGroups": "Prices & Net Groups"
 }

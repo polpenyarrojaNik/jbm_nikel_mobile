@@ -202,7 +202,7 @@
   "pedido_edit_selectQuantity_precio": "Prezzo",
   "pedido_edit_selectQuantity_seleccionarCantidad": "Seleziona quantità",
   "pedido_edit_selectQuantity_stockDisponible": "Magazzino disponibile:",
-  "pedido_edit_selectQuantity_tieneQueSerMultiploDe": "Deve essere un multiplo di",
+  "pedido_edit_selectQuantity_tieneQueSerMultiploDe": "Multiplo di",
   "pedido_enviado": "Spedito",
   "pedido_borrador": "Brutta copia",
   "pedido_index_buscarPedidos": "Cercare ordini...",
@@ -453,5 +453,6 @@
   "replaceExistingLinesMessage": "Questo sostituirà le righe esistenti nell'ordine. Sei sicuro di voler continuare?",
   "uploadExcel": "Carica Excel",
   "totalRows": "Righe totali",
-  "close": "Chiudi"
+  "close": "Chiudi",
+  "pricesAndNetGroups": "Prezzi e Gruppi Netti"
 }

@@ -1158,6 +1158,7 @@ class StepArticuloListContent extends ConsumerWidget {
       articuloFromFormControllerProvider,
       (_, state) => setArtiucloValue(
         context: context,
+        ref: ref,
         clienteId: cliente!.id,
         pedidoLocalParam: pedidoLocalParam,
         newArticuloValue: state,
@@ -1325,6 +1326,7 @@ class StepArticuloListContent extends ConsumerWidget {
 
   void setArtiucloValue({
     required BuildContext context,
+    required WidgetRef ref,
     required String clienteId,
     required PedidoLocalParam pedidoLocalParam,
     Articulo? newArticuloValue,
@@ -1345,6 +1347,8 @@ class StepArticuloListContent extends ConsumerWidget {
           seleccionarCantidadParam: seleccionarCantidadParam,
         ),
       );
+
+      ref.invalidate(articuloFromFormControllerProvider);
     }
   }
 }
