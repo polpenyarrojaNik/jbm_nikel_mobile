@@ -29,7 +29,7 @@ class ArticuloPrecioControllerState with _$ArticuloPrecioControllerState {
     StackTrace? stackTrace,
   }) = _error;
   const factory ArticuloPrecioControllerState.data(
-    ArticuloPrecio? articuloPrecio,
+    ArticuloPrecio articuloPrecio,
   ) = _data;
 }
 

@@ -1,5 +1,8 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
+import '../../../core/domain/articulo_precio.dart';
+import '../../articulos/domain/articulo.dart';
+import '../../cliente/domain/cliente.dart';
 import 'pedido_local_param.dart';
 
 part 'seleccionar_cantidad_param.freezed.dart';
@@ -22,4 +25,13 @@ abstract class SeleccionarCantidadParam with _$SeleccionarCantidadParam {
   }) = _SeleccionarCantidadParam;
 
   bool isUpdatingLinea() => cantidad != null;
+}
+
+@freezed
+abstract class SelectQuantityInitialData with _$SelectQuantityInitialData {
+  const SelectQuantityInitialData._();
+  const factory SelectQuantityInitialData({
+    required Articulo articulo,
+    required Cliente cliente,
+  }) = _SelectQuantityInitialData;
 }

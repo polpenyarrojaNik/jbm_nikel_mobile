@@ -316,4 +316,300 @@ $PedidoLocalParamCopyWith<$Res> get pedidoVentaParam {
 }
 }
 
+/// @nodoc
+mixin _$SelectQuantityInitialData {
+
+ Articulo get articulo; Cliente get cliente;
+/// Create a copy of SelectQuantityInitialData
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$SelectQuantityInitialDataCopyWith<SelectQuantityInitialData> get copyWith => _$SelectQuantityInitialDataCopyWithImpl<SelectQuantityInitialData>(this as SelectQuantityInitialData, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is SelectQuantityInitialData&&(identical(other.articulo, articulo) || other.articulo == articulo)&&(identical(other.cliente, cliente) || other.cliente == cliente));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,articulo,cliente);
+
+@override
+String toString() {
+  return 'SelectQuantityInitialData(articulo: $articulo, cliente: $cliente)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $SelectQuantityInitialDataCopyWith<$Res>  {
+  factory $SelectQuantityInitialDataCopyWith(SelectQuantityInitialData value, $Res Function(SelectQuantityInitialData) _then) = _$SelectQuantityInitialDataCopyWithImpl;
+@useResult
+$Res call({
+ Articulo articulo, Cliente cliente
+});
+
+
+$ArticuloCopyWith<$Res> get articulo;$ClienteCopyWith<$Res> get cliente;
+
+}
+/// @nodoc
+class _$SelectQuantityInitialDataCopyWithImpl<$Res>
+    implements $SelectQuantityInitialDataCopyWith<$Res> {
+  _$SelectQuantityInitialDataCopyWithImpl(this._self, this._then);
+
+  final SelectQuantityInitialData _self;
+  final $Res Function(SelectQuantityInitialData) _then;
+
+/// Create a copy of SelectQuantityInitialData
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? articulo = null,Object? cliente = null,}) {
+  return _then(_self.copyWith(
+articulo: null == articulo ? _self.articulo : articulo // ignore: cast_nullable_to_non_nullable
+as Articulo,cliente: null == cliente ? _self.cliente : cliente // ignore: cast_nullable_to_non_nullable
+as Cliente,
+  ));
+}
+/// Create a copy of SelectQuantityInitialData
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$ArticuloCopyWith<$Res> get articulo {
+  
+  return $ArticuloCopyWith<$Res>(_self.articulo, (value) {
+    return _then(_self.copyWith(articulo: value));
+  });
+}/// Create a copy of SelectQuantityInitialData
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$ClienteCopyWith<$Res> get cliente {
+  
+  return $ClienteCopyWith<$Res>(_self.cliente, (value) {
+    return _then(_self.copyWith(cliente: value));
+  });
+}
+}
+
+
+/// Adds pattern-matching-related methods to [SelectQuantityInitialData].
+extension SelectQuantityInitialDataPatterns on SelectQuantityInitialData {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _SelectQuantityInitialData value)?  $default,{required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _SelectQuantityInitialData() when $default != null:
+return $default(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _SelectQuantityInitialData value)  $default,){
+final _that = this;
+switch (_that) {
+case _SelectQuantityInitialData():
+return $default(_that);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _SelectQuantityInitialData value)?  $default,){
+final _that = this;
+switch (_that) {
+case _SelectQuantityInitialData() when $default != null:
+return $default(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( Articulo articulo,  Cliente cliente)?  $default,{required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _SelectQuantityInitialData() when $default != null:
+return $default(_that.articulo,_that.cliente);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( Articulo articulo,  Cliente cliente)  $default,) {final _that = this;
+switch (_that) {
+case _SelectQuantityInitialData():
+return $default(_that.articulo,_that.cliente);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( Articulo articulo,  Cliente cliente)?  $default,) {final _that = this;
+switch (_that) {
+case _SelectQuantityInitialData() when $default != null:
+return $default(_that.articulo,_that.cliente);case _:
+  return null;
+
+}
+}
+
+}
+
+/// @nodoc
+
+
+class _SelectQuantityInitialData extends SelectQuantityInitialData {
+  const _SelectQuantityInitialData({required this.articulo, required this.cliente}): super._();
+  
+
+@override final  Articulo articulo;
+@override final  Cliente cliente;
+
+/// Create a copy of SelectQuantityInitialData
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$SelectQuantityInitialDataCopyWith<_SelectQuantityInitialData> get copyWith => __$SelectQuantityInitialDataCopyWithImpl<_SelectQuantityInitialData>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _SelectQuantityInitialData&&(identical(other.articulo, articulo) || other.articulo == articulo)&&(identical(other.cliente, cliente) || other.cliente == cliente));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,articulo,cliente);
+
+@override
+String toString() {
+  return 'SelectQuantityInitialData(articulo: $articulo, cliente: $cliente)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class _$SelectQuantityInitialDataCopyWith<$Res> implements $SelectQuantityInitialDataCopyWith<$Res> {
+  factory _$SelectQuantityInitialDataCopyWith(_SelectQuantityInitialData value, $Res Function(_SelectQuantityInitialData) _then) = __$SelectQuantityInitialDataCopyWithImpl;
+@override @useResult
+$Res call({
+ Articulo articulo, Cliente cliente
+});
+
+
+@override $ArticuloCopyWith<$Res> get articulo;@override $ClienteCopyWith<$Res> get cliente;
+
+}
+/// @nodoc
+class __$SelectQuantityInitialDataCopyWithImpl<$Res>
+    implements _$SelectQuantityInitialDataCopyWith<$Res> {
+  __$SelectQuantityInitialDataCopyWithImpl(this._self, this._then);
+
+  final _SelectQuantityInitialData _self;
+  final $Res Function(_SelectQuantityInitialData) _then;
+
+/// Create a copy of SelectQuantityInitialData
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? articulo = null,Object? cliente = null,}) {
+  return _then(_SelectQuantityInitialData(
+articulo: null == articulo ? _self.articulo : articulo // ignore: cast_nullable_to_non_nullable
+as Articulo,cliente: null == cliente ? _self.cliente : cliente // ignore: cast_nullable_to_non_nullable
+as Cliente,
+  ));
+}
+
+/// Create a copy of SelectQuantityInitialData
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$ArticuloCopyWith<$Res> get articulo {
+  
+  return $ArticuloCopyWith<$Res>(_self.articulo, (value) {
+    return _then(_self.copyWith(articulo: value));
+  });
+}/// Create a copy of SelectQuantityInitialData
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$ClienteCopyWith<$Res> get cliente {
+  
+  return $ClienteCopyWith<$Res>(_self.cliente, (value) {
+    return _then(_self.copyWith(cliente: value));
+  });
+}
+}
+
 // dart format on

@@ -128,7 +128,7 @@ return data(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  loading,TResult Function()?  initial,TResult Function( Object error,  StackTrace? stackTrace)?  error,TResult Function( ArticuloPrecio? articuloPrecio)?  data,required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  loading,TResult Function()?  initial,TResult Function( Object error,  StackTrace? stackTrace)?  error,TResult Function( ArticuloPrecio articuloPrecio)?  data,required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _loading() when loading != null:
 return loading();case _initial() when initial != null:
@@ -152,7 +152,7 @@ return data(_that.articuloPrecio);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  loading,required TResult Function()  initial,required TResult Function( Object error,  StackTrace? stackTrace)  error,required TResult Function( ArticuloPrecio? articuloPrecio)  data,}) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  loading,required TResult Function()  initial,required TResult Function( Object error,  StackTrace? stackTrace)  error,required TResult Function( ArticuloPrecio articuloPrecio)  data,}) {final _that = this;
 switch (_that) {
 case _loading():
 return loading();case _initial():
@@ -175,7 +175,7 @@ return data(_that.articuloPrecio);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  loading,TResult? Function()?  initial,TResult? Function( Object error,  StackTrace? stackTrace)?  error,TResult? Function( ArticuloPrecio? articuloPrecio)?  data,}) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  loading,TResult? Function()?  initial,TResult? Function( Object error,  StackTrace? stackTrace)?  error,TResult? Function( ArticuloPrecio articuloPrecio)?  data,}) {final _that = this;
 switch (_that) {
 case _loading() when loading != null:
 return loading();case _initial() when initial != null:
@@ -327,7 +327,7 @@ class _data extends ArticuloPrecioControllerState {
   const _data(this.articuloPrecio): super._();
   
 
- final  ArticuloPrecio? articuloPrecio;
+ final  ArticuloPrecio articuloPrecio;
 
 /// Create a copy of ArticuloPrecioControllerState
 /// with the given fields replaced by the non-null parameter values.
@@ -359,11 +359,11 @@ abstract mixin class _$dataCopyWith<$Res> implements $ArticuloPrecioControllerSt
   factory _$dataCopyWith(_data value, $Res Function(_data) _then) = __$dataCopyWithImpl;
 @useResult
 $Res call({
- ArticuloPrecio? articuloPrecio
+ ArticuloPrecio articuloPrecio
 });
 
 
-$ArticuloPrecioCopyWith<$Res>? get articuloPrecio;
+$ArticuloPrecioCopyWith<$Res> get articuloPrecio;
 
 }
 /// @nodoc
@@ -376,10 +376,10 @@ class __$dataCopyWithImpl<$Res>
 
 /// Create a copy of ArticuloPrecioControllerState
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') $Res call({Object? articuloPrecio = freezed,}) {
+@pragma('vm:prefer-inline') $Res call({Object? articuloPrecio = null,}) {
   return _then(_data(
-freezed == articuloPrecio ? _self.articuloPrecio : articuloPrecio // ignore: cast_nullable_to_non_nullable
-as ArticuloPrecio?,
+null == articuloPrecio ? _self.articuloPrecio : articuloPrecio // ignore: cast_nullable_to_non_nullable
+as ArticuloPrecio,
   ));
 }
 
@@ -387,12 +387,9 @@ as ArticuloPrecio?,
 /// with the given fields replaced by the non-null parameter values.
 @override
 @pragma('vm:prefer-inline')
-$ArticuloPrecioCopyWith<$Res>? get articuloPrecio {
-    if (_self.articuloPrecio == null) {
-    return null;
-  }
-
-  return $ArticuloPrecioCopyWith<$Res>(_self.articuloPrecio!, (value) {
+$ArticuloPrecioCopyWith<$Res> get articuloPrecio {
+  
+  return $ArticuloPrecioCopyWith<$Res>(_self.articuloPrecio, (value) {
     return _then(_self.copyWith(articuloPrecio: value));
   });
 }

@@ -5,6 +5,7 @@ import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:gap/gap.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../../../../../generated/l10n.dart';
 import '../../../../core/domain/articulo_precio.dart';
@@ -30,6 +31,26 @@ import '../../infrastructure/pedido_venta_repository.dart';
 import 'pedido_venta_edit_page_controller.dart';
 import 'select_cantidad_controller.dart';
 
+part 'select_quantity_page.g.dart';
+
+@riverpod
+class SelectQuantityPageController extends _$SelectQuantityPageController {
+  @override
+  Future<SelectQuantityInitialData> build({
+    required String clienteId,
+    required String articuloId,
+  }) async {
+    final articulo = await ref
+        .read(articuloRepositoryProvider)
+        .getArticuloById(articuloId: articuloId);
+    final cliente = await ref
+        .read(clienteRepositoryProvider)
+        .getClienteById(clienteId: clienteId);
+
+    return SelectQuantityInitialData(articulo: articulo, cliente: cliente);
+  }
+}
+
 @RoutePage()
 class SeleccionarCantidadPage extends ConsumerStatefulWidget {
   const SeleccionarCantidadPage({
@@ -46,6 +67,74 @@ class SeleccionarCantidadPage extends ConsumerStatefulWidget {
 
 class _SelecionarCantidadPageState
     extends ConsumerState<SeleccionarCantidadPage> {
+  late String articuloId;
+
+  @override
+  void initState() {
+    super.initState();
+    articuloId = widget.seleccionarCantidadParam.articuloId;
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final selectQuantityState = ref.watch(
+      selectQuantityPageControllerProvider(
+        clienteId: widget.seleccionarCantidadParam.clienteId,
+        articuloId: articuloId,
+      ),
+    );
+
+    return selectQuantityState.when(
+      data: (initialData) {
+        return SeleccionarCantidadForm(
+          seleccionarCantidadParam: widget.seleccionarCantidadParam,
+          articulo: initialData.articulo,
+          cliente: initialData.cliente,
+          setArticuloSustitutivo: (articuloSusititutivoId) =>
+              setState(() => articuloId = articuloSusititutivoId),
+        );
+      },
+      error: (error, _) => Scaffold(
+        appBar: AppBar(
+          title: Text(
+            S.of(context).pedido_edit_selectQuantity_seleccionarCantidad,
+          ),
+        ),
+        body: Center(child: ErrorMessageWidget(error.toString())),
+      ),
+      loading: () => Scaffold(
+        appBar: AppBar(
+          title: Text(
+            S.of(context).pedido_edit_selectQuantity_seleccionarCantidad,
+          ),
+        ),
+        body: const Center(child: CircularProgressIndicator()),
+      ),
+    );
+  }
+}
+
+class SeleccionarCantidadForm extends ConsumerStatefulWidget {
+  const SeleccionarCantidadForm({
+    super.key,
+    required this.seleccionarCantidadParam,
+    required this.articulo,
+    required this.cliente,
+    required this.setArticuloSustitutivo,
+  });
+
+  final SeleccionarCantidadParam seleccionarCantidadParam;
+  final Articulo articulo;
+  final Cliente cliente;
+  final Function(String articuloSusititutivoId) setArticuloSustitutivo;
+
+  @override
+  ConsumerState<SeleccionarCantidadForm> createState() =>
+      _SelecionarCantidadFormState();
+}
+
+class _SelecionarCantidadFormState
+    extends ConsumerState<SeleccionarCantidadForm> {
   final formKeyCantidad = GlobalKey<FormBuilderState>();
   final formKeyArticuloPrecio = GlobalKey<FormBuilderState>();
   final unitsController = TextEditingController();
@@ -54,20 +143,18 @@ class _SelecionarCantidadPageState
   final paletController = TextEditingController();
   final precioController = TextEditingController();
   final descuento1Controller = TextEditingController();
-  int totalQuantity = 0;
-  int units = 0;
-  int unitsCaja = 0;
-  int unitsSubcaja = 0;
-  int unitsPalet = 0;
+  var totalQuantity = 0;
+  var units = 0;
+  var unitsCaja = 0;
+  var unitsSubcaja = 0;
+  var unitsPalet = 0;
   double precio = 0;
   double descuento1 = 0;
   double descuento2 = 0;
 
-  String? articuloId;
   ArticuloPrecio? articuloPrecio;
-  Articulo? articulo;
-  Cliente? cliente;
-  bool initialLoadingData = true;
+
+  var initialLoadingData = true;
 
   @override
   void initState() {
@@ -75,9 +162,6 @@ class _SelecionarCantidadPageState
     setValoresIniciales();
     precioController.text = numberFormatDecimal(precio);
     unitsController.text = units.toString();
-    cajaController.text = unitsCaja.toString();
-    subcajaController.text = unitsSubcaja.toString();
-    paletController.text = unitsPalet.toString();
 
     descuento1Controller.text = numberFormatCantidades(descuento1);
     unitsController.selection = TextSelection(
@@ -85,13 +169,15 @@ class _SelecionarCantidadPageState
       extentOffset: unitsController.text.length,
     );
 
-    if (widget.seleccionarCantidadParam.addNewLineaDesdeArticulo) {
-      Future.microtask(
-        () => ref.invalidate(
-          getArticuloByIdProvider(widget.seleccionarCantidadParam.articuloId),
-        ),
-      );
-    }
+    Future.microtask(
+      () => ref
+          .read(articuloPrecioProvider.notifier)
+          .getArticuloPrecio(
+            articuloId: widget.articulo.id,
+            clienteId: widget.seleccionarCantidadParam.clienteId,
+            cantidad: totalQuantity,
+          ),
+    );
   }
 
   @override
@@ -107,25 +193,6 @@ class _SelecionarCantidadPageState
 
   @override
   Widget build(BuildContext context) {
-    if (widget.seleccionarCantidadParam.createdFromCliente ?? false) {
-      final clienteState = ref.watch(
-        clienteByIdProvider(widget.seleccionarCantidadParam.clienteId),
-      );
-      clienteState.whenData((value) => setClienteValue(newClienteValue: value));
-    } else {
-      ref.listen<AsyncValue<Cliente>>(
-        clienteByIdProvider(widget.seleccionarCantidadParam.clienteId),
-        (_, state) =>
-            state.whenData((value) => setClienteValue(newClienteValue: value)),
-      );
-    }
-
-    ref.listen<AsyncValue<Articulo>>(
-      getArticuloByIdProvider(articuloId!),
-      (_, state) =>
-          state.whenData((value) => setArtiucloValue(newArticuloValue: value)),
-    );
-
     ref.listen<ArticuloPrecioControllerState>(articuloPrecioProvider, (
       _,
       state,
@@ -135,6 +202,7 @@ class _SelecionarCantidadPageState
         data: (newArticuloPrecio) => setArticuloPrecioValue(newArticuloPrecio),
       );
     });
+
     final stateArticuloPrecio = ref.watch(articuloPrecioProvider);
 
     return Scaffold(
@@ -146,172 +214,166 @@ class _SelecionarCantidadPageState
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          if (articulo != null)
-            _ArticuloInfo(
-              articulo: articulo!,
-              setArticuloSustitutivo: (articuloSusititutivoId) =>
-                  setState(() => articuloId = articuloSusititutivoId),
-            ),
+          _ArticuloInfo(
+            articulo: widget.articulo,
+            setArticuloSustitutivo: widget.setArticuloSustitutivo,
+          ),
           if (articuloPrecio != null)
             TotalQuantityWidget(
               totalQuantity: totalQuantity,
               precio: precio,
               descuento1: descuento1,
               descuento2: descuento2,
-              articuloPrecio: articuloPrecio!,
+              descuento3: articuloPrecio!.descuento3,
+              tipoPrecio: articuloPrecio!.precio.tipoPrecio,
+              divisaId: articuloPrecio!.divisaId,
             ),
-          if (articulo != null)
-            Expanded(
-              child: SingleChildScrollView(
-                child: Column(
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 16,
-                        vertical: 8,
-                      ),
-                      child: FormBuilder(
-                        key: formKeyCantidad,
-                        autovalidateMode: AutovalidateMode.disabled,
-                        child: IntrinsicHeight(
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
+
+          Expanded(
+            child: SingleChildScrollView(
+              child: Column(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 16,
+                      vertical: 8,
+                    ),
+                    child: FormBuilder(
+                      key: formKeyCantidad,
+                      autovalidateMode: AutovalidateMode.disabled,
+                      child: IntrinsicHeight(
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Expanded(
+                              child: _UnitsFormField(
+                                formKey: formKeyCantidad,
+                                unitsController: unitsController,
+                                setUnitsQuantity: (value) {
+                                  setState(() {
+                                    units = value;
+                                  });
+
+                                  setTotalQuantity();
+                                },
+                                cantidad: units,
+                                ventaMinimo: widget.articulo.ventaMinimo,
+                                ventaMultiplo: widget.articulo.ventaMultiplo,
+                              ),
+                            ),
+                            if (widget.articulo.unidadesSubcaja > 0) ...[
+                              const VerticalDivider(),
                               Expanded(
-                                child: _UnitsFormField(
+                                child: _SubcajaUnitsFormField(
                                   formKey: formKeyCantidad,
-                                  unitsController: unitsController,
-                                  setUnitsQuantity: (value) {
+                                  subcajaController: subcajaController,
+                                  setUnitSubcajaQuantity: (value) {
                                     setState(() {
-                                      units = value;
+                                      unitsSubcaja = value;
                                     });
 
                                     setTotalQuantity();
                                   },
-                                  cantidad: units,
-                                  ventaMinimo: articulo!.ventaMinimo,
-                                  ventaMultiplo: articulo!.ventaMultiplo,
+                                  cantidad: unitsSubcaja,
+                                  unidadesPorSubcaja:
+                                      widget.articulo.unidadesSubcaja,
+                                  ventaMultiplo: widget.articulo.ventaMultiplo,
+                                  ventaMinimo: widget.articulo.ventaMinimo,
                                 ),
                               ),
-                              if (articulo != null &&
-                                  articulo!.unidadesSubcaja > 0)
-                                const VerticalDivider(),
-                              if (articulo != null &&
-                                  articulo!.unidadesSubcaja > 0)
-                                Expanded(
-                                  child: _SubcajaUnitsFormField(
-                                    formKey: formKeyCantidad,
-                                    subcajaController: subcajaController,
-                                    setUnitSubcajaQuantity: (value) {
-                                      setState(() {
-                                        unitsSubcaja = value;
-                                      });
-
-                                      setTotalQuantity();
-                                    },
-                                    cantidad: unitsSubcaja,
-                                    unidadesPorSubcaja:
-                                        articulo!.unidadesSubcaja,
-                                    ventaMultiplo: articulo!.ventaMultiplo,
-                                    ventaMinimo: articulo!.ventaMinimo,
-                                  ),
-                                ),
-                              if (articulo != null &&
-                                  articulo!.unidadesCaja > 0)
-                                const VerticalDivider(),
-                              if (articulo != null &&
-                                  articulo!.unidadesCaja > 0)
-                                Expanded(
-                                  child: _CajaUnitsFormField(
-                                    formKey: formKeyCantidad,
-                                    cajaController: cajaController,
-                                    setUnitCajaQuantity: (value) {
-                                      setState(() {
-                                        unitsCaja = value;
-                                      });
-
-                                      setTotalQuantity();
-                                    },
-                                    cantidad: unitsCaja,
-                                    unidadesPorCaja: articulo!.unidadesCaja,
-                                    ventaMultiplo: articulo!.ventaMultiplo,
-                                    ventaMinimo: articulo!.ventaMinimo,
-                                  ),
-                                ),
-                              if (articulo != null &&
-                                  (articulo!.unidadesPalet > 0 &&
-                                      articulo!.unidadesPalet != 99999))
-                                const VerticalDivider(),
-                              if (articulo != null &&
-                                  (articulo!.unidadesPalet > 0 &&
-                                      articulo!.unidadesPalet != 99999))
-                                Expanded(
-                                  child: _PaletUnitsFormField(
-                                    formKey: formKeyCantidad,
-                                    paletController: paletController,
-                                    setUnitPaletQuantity: (value) {
-                                      setState(() {
-                                        unitsPalet = value;
-                                      });
-
-                                      setTotalQuantity();
-                                    },
-                                    cantidad: unitsPalet,
-                                    unidadesPorPalet: articulo!.unidadesPalet,
-                                    ventaMultiplo: articulo!.ventaMultiplo,
-                                    ventaMinimo: articulo!.ventaMinimo,
-                                  ),
-                                ),
                             ],
-                          ),
+                            if (widget.articulo.unidadesCaja > 0) ...[
+                              const VerticalDivider(),
+
+                              Expanded(
+                                child: _CajaUnitsFormField(
+                                  formKey: formKeyCantidad,
+                                  cajaController: cajaController,
+                                  setUnitCajaQuantity: (value) {
+                                    setState(() {
+                                      unitsCaja = value;
+                                    });
+
+                                    setTotalQuantity();
+                                  },
+                                  cantidad: unitsCaja,
+                                  unidadesPorCaja: widget.articulo.unidadesCaja,
+                                  ventaMultiplo: widget.articulo.ventaMultiplo,
+                                  ventaMinimo: widget.articulo.ventaMinimo,
+                                ),
+                              ),
+                            ],
+                            if ((widget.articulo.unidadesPalet > 0 &&
+                                widget.articulo.unidadesPalet != 99999)) ...[
+                              const VerticalDivider(),
+
+                              Expanded(
+                                child: _PaletUnitsFormField(
+                                  formKey: formKeyCantidad,
+                                  paletController: paletController,
+                                  setUnitPaletQuantity: (value) {
+                                    setState(() {
+                                      unitsPalet = value;
+                                    });
+
+                                    setTotalQuantity();
+                                  },
+                                  cantidad: unitsPalet,
+                                  unidadesPorPalet:
+                                      widget.articulo.unidadesPalet,
+                                  ventaMultiplo: widget.articulo.ventaMultiplo,
+                                  ventaMinimo: widget.articulo.ventaMinimo,
+                                ),
+                              ),
+                            ],
+                          ],
                         ),
                       ),
                     ),
-                    if (articuloPrecio != null)
-                      stateArticuloPrecio.when(
-                        initial: () => Container(),
-                        error: (error, _) =>
-                            Center(child: ErrorMessageWidget(error.toString())),
-                        loading: () =>
-                            const Center(child: CircularProgressIndicator()),
-                        data: (_) => (articuloPrecio != null)
-                            ? _ArticuloPrecioContainer(
-                                articuloId:
-                                    widget.seleccionarCantidadParam.articuloId,
-                                clienteId:
-                                    widget.seleccionarCantidadParam.clienteId,
-                                formKey: formKeyArticuloPrecio,
-                                precio: precio,
-                                tipoPrecio: articuloPrecio!.precio.tipoPrecio,
-                                precioController: precioController,
-                                descuento1Controller: descuento1Controller,
-                                descuento2: descuento2,
-                                descuento3: articuloPrecio!.descuento3,
-                                setPrecio: (value) =>
-                                    setState(() => precio = value),
-                                setDescuento1: (value) =>
-                                    setState(() => descuento1 = value),
-                                setDescuento2: (value) =>
-                                    setState(() => descuento2 = value),
-                              )
-                            : Container(),
-                      ),
-                    const Gap(8),
-                    InfoPreciosWidget(articuloId: articuloId!),
-                  ],
-                ),
+                  ),
+                  stateArticuloPrecio.when(
+                    initial: () => Container(),
+                    error: (error, _) =>
+                        Center(child: ErrorMessageWidget(error.toString())),
+                    loading: () =>
+                        const Center(child: CircularProgressIndicator()),
+                    data: (_) => (articuloPrecio != null)
+                        ? _ArticuloPrecioContainer(
+                            articuloId:
+                                widget.seleccionarCantidadParam.articuloId,
+                            clienteId:
+                                widget.seleccionarCantidadParam.clienteId,
+                            formKey: formKeyArticuloPrecio,
+                            precio: precio,
+                            tipoPrecio: articuloPrecio!.precio.tipoPrecio,
+                            precioController: precioController,
+                            descuento1Controller: descuento1Controller,
+                            descuento2: descuento2,
+                            descuento3: articuloPrecio!.descuento3,
+                            setPrecio: (value) =>
+                                setState(() => precio = value),
+                            setDescuento1: (value) =>
+                                setState(() => descuento1 = value),
+                            setDescuento2: (value) =>
+                                setState(() => descuento2 = value),
+                          )
+                        : Container(),
+                  ),
+                  const Gap(8),
+                  InfoPreciosWidget(articuloId: widget.articulo.id),
+                ],
               ),
             ),
+          ),
         ],
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () =>
-            (articuloPrecio != null && articulo != null && cliente != null)
-            ? navigateToCrearPedido(
+        onPressed: articuloPrecio != null
+            ? () => navigateToCrearPedido(
                 context,
                 articuloPrecio!,
-                articulo!,
-                cliente!,
+                widget.articulo,
+                widget.cliente,
               )
             : null,
         child: const Icon(Icons.check),
@@ -328,7 +390,7 @@ class _SelecionarCantidadPageState
     if (context.mounted &&
         (formKeyCantidad.currentState?.saveAndValidate() ?? false) &&
         (formKeyArticuloPrecio.currentState?.saveAndValidate() ?? false)) {
-      final isValidate = _validateCantidad(
+      final isValidate = validateCantidad(
         formKeyCantidad,
         articulo.ventaMinimo,
         articulo.ventaMultiplo,
@@ -446,69 +508,75 @@ class _SelecionarCantidadPageState
     }
   }
 
-  void setArtiucloValue({required Articulo newArticuloValue}) {
-    setState(() {
-      articulo = newArticuloValue;
-      if (!widget.seleccionarCantidadParam.isUpdatingLinea()) {
-        totalQuantity = newArticuloValue.ventaMinimo;
-        units = newArticuloValue.ventaMinimo;
-        unitsController.text = units.toString();
-        unitsController.selection = TextSelection(
-          baseOffset: 0,
-          extentOffset: unitsController.text.length,
-        );
-      }
-    });
-
-    ref
-        .read(articuloPrecioProvider.notifier)
-        .getArticuloPrecio(
-          articuloId: articulo!.id,
-          clienteId: widget.seleccionarCantidadParam.clienteId,
-          cantidad: totalQuantity,
-        );
-  }
-
-  void setClienteValue({required Cliente newClienteValue}) {
-    setState(() {
-      cliente = newClienteValue;
-    });
-  }
-
   void setValoresIniciales() {
-    articuloId = widget.seleccionarCantidadParam.articuloId;
-
     if (widget.seleccionarCantidadParam.isUpdatingLinea()) {
-      units = widget.seleccionarCantidadParam.cantidad!;
       totalQuantity = widget.seleccionarCantidadParam.cantidad!;
+
+      var resto = totalQuantity;
+
+      unitsPalet = _getUnitsPalet(resto, widget.articulo.unidadesPalet);
+      resto = resto - unitsPalet;
+
+      unitsCaja = _getUnitsCaja(resto, widget.articulo.unidadesCaja);
+      resto = resto - unitsCaja;
+
+      unitsSubcaja = _getUnitsSubcaja(resto, widget.articulo.unidadesSubcaja);
+      resto = resto - unitsSubcaja;
+
+      units = resto;
       descuento1 = widget.seleccionarCantidadParam.descuento1!;
       descuento2 = widget.seleccionarCantidadParam.descuento2!;
       precio = widget.seleccionarCantidadParam.precio!;
+    } else {
+      totalQuantity = widget.articulo.ventaMinimo;
+      units = widget.articulo.ventaMinimo;
+      unitsController.text = units.toString();
+      unitsController.selection = TextSelection(
+        baseOffset: 0,
+        extentOffset: unitsController.text.length,
+      );
     }
   }
 
-  void setArticuloPrecioValue(ArticuloPrecio? newArticuloPrecio) {
-    if (newArticuloPrecio != null) {
-      setState(() {
-        articuloPrecio = newArticuloPrecio;
+  int _getUnitsPalet(int totalQuantity, int unidadesPorPalet) {
+    if (unidadesPorPalet <= 0 || unidadesPorPalet == 9999) return 0;
+    final numPalets = (totalQuantity ~/ unidadesPorPalet);
+    paletController.text = numPalets.toString();
+    return numPalets * unidadesPorPalet;
+  }
 
-        if (!widget.seleccionarCantidadParam.isUpdatingLinea() ||
-            !initialLoadingData) {
-          precio = newArticuloPrecio.precio.precio.amount
-              .toDecimal()
-              .toDouble();
-          precioController.text = numberFormatDecimal(
-            newArticuloPrecio.precio.precio.amount.toDecimal().toDouble(),
-          );
+  int _getUnitsCaja(int totalQuantity, int unidadesPorCaja) {
+    if (unidadesPorCaja <= 0) return 0;
+    final numCajas = (totalQuantity ~/ unidadesPorCaja);
+    cajaController.text = numCajas.toString();
+    return numCajas * unidadesPorCaja;
+  }
 
-          descuento1 = newArticuloPrecio.descuento1;
-          descuento1Controller.text = numberFormatCantidades(descuento1);
+  int _getUnitsSubcaja(int totalQuantity, int unidadesPorSubcaja) {
+    if (unidadesPorSubcaja <= 0) return 0;
+    final numSubcajas = (totalQuantity ~/ unidadesPorSubcaja);
+    subcajaController.text = (numSubcajas).toString();
+    return numSubcajas * unidadesPorSubcaja;
+  }
 
-          descuento2 = newArticuloPrecio.descuento2;
-        }
-        initialLoadingData = false;
-      });
-    }
+  void setArticuloPrecioValue(ArticuloPrecio newArticuloPrecio) {
+    setState(() {
+      articuloPrecio = newArticuloPrecio;
+
+      if (!widget.seleccionarCantidadParam.isUpdatingLinea() ||
+          !initialLoadingData) {
+        precio = newArticuloPrecio.precio.precio.amount.toDecimal().toDouble();
+        precioController.text = numberFormatDecimal(
+          newArticuloPrecio.precio.precio.amount.toDecimal().toDouble(),
+        );
+
+        descuento1 = newArticuloPrecio.descuento1;
+        descuento1Controller.text = numberFormatCantidades(descuento1);
+
+        descuento2 = newArticuloPrecio.descuento2;
+      }
+      initialLoadingData = false;
+    });
   }
 
   void setTotalQuantity() {
@@ -517,13 +585,13 @@ class _SelecionarCantidadPageState
     ref
         .read(articuloPrecioProvider.notifier)
         .getArticuloPrecio(
-          articuloId: articulo!.id,
+          articuloId: widget.articulo.id,
           clienteId: widget.seleccionarCantidadParam.clienteId,
           cantidad: totalQuantity,
         );
   }
 
-  bool _validateCantidad(
+  bool validateCantidad(
     GlobalKey<FormBuilderState> formKey,
     int ventaMinimo,
     int ventaMultiplo,
@@ -532,10 +600,10 @@ class _SelecionarCantidadPageState
     int unidadesPorPalet,
   ) {
     if (totalQuantity < ventaMinimo) {
-      _validateVentaMinimo(formKey, ventaMinimo);
+      validateVentaMinimo(formKey, ventaMinimo);
       return false;
     } else if (totalQuantity % ventaMultiplo != 0) {
-      _validateMultiplo(
+      validateMultiplo(
         formKey,
         ventaMultiplo,
         unidadesPorSubcaja,
@@ -547,7 +615,7 @@ class _SelecionarCantidadPageState
     return true;
   }
 
-  void _validateVentaMinimo(
+  void validateVentaMinimo(
     GlobalKey<FormBuilderState> formKey,
     int ventaMinimo,
   ) {
@@ -609,7 +677,7 @@ class _SelecionarCantidadPageState
     }
   }
 
-  void _validateMultiplo(
+  void validateMultiplo(
     GlobalKey<FormBuilderState> formKey,
     int ventaMultiplo,
     int unidadesPorSubcaja,
@@ -677,36 +745,6 @@ class _SelecionarCantidadPageState
     }
     return nuevaCantidad;
   }
-
-  // int setMultiploMasCercanoSubcaja(int ventaMultiplo, int unidadesPorSubcaja) {
-  //   var nuevaCantidad = 0;
-  //   for (var i = ventaMultiplo; i > 0; i--) {
-  //     if ((i * unidadesPorSubcaja) % ventaMultiplo == 0) {
-  //       nuevaCantidad = i;
-  //     }
-  //   }
-  //   return nuevaCantidad;
-  // }
-
-  // int setMultiploMasCercanoCaja(int ventaMultiplo, int unidadesPorCaja) {
-  //   var nuevaCantidad = 0;
-  //   for (var i = ventaMultiplo; i > 0; i--) {
-  //     if ((i * unidadesPorCaja) % ventaMultiplo == 0) {
-  //       nuevaCantidad = i;
-  //     }
-  //   }
-  //   return nuevaCantidad;
-  // }
-
-  // int setMultiploMasCercanoPalet(int ventaMultiplo, int unidadesPorPalet) {
-  //   var nuevaCantidad = 0;
-  //   for (var i = 0; i < ventaMultiplo; i++) {
-  //     if ((unidadesPorPalet + i) % ventaMultiplo == 0) {
-  //       nuevaCantidad = unidadesPorPalet + i;
-  //     }
-  //   }
-  //   return nuevaCantidad;
-  // }
 }
 
 class _ArticuloInfo extends ConsumerWidget {
@@ -824,14 +862,18 @@ class TotalQuantityWidget extends ConsumerWidget {
     required this.precio,
     required this.descuento1,
     required this.descuento2,
-    required this.articuloPrecio,
+    required this.descuento3,
+    required this.tipoPrecio,
+    required this.divisaId,
   });
 
   final int totalQuantity;
   final double precio;
   final double descuento1;
   final double descuento2;
-  final ArticuloPrecio articuloPrecio;
+  final double descuento3;
+  final int tipoPrecio;
+  final String divisaId;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -882,15 +924,13 @@ class TotalQuantityWidget extends ConsumerWidget {
                           .read(pedidoVentaRepositoryProvider)
                           .getTotalLinea(
                             precio: Precio(
-                              precio: precio.toMoney(
-                                currencyId: articuloPrecio.divisaId,
-                              ),
-                              tipoPrecio: articuloPrecio.precio.tipoPrecio,
+                              precio: precio.toMoney(currencyId: divisaId),
+                              tipoPrecio: tipoPrecio,
                             ),
                             cantidad: totalQuantity,
                             descuento1: descuento1,
                             descuento2: descuento2,
-                            descuento3: articuloPrecio.descuento3,
+                            descuento3: descuento3,
                           )
                           .toString(),
                       style: Theme.of(context).textTheme.titleSmall?.copyWith(
@@ -1393,7 +1433,7 @@ class InfoPreciosWidget extends StatefulWidget {
 }
 
 class _InfoPreciosWidgetState extends State<InfoPreciosWidget> {
-  bool showInfoPrecios = false;
+  var showInfoPrecios = false;
 
   @override
   Widget build(BuildContext context) {
