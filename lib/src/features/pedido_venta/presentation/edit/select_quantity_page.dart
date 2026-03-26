@@ -1393,7 +1393,7 @@ class InfoPreciosWidget extends StatefulWidget {
 }
 
 class _InfoPreciosWidgetState extends State<InfoPreciosWidget> {
-  bool showInfoPrecios = true;
+  bool showInfoPrecios = false;
 
   @override
   Widget build(BuildContext context) {
