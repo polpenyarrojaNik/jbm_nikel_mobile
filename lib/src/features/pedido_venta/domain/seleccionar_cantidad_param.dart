@@ -1,6 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import '../../../core/domain/articulo_precio.dart';
 import '../../articulos/domain/articulo.dart';
 import '../../cliente/domain/cliente.dart';
 import 'pedido_local_param.dart';
