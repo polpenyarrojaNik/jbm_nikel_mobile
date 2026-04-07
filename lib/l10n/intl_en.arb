@@ -456,5 +456,6 @@
   "uploadExcel": "Upload Excel",
   "totalRows": "Total rows",
   "close": "Close",
-  "pricesAndNetGroups": "Prices & Net Groups"
+  "pricesAndNetGroups": "Prices & Net Groups",
+  "chooseAnAddress": ""
 }

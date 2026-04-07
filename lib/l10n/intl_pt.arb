@@ -454,5 +454,8 @@
   "uploadExcel": "Carregar Excel",
   "totalRows": "Total de linhas",
   "close": "Fechar",
-  "pricesAndNetGroups": "Preços e Grupos Líquidos"
+  "pricesAndNetGroups": "Preços e Grupos Líquidos",
+  "chooseAnAddress": "",
+  "unknownCustomer": "",
+  "unknownFamily": ""
 }

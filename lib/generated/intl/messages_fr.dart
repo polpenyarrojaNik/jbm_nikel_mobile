@@ -192,6 +192,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "chooseAddress": MessageLookupByLibrary.simpleMessage(
       "Choisir une adresse",
     ),
+    "chooseAnAddress": MessageLookupByLibrary.simpleMessage(""),
     "claveNikel": MessageLookupByLibrary.simpleMessage("Code Nikel"),
     "cliente_alrededor_cargandoMapa": MessageLookupByLibrary.simpleMessage(
       "Chergement carte",
@@ -943,9 +944,11 @@ class MessageLookup extends MessageLookupByLibrary {
     "unidad": MessageLookupByLibrary.simpleMessage("uté."),
     "unitCost": MessageLookupByLibrary.simpleMessage("Coût unitaire"),
     "unknown": MessageLookupByLibrary.simpleMessage("Inconnu"),
+    "unknownCustomer": MessageLookupByLibrary.simpleMessage(""),
     "unknownDescription": MessageLookupByLibrary.simpleMessage(
       "Description inconnue",
     ),
+    "unknownFamily": MessageLookupByLibrary.simpleMessage(""),
     "until": MessageLookupByLibrary.simpleMessage("Jusqu\'à"),
     "uploadExcel": MessageLookupByLibrary.simpleMessage("Télécharger Excel"),
     "visita_enviada": MessageLookupByLibrary.simpleMessage("Envoyé"),

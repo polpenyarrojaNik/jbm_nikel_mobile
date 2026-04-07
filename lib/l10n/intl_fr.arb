@@ -454,5 +454,8 @@
   "uploadExcel": "Télécharger Excel",
   "totalRows": "Lignes totales",
   "close": "Fermer",
-  "pricesAndNetGroups": "Prix et Groupes Nets"
+  "pricesAndNetGroups": "Prix et Groupes Nets",
+  "chooseAnAddress": "",
+  "unknownCustomer": "",
+  "unknownFamily": ""
 }

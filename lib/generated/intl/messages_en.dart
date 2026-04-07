@@ -184,6 +184,7 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "catalogos_index_titulo": MessageLookupByLibrary.simpleMessage("Catalogs"),
     "chooseAddress": MessageLookupByLibrary.simpleMessage("Choose address"),
+    "chooseAnAddress": MessageLookupByLibrary.simpleMessage(""),
     "claveNikel": MessageLookupByLibrary.simpleMessage("Nikel key"),
     "cliente_alrededor_cargandoMapa": MessageLookupByLibrary.simpleMessage(
       "Loading map",

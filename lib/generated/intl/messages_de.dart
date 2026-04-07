@@ -1,5 +1,5 @@
 // DO NOT EDIT. This is code generated via package:intl/generate_localized.dart
-// This is a library that provides messages for a es locale. All the
+// This is a library that provides messages for a de locale. All the
 // messages from the main program should be duplicated here with the same
 // function name.
 
@@ -18,1011 +18,1025 @@ final messages = new MessageLookup();
 typedef String MessageIfAbsent(String messageStr, List<dynamic> args);
 
 class MessageLookup extends MessageLookupByLibrary {
-  String get localeName => 'es';
+  String get localeName => 'de';
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
-    "PDFdeliveryNotes": MessageLookupByLibrary.simpleMessage("PDF Albaranes"),
-    "PDFinvoices": MessageLookupByLibrary.simpleMessage("PDF Facturas"),
-    "accept": MessageLookupByLibrary.simpleMessage("Aceptar"),
-    "aceptar": MessageLookupByLibrary.simpleMessage("Aceptar"),
-    "addresses": MessageLookupByLibrary.simpleMessage("Direcciones"),
-    "almacenPropio": MessageLookupByLibrary.simpleMessage("Almacén propio"),
-    "alto": MessageLookupByLibrary.simpleMessage("Alto"),
-    "amount": MessageLookupByLibrary.simpleMessage("Importe"),
+    "PDFdeliveryNotes": MessageLookupByLibrary.simpleMessage(
+      "PDF-Lieferscheine",
+    ),
+    "PDFinvoices": MessageLookupByLibrary.simpleMessage("PDF-Rechnungen"),
+    "accept": MessageLookupByLibrary.simpleMessage("Akzeptieren"),
+    "aceptar": MessageLookupByLibrary.simpleMessage("Akzeptieren"),
+    "addresses": MessageLookupByLibrary.simpleMessage("Adressen"),
+    "almacenPropio": MessageLookupByLibrary.simpleMessage("Eigenes Lager"),
+    "alto": MessageLookupByLibrary.simpleMessage("Höhe"),
+    "amount": MessageLookupByLibrary.simpleMessage("Betrag"),
     "anyArticlesSpecified": MessageLookupByLibrary.simpleMessage(
-      "No se especificaron artículos",
+      "Keine Artikel angegeben",
     ),
     "articleNotFound": MessageLookupByLibrary.simpleMessage(
-      "Artículo no encontrado",
+      "Artikel nicht gefunden",
     ),
     "articleReferenceEmpty": MessageLookupByLibrary.simpleMessage(
-      "Referencia del artículo vacía",
+      "Artikelreferenz leer",
     ),
-    "articulo": MessageLookupByLibrary.simpleMessage("Artículo"),
+    "articulo": MessageLookupByLibrary.simpleMessage("Artikel"),
     "articulo_index_buscarArticulos": MessageLookupByLibrary.simpleMessage(
-      "Buscar artículos",
+      "Artikel suchen",
     ),
-    "articulo_index_titulo": MessageLookupByLibrary.simpleMessage("Artículos"),
+    "articulo_index_titulo": MessageLookupByLibrary.simpleMessage("Artikel"),
     "articulo_show_articuloComponentes_titulo":
-        MessageLookupByLibrary.simpleMessage("Componentes"),
+        MessageLookupByLibrary.simpleMessage("Komponenten"),
     "articulo_show_articuloDetalle_activoApp":
-        MessageLookupByLibrary.simpleMessage("Activo app"),
+        MessageLookupByLibrary.simpleMessage("App aktiv"),
     "articulo_show_articuloDetalle_activoWeb":
-        MessageLookupByLibrary.simpleMessage("Activo web"),
+        MessageLookupByLibrary.simpleMessage("Web aktiv"),
     "articulo_show_articuloDetalle_analisis":
-        MessageLookupByLibrary.simpleMessage("Análisis"),
+        MessageLookupByLibrary.simpleMessage("Analyse"),
     "articulo_show_articuloDetalle_anoActual":
-        MessageLookupByLibrary.simpleMessage("Actual"),
+        MessageLookupByLibrary.simpleMessage("Aktuell"),
     "articulo_show_articuloDetalle_anoAnterior":
-        MessageLookupByLibrary.simpleMessage("Anterior"),
+        MessageLookupByLibrary.simpleMessage("Vorherige"),
     "articulo_show_articuloDetalle_cantidadCaja":
-        MessageLookupByLibrary.simpleMessage("Cantidad caja"),
+        MessageLookupByLibrary.simpleMessage("Kartonmenge"),
     "articulo_show_articuloDetalle_cantidadPalet":
-        MessageLookupByLibrary.simpleMessage("Cantidad palet"),
+        MessageLookupByLibrary.simpleMessage("Palettenmenge"),
     "articulo_show_articuloDetalle_cantidadSubcaja":
-        MessageLookupByLibrary.simpleMessage("Cantidad subcaja"),
+        MessageLookupByLibrary.simpleMessage("Unterkartonmenge"),
     "articulo_show_articuloDetalle_codigo":
-        MessageLookupByLibrary.simpleMessage("Código"),
+        MessageLookupByLibrary.simpleMessage("Code"),
     "articulo_show_articuloDetalle_consultas":
-        MessageLookupByLibrary.simpleMessage("Consultas"),
+        MessageLookupByLibrary.simpleMessage("Abfragen"),
     "articulo_show_articuloDetalle_datosGenerales":
-        MessageLookupByLibrary.simpleMessage("Datos generales"),
+        MessageLookupByLibrary.simpleMessage("Allgemeine Daten"),
     "articulo_show_articuloDetalle_datosLogistica":
-        MessageLookupByLibrary.simpleMessage("Datos logística"),
+        MessageLookupByLibrary.simpleMessage("Logistikdaten"),
     "articulo_show_articuloDetalle_datosRelacionados":
-        MessageLookupByLibrary.simpleMessage("Datos relacionados"),
+        MessageLookupByLibrary.simpleMessage("Verwandte Daten"),
     "articulo_show_articuloDetalle_descatalogadoCompras":
-        MessageLookupByLibrary.simpleMessage("Descatalogado"),
+        MessageLookupByLibrary.simpleMessage("Ausgelistet"),
     "articulo_show_articuloDetalle_descripcion":
-        MessageLookupByLibrary.simpleMessage("Descripción"),
+        MessageLookupByLibrary.simpleMessage("Beschreibung"),
     "articulo_show_articuloDetalle_enCatalogo":
-        MessageLookupByLibrary.simpleMessage("En Catálogo"),
+        MessageLookupByLibrary.simpleMessage("Im Katalog"),
     "articulo_show_articuloDetalle_entrega1":
-        MessageLookupByLibrary.simpleMessage("Entrega 1"),
+        MessageLookupByLibrary.simpleMessage("Lieferung 1"),
     "articulo_show_articuloDetalle_entrega2":
-        MessageLookupByLibrary.simpleMessage("Entrega 2"),
+        MessageLookupByLibrary.simpleMessage("Lieferung 2"),
     "articulo_show_articuloDetalle_entrega3":
-        MessageLookupByLibrary.simpleMessage("Entrega 3"),
+        MessageLookupByLibrary.simpleMessage("Lieferung 3"),
     "articulo_show_articuloDetalle_familia":
-        MessageLookupByLibrary.simpleMessage("Familia"),
+        MessageLookupByLibrary.simpleMessage("Produktfamilie"),
     "articulo_show_articuloDetalle_hace2Anos":
-        MessageLookupByLibrary.simpleMessage("Hace 2 años"),
+        MessageLookupByLibrary.simpleMessage("Vor 2 Jahren"),
     "articulo_show_articuloDetalle_kg": MessageLookupByLibrary.simpleMessage(
       "kg",
     ),
     "articulo_show_articuloDetalle_margen":
-        MessageLookupByLibrary.simpleMessage("Margen"),
+        MessageLookupByLibrary.simpleMessage("Marge"),
     "articulo_show_articuloDetalle_mas": MessageLookupByLibrary.simpleMessage(
       "+",
     ),
     "articulo_show_articuloDetalle_medidas":
-        MessageLookupByLibrary.simpleMessage("Medidas"),
+        MessageLookupByLibrary.simpleMessage("Maße"),
     "articulo_show_articuloDetalle_noDisponible":
-        MessageLookupByLibrary.simpleMessage("No disponible"),
+        MessageLookupByLibrary.simpleMessage("Nicht verfügbar"),
     "articulo_show_articuloDetalle_otrosDatos":
-        MessageLookupByLibrary.simpleMessage("Otros datos"),
+        MessageLookupByLibrary.simpleMessage("Weitere Daten"),
     "articulo_show_articuloDetalle_pagina2Edicion":
-        MessageLookupByLibrary.simpleMessage("Página 2ªEdición"),
+        MessageLookupByLibrary.simpleMessage("Seite 2. Auflage"),
     "articulo_show_articuloDetalle_paginaEnCatalogo":
-        MessageLookupByLibrary.simpleMessage("Página en catálogo"),
+        MessageLookupByLibrary.simpleMessage("Seite im Katalog"),
     "articulo_show_articuloDetalle_peso": MessageLookupByLibrary.simpleMessage(
-      "Peso",
+      "Gewicht",
     ),
     "articulo_show_articuloDetalle_resumen":
-        MessageLookupByLibrary.simpleMessage("Resumen"),
+        MessageLookupByLibrary.simpleMessage("Zusammenfassung"),
     "articulo_show_articuloDetalle_stockYEntregas":
-        MessageLookupByLibrary.simpleMessage("Stock & Entregas"),
+        MessageLookupByLibrary.simpleMessage("Bestand & Lieferungen"),
     "articulo_show_articuloDetalle_subfamilia":
-        MessageLookupByLibrary.simpleMessage("Subfamilia"),
+        MessageLookupByLibrary.simpleMessage("Unterfamilie"),
     "articulo_show_articuloDetalle_titulo":
-        MessageLookupByLibrary.simpleMessage("Artículo detalle"),
+        MessageLookupByLibrary.simpleMessage("Artikeldetails"),
     "articulo_show_articuloDetalle_ventas":
-        MessageLookupByLibrary.simpleMessage("Ventas"),
+        MessageLookupByLibrary.simpleMessage("Verkäufe"),
     "articulo_show_articuloDocumentos_titulo":
-        MessageLookupByLibrary.simpleMessage("Documentos"),
+        MessageLookupByLibrary.simpleMessage("Dokumente"),
     "articulo_show_articuloGruposNetos_titulo":
-        MessageLookupByLibrary.simpleMessage("Grupos Netos"),
+        MessageLookupByLibrary.simpleMessage("Nettogruppen"),
     "articulo_show_articuloPedidoVenta_titulo":
-        MessageLookupByLibrary.simpleMessage("Pedidos de venta"),
+        MessageLookupByLibrary.simpleMessage("Verkaufsaufträge"),
     "articulo_show_articuloPreciosTarifa_titulo":
-        MessageLookupByLibrary.simpleMessage("Precios Tarifa"),
+        MessageLookupByLibrary.simpleMessage("Listenpreise"),
     "articulo_show_articuloRecambio_titulo":
-        MessageLookupByLibrary.simpleMessage("Recambios"),
+        MessageLookupByLibrary.simpleMessage("Ersatzteile"),
     "articulo_show_articuloSustitutivo_titulo":
-        MessageLookupByLibrary.simpleMessage("Artículos sustiutivos"),
+        MessageLookupByLibrary.simpleMessage("Ersatzartikel"),
     "articulo_show_articuloVentasArticulo_cantidad":
-        MessageLookupByLibrary.simpleMessage("Cantidad"),
+        MessageLookupByLibrary.simpleMessage("Menge"),
     "articulo_show_articuloVentasArticulo_cliente":
-        MessageLookupByLibrary.simpleMessage("Cliente"),
+        MessageLookupByLibrary.simpleMessage("Kunde"),
     "articulo_show_articuloVentasArticulo_importe":
-        MessageLookupByLibrary.simpleMessage("Importe"),
+        MessageLookupByLibrary.simpleMessage("Betrag"),
     "articulo_show_articuloVentasCliente_titulo":
-        MessageLookupByLibrary.simpleMessage("Ventas clientes"),
+        MessageLookupByLibrary.simpleMessage("Kundenverkäufe"),
     "articulo_show_articuloVentasMes_mes": MessageLookupByLibrary.simpleMessage(
-      "Mes",
+      "Monat",
     ),
     "articulo_show_articuloVentasMes_titulo":
-        MessageLookupByLibrary.simpleMessage("Ventas Mes (ud.)"),
+        MessageLookupByLibrary.simpleMessage("Monatsumsatz (Stk.)"),
     "articulo_show_articuloVentasMes_total":
-        MessageLookupByLibrary.simpleMessage("Total"),
-    "articulo_todos": MessageLookupByLibrary.simpleMessage("Todos"),
+        MessageLookupByLibrary.simpleMessage("Gesamt"),
+    "articulo_todos": MessageLookupByLibrary.simpleMessage("Alle"),
     "askPopAlertDialog_aceptar": MessageLookupByLibrary.simpleMessage(
-      "Aceptar",
+      "Akzeptieren",
     ),
     "askPopAlertDialog_atencion": MessageLookupByLibrary.simpleMessage(
-      "Atención:",
+      "Achtung:",
     ),
     "askPopAlertDialog_cancelar": MessageLookupByLibrary.simpleMessage(
-      "Cancelar",
+      "Abbrechen",
     ),
     "auth_loginPage_contrasena": MessageLookupByLibrary.simpleMessage(
-      "Contraseña",
+      "Passwort",
     ),
     "auth_loginPage_iniciarSesion": MessageLookupByLibrary.simpleMessage(
-      "Iniciar sesión",
+      "Anmelden",
     ),
     "auth_loginPage_requerido": MessageLookupByLibrary.simpleMessage(
-      "Este campo no puede estar vacío",
+      "Dieses Feld darf nicht leer sein",
     ),
     "auth_loginPage_titulo": MessageLookupByLibrary.simpleMessage(
-      "Bienvenido a",
+      "Willkommen bei",
     ),
-    "auth_loginPage_usuario": MessageLookupByLibrary.simpleMessage("Usuario"),
-    "bajo": MessageLookupByLibrary.simpleMessage("Bajo"),
-    "camera": MessageLookupByLibrary.simpleMessage("Cámara"),
-    "cancel": MessageLookupByLibrary.simpleMessage("Cancelar"),
-    "cancelar": MessageLookupByLibrary.simpleMessage("Cancelar"),
-    "capacidad": MessageLookupByLibrary.simpleMessage("Capacidad"),
+    "auth_loginPage_usuario": MessageLookupByLibrary.simpleMessage("Benutzer"),
+    "bajo": MessageLookupByLibrary.simpleMessage("Niedrig"),
+    "camera": MessageLookupByLibrary.simpleMessage("Kamera"),
+    "cancel": MessageLookupByLibrary.simpleMessage("Abbrechen"),
+    "cancelar": MessageLookupByLibrary.simpleMessage("Abbrechen"),
+    "capacidad": MessageLookupByLibrary.simpleMessage("Kapazität"),
     "catalogos_index_buscarCatalogo": MessageLookupByLibrary.simpleMessage(
-      "Buscar catálogos...",
+      "Kataloge suchen...",
     ),
     "catalogos_index_catalogoAdjunto_abriendoArchivo":
-        MessageLookupByLibrary.simpleMessage("Abriendo archivo..."),
-    "catalogos_index_idioma": MessageLookupByLibrary.simpleMessage("Idioma"),
-    "catalogos_index_precio": MessageLookupByLibrary.simpleMessage("Precio"),
+        MessageLookupByLibrary.simpleMessage("Datei wird geöffnet..."),
+    "catalogos_index_idioma": MessageLookupByLibrary.simpleMessage("Sprache"),
+    "catalogos_index_precio": MessageLookupByLibrary.simpleMessage("Preis"),
     "catalogos_index_tipoCatalogo": MessageLookupByLibrary.simpleMessage(
-      "Tipo de catálogo",
+      "Katalogtyp",
     ),
-    "catalogos_index_titulo": MessageLookupByLibrary.simpleMessage("Catálogos"),
-    "chooseAddress": MessageLookupByLibrary.simpleMessage(""),
+    "catalogos_index_titulo": MessageLookupByLibrary.simpleMessage("Kataloge"),
+    "chooseAddress": MessageLookupByLibrary.simpleMessage("nan"),
     "chooseAnAddress": MessageLookupByLibrary.simpleMessage(
-      "Elige una dirección",
+      "Wähle eine Adresse",
     ),
-    "claveNikel": MessageLookupByLibrary.simpleMessage("Clave Nikel"),
+    "claveNikel": MessageLookupByLibrary.simpleMessage("Nikel-Schlüssel"),
     "cliente_alrededor_cargandoMapa": MessageLookupByLibrary.simpleMessage(
-      "Cargando mapa",
+      "Karte wird geladen",
     ),
     "cliente_alrededor_direccionesEnvio": MessageLookupByLibrary.simpleMessage(
-      "Direcciones de envío",
+      "Lieferadressen",
     ),
     "cliente_alrededor_margenAnoActual": MessageLookupByLibrary.simpleMessage(
-      "Margen año actual",
+      "Marge aktuelles Jahr",
     ),
     "cliente_alrededor_porcentajeAbonos": MessageLookupByLibrary.simpleMessage(
-      "Porcentaje abonos",
+      "Prozentsatz Gutschriften",
     ),
     "cliente_alrededor_potenciales": MessageLookupByLibrary.simpleMessage(
-      "Potenciales",
+      "Potenziale",
     ),
     "cliente_alrededor_titulo": MessageLookupByLibrary.simpleMessage(
-      "Clientes alrededor",
+      "Kunden in der Nähe",
     ),
     "cliente_alrededor_ventasAnoActual": MessageLookupByLibrary.simpleMessage(
-      "Ventas año actual",
+      "Verkäufe aktuelles Jahr",
     ),
     "cliente_alrededor_ventasAnoAnterior": MessageLookupByLibrary.simpleMessage(
-      "Ventas año anterior",
+      "Verkäufe Vorjahr",
     ),
     "cliente_index_buscarClientes": MessageLookupByLibrary.simpleMessage(
-      " Buscar clientes...",
+      "Kunden suchen...",
     ),
-    "cliente_index_titulo": MessageLookupByLibrary.simpleMessage("Clientes"),
+    "cliente_index_titulo": MessageLookupByLibrary.simpleMessage("Kunden"),
     "cliente_show_clienteAdjunto_abriendoArchivo":
-        MessageLookupByLibrary.simpleMessage("Abriendo archivo..."),
+        MessageLookupByLibrary.simpleMessage("Datei wird geöffnet..."),
     "cliente_show_clienteAdjunto_titulo": MessageLookupByLibrary.simpleMessage(
-      "Adjuntos",
+      "Anhänge",
     ),
     "cliente_show_clienteArticulosTop_articulo":
-        MessageLookupByLibrary.simpleMessage("Artículo"),
+        MessageLookupByLibrary.simpleMessage("Artikel"),
     "cliente_show_clienteArticulosTop_descripcion":
-        MessageLookupByLibrary.simpleMessage("Descripción"),
+        MessageLookupByLibrary.simpleMessage("Beschreibung"),
     "cliente_show_clienteArticulosTop_num":
-        MessageLookupByLibrary.simpleMessage("Núm."),
+        MessageLookupByLibrary.simpleMessage("Nr."),
     "cliente_show_clienteArticulosTop_titulo":
         MessageLookupByLibrary.simpleMessage("Top 150"),
     "cliente_show_clienteArticulosTop_ventasCliente":
-        MessageLookupByLibrary.simpleMessage("Ventas cliente"),
+        MessageLookupByLibrary.simpleMessage("Kundenumsatz"),
     "cliente_show_clienteArticulosTop_ventasTotal":
-        MessageLookupByLibrary.simpleMessage("Ventas total"),
+        MessageLookupByLibrary.simpleMessage("Gesamtumsatz"),
     "cliente_show_clienteContacto_clienteContactoEditPage_apellido":
-        MessageLookupByLibrary.simpleMessage("Apellido"),
+        MessageLookupByLibrary.simpleMessage("Nachname"),
     "cliente_show_clienteContacto_clienteContactoEditPage_cambiosPendientesDeTramitar":
-        MessageLookupByLibrary.simpleMessage("Cambios pendientes de tramitar"),
+        MessageLookupByLibrary.simpleMessage(
+          "Ausstehende Änderungen zur Bearbeitung",
+        ),
     "cliente_show_clienteContacto_clienteContactoEditPage_contactoGuardadoConExito":
-        MessageLookupByLibrary.simpleMessage("Contacto guardado con éxito"),
+        MessageLookupByLibrary.simpleMessage("Kontakt erfolgreich gespeichert"),
     "cliente_show_clienteContacto_clienteContactoEditPage_contactoNoGuardado":
         MessageLookupByLibrary.simpleMessage(
-          "El contacto no se ha podiod guardar",
+          "Der Kontakt konnte nicht gespeichert werden",
         ),
     "cliente_show_clienteContacto_clienteContactoEditPage_editarContacto":
-        MessageLookupByLibrary.simpleMessage("Editar contacto"),
+        MessageLookupByLibrary.simpleMessage("Kontakt bearbeiten"),
     "cliente_show_clienteContacto_clienteContactoEditPage_email":
-        MessageLookupByLibrary.simpleMessage("Email"),
+        MessageLookupByLibrary.simpleMessage("E-Mail"),
     "cliente_show_clienteContacto_clienteContactoEditPage_nombre":
-        MessageLookupByLibrary.simpleMessage("Nombre"),
+        MessageLookupByLibrary.simpleMessage("Vorname"),
     "cliente_show_clienteContacto_clienteContactoEditPage_observaciones":
-        MessageLookupByLibrary.simpleMessage("Observaciones"),
+        MessageLookupByLibrary.simpleMessage("Anmerkungen"),
     "cliente_show_clienteContacto_clienteContactoEditPage_segundoApellido":
-        MessageLookupByLibrary.simpleMessage("Segundo apellido"),
+        MessageLookupByLibrary.simpleMessage("Zweiter Nachname"),
     "cliente_show_clienteContacto_clienteContactoEditPage_telefono1":
-        MessageLookupByLibrary.simpleMessage("Teléfono"),
+        MessageLookupByLibrary.simpleMessage("Telefon"),
     "cliente_show_clienteContacto_clienteContactoEditPage_telefono2":
-        MessageLookupByLibrary.simpleMessage("Teléfono 2"),
+        MessageLookupByLibrary.simpleMessage("Telefon 2"),
     "cliente_show_clienteContacto_clienteContactoImpListTile_contactoEliminado":
-        MessageLookupByLibrary.simpleMessage("Contacto eliminado"),
+        MessageLookupByLibrary.simpleMessage("Kontakt gelöscht"),
     "cliente_show_clienteContacto_clienteContactoListPage_cambiosPendientesDeTramitar":
-        MessageLookupByLibrary.simpleMessage("Cambios pendientes de tramitar"),
+        MessageLookupByLibrary.simpleMessage(
+          "Ausstehende Änderungen zur Bearbeitung",
+        ),
     "cliente_show_clienteContacto_email": MessageLookupByLibrary.simpleMessage(
-      "Email",
+      "E-Mail",
     ),
     "cliente_show_clienteContacto_hayCambiosDeEnviar":
         MessageLookupByLibrary.simpleMessage(
-          "Hay cambios pendientes de enviar",
+          "Es gibt ausstehende Änderungen zum Senden",
         ),
     "cliente_show_clienteContacto_hayCambiosSinTramitar":
         MessageLookupByLibrary.simpleMessage(
-          "Hay cambios pendientes de tramitar",
+          "Es gibt ausstehende Änderungen zur Bearbeitung",
         ),
     "cliente_show_clienteContacto_id": MessageLookupByLibrary.simpleMessage(
-      "Id",
+      "ID",
     ),
     "cliente_show_clienteContacto_nombre": MessageLookupByLibrary.simpleMessage(
-      "Nombre",
+      "Vorname",
     ),
     "cliente_show_clienteContacto_observaciones":
-        MessageLookupByLibrary.simpleMessage("Observaciones"),
+        MessageLookupByLibrary.simpleMessage("Anmerkungen"),
     "cliente_show_clienteContacto_phone1": MessageLookupByLibrary.simpleMessage(
-      "Teléfono 1",
+      "Telefon 1",
     ),
     "cliente_show_clienteContacto_phone2": MessageLookupByLibrary.simpleMessage(
-      "Teléfono 2",
+      "Telefon 2",
     ),
     "cliente_show_clienteContacto_titulo": MessageLookupByLibrary.simpleMessage(
-      "Contactos",
+      "Kontakte",
     ),
     "cliente_show_clienteDescuento_desDe": MessageLookupByLibrary.simpleMessage(
-      "Desde",
+      "Von",
     ),
     "cliente_show_clienteDescuento_titulo":
-        MessageLookupByLibrary.simpleMessage("Descuentos"),
+        MessageLookupByLibrary.simpleMessage("Rabatte"),
     "cliente_show_clienteDetalle_analisis":
-        MessageLookupByLibrary.simpleMessage("Análisis"),
+        MessageLookupByLibrary.simpleMessage("Analyse"),
     "cliente_show_clienteDetalle_anoActual":
-        MessageLookupByLibrary.simpleMessage("Actual"),
+        MessageLookupByLibrary.simpleMessage("Aktuell"),
     "cliente_show_clienteDetalle_anoAnterior":
-        MessageLookupByLibrary.simpleMessage("Anterior"),
+        MessageLookupByLibrary.simpleMessage("Vorherig"),
     "cliente_show_clienteDetalle_bonificacion":
-        MessageLookupByLibrary.simpleMessage("Bonificación"),
+        MessageLookupByLibrary.simpleMessage("Bonus"),
     "cliente_show_clienteDetalle_centralCompras":
-        MessageLookupByLibrary.simpleMessage("Central compras"),
+        MessageLookupByLibrary.simpleMessage("Einkaufszentrale"),
     "cliente_show_clienteDetalle_codigoPostal":
-        MessageLookupByLibrary.simpleMessage("Código Postal"),
+        MessageLookupByLibrary.simpleMessage("Postleitzahl"),
     "cliente_show_clienteDetalle_comercial1":
-        MessageLookupByLibrary.simpleMessage("Comercial 1"),
+        MessageLookupByLibrary.simpleMessage("Verkäufer 1"),
     "cliente_show_clienteDetalle_comercial2":
-        MessageLookupByLibrary.simpleMessage("Comercial 2"),
+        MessageLookupByLibrary.simpleMessage("Verkäufer 2"),
     "cliente_show_clienteDetalle_concedidoCOFACE":
-        MessageLookupByLibrary.simpleMessage("Concedido COFACE"),
+        MessageLookupByLibrary.simpleMessage("COFACE gewährt"),
     "cliente_show_clienteDetalle_concedidoFecha":
-        MessageLookupByLibrary.simpleMessage("Concedido fecha"),
+        MessageLookupByLibrary.simpleMessage("Gewährt am"),
     "cliente_show_clienteDetalle_concedidoJBM":
-        MessageLookupByLibrary.simpleMessage("Concedido JBM"),
+        MessageLookupByLibrary.simpleMessage("JBM gewährt"),
     "cliente_show_clienteDetalle_consultas":
-        MessageLookupByLibrary.simpleMessage("Consultas"),
+        MessageLookupByLibrary.simpleMessage("Anfragen"),
     "cliente_show_clienteDetalle_datosGenerales":
-        MessageLookupByLibrary.simpleMessage("Datos generales"),
+        MessageLookupByLibrary.simpleMessage("Allgemeine Daten"),
     "cliente_show_clienteDetalle_datosRelacionados":
-        MessageLookupByLibrary.simpleMessage("Datos relacionados"),
+        MessageLookupByLibrary.simpleMessage("Zugehörige Daten"),
     "cliente_show_clienteDetalle_descuentoGeneral":
-        MessageLookupByLibrary.simpleMessage("Descuento general"),
+        MessageLookupByLibrary.simpleMessage("Allgemeiner Rabatt"),
     "cliente_show_clienteDetalle_descuentoPP":
-        MessageLookupByLibrary.simpleMessage("Descuento P.P"),
+        MessageLookupByLibrary.simpleMessage("Skonto"),
     "cliente_show_clienteDetalle_direccion":
-        MessageLookupByLibrary.simpleMessage("Dirección"),
+        MessageLookupByLibrary.simpleMessage("Adresse"),
     "cliente_show_clienteDetalle_direccion2":
-        MessageLookupByLibrary.simpleMessage("Dirección 2"),
+        MessageLookupByLibrary.simpleMessage("Adresse 2"),
     "cliente_show_clienteDetalle_divisa": MessageLookupByLibrary.simpleMessage(
-      "Divisa",
+      "Währung",
     ),
     "cliente_show_clienteDetalle_factPendientes":
-        MessageLookupByLibrary.simpleMessage("Fact. pendientes"),
+        MessageLookupByLibrary.simpleMessage("Ausstehende Rechnungen"),
     "cliente_show_clienteDetalle_facturacion":
-        MessageLookupByLibrary.simpleMessage("Facturación"),
+        MessageLookupByLibrary.simpleMessage("Fakturierung"),
     "cliente_show_clienteDetalle_fechaCOFACE":
-        MessageLookupByLibrary.simpleMessage("Fecha COFACE"),
+        MessageLookupByLibrary.simpleMessage("COFACE Datum"),
     "cliente_show_clienteDetalle_fiscalData":
-        MessageLookupByLibrary.simpleMessage("Datos fiscales"),
+        MessageLookupByLibrary.simpleMessage("Steuerdaten"),
     "cliente_show_clienteDetalle_hace2Anos":
-        MessageLookupByLibrary.simpleMessage("Hace 2 años"),
+        MessageLookupByLibrary.simpleMessage("Vor 2 Jahren"),
     "cliente_show_clienteDetalle_latitud": MessageLookupByLibrary.simpleMessage(
-      "Latitud",
+      "Breitengrad",
     ),
     "cliente_show_clienteDetalle_longitud":
-        MessageLookupByLibrary.simpleMessage("Longitud"),
+        MessageLookupByLibrary.simpleMessage("Längengrad"),
     "cliente_show_clienteDetalle_margen": MessageLookupByLibrary.simpleMessage(
-      "Margen",
+      "Marge",
     ),
     "cliente_show_clienteDetalle_metodoCalculoPrecio":
-        MessageLookupByLibrary.simpleMessage("Método cálculo precio"),
+        MessageLookupByLibrary.simpleMessage("Preisberechnungsmethode"),
     "cliente_show_clienteDetalle_metodoCalculoPrecioMejorPrecioDescripcion":
-        MessageLookupByLibrary.simpleMessage("Mejores precios"),
+        MessageLookupByLibrary.simpleMessage("Beste Preise"),
     "cliente_show_clienteDetalle_metodoCalculoPrecioPreciosNetosDescripcion":
-        MessageLookupByLibrary.simpleMessage("Precios netos"),
+        MessageLookupByLibrary.simpleMessage("Nettopreise"),
     "cliente_show_clienteDetalle_metodoDeCobro":
-        MessageLookupByLibrary.simpleMessage("Método de cobro"),
+        MessageLookupByLibrary.simpleMessage("Zahlungsmethode"),
     "cliente_show_clienteDetalle_nif": MessageLookupByLibrary.simpleMessage(
-      "NIF",
+      "Steuer-ID",
     ),
     "cliente_show_clienteDetalle_nombreFiscal":
-        MessageLookupByLibrary.simpleMessage("Nombre fiscal"),
+        MessageLookupByLibrary.simpleMessage(" Steuerlicher Name"),
     "cliente_show_clienteDetalle_pais": MessageLookupByLibrary.simpleMessage(
-      "País",
+      " Land",
     ),
     "cliente_show_clienteDetalle_pdteCobroNoVencido":
-        MessageLookupByLibrary.simpleMessage("Pdte. Cobro No Vencido"),
+        MessageLookupByLibrary.simpleMessage(
+          " Ausstehender Betrag (nicht fällig)",
+        ),
     "cliente_show_clienteDetalle_pdteCobroVencido":
-        MessageLookupByLibrary.simpleMessage("Pdte. Cobro Vencido"),
+        MessageLookupByLibrary.simpleMessage(" Überfälliger Betrag"),
     "cliente_show_clienteDetalle_pdteFacturar":
-        MessageLookupByLibrary.simpleMessage("Pdte. de facturar"),
+        MessageLookupByLibrary.simpleMessage(" Noch zu fakturieren"),
     "cliente_show_clienteDetalle_pdteServir":
-        MessageLookupByLibrary.simpleMessage("Pdte. Servir"),
+        MessageLookupByLibrary.simpleMessage(" Noch zu liefern"),
     "cliente_show_clienteDetalle_plazoDeCobro":
-        MessageLookupByLibrary.simpleMessage("Plazo de cobro"),
+        MessageLookupByLibrary.simpleMessage(" Zahlungsziel"),
     "cliente_show_clienteDetalle_poblacion":
-        MessageLookupByLibrary.simpleMessage("Población"),
+        MessageLookupByLibrary.simpleMessage(" Ort"),
     "cliente_show_clienteDetalle_porcentajeAbonos":
-        MessageLookupByLibrary.simpleMessage("Porcentaje abonos"),
+        MessageLookupByLibrary.simpleMessage(" Gutschriftsanteil"),
     "cliente_show_clienteDetalle_porcentajeGarantias":
-        MessageLookupByLibrary.simpleMessage("Porcentaje garantias"),
+        MessageLookupByLibrary.simpleMessage("Garantieanteil"),
     "cliente_show_clienteDetalle_preciosYFormaDePago":
-        MessageLookupByLibrary.simpleMessage("Precios & Formas de pago"),
+        MessageLookupByLibrary.simpleMessage("Preise & Zahlungsarten"),
     "cliente_show_clienteDetalle_provincia":
-        MessageLookupByLibrary.simpleMessage("Provincia"),
+        MessageLookupByLibrary.simpleMessage("Bundesland"),
     "cliente_show_clienteDetalle_riesgoActual":
-        MessageLookupByLibrary.simpleMessage("Riesgo actual"),
+        MessageLookupByLibrary.simpleMessage("Aktuelles Risiko"),
     "cliente_show_clienteDetalle_riesgoConcedido":
-        MessageLookupByLibrary.simpleMessage("Riesgo concedido"),
+        MessageLookupByLibrary.simpleMessage("Gewährtes Risiko"),
     "cliente_show_clienteDetalle_riesgoExcedido":
-        MessageLookupByLibrary.simpleMessage("Riesgo excedido"),
+        MessageLookupByLibrary.simpleMessage("Überschrittenes Risiko"),
     "cliente_show_clienteDetalle_riesgos": MessageLookupByLibrary.simpleMessage(
-      "Riesgos",
+      "Risiken",
     ),
     "cliente_show_clienteDetalle_tarifa": MessageLookupByLibrary.simpleMessage(
-      "Tarifa",
+      "Tarif",
     ),
     "cliente_show_clienteDetalle_titulo": MessageLookupByLibrary.simpleMessage(
-      "Cliente detalle",
+      "Kundendetails",
     ),
     "cliente_show_clienteDetalle_top150": MessageLookupByLibrary.simpleMessage(
       "Top 150",
     ),
     "cliente_show_clienteDetalle_ventas": MessageLookupByLibrary.simpleMessage(
-      "Ventas",
+      "Verkäufe",
     ),
     "cliente_show_clienteDetalle_web": MessageLookupByLibrary.simpleMessage(
       "Web",
     ),
     "cliente_show_clienteDevolucion_agencia":
-        MessageLookupByLibrary.simpleMessage("Agencia"),
+        MessageLookupByLibrary.simpleMessage("Agentur"),
     "cliente_show_clienteDevolucion_bultos":
-        MessageLookupByLibrary.simpleMessage("Bultos"),
+        MessageLookupByLibrary.simpleMessage("Pakete"),
     "cliente_show_clienteDevolucion_cantidadServida":
-        MessageLookupByLibrary.simpleMessage("Cantidad servida"),
+        MessageLookupByLibrary.simpleMessage("Gelieferte Menge"),
     "cliente_show_clienteDevolucion_destino":
-        MessageLookupByLibrary.simpleMessage("Destino"),
+        MessageLookupByLibrary.simpleMessage("Zielort"),
     "cliente_show_clienteDevolucion_detalleDevolucion":
-        MessageLookupByLibrary.simpleMessage("Detalle devolución"),
+        MessageLookupByLibrary.simpleMessage("Retourendetails"),
     "cliente_show_clienteDevolucion_kilosDevolucion":
-        MessageLookupByLibrary.simpleMessage("Kilos devolución"),
+        MessageLookupByLibrary.simpleMessage("Retouren (kg)"),
     "cliente_show_clienteDevolucion_titulo":
-        MessageLookupByLibrary.simpleMessage("Devoluciones"),
+        MessageLookupByLibrary.simpleMessage("Retouren"),
     "cliente_show_clienteDireccion_clienteDireccionEditPage_cambiosPendientesDeTramitar":
-        MessageLookupByLibrary.simpleMessage("Cambios pendientes de tramitar"),
+        MessageLookupByLibrary.simpleMessage("Offene Änderungen"),
     "cliente_show_clienteDireccion_clienteDireccionEditPage_codigoPostal":
-        MessageLookupByLibrary.simpleMessage("Código postal"),
+        MessageLookupByLibrary.simpleMessage("Postleitzahl"),
     "cliente_show_clienteDireccion_clienteDireccionEditPage_direccion1":
-        MessageLookupByLibrary.simpleMessage("Dirección 1"),
+        MessageLookupByLibrary.simpleMessage("Adresse 1"),
     "cliente_show_clienteDireccion_clienteDireccionEditPage_direccion2":
-        MessageLookupByLibrary.simpleMessage("Dirección 2"),
+        MessageLookupByLibrary.simpleMessage("Adresse 2"),
     "cliente_show_clienteDireccion_clienteDireccionEditPage_direccionGuardadaConExito":
         MessageLookupByLibrary.simpleMessage(
-          "Dirección de envío guardada con éxito",
+          "Lieferadresse erfolgreich gespeichert",
         ),
     "cliente_show_clienteDireccion_clienteDireccionEditPage_direccionNoGuardada":
-        MessageLookupByLibrary.simpleMessage("Dirección de envío no guardada"),
+        MessageLookupByLibrary.simpleMessage("Lieferadresse nicht gespeichert"),
     "cliente_show_clienteDireccion_clienteDireccionEditPage_editarDireccion":
-        MessageLookupByLibrary.simpleMessage("Edit shipping address"),
+        MessageLookupByLibrary.simpleMessage("Lieferadresse bearbeiten"),
     "cliente_show_clienteDireccion_clienteDireccionEditPage_nombre":
-        MessageLookupByLibrary.simpleMessage("Nombre"),
+        MessageLookupByLibrary.simpleMessage("Name"),
     "cliente_show_clienteDireccion_clienteDireccionEditPage_pais":
-        MessageLookupByLibrary.simpleMessage("País"),
+        MessageLookupByLibrary.simpleMessage("Land"),
     "cliente_show_clienteDireccion_clienteDireccionEditPage_poblacion":
-        MessageLookupByLibrary.simpleMessage("Población"),
+        MessageLookupByLibrary.simpleMessage("Ort"),
     "cliente_show_clienteDireccion_clienteDireccionEditPage_provincia":
-        MessageLookupByLibrary.simpleMessage("Provincia"),
+        MessageLookupByLibrary.simpleMessage("Bundesland"),
     "cliente_show_clienteDireccion_clienteDireccionImpListTile_direccionEliminada":
-        MessageLookupByLibrary.simpleMessage("Dirección eliminada"),
+        MessageLookupByLibrary.simpleMessage("Adresse gelöscht"),
     "cliente_show_clienteDireccion_clienteDireccionListPage_cambiosPendientesDeTramitar":
-        MessageLookupByLibrary.simpleMessage("Cambios pendientes de tramitar"),
+        MessageLookupByLibrary.simpleMessage("Offene Änderungen"),
     "cliente_show_clienteDireccion_hayCambiosDeEnviar":
         MessageLookupByLibrary.simpleMessage(
-          "Hay cambios pendientes de enviar",
+          "Es gibt noch offene Änderungen zum Senden",
         ),
     "cliente_show_clienteDireccion_hayCambiosSinTramitar":
         MessageLookupByLibrary.simpleMessage(
-          "Hay cambios pendientes de tramitar",
+          "Es gibt noch offene Änderungen zur Bearbeitung",
         ),
     "cliente_show_clienteDireccion_titulo":
-        MessageLookupByLibrary.simpleMessage("Direcciones envío"),
+        MessageLookupByLibrary.simpleMessage("Lieferadressen"),
     "cliente_show_clienteFacturasPendientes_estadoCobrado":
-        MessageLookupByLibrary.simpleMessage("Cobrado"),
+        MessageLookupByLibrary.simpleMessage("Bezahlt"),
     "cliente_show_clienteFacturasPendientes_estadoDevuelto":
-        MessageLookupByLibrary.simpleMessage("Devuelto"),
+        MessageLookupByLibrary.simpleMessage("Zurückgegeben"),
     "cliente_show_clienteFacturasPendientes_estadoImpagado":
-        MessageLookupByLibrary.simpleMessage("Impagado"),
+        MessageLookupByLibrary.simpleMessage("Unbezahlt"),
     "cliente_show_clienteFacturasPendientes_estadoPendiente":
-        MessageLookupByLibrary.simpleMessage("Pendiente"),
+        MessageLookupByLibrary.simpleMessage("Ausstehend"),
     "cliente_show_clienteFacturasPendientes_fFactura":
-        MessageLookupByLibrary.simpleMessage("F. factura"),
+        MessageLookupByLibrary.simpleMessage("Rechnungsdatum"),
     "cliente_show_clienteFacturasPendientes_fvcto":
-        MessageLookupByLibrary.simpleMessage("F. Vcto"),
+        MessageLookupByLibrary.simpleMessage("Fälligkeitsdatum"),
     "cliente_show_clienteFacturasPendientes_fvctoOriginal":
-        MessageLookupByLibrary.simpleMessage("F. Vcto. original"),
+        MessageLookupByLibrary.simpleMessage("Ursprüngliches Fälligkeitsdatum"),
     "cliente_show_clienteFacturasPendientes_titulo":
-        MessageLookupByLibrary.simpleMessage("Facturas Pendietes"),
+        MessageLookupByLibrary.simpleMessage("Offene Rechnungen"),
     "cliente_show_clienteFacturasPendientes_vencInicial":
-        MessageLookupByLibrary.simpleMessage("Venc. Inicial"),
+        MessageLookupByLibrary.simpleMessage("Ursprüngliche Fälligkeit"),
     "cliente_show_clienteFacturasPendientes_vencidoJBM":
-        MessageLookupByLibrary.simpleMessage("Vencido JBM"),
+        MessageLookupByLibrary.simpleMessage("Überfällig JBM"),
     "cliente_show_clienteGrupoNeto_titulo":
-        MessageLookupByLibrary.simpleMessage("Grupos Netos"),
+        MessageLookupByLibrary.simpleMessage("Nettogruppen"),
     "cliente_show_clientePedidos_titulo": MessageLookupByLibrary.simpleMessage(
-      "Pedidos",
+      "Bestellungen",
     ),
     "cliente_show_clientePrecioNeto_desDe":
-        MessageLookupByLibrary.simpleMessage("Desde"),
+        MessageLookupByLibrary.simpleMessage("Von"),
     "cliente_show_clientePrecioNeto_titulo":
-        MessageLookupByLibrary.simpleMessage("Precios Netos"),
+        MessageLookupByLibrary.simpleMessage("Nettopreise"),
     "cliente_show_clienteRappel_titulo": MessageLookupByLibrary.simpleMessage(
-      "Rappels",
+      "Boni",
     ),
     "cliente_show_clienteVentasArticulo_articulo":
-        MessageLookupByLibrary.simpleMessage("Artículo"),
+        MessageLookupByLibrary.simpleMessage("Artikel"),
     "cliente_show_clienteVentasArticulo_buscar":
-        MessageLookupByLibrary.simpleMessage("Buscar artículo..."),
+        MessageLookupByLibrary.simpleMessage("Artikel suchen..."),
     "cliente_show_clienteVentasArticulo_cantidad":
-        MessageLookupByLibrary.simpleMessage("Cantidad"),
+        MessageLookupByLibrary.simpleMessage("Menge"),
     "cliente_show_clienteVentasArticulo_description":
-        MessageLookupByLibrary.simpleMessage("Descripción"),
+        MessageLookupByLibrary.simpleMessage("Beschreibung"),
     "cliente_show_clienteVentasArticulo_importe":
-        MessageLookupByLibrary.simpleMessage("Importe"),
+        MessageLookupByLibrary.simpleMessage("Betrag"),
     "cliente_show_clienteVentasArticulo_titulo":
-        MessageLookupByLibrary.simpleMessage("Ventas artículos (ud.)"),
+        MessageLookupByLibrary.simpleMessage("Artikelverkäufe (Stk.)"),
     "cliente_show_clienteVentasMes_mes": MessageLookupByLibrary.simpleMessage(
-      "Mes",
+      "Monat",
     ),
     "cliente_show_clienteVentasMes_titulo":
-        MessageLookupByLibrary.simpleMessage("Ventas Mes (ud.)"),
+        MessageLookupByLibrary.simpleMessage("Monatsverkäufe (Stk.)"),
     "cliente_show_clienteVentasMes_total": MessageLookupByLibrary.simpleMessage(
-      "Total",
+      "Gesamt",
     ),
     "cliente_show_clienteVisitas_titulo": MessageLookupByLibrary.simpleMessage(
-      "Visitas",
+      "Besuche",
     ),
-    "close": MessageLookupByLibrary.simpleMessage("Cerrar"),
+    "close": MessageLookupByLibrary.simpleMessage("Schließen"),
     "commonWidgets_appDrawer_ajustes": MessageLookupByLibrary.simpleMessage(
-      "Ajustes",
+      "Einstellungen",
     ),
     "commonWidgets_appDrawer_articulos": MessageLookupByLibrary.simpleMessage(
-      "Artículos",
+      "Artikel",
     ),
     "commonWidgets_appDrawer_catalogos": MessageLookupByLibrary.simpleMessage(
-      "Catálogos",
+      "Kataloge",
     ),
     "commonWidgets_appDrawer_clientes": MessageLookupByLibrary.simpleMessage(
-      "Clientes",
+      "Kunden",
     ),
     "commonWidgets_appDrawer_expediciones":
-        MessageLookupByLibrary.simpleMessage("Expediciones"),
+        MessageLookupByLibrary.simpleMessage("Lieferungen"),
     "commonWidgets_appDrawer_kpi": MessageLookupByLibrary.simpleMessage("KPI"),
     "commonWidgets_appDrawer_pedidos": MessageLookupByLibrary.simpleMessage(
-      "Pedidos",
+      "Bestellungen",
     ),
     "commonWidgets_appDrawer_visitas": MessageLookupByLibrary.simpleMessage(
-      "Visitas",
+      "Besuche",
     ),
     "commonWidgets_emptyPlaceholder_irAIncio":
-        MessageLookupByLibrary.simpleMessage("Ir a inicio"),
+        MessageLookupByLibrary.simpleMessage("Zum Start"),
     "commonWidgets_sliderBackground_borrar":
-        MessageLookupByLibrary.simpleMessage("Borrar"),
+        MessageLookupByLibrary.simpleMessage("Löschen"),
     "commonWidgets_ultimaSincronizacion": MessageLookupByLibrary.simpleMessage(
-      "Última sincronización",
+      "Letzte Synchronisierung",
     ),
     "commonWidgets_visitDialogue_saving": MessageLookupByLibrary.simpleMessage(
-      "Guardando...",
+      "Wird gespeichert...",
     ),
-    "company": MessageLookupByLibrary.simpleMessage("Empresa"),
-    "competencia": MessageLookupByLibrary.simpleMessage("Competencia"),
+    "company": MessageLookupByLibrary.simpleMessage("Unternehmen"),
+    "competencia": MessageLookupByLibrary.simpleMessage("Wettbewerb"),
     "couldntValidateAddressMessage": MessageLookupByLibrary.simpleMessage(
-      "No hemos podido validar esta dirección. Es posible que contenga un error o esté incompleta. ¿Quieres continuar antes de revisarla?",
+      "Diese Adresse konnte nicht validiert werden. Sie enthält möglicherweise einen Fehler oder ist unvollständig. Möchten Sie fortfahren, bevor Sie sie überprüfen?",
     ),
-    "currentAddress": MessageLookupByLibrary.simpleMessage("Dirección actual"),
+    "currentAddress": MessageLookupByLibrary.simpleMessage("Aktuelle Adresse"),
     "downloadTemplate": MessageLookupByLibrary.simpleMessage(
-      "Descargar plantilla",
+      "Vorlage herunterladen",
     ),
     "downloadingTemplate": MessageLookupByLibrary.simpleMessage(
-      "Descargando plantilla...",
+      "Vorlage wird heruntergeladen...",
     ),
-    "email": MessageLookupByLibrary.simpleMessage("Correo electrónico"),
-    "empty": MessageLookupByLibrary.simpleMessage("Vacío"),
-    "errors": MessageLookupByLibrary.simpleMessage("Errores"),
+    "email": MessageLookupByLibrary.simpleMessage("E-Mail"),
+    "empty": MessageLookupByLibrary.simpleMessage("Leer"),
+    "errors": MessageLookupByLibrary.simpleMessage("Fehler"),
     "estasSeguroQueQuieresReemplazarLaBaseDeDatos":
         MessageLookupByLibrary.simpleMessage(
-          "¿Estás seguro que quieres reemplazar la base de datos? Perderás los datos guardados en local.",
+          "Sind Sie sicher, dass Sie die Datenbank ersetzen möchten? Die lokal gespeicherten Daten gehen verloren.",
         ),
     "esteNumeroTelefonoExisiteEnElCliente":
         MessageLookupByLibrary.simpleMessage(
-          "Teléfono existente en el cliente",
+          "Telefonnummer bereits beim Kunden hinterlegt",
         ),
     "excelIsEmpty": MessageLookupByLibrary.simpleMessage(
-      "El archivo Excel está vacío",
+      "Die Excel-Datei ist leer",
     ),
-    "familia": MessageLookupByLibrary.simpleMessage("Familia"),
+    "familia": MessageLookupByLibrary.simpleMessage("Familie"),
     "formFromImage": MessageLookupByLibrary.simpleMessage(
-      "Formulario a partir de imagen",
+      "Formular aus Bild erstellen",
     ),
     "frecuenciaPedido": MessageLookupByLibrary.simpleMessage(
-      "Frecuencia de pedido",
+      "Bestellhäufigkeit",
     ),
-    "freightCharge": MessageLookupByLibrary.simpleMessage("Franquicia Portes"),
-    "grande": MessageLookupByLibrary.simpleMessage("Grande"),
+    "freightCharge": MessageLookupByLibrary.simpleMessage(
+      "Versandkostenfreibetrag",
+    ),
+    "grande": MessageLookupByLibrary.simpleMessage("Groß"),
     "haOcurridoUnError": MessageLookupByLibrary.simpleMessage(
-      "Ha ocurrido un error",
+      "Es ist ein Fehler aufgetreten",
     ),
     "imNotInterestedInAnyArticles": MessageLookupByLibrary.simpleMessage(
-      "No estoy interesado en ningún artículo",
+      "Ich bin an keinem Artikel interessiert",
     ),
-    "import": MessageLookupByLibrary.simpleMessage("Importar"),
-    "importedRows": MessageLookupByLibrary.simpleMessage("Filas importadas"),
-    "importing": MessageLookupByLibrary.simpleMessage("Importando..."),
-    "interesCliente": MessageLookupByLibrary.simpleMessage(
-      "Interés del cliente",
-    ),
+    "import": MessageLookupByLibrary.simpleMessage("Importieren"),
+    "importedRows": MessageLookupByLibrary.simpleMessage("Importierte Zeilen"),
+    "importing": MessageLookupByLibrary.simpleMessage("Wird importiert..."),
+    "interesCliente": MessageLookupByLibrary.simpleMessage("Kundeninteresse"),
     "introduceClaveDeNikel": MessageLookupByLibrary.simpleMessage(
-      "Introduce la clave de Nikel",
+      "Geben Sie den Nikel-Schlüssel ein",
     ),
     "invalidExcelFile": MessageLookupByLibrary.simpleMessage(
-      "Archivo Excel inválido",
+      "Ungültige Excel-Datei",
     ),
-    "invalidQuantity": MessageLookupByLibrary.simpleMessage(
-      "Cantidad no válida",
-    ),
-    "media": MessageLookupByLibrary.simpleMessage("Media"),
-    "medio": MessageLookupByLibrary.simpleMessage("Medio"),
-    "mensual": MessageLookupByLibrary.simpleMessage("Mensual"),
+    "invalidQuantity": MessageLookupByLibrary.simpleMessage("Ungültige Menge"),
+    "media": MessageLookupByLibrary.simpleMessage("Mittel"),
+    "medio": MessageLookupByLibrary.simpleMessage("Mittel"),
+    "mensual": MessageLookupByLibrary.simpleMessage("Monatlich"),
     "motivoNoInteres": MessageLookupByLibrary.simpleMessage(
-      "Motivo no interés",
+      "Grund für kein Interesse",
     ),
-    "motivoNoPedido": MessageLookupByLibrary.simpleMessage("Motivo no pedido"),
-    "name": MessageLookupByLibrary.simpleMessage("Nombre"),
-    "no": MessageLookupByLibrary.simpleMessage("No"),
+    "motivoNoPedido": MessageLookupByLibrary.simpleMessage(
+      "Grund für keine Bestellung",
+    ),
+    "name": MessageLookupByLibrary.simpleMessage("Name"),
+    "no": MessageLookupByLibrary.simpleMessage("Nein"),
     "noSeHaPodidoSincronizar": MessageLookupByLibrary.simpleMessage(
-      "No se ha podido sincronizar correctamente",
+      "Synchronisierung fehlgeschlagen",
     ),
-    "notification": MessageLookupByLibrary.simpleMessage("Notificación"),
+    "notification": MessageLookupByLibrary.simpleMessage("Benachrichtigung"),
     "notification_detail": MessageLookupByLibrary.simpleMessage(
-      "Detalle de la notificación",
+      "Benachrichtigungsdetails",
     ),
-    "notifications": MessageLookupByLibrary.simpleMessage(" Notificaciones"),
-    "numLineas": MessageLookupByLibrary.simpleMessage("Núm. Líneas"),
-    "ofertaRealziada": MessageLookupByLibrary.simpleMessage("Oferta realizada"),
+    "notifications": MessageLookupByLibrary.simpleMessage("Benachrichtigungen"),
+    "numLineas": MessageLookupByLibrary.simpleMessage("Anzahl Zeilen"),
+    "ofertaRealziada": MessageLookupByLibrary.simpleMessage("Angebot erstellt"),
     "paises_search_title": MessageLookupByLibrary.simpleMessage(
-      "Buscar país...",
+      "Land suchen...",
     ),
-    "pedidoRealizado": MessageLookupByLibrary.simpleMessage("Pedido realizado"),
-    "pedido_borrador": MessageLookupByLibrary.simpleMessage("Borrador"),
+    "pedidoRealizado": MessageLookupByLibrary.simpleMessage(
+      "Bestellung aufgegeben",
+    ),
+    "pedido_borrador": MessageLookupByLibrary.simpleMessage("Entwurf"),
     "pedido_edit_askPopAlertDialog_seguroQuieresSales":
         MessageLookupByLibrary.simpleMessage(
-          "¿Estás seguro qué quieres salir?",
+          "Sind Sie sicher, dass Sie beenden möchten?",
         ),
     "pedido_edit_askPopAlertDialog_seguroQuieresSalesBorrador":
         MessageLookupByLibrary.simpleMessage(
-          "¿Estás seguro qué quieres salir?\nSe eliminará el borrador del pedido.",
+          "Sind Sie sicher, dass Sie beenden möchten? Der Bestellentwurf wird gelöscht.",
         ),
     "pedido_edit_lineaNuevoTile_dto": MessageLookupByLibrary.simpleMessage(
-      "Dto.:",
+      "Rabatt:",
     ),
     "pedido_edit_lineaNuevoTile_precio": MessageLookupByLibrary.simpleMessage(
-      "Precio:",
+      "Preis:",
     ),
     "pedido_edit_pedidoEdit_anadeAlgunaLinea":
-        MessageLookupByLibrary.simpleMessage("Añade alguna línea al pedido"),
+        MessageLookupByLibrary.simpleMessage(
+          "Fügen Sie eine Position zur Bestellung hinzu.",
+        ),
     "pedido_edit_pedidoEdit_creandoCsvFile":
         MessageLookupByLibrary.simpleMessage(
-          "Creando archivo CSV para enviar por email...",
+          "CSV-Datei für den E-Mail-Versand wird erstellt...",
         ),
     "pedido_edit_pedidoEdit_direccionesEnvio":
-        MessageLookupByLibrary.simpleMessage("Direcciones envío"),
+        MessageLookupByLibrary.simpleMessage("Lieferadressen"),
     "pedido_edit_pedidoEdit_editarPedido": MessageLookupByLibrary.simpleMessage(
-      "Editar pedido",
+      "Bestellung bearbeiten",
     ),
     "pedido_edit_pedidoEdit_fechaValidez": MessageLookupByLibrary.simpleMessage(
-      "Fecha validez oferta",
+      "Gültigkeitsdatum des Angebots",
     ),
     "pedido_edit_pedidoEdit_fechaValidezHasta":
-        MessageLookupByLibrary.simpleMessage("Validez oferta hasta"),
+        MessageLookupByLibrary.simpleMessage("Angebot gültig bis"),
     "pedido_edit_pedidoEdit_fechaValidezNoPuedeEstarVacia":
         MessageLookupByLibrary.simpleMessage(
-          "Fecha de validez no puede estar vacía",
+          "Das Gültigkeitsdatum darf nicht leer sein",
         ),
     "pedido_edit_pedidoEdit_lineas": MessageLookupByLibrary.simpleMessage(
-      "Líneas",
+      "Positionen",
     ),
     "pedido_edit_pedidoEdit_noPuedesCambiarCliente":
-        MessageLookupByLibrary.simpleMessage("No puedes cambiar el cliente"),
+        MessageLookupByLibrary.simpleMessage(
+          "Sie können den Kunden nicht ändern",
+        ),
     "pedido_edit_pedidoEdit_nuevoPedido": MessageLookupByLibrary.simpleMessage(
-      "Nuevo pedido",
+      "Neue Bestellung",
     ),
     "pedido_edit_pedidoEdit_observaciones":
-        MessageLookupByLibrary.simpleMessage("Observaciones"),
+        MessageLookupByLibrary.simpleMessage("Anmerkungen"),
     "pedido_edit_pedidoEdit_oferta": MessageLookupByLibrary.simpleMessage(
-      "Oferta",
+      "Angebot",
     ),
     "pedido_edit_pedidoEdit_pedidoCliente":
-        MessageLookupByLibrary.simpleMessage("Pedido cliente"),
+        MessageLookupByLibrary.simpleMessage("Kundenbestellung"),
     "pedido_edit_pedidoEdit_pedidoClienteMax50":
         MessageLookupByLibrary.simpleMessage(
-          "El campo pedido cliente no puede tener más de 50 caracteres",
+          "Das Feld \'Kundenbestellung\' darf nicht mehr als 50 Zeichen enthalten.",
         ),
     "pedido_edit_pedidoEdit_seleccioneCliente":
-        MessageLookupByLibrary.simpleMessage("Seleccione un cliente"),
+        MessageLookupByLibrary.simpleMessage("Wählen Sie einen Kunden aus"),
     "pedido_edit_pedidoEdit_sinArticulos": MessageLookupByLibrary.simpleMessage(
-      "Sin artículos",
+      "Keine Artikel",
     ),
     "pedido_edit_pedidoEdit_stockDisponible":
-        MessageLookupByLibrary.simpleMessage("Stock disponible:"),
+        MessageLookupByLibrary.simpleMessage("Verfügbarer Bestand:"),
     "pedido_edit_pedidoEdit_totalLineas": MessageLookupByLibrary.simpleMessage(
-      "Total líneas",
+      "Gesamtpositionen",
     ),
     "pedido_edit_pedidoEdit_ultimoPrecioDeCompra":
-        MessageLookupByLibrary.simpleMessage("Último precio de compra"),
+        MessageLookupByLibrary.simpleMessage("Letzter Einkaufspreis"),
     "pedido_edit_selectQuantity_artiuclosSustitutivos":
-        MessageLookupByLibrary.simpleMessage("Artículos sustitutivos:"),
+        MessageLookupByLibrary.simpleMessage("Ersatzartikel:"),
     "pedido_edit_selectQuantity_caja": MessageLookupByLibrary.simpleMessage(
-      "Caja",
+      "Karton",
     ),
     "pedido_edit_selectQuantity_cajas": MessageLookupByLibrary.simpleMessage(
-      "Cajas",
+      "Kartons",
     ),
     "pedido_edit_selectQuantity_cantidad": MessageLookupByLibrary.simpleMessage(
-      "Cantidad",
+      "Menge",
     ),
     "pedido_edit_selectQuantity_cantidadCaja":
-        MessageLookupByLibrary.simpleMessage("Cantidad caja"),
+        MessageLookupByLibrary.simpleMessage("Menge pro Karton"),
     "pedido_edit_selectQuantity_cantidadPalet":
-        MessageLookupByLibrary.simpleMessage("Cantidad palé"),
+        MessageLookupByLibrary.simpleMessage("Menge pro Palette"),
     "pedido_edit_selectQuantity_cantidadSubcaja":
-        MessageLookupByLibrary.simpleMessage("Cantidad subcaja"),
+        MessageLookupByLibrary.simpleMessage("Menge pro Unterkarton"),
     "pedido_edit_selectQuantity_cantidadTotal":
-        MessageLookupByLibrary.simpleMessage("Cantidad total"),
+        MessageLookupByLibrary.simpleMessage("Gesamtmenge"),
     "pedido_edit_selectQuantity_descuneto1":
-        MessageLookupByLibrary.simpleMessage("Descuento 1"),
+        MessageLookupByLibrary.simpleMessage("Rabatt 1"),
     "pedido_edit_selectQuantity_descuneto2":
-        MessageLookupByLibrary.simpleMessage("Descuento 2"),
+        MessageLookupByLibrary.simpleMessage("Rabatt 2"),
     "pedido_edit_selectQuantity_descuneto3":
-        MessageLookupByLibrary.simpleMessage("Descuento 3"),
+        MessageLookupByLibrary.simpleMessage("Rabatt 3"),
     "pedido_edit_selectQuantity_importe": MessageLookupByLibrary.simpleMessage(
-      "Importe",
+      "Betrag",
     ),
     "pedido_edit_selectQuantity_importeLinea":
-        MessageLookupByLibrary.simpleMessage("Importe línea"),
+        MessageLookupByLibrary.simpleMessage("Positionsbetrag"),
     "pedido_edit_selectQuantity_minimo": MessageLookupByLibrary.simpleMessage(
-      "Mínimo",
+      "Minimum",
     ),
     "pedido_edit_selectQuantity_multiplo": MessageLookupByLibrary.simpleMessage(
-      "Múltiplo",
+      "Vielfaches",
     ),
     "pedido_edit_selectQuantity_noPuedeEstarVacio":
-        MessageLookupByLibrary.simpleMessage("No puede estar vacío"),
+        MessageLookupByLibrary.simpleMessage("Darf nicht leer sein"),
     "pedido_edit_selectQuantity_palet": MessageLookupByLibrary.simpleMessage(
-      "Pallet",
+      "Palette",
     ),
     "pedido_edit_selectQuantity_pallets": MessageLookupByLibrary.simpleMessage(
-      "Pallets",
+      "Paletten",
     ),
     "pedido_edit_selectQuantity_precio": MessageLookupByLibrary.simpleMessage(
-      "Precio",
+      "Preis",
     ),
     "pedido_edit_selectQuantity_seleccionarCantidad":
-        MessageLookupByLibrary.simpleMessage("Seleccionar cantidad"),
+        MessageLookupByLibrary.simpleMessage("Menge auswählen"),
     "pedido_edit_selectQuantity_stockDisponible":
-        MessageLookupByLibrary.simpleMessage("Stock disponible:"),
+        MessageLookupByLibrary.simpleMessage("Verfügbarer Bestand:"),
     "pedido_edit_selectQuantity_subcaja": MessageLookupByLibrary.simpleMessage(
-      "Subcaja",
+      "Unterkarton",
     ),
     "pedido_edit_selectQuantity_subcajas": MessageLookupByLibrary.simpleMessage(
-      "Subcajas",
+      "Unterkartons",
     ),
     "pedido_edit_selectQuantity_tieneQueSerMultiploDe":
-        MessageLookupByLibrary.simpleMessage("Múltiplo de"),
+        MessageLookupByLibrary.simpleMessage("Vielfaches von"),
     "pedido_edit_selectQuantity_unidades": MessageLookupByLibrary.simpleMessage(
-      "Unidades",
+      "Einheiten",
     ),
-    "pedido_enviado": MessageLookupByLibrary.simpleMessage("Enviado"),
+    "pedido_enviado": MessageLookupByLibrary.simpleMessage("Versandt"),
     "pedido_index_buscarPedidos": MessageLookupByLibrary.simpleMessage(
-      "Buscar pedidos...",
+      "Bestellungen suchen...",
     ),
-    "pedido_index_estados": MessageLookupByLibrary.simpleMessage("Estados"),
-    "pedido_index_filtrar": MessageLookupByLibrary.simpleMessage("Filtrar"),
-    "pedido_index_filtros": MessageLookupByLibrary.simpleMessage("Filtros"),
+    "pedido_index_estados": MessageLookupByLibrary.simpleMessage("Status"),
+    "pedido_index_filtrar": MessageLookupByLibrary.simpleMessage("Filtern"),
+    "pedido_index_filtros": MessageLookupByLibrary.simpleMessage("Filter"),
     "pedido_index_offline": MessageLookupByLibrary.simpleMessage("Offline"),
-    "pedido_index_reset": MessageLookupByLibrary.simpleMessage("Reset"),
-    "pedido_index_titulo": MessageLookupByLibrary.simpleMessage("Pedidos"),
-    "pedido_noEnviado": MessageLookupByLibrary.simpleMessage("No enviado"),
+    "pedido_index_reset": MessageLookupByLibrary.simpleMessage("Zurücksetzen"),
+    "pedido_index_titulo": MessageLookupByLibrary.simpleMessage("Bestellungen"),
+    "pedido_noEnviado": MessageLookupByLibrary.simpleMessage("Nicht versandt"),
     "pedido_show_pedidoVentaDetalle_albaranes":
-        MessageLookupByLibrary.simpleMessage("Albaranes"),
+        MessageLookupByLibrary.simpleMessage("Lieferscheine"),
     "pedido_show_pedidoVentaDetalle_baseImponible":
-        MessageLookupByLibrary.simpleMessage("Base imponible"),
+        MessageLookupByLibrary.simpleMessage("Bemessungsgrundlage"),
     "pedido_show_pedidoVentaDetalle_dto": MessageLookupByLibrary.simpleMessage(
-      "Dto.",
+      "Rabatt",
     ),
     "pedido_show_pedidoVentaDetalle_estado":
-        MessageLookupByLibrary.simpleMessage("Estado"),
+        MessageLookupByLibrary.simpleMessage("Status"),
     "pedido_show_pedidoVentaDetalle_fecha":
-        MessageLookupByLibrary.simpleMessage("Fecha"),
+        MessageLookupByLibrary.simpleMessage("Datum"),
     "pedido_show_pedidoVentaDetalle_importeIva":
-        MessageLookupByLibrary.simpleMessage("Importe IVA"),
+        MessageLookupByLibrary.simpleMessage("Mehrwertsteuerbetrag"),
     "pedido_show_pedidoVentaDetalle_importePortes":
-        MessageLookupByLibrary.simpleMessage("Importe portes"),
+        MessageLookupByLibrary.simpleMessage("Versandkostenbetrag"),
     "pedido_show_pedidoVentaDetalle_lineas":
-        MessageLookupByLibrary.simpleMessage("Líneas"),
+        MessageLookupByLibrary.simpleMessage("Positionen"),
     "pedido_show_pedidoVentaDetalle_pedidoCliente":
-        MessageLookupByLibrary.simpleMessage("Pedido cliente"),
+        MessageLookupByLibrary.simpleMessage("Kundenauftrag"),
     "pedido_show_pedidoVentaDetalle_precio":
-        MessageLookupByLibrary.simpleMessage("Precio"),
+        MessageLookupByLibrary.simpleMessage("Preis"),
     "pedido_show_pedidoVentaDetalle_remarks":
-        MessageLookupByLibrary.simpleMessage("Observaciones"),
+        MessageLookupByLibrary.simpleMessage("Anmerkungen"),
     "pedido_show_pedidoVentaDetalle_titulo":
-        MessageLookupByLibrary.simpleMessage("Pedido"),
+        MessageLookupByLibrary.simpleMessage("Bestellung"),
     "pedido_show_pedidoVentaDetalle_total":
-        MessageLookupByLibrary.simpleMessage("Total"),
+        MessageLookupByLibrary.simpleMessage("Gesamt"),
     "pedido_show_pedidoVentaDetalle_totalLineas":
-        MessageLookupByLibrary.simpleMessage("Total líneas"),
+        MessageLookupByLibrary.simpleMessage("Gesamtpositionen"),
     "pedido_show_pedidoVentaLineas_cantidadPendiente":
-        MessageLookupByLibrary.simpleMessage("Cantidad pendiente"),
-    "pending": MessageLookupByLibrary.simpleMessage("Pendiente"),
-    "pequena": MessageLookupByLibrary.simpleMessage("Pequeña"),
-    "phones": MessageLookupByLibrary.simpleMessage("Teléfonos"),
-    "position": MessageLookupByLibrary.simpleMessage("Cargo"),
+        MessageLookupByLibrary.simpleMessage("Ausstehende Menge"),
+    "pending": MessageLookupByLibrary.simpleMessage("Ausstehend"),
+    "pequena": MessageLookupByLibrary.simpleMessage("Klein"),
+    "phones": MessageLookupByLibrary.simpleMessage("Telefonnummern"),
+    "position": MessageLookupByLibrary.simpleMessage("Gebühr"),
     "precioNoPuedeSerMenorAlPrecioMinimo": MessageLookupByLibrary.simpleMessage(
-      "El precio no puede ser menor al precio mínimo",
+      "Der Preis darf nicht unter dem Mindestpreis liegen",
     ),
     "pricesAndNetGroups": MessageLookupByLibrary.simpleMessage(
-      "Precios y Grupos Netos",
+      "Nettopreise und -gruppen",
     ),
-    "probability": MessageLookupByLibrary.simpleMessage("Probabilidad"),
+    "probability": MessageLookupByLibrary.simpleMessage("Wahrscheinlichkeit"),
     "productRecommendations": MessageLookupByLibrary.simpleMessage(
-      "Recomendaciones de productos",
+      "Produktempfehlungen",
     ),
     "reemplazarBaseDeDatosTextMesaje": MessageLookupByLibrary.simpleMessage(
-      "Este campo no coincide con la clave Nikel",
+      "Dieses Feld stimmt nicht mit dem Nikel-Schlüssel überein",
     ),
     "replaceExistingLines": MessageLookupByLibrary.simpleMessage(
-      "Reemplazar líneas existentes",
+      "Bestehende Positionen ersetzen",
     ),
     "replaceExistingLinesMessage": MessageLookupByLibrary.simpleMessage(
-      "Esto reemplazará las líneas existentes del pedido. ¿Seguro que quieres continuar?",
+      "Dadurch werden die bestehenden Auftragspositionen ersetzt. Möchten Sie wirklich fortfahren?",
     ),
-    "results": MessageLookupByLibrary.simpleMessage("Resultados"),
-    "retry": MessageLookupByLibrary.simpleMessage("Reintentar"),
-    "save": MessageLookupByLibrary.simpleMessage("Guardar"),
-    "saveAs": MessageLookupByLibrary.simpleMessage("Guardar como"),
-    "search": MessageLookupByLibrary.simpleMessage("Buscar..."),
+    "results": MessageLookupByLibrary.simpleMessage("Ergebnisse"),
+    "retry": MessageLookupByLibrary.simpleMessage("Erneut versuchen"),
+    "save": MessageLookupByLibrary.simpleMessage("Speichern"),
+    "saveAs": MessageLookupByLibrary.simpleMessage("Speichern unter"),
+    "search": MessageLookupByLibrary.simpleMessage("Suchen..."),
     "searchingRecommendations": MessageLookupByLibrary.simpleMessage(
-      "Buscando recomendaciones...",
+      "Empfehlungen werden gesucht...",
     ),
-    "sector": MessageLookupByLibrary.simpleMessage("Sector"),
+    "sector": MessageLookupByLibrary.simpleMessage("Branche"),
     "sectorUnsubscribededSectorMessage": MessageLookupByLibrary.simpleMessage(
-      "Sector dado de baja. Por favor, seleccione un nuevo sector",
+      "Branche deaktiviert. Bitte wählen Sie eine neue Branche.",
     ),
     "seleccionarBorrador": MessageLookupByLibrary.simpleMessage(
-      "Seleccionar borrador",
+      "Entwurf auswählen",
     ),
     "seleccioneUnClienteParaContinuar": MessageLookupByLibrary.simpleMessage(
-      "Seleccione un cliente para continuar.",
+      "Bitte wählen Sie einen Kunden aus, um fortzufahren.",
     ),
     "selectExcelFile": MessageLookupByLibrary.simpleMessage(
-      "Seleccionar archivo Excel",
+      "Excel-Datei auswählen",
     ),
-    "semanal": MessageLookupByLibrary.simpleMessage("Semanal"),
-    "send": MessageLookupByLibrary.simpleMessage("Enviar"),
-    "settings_cerrar_sesion": MessageLookupByLibrary.simpleMessage(
-      "Cerrar sesión",
-    ),
+    "semanal": MessageLookupByLibrary.simpleMessage("Wöchentlich"),
+    "send": MessageLookupByLibrary.simpleMessage("Senden"),
+    "settings_cerrar_sesion": MessageLookupByLibrary.simpleMessage("Abmelden"),
     "settings_creandoArchivo": MessageLookupByLibrary.simpleMessage(
-      "Creando archivo...",
+      "Datei wird erstellt...",
     ),
     "settings_enviarBaseDeDatos": MessageLookupByLibrary.simpleMessage(
-      "Enviar base de datos",
+      "Datenbank senden",
     ),
     "settings_nombre_usuario": MessageLookupByLibrary.simpleMessage(
-      "Nombre usuario",
+      "Benutzername",
     ),
     "settings_reemplazarBaseDeDatos": MessageLookupByLibrary.simpleMessage(
-      "Reemplazar base de datos",
+      "Datenbank ersetzen",
     ),
     "settings_reemplazarBaseDeDatosLocal": MessageLookupByLibrary.simpleMessage(
-      "Reemplazar base de datos provisional",
+      "Provisorische Datenbank ersetzen",
     ),
     "settings_sincronicacionRealizadaConExito":
         MessageLookupByLibrary.simpleMessage(
-          "Sincronización relaizado con éxito",
+          "Synchronisierung erfolgreich abgeschlossen",
         ),
     "settings_sincronizarDatos": MessageLookupByLibrary.simpleMessage(
-      "Sincronizar datos",
+      "Daten synchronisieren",
     ),
-    "settings_titulo": MessageLookupByLibrary.simpleMessage("Ajustes"),
-    "settings_user": MessageLookupByLibrary.simpleMessage("Usuario"),
-    "settings_version": MessageLookupByLibrary.simpleMessage("Versión"),
-    "sheetName": MessageLookupByLibrary.simpleMessage("Nombre de la hoja"),
-    "sinResultados": MessageLookupByLibrary.simpleMessage("Sin resultados"),
-    "sincConexion": MessageLookupByLibrary.simpleMessage("Sin conexión"),
-    "splash_a": MessageLookupByLibrary.simpleMessage("a versión"),
+    "settings_titulo": MessageLookupByLibrary.simpleMessage("Einstellungen"),
+    "settings_user": MessageLookupByLibrary.simpleMessage("Benutzer"),
+    "settings_version": MessageLookupByLibrary.simpleMessage("Version"),
+    "sheetName": MessageLookupByLibrary.simpleMessage("Blattname"),
+    "sinResultados": MessageLookupByLibrary.simpleMessage("Keine Ergebnisse"),
+    "sincConexion": MessageLookupByLibrary.simpleMessage("Keine Verbindung"),
+    "splash_a": MessageLookupByLibrary.simpleMessage("auf Version"),
     "splash_actualizandoBaseDeDatosDe": MessageLookupByLibrary.simpleMessage(
-      "Actualizando base de datos de versión",
+      "Versionsdatenbank wird aktualisiert",
     ),
     "splash_articulos": MessageLookupByLibrary.simpleMessage(
-      "Sincronizando artículos...",
+      "Artikel werden synchronisiert...",
     ),
     "splash_clientes": MessageLookupByLibrary.simpleMessage(
-      "Sincronizando clientes...",
+      "Kunden werden synchronisiert...",
     ),
     "splash_descargandoBaseDeDatos": MessageLookupByLibrary.simpleMessage(
-      "Descargando base de datos inicial...\n\nEste proceso se realizará solamente una vez y puede durar varios minutos en función de su conexión a Internet.",
+      "Initiale Datenbank wird heruntergeladen... Dieser Vorgang wird nur einmal ausgeführt und kann je nach Internetverbindung mehrere Minuten dauern.",
     ),
     "splash_otras": MessageLookupByLibrary.simpleMessage(
-      "Sincronizando otros...",
+      "Andere werden synchronisiert...",
     ),
     "splash_pedidos": MessageLookupByLibrary.simpleMessage(
-      "Sincronizando pedidos...",
+      " Bestellungen werden synchronisiert...",
     ),
     "splash_visitas": MessageLookupByLibrary.simpleMessage(
-      "Sincronizando visitas...",
+      " Besuche werden synchronisiert...",
     ),
-    "stock": MessageLookupByLibrary.simpleMessage("Stock"),
-    "subfamilia": MessageLookupByLibrary.simpleMessage("Subfamilia"),
+    "stock": MessageLookupByLibrary.simpleMessage(" Bestand"),
+    "subfamilia": MessageLookupByLibrary.simpleMessage(" Unterkategorie"),
     "suggestedAddress": MessageLookupByLibrary.simpleMessage(
-      "Dirección sugerida",
+      " Vorgeschlagene Adresse",
     ),
-    "telefono": MessageLookupByLibrary.simpleMessage("Teléfono"),
+    "telefono": MessageLookupByLibrary.simpleMessage(" Telefon"),
     "templateDownloadedSuccessfully": MessageLookupByLibrary.simpleMessage(
-      "Plantilla descargada correctamente",
+      " Vorlage erfolgreich heruntergeladen",
     ),
-    "totalRows": MessageLookupByLibrary.simpleMessage("Filas totales"),
-    "trackId": MessageLookupByLibrary.simpleMessage("Track ID"),
-    "trimestral": MessageLookupByLibrary.simpleMessage("Trimestral"),
+    "totalRows": MessageLookupByLibrary.simpleMessage(" Gesamtzeilen"),
+    "trackId": MessageLookupByLibrary.simpleMessage(" Track-ID"),
+    "trimestral": MessageLookupByLibrary.simpleMessage("Vierteljährlich"),
     "ultimosPrecios_buscarUltimosPrecios": MessageLookupByLibrary.simpleMessage(
-      "Buscar...",
+      "Suchen...",
     ),
-    "ultimosPrecios_precio": MessageLookupByLibrary.simpleMessage("Precio"),
+    "ultimosPrecios_precio": MessageLookupByLibrary.simpleMessage("Preis"),
     "ultimosPrecios_titulo": MessageLookupByLibrary.simpleMessage(
-      "Últimos precios",
+      "Neueste Preise",
     ),
-    "unidad": MessageLookupByLibrary.simpleMessage("ud."),
-    "unitCost": MessageLookupByLibrary.simpleMessage("Coste unitario"),
-    "unknown": MessageLookupByLibrary.simpleMessage("Desconocido"),
-    "unknownCustomer": MessageLookupByLibrary.simpleMessage(""),
+    "unidad": MessageLookupByLibrary.simpleMessage("Stk."),
+    "unitCost": MessageLookupByLibrary.simpleMessage("Stückkosten"),
+    "unknown": MessageLookupByLibrary.simpleMessage("Unbekannt"),
+    "unknownCustomer": MessageLookupByLibrary.simpleMessage("nan"),
     "unknownDescription": MessageLookupByLibrary.simpleMessage(
-      "Descripción desconocida",
+      "Unbekannte Beschreibung",
     ),
     "unknownFamily": MessageLookupByLibrary.simpleMessage(
-      "Familia desconocida",
+      "Unbekannte Kategorie",
     ),
-    "until": MessageLookupByLibrary.simpleMessage("Hasta"),
-    "uploadExcel": MessageLookupByLibrary.simpleMessage("Cargar Excel"),
-    "visita_enviada": MessageLookupByLibrary.simpleMessage("Enviada"),
+    "until": MessageLookupByLibrary.simpleMessage("Bis"),
+    "uploadExcel": MessageLookupByLibrary.simpleMessage("Excel laden"),
+    "visita_enviada": MessageLookupByLibrary.simpleMessage("Gesendet"),
     "visita_index_buscarVisitas": MessageLookupByLibrary.simpleMessage(
-      "Buscar visitas...",
+      "Besuche suchen...",
     ),
-    "visita_index_titulo": MessageLookupByLibrary.simpleMessage("Visitas"),
-    "visita_noEnviada": MessageLookupByLibrary.simpleMessage("No enviada"),
+    "visita_index_titulo": MessageLookupByLibrary.simpleMessage("Besuche"),
+    "visita_noEnviada": MessageLookupByLibrary.simpleMessage("Nicht gesendet"),
     "visita_show_visitaDetalle_titulo": MessageLookupByLibrary.simpleMessage(
-      "Detalle visita",
+      "Besuchsdetails",
     ),
-    "visitas_edit_saved": MessageLookupByLibrary.simpleMessage("Guardado"),
+    "visitas_edit_saved": MessageLookupByLibrary.simpleMessage("Gespeichert"),
     "visitas_edit_visitaEditar_atendidoPor":
-        MessageLookupByLibrary.simpleMessage("Atendido por"),
+        MessageLookupByLibrary.simpleMessage("Betreut von"),
     "visitas_edit_visitaEditar_cliente": MessageLookupByLibrary.simpleMessage(
-      "Cliente",
+      "Kunde",
     ),
     "visitas_edit_visitaEditar_clienteProvisional":
-        MessageLookupByLibrary.simpleMessage("Cliente provisional"),
+        MessageLookupByLibrary.simpleMessage("Provisorischer Kunde"),
     "visitas_edit_visitaEditar_codigoPostal":
-        MessageLookupByLibrary.simpleMessage("Código postal"),
+        MessageLookupByLibrary.simpleMessage("Postleitzahl"),
     "visitas_edit_visitaEditar_contacto": MessageLookupByLibrary.simpleMessage(
-      "Contacto",
+      "Kontakt",
     ),
     "visitas_edit_visitaEditar_direccion1":
-        MessageLookupByLibrary.simpleMessage("Dirección 1"),
+        MessageLookupByLibrary.simpleMessage("Adresse 1"),
     "visitas_edit_visitaEditar_direccion2":
-        MessageLookupByLibrary.simpleMessage("Dirección 2"),
+        MessageLookupByLibrary.simpleMessage("Adresse 2"),
     "visitas_edit_visitaEditar_email": MessageLookupByLibrary.simpleMessage(
-      "Email",
+      "E-Mail",
     ),
     "visitas_edit_visitaEditar_errorValidarFormulario":
-        MessageLookupByLibrary.simpleMessage("Error validando el formulario"),
+        MessageLookupByLibrary.simpleMessage(
+          "Fehler beim Validieren des Formulars",
+        ),
     "visitas_edit_visitaEditar_fecha": MessageLookupByLibrary.simpleMessage(
-      "Fecha",
+      "Datum",
     ),
     "visitas_edit_visitaEditar_marcasCompetencia":
-        MessageLookupByLibrary.simpleMessage("Marcas competencia"),
+        MessageLookupByLibrary.simpleMessage("Wettbewerbsmarken"),
     "visitas_edit_visitaEditar_nombre": MessageLookupByLibrary.simpleMessage(
-      "Nombre",
+      "Name",
     ),
     "visitas_edit_visitaEditar_pais": MessageLookupByLibrary.simpleMessage(
-      "País",
+      "Land",
     ),
     "visitas_edit_visitaEditar_poblacion": MessageLookupByLibrary.simpleMessage(
-      "Población",
+      "Ort",
     ),
     "visitas_edit_visitaEditar_provincia": MessageLookupByLibrary.simpleMessage(
-      "Provincia",
+      "Provinz",
     ),
     "visitas_edit_visitaEditar_resumen": MessageLookupByLibrary.simpleMessage(
-      "Resumen",
+      "Zusammenfassung",
     ),
     "visitas_edit_visitaEditar_saved": MessageLookupByLibrary.simpleMessage(
-      "Saved",
+      "Gespeichert",
     ),
     "visitas_edit_visitaEditar_telefono": MessageLookupByLibrary.simpleMessage(
-      "Teléfono",
+      "Telefon",
     ),
     "visitas_edit_visitaEditar_titleEditar":
-        MessageLookupByLibrary.simpleMessage("Editar visita"),
+        MessageLookupByLibrary.simpleMessage("Besuch bearbeiten"),
     "visitas_edit_visitaEditar_titleNueva":
-        MessageLookupByLibrary.simpleMessage("Nueva visita"),
+        MessageLookupByLibrary.simpleMessage("Neuer Besuch"),
     "visitas_edit_visitaEditar_validatorExistEmailMessage":
         MessageLookupByLibrary.simpleMessage(
-          "Existe un cliente con este email.\nEstás seguro que quieres guardar la visita de todos modos?",
+          "Ein Kunde mit dieser E-Mail existiert bereits. Möchten Sie den Besuch trotzdem speichern?",
         ),
     "visitas_edit_visitaEditar_validatorExistPhoneMessage":
         MessageLookupByLibrary.simpleMessage(
-          "Existe un cliente con este teléfono.\nEstás seguro que quieres guardar la visita de todos modos?",
+          "Ein Kunde mit dieser Telefonnummer existiert bereits. Möchten Sie den Besuch trotzdem speichern?",
         ),
     "visitas_show_visitaDetalle_atendidoPor":
-        MessageLookupByLibrary.simpleMessage("Atendido por"),
+        MessageLookupByLibrary.simpleMessage("Betreut von"),
     "visitas_show_visitaDetalle_clienteProvisional":
-        MessageLookupByLibrary.simpleMessage("Cliente provisional"),
+        MessageLookupByLibrary.simpleMessage("Provisorischer Kunde"),
     "visitas_show_visitaDetalle_contacto": MessageLookupByLibrary.simpleMessage(
-      "Contacto",
+      "Kontakt",
     ),
     "visitas_show_visitaDetalle_email": MessageLookupByLibrary.simpleMessage(
-      "Email",
+      "E-Mail",
     ),
     "visitas_show_visitaDetalle_marcasCompetencia":
-        MessageLookupByLibrary.simpleMessage("Marcas competencia"),
+        MessageLookupByLibrary.simpleMessage("Wettbewerbsmarken"),
     "visitas_show_visitaDetalle_nombre": MessageLookupByLibrary.simpleMessage(
-      "Nombre",
+      "Name",
     ),
     "visitas_show_visitaDetalle_poblacion":
-        MessageLookupByLibrary.simpleMessage("Población"),
+        MessageLookupByLibrary.simpleMessage("Ort"),
     "visitas_show_visitaDetalle_resumen": MessageLookupByLibrary.simpleMessage(
-      "Resumen",
+      "Zusammenfassung",
     ),
     "visitas_show_visitaDetalle_telefono": MessageLookupByLibrary.simpleMessage(
-      "Teléfono",
+      "Telefon",
     ),
-    "yes": MessageLookupByLibrary.simpleMessage("Sí"),
+    "yes": MessageLookupByLibrary.simpleMessage("Ja"),
   };
 }

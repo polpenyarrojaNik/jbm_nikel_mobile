@@ -455,5 +455,7 @@
   "uploadExcel": "Cargar Excel",
   "totalRows": "Filas totales",
   "close": "Cerrar",
-  "pricesAndNetGroups": "Precios y Grupos Netos"
+  "pricesAndNetGroups": "Precios y Grupos Netos",
+  "chooseAddress": "",
+  "unknownCustomer": ""
 }
