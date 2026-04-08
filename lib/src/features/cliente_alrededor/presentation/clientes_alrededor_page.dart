@@ -215,7 +215,7 @@ class _FlutterMapContainerState extends ConsumerState<FlutterMapContainer> {
                   widget.currentLatLng.longitude.toStringAsFixed(4) &&
               mapLatLng != widget.currentLatLng) {
             setState(() {
-              mapLatLng = widget.currentLatLng;
+              mapLatLng = position.center;
               isMyCurrentPosition = mapLatLng == widget.currentLatLng;
             });
           }
