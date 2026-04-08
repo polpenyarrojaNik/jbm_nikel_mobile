@@ -196,7 +196,7 @@ class _FlutterMapContainerState extends ConsumerState<FlutterMapContainer> {
     return FlutterMap(
       mapController: mapController,
       options: MapOptions(
-        initialCenter: widget.currentLatLng,
+        initialCenter: mapLatLng,
         initialZoom: getZoomLevel(widget.radiusKm),
         onLongPress: (_, newLatLng) {
           setState(() {
@@ -207,16 +207,10 @@ class _FlutterMapContainerState extends ConsumerState<FlutterMapContainer> {
         },
 
         onPositionChanged: (position, hasGesture) {
-          final center = position.center;
-
-          if (center.latitude.toStringAsFixed(4) ==
-                  widget.currentLatLng.latitude.toStringAsFixed(4) &&
-              center.longitude.toStringAsFixed(4) ==
-                  widget.currentLatLng.longitude.toStringAsFixed(4) &&
-              mapLatLng != widget.currentLatLng) {
+          if (hasGesture && _alignPositionOnUpdate != AlignOnUpdate.never) {
             setState(() {
-              mapLatLng = position.center;
-              isMyCurrentPosition = mapLatLng == widget.currentLatLng;
+              _alignPositionOnUpdate = AlignOnUpdate.never;
+              isMyCurrentPosition = false;
             });
           }
         },
