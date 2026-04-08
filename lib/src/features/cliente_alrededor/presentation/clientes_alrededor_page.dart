@@ -1,12 +1,11 @@
 import 'dart:math';
-import 'dart:ui' as ui;
 
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
+import 'package:flutter_map/flutter_map.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gap/gap.dart';
-import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:latlong2/latlong.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
 import '../../../../generated/l10n.dart';
@@ -32,12 +31,8 @@ class ClientesAlrededorPage extends ConsumerStatefulWidget {
 
 class _ClientesAlrededorPageState extends ConsumerState<ClientesAlrededorPage> {
   late double radiusKm;
-
   late bool showDireccionesEnvio;
   late bool showPotenciales;
-
-  late final BitmapDescriptor badgeUp;
-  late final BitmapDescriptor badgeDown;
 
   @override
   void initState() {
@@ -50,58 +45,47 @@ class _ClientesAlrededorPageState extends ConsumerState<ClientesAlrededorPage> {
   @override
   Widget build(BuildContext context) {
     final state = ref.watch(ubicacionActualProvider);
+
     return Scaffold(
       appBar: AppBar(title: Text(S.of(context).cliente_alrededor_titulo)),
       body: state.when(
-        data: (position) => FutureBuilder<void>(
-          future: precacheBadges(),
-          builder: (context, snapshot) {
-            if (snapshot.connectionState != ConnectionState.done) {
-              return const Center(child: CircularProgressIndicator());
-            }
-            return Stack(
-              fit: StackFit.expand,
-              alignment: AlignmentDirectional.bottomCenter,
-              children: [
-                GoogleMapsContainer(
-                  radiusKm: radiusKm,
-                  currentLatLng: LatLng(position.latitude, position.longitude),
-                  showDireccionesEnvio: showDireccionesEnvio,
-                  showPotenciales: showPotenciales,
-                  badgeUp: badgeUp,
-                  badgeDown: badgeDown,
+        data: (position) {
+          return Stack(
+            fit: StackFit.expand,
+            alignment: AlignmentDirectional.bottomCenter,
+            children: [
+              FlutterMapContainer(
+                radiusKm: radiusKm,
+                currentLatLng: LatLng(position.latitude, position.longitude),
+                showDireccionesEnvio: showDireccionesEnvio,
+                showPotenciales: showPotenciales,
+              ),
+              Positioned(
+                top: 8,
+                right: 8,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  children: [
+                    _CheckboxDireccionesEnvio(
+                      onShowDireccionesEnvioChanged: (_) =>
+                          onChangeDireccionesEnvio(),
+                      showDireccionesEnvio: showDireccionesEnvio,
+                    ),
+                    const Gap(4),
+                    _CheckboxPotenciales(
+                      onShowPotencialesChanged: (_) => onChangePotenciales(),
+                      showPotenciales: showPotenciales,
+                    ),
+                  ],
                 ),
-                Positioned(
-                  top: 8,
-                  right: 8,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.end,
-                    children: [
-                      _CheckboxDireccionesEnvio(
-                        onShowDireccionesEnvioChanged: (_) =>
-                            onChangeDireccionesEnvio(),
-                        showDireccionesEnvio: showDireccionesEnvio,
-                      ),
-                      const Gap(4),
-                      _CheckboxPotenciales(
-                        onShowPotencialesChanged: (_) => onChangePotenciales(),
-                        showPotenciales: showPotenciales,
-                      ),
-                    ],
-                  ),
-                ),
-                _SliderKm(
-                  onSliderChanged: (radiusKm) => onSliderChanged(radiusKm),
-                  radiusKm: radiusKm,
-                ),
-              ],
-            );
-          },
-        ),
+              ),
+              _SliderKm(onSliderChanged: onSliderChanged, radiusKm: radiusKm),
+            ],
+          );
+        },
         loading: () => Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               const CircularProgressIndicator(),
               Text(S.of(context).cliente_alrededor_cargandoMapa),
@@ -133,106 +117,30 @@ class _ClientesAlrededorPageState extends ConsumerState<ClientesAlrededorPage> {
       radiusKm = value * 1000;
     });
   }
-
-  Future<void> precacheBadges() async {
-    badgeUp = await buildTrendBadge(TendenciaCliente.up); // una sola vez
-    badgeDown = await buildTrendBadge(TendenciaCliente.down); // una sola vez
-  }
-
-  Future<BitmapDescriptor> buildTrendBadge(
-    TendenciaCliente tendenciaCliente,
-  ) async {
-    const double size = 78; // tamaño total del canvas (pequeño)
-    final recorder = ui.PictureRecorder();
-    final canvas = Canvas(recorder);
-
-    // Fondo transparente
-    final paintClear = Paint()..blendMode = ui.BlendMode.clear;
-    canvas.drawRect(Rect.fromLTWH(0, 0, size, size), paintClear);
-
-    final icon = tendenciaCliente == TendenciaCliente.up
-        ? MdiIcons.chevronUpCircleOutline
-        : MdiIcons.chevronDownCircleOutline;
-
-    final color = tendenciaCliente == TendenciaCliente.up
-        ? Colors.green
-        : Colors.red;
-
-    // ===== FONDO BLANCO =====
-    final double circleRadius = 8;
-    const double offsetRight = 10; // más a la derecha
-    const offsetUp = 5; // más arriba
-
-    final cx = (size / 2) + offsetRight;
-    final cy = (size / 2) + offsetUp;
-
-    final circlePaint = Paint()
-      ..color = Colors.white
-      ..style = PaintingStyle.fill
-      ..isAntiAlias = true;
-
-    // Círculo blanco detrás del icono
-    canvas.drawCircle(Offset(cx, cy), circleRadius, circlePaint);
-
-    final painter = TextPainter(
-      textDirection: TextDirection.ltr,
-      text: TextSpan(
-        text: String.fromCharCode(icon.codePoint),
-        style: TextStyle(
-          fontSize: 16, // más pequeño
-          fontFamily: icon.fontFamily,
-          package: icon.fontPackage,
-          color: color,
-        ),
-      ),
-    )..layout();
-    painter.paint(
-      canvas,
-      Offset(
-        ((size - painter.width) / 2) + offsetRight,
-        ((size - painter.height) / 2) + offsetUp,
-      ),
-    );
-
-    final image = await recorder.endRecording().toImage(
-      size.toInt(),
-      size.toInt(),
-    );
-    final data = await image.toByteData(format: ui.ImageByteFormat.png);
-    return BitmapDescriptor.bytes(Uint8List.view(data!.buffer));
-  }
 }
 
-class GoogleMapsContainer extends ConsumerStatefulWidget {
-  const GoogleMapsContainer({
+class FlutterMapContainer extends ConsumerStatefulWidget {
+  const FlutterMapContainer({
     super.key,
     required this.radiusKm,
     required this.currentLatLng,
     required this.showDireccionesEnvio,
     required this.showPotenciales,
-    required this.badgeUp,
-    required this.badgeDown,
   });
 
   final double radiusKm;
   final LatLng currentLatLng;
   final bool showDireccionesEnvio;
   final bool showPotenciales;
-  final BitmapDescriptor badgeUp;
-  final BitmapDescriptor badgeDown;
 
   @override
-  ConsumerState<GoogleMapsContainer> createState() =>
-      _GoogleMapsContainerState();
+  ConsumerState<FlutterMapContainer> createState() =>
+      _FlutterMapContainerState();
 }
 
-class _GoogleMapsContainerState extends ConsumerState<GoogleMapsContainer> {
-  GoogleMapController? mapController;
+class _FlutterMapContainerState extends ConsumerState<FlutterMapContainer> {
+  final MapController mapController = MapController();
   LatLng? mapLatLng;
-
-  void _onMapCreated(GoogleMapController controller) {
-    mapController = controller;
-  }
 
   @override
   void initState() {
@@ -242,8 +150,19 @@ class _GoogleMapsContainerState extends ConsumerState<GoogleMapsContainer> {
 
   @override
   void dispose() {
-    mapController?.dispose();
+    mapController.dispose();
     super.dispose();
+  }
+
+  @override
+  void didUpdateWidget(covariant FlutterMapContainer oldWidget) {
+    super.didUpdateWidget(oldWidget);
+
+    if (oldWidget.radiusKm != widget.radiusKm ||
+        oldWidget.showDireccionesEnvio != widget.showDireccionesEnvio ||
+        oldWidget.showPotenciales != widget.showPotenciales) {
+      mapController.move(mapLatLng!, getZoomLevel(widget.radiusKm));
+    }
   }
 
   @override
@@ -258,144 +177,179 @@ class _GoogleMapsContainerState extends ConsumerState<GoogleMapsContainer> {
         ),
       ),
     );
-    final circle = createCircleInCurrentPosition(
-      context: context,
-      latlng: mapLatLng!,
-      radiusInMeters: widget.radiusKm,
+
+    final markers = stateMarkers.maybeWhen(
+      orElse: () => <Marker>[],
+      data: (clientesAlrededorList) =>
+          setMarkerList(clientesAlrededorList: clientesAlrededorList),
     );
 
-    if (mapController != null) {
-      mapController!.animateCamera(
-        CameraUpdate.newLatLngZoom(mapLatLng!, getZoomLevel(circle)),
-      );
-    }
+    return FlutterMap(
+      mapController: mapController,
+      options: MapOptions(
+        initialCenter: widget.currentLatLng,
+        initialZoom: getZoomLevel(widget.radiusKm),
+        onLongPress: (_, newLatLng) {
+          setState(() {
+            mapLatLng = newLatLng;
+          });
+          mapController.move(newLatLng, getZoomLevel(widget.radiusKm));
+        },
+        onPositionChanged: (position, hasGesture) {
+          final center = position.center;
 
-    return GoogleMap(
-      mapType: MapType.normal,
-      onMapCreated: _onMapCreated,
-      myLocationEnabled: true,
-      markers: stateMarkers.maybeWhen(
-        orElse: () => const <Marker>{},
-        data: (clientesAlrededorList) =>
-            setMarkerList(clientesAlrededorList: clientesAlrededorList),
+          if (center.latitude.toStringAsFixed(4) ==
+                  widget.currentLatLng.latitude.toStringAsFixed(4) &&
+              center.longitude.toStringAsFixed(4) ==
+                  widget.currentLatLng.longitude.toStringAsFixed(4) &&
+              mapLatLng != widget.currentLatLng) {
+            setState(() {
+              mapLatLng = widget.currentLatLng;
+            });
+          }
+        },
       ),
-      circles: {circle},
-      onLongPress: (newLatLng) => setState(() {
-        mapLatLng = newLatLng;
-      }),
-      onCameraMove: (cameraPosition) => isMyCurrentPosition(cameraPosition),
-      initialCameraPosition: CameraPosition(
-        target: widget.currentLatLng,
-        zoom: getZoomLevel(circle),
-      ),
+      children: [
+        TileLayer(
+          urlTemplate:
+              'https://tiles.stadiamaps.com/tiles/alidade_smooth/{z}/{x}/{y}{r}.png?api_key={apiKey}',
+          additionalOptions: {'apiKey': '10354db6-f097-4d52-b55a-633e9608a61b'},
+          userAgentPackageName: 'es.nikel.jbm_nikel_mobile',
+          maxNativeZoom: 19,
+        ),
+        RichAttributionWidget(
+          attributions: [TextSourceAttribution('© OpenStreetMap contributors')],
+        ),
+
+        /// Si quieres localización en tiempo real, aquí normalmente añadirías
+        /// CurrentLocationLayer o flutter_map_location_marker.
+        CircleLayer(
+          circles: [
+            CircleMarker(
+              point: mapLatLng!,
+              radius: widget.radiusKm,
+              useRadiusInMeter: true,
+              color: Colors.blue.withValues(alpha: 0.25),
+              borderStrokeWidth: 1,
+              borderColor: Theme.of(context).colorScheme.onTertiaryContainer,
+            ),
+          ],
+        ),
+
+        MarkerLayer(markers: markers),
+      ],
     );
   }
 
-  double getZoomLevel(Circle circle) {
-    final radius = (circle.radius + circle.radius) / 2;
-    final scale = radius / 500;
-    final zoomLevel = (16 - log(scale) / log(2));
-
+  double getZoomLevel(double radiusInMeters) {
+    final scale = radiusInMeters / 500;
+    final zoomLevel = 16 - log(scale) / log(2);
     return double.parse(zoomLevel.toStringAsFixed(2));
   }
 
-  Circle createCircleInCurrentPosition({
-    required BuildContext context,
-    required LatLng latlng,
-    required double radiusInMeters,
-  }) {
-    return Circle(
-      circleId: const CircleId('currentPosition'),
-      center: latlng,
-      radius: radiusInMeters,
-      fillColor: Colors.blue.withValues(alpha: 0.25),
-      strokeWidth: 1,
-      strokeColor: Theme.of(context).colorScheme.onTertiaryContainer,
-    );
-  }
-
-  Set<Marker> createMarkerSet(List<ClienteAlrededor> clienteAlrededorList) {
-    final markers = <Marker>{};
+  List<Marker> createMarkerList(List<ClienteAlrededor> clienteAlrededorList) {
+    final markers = <Marker>[];
 
     for (final cliente in clienteAlrededorList) {
       markers.add(
         Marker(
-          markerId: MarkerId(cliente.markerId),
-          position: LatLng(cliente.latitud, cliente.longitud),
-          icon: BitmapDescriptor.defaultMarkerWithHue(
-            _getMarkerIcon(
-              cliente.isDireccionFiscal,
-              cliente.isClientePotencial,
+          point: LatLng(cliente.latitud, cliente.longitud),
+          width: 48,
+          height: 48,
+          child: GestureDetector(
+            onTap: () => showDialog(
+              context: context,
+              barrierDismissible: false,
+              builder: (ctx) => _ClienteAlrededorDialog(
+                clienteAlrededor: cliente,
+                dialogContext: ctx,
+              ),
             ),
-          ),
-          anchor: const Offset(0.5, 1.0),
-          zIndexInt: 1,
-          onTap: () => showDialog(
-            context: context,
-            barrierDismissible: false,
-            builder: (ctx) => _ClienteAlrededorDialog(
-              clienteAlrededor: cliente,
-              dialogContext: ctx,
+            child: _ClienteMarker(
+              color: _getMarkerColor(
+                cliente.isDireccionFiscal,
+                cliente.isClientePotencial,
+              ),
+              tendencia: cliente.tendenciaVentas,
             ),
           ),
         ),
       );
-
-      if (cliente.tendenciaVentas != TendenciaCliente.equal) {
-        markers.add(
-          Marker(
-            markerId: MarkerId('${cliente.markerId}_badge'),
-            position: LatLng(cliente.latitud, cliente.longitud),
-            icon: cliente.tendenciaVentas == TendenciaCliente.up
-                ? widget.badgeUp
-                : widget.badgeDown,
-            anchor: const Offset(0.5, 1.0),
-            zIndexInt: 2,
-            consumeTapEvents: false,
-          ),
-        );
-      }
     }
+
     return markers;
   }
 
-  void isMyCurrentPosition(CameraPosition cameraPosition) {
-    if (cameraPosition.target.latitude.toStringAsFixed(4) ==
-            widget.currentLatLng.latitude.toStringAsFixed(4) &&
-        cameraPosition.target.longitude.toStringAsFixed(4) ==
-            widget.currentLatLng.longitude.toStringAsFixed(4)) {
-      setState(() {
-        mapLatLng = widget.currentLatLng;
-      });
-    }
-  }
-
-  Set<Marker> setMarkerList({
+  List<Marker> setMarkerList({
     required List<ClienteAlrededor> clientesAlrededorList,
   }) {
-    final markerList = createMarkerSet(clientesAlrededorList);
+    final markerList = createMarkerList(clientesAlrededorList);
 
     if (mapLatLng!.latitude.toStringAsFixed(4) !=
-            widget.currentLatLng.latitude.toStringAsFixed(4) &&
+            widget.currentLatLng.latitude.toStringAsFixed(4) ||
         mapLatLng!.longitude.toStringAsFixed(4) !=
             widget.currentLatLng.longitude.toStringAsFixed(4)) {
       markerList.add(
         Marker(
-          markerId: const MarkerId('userPositionSelected'),
-          position: mapLatLng!,
+          point: mapLatLng!,
+          width: 24,
+          height: 24,
+          child: const Icon(Icons.location_on, color: Colors.red, size: 24),
         ),
       );
     }
+
     return markerList;
   }
 
-  double _getMarkerIcon(bool isDireccionFiscal, bool? isClientePotencial) {
+  Color _getMarkerColor(bool isDireccionFiscal, bool? isClientePotencial) {
     if (isClientePotencial ?? false) {
-      return BitmapDescriptor.hueYellow;
-    } else if ((isDireccionFiscal)) {
-      return BitmapDescriptor.hueGreen;
+      return Colors.yellow.shade700;
+    } else if (isDireccionFiscal) {
+      return Colors.green;
     }
-    return BitmapDescriptor.hueCyan;
+    return Colors.cyan;
+  }
+}
+
+class _ClienteMarker extends StatelessWidget {
+  const _ClienteMarker({required this.color, required this.tendencia});
+
+  final Color color;
+  final TendenciaCliente tendencia;
+
+  @override
+  Widget build(BuildContext context) {
+    final badgeIcon = switch (tendencia) {
+      TendenciaCliente.up => MdiIcons.chevronUpCircleOutline,
+      TendenciaCliente.down => MdiIcons.chevronDownCircleOutline,
+      _ => null,
+    };
+
+    final badgeColor = switch (tendencia) {
+      TendenciaCliente.up => Colors.green,
+      TendenciaCliente.down => Colors.red,
+      _ => null,
+    };
+
+    return Stack(
+      clipBehavior: Clip.none,
+      children: [
+        Align(child: Icon(Icons.location_pin, size: 40, color: color)),
+        if (badgeIcon != null)
+          Positioned(
+            top: 4,
+            right: 2,
+            child: Container(
+              decoration: const BoxDecoration(
+                color: Colors.white,
+                shape: BoxShape.circle,
+              ),
+              child: Icon(badgeIcon, size: 16, color: badgeColor),
+            ),
+          ),
+      ],
+    );
   }
 }
 
@@ -420,7 +374,7 @@ class _SliderKm extends StatelessWidget {
             value: radiusKm / 1000,
             min: 0,
             max: 500,
-            onChanged: (value) => onSliderChanged(value),
+            onChanged: onSliderChanged,
           ),
           DecoratedBox(
             decoration: BoxDecoration(
@@ -434,7 +388,7 @@ class _SliderKm extends StatelessWidget {
                 vertical: 8.0,
               ),
               child: Text(
-                '${(radiusKm / 1000).round().toString()} Km',
+                '${(radiusKm / 1000).round()} Km',
                 style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                   color: Theme.of(context).colorScheme.onSurface,
                 ),
@@ -477,7 +431,7 @@ class _CheckboxDireccionesEnvio extends StatelessWidget {
             const Gap(8),
             Switch(
               value: showDireccionesEnvio,
-              onChanged: (value) => onShowDireccionesEnvioChanged(value),
+              onChanged: onShowDireccionesEnvioChanged,
             ),
           ],
         ),
@@ -510,10 +464,7 @@ class _CheckboxPotenciales extends StatelessWidget {
           children: [
             Text(S.of(context).cliente_alrededor_potenciales),
             const Gap(8),
-            Switch(
-              value: showPotenciales,
-              onChanged: (value) => onShowPotencialesChanged(value),
-            ),
+            Switch(value: showPotenciales, onChanged: onShowPotencialesChanged),
           ],
         ),
       ),
