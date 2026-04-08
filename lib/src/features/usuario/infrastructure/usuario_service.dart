@@ -51,16 +51,19 @@ class UsuarioService {
     final packageInfo = await PackageInfo.fromPlatform();
     final deviceInfoPlugin = DeviceInfoPlugin();
 
-    String deviceInfoStr;
+    var deviceInfoStr = '';
 
     if (Platform.isAndroid) {
       final andoridInfo = await deviceInfoPlugin.androidInfo;
 
       deviceInfoStr = '${andoridInfo.model}/${andoridInfo.id}';
-    } else {
+    } else if (Platform.isIOS) {
       final iOSInfo = await deviceInfoPlugin.iosInfo;
       deviceInfoStr =
           '${iOSInfo.utsname.machine}/${iOSInfo.identifierForVendor ?? ''}';
+    } else if (Platform.isWindows) {
+      final windowsInfo = await deviceInfoPlugin.windowsInfo;
+      deviceInfoStr = '${windowsInfo.computerName}/${windowsInfo.deviceId}';
     }
 
     final usuarioDtos = usuarioDTO.copyWith(
