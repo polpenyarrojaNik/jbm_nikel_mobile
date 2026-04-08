@@ -1,8 +1,10 @@
+import 'dart:async';
 import 'dart:math';
 
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
+import 'package:flutter_map_location_marker/flutter_map_location_marker.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gap/gap.dart';
 import 'package:latlong2/latlong.dart';
@@ -140,17 +142,24 @@ class FlutterMapContainer extends ConsumerStatefulWidget {
 
 class _FlutterMapContainerState extends ConsumerState<FlutterMapContainer> {
   final MapController mapController = MapController();
-  LatLng? mapLatLng;
+  late LatLng mapLatLng;
+  late AlignOnUpdate _alignPositionOnUpdate;
+  late StreamController<double?> _alignPositionStreamController;
+  late bool isMyCurrentPosition;
 
   @override
   void initState() {
     super.initState();
     mapLatLng = widget.currentLatLng;
+    _alignPositionOnUpdate = AlignOnUpdate.always;
+    _alignPositionStreamController = StreamController<double?>();
+    isMyCurrentPosition = false;
   }
 
   @override
   void dispose() {
     mapController.dispose();
+    _alignPositionStreamController.close();
     super.dispose();
   }
 
@@ -161,7 +170,7 @@ class _FlutterMapContainerState extends ConsumerState<FlutterMapContainer> {
     if (oldWidget.radiusKm != widget.radiusKm ||
         oldWidget.showDireccionesEnvio != widget.showDireccionesEnvio ||
         oldWidget.showPotenciales != widget.showPotenciales) {
-      mapController.move(mapLatLng!, getZoomLevel(widget.radiusKm));
+      mapController.move(mapLatLng, getZoomLevel(widget.radiusKm));
     }
   }
 
@@ -170,7 +179,7 @@ class _FlutterMapContainerState extends ConsumerState<FlutterMapContainer> {
     final stateMarkers = ref.watch(
       clientesDireccionesAlrededorListStreamProvider(
         GetClienteAlrededorArg(
-          latLng: mapLatLng!,
+          latLng: mapLatLng,
           radiusDistance: widget.radiusKm,
           showDireccionesEnvio: widget.showDireccionesEnvio,
           showPotenciales: widget.showPotenciales,
@@ -205,6 +214,7 @@ class _FlutterMapContainerState extends ConsumerState<FlutterMapContainer> {
               mapLatLng != widget.currentLatLng) {
             setState(() {
               mapLatLng = widget.currentLatLng;
+              isMyCurrentPosition = mapLatLng == widget.currentLatLng;
             });
           }
         },
@@ -221,12 +231,20 @@ class _FlutterMapContainerState extends ConsumerState<FlutterMapContainer> {
           attributions: [TextSourceAttribution('© OpenStreetMap contributors')],
         ),
 
-        /// Si quieres localización en tiempo real, aquí normalmente añadirías
-        /// CurrentLocationLayer o flutter_map_location_marker.
+        CurrentLocationLayer(
+          alignPositionOnUpdate: _alignPositionOnUpdate,
+          alignPositionStream: _alignPositionStreamController.stream,
+          style: const LocationMarkerStyle(
+            marker: DefaultLocationMarker(),
+            markerSize: Size(18, 18),
+            markerDirection: MarkerDirection.heading,
+          ),
+        ),
+
         CircleLayer(
           circles: [
             CircleMarker(
-              point: mapLatLng!,
+              point: mapLatLng,
               radius: widget.radiusKm,
               useRadiusInMeter: true,
               color: Colors.blue.withValues(alpha: 0.25),
@@ -237,6 +255,28 @@ class _FlutterMapContainerState extends ConsumerState<FlutterMapContainer> {
         ),
 
         MarkerLayer(markers: markers),
+        Align(
+          alignment: Alignment.bottomRight,
+          child: Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: FloatingActionButton.small(
+              onPressed: () {
+                setState(() {
+                  _alignPositionOnUpdate = AlignOnUpdate.always;
+                  mapLatLng = widget.currentLatLng;
+                  mapController.move(mapLatLng, getZoomLevel(widget.radiusKm));
+
+                  isMyCurrentPosition = true;
+                });
+              },
+              child: Icon(
+                isMyCurrentPosition
+                    ? Icons.my_location
+                    : Icons.location_searching,
+              ),
+            ),
+          ),
+        ),
       ],
     );
   }
@@ -285,13 +325,13 @@ class _FlutterMapContainerState extends ConsumerState<FlutterMapContainer> {
   }) {
     final markerList = createMarkerList(clientesAlrededorList);
 
-    if (mapLatLng!.latitude.toStringAsFixed(4) !=
+    if (mapLatLng.latitude.toStringAsFixed(4) !=
             widget.currentLatLng.latitude.toStringAsFixed(4) ||
-        mapLatLng!.longitude.toStringAsFixed(4) !=
+        mapLatLng.longitude.toStringAsFixed(4) !=
             widget.currentLatLng.longitude.toStringAsFixed(4)) {
       markerList.add(
         Marker(
-          point: mapLatLng!,
+          point: mapLatLng,
           width: 24,
           height: 24,
           child: const Icon(Icons.location_on, color: Colors.red, size: 24),
