@@ -201,9 +201,11 @@ class _FlutterMapContainerState extends ConsumerState<FlutterMapContainer> {
         onLongPress: (_, newLatLng) {
           setState(() {
             mapLatLng = newLatLng;
+            isMyCurrentPosition = mapLatLng == widget.currentLatLng;
           });
           mapController.move(newLatLng, getZoomLevel(widget.radiusKm));
         },
+
         onPositionChanged: (position, hasGesture) {
           final center = position.center;
 
