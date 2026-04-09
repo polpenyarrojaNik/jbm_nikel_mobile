@@ -82,3 +82,14 @@ deploy_mobile: format lint pub_get create_icons build_runner sentry_dart_plugin 
 	@echo "╠  Building the iOS/Android app"
 	@$(FLUTTER) build ipa
 	@$(FLUTTER) build appbundle
+
+
+deploy_windows: pub_get update_i18n build_runner sentry_dart_plugin format lint create_icons
+	@flutter_distributor release --name prod --jobs release-windows
+	@for /f "delims=" %%i in ('dir /b /o-d dist\*') do ( \
+		set latest=%%i \
+		&& echo "Signing the latest version: %%i" \
+		&& flutter pub run auto_updater:sign_update .\dist\%%i\jbm_nikel_mobile-%%i-windows-setup.exe \
+		&& exit /b  \
+	)
+	@endlocal

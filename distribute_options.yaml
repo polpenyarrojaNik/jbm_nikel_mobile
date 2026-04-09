@@ -1,6 +1,6 @@
 output: dist/
 releases:
-  - name: dev
+  - name: prod
     jobs:
       # See full documentation: https://distributor.leanflutter.org/configuration/makers/exe
       - name: release-windows
@@ -9,4 +9,4 @@ releases:
           target: exe
           build_args:
             dart-define:
-              APP_ENV: dev
+              APP_ENV: prod
