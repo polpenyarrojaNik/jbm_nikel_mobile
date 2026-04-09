@@ -3,7 +3,6 @@ import 'dart:math';
 
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:flutter_map_location_marker/flutter_map_location_marker.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -218,10 +217,8 @@ class _FlutterMapContainerState extends ConsumerState<FlutterMapContainer> {
       ),
       children: [
         TileLayer(
-          urlTemplate:
-              'https://tiles.stadiamaps.com/tiles/alidade_smooth/{z}/{x}/{y}{r}.png?api_key={apiKey}',
-          additionalOptions: {'apiKey': dotenv.get('STADIA_MAPS_API_KEY')},
-          userAgentPackageName: 'es.nikel.jbm_nikel_mobile',
+          urlTemplate: 'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
+          userAgentPackageName: 'es.nikel.jbm.jbm_nikel_mobile',
           maxNativeZoom: 19,
         ),
         RichAttributionWidget(
