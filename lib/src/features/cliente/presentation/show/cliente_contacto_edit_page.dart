@@ -198,13 +198,14 @@ class _ClienteContactoImpEditForm extends StatelessWidget {
         autovalidateMode: AutovalidateMode.disabled,
         child: Column(
           children: [
-            Align(
-              alignment: Alignment.centerRight,
-              child: IconButton(
-                onPressed: () => scanBusinessCard(context),
-                icon: const Icon(Icons.qr_code_scanner),
+            if (!Platform.isWindows)
+              Align(
+                alignment: Alignment.centerRight,
+                child: IconButton(
+                  onPressed: () => scanBusinessCard(context),
+                  icon: const Icon(Icons.qr_code_scanner),
+                ),
               ),
-            ),
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: FormBuilderTextField(

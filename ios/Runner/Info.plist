@@ -49,6 +49,29 @@
 	<string>JBM Nikel Mobile requires location permissons when is using to show your location in map</string>
 	<key>NSMicrophoneUsageDescription</key>
 	<string>JBM Nikel Mobile requires microphone permissons when is using to scan business cards.</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>JBM Nikel Mobile requires Library permissons when is uploading a Excel file to import sales order lines</string>
+	<key>UIApplicationSceneManifest</key>
+	<dict>
+		<key>UIApplicationSupportsMultipleScenes</key>
+		<false/>
+		<key>UISceneConfigurations</key>
+		<dict>
+			<key>UIWindowSceneSessionRoleApplication</key>
+			<array>
+				<dict>
+					<key>UISceneClassName</key>
+					<string>UIWindowScene</string>
+					<key>UISceneConfigurationName</key>
+					<string>flutter</string>
+					<key>UISceneDelegateClassName</key>
+					<string>FlutterSceneDelegate</string>
+					<key>UISceneStoryboardFile</key>
+					<string>Main</string>
+				</dict>
+			</array>
+		</dict>
+	</dict>
 	<key>UIApplicationSupportsIndirectInputEvents</key>
 	<true/>
 	<key>UILaunchStoryboardName</key>
@@ -68,8 +91,6 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
-	<key>NSPhotoLibraryUsageDescription</key>
-	<string>JBM Nikel Mobile requires Library permissons when is uploading a Excel file to import sales order lines</string>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
 </dict>

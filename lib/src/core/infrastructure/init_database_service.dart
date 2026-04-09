@@ -1,8 +1,8 @@
 import 'dart:io';
 
+import 'package:archive/archive.dart';
 import 'package:dio/dio.dart';
 import 'package:drift/drift.dart';
-import 'package:flutter_archive/flutter_archive.dart';
 import 'package:path/path.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
@@ -71,11 +71,25 @@ class InitDatabaseService {
 
         final zipFile = File('${directory.path}/jbm_sqlite.zip');
 
-        await ZipFile.extractToDirectory(
-          zipFile: zipFile,
-          destinationDir: directory,
-        );
+        final inputStream = InputFileStream(zipFile.path);
+        final archive = ZipDecoder().decodeStream(inputStream);
 
+        for (final file in archive) {
+          final outputPath = '${directory.path}/${file.name}';
+
+          if (file.isFile) {
+            final outputFile = File(outputPath);
+            await outputFile.create(recursive: true);
+
+            final outputStream = OutputFileStream(outputPath);
+            file.writeContent(outputStream);
+            await outputStream.close();
+          } else {
+            await Directory(outputPath).create(recursive: true);
+          }
+        }
+
+        inputStream.closeSync();
         zipFile.deleteSync();
 
         await _saveDataInPreferences();

@@ -759,13 +759,14 @@ class _ClienteProvisionalContainerState
         padding: const EdgeInsets.all(16),
         child: Column(
           children: [
-            Align(
-              alignment: Alignment.centerRight,
-              child: IconButton(
-                onPressed: () => scanBussinessCard(context),
-                icon: const Icon(Icons.qr_code_scanner),
+            if (!Platform.isWindows)
+              Align(
+                alignment: Alignment.centerRight,
+                child: IconButton(
+                  onPressed: () => scanBussinessCard(context),
+                  icon: const Icon(Icons.qr_code_scanner),
+                ),
               ),
-            ),
             FormBuilderTextField(
               name: 'nombre',
               initialValue:

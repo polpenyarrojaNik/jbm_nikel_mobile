@@ -1,0 +1,12 @@
+output: dist/
+releases:
+  - name: dev
+    jobs:
+      # See full documentation: https://distributor.leanflutter.org/configuration/makers/exe
+      - name: release-windows
+        package:
+          platform: windows
+          target: exe
+          build_args:
+            dart-define:
+              APP_ENV: dev

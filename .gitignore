@@ -4,6 +4,21 @@ coverage/lcov.info
 test/default.db
 .flutter-plugins-dependencie.flutter-plugins-dependencie
 .flutter-plugins
+*priv.pem
+.sentry-native/
+
+# Files and directories created by pub
+.dart_tool/
+.packages
+build/
+!dist/appcast.xml
+dist/*
+**/*.g.dart
+**/*.gr.dart
+**/*.freezed.dart
+lib/generated/
+# If you're building an application, you may want to check-in your pubspec.lock
+pubspec.lock
 
 ### Flutter ###
 # Flutter/Dart/Pub related

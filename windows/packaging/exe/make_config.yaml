@@ -1,0 +1,15 @@
+# The value of AppId uniquely identifies this application.
+# Do not use the same AppId value in installers for other applications.
+app_id: E1C2ACEF-9BCB-442F-AE0A-98180E973B61
+publisher: Nikel Consultores SL
+publisher_url: https://www.nikel.es/
+display_name: JBM Nikel Mobile
+create_desktop_icon: true
+install_dir_name: \Nikel\JBM
+locales:
+  - en
+  - es
+  - fr
+  - de
+  - it
+  - pt
