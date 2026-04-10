@@ -43,6 +43,8 @@ abstract class IdiomaCatalogoDTO with _$IdiomaCatalogoDTO {
       return descripcionFR!;
     } else if (currentLocale == 'it' && descripcionIT != null) {
       return descripcionIT!;
+    } else if (currentLocale == 'de' && descripcionDE != null) {
+      return descripcionDE!;
     }
 
     return descripcionES;

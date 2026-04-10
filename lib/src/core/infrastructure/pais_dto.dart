@@ -58,6 +58,8 @@ abstract class PaisDTO with _$PaisDTO implements Insertable<PaisDTO> {
       return descripcionIT!;
     } else if (currentLocale == 'pt' && descripcionPT != null) {
       return descripcionPT!;
+    } else if (currentLocale == 'de' && descripcionDE != null) {
+      return descripcionDE!;
     }
 
     return descripcionES;

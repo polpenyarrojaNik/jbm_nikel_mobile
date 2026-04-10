@@ -2312,6 +2312,8 @@ GROUP BY ARTICULO_ID, DESCRIPCION
       return articulo.descripcionIT!;
     } else if (currentLocale == 'pt' && articulo.descripcionPT != null) {
       return articulo.descripcionPT!;
+    } else if (currentLocale == 'de' && articulo.descripcionDE != null) {
+      return articulo.descripcionDE!;
     }
 
     return articulo.descripcionES;

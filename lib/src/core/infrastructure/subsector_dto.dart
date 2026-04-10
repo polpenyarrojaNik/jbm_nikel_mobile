@@ -56,6 +56,8 @@ abstract class SubsectorDTO
       return descripcionIT!;
     } else if (currentLocale == 'pl' && descripcionPL != null) {
       return descripcionPL!;
+    } else if (currentLocale == 'de' && descripcionDE != null) {
+      return descripcionDE!;
     }
 
     return descripcionES;
