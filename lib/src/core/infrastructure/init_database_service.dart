@@ -66,7 +66,7 @@ class InitDatabaseService {
 
       final directory = await getApplicationDocumentsDirectory();
 
-      if (!_databaseFileExist(directory: directory)) {
+      if (!await _databaseFileExist(directory: directory)) {
         await _getRemoteInitialDatabase(directory: directory);
 
         final zipFile = File('${directory.path}/jbm_sqlite.zip');
@@ -89,8 +89,8 @@ class InitDatabaseService {
           }
         }
 
-        inputStream.closeSync();
-        zipFile.deleteSync();
+        await inputStream.close();
+        await zipFile.delete();
 
         await _saveDataInPreferences();
       }
@@ -107,7 +107,7 @@ class InitDatabaseService {
       final directory = await getApplicationDocumentsDirectory();
 
       return await getSchemaVersionFromPreferences() == kDatabaseRelease &&
-          _databaseFileExist(directory: directory);
+          await _databaseFileExist(directory: directory);
     } on AppException catch (e) {
       log.e(e.details);
       rethrow;
@@ -116,8 +116,8 @@ class InitDatabaseService {
     }
   }
 
-  bool _databaseFileExist({required Directory directory}) {
-    return File((join(directory.path, kRemoteDatabaseName))).existsSync();
+  Future<bool> _databaseFileExist({required Directory directory}) {
+    return File((join(directory.path, kRemoteDatabaseName))).exists();
   }
 
   Future<void> _getRemoteInitialDatabase({required Directory directory}) async {

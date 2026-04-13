@@ -44,8 +44,8 @@ class SettingsRepository {
       final file = File('${directory.path}/local_jbm.sqlite');
 
       // Override an existing backup, sqlite expects the target file to be empty
-      if (file.existsSync()) {
-        file.deleteSync();
+      if (await file.exists()) {
+        await file.delete();
       }
 
       await localDb.customStatement('VACUUM INTO ?', [file.path]);

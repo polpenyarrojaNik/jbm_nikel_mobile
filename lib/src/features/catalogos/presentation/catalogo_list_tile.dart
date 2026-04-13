@@ -1,12 +1,12 @@
 import 'dart:async';
 
 import 'package:auto_route/auto_route.dart';
-import 'package:better_open_file/better_open_file.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/experimental/mutation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gap/gap.dart';
+import 'package:open_file/open_file.dart';
 
 import '../../../../generated/l10n.dart';
 import '../../../core/domain/adjunto_param.dart';

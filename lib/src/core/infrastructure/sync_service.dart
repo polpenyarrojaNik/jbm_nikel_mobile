@@ -1742,7 +1742,7 @@ class SyncService {
         );
       }
       if (!isInMainThread) {
-        removeDeletedCatalogs(
+        await removeDeletedCatalogs(
           favoritesCatalogsDtoList,
           documentDirectory ?? await getApplicationDocumentsDirectory(),
         );
@@ -1768,7 +1768,7 @@ class SyncService {
       );
       if (isInMainThread ||
           (adjuntoParam.nombreArchivo != null &&
-              !_fileExistInLocal(adjuntoParam, documentDirectory))) {
+              !await _fileExistInLocal(adjuntoParam, documentDirectory))) {
         final query = {'NOMBRE_ARCHIVO': adjuntoParam.nombreArchivo};
         final data = await _remoteGetAttachment(
           requestUri: Uri.https(
@@ -1780,7 +1780,7 @@ class SyncService {
         );
 
         if (isInMainThread) {
-          _removeCatalogsFilesById(
+          await _removeCatalogsFilesById(
             documentDirectory,
             favoritesCatalogsDtoList[i].catalogoId,
           );
@@ -1808,7 +1808,7 @@ class SyncService {
       raf.writeFromSync(data);
       await raf.close();
 
-      final document = PdfDocument(inputBytes: file.readAsBytesSync());
+      final document = PdfDocument(inputBytes: await file.readAsBytes());
 
       for (var i = 0; i < document.pages.count; i++) {
         final pageSize = document.pages[i].size;
@@ -1833,16 +1833,16 @@ class SyncService {
     }
   }
 
-  void removeDeletedCatalogs(
+  Future<void> removeDeletedCatalogs(
     List<CatalogoDTO> favoritesCatalogsDtoList,
     Directory documentDirectory,
-  ) {
+  ) async {
     final getCatalogoDirectory = Directory(
       '${documentDirectory.path}/catalogos/',
     );
 
-    if (getCatalogoDirectory.existsSync()) {
-      final getFilesList = getCatalogoDirectory.listSync();
+    if (await getCatalogoDirectory.exists()) {
+      final getFilesList = await getCatalogoDirectory.list().toList();
 
       for (var i = 0; i < getFilesList.length; i++) {
         final fileCatalogoId = getFilesList[i].path.split('/').last;
@@ -1860,13 +1860,16 @@ class SyncService {
     }
   }
 
-  bool _fileExistInLocal(AdjuntoParam adjuntoParam, Directory directory) {
+  Future<bool> _fileExistInLocal(
+    AdjuntoParam adjuntoParam,
+    Directory directory,
+  ) {
     final filePath =
         '${directory.path}/catalogos/${adjuntoParam.id}/${adjuntoParam.nombreArchivo ?? ''}';
 
     final file = File(filePath);
 
-    return file.existsSync();
+    return file.exists();
   }
 
   Future<List<int>> _remoteGetAttachment({
@@ -1897,11 +1900,14 @@ class SyncService {
     }
   }
 
-  void _removeCatalogsFilesById(Directory directory, int catalogoId) {
+  Future<void> _removeCatalogsFilesById(
+    Directory directory,
+    int catalogoId,
+  ) async {
     final directoryCatalogos = Directory(
       '${directory.path}/catalogos/$catalogoId',
     );
-    if (directoryCatalogos.existsSync()) {
+    if (await directoryCatalogos.exists()) {
       directoryCatalogos.deleteSync(recursive: true);
     }
   }

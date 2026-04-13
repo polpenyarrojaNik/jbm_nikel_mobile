@@ -213,7 +213,7 @@ class CatalogoRepository {
       final cahceDirectories = await getTemporaryDirectory();
       final documentDirectories = await getApplicationDocumentsDirectory();
 
-      if (fileExistInLocal(adjuntoParam, documentDirectories)) {
+      if (await fileExistInLocal(adjuntoParam, documentDirectories)) {
         try {
           final filePath =
               '${documentDirectories.path}/catalogos/${adjuntoParam.id}/${adjuntoParam.nombreArchivo ?? ""}';
@@ -227,7 +227,7 @@ class CatalogoRepository {
             stackTrace,
           );
         }
-      } else if (fileExistInLocal(adjuntoParam, cahceDirectories)) {
+      } else if (await fileExistInLocal(adjuntoParam, cahceDirectories)) {
         try {
           final filePath =
               '${cahceDirectories.path}/catalogos/${adjuntoParam.id}/${adjuntoParam.nombreArchivo ?? ''}';
@@ -265,13 +265,16 @@ class CatalogoRepository {
     return null;
   }
 
-  bool fileExistInLocal(AdjuntoParam adjuntoParam, Directory directory) {
+  Future<bool> fileExistInLocal(
+    AdjuntoParam adjuntoParam,
+    Directory directory,
+  ) {
     final filePath =
         '${directory.path}/catalogos/${adjuntoParam.id}/${adjuntoParam.nombreArchivo ?? ''}';
 
     final file = File(filePath);
 
-    return file.existsSync();
+    return file.exists();
   }
 
   Future<void> setCatalogoToFavorite(Catalogo catalogo) async {
@@ -287,7 +290,7 @@ class CatalogoRepository {
       descarga: catalogo.descarga,
     );
 
-    if (!fileExistInLocal(adjuntoParam, documentDirectory)) {
+    if (!await fileExistInLocal(adjuntoParam, documentDirectory)) {
       final query = {'NOMBRE_ARCHIVO': adjuntoParam.nombreArchivo};
       final data = await _remoteGetAttachment(
         requestUri: Uri.http(
@@ -636,7 +639,7 @@ class CatalogoRepository {
       raf.writeFromSync(data);
       await raf.close();
 
-      final document = PdfDocument(inputBytes: file.readAsBytesSync());
+      final document = PdfDocument(inputBytes: await file.readAsBytes());
 
       for (var i = 0; i < document.pages.count; i++) {
         final pageSize = document.pages[i].size;
@@ -668,8 +671,8 @@ class CatalogoRepository {
       '${documentDirectory.path}/catalogos/${adjuntoParam.id}/${adjuntoParam.nombreArchivo ?? ''}',
     );
 
-    if (file.existsSync()) {
-      file.deleteSync(recursive: true);
+    if (await file.exists()) {
+      await file.delete(recursive: true);
     }
   }
 }
