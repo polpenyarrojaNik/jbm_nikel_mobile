@@ -86,7 +86,7 @@ abstract class ArticuloDTO
     @JsonKey(name: 'COMPRAS_ENTREGA_FECHA_3') DateTime? comprasEntregaFecha3,
     @JsonKey(name: 'COMPRAS_ENTREGA_ESTADO_1') String? comprasEntregaEstado1,
     @JsonKey(name: 'COMPRAS_ENTREGA_ESTADO_2') String? comprasEntregaEstado2,
-    @JsonKey(name: 'COMPRAS_ENTREGA_ESTADO_') String? comprasEntregaEstado3,
+    @JsonKey(name: 'COMPRAS_ENTREGA_ESTADO_3') String? comprasEntregaEstado3,
     @JsonKey(name: 'IMAGEN_PRINCIPAL') String? imagenPrincipal,
     @JsonKey(name: 'GTIN_13_UNIDAD') String? gtin13Unidad,
     @JsonKey(name: 'GS1_128_SUBCAJA') String? gs1128Subcaja,
