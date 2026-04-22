@@ -521,7 +521,16 @@ class _ClienteAlrededorDialog extends StatelessWidget {
       title: Row(
         children: [
           Flexible(child: Text(clienteAlrededor.nombre)),
-          const Gap(4),
+          const Gap(2),
+          IconButton(
+            onPressed: () => context.router.push(
+              PedidoVentaEditRoute(
+                createPedidoFromClienteId: clienteAlrededor.clienteId,
+                isLocal: true,
+              ),
+            ),
+            icon: const Icon(Icons.shopping_cart_outlined),
+          ),
           IconButton(
             onPressed: () => context.router.push(
               ClienteDetalleRoute(clienteId: clienteAlrededor.clienteId),
