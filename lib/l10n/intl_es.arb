@@ -429,7 +429,6 @@
   "unknownDescription": "Descripción desconocida",
   "imNotInterestedInAnyArticles": "No estoy interesado en ningún artículo",
   "suggestedAddress": "Dirección sugerida",
-  "chooseAnAddress": "Elige una dirección",
   "currentAddress": "Dirección actual",
   "couldntValidateAddressMessage": "No hemos podido validar esta dirección. Es posible que contenga un error o esté incompleta. ¿Quieres continuar antes de revisarla?",
   "seleccioneUnClienteParaContinuar": "Seleccione un cliente para continuar.",
@@ -456,6 +455,6 @@
   "totalRows": "Filas totales",
   "close": "Cerrar",
   "pricesAndNetGroups": "Precios y Grupos Netos",
-  "chooseAddress": "",
-  "unknownCustomer": ""
+  "unknownCustomer": "Cliente desconocido",
+  "discontinued": "DESCATALOGADO"
 }

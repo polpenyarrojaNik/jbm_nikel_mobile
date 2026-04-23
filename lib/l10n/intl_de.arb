@@ -83,7 +83,6 @@
   "catalogos_index_tipoCatalogo": "Katalogtyp",
   "catalogos_index_titulo": "Kataloge",
   "chooseAddress": "nan",
-  "chooseAnAddress": "Wähle eine Adresse",
   "claveNikel": "Nikel-Schlüssel",
   "cliente_alrededor_cargandoMapa": "Karte wird geladen",
   "cliente_alrededor_direccionesEnvio": "Lieferadressen",
@@ -457,5 +456,6 @@
   "visitas_show_visitaDetalle_poblacion": "Ort",
   "visitas_show_visitaDetalle_resumen": "Zusammenfassung",
   "visitas_show_visitaDetalle_telefono": "Telefon",
-  "yes": "Ja"
+  "yes": "Ja",
+  "discontinued": "EINGESTELLT"
 }

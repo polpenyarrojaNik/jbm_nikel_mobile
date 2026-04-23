@@ -188,9 +188,6 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "catalogos_index_titulo": MessageLookupByLibrary.simpleMessage("Cataloghi"),
     "chooseAddress": MessageLookupByLibrary.simpleMessage("nan"),
-    "chooseAnAddress": MessageLookupByLibrary.simpleMessage(
-      "Scegli un indirizzo",
-    ),
     "claveNikel": MessageLookupByLibrary.simpleMessage("Chiave Nikel"),
     "cliente_alrededor_cargandoMapa": MessageLookupByLibrary.simpleMessage(
       "Caricamento mappa",
@@ -566,6 +563,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "Non è stato possibile convalidare questo indirizzo. Potrebbe contenere un errore o essere incompleto. Vuoi continuare prima di controllarlo?",
     ),
     "currentAddress": MessageLookupByLibrary.simpleMessage("Indirizzo attuale"),
+    "discontinued": MessageLookupByLibrary.simpleMessage("FUORI CATALOGO"),
     "downloadTemplate": MessageLookupByLibrary.simpleMessage("Scarica modello"),
     "downloadingTemplate": MessageLookupByLibrary.simpleMessage(
       "Download modello in corso...",

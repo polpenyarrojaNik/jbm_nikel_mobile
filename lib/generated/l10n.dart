@@ -4373,9 +4373,14 @@ class S {
     );
   }
 
-  /// ``
-  String get chooseAnAddress {
-    return Intl.message('', name: 'chooseAnAddress', desc: '', args: []);
+  /// `DISCONTINUED`
+  String get discontinued {
+    return Intl.message(
+      'DISCONTINUED',
+      name: 'discontinued',
+      desc: '',
+      args: [],
+    );
   }
 }
 

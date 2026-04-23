@@ -455,7 +455,7 @@
   "totalRows": "Righe totali",
   "close": "Chiudi",
   "pricesAndNetGroups": "Prezzi e Gruppi Netti",
-  "chooseAnAddress": "Scegli un indirizzo",
   "unknownCustomer": "nan",
-  "unknownFamily": "Famiglia sconosciuta"
+  "unknownFamily": "Famiglia sconosciuta",
+  "discontinued": "FUORI CATALOGO"
 }

@@ -455,7 +455,7 @@
   "totalRows": "Total de linhas",
   "close": "Fechar",
   "pricesAndNetGroups": "Preços e Grupos Líquidos",
-  "chooseAnAddress": "",
-  "unknownCustomer": "",
-  "unknownFamily": ""
+  "unknownCustomer": "Cliente desconhecido",
+  "unknownFamily": "Família desconhecida",
+  "discontinued": "DESCONTINUADO"
 }

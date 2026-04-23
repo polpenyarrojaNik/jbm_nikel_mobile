@@ -184,7 +184,6 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "catalogos_index_titulo": MessageLookupByLibrary.simpleMessage("Catalogs"),
     "chooseAddress": MessageLookupByLibrary.simpleMessage("Choose address"),
-    "chooseAnAddress": MessageLookupByLibrary.simpleMessage(""),
     "claveNikel": MessageLookupByLibrary.simpleMessage("Nikel key"),
     "cliente_alrededor_cargandoMapa": MessageLookupByLibrary.simpleMessage(
       "Loading map",
@@ -546,6 +545,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "We couldn’t validate this address. It may contain an error or be incomplete. Do you want to continue before reviewing it?",
     ),
     "currentAddress": MessageLookupByLibrary.simpleMessage("Current address"),
+    "discontinued": MessageLookupByLibrary.simpleMessage("DISCONTINUED"),
     "downloadTemplate": MessageLookupByLibrary.simpleMessage(
       "Download template",
     ),

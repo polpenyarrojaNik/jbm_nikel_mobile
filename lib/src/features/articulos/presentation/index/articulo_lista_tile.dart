@@ -28,7 +28,7 @@ class ArticuloListaTile extends StatelessWidget {
                 children: [
                   if (articulo.descatalogado) ...[
                     CommonChipWidget(
-                      value: 'DESCATALOGADO',
+                      value: S.of(context).discontinued,
 
                       backgroundColor: Theme.of(
                         context,

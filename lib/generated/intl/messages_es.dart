@@ -185,10 +185,6 @@ class MessageLookup extends MessageLookupByLibrary {
       "Tipo de catálogo",
     ),
     "catalogos_index_titulo": MessageLookupByLibrary.simpleMessage("Catálogos"),
-    "chooseAddress": MessageLookupByLibrary.simpleMessage(""),
-    "chooseAnAddress": MessageLookupByLibrary.simpleMessage(
-      "Elige una dirección",
-    ),
     "claveNikel": MessageLookupByLibrary.simpleMessage("Clave Nikel"),
     "cliente_alrededor_cargandoMapa": MessageLookupByLibrary.simpleMessage(
       "Cargando mapa",
@@ -558,6 +554,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "No hemos podido validar esta dirección. Es posible que contenga un error o esté incompleta. ¿Quieres continuar antes de revisarla?",
     ),
     "currentAddress": MessageLookupByLibrary.simpleMessage("Dirección actual"),
+    "discontinued": MessageLookupByLibrary.simpleMessage("DESCATALOGADO"),
     "downloadTemplate": MessageLookupByLibrary.simpleMessage(
       "Descargar plantilla",
     ),
@@ -922,7 +919,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "unidad": MessageLookupByLibrary.simpleMessage("ud."),
     "unitCost": MessageLookupByLibrary.simpleMessage("Coste unitario"),
     "unknown": MessageLookupByLibrary.simpleMessage("Desconocido"),
-    "unknownCustomer": MessageLookupByLibrary.simpleMessage(""),
+    "unknownCustomer": MessageLookupByLibrary.simpleMessage(
+      "Cliente desconocido",
+    ),
     "unknownDescription": MessageLookupByLibrary.simpleMessage(
       "Descripción desconocida",
     ),

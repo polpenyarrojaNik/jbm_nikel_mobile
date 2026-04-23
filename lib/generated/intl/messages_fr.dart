@@ -192,7 +192,6 @@ class MessageLookup extends MessageLookupByLibrary {
     "chooseAddress": MessageLookupByLibrary.simpleMessage(
       "Choisir une adresse",
     ),
-    "chooseAnAddress": MessageLookupByLibrary.simpleMessage(""),
     "claveNikel": MessageLookupByLibrary.simpleMessage("Code Nikel"),
     "cliente_alrededor_cargandoMapa": MessageLookupByLibrary.simpleMessage(
       "Chergement carte",
@@ -574,6 +573,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "Nous n’avons pas pu valider cette adresse. Elle peut contenir une erreur ou être incomplète. Voulez-vous continuer avant de la vérifier ?",
     ),
     "currentAddress": MessageLookupByLibrary.simpleMessage("Adresse actuelle"),
+    "discontinued": MessageLookupByLibrary.simpleMessage("ARRÊTÉ"),
     "downloadTemplate": MessageLookupByLibrary.simpleMessage(
       "Télécharger le modèle",
     ),
@@ -944,11 +944,10 @@ class MessageLookup extends MessageLookupByLibrary {
     "unidad": MessageLookupByLibrary.simpleMessage("uté."),
     "unitCost": MessageLookupByLibrary.simpleMessage("Coût unitaire"),
     "unknown": MessageLookupByLibrary.simpleMessage("Inconnu"),
-    "unknownCustomer": MessageLookupByLibrary.simpleMessage(""),
     "unknownDescription": MessageLookupByLibrary.simpleMessage(
       "Description inconnue",
     ),
-    "unknownFamily": MessageLookupByLibrary.simpleMessage(""),
+    "unknownFamily": MessageLookupByLibrary.simpleMessage("Famille inconnue"),
     "until": MessageLookupByLibrary.simpleMessage("Jusqu\'à"),
     "uploadExcel": MessageLookupByLibrary.simpleMessage("Télécharger Excel"),
     "visita_enviada": MessageLookupByLibrary.simpleMessage("Envoyé"),
