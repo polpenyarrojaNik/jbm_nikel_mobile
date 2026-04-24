@@ -35,24 +35,6 @@ class CatalogoListTile extends ConsumerWidget {
       catalogoFavoritoControllerProvider(catalogo.catalogoId),
     );
 
-    ref.listen(catalogoAdjuntoMutation(catalogo.catalogoId), (_, state) {
-      if (state is MutationPending<CatalogoAdjuntoData>) {
-        showToast(
-          S.of(context).catalogos_index_catalogoAdjunto_abriendoArchivo,
-          context,
-        );
-      } else if (state is MutationError<CatalogoAdjuntoData>) {
-        showToast(state.error.toString(), context);
-      } else if (state is MutationSuccess<CatalogoAdjuntoData>) {
-        final data = state.value;
-        if (data.file != null && data.descarga) {
-          OpenFile.open(data.file!.path);
-        } else if (data.file != null) {
-          context.router.push(CatalogoPdfViewerRoute(pdfFile: data.file!));
-        }
-      }
-    });
-
     ref.listen(setCatalogoFavoriteMutation(catalogo.catalogoId), (_, state) {
       if (state is MutationError<void>) {
         showToast(state.error.toString(), context);
@@ -86,7 +68,9 @@ class CatalogoListTile extends ConsumerWidget {
       height: 325,
       child: ClipRRect(
         child: GestureDetector(
-          onTap: !state.isPending ? () => downloadAttachment(ref) : null,
+          onTap: !state.isPending
+              ? () => downloadAttachment(context, ref)
+              : null,
 
           child: Card(
             clipBehavior: Clip.hardEdge,
@@ -173,7 +157,7 @@ class CatalogoListTile extends ConsumerWidget {
     );
   }
 
-  void downloadAttachment(WidgetRef ref) {
+  void downloadAttachment(BuildContext context, WidgetRef ref) {
     unawaited(
       runMutationSafe(ref, saveCatalogoAbiertoMutation(catalogo.catalogoId), (
         tsx,
@@ -186,6 +170,13 @@ class CatalogoListTile extends ConsumerWidget {
             .saveCatalogoAbierto(catalogo.catalogoId);
         return result;
       }),
+    );
+
+    showDialog(
+      context: context,
+      barrierDismissible: false,
+      builder: (dialogCtx) =>
+          OpenCatalogoListTileDialog(catalogo: catalogo, dialogCtx: dialogCtx),
     );
 
     unawaited(
@@ -243,5 +234,47 @@ class CatalogoListTile extends ConsumerWidget {
 
       return result;
     });
+  }
+}
+
+class OpenCatalogoListTileDialog extends ConsumerWidget {
+  const OpenCatalogoListTileDialog({
+    super.key,
+    required this.catalogo,
+    required this.dialogCtx,
+  });
+
+  final Catalogo catalogo;
+  final BuildContext dialogCtx;
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    ref.listen(catalogoAdjuntoMutation(catalogo.catalogoId), (_, state) {
+      if (state is MutationError<CatalogoAdjuntoData>) {
+        showToast(state.error.toString(), dialogCtx);
+        Navigator.of(dialogCtx).pop();
+      } else if (state is MutationSuccess<CatalogoAdjuntoData>) {
+        final data = state.value;
+        Navigator.of(dialogCtx).pop();
+
+        if (data.file != null && data.descarga) {
+          OpenFile.open(data.file!.path);
+        } else if (data.file != null) {
+          context.router.push(CatalogoPdfViewerRoute(pdfFile: data.file!));
+        }
+      }
+    });
+
+    return AlertDialog(
+      title: Text(catalogo.nombre),
+      content: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          CircularProgressIndicator(),
+          const Gap(4),
+          Text(S.of(context).catalogos_index_catalogoAdjunto_abriendoArchivo),
+        ],
+      ),
+    );
   }
 }
