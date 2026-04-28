@@ -859,6 +859,9 @@ ORDER BY articulos_grupos_netos_precio.grupo_neto_descripcion, articulos_grupos_
         ).toDomain(
           divisaId: pedidoVentaDTO.divisaId,
           fechaPedido: pedidoVentaDTO.pedidoVentaDate,
+          articuloDescripcionTraducido: getDescriptionArticuloInLocalLanguage(
+            articulo: await getArticuloById(articuloId: articuloId),
+          ),
         );
       }).get();
     } catch (e, stackTrace) {

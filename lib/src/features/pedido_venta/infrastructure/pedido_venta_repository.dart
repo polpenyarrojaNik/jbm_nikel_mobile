@@ -667,7 +667,9 @@ class PedidoVentaRepository {
       ),
     ]);
 
-    query.where(_remoteDb.pedidoVentaTable.pedidoVentaId.equals(pedidoVentaId));
+    query.where(
+      _remoteDb.pedidoVentaTable.pedidoVentaId.equalsNullable(pedidoVentaId),
+    );
 
     return query.asyncMap((row) async {
       final paisDTO = row.readTableOrNull(_remoteDb.paisTable);
@@ -780,6 +782,11 @@ class PedidoVentaRepository {
         final stockDisponible = await _getStockDisponible(
           pedidoVentaLineaDTO.articuloId,
         );
+
+        final getDescripcionArticulo = await _getDescripcionArticulo(
+          pedidoVentaLineaDTO.articuloId,
+        );
+
         final descuentoProntoPago = await _getDescuentoProntoPago(
           pedidoVentaDTO.clienteId,
         );
@@ -790,6 +797,7 @@ class PedidoVentaRepository {
           divisaId: pedidoVentaDTO.divisaId,
           stockDisponible: stockDisponible,
           aiRecomendado: false,
+          articuloDescripcionTraducido: getDescripcionArticulo,
         );
       }).get();
     } catch (e, stackTrace) {
@@ -1484,7 +1492,11 @@ class PedidoVentaRepository {
     final pedidoVentaLocalDTO =
         await (_localDb.select(_localDb.pedidoVentaLocalTable)
               ..where((tbl) => tbl.pedidoVentaAppId.equals(pedidoVentaAppId)))
-            .getSingle();
+            .getSingleOrNull();
+
+    if (pedidoVentaLocalDTO == null) {
+      throw AppException.pedidoVentaNotFound();
+    }
 
     final divisaDTO =
         await (_remoteDb.select(_remoteDb.divisaTable)
@@ -2439,6 +2451,18 @@ class PedidoVentaRepository {
     )..where((tbl) => tbl.id.equals(articuloId))).getSingleOrNull();
 
     return articuloDto?.stockDisponible;
+  }
+
+  Future<String> _getDescripcionArticulo(String articuloId) async {
+    final articuloDto = await (_remoteDb.select(
+      _remoteDb.articuloTable,
+    )..where((tbl) => tbl.id.equals(articuloId))).getSingleOrNull();
+
+    if (articuloDto == null) {
+      throw AppException.articuloNotFound();
+    }
+
+    return articuloDto.getDescriptionInLocalLanguage();
   }
 
   Future<double> _getDescuentoProntoPago(String clienteId) async {

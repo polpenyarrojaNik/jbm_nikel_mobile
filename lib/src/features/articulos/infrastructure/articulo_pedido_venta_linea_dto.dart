@@ -35,13 +35,14 @@ abstract class ArticuloPedidoVentaLineaDTO with _$ArticuloPedidoVentaLineaDTO {
   ArticuloPedidoVentaLinea toDomain({
     required String divisaId,
     required DateTime fechaPedido,
+    required String articuloDescripcionTraducido,
   }) {
     return ArticuloPedidoVentaLinea(
       empresaId: empresaId,
       pedidoVentaId: pedidoVentaId,
       id: id,
       articuloId: articuloId,
-      articuloDescription: articuloDescription,
+      articuloDescription: articuloDescripcionTraducido,
       clienteId: clienteId,
       nombreCliente: nombreCliente,
       cantidad: cantidad,

@@ -33,6 +33,7 @@ abstract class DevolucionLineaDTO
       _$DevolucionLineaDTOFromJson(json);
 
   DevolucionLinea toDomain(
+    String articuloDescripcionTraducido,
     DevolucionMotivo? devolucionMotivo,
     DevolucionEstado? devolucionEstado,
   ) {
@@ -40,7 +41,7 @@ abstract class DevolucionLineaDTO
       empresaId: empresaId,
       devolucionId: devolucionId,
       articuloId: articuloId,
-      articuloDescription: articuloDescription,
+      articuloDescription: articuloDescripcionTraducido,
       cantidadDevolucion: cantidadDevolucion,
       cantidadRecibida: cantidadRecibida,
       devolucionMotivo: devolucionMotivo,

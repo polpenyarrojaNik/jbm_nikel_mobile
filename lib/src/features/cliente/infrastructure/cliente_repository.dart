@@ -1410,7 +1410,13 @@ GROUP BY ARTICULO_ID, DESCRIPCION
         final devolucionLineaDTO = row.readTable(
           _remoteDb.devolucionLineaTable,
         );
+
+        final descripcionArticulo = await _getDescripcionArticulo(
+          devolucionLineaDTO.articuloId,
+        );
+
         return devolucionLineaDTO.toDomain(
+          descripcionArticulo,
           devolucionMotivoDTO?.toDomain(),
           devolucionEstadoDTO?.toDomain(),
         );
@@ -2733,5 +2739,17 @@ GROUP BY ARTICULO_ID, DESCRIPCION
             .getSingleOrNull();
 
     return divisaDto?.id;
+  }
+
+  Future<String> _getDescripcionArticulo(String articuloId) async {
+    final articuloDto = await (_remoteDb.select(
+      _remoteDb.articuloTable,
+    )..where((tbl) => tbl.id.equals(articuloId))).getSingleOrNull();
+
+    if (articuloDto == null) {
+      throw AppException.articuloNotFound();
+    }
+
+    return articuloDto.getDescriptionInLocalLanguage();
   }
 }

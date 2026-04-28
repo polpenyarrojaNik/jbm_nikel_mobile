@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import '../../../devoluciones/domain/devolucion_linea.dart';
 
 import '../../../../../generated/l10n.dart';
 import '../../../../core/helpers/formatters.dart';
+import '../../../devoluciones/domain/devolucion_linea.dart';
 
 class ClienteDevolucionLineaListTile extends StatelessWidget {
   const ClienteDevolucionLineaListTile({
@@ -21,7 +21,7 @@ class ClienteDevolucionLineaListTile extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             SizedBox(
-              width: 50,
+              width: 70,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [Text(devolucionLinea.devolucionId)],
