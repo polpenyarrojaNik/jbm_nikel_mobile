@@ -15,7 +15,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$NotificationDto {
 
-@JsonKey(name: 'NOTIFICACION_GUID') String get notificacionId;@JsonKey(name: 'F_ALTA') DateTime get fecha;@JsonKey(name: 'USUARIO_ID') String get usuarioId;@JsonKey(name: 'LEIDO_SN') String get leidoSN;@JsonKey(name: 'MENSAJE_MARKDOWN') String get mensaje;
+@JsonKey(name: 'NOTIFICACION_GUID') String get notificacionId;@JsonKey(name: 'F_ALTA') DateTime get fecha;@JsonKey(name: 'LEIDO_SN') String get leidoSN;@JsonKey(name: 'MENSAJE_MARKDOWN') String get mensaje;@JsonKey(name: 'NOTIFICACION_ADJUNTO') List<NotificationAdjuntoDTO> get adjuntos;
 /// Create a copy of NotificationDto
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -28,16 +28,16 @@ $NotificationDtoCopyWith<NotificationDto> get copyWith => _$NotificationDtoCopyW
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is NotificationDto&&(identical(other.notificacionId, notificacionId) || other.notificacionId == notificacionId)&&(identical(other.fecha, fecha) || other.fecha == fecha)&&(identical(other.usuarioId, usuarioId) || other.usuarioId == usuarioId)&&(identical(other.leidoSN, leidoSN) || other.leidoSN == leidoSN)&&(identical(other.mensaje, mensaje) || other.mensaje == mensaje));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is NotificationDto&&(identical(other.notificacionId, notificacionId) || other.notificacionId == notificacionId)&&(identical(other.fecha, fecha) || other.fecha == fecha)&&(identical(other.leidoSN, leidoSN) || other.leidoSN == leidoSN)&&(identical(other.mensaje, mensaje) || other.mensaje == mensaje)&&const DeepCollectionEquality().equals(other.adjuntos, adjuntos));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,notificacionId,fecha,usuarioId,leidoSN,mensaje);
+int get hashCode => Object.hash(runtimeType,notificacionId,fecha,leidoSN,mensaje,const DeepCollectionEquality().hash(adjuntos));
 
 @override
 String toString() {
-  return 'NotificationDto(notificacionId: $notificacionId, fecha: $fecha, usuarioId: $usuarioId, leidoSN: $leidoSN, mensaje: $mensaje)';
+  return 'NotificationDto(notificacionId: $notificacionId, fecha: $fecha, leidoSN: $leidoSN, mensaje: $mensaje, adjuntos: $adjuntos)';
 }
 
 
@@ -48,7 +48,7 @@ abstract mixin class $NotificationDtoCopyWith<$Res>  {
   factory $NotificationDtoCopyWith(NotificationDto value, $Res Function(NotificationDto) _then) = _$NotificationDtoCopyWithImpl;
 @useResult
 $Res call({
-@JsonKey(name: 'NOTIFICACION_GUID') String notificacionId,@JsonKey(name: 'F_ALTA') DateTime fecha,@JsonKey(name: 'USUARIO_ID') String usuarioId,@JsonKey(name: 'LEIDO_SN') String leidoSN,@JsonKey(name: 'MENSAJE_MARKDOWN') String mensaje
+@JsonKey(name: 'NOTIFICACION_GUID') String notificacionId,@JsonKey(name: 'F_ALTA') DateTime fecha,@JsonKey(name: 'LEIDO_SN') String leidoSN,@JsonKey(name: 'MENSAJE_MARKDOWN') String mensaje,@JsonKey(name: 'NOTIFICACION_ADJUNTO') List<NotificationAdjuntoDTO> adjuntos
 });
 
 
@@ -65,14 +65,14 @@ class _$NotificationDtoCopyWithImpl<$Res>
 
 /// Create a copy of NotificationDto
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? notificacionId = null,Object? fecha = null,Object? usuarioId = null,Object? leidoSN = null,Object? mensaje = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? notificacionId = null,Object? fecha = null,Object? leidoSN = null,Object? mensaje = null,Object? adjuntos = null,}) {
   return _then(_self.copyWith(
 notificacionId: null == notificacionId ? _self.notificacionId : notificacionId // ignore: cast_nullable_to_non_nullable
 as String,fecha: null == fecha ? _self.fecha : fecha // ignore: cast_nullable_to_non_nullable
-as DateTime,usuarioId: null == usuarioId ? _self.usuarioId : usuarioId // ignore: cast_nullable_to_non_nullable
-as String,leidoSN: null == leidoSN ? _self.leidoSN : leidoSN // ignore: cast_nullable_to_non_nullable
+as DateTime,leidoSN: null == leidoSN ? _self.leidoSN : leidoSN // ignore: cast_nullable_to_non_nullable
 as String,mensaje: null == mensaje ? _self.mensaje : mensaje // ignore: cast_nullable_to_non_nullable
-as String,
+as String,adjuntos: null == adjuntos ? _self.adjuntos : adjuntos // ignore: cast_nullable_to_non_nullable
+as List<NotificationAdjuntoDTO>,
   ));
 }
 
@@ -157,10 +157,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function(@JsonKey(name: 'NOTIFICACION_GUID')  String notificacionId, @JsonKey(name: 'F_ALTA')  DateTime fecha, @JsonKey(name: 'USUARIO_ID')  String usuarioId, @JsonKey(name: 'LEIDO_SN')  String leidoSN, @JsonKey(name: 'MENSAJE_MARKDOWN')  String mensaje)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function(@JsonKey(name: 'NOTIFICACION_GUID')  String notificacionId, @JsonKey(name: 'F_ALTA')  DateTime fecha, @JsonKey(name: 'LEIDO_SN')  String leidoSN, @JsonKey(name: 'MENSAJE_MARKDOWN')  String mensaje, @JsonKey(name: 'NOTIFICACION_ADJUNTO')  List<NotificationAdjuntoDTO> adjuntos)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _NotificationDto() when $default != null:
-return $default(_that.notificacionId,_that.fecha,_that.usuarioId,_that.leidoSN,_that.mensaje);case _:
+return $default(_that.notificacionId,_that.fecha,_that.leidoSN,_that.mensaje,_that.adjuntos);case _:
   return orElse();
 
 }
@@ -178,10 +178,10 @@ return $default(_that.notificacionId,_that.fecha,_that.usuarioId,_that.leidoSN,_
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function(@JsonKey(name: 'NOTIFICACION_GUID')  String notificacionId, @JsonKey(name: 'F_ALTA')  DateTime fecha, @JsonKey(name: 'USUARIO_ID')  String usuarioId, @JsonKey(name: 'LEIDO_SN')  String leidoSN, @JsonKey(name: 'MENSAJE_MARKDOWN')  String mensaje)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function(@JsonKey(name: 'NOTIFICACION_GUID')  String notificacionId, @JsonKey(name: 'F_ALTA')  DateTime fecha, @JsonKey(name: 'LEIDO_SN')  String leidoSN, @JsonKey(name: 'MENSAJE_MARKDOWN')  String mensaje, @JsonKey(name: 'NOTIFICACION_ADJUNTO')  List<NotificationAdjuntoDTO> adjuntos)  $default,) {final _that = this;
 switch (_that) {
 case _NotificationDto():
-return $default(_that.notificacionId,_that.fecha,_that.usuarioId,_that.leidoSN,_that.mensaje);case _:
+return $default(_that.notificacionId,_that.fecha,_that.leidoSN,_that.mensaje,_that.adjuntos);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -198,10 +198,10 @@ return $default(_that.notificacionId,_that.fecha,_that.usuarioId,_that.leidoSN,_
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function(@JsonKey(name: 'NOTIFICACION_GUID')  String notificacionId, @JsonKey(name: 'F_ALTA')  DateTime fecha, @JsonKey(name: 'USUARIO_ID')  String usuarioId, @JsonKey(name: 'LEIDO_SN')  String leidoSN, @JsonKey(name: 'MENSAJE_MARKDOWN')  String mensaje)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function(@JsonKey(name: 'NOTIFICACION_GUID')  String notificacionId, @JsonKey(name: 'F_ALTA')  DateTime fecha, @JsonKey(name: 'LEIDO_SN')  String leidoSN, @JsonKey(name: 'MENSAJE_MARKDOWN')  String mensaje, @JsonKey(name: 'NOTIFICACION_ADJUNTO')  List<NotificationAdjuntoDTO> adjuntos)?  $default,) {final _that = this;
 switch (_that) {
 case _NotificationDto() when $default != null:
-return $default(_that.notificacionId,_that.fecha,_that.usuarioId,_that.leidoSN,_that.mensaje);case _:
+return $default(_that.notificacionId,_that.fecha,_that.leidoSN,_that.mensaje,_that.adjuntos);case _:
   return null;
 
 }
@@ -213,14 +213,20 @@ return $default(_that.notificacionId,_that.fecha,_that.usuarioId,_that.leidoSN,_
 @JsonSerializable()
 
 class _NotificationDto extends NotificationDto {
-  const _NotificationDto({@JsonKey(name: 'NOTIFICACION_GUID') required this.notificacionId, @JsonKey(name: 'F_ALTA') required this.fecha, @JsonKey(name: 'USUARIO_ID') required this.usuarioId, @JsonKey(name: 'LEIDO_SN') required this.leidoSN, @JsonKey(name: 'MENSAJE_MARKDOWN') required this.mensaje}): super._();
+  const _NotificationDto({@JsonKey(name: 'NOTIFICACION_GUID') required this.notificacionId, @JsonKey(name: 'F_ALTA') required this.fecha, @JsonKey(name: 'LEIDO_SN') required this.leidoSN, @JsonKey(name: 'MENSAJE_MARKDOWN') required this.mensaje, @JsonKey(name: 'NOTIFICACION_ADJUNTO') required final  List<NotificationAdjuntoDTO> adjuntos}): _adjuntos = adjuntos,super._();
   factory _NotificationDto.fromJson(Map<String, dynamic> json) => _$NotificationDtoFromJson(json);
 
 @override@JsonKey(name: 'NOTIFICACION_GUID') final  String notificacionId;
 @override@JsonKey(name: 'F_ALTA') final  DateTime fecha;
-@override@JsonKey(name: 'USUARIO_ID') final  String usuarioId;
 @override@JsonKey(name: 'LEIDO_SN') final  String leidoSN;
 @override@JsonKey(name: 'MENSAJE_MARKDOWN') final  String mensaje;
+ final  List<NotificationAdjuntoDTO> _adjuntos;
+@override@JsonKey(name: 'NOTIFICACION_ADJUNTO') List<NotificationAdjuntoDTO> get adjuntos {
+  if (_adjuntos is EqualUnmodifiableListView) return _adjuntos;
+  // ignore: implicit_dynamic_type
+  return EqualUnmodifiableListView(_adjuntos);
+}
+
 
 /// Create a copy of NotificationDto
 /// with the given fields replaced by the non-null parameter values.
@@ -235,16 +241,16 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _NotificationDto&&(identical(other.notificacionId, notificacionId) || other.notificacionId == notificacionId)&&(identical(other.fecha, fecha) || other.fecha == fecha)&&(identical(other.usuarioId, usuarioId) || other.usuarioId == usuarioId)&&(identical(other.leidoSN, leidoSN) || other.leidoSN == leidoSN)&&(identical(other.mensaje, mensaje) || other.mensaje == mensaje));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _NotificationDto&&(identical(other.notificacionId, notificacionId) || other.notificacionId == notificacionId)&&(identical(other.fecha, fecha) || other.fecha == fecha)&&(identical(other.leidoSN, leidoSN) || other.leidoSN == leidoSN)&&(identical(other.mensaje, mensaje) || other.mensaje == mensaje)&&const DeepCollectionEquality().equals(other._adjuntos, _adjuntos));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,notificacionId,fecha,usuarioId,leidoSN,mensaje);
+int get hashCode => Object.hash(runtimeType,notificacionId,fecha,leidoSN,mensaje,const DeepCollectionEquality().hash(_adjuntos));
 
 @override
 String toString() {
-  return 'NotificationDto(notificacionId: $notificacionId, fecha: $fecha, usuarioId: $usuarioId, leidoSN: $leidoSN, mensaje: $mensaje)';
+  return 'NotificationDto(notificacionId: $notificacionId, fecha: $fecha, leidoSN: $leidoSN, mensaje: $mensaje, adjuntos: $adjuntos)';
 }
 
 
@@ -255,7 +261,7 @@ abstract mixin class _$NotificationDtoCopyWith<$Res> implements $NotificationDto
   factory _$NotificationDtoCopyWith(_NotificationDto value, $Res Function(_NotificationDto) _then) = __$NotificationDtoCopyWithImpl;
 @override @useResult
 $Res call({
-@JsonKey(name: 'NOTIFICACION_GUID') String notificacionId,@JsonKey(name: 'F_ALTA') DateTime fecha,@JsonKey(name: 'USUARIO_ID') String usuarioId,@JsonKey(name: 'LEIDO_SN') String leidoSN,@JsonKey(name: 'MENSAJE_MARKDOWN') String mensaje
+@JsonKey(name: 'NOTIFICACION_GUID') String notificacionId,@JsonKey(name: 'F_ALTA') DateTime fecha,@JsonKey(name: 'LEIDO_SN') String leidoSN,@JsonKey(name: 'MENSAJE_MARKDOWN') String mensaje,@JsonKey(name: 'NOTIFICACION_ADJUNTO') List<NotificationAdjuntoDTO> adjuntos
 });
 
 
@@ -272,14 +278,14 @@ class __$NotificationDtoCopyWithImpl<$Res>
 
 /// Create a copy of NotificationDto
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? notificacionId = null,Object? fecha = null,Object? usuarioId = null,Object? leidoSN = null,Object? mensaje = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? notificacionId = null,Object? fecha = null,Object? leidoSN = null,Object? mensaje = null,Object? adjuntos = null,}) {
   return _then(_NotificationDto(
 notificacionId: null == notificacionId ? _self.notificacionId : notificacionId // ignore: cast_nullable_to_non_nullable
 as String,fecha: null == fecha ? _self.fecha : fecha // ignore: cast_nullable_to_non_nullable
-as DateTime,usuarioId: null == usuarioId ? _self.usuarioId : usuarioId // ignore: cast_nullable_to_non_nullable
-as String,leidoSN: null == leidoSN ? _self.leidoSN : leidoSN // ignore: cast_nullable_to_non_nullable
+as DateTime,leidoSN: null == leidoSN ? _self.leidoSN : leidoSN // ignore: cast_nullable_to_non_nullable
 as String,mensaje: null == mensaje ? _self.mensaje : mensaje // ignore: cast_nullable_to_non_nullable
-as String,
+as String,adjuntos: null == adjuntos ? _self._adjuntos : adjuntos // ignore: cast_nullable_to_non_nullable
+as List<NotificationAdjuntoDTO>,
   ));
 }
 

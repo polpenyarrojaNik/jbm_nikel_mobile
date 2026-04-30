@@ -10,5 +10,6 @@ abstract class NotificationList with _$NotificationList {
     required DateTime fecha,
     required bool leidoSN,
     required String mensaje,
+    required bool tieneAdjuntoSN,
   }) = _NotificationList;
 }

@@ -1,6 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../domain/notificacion.dart';
+import 'notification_adjunto_dto.dart';
 
 part 'notification_dto.freezed.dart';
 part 'notification_dto.g.dart';
@@ -13,9 +14,10 @@ abstract class NotificationDto with _$NotificationDto {
   const factory NotificationDto({
     @JsonKey(name: 'NOTIFICACION_GUID') required String notificacionId,
     @JsonKey(name: 'F_ALTA') required DateTime fecha,
-    @JsonKey(name: 'USUARIO_ID') required String usuarioId,
     @JsonKey(name: 'LEIDO_SN') required String leidoSN,
     @JsonKey(name: 'MENSAJE_MARKDOWN') required String mensaje,
+    @JsonKey(name: 'NOTIFICACION_ADJUNTO')
+    required List<NotificationAdjuntoDTO> adjuntos,
   }) = _NotificationDto;
 
   factory NotificationDto.fromJson(Map<String, dynamic> json) =>
@@ -25,9 +27,9 @@ abstract class NotificationDto with _$NotificationDto {
     return Notificacion(
       notificationId: notificacionId,
       fecha: fecha,
-      usuarioId: usuarioId,
       leidoSN: leidoSN == 'S',
       mensaje: mensaje,
+      adjuntos: adjuntos.map((e) => e.toDomain()).toList(),
     );
   }
 }

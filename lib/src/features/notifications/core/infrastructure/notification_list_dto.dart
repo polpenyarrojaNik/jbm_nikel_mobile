@@ -15,6 +15,7 @@ abstract class NotificationListDto with _$NotificationListDto {
     @JsonKey(name: 'F_ALTA') required DateTime fecha,
     @JsonKey(name: 'LEIDO_SN') required String leidoSN,
     @JsonKey(name: 'MENSAJE_MARKDOWN') required String mensaje,
+    @JsonKey(name: 'TIENE_ADJUNTO_SN') required String tieneAdjuntoSN,
   }) = _NotificationListDto;
 
   factory NotificationListDto.fromJson(Map<String, dynamic> json) =>
@@ -26,6 +27,7 @@ abstract class NotificationListDto with _$NotificationListDto {
       fecha: fecha,
       leidoSN: leidoSN == 'S',
       mensaje: mensaje,
+      tieneAdjuntoSN: tieneAdjuntoSN == 'S',
     );
   }
 }

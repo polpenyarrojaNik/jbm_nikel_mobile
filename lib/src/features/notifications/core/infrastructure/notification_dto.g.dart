@@ -10,16 +10,20 @@ _NotificationDto _$NotificationDtoFromJson(Map<String, dynamic> json) =>
     _NotificationDto(
       notificacionId: json['NOTIFICACION_GUID'] as String,
       fecha: DateTime.parse(json['F_ALTA'] as String),
-      usuarioId: json['USUARIO_ID'] as String,
       leidoSN: json['LEIDO_SN'] as String,
       mensaje: json['MENSAJE_MARKDOWN'] as String,
+      adjuntos: (json['NOTIFICACION_ADJUNTO'] as List<dynamic>)
+          .map(
+            (e) => NotificationAdjuntoDTO.fromJson(e as Map<String, dynamic>),
+          )
+          .toList(),
     );
 
 Map<String, dynamic> _$NotificationDtoToJson(_NotificationDto instance) =>
     <String, dynamic>{
       'NOTIFICACION_GUID': instance.notificacionId,
       'F_ALTA': instance.fecha.toIso8601String(),
-      'USUARIO_ID': instance.usuarioId,
       'LEIDO_SN': instance.leidoSN,
       'MENSAJE_MARKDOWN': instance.mensaje,
+      'NOTIFICACION_ADJUNTO': instance.adjuntos.map((e) => e.toJson()).toList(),
     };

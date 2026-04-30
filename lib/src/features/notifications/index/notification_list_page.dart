@@ -67,6 +67,7 @@ class _NotificationListTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
+      behavior: HitTestBehavior.opaque,
       onTap: () => context.router.push(
         NotificationDetailRoute(
           notificationId: notificationList.notificationId,
@@ -76,26 +77,37 @@ class _NotificationListTile extends StatelessWidget {
         padding: const EdgeInsets.all(16),
         child: Row(
           children: [
-            if (!notificationList.leidoSN)
+            if (!notificationList.leidoSN) ...[
               Icon(
                 Icons.circle,
                 size: 12,
                 color: Theme.of(context).primaryColor,
               ),
-            if (!notificationList.leidoSN) const Gap(8),
-            Flexible(
+              const Gap(8),
+            ],
+            Expanded(
               child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Flexible(
-                    child: Text(
-                      notificationList.mensaje,
-                      maxLines: 1,
-                      overflow: TextOverflow.ellipsis,
-                      style: Theme.of(context).textTheme.titleSmall,
+                  Expanded(
+                    child: Row(
+                      children: [
+                        Flexible(
+                          child: Text(
+                            notificationList.mensaje,
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                            style: Theme.of(context).textTheme.titleSmall,
+                          ),
+                        ),
+                        if (notificationList.tieneAdjuntoSN) ...[
+                          const Gap(4),
+                          const Icon(Icons.attach_file, size: 12),
+                        ],
+                      ],
                     ),
                   ),
                   const Gap(16),
+
                   Text(
                     dateFormatter(
                       notificationList.fecha.toIso8601String(),

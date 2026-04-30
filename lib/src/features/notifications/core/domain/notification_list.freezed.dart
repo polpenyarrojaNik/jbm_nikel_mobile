@@ -14,7 +14,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$NotificationList {
 
- String get notificationId; DateTime get fecha; bool get leidoSN; String get mensaje;
+ String get notificationId; DateTime get fecha; bool get leidoSN; String get mensaje; bool get tieneAdjuntoSN;
 /// Create a copy of NotificationList
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -25,16 +25,16 @@ $NotificationListCopyWith<NotificationList> get copyWith => _$NotificationListCo
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is NotificationList&&(identical(other.notificationId, notificationId) || other.notificationId == notificationId)&&(identical(other.fecha, fecha) || other.fecha == fecha)&&(identical(other.leidoSN, leidoSN) || other.leidoSN == leidoSN)&&(identical(other.mensaje, mensaje) || other.mensaje == mensaje));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is NotificationList&&(identical(other.notificationId, notificationId) || other.notificationId == notificationId)&&(identical(other.fecha, fecha) || other.fecha == fecha)&&(identical(other.leidoSN, leidoSN) || other.leidoSN == leidoSN)&&(identical(other.mensaje, mensaje) || other.mensaje == mensaje)&&(identical(other.tieneAdjuntoSN, tieneAdjuntoSN) || other.tieneAdjuntoSN == tieneAdjuntoSN));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,notificationId,fecha,leidoSN,mensaje);
+int get hashCode => Object.hash(runtimeType,notificationId,fecha,leidoSN,mensaje,tieneAdjuntoSN);
 
 @override
 String toString() {
-  return 'NotificationList(notificationId: $notificationId, fecha: $fecha, leidoSN: $leidoSN, mensaje: $mensaje)';
+  return 'NotificationList(notificationId: $notificationId, fecha: $fecha, leidoSN: $leidoSN, mensaje: $mensaje, tieneAdjuntoSN: $tieneAdjuntoSN)';
 }
 
 
@@ -45,7 +45,7 @@ abstract mixin class $NotificationListCopyWith<$Res>  {
   factory $NotificationListCopyWith(NotificationList value, $Res Function(NotificationList) _then) = _$NotificationListCopyWithImpl;
 @useResult
 $Res call({
- String notificationId, DateTime fecha, bool leidoSN, String mensaje
+ String notificationId, DateTime fecha, bool leidoSN, String mensaje, bool tieneAdjuntoSN
 });
 
 
@@ -62,13 +62,14 @@ class _$NotificationListCopyWithImpl<$Res>
 
 /// Create a copy of NotificationList
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? notificationId = null,Object? fecha = null,Object? leidoSN = null,Object? mensaje = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? notificationId = null,Object? fecha = null,Object? leidoSN = null,Object? mensaje = null,Object? tieneAdjuntoSN = null,}) {
   return _then(_self.copyWith(
 notificationId: null == notificationId ? _self.notificationId : notificationId // ignore: cast_nullable_to_non_nullable
 as String,fecha: null == fecha ? _self.fecha : fecha // ignore: cast_nullable_to_non_nullable
 as DateTime,leidoSN: null == leidoSN ? _self.leidoSN : leidoSN // ignore: cast_nullable_to_non_nullable
 as bool,mensaje: null == mensaje ? _self.mensaje : mensaje // ignore: cast_nullable_to_non_nullable
-as String,
+as String,tieneAdjuntoSN: null == tieneAdjuntoSN ? _self.tieneAdjuntoSN : tieneAdjuntoSN // ignore: cast_nullable_to_non_nullable
+as bool,
   ));
 }
 
@@ -153,10 +154,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String notificationId,  DateTime fecha,  bool leidoSN,  String mensaje)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String notificationId,  DateTime fecha,  bool leidoSN,  String mensaje,  bool tieneAdjuntoSN)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _NotificationList() when $default != null:
-return $default(_that.notificationId,_that.fecha,_that.leidoSN,_that.mensaje);case _:
+return $default(_that.notificationId,_that.fecha,_that.leidoSN,_that.mensaje,_that.tieneAdjuntoSN);case _:
   return orElse();
 
 }
@@ -174,10 +175,10 @@ return $default(_that.notificationId,_that.fecha,_that.leidoSN,_that.mensaje);ca
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String notificationId,  DateTime fecha,  bool leidoSN,  String mensaje)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String notificationId,  DateTime fecha,  bool leidoSN,  String mensaje,  bool tieneAdjuntoSN)  $default,) {final _that = this;
 switch (_that) {
 case _NotificationList():
-return $default(_that.notificationId,_that.fecha,_that.leidoSN,_that.mensaje);case _:
+return $default(_that.notificationId,_that.fecha,_that.leidoSN,_that.mensaje,_that.tieneAdjuntoSN);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -194,10 +195,10 @@ return $default(_that.notificationId,_that.fecha,_that.leidoSN,_that.mensaje);ca
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String notificationId,  DateTime fecha,  bool leidoSN,  String mensaje)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String notificationId,  DateTime fecha,  bool leidoSN,  String mensaje,  bool tieneAdjuntoSN)?  $default,) {final _that = this;
 switch (_that) {
 case _NotificationList() when $default != null:
-return $default(_that.notificationId,_that.fecha,_that.leidoSN,_that.mensaje);case _:
+return $default(_that.notificationId,_that.fecha,_that.leidoSN,_that.mensaje,_that.tieneAdjuntoSN);case _:
   return null;
 
 }
@@ -209,13 +210,14 @@ return $default(_that.notificationId,_that.fecha,_that.leidoSN,_that.mensaje);ca
 
 
 class _NotificationList extends NotificationList {
-  const _NotificationList({required this.notificationId, required this.fecha, required this.leidoSN, required this.mensaje}): super._();
+  const _NotificationList({required this.notificationId, required this.fecha, required this.leidoSN, required this.mensaje, required this.tieneAdjuntoSN}): super._();
   
 
 @override final  String notificationId;
 @override final  DateTime fecha;
 @override final  bool leidoSN;
 @override final  String mensaje;
+@override final  bool tieneAdjuntoSN;
 
 /// Create a copy of NotificationList
 /// with the given fields replaced by the non-null parameter values.
@@ -227,16 +229,16 @@ _$NotificationListCopyWith<_NotificationList> get copyWith => __$NotificationLis
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _NotificationList&&(identical(other.notificationId, notificationId) || other.notificationId == notificationId)&&(identical(other.fecha, fecha) || other.fecha == fecha)&&(identical(other.leidoSN, leidoSN) || other.leidoSN == leidoSN)&&(identical(other.mensaje, mensaje) || other.mensaje == mensaje));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _NotificationList&&(identical(other.notificationId, notificationId) || other.notificationId == notificationId)&&(identical(other.fecha, fecha) || other.fecha == fecha)&&(identical(other.leidoSN, leidoSN) || other.leidoSN == leidoSN)&&(identical(other.mensaje, mensaje) || other.mensaje == mensaje)&&(identical(other.tieneAdjuntoSN, tieneAdjuntoSN) || other.tieneAdjuntoSN == tieneAdjuntoSN));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,notificationId,fecha,leidoSN,mensaje);
+int get hashCode => Object.hash(runtimeType,notificationId,fecha,leidoSN,mensaje,tieneAdjuntoSN);
 
 @override
 String toString() {
-  return 'NotificationList(notificationId: $notificationId, fecha: $fecha, leidoSN: $leidoSN, mensaje: $mensaje)';
+  return 'NotificationList(notificationId: $notificationId, fecha: $fecha, leidoSN: $leidoSN, mensaje: $mensaje, tieneAdjuntoSN: $tieneAdjuntoSN)';
 }
 
 
@@ -247,7 +249,7 @@ abstract mixin class _$NotificationListCopyWith<$Res> implements $NotificationLi
   factory _$NotificationListCopyWith(_NotificationList value, $Res Function(_NotificationList) _then) = __$NotificationListCopyWithImpl;
 @override @useResult
 $Res call({
- String notificationId, DateTime fecha, bool leidoSN, String mensaje
+ String notificationId, DateTime fecha, bool leidoSN, String mensaje, bool tieneAdjuntoSN
 });
 
 
@@ -264,13 +266,14 @@ class __$NotificationListCopyWithImpl<$Res>
 
 /// Create a copy of NotificationList
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? notificationId = null,Object? fecha = null,Object? leidoSN = null,Object? mensaje = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? notificationId = null,Object? fecha = null,Object? leidoSN = null,Object? mensaje = null,Object? tieneAdjuntoSN = null,}) {
   return _then(_NotificationList(
 notificationId: null == notificationId ? _self.notificationId : notificationId // ignore: cast_nullable_to_non_nullable
 as String,fecha: null == fecha ? _self.fecha : fecha // ignore: cast_nullable_to_non_nullable
 as DateTime,leidoSN: null == leidoSN ? _self.leidoSN : leidoSN // ignore: cast_nullable_to_non_nullable
 as bool,mensaje: null == mensaje ? _self.mensaje : mensaje // ignore: cast_nullable_to_non_nullable
-as String,
+as String,tieneAdjuntoSN: null == tieneAdjuntoSN ? _self.tieneAdjuntoSN : tieneAdjuntoSN // ignore: cast_nullable_to_non_nullable
+as bool,
   ));
 }
 

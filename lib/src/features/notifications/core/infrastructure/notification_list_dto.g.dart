@@ -12,6 +12,7 @@ _NotificationListDto _$NotificationListDtoFromJson(Map<String, dynamic> json) =>
       fecha: DateTime.parse(json['F_ALTA'] as String),
       leidoSN: json['LEIDO_SN'] as String,
       mensaje: json['MENSAJE_MARKDOWN'] as String,
+      tieneAdjuntoSN: json['TIENE_ADJUNTO_SN'] as String,
     );
 
 Map<String, dynamic> _$NotificationListDtoToJson(
@@ -21,4 +22,5 @@ Map<String, dynamic> _$NotificationListDtoToJson(
   'F_ALTA': instance.fecha.toIso8601String(),
   'LEIDO_SN': instance.leidoSN,
   'MENSAJE_MARKDOWN': instance.mensaje,
+  'TIENE_ADJUNTO_SN': instance.tieneAdjuntoSN,
 };
