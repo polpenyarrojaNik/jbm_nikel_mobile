@@ -35,26 +35,68 @@ class NotificationRepository {
   final Usuario? user;
   final ErrorLogger errorLogger;
 
+  static const int pageSize = 100;
+
   NotificationRepository(this.dio, this.user, this.errorLogger);
 
-  Future<List<NotificationList>> getNotificationList() async {
+  final List<NotificationList> _notificationListCache = [];
+
+  Future<List<NotificationList>> getNotificationList({
+    required int page,
+  }) async {
     final notificationList = await _remoteNotificationList(
       requestUri: (user!.test)
           ? Uri.http(
               dotenv.get('URL_TEST', fallback: 'localhost:3001'),
               'api/v8/online/notificacion',
-              {'USER_ID': user!.id},
+              {
+                'USER_ID': user!.id,
+                'page': page.toString(),
+                'pageSize': pageSize.toString(),
+              },
             )
           : Uri.https(
               dotenv.get('URL', fallback: 'localhost:3001'),
               'api/v8/online/notificacion',
-              {'USER_ID': user!.id},
+              {
+                'USER_ID': user!.id,
+                'page': page.toString(),
+                'pageSize': pageSize.toString(),
+              },
             ),
       jsonDataSelector: (json) => json['data'] as List<dynamic>,
       provisionalToken: user!.provisionalToken,
     );
 
-    return notificationList.map((e) => e.toDomain()).toList();
+    if (page == 1) {
+      _notificationListCache.clear();
+    }
+
+    _notificationListCache.addAll(
+      notificationList.map((e) => e.toDomain()).toList(),
+    );
+
+    return _notificationListCache;
+  }
+
+  Future<int> getNotificationListCount() async {
+    final count = await _remoteNotificationListCount(
+      requestUri: (user!.test)
+          ? Uri.http(
+              dotenv.get('URL_TEST', fallback: 'localhost:3001'),
+              'api/v8/online/notificacion_count',
+              {'USER_ID': user!.id},
+            )
+          : Uri.https(
+              dotenv.get('URL', fallback: 'localhost:3001'),
+              'api/v8/online/notificacion_count',
+              {'USER_ID': user!.id},
+            ),
+      jsonDataSelector: (json) => json['data'] as int,
+      provisionalToken: user!.provisionalToken,
+    );
+
+    return count;
   }
 
   Future<Notificacion> getNotificationById(String id) async {
@@ -155,6 +197,34 @@ class NotificationRepository {
         return data
             .map((e) => NotificationListDto.fromJson(e as Json))
             .toList();
+      }
+      throw AppException.restApiFailure(
+        response.statusCode ?? 400,
+        response.statusMessage ?? '',
+      );
+    } catch (e, stackTrace) {
+      Error.throwWithStackTrace(
+        getApiError(e, stackTrace, errorLogger),
+        stackTrace,
+      );
+    }
+  }
+
+  Future<int> _remoteNotificationListCount({
+    required Uri requestUri,
+    required int Function(dynamic json) jsonDataSelector,
+    required String provisionalToken,
+  }) async {
+    try {
+      final response = await dio.getUri(
+        requestUri,
+        options: Options(
+          headers: {'authorization': 'Bearer $provisionalToken'},
+        ),
+      );
+      if (response.statusCode == 200) {
+        final data = jsonDataSelector(response.data);
+        return data;
       }
       throw AppException.restApiFailure(
         response.statusCode ?? 400,

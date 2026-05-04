@@ -11,6 +11,7 @@ import '../../../core/presentation/common_widgets/progress_indicator_widget.dart
 import '../../../core/routing/app_auto_router.dart';
 import '../core/application/notification_provider.dart';
 import '../core/domain/notification_list.dart';
+import '../core/infrastructure/notification_repository.dart';
 import 'notification_list_controller.dart';
 
 @RoutePage()
@@ -21,9 +22,9 @@ class NotificationIndexPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final state = ref.watch(notificationIndexScreenControllerProvider);
+    final stateCount = ref.watch(notificationIndexCountControllerProvider);
 
-    final stateNotification = ref.watch(notificationProvider);
+    final stateHaveNotification = ref.watch(notificationProvider);
     return Scaffold(
       key: scaffoldKey,
       drawer: const AppDrawer(),
@@ -31,7 +32,7 @@ class NotificationIndexPage extends ConsumerWidget {
         leading: IconButton(
           onPressed: () => scaffoldKey.currentState?.openDrawer(),
           icon: Icon(
-            stateNotification.maybeWhen(
+            stateHaveNotification.maybeWhen(
               orElse: () => Icons.menu,
               data: (notificationId) =>
                   notificationId != null ? Icons.notification_add : Icons.menu,
@@ -43,12 +44,11 @@ class NotificationIndexPage extends ConsumerWidget {
       body: RefreshIndicator(
         onRefresh: () async =>
             ref.invalidate(notificationIndexScreenControllerProvider),
-        child: state.when(
-          data: (notificationList) => ListView.separated(
-            itemBuilder: (context, i) =>
-                _NotificationListTile(notificationList: notificationList[i]),
+        child: stateCount.when(
+          data: (notificationListCount) => ListView.separated(
+            itemBuilder: (context, i) => NotificationPaginationList(i: i),
             separatorBuilder: (context, i) => const Divider(),
-            itemCount: notificationList.length,
+            itemCount: notificationListCount,
           ),
           error: (error, _) =>
               Center(child: ErrorMessageWidget(error.toString())),
@@ -56,6 +56,30 @@ class NotificationIndexPage extends ConsumerWidget {
         ),
       ),
     );
+  }
+}
+
+class NotificationPaginationList extends ConsumerWidget {
+  const NotificationPaginationList({super.key, required this.i});
+
+  final int i;
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    return ref
+        .watch(
+          notificationIndexScreenControllerProvider(
+            ((i ~/ NotificationRepository.pageSize) + 1),
+          ),
+        )
+        .maybeWhen(
+          data: (notificationList) => _NotificationListTile(
+            notificationList:
+                notificationList[i % NotificationRepository.pageSize],
+          ),
+
+          orElse: () => const LinearProgressIndicator(),
+        );
   }
 }
 

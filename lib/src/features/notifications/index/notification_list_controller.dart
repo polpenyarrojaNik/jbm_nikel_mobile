@@ -11,7 +11,20 @@ class NotificationIndexScreenController
   NotificationIndexScreenController();
 
   @override
-  Future<List<NotificationList>> build() {
-    return ref.read(notificationRepositoryProvider).getNotificationList();
+  Future<List<NotificationList>> build(int page) {
+    return ref
+        .read(notificationRepositoryProvider)
+        .getNotificationList(page: page);
+  }
+}
+
+@riverpod
+class NotificationIndexCountController
+    extends _$NotificationIndexCountController {
+  NotificationIndexCountController();
+
+  @override
+  Future<int> build() {
+    return ref.read(notificationRepositoryProvider).getNotificationListCount();
   }
 }
