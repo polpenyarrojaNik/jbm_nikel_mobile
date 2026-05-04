@@ -456,5 +456,6 @@
   "close": "Fermer",
   "pricesAndNetGroups": "Prix et Groupes Nets",
   "unknownFamily": "Famille inconnue",
-  "discontinued": "ARRÊTÉ"
+  "discontinued": "ARRÊTÉ",
+  "share": "Partager"
 }

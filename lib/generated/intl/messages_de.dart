@@ -885,6 +885,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "settings_titulo": MessageLookupByLibrary.simpleMessage("Einstellungen"),
     "settings_user": MessageLookupByLibrary.simpleMessage("Benutzer"),
     "settings_version": MessageLookupByLibrary.simpleMessage("Version"),
+    "share": MessageLookupByLibrary.simpleMessage("Teilen"),
     "sheetName": MessageLookupByLibrary.simpleMessage("Blattname"),
     "sinResultados": MessageLookupByLibrary.simpleMessage("Keine Ergebnisse"),
     "sincConexion": MessageLookupByLibrary.simpleMessage("Keine Verbindung"),

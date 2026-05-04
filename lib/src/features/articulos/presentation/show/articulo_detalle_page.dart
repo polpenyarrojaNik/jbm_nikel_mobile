@@ -8,12 +8,16 @@ import 'package:flutter_riverpod/experimental/mutation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:fpdart/fpdart.dart';
 import 'package:gap/gap.dart';
+import 'package:path/path.dart' as p;
+import 'package:path_provider/path_provider.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
+import 'package:share_plus/share_plus.dart';
 
 import '../../../../../generated/l10n.dart';
 import '../../../../core/exceptions/app_exception.dart';
 import '../../../../core/helpers/formatters.dart';
 import '../../../../core/helpers/helpers.dart';
+import '../../../../core/presentation/app.dart';
 import '../../../../core/presentation/common_widgets/async_value_widget.dart';
 import '../../../../core/presentation/common_widgets/column_field_text_detail.dart';
 import '../../../../core/presentation/common_widgets/common_app_bar.dart';
@@ -1029,6 +1033,7 @@ class _ArticuloImageCarrouselState
   );
 
   int activePage = 0;
+  String? _sharingImageUrl;
 
   @override
   void initState() {
@@ -1048,50 +1053,177 @@ class _ArticuloImageCarrouselState
       getArticuloImagenListaByIdProvider(widget.articuloId),
     );
     return state.when(
-      data: (articuloImagenes) => Column(
-        children: [
-          SizedBox(
-            height: 175,
-            width: 400,
-            child: PageView.builder(
-              itemCount: articuloImagenes.length,
-              pageSnapping: true,
-              controller: _pageController,
-              onPageChanged: (page) {
-                setState(() {
-                  activePage = page;
-                });
-              },
-              itemBuilder: (context, i) => CachedNetworkImage(
-                imageUrl: articuloImagenes[i].url,
-                progressIndicatorBuilder: (context, url, progress) =>
-                    Image.asset(
-                      semanticLabel: 'Cargando imagen...',
-                      height: 175,
-                      width: 400,
-                      fit: BoxFit.contain,
-                      'assets/image-placeholder.png',
-                    ),
-                errorWidget: (context, error, _) => Center(
-                  child: Text(
-                    S.of(context).articulo_show_articuloDetalle_noDisponible,
+      data: (articuloImagenes) {
+        final activeImageIndex = articuloImagenes.isEmpty
+            ? 0
+            : activePage.clamp(0, articuloImagenes.length - 1).toInt();
+        final activeImage = articuloImagenes.isEmpty
+            ? null
+            : articuloImagenes[activeImageIndex];
+        final isSharing = _sharingImageUrl != null;
+
+        return Column(
+          children: [
+            SizedBox(
+              height: 175,
+              width: 455,
+              child: Stack(
+                children: [
+                  PageView.builder(
+                    itemCount: articuloImagenes.length,
+                    pageSnapping: true,
+                    controller: _pageController,
+                    onPageChanged: (page) {
+                      setState(() {
+                        activePage = page;
+                      });
+                    },
+                    itemBuilder: (context, i) {
+                      final articuloImagen = articuloImagenes[i];
+                      return CachedNetworkImage(
+                        imageUrl: articuloImagen.url,
+                        progressIndicatorBuilder: (context, url, progress) =>
+                            Image.asset(
+                              'assets/image-placeholder.png',
+                              semanticLabel: 'Cargando imagen...',
+                              height: 175,
+                              width: 400,
+                              fit: BoxFit.contain,
+                            ),
+                        errorWidget: (context, error, _) => Center(
+                          child: Text(
+                            S
+                                .of(context)
+                                .articulo_show_articuloDetalle_noDisponible,
+                          ),
+                        ),
+                        height: 175,
+                        width: 400,
+                        fit: BoxFit.contain,
+                      );
+                    },
                   ),
-                ),
-                height: 175,
-                width: 400,
-                fit: BoxFit.contain,
+                  if (activeImage != null)
+                    Align(
+                      alignment: Alignment.topCenter,
+                      child: FractionallySizedBox(
+                        widthFactor: 0.8,
+                        child: Align(
+                          alignment: Alignment.topRight,
+                          child: Padding(
+                            padding: const EdgeInsets.only(right: 8),
+                            child: Material(
+                              color: Theme.of(
+                                context,
+                              ).colorScheme.surface.withValues(alpha: 0.9),
+                              shape: const CircleBorder(),
+                              child: IconButton(
+                                tooltip: S.of(context).share,
+                                onPressed: _sharingImageUrl == null
+                                    ? () => _shareArticuloImage(
+                                        context: context,
+                                        imageUrl: activeImage.url,
+                                        fileName: activeImage.nombreArchivo,
+                                      )
+                                    : null,
+                                icon: isSharing
+                                    ? const SizedBox.square(
+                                        dimension: 20,
+                                        child: CircularProgressIndicator(
+                                          strokeWidth: 2,
+                                        ),
+                                      )
+                                    : const Icon(Icons.share_outlined),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                ],
               ),
             ),
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: indicators(articuloImagenes.length, activePage),
-          ),
-        ],
-      ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: indicators(articuloImagenes.length, activePage),
+            ),
+          ],
+        );
+      },
       error: (error, _) => Container(),
       loading: () => const ProgressIndicatorWidget(),
     );
+  }
+
+  Future<void> _shareArticuloImage({
+    required BuildContext context,
+    required String imageUrl,
+    required String fileName,
+  }) async {
+    final size = MediaQuery.sizeOf(context);
+
+    setState(() {
+      _sharingImageUrl = imageUrl;
+    });
+
+    try {
+      final directory = await getTemporaryDirectory();
+      final imagePath = p.join(
+        directory.path,
+        _temporaryImageFileName(imageUrl: imageUrl, fileName: fileName),
+      );
+
+      final response = await ref
+          .read(dioProvider)
+          .download(imageUrl, imagePath);
+      final contentTypeHeader = response.headers.value('content-type');
+      final mimeType = contentTypeHeader?.split(';').first.trim();
+
+      if (!context.mounted) {
+        return;
+      }
+
+      final params = ShareParams(
+        files: [
+          XFile(imagePath, name: p.basename(imagePath), mimeType: mimeType),
+        ],
+        sharePositionOrigin: Rect.fromLTWH(0, 0, size.width, size.height / 2),
+      );
+
+      await SharePlus.instance.share(params);
+    } catch (_) {
+      if (!context.mounted) {
+        return;
+      }
+
+      await context.showErrorBar(
+        content: const ErrorMessageWidget('No se pudo compartir la imagen'),
+      );
+    } finally {
+      if (mounted) {
+        setState(() {
+          _sharingImageUrl = null;
+        });
+      }
+    }
+  }
+
+  String _temporaryImageFileName({
+    required String imageUrl,
+    required String fileName,
+  }) {
+    final sanitizedFileName = fileName
+        .replaceAll(RegExp(r'[\\/:*?"<>|]'), '_')
+        .trim();
+    final uriExtension = p.extension(Uri.parse(imageUrl).path);
+    final fileExtension = uriExtension.isNotEmpty
+        ? uriExtension
+        : p.extension(sanitizedFileName);
+    final extension = fileExtension.isNotEmpty ? fileExtension : '.jpg';
+    final baseName = p.basenameWithoutExtension(sanitizedFileName);
+    final safeBaseName = baseName.isNotEmpty ? baseName : widget.articuloId;
+
+    return '${DateTime.now().microsecondsSinceEpoch}_$safeBaseName$extension';
   }
 
   List<Widget> indicators(int imagesLength, currentIndex) {

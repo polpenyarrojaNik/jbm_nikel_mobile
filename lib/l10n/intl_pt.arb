@@ -457,5 +457,6 @@
   "pricesAndNetGroups": "Preços e Grupos Líquidos",
   "unknownCustomer": "Cliente desconhecido",
   "unknownFamily": "Família desconhecida",
-  "discontinued": "DESCONTINUADO"
+  "discontinued": "DESCONTINUADO",
+  "share": "Compartilhar"
 }

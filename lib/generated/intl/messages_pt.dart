@@ -873,6 +873,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "settings_titulo": MessageLookupByLibrary.simpleMessage("Ajustes"),
     "settings_user": MessageLookupByLibrary.simpleMessage("Usuário"),
     "settings_version": MessageLookupByLibrary.simpleMessage("Versão"),
+    "share": MessageLookupByLibrary.simpleMessage("Compartilhar"),
     "sheetName": MessageLookupByLibrary.simpleMessage("Nome da folha"),
     "sinResultados": MessageLookupByLibrary.simpleMessage("Sem resultados"),
     "sincConexion": MessageLookupByLibrary.simpleMessage("Sem conexão"),

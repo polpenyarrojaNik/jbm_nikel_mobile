@@ -456,5 +456,6 @@
   "close": "Cerrar",
   "pricesAndNetGroups": "Precios y Grupos Netos",
   "unknownCustomer": "Cliente desconocido",
-  "discontinued": "DESCATALOGADO"
+  "discontinued": "DESCATALOGADO",
+  "share": "Compartir"
 }
