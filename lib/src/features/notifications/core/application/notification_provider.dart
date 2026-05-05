@@ -1,13 +1,14 @@
+import 'package:flutter/material.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../infrastructure/notification_repository.dart';
 
 part 'notification_provider.g.dart';
 
-@Riverpod(keepAlive: true)
+@riverpod
 class NotificationNotifier extends _$NotificationNotifier {
   @override
-  Future<String?> build() async {
+  Future<String?> build(GlobalKey<ScaffoldState> scaffoldKey) async {
     final notificationId = await ref
         .watch(notificationRepositoryProvider)
         .haveNotification();

@@ -41,7 +41,7 @@ class _ArticuloListaPageState extends ConsumerState<ArticuloListaPage> {
   void initState() {
     super.initState();
 
-    ref.read(notificationProvider.notifier).build();
+    // ref.read(notificationProvider.notifier).build();
   }
 
   @override
@@ -54,7 +54,7 @@ class _ArticuloListaPageState extends ConsumerState<ArticuloListaPage> {
     );
 
     ref.listen<AsyncValue<String?>>(
-      notificationProvider,
+      notificationProvider(scaffoldKey),
       (_, state) => state.whenOrNull(
         data: (notificationId) {
           if (notificationId != null) {

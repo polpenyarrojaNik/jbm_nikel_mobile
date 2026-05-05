@@ -124,7 +124,7 @@ class NotificationRepository {
       final notificationId = await _remoteHaveNotification(
         requestUri: (user!.test)
             ? Uri.http(
-                dotenv.get('URL', fallback: 'localhost:3001'),
+                dotenv.get('URL_TEST', fallback: 'localhost:3001'),
                 'api/v1/online/check_notificacion',
                 {'USER_ID': user!.id},
               )

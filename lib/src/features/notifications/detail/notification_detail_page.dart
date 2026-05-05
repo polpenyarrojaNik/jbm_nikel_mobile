@@ -42,7 +42,7 @@ class NotificationDetailPage extends ConsumerWidget {
     // ignore: deprecated_member_use
     return WillPopScope(
       onWillPop: () async {
-        await ref.read(notificationProvider.notifier).build();
+        ref.invalidate(notificationProvider);
         return true;
       },
       child: Scaffold(

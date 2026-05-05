@@ -47,7 +47,7 @@ class _PedidoVentaListPageState extends ConsumerState<PedidoVentaListPage> {
         .read(syncNotifierProvider.notifier)
         .syncAllInCompute(initAppProcess: false);
 
-    ref.read(notificationProvider.notifier).build();
+    // ref.read(notificationProvider.notifier).build();
   }
 
   @override
@@ -55,7 +55,7 @@ class _PedidoVentaListPageState extends ConsumerState<PedidoVentaListPage> {
     final stateSync = ref.watch(syncNotifierProvider);
 
     ref.listen<AsyncValue<String?>>(
-      notificationProvider,
+      notificationProvider(scaffoldKey),
       (_, state) => state.whenOrNull(
         data: (notificationId) {
           if (notificationId != null) {

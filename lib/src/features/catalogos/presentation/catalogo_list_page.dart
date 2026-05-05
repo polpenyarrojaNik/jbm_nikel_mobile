@@ -36,7 +36,7 @@ class _CatalogoListaPageState extends ConsumerState<CatalogoListaPage> {
   @override
   void initState() {
     super.initState();
-    ref.read(notificationProvider.notifier).build();
+    // ref.read(notificationProvider.notifier).build();
   }
 
   @override
@@ -47,7 +47,7 @@ class _CatalogoListaPageState extends ConsumerState<CatalogoListaPage> {
     );
 
     ref.listen<AsyncValue<String?>>(
-      notificationProvider,
+      notificationProvider(scaffoldKey),
       (_, state) => state.whenData((notificationId) {
         if (notificationId != null) {
           context.router.push(

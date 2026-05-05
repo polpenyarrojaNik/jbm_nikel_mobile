@@ -44,7 +44,7 @@ class _ClienteListPageState extends ConsumerState<ClienteListaPage> {
         .read(syncNotifierProvider.notifier)
         .syncAllInCompute(initAppProcess: false);
 
-    ref.read(notificationProvider.notifier).build();
+    // ref.read(notificationProvider.notifier).build();
   }
 
   @override
@@ -52,7 +52,7 @@ class _ClienteListPageState extends ConsumerState<ClienteListaPage> {
     final stateSync = ref.watch(syncNotifierProvider);
 
     ref.listen<AsyncValue<String?>>(
-      notificationProvider,
+      notificationProvider(scaffoldKey),
       (_, state) => state.whenData((notificationId) {
         if (notificationId != null) {
           context.router.push(

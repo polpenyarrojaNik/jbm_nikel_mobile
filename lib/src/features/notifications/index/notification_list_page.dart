@@ -6,6 +6,7 @@ import 'package:gap/gap.dart';
 import '../../../../generated/l10n.dart';
 import '../../../core/helpers/formatters.dart';
 import '../../../core/presentation/common_widgets/app_drawer.dart';
+import '../../../core/presentation/common_widgets/common_app_bar.dart';
 import '../../../core/presentation/common_widgets/error_message_widget.dart';
 import '../../../core/presentation/common_widgets/progress_indicator_widget.dart';
 import '../../../core/routing/app_auto_router.dart';
@@ -24,22 +25,13 @@ class NotificationIndexPage extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final stateCount = ref.watch(notificationIndexCountControllerProvider);
 
-    final stateHaveNotification = ref.watch(notificationProvider);
+    final stateHaveNotification = ref.watch(notificationProvider(scaffoldKey));
     return Scaffold(
       key: scaffoldKey,
       drawer: const AppDrawer(),
-      appBar: AppBar(
-        leading: IconButton(
-          onPressed: () => scaffoldKey.currentState?.openDrawer(),
-          icon: Icon(
-            stateHaveNotification.maybeWhen(
-              orElse: () => Icons.menu,
-              data: (notificationId) =>
-                  notificationId != null ? Icons.notification_add : Icons.menu,
-            ),
-          ),
-        ),
-        title: Text(S.of(context).notifications),
+      appBar: CommonAppBar(
+        titleText: S.of(context).notifications,
+        scaffoldKey: scaffoldKey,
       ),
       body: RefreshIndicator(
         onRefresh: () async =>

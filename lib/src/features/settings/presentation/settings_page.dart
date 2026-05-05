@@ -43,7 +43,7 @@ class SettingsPage extends ConsumerWidget {
     final stateSync = ref.watch(syncNotifierProvider);
 
     ref.listen<AsyncValue<String?>>(
-      notificationProvider,
+      notificationProvider(scaffoldKey),
       (_, state) => state.whenData((notificationId) {
         if (notificationId != null) {
           context.router.push(

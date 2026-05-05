@@ -43,7 +43,7 @@ class _ExpedicionListPageListPageState
         .read(syncNotifierProvider.notifier)
         .syncAllInCompute(initAppProcess: false);
 
-    ref.read(notificationProvider.notifier).build();
+    // ref.read(notificationProvider(scaffoldKey).notifier).build();
   }
 
   @override
@@ -51,7 +51,7 @@ class _ExpedicionListPageListPageState
     final stateSync = ref.watch(syncNotifierProvider);
 
     ref.listen<AsyncValue<String?>>(
-      notificationProvider,
+      notificationProvider(scaffoldKey),
       (_, state) => state.whenData((notificationId) {
         if (notificationId != null) {
           context.router.push(
