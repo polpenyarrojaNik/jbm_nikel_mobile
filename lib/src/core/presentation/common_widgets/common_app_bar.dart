@@ -10,14 +10,15 @@ class CommonAppBar extends ConsumerWidget implements PreferredSizeWidget {
   const CommonAppBar({
     super.key,
     required this.titleText,
+    this.titleScreen,
     this.scaffoldKey,
     this.actions,
   });
 
   final String titleText;
   final GlobalKey<ScaffoldState>? scaffoldKey;
-
   final List<Widget>? actions;
+  final String? titleScreen;
 
   @override
   Size get preferredSize => const Size.fromHeight(kToolbarHeight);
@@ -27,7 +28,9 @@ class CommonAppBar extends ConsumerWidget implements PreferredSizeWidget {
     final state = ref.watch(getPackageInfoProvider);
 
     return AppBar(
-      leading: scaffoldKey != null ? IconMenuBadge(scaffoldKey!) : null,
+      leading: scaffoldKey != null && titleScreen != null
+          ? IconMenuBadge(scaffoldKey!, titleScreen!)
+          : null,
       title: Column(
         mainAxisSize: MainAxisSize.min,
         children: [

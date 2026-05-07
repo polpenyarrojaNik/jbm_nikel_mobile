@@ -15,6 +15,7 @@ class CustomSearchAppBar extends ConsumerStatefulWidget
     required this.searchTitle,
     required this.isSearchingFirst,
     required this.onChanged,
+    this.titleScreen,
     this.actionButtons,
   });
 
@@ -24,6 +25,7 @@ class CustomSearchAppBar extends ConsumerStatefulWidget
   final bool isSearchingFirst;
   final Function(String searchText) onChanged;
   final List<IconButton>? actionButtons;
+  final String? titleScreen;
 
   @override
   ConsumerState<CustomSearchAppBar> createState() => _CustomSearchAppBarState();
@@ -60,8 +62,11 @@ class _CustomSearchAppBarState extends ConsumerState<CustomSearchAppBar> {
     final state = ref.watch(getPackageInfoProvider);
 
     return AppBar(
-      leading: !widget.isSearchingFirst && widget.scaffoldKey != null
-          ? IconMenuBadge(widget.scaffoldKey!)
+      leading:
+          !widget.isSearchingFirst &&
+              widget.scaffoldKey != null &&
+              widget.titleScreen != null
+          ? IconMenuBadge(widget.scaffoldKey!, widget.titleScreen!)
           : null,
       title: (isSearching)
           ? SearchListTile(

@@ -16,7 +16,7 @@ final class NotificationNotifierProvider
     extends $AsyncNotifierProvider<NotificationNotifier, String?> {
   NotificationNotifierProvider._({
     required NotificationNotifierFamily super.from,
-    required GlobalKey<ScaffoldState> super.argument,
+    required String super.argument,
   }) : super(
          retry: null,
          name: r'notificationProvider',
@@ -51,7 +51,7 @@ final class NotificationNotifierProvider
 }
 
 String _$notificationNotifierHash() =>
-    r'6a19334079b5fea0ef9f735e62e04237eebd6bc0';
+    r'a004e739cdcfa7f41b9ea82674a37a0ae16c7816';
 
 final class NotificationNotifierFamily extends $Family
     with
@@ -60,7 +60,7 @@ final class NotificationNotifierFamily extends $Family
           AsyncValue<String?>,
           String?,
           FutureOr<String?>,
-          GlobalKey<ScaffoldState>
+          String
         > {
   NotificationNotifierFamily._()
     : super(
@@ -71,18 +71,18 @@ final class NotificationNotifierFamily extends $Family
         isAutoDispose: true,
       );
 
-  NotificationNotifierProvider call(GlobalKey<ScaffoldState> scaffoldKey) =>
-      NotificationNotifierProvider._(argument: scaffoldKey, from: this);
+  NotificationNotifierProvider call(String titleScreen) =>
+      NotificationNotifierProvider._(argument: titleScreen, from: this);
 
   @override
   String toString() => r'notificationProvider';
 }
 
 abstract class _$NotificationNotifier extends $AsyncNotifier<String?> {
-  late final _$args = ref.$arg as GlobalKey<ScaffoldState>;
-  GlobalKey<ScaffoldState> get scaffoldKey => _$args;
+  late final _$args = ref.$arg as String;
+  String get titleScreen => _$args;
 
-  FutureOr<String?> build(GlobalKey<ScaffoldState> scaffoldKey);
+  FutureOr<String?> build(String titleScreen);
   @$mustCallSuper
   @override
   void runBuild() {

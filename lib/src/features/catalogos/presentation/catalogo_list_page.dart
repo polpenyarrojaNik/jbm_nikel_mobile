@@ -11,8 +11,6 @@ import '../../../core/presentation/common_widgets/app_drawer.dart';
 import '../../../core/presentation/common_widgets/async_value_ui.dart';
 import '../../../core/presentation/common_widgets/custom_search_app_bar.dart';
 import '../../../core/presentation/common_widgets/progress_indicator_widget.dart';
-import '../../../core/routing/app_auto_router.dart';
-import '../../notifications/core/application/notification_provider.dart';
 import '../domain/idioma_catalogo.dart';
 import '../domain/tipo_catalogo.dart';
 import '../domain/tipo_precio_catalogo.dart';
@@ -23,7 +21,9 @@ import 'catalogo_search_controller.dart';
 
 @RoutePage()
 class CatalogoListaPage extends ConsumerStatefulWidget {
-  const CatalogoListaPage({super.key});
+  CatalogoListaPage({super.key});
+
+  final String titleScreen = S.current.catalogos_index_titulo;
 
   @override
   ConsumerState<CatalogoListaPage> createState() => _CatalogoListaPageState();
@@ -34,27 +34,10 @@ class _CatalogoListaPageState extends ConsumerState<CatalogoListaPage> {
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
-  void initState() {
-    super.initState();
-    // ref.read(notificationProvider.notifier).build();
-  }
-
-  @override
   Widget build(BuildContext context) {
     ref.listen<AsyncValue<void>>(
       catalogoIndexScreenControllerProvider,
       (_, state) => state.showAlertDialogOnError(context),
-    );
-
-    ref.listen<AsyncValue<String?>>(
-      notificationProvider(scaffoldKey),
-      (_, state) => state.whenData((notificationId) {
-        if (notificationId != null) {
-          context.router.push(
-            NotificationDetailRoute(notificationId: notificationId),
-          );
-        }
-      }),
     );
 
     return Scaffold(
@@ -62,6 +45,8 @@ class _CatalogoListaPageState extends ConsumerState<CatalogoListaPage> {
       drawer: const AppDrawer(),
       appBar: CustomSearchAppBar(
         scaffoldKey: scaffoldKey,
+        titleScreen: widget.titleScreen,
+
         isSearchingFirst: false,
         title: S.of(context).catalogos_index_titulo,
         searchTitle: S.of(context).catalogos_index_buscarCatalogo,

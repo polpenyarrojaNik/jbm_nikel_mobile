@@ -10,7 +10,6 @@ import '../../../core/presentation/common_widgets/common_app_bar.dart';
 import '../../../core/presentation/common_widgets/error_message_widget.dart';
 import '../../../core/presentation/common_widgets/progress_indicator_widget.dart';
 import '../../../core/routing/app_auto_router.dart';
-import '../core/application/notification_provider.dart';
 import '../core/domain/notification_list.dart';
 import '../core/infrastructure/notification_repository.dart';
 import 'notification_list_controller.dart';
@@ -20,12 +19,12 @@ class NotificationIndexPage extends ConsumerWidget {
   NotificationIndexPage({super.key});
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
+  final String titleScreen = S.current.notifications;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final stateCount = ref.watch(notificationIndexCountControllerProvider);
 
-    final stateHaveNotification = ref.watch(notificationProvider(scaffoldKey));
     return Scaffold(
       key: scaffoldKey,
       drawer: const AppDrawer(),
@@ -87,6 +86,7 @@ class _NotificationListTile extends StatelessWidget {
       onTap: () => context.router.push(
         NotificationDetailRoute(
           notificationId: notificationList.notificationId,
+          titleFromOpenScreen: S.current.notifications,
         ),
       ),
       child: Padding(

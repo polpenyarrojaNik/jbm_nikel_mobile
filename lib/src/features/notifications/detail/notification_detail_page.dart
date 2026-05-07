@@ -18,7 +18,6 @@ import '../../../core/presentation/common_widgets/default_dropdown_separator_wid
 import '../../../core/presentation/common_widgets/error_message_widget.dart';
 import '../../../core/presentation/common_widgets/progress_indicator_widget.dart';
 import '../../../core/presentation/toasts.dart';
-import '../core/application/notification_provider.dart';
 import '../core/domain/notificacion_adjunto.dart';
 import '../core/infrastructure/notification_repository.dart';
 import 'notification_detail_controller.dart';
@@ -27,9 +26,14 @@ final notificacionAdjuntoMutation = Mutation<File?>();
 
 @RoutePage()
 class NotificationDetailPage extends ConsumerWidget {
-  NotificationDetailPage({super.key, required this.notificationId});
+  NotificationDetailPage({
+    super.key,
+    required this.notificationId,
+    this.titleFromOpenScreen,
+  });
 
   final String notificationId;
+  final String? titleFromOpenScreen;
 
   final scrollController = ScrollController();
 
@@ -39,52 +43,44 @@ class NotificationDetailPage extends ConsumerWidget {
       notificationDetailScreenControllerProvider(notificationId),
     );
 
-    // ignore: deprecated_member_use
-    return WillPopScope(
-      onWillPop: () async {
-        ref.invalidate(notificationProvider);
-        return true;
-      },
-      child: Scaffold(
-        appBar: AppBar(title: Text(S.of(context).notification_detail)),
-        body: state.when(
-          data: (notification) => SingleChildScrollView(
-            child: Column(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      Text(
-                        dateFormatter(
-                          notification.fecha.toIso8601String(),
-                          allDay: true,
-                        ),
-                        style: Theme.of(context).textTheme.bodySmall,
+    return Scaffold(
+      appBar: AppBar(title: Text(S.of(context).notification_detail)),
+      body: state.when(
+        data: (notification) => SingleChildScrollView(
+          child: Column(
+            children: [
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    Text(
+                      dateFormatter(
+                        notification.fecha.toIso8601String(),
+                        allDay: true,
                       ),
-                    ],
-                  ),
+                      style: Theme.of(context).textTheme.bodySmall,
+                    ),
+                  ],
                 ),
-                Markdown(
-                  onTapLink: (_, link, unknown) {
-                    if (link != null) {
-                      launchUrlString(link);
-                    }
-                  },
-                  shrinkWrap: true,
-                  controller: scrollController,
-                  data: notification.mensaje,
-                ),
-                if (notification.adjuntos.isNotEmpty)
-                  NotificationDetalAttachments(adjuntos: notification.adjuntos),
-              ],
-            ),
+              ),
+              Markdown(
+                onTapLink: (_, link, unknown) {
+                  if (link != null) {
+                    launchUrlString(link);
+                  }
+                },
+                shrinkWrap: true,
+                controller: scrollController,
+                data: notification.mensaje,
+              ),
+              if (notification.adjuntos.isNotEmpty)
+                NotificationDetalAttachments(adjuntos: notification.adjuntos),
+            ],
           ),
-          error: (error, _) =>
-              Center(child: ErrorMessageWidget(error.toString())),
-          loading: () => const Center(child: ProgressIndicatorWidget()),
         ),
+        error: (error, _) => Center(child: ErrorMessageWidget(error.toString())),
+        loading: () => const Center(child: ProgressIndicatorWidget()),
       ),
     );
   }

@@ -21,8 +21,6 @@ import '../../../core/presentation/common_widgets/common_app_bar.dart';
 import '../../../core/presentation/common_widgets/error_message_widget.dart';
 import '../../../core/presentation/common_widgets/progress_indicator_widget.dart';
 import '../../../core/presentation/toasts.dart';
-import '../../../core/routing/app_auto_router.dart';
-import '../../notifications/core/application/notification_provider.dart';
 import '../../sync/application/sync_notifier_provider.dart';
 import '../../usuario/application/usuario_notifier.dart';
 import '../infrastructure/settings_repository.dart';
@@ -35,23 +33,13 @@ class SettingsPage extends ConsumerWidget {
   SettingsPage({super.key});
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
+  final String titleScreen = S.current.settings_titulo;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final usuario = ref.watch(usuarioNotifierProvider);
     final statePackageInfo = ref.watch(getPackageInfoProvider);
     final stateSync = ref.watch(syncNotifierProvider);
-
-    ref.listen<AsyncValue<String?>>(
-      notificationProvider(scaffoldKey),
-      (_, state) => state.whenData((notificationId) {
-        if (notificationId != null) {
-          context.router.push(
-            NotificationDetailRoute(notificationId: notificationId),
-          );
-        }
-      }),
-    );
 
     ref.listen(exportDatabaseMutation, (_, state) {
       if (state is MutationPending<File>) {

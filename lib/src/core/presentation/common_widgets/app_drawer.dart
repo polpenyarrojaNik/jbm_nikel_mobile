@@ -59,7 +59,7 @@ class AppDrawer extends StatelessWidget {
             leading: Icon(MdiIcons.cartOutline, size: 30),
             title: Text(S.of(context).commonWidgets_appDrawer_pedidos),
             onTap: () => context.router.pushAndPopUntil(
-              const PedidoVentaListRoute(),
+              PedidoVentaListRoute(),
               predicate: (route) => false,
             ),
           ),
@@ -67,7 +67,7 @@ class AppDrawer extends StatelessWidget {
             leading: Icon(MdiIcons.truckFastOutline, size: 30),
             title: Text(S.of(context).commonWidgets_appDrawer_expediciones),
             onTap: () => context.router.pushAndPopUntil(
-              const ExpedicionListRoute(),
+              ExpedicionListRoute(),
               predicate: (route) => false,
             ),
           ),
@@ -75,7 +75,7 @@ class AppDrawer extends StatelessWidget {
             leading: const Icon(Icons.group, size: 30),
             title: Text(S.of(context).commonWidgets_appDrawer_visitas),
             onTap: () => context.router.pushAndPopUntil(
-              const VisitaListaRoute(),
+              VisitaListaRoute(),
               predicate: (route) => false,
             ),
           ),
@@ -84,7 +84,7 @@ class AppDrawer extends StatelessWidget {
             leading: const Icon(Icons.list, size: 30),
             title: Text(S.of(context).commonWidgets_appDrawer_catalogos),
             onTap: () => context.router.pushAndPopUntil(
-              const CatalogoListaRoute(),
+              CatalogoListaRoute(),
               predicate: (route) => false,
             ),
           ),

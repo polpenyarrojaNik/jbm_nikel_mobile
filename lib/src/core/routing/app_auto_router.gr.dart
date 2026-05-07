@@ -778,18 +778,46 @@ class CameraRoute extends PageRouteInfo<void> {
 
 /// generated route for
 /// [CatalogoListaPage]
-class CatalogoListaRoute extends PageRouteInfo<void> {
-  const CatalogoListaRoute({List<PageRouteInfo>? children})
-    : super(CatalogoListaRoute.name, initialChildren: children);
+class CatalogoListaRoute extends PageRouteInfo<CatalogoListaRouteArgs> {
+  CatalogoListaRoute({Key? key, List<PageRouteInfo>? children})
+    : super(
+        CatalogoListaRoute.name,
+        args: CatalogoListaRouteArgs(key: key),
+        initialChildren: children,
+      );
 
   static const String name = 'CatalogoListaRoute';
 
   static PageInfo page = PageInfo(
     name,
     builder: (data) {
-      return const CatalogoListaPage();
+      final args = data.argsAs<CatalogoListaRouteArgs>(
+        orElse: () => const CatalogoListaRouteArgs(),
+      );
+      return CatalogoListaPage(key: args.key);
     },
   );
+}
+
+class CatalogoListaRouteArgs {
+  const CatalogoListaRouteArgs({this.key});
+
+  final Key? key;
+
+  @override
+  String toString() {
+    return 'CatalogoListaRouteArgs{key: $key}';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
+    if (other is! CatalogoListaRouteArgs) return false;
+    return key == other.key;
+  }
+
+  @override
+  int get hashCode => key.hashCode;
 }
 
 /// generated route for
@@ -2363,18 +2391,46 @@ class ClientesAlrededorRoute extends PageRouteInfo<void> {
 
 /// generated route for
 /// [ExpedicionListPage]
-class ExpedicionListRoute extends PageRouteInfo<void> {
-  const ExpedicionListRoute({List<PageRouteInfo>? children})
-    : super(ExpedicionListRoute.name, initialChildren: children);
+class ExpedicionListRoute extends PageRouteInfo<ExpedicionListRouteArgs> {
+  ExpedicionListRoute({Key? key, List<PageRouteInfo>? children})
+    : super(
+        ExpedicionListRoute.name,
+        args: ExpedicionListRouteArgs(key: key),
+        initialChildren: children,
+      );
 
   static const String name = 'ExpedicionListRoute';
 
   static PageInfo page = PageInfo(
     name,
     builder: (data) {
-      return const ExpedicionListPage();
+      final args = data.argsAs<ExpedicionListRouteArgs>(
+        orElse: () => const ExpedicionListRouteArgs(),
+      );
+      return ExpedicionListPage(key: args.key);
     },
   );
+}
+
+class ExpedicionListRouteArgs {
+  const ExpedicionListRouteArgs({this.key});
+
+  final Key? key;
+
+  @override
+  String toString() {
+    return 'ExpedicionListRouteArgs{key: $key}';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
+    if (other is! ExpedicionListRouteArgs) return false;
+    return key == other.key;
+  }
+
+  @override
+  int get hashCode => key.hashCode;
 }
 
 /// generated route for
@@ -2465,12 +2521,14 @@ class NotificationDetailRoute
   NotificationDetailRoute({
     Key? key,
     required String notificationId,
+    String? titleFromOpenScreen,
     List<PageRouteInfo>? children,
   }) : super(
          NotificationDetailRoute.name,
          args: NotificationDetailRouteArgs(
            key: key,
            notificationId: notificationId,
+           titleFromOpenScreen: titleFromOpenScreen,
          ),
          initialChildren: children,
        );
@@ -2484,32 +2542,42 @@ class NotificationDetailRoute
       return NotificationDetailPage(
         key: args.key,
         notificationId: args.notificationId,
+        titleFromOpenScreen: args.titleFromOpenScreen,
       );
     },
   );
 }
 
 class NotificationDetailRouteArgs {
-  const NotificationDetailRouteArgs({this.key, required this.notificationId});
+  const NotificationDetailRouteArgs({
+    this.key,
+    required this.notificationId,
+    this.titleFromOpenScreen,
+  });
 
   final Key? key;
 
   final String notificationId;
 
+  final String? titleFromOpenScreen;
+
   @override
   String toString() {
-    return 'NotificationDetailRouteArgs{key: $key, notificationId: $notificationId}';
+    return 'NotificationDetailRouteArgs{key: $key, notificationId: $notificationId, titleFromOpenScreen: $titleFromOpenScreen}';
   }
 
   @override
   bool operator ==(Object other) {
     if (identical(this, other)) return true;
     if (other is! NotificationDetailRouteArgs) return false;
-    return key == other.key && notificationId == other.notificationId;
+    return key == other.key &&
+        notificationId == other.notificationId &&
+        titleFromOpenScreen == other.titleFromOpenScreen;
   }
 
   @override
-  int get hashCode => key.hashCode ^ notificationId.hashCode;
+  int get hashCode =>
+      key.hashCode ^ notificationId.hashCode ^ titleFromOpenScreen.hashCode;
 }
 
 /// generated route for
@@ -2844,18 +2912,46 @@ class PedidoVentaEditRouteArgs {
 
 /// generated route for
 /// [PedidoVentaListPage]
-class PedidoVentaListRoute extends PageRouteInfo<void> {
-  const PedidoVentaListRoute({List<PageRouteInfo>? children})
-    : super(PedidoVentaListRoute.name, initialChildren: children);
+class PedidoVentaListRoute extends PageRouteInfo<PedidoVentaListRouteArgs> {
+  PedidoVentaListRoute({Key? key, List<PageRouteInfo>? children})
+    : super(
+        PedidoVentaListRoute.name,
+        args: PedidoVentaListRouteArgs(key: key),
+        initialChildren: children,
+      );
 
   static const String name = 'PedidoVentaListRoute';
 
   static PageInfo page = PageInfo(
     name,
     builder: (data) {
-      return const PedidoVentaListPage();
+      final args = data.argsAs<PedidoVentaListRouteArgs>(
+        orElse: () => const PedidoVentaListRouteArgs(),
+      );
+      return PedidoVentaListPage(key: args.key);
     },
   );
+}
+
+class PedidoVentaListRouteArgs {
+  const PedidoVentaListRouteArgs({this.key});
+
+  final Key? key;
+
+  @override
+  String toString() {
+    return 'PedidoVentaListRouteArgs{key: $key}';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
+    if (other is! PedidoVentaListRouteArgs) return false;
+    return key == other.key;
+  }
+
+  @override
+  int get hashCode => key.hashCode;
 }
 
 /// generated route for
@@ -3165,16 +3261,44 @@ class VisitaEditSelectContactRouteArgs {
 
 /// generated route for
 /// [VisitaListaPage]
-class VisitaListaRoute extends PageRouteInfo<void> {
-  const VisitaListaRoute({List<PageRouteInfo>? children})
-    : super(VisitaListaRoute.name, initialChildren: children);
+class VisitaListaRoute extends PageRouteInfo<VisitaListaRouteArgs> {
+  VisitaListaRoute({Key? key, List<PageRouteInfo>? children})
+    : super(
+        VisitaListaRoute.name,
+        args: VisitaListaRouteArgs(key: key),
+        initialChildren: children,
+      );
 
   static const String name = 'VisitaListaRoute';
 
   static PageInfo page = PageInfo(
     name,
     builder: (data) {
-      return const VisitaListaPage();
+      final args = data.argsAs<VisitaListaRouteArgs>(
+        orElse: () => const VisitaListaRouteArgs(),
+      );
+      return VisitaListaPage(key: args.key);
     },
   );
+}
+
+class VisitaListaRouteArgs {
+  const VisitaListaRouteArgs({this.key});
+
+  final Key? key;
+
+  @override
+  String toString() {
+    return 'VisitaListaRouteArgs{key: $key}';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
+    if (other is! VisitaListaRouteArgs) return false;
+    return key == other.key;
+  }
+
+  @override
+  int get hashCode => key.hashCode;
 }

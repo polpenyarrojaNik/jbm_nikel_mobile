@@ -14,8 +14,6 @@ import '../../../core/presentation/common_widgets/error_message_widget.dart';
 import '../../../core/presentation/common_widgets/last_sync_date_widget.dart';
 import '../../../core/presentation/common_widgets/progress_indicator_widget.dart';
 import '../../../core/presentation/common_widgets/sin_resultados_widget.dart';
-import '../../../core/routing/app_auto_router.dart';
-import '../../notifications/core/application/notification_provider.dart';
 import '../../pedido_venta/infrastructure/pedido_venta_repository.dart';
 import '../../pedido_venta/presentation/index/pedido_search_controller.dart';
 import '../../sync/application/sync_notifier_provider.dart';
@@ -24,7 +22,9 @@ import 'expedicion_tile.dart';
 
 @RoutePage()
 class ExpedicionListPage extends ConsumerStatefulWidget {
-  const ExpedicionListPage({super.key});
+  ExpedicionListPage({super.key});
+
+  final String titleScreen = S.current.commonWidgets_appDrawer_expediciones;
 
   @override
   ConsumerState<ExpedicionListPage> createState() =>
@@ -42,24 +42,11 @@ class _ExpedicionListPageListPageState
     ref
         .read(syncNotifierProvider.notifier)
         .syncAllInCompute(initAppProcess: false);
-
-    // ref.read(notificationProvider(scaffoldKey).notifier).build();
   }
 
   @override
   Widget build(BuildContext context) {
     final stateSync = ref.watch(syncNotifierProvider);
-
-    ref.listen<AsyncValue<String?>>(
-      notificationProvider(scaffoldKey),
-      (_, state) => state.whenData((notificationId) {
-        if (notificationId != null) {
-          context.router.push(
-            NotificationDetailRoute(notificationId: notificationId),
-          );
-        }
-      }),
-    );
 
     ref.listen<AsyncValue<void>>(
       pedidoVentaIndexScreenControllerProvider,
@@ -71,6 +58,8 @@ class _ExpedicionListPageListPageState
       drawer: const AppDrawer(),
       appBar: CustomSearchAppBar(
         scaffoldKey: scaffoldKey,
+        titleScreen: widget.titleScreen,
+
         isSearchingFirst: false,
         title: S.of(context).commonWidgets_appDrawer_expediciones,
         searchTitle: S.of(context).pedido_index_buscarPedidos,

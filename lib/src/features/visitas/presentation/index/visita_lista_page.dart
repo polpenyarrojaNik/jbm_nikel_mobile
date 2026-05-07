@@ -13,7 +13,6 @@ import '../../../../core/presentation/common_widgets/custom_search_app_bar.dart'
 import '../../../../core/presentation/common_widgets/last_sync_date_widget.dart';
 import '../../../../core/presentation/common_widgets/progress_indicator_widget.dart';
 import '../../../../core/routing/app_auto_router.dart';
-import '../../../notifications/core/application/notification_provider.dart';
 import '../../../sync/application/sync_notifier_provider.dart';
 import '../../infrastructure/visita_repository.dart';
 import 'visita_lista_shimmer.dart';
@@ -22,7 +21,9 @@ import 'visita_search_controller.dart';
 
 @RoutePage()
 class VisitaListaPage extends ConsumerStatefulWidget {
-  const VisitaListaPage({super.key});
+  VisitaListaPage({super.key});
+
+  final String titleScreen = S.current.visita_index_titulo;
 
   @override
   ConsumerState<VisitaListaPage> createState() => _VisitaListaPageState();
@@ -38,23 +39,11 @@ class _VisitaListaPageState extends ConsumerState<VisitaListaPage> {
     ref
         .read(syncNotifierProvider.notifier)
         .syncAllInCompute(initAppProcess: false);
-    // ref.read(notificationProvider.notifier).build();
   }
 
   @override
   Widget build(BuildContext context) {
     final stateSync = ref.watch(syncNotifierProvider);
-
-    ref.listen<AsyncValue<String?>>(
-      notificationProvider(scaffoldKey),
-      (_, state) => state.whenData((notificationId) {
-        if (notificationId != null) {
-          context.router.push(
-            NotificationDetailRoute(notificationId: notificationId),
-          );
-        }
-      }),
-    );
 
     ref.listen<AsyncValue<void>>(
       visitaIndexScreenControllerProvider,
@@ -66,6 +55,8 @@ class _VisitaListaPageState extends ConsumerState<VisitaListaPage> {
       drawer: const AppDrawer(),
       appBar: CustomSearchAppBar(
         scaffoldKey: scaffoldKey,
+        titleScreen: widget.titleScreen,
+
         isSearchingFirst: false,
         title: S.of(context).visita_index_titulo,
         searchTitle: S.of(context).visita_index_buscarVisitas,

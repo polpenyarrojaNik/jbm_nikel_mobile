@@ -13,7 +13,6 @@ import '../../../../core/presentation/common_widgets/custom_search_app_bar.dart'
 import '../../../../core/presentation/common_widgets/last_sync_date_widget.dart';
 import '../../../../core/presentation/common_widgets/progress_indicator_widget.dart';
 import '../../../../core/routing/app_auto_router.dart';
-import '../../../notifications/core/application/notification_provider.dart';
 import '../../../sync/application/sync_notifier_provider.dart';
 import '../../domain/cliente.dart';
 import '../../infrastructure/cliente_repository.dart';
@@ -23,7 +22,7 @@ import 'cliente_search_controller.dart';
 
 @RoutePage()
 class ClienteListaPage extends ConsumerStatefulWidget {
-  const ClienteListaPage({
+  ClienteListaPage({
     super.key,
     required this.isSearchClienteForFrom,
     bool? isCreatedFromSalesOrder,
@@ -31,6 +30,7 @@ class ClienteListaPage extends ConsumerStatefulWidget {
 
   final bool isSearchClienteForFrom;
   final bool isCreatedFromSalesOrder;
+  final String titleScreen = S.current.cliente_index_titulo;
 
   @override
   ConsumerState<ClienteListaPage> createState() => _ClienteListPageState();
@@ -38,7 +38,6 @@ class ClienteListaPage extends ConsumerStatefulWidget {
 
 class _ClienteListPageState extends ConsumerState<ClienteListaPage> {
   final _debouncer = Debouncer(milliseconds: 500);
-
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   bool searchClientesPotenciales = false;
@@ -48,24 +47,11 @@ class _ClienteListPageState extends ConsumerState<ClienteListaPage> {
     ref
         .read(syncNotifierProvider.notifier)
         .syncAllInCompute(initAppProcess: false);
-
-    // ref.read(notificationProvider.notifier).build();
   }
 
   @override
   Widget build(BuildContext context) {
     final stateSync = ref.watch(syncNotifierProvider);
-
-    ref.listen<AsyncValue<String?>>(
-      notificationProvider(scaffoldKey),
-      (_, state) => state.whenData((notificationId) {
-        if (notificationId != null) {
-          context.router.push(
-            NotificationDetailRoute(notificationId: notificationId),
-          );
-        }
-      }),
-    );
 
     ref.listen<AsyncValue<void>>(
       clienteIndexScreenControllerProvider,
@@ -79,6 +65,7 @@ class _ClienteListPageState extends ConsumerState<ClienteListaPage> {
         scaffoldKey: scaffoldKey,
         isSearchingFirst: widget.isSearchClienteForFrom,
         title: S.of(context).cliente_index_titulo,
+        titleScreen: widget.titleScreen,
         searchTitle: S.of(context).cliente_index_buscarClientes,
         onChanged: (searchText) => _debouncer.run(() {
           ref

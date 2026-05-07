@@ -14,7 +14,6 @@ import '../../../../core/presentation/common_widgets/custom_search_app_bar.dart'
 import '../../../../core/presentation/common_widgets/last_sync_date_widget.dart';
 import '../../../../core/presentation/common_widgets/progress_indicator_widget.dart';
 import '../../../../core/routing/app_auto_router.dart';
-import '../../../notifications/core/application/notification_provider.dart';
 import '../../../sync/application/sync_notifier_provider.dart';
 import '../../domain/articulo.dart';
 import '../../infrastructure/articulo_repository.dart';
@@ -24,9 +23,10 @@ import 'articulo_search_controller.dart';
 
 @RoutePage()
 class ArticuloListaPage extends ConsumerStatefulWidget {
-  const ArticuloListaPage({super.key, required this.isSearchArticuloForForm});
+  ArticuloListaPage({super.key, required this.isSearchArticuloForForm});
 
   final bool isSearchArticuloForForm;
+  final String titleScreen = S.current.articulo_index_titulo;
 
   @override
   ConsumerState<ArticuloListaPage> createState() => _ArticuloListaPageState();
@@ -38,32 +38,12 @@ class _ArticuloListaPageState extends ConsumerState<ArticuloListaPage> {
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
-  void initState() {
-    super.initState();
-
-    // ref.read(notificationProvider.notifier).build();
-  }
-
-  @override
   Widget build(BuildContext context) {
     final stateSync = ref.watch(syncNotifierProvider);
 
     ref.listen(
       articuloIndexScreenControllerProvider(widget.isSearchArticuloForForm),
       (_, state) => state.showAlertDialogOnError(context),
-    );
-
-    ref.listen<AsyncValue<String?>>(
-      notificationProvider(scaffoldKey),
-      (_, state) => state.whenOrNull(
-        data: (notificationId) {
-          if (notificationId != null) {
-            context.router.push(
-              NotificationDetailRoute(notificationId: notificationId),
-            );
-          }
-        },
-      ),
     );
 
     return UpgradeAlert(
@@ -74,6 +54,7 @@ class _ArticuloListaPageState extends ConsumerState<ArticuloListaPage> {
         key: scaffoldKey,
         drawer: !widget.isSearchArticuloForForm ? const AppDrawer() : null,
         appBar: CustomSearchAppBar(
+          titleScreen: widget.titleScreen,
           scaffoldKey: scaffoldKey,
           isSearchingFirst: widget.isSearchArticuloForForm,
           title: S.of(context).articulo_index_titulo,
