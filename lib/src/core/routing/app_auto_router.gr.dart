@@ -1714,12 +1714,14 @@ class ClienteListaRoute extends PageRouteInfo<ClienteListaRouteArgs> {
   ClienteListaRoute({
     Key? key,
     required bool isSearchClienteForFrom,
+    bool? isCreatedFromSalesOrder,
     List<PageRouteInfo>? children,
   }) : super(
          ClienteListaRoute.name,
          args: ClienteListaRouteArgs(
            key: key,
            isSearchClienteForFrom: isSearchClienteForFrom,
+           isCreatedFromSalesOrder: isCreatedFromSalesOrder,
          ),
          initialChildren: children,
        );
@@ -1733,21 +1735,28 @@ class ClienteListaRoute extends PageRouteInfo<ClienteListaRouteArgs> {
       return ClienteListaPage(
         key: args.key,
         isSearchClienteForFrom: args.isSearchClienteForFrom,
+        isCreatedFromSalesOrder: args.isCreatedFromSalesOrder,
       );
     },
   );
 }
 
 class ClienteListaRouteArgs {
-  const ClienteListaRouteArgs({this.key, required this.isSearchClienteForFrom});
+  const ClienteListaRouteArgs({
+    this.key,
+    required this.isSearchClienteForFrom,
+    this.isCreatedFromSalesOrder,
+  });
 
   final Key? key;
 
   final bool isSearchClienteForFrom;
 
+  final bool? isCreatedFromSalesOrder;
+
   @override
   String toString() {
-    return 'ClienteListaRouteArgs{key: $key, isSearchClienteForFrom: $isSearchClienteForFrom}';
+    return 'ClienteListaRouteArgs{key: $key, isSearchClienteForFrom: $isSearchClienteForFrom, isCreatedFromSalesOrder: $isCreatedFromSalesOrder}';
   }
 
   @override
@@ -1755,11 +1764,15 @@ class ClienteListaRouteArgs {
     if (identical(this, other)) return true;
     if (other is! ClienteListaRouteArgs) return false;
     return key == other.key &&
-        isSearchClienteForFrom == other.isSearchClienteForFrom;
+        isSearchClienteForFrom == other.isSearchClienteForFrom &&
+        isCreatedFromSalesOrder == other.isCreatedFromSalesOrder;
   }
 
   @override
-  int get hashCode => key.hashCode ^ isSearchClienteForFrom.hashCode;
+  int get hashCode =>
+      key.hashCode ^
+      isSearchClienteForFrom.hashCode ^
+      isCreatedFromSalesOrder.hashCode;
 }
 
 /// generated route for

@@ -216,6 +216,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "cliente_index_buscarClientes": MessageLookupByLibrary.simpleMessage(
       "Kunden suchen...",
     ),
+    "cliente_index_operacionesBloqueadas": MessageLookupByLibrary.simpleMessage(
+      "Vorgänge gesperrt",
+    ),
     "cliente_index_titulo": MessageLookupByLibrary.simpleMessage("Kunden"),
     "cliente_show_clienteAdjunto_abriendoArchivo":
         MessageLookupByLibrary.simpleMessage("Datei wird geöffnet..."),

@@ -111,11 +111,11 @@ class SyncService {
 
   static final remoteDatabaseDateTimeEndpoint = Uri.http(
     'jbm-api.nikel.es',
-    '/api/v1/sync/db-datetime',
+    '/api/v16/sync/db-datetime',
   );
   static final remoteDatabaseDateTimeTestEndpoint = Uri.http(
     'jbm-api-test.nikel.es:8080',
-    '/api/v1/sync/db-datetime',
+    '/api/v16/sync/db-datetime',
   );
 
   static final remoteLogEndpoint = Uri.http(

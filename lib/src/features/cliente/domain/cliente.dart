@@ -91,6 +91,8 @@ abstract class Cliente with _$Cliente {
     double? importePortes3,
     double? ventasPeriodoActual,
     double? ventasPeriodoAnterior,
+    required bool bloqueoOper,
+    required bool obsoleto,
     DateTime? lastUpdated,
     required bool deleted,
   }) = _Cliente;

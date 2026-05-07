@@ -804,38 +804,38 @@ class _StepSelectClienteContentState
             children: [
               Padding(
                 padding: const EdgeInsets.all(16.0),
-                child: GestureDetector(
-                  onTap: () => navigateToSelectCliente(
-                    context,
-                    widget.pedidoLocalParam,
-                    widget.isEdit,
-                  ),
-                  child: Card(
-                    elevation: 0,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(4),
-                      side: BorderSide(
-                        color: Colors.grey.withValues(alpha: 0.2),
-                        width: 1,
-                      ),
+                child: Card(
+                  elevation: 0,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(4),
+                    side: BorderSide(
+                      color: Colors.grey.withValues(alpha: 0.2),
+                      width: 1,
                     ),
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Row(
-                        children: [
-                          Flexible(
-                            child: ClienteListaTile(cliente: widget.cliente!),
-                          ),
-                          IconButton(
-                            onPressed: () => navigateToSelectCliente(
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Row(
+                      children: [
+                        Flexible(
+                          child: ClienteListaTile(
+                            cliente: widget.cliente!,
+                            onTap: () => navigateToSelectCliente(
                               context,
                               widget.pedidoLocalParam,
                               widget.isEdit,
                             ),
-                            icon: const Icon(Icons.navigate_next_outlined),
                           ),
-                        ],
-                      ),
+                        ),
+                        IconButton(
+                          onPressed: () => navigateToSelectCliente(
+                            context,
+                            widget.pedidoLocalParam,
+                            widget.isEdit,
+                          ),
+                          icon: const Icon(Icons.navigate_next_outlined),
+                        ),
+                      ],
                     ),
                   ),
                 ),
@@ -851,7 +851,10 @@ class _StepSelectClienteContentState
   ) async {
     if (!isEdit) {
       final customer = await context.router.push<Cliente?>(
-        ClienteListaRoute(isSearchClienteForFrom: true),
+        ClienteListaRoute(
+          isSearchClienteForFrom: true,
+          isCreatedFromSalesOrder: true,
+        ),
       );
 
       if (customer != null && context.mounted) {

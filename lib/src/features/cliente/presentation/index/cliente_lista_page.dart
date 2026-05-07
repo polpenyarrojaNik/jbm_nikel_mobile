@@ -23,9 +23,14 @@ import 'cliente_search_controller.dart';
 
 @RoutePage()
 class ClienteListaPage extends ConsumerStatefulWidget {
-  const ClienteListaPage({super.key, required this.isSearchClienteForFrom});
+  const ClienteListaPage({
+    super.key,
+    required this.isSearchClienteForFrom,
+    bool? isCreatedFromSalesOrder,
+  }) : isCreatedFromSalesOrder = isCreatedFromSalesOrder ?? false;
 
   final bool isSearchClienteForFrom;
+  final bool isCreatedFromSalesOrder;
 
   @override
   ConsumerState<ClienteListaPage> createState() => _ClienteListPageState();
@@ -102,6 +107,7 @@ class _ClienteListPageState extends ConsumerState<ClienteListaPage> {
           stateSync: stateSync,
           ref: ref,
           isSearchClienteForFrom: widget.isSearchClienteForFrom,
+          isCreatedFromSalesOrder: widget.isCreatedFromSalesOrder,
         ),
         synchronized: () => RefreshIndicator(
           onRefresh: () => syncCustomerDb(ref),
@@ -109,6 +115,7 @@ class _ClienteListPageState extends ConsumerState<ClienteListaPage> {
             stateSync: stateSync,
             ref: ref,
             isSearchClienteForFrom: widget.isSearchClienteForFrom,
+            isCreatedFromSalesOrder: widget.isCreatedFromSalesOrder,
           ),
         ),
       ),
@@ -149,7 +156,10 @@ class ClientesListViewWidget extends StatelessWidget {
     required this.stateSync,
     required this.ref,
     required this.isSearchClienteForFrom,
+    required this.isCreatedFromSalesOrder,
   });
+
+  final bool isCreatedFromSalesOrder;
 
   final SyncControllerState stateSync;
   final WidgetRef ref;
@@ -193,22 +203,31 @@ class ClientesListViewWidget extends StatelessWidget {
                   )
                   .maybeWhen(
                     orElse: () => const ClienteListShimmer(),
-                    data: (clienteList) => GestureDetector(
-                      onTap: () => (!isSearchClienteForFrom)
-                          ? navigateToClienteDetalle(
-                              context: context,
-                              clienteId:
-                                  clienteList[i % ClienteRepository.pageSize]
-                                      .id,
-                            )
-                          : selectClienteForFromPage(
-                              context: context,
-                              cliente:
-                                  clienteList[i % ClienteRepository.pageSize],
-                            ),
-                      child: ClienteListaTile(
-                        cliente: clienteList[i % ClienteRepository.pageSize],
-                      ),
+                    data: (clienteList) => ClienteListaTile(
+                      cliente: clienteList[i % ClienteRepository.pageSize],
+                      onTap:
+                          isCreatedFromSalesOrder &&
+                              clienteList[i % ClienteRepository.pageSize]
+                                  .bloqueoOper
+                          ? null
+                          : () {
+                              if (!isSearchClienteForFrom) {
+                                navigateToClienteDetalle(
+                                  context: context,
+                                  clienteId:
+                                      clienteList[i %
+                                              ClienteRepository.pageSize]
+                                          .id,
+                                );
+                              } else {
+                                selectClienteForFromPage(
+                                  context: context,
+                                  cliente:
+                                      clienteList[i %
+                                          ClienteRepository.pageSize],
+                                );
+                              }
+                            },
                     ),
                   ),
             ),

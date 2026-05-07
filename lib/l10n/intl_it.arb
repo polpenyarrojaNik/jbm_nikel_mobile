@@ -59,6 +59,7 @@
   "cliente_alrededor_direccionesEnvio": "Indirizzi di spedizione",
   "cliente_index_buscarClientes": "Cerca clienti...",
   "cliente_index_titulo": "Clienti",
+  "cliente_index_operacionesBloqueadas": "Operazioni bloccate",
   "cliente_show_clienteAdjunto_abriendoArchivo": "Apertura file...",
   "cliente_show_clienteAdjunto_titulo": "Allegati",
   "cliente_show_clienteArticulosTop_articulo": "Articolo",

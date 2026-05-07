@@ -99,6 +99,8 @@ abstract class ClienteDTO with _$ClienteDTO implements Insertable<ClienteDTO> {
     @JsonKey(name: 'IMPORTE_PORTES3') double? importePortes3,
     @JsonKey(name: 'VENTAS_PERIODO') double? ventasPeriodoActual,
     @JsonKey(name: 'VENTAS_PERIODO_ANTERIOR') double? ventasPeriodoAnterior,
+    @JsonKey(name: 'BLOQUEO_OPER') required String bloqueoOper,
+    @JsonKey(name: 'OBSOLETO_SN') required String obsoleto,
     @JsonKey(name: 'LAST_UPDATED') required DateTime lastUpdated,
     @JsonKey(name: 'DELETED') @Default('N') String deleted,
   }) = _ClienteDTO;
@@ -207,6 +209,8 @@ abstract class ClienteDTO with _$ClienteDTO implements Insertable<ClienteDTO> {
       importePortes3: importePortes3,
       ventasPeriodoActual: ventasPeriodoActual,
       ventasPeriodoAnterior: ventasPeriodoAnterior,
+      bloqueoOper: bloqueoOper == 'S',
+      obsoleto: obsoleto == 'S',
       lastUpdated: lastUpdated,
       deleted: (deleted == 'S'),
     );
@@ -278,6 +282,8 @@ abstract class ClienteDTO with _$ClienteDTO implements Insertable<ClienteDTO> {
       importePortes3: Value(importePortes3),
       ventasPeriodoActual: Value(ventasPeriodoActual),
       ventasPeriodoAnterior: Value(ventasPeriodoAnterior),
+      bloqueoOper: Value(bloqueoOper),
+      obsoleto: Value(obsoleto),
       lastUpdated: Value(lastUpdated),
       deleted: Value(deleted),
     ).toColumns(nullToAbsent);
@@ -427,6 +433,8 @@ class ClienteTable extends Table {
       real().nullable().named('VENTAS_PERIODO')();
   RealColumn get ventasPeriodoAnterior =>
       real().nullable().named('VENTAS_PERIODO_ANTERIOR')();
+  TextColumn get bloqueoOper => text().named('BLOQUEO_OPER')();
+  TextColumn get obsoleto => text().named('OBSOLETO_SN')();
   DateTimeColumn get lastUpdated => dateTime().named('LAST_UPDATED')();
   TextColumn get deleted =>
       text().withDefault(const Constant('N')).named('DELETED')();

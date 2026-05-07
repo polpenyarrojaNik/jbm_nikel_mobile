@@ -1410,9 +1410,18 @@ class _ArticuloPrecioContainer extends ConsumerWidget {
             articuloPrecioValue.maybeWhen(
               orElse: () => Container(),
               data: (ultimosPrecios) => ultimosPrecios != null
-                  ? Text(
-                      '${S.of(context).pedido_edit_pedidoEdit_ultimoPrecioDeCompra}:  ${formatPrecioYDescuento(precio: ultimosPrecios.precioDivisa, tipoPrecio: ultimosPrecios.tipoPrecio, descuento1: ultimosPrecios.descuento1, descuento2: ultimosPrecios.descuento2, descuento3: ultimosPrecios.descuento3)} (${numberFormatCantidades(ultimosPrecios.cantidad)} ${S.of(context).unidad})',
-                      style: Theme.of(context).textTheme.bodySmall,
+                  ? Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          '${S.of(context).pedido_edit_pedidoEdit_ultimoPrecioDeCompra}: ${formatPrecioYDescuento(precio: ultimosPrecios.precioDivisa, tipoPrecio: ultimosPrecios.tipoPrecio, descuento1: ultimosPrecios.descuento1, descuento2: ultimosPrecios.descuento2, descuento3: ultimosPrecios.descuento3)} (${numberFormatCantidades(ultimosPrecios.cantidad)} ${S.of(context).unidad})',
+                          style: Theme.of(context).textTheme.bodySmall,
+                        ),
+                        Text(
+                          '${S.of(context).visitas_edit_visitaEditar_fecha}: ${dateFormatter(ultimosPrecios.fecha.toIso8601String())}',
+                          style: Theme.of(context).textTheme.bodySmall,
+                        ),
+                      ],
                     )
                   : Container(),
             ),

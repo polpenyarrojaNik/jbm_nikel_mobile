@@ -904,6 +904,16 @@ class S {
     );
   }
 
+  /// `Operations blocked`
+  String get cliente_index_operacionesBloqueadas {
+    return Intl.message(
+      'Operations blocked',
+      name: 'cliente_index_operacionesBloqueadas',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Id`
   String get cliente_show_clienteContacto_id {
     return Intl.message(
