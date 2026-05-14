@@ -146,7 +146,7 @@ Future<String?> saveFromAssets(String filename, String mimeType) async {
   final bytes = data.buffer.asUint8List();
 
   // 2) Pedir al usuario dónde guardarlo (Save As)
-  final path = await FilePicker.platform.saveFile(
+  final path = await FilePicker.saveFile(
     dialogTitle: S.current.saveAs,
     fileName: filename,
     type: FileType.custom,

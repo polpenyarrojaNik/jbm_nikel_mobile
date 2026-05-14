@@ -199,9 +199,9 @@ class UploadExcelFileButton extends ConsumerWidget {
     ValueNotifier<PlatformFile?> selectedFile,
   ) async {
     if (Platform.isAndroid || Platform.isIOS) {
-      await FilePicker.platform.clearTemporaryFiles();
+      await FilePicker.clearTemporaryFiles();
     }
-    final result = await FilePicker.platform.pickFiles(
+    final result = await FilePicker.pickFiles(
       allowedExtensions: ['xls', 'xlsx', 'csv', 'ods'],
       type: FileType.custom,
     );
