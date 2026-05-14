@@ -8,6 +8,7 @@ import '../../../../core/presentation/common_widgets/address_text_widget.dart';
 import '../../../../core/presentation/common_widgets/chip_container.dart';
 import '../../../../core/presentation/theme/app_sizes.dart';
 import '../../domain/cliente.dart';
+import '../common_widgets/cliente_status_chip.dart';
 
 class ClienteListaTile extends StatelessWidget {
   const ClienteListaTile({
@@ -22,20 +23,27 @@ class ClienteListaTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final colorScheme = Theme.of(context).colorScheme;
+    final isDisabled = onTap == null;
+    final hasStatusDecoration = cliente.bloqueoOper || cliente.obsoleto;
 
     return Semantics(
-      enabled: cliente.bloqueoOper && onTap == null,
+      enabled: !isDisabled,
       button: onTap != null,
       child: GestureDetector(
         behavior: HitTestBehavior.opaque,
         onTap: onTap,
         child: DecoratedBox(
           decoration: BoxDecoration(
-            color: cliente.bloqueoOper
-                ? colorScheme.errorContainer.withValues(alpha: 0.16)
+            color: hasStatusDecoration
+                ? _statusColor(context).withValues(alpha: 0.16)
                 : null,
-            border: cliente.bloqueoOper
-                ? Border(left: BorderSide(color: colorScheme.error, width: 4))
+            border: hasStatusDecoration
+                ? Border(
+                    left: BorderSide(
+                      color: _statusBorderColor(context),
+                      width: 4,
+                    ),
+                  )
                 : null,
           ),
           child: Padding(
@@ -43,12 +51,25 @@ class ClienteListaTile extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                if (cliente.bloqueoOper) ...[
-                  _BlockedOperationsChip(
-                    text: S.of(context).cliente_index_operacionesBloqueadas,
+                if (cliente.obsoleto) ...[
+                  ClienteStatusChip(
+                    icon: Icons.history,
+                    text: S.of(context).cliente_index_clienteAntiguo,
+                    backgroundColor: Colors.blueGrey.withValues(alpha: 0.16),
+                    foregroundColor: colorScheme.onSurface,
                   ),
                   const Gap(4),
                 ],
+                if (!cliente.obsoleto && cliente.bloqueoOper) ...[
+                  ClienteStatusChip(
+                    icon: Icons.lock_outline,
+                    text: S.of(context).cliente_index_operacionesBloqueadas,
+                    backgroundColor: colorScheme.errorContainer,
+                    foregroundColor: colorScheme.onErrorContainer,
+                  ),
+                  const Gap(4),
+                ],
+
                 if (cliente.clientePotencial ?? false) ...[
                   ChipContainer(
                     text: getClienteEstadoPotencialInLocalLanguage(
@@ -94,43 +115,22 @@ class ClienteListaTile extends StatelessWidget {
       ),
     );
   }
-}
 
-class _BlockedOperationsChip extends StatelessWidget {
-  const _BlockedOperationsChip({required this.text});
-
-  final String text;
-
-  @override
-  Widget build(BuildContext context) {
+  Color _statusColor(BuildContext context) {
     final colorScheme = Theme.of(context).colorScheme;
 
-    return DecoratedBox(
-      decoration: BoxDecoration(
-        color: colorScheme.errorContainer,
-        borderRadius: BorderRadius.circular(4),
-      ),
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
-        child: Row(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Icon(
-              Icons.lock_outline,
-              size: 14,
-              color: colorScheme.onErrorContainer,
-            ),
-            const Gap(4),
-            Text(
-              text,
-              style: Theme.of(context).textTheme.labelMedium?.copyWith(
-                color: colorScheme.onErrorContainer,
-                fontWeight: FontWeight.w600,
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
+    if (cliente.bloqueoOper && !cliente.obsoleto) {
+      return colorScheme.errorContainer;
+    }
+    return Colors.blueGrey;
+  }
+
+  Color _statusBorderColor(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
+
+    if (cliente.bloqueoOper && !cliente.obsoleto) {
+      return colorScheme.error;
+    }
+    return Colors.blueGrey;
   }
 }

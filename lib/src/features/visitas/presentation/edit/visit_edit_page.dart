@@ -987,7 +987,7 @@ class SelectClienteWidget extends StatelessWidget {
   void navigateToSearchClientes(BuildContext context) async {
     final customer = await context.router.push<Cliente?>(
       ClienteListaRoute(
-        isSearchClienteForFrom: true,
+        isCreatedFromVisits: true,
         isCreatedFromSalesOrder: false,
       ),
     );

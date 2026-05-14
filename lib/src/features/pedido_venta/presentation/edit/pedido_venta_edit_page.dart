@@ -851,10 +851,7 @@ class _StepSelectClienteContentState
   ) async {
     if (!isEdit) {
       final customer = await context.router.push<Cliente?>(
-        ClienteListaRoute(
-          isSearchClienteForFrom: true,
-          isCreatedFromSalesOrder: true,
-        ),
+        ClienteListaRoute(isCreatedFromSalesOrder: true),
       );
 
       if (customer != null && context.mounted) {

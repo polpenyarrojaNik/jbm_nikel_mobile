@@ -18,6 +18,7 @@ import '../../../../core/presentation/common_widgets/selectable_text_widget.dart
 import '../../../../core/routing/app_auto_router.dart';
 import '../../domain/cliente.dart';
 import '../../infrastructure/cliente_repository.dart';
+import '../common_widgets/cliente_status_chip.dart';
 
 @RoutePage()
 class ClienteDetallePage extends ConsumerWidget {
@@ -29,37 +30,43 @@ class ClienteDetallePage extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final params = {'clienteId': clienteId};
 
+    final clienteValue = ref.watch(clienteByIdProvider(clienteId));
+
     return Scaffold(
       appBar: CommonAppBar(
         titleText: (S.of(context).cliente_show_clienteDetalle_titulo),
-        actions: [
-          IconButton(
-            onPressed: () =>
-                navigateToCreatePedido(context: context, clienteId: clienteId),
-            icon: const Icon(Icons.shopping_cart_outlined),
-          ),
-          IconButton(
-            onPressed: () => navigateToCreateVisita(context, clienteId),
-            icon: const Icon(Icons.group_add),
-          ),
-        ],
+        actions: clienteValue.maybeWhen(
+          orElse: () => null,
+          data: (cliente) => cliente.bloqueoOper || cliente.obsoleto
+              ? null
+              : [
+                  IconButton(
+                    onPressed: () => navigateToCreatePedido(
+                      context: context,
+                      clienteId: clienteId,
+                    ),
+                    icon: const Icon(Icons.shopping_cart_outlined),
+                  ),
+                  IconButton(
+                    onPressed: () => navigateToCreateVisita(context, clienteId),
+                    icon: const Icon(Icons.group_add),
+                  ),
+                ],
+        ),
       ),
-      body: Consumer(
-        builder: (context, ref, _) {
-          final articuloValue = ref.watch(clienteByIdProvider(clienteId));
-          return AsyncValueWidget<Cliente>(
-            value: articuloValue,
-            onData: (cliente) => ListView(
-              shrinkWrap: true,
-              physics: const BouncingScrollPhysics(),
-              children: [
-                _ClienteInfoContainer(cliente: cliente),
-                _DatosRelacionados(cliente: cliente, params: params),
-                _Consultas(cliente: cliente, params: params),
-              ],
-            ),
-          );
-        },
+      body: AsyncValueWidget<Cliente>(
+        value: clienteValue,
+        onData: (cliente) => ListView(
+          shrinkWrap: true,
+          physics: const BouncingScrollPhysics(),
+          children: [
+            _ClienteInfoContainer(cliente: cliente),
+            if (!cliente.obsoleto) ...[
+              _DatosRelacionados(cliente: cliente, params: params),
+              _Consultas(cliente: cliente, params: params),
+            ],
+          ],
+        ),
       ),
     );
   }
@@ -91,9 +98,11 @@ class _ClienteInfoContainer extends StatelessWidget {
       physics: const NeverScrollableScrollPhysics(),
       children: [
         _ClienteHeader(cliente: cliente),
-        _ClienteAnalisis(cliente: cliente),
-        _ClientePreciosAndFormaDePago(cliente: cliente),
-        _ClienteRiesgosContainer(cliente: cliente),
+        if (!cliente.obsoleto) ...[
+          _ClienteAnalisis(cliente: cliente),
+          _ClientePreciosAndFormaDePago(cliente: cliente),
+          _ClienteRiesgosContainer(cliente: cliente),
+        ],
       ],
     );
   }
@@ -106,76 +115,84 @@ class _ClienteHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(16.0),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    final colorScheme = Theme.of(context).colorScheme;
+    final hasStatusDecoration = cliente.bloqueoOper || cliente.obsoleto;
+
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        DecoratedBox(
+          decoration: BoxDecoration(
+            color: hasStatusDecoration
+                ? _statusColor(context).withValues(alpha: 0.16)
+                : null,
+            border: hasStatusDecoration
+                ? Border(
+                    left: BorderSide(
+                      color: _statusBorderColor(context),
+                      width: 4,
+                    ),
+                  )
+                : null,
+          ),
+          child: Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                if (cliente.obsoleto) ...[
+                  ClienteStatusChip(
+                    icon: Icons.history,
+                    text: S.of(context).cliente_index_clienteAntiguo,
+                    backgroundColor: Colors.blueGrey.withValues(alpha: 0.16),
+                    foregroundColor: colorScheme.onSurface,
+                  ),
+                  const Gap(4),
+                ],
+                if (!cliente.obsoleto && cliente.bloqueoOper) ...[
+                  ClienteStatusChip(
+                    icon: Icons.lock_outline,
+                    text: S.of(context).cliente_index_operacionesBloqueadas,
+                    backgroundColor: colorScheme.errorContainer,
+                    foregroundColor: colorScheme.onErrorContainer,
+                  ),
+                  const Gap(4),
+                ],
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Flexible(
+                      child: Text(
+                        '#${cliente.id} ${cliente.nombreCliente}',
+                        style: Theme.of(context).textTheme.titleLarge,
+                      ),
+                    ),
+                    if (cliente.clientePotencial ?? false) const Gap(8),
+                    if (cliente.clientePotencial ?? false)
+                      ChipContainer(
+                        text: getClienteEstadoPotencialInLocalLanguage(
+                          estadoPotencial: cliente.clienteEstadoPotencial,
+                        ),
+                        color: Theme.of(context).colorScheme.errorContainer,
+                      ),
+                  ],
+                ),
+              ],
+            ),
+          ),
+        ),
+
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8),
+          child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Flexible(
-                child: Text(
-                  '#${cliente.id} ${cliente.nombreCliente}',
-                  style: Theme.of(context).textTheme.titleLarge,
-                ),
-              ),
-              if (cliente.clientePotencial ?? false) const Gap(8),
-              if (cliente.clientePotencial ?? false)
-                ChipContainer(
-                  text: getClienteEstadoPotencialInLocalLanguage(
-                    estadoPotencial: cliente.clienteEstadoPotencial,
-                  ),
-                  color: Theme.of(context).colorScheme.errorContainer,
-                ),
-            ],
-          ),
-          const Gap(8),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Flexible(
-                child: SelectableText(
-                  selectionControls: MaterialTextSelectionControls(),
-                  formatCustomerAddress(
-                    cliente.direccionPredeterminada1,
-                    cliente.codigoPostalPredeterminada,
-                    cliente.poblacionPredeterminada,
-                    cliente.provinciaPredeterminada,
-                    cliente.paisPredeterminada,
-                  ),
-                  style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                    color: Theme.of(context).textTheme.bodySmall?.color,
-                  ),
-                ),
-              ),
-              IconButton(
-                onPressed: () => navigateToGoogleMapsAddress(
-                  cliente.nombreCliente,
-                  cliente.latitudPredeterminada,
-                  cliente.longitudPredeterminada,
-                ),
-                icon: Icon(MdiIcons.googleMaps),
-              ),
-            ],
-          ),
-          const Gap(8),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                S.of(context).cliente_show_clienteDetalle_fiscalData,
-                style: Theme.of(context).textTheme.titleSmall?.copyWith(
-                  color: Theme.of(context).textTheme.bodySmall?.color,
-                ),
-              ),
-              SelectableText(
-                cliente.nombreFiscal,
-                style: Theme.of(context).textTheme.bodyMedium,
-              ),
-              if (!isSameAddress(cliente)) const Gap(4),
-              if (!isSameAddress(cliente))
+              if (cliente.direccionPredeterminada1 != null ||
+                  cliente.codigoPostalPredeterminada != null ||
+                  cliente.poblacionPredeterminada != null ||
+                  cliente.provinciaPredeterminada != null ||
+                  cliente.paisPredeterminada != null) ...[
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -183,11 +200,11 @@ class _ClienteHeader extends StatelessWidget {
                       child: SelectableText(
                         selectionControls: MaterialTextSelectionControls(),
                         formatCustomerAddress(
-                          cliente.direccionFiscal1,
-                          cliente.codigoPostalFiscal,
-                          cliente.poblacionFiscal,
-                          cliente.provinciaFiscal,
-                          cliente.paisFiscal,
+                          cliente.direccionPredeterminada1,
+                          cliente.codigoPostalPredeterminada,
+                          cliente.poblacionPredeterminada,
+                          cliente.provinciaPredeterminada,
+                          cliente.paisPredeterminada,
                         ),
                         style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                           color: Theme.of(context).textTheme.bodySmall?.color,
@@ -196,50 +213,120 @@ class _ClienteHeader extends StatelessWidget {
                     ),
                     IconButton(
                       onPressed: () => navigateToGoogleMapsAddress(
-                        cliente.nombreFiscal,
-                        cliente.latitudFiscal,
-                        cliente.longitudFiscal,
+                        cliente.nombreCliente,
+                        cliente.latitudPredeterminada,
+                        cliente.longitudPredeterminada,
                       ),
                       icon: Icon(MdiIcons.googleMaps),
                     ),
                   ],
                 ),
+                const Gap(8),
+              ],
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    S.of(context).cliente_show_clienteDetalle_fiscalData,
+                    style: Theme.of(context).textTheme.titleSmall?.copyWith(
+                      color: Theme.of(context).textTheme.bodySmall?.color,
+                    ),
+                  ),
+                  SelectableText(
+                    cliente.nombreFiscal,
+                    style: Theme.of(context).textTheme.bodyMedium,
+                  ),
+                  if (!isSameAddress(cliente)) const Gap(4),
+                  if (!isSameAddress(cliente))
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Flexible(
+                          child: SelectableText(
+                            selectionControls: MaterialTextSelectionControls(),
+                            formatCustomerAddress(
+                              cliente.direccionFiscal1,
+                              cliente.codigoPostalFiscal,
+                              cliente.poblacionFiscal,
+                              cliente.provinciaFiscal,
+                              cliente.paisFiscal,
+                            ),
+                            style: Theme.of(context).textTheme.bodyMedium
+                                ?.copyWith(
+                                  color: Theme.of(
+                                    context,
+                                  ).textTheme.bodySmall?.color,
+                                ),
+                          ),
+                        ),
+                        IconButton(
+                          onPressed: () => navigateToGoogleMapsAddress(
+                            cliente.nombreFiscal,
+                            cliente.latitudFiscal,
+                            cliente.longitudFiscal,
+                          ),
+                          icon: Icon(MdiIcons.googleMaps),
+                        ),
+                      ],
+                    ),
+                ],
+              ),
+              const Gap(8),
+              if (cliente.nif != null)
+                ColumnFieldTextDetalle(
+                  fieldTitleValue: S
+                      .of(context)
+                      .cliente_show_clienteDetalle_nif,
+                  value: cliente.nif!,
+                  selectable: true,
+                ),
+              if (cliente.centralCompras != null)
+                ColumnFieldTextDetalle(
+                  fieldTitleValue: S
+                      .of(context)
+                      .cliente_show_clienteDetalle_centralCompras,
+                  value: cliente.centralCompras!,
+                  selectable: true,
+                ),
+              if (cliente.representante1Nombre != null)
+                ColumnFieldTextDetalle(
+                  fieldTitleValue: S
+                      .of(context)
+                      .cliente_show_clienteDetalle_comercial1,
+                  value: cliente.representante1Nombre!,
+                  selectable: true,
+                ),
+              if (cliente.representante2Nombre != null)
+                ColumnFieldTextDetalle(
+                  fieldTitleValue: S
+                      .of(context)
+                      .cliente_show_clienteDetalle_comercial2,
+                  value: cliente.representante2Nombre!,
+                  selectable: true,
+                ),
             ],
           ),
-          const Gap(8),
-          if (cliente.nif != null)
-            ColumnFieldTextDetalle(
-              fieldTitleValue: S.of(context).cliente_show_clienteDetalle_nif,
-              value: cliente.nif!,
-              selectable: true,
-            ),
-          if (cliente.centralCompras != null)
-            ColumnFieldTextDetalle(
-              fieldTitleValue: S
-                  .of(context)
-                  .cliente_show_clienteDetalle_centralCompras,
-              value: cliente.centralCompras!,
-              selectable: true,
-            ),
-          if (cliente.representante1Nombre != null)
-            ColumnFieldTextDetalle(
-              fieldTitleValue: S
-                  .of(context)
-                  .cliente_show_clienteDetalle_comercial1,
-              value: cliente.representante1Nombre!,
-              selectable: true,
-            ),
-          if (cliente.representante2Nombre != null)
-            ColumnFieldTextDetalle(
-              fieldTitleValue: S
-                  .of(context)
-                  .cliente_show_clienteDetalle_comercial2,
-              value: cliente.representante2Nombre!,
-              selectable: true,
-            ),
-        ],
-      ),
+        ),
+      ],
     );
+  }
+
+  Color _statusColor(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
+
+    if (cliente.bloqueoOper && !cliente.obsoleto) {
+      return colorScheme.errorContainer;
+    }
+    return Colors.blueGrey;
+  }
+
+  Color _statusBorderColor(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
+
+    if (cliente.bloqueoOper && !cliente.obsoleto) {
+      return colorScheme.error;
+    }
+    return Colors.blueGrey;
   }
 
   void navigateToGoogleMapsAddress(

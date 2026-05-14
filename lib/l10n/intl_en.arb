@@ -86,6 +86,7 @@
   "auth_loginPage_iniciarSesion": "Log in",
   "cliente_index_titulo": "Customer",
   "cliente_index_buscarClientes": " Search customers...",
+  "cliente_index_clienteAntiguo": "Old customer",
   "cliente_index_operacionesBloqueadas": "Operations blocked",
   "cliente_show_clienteContacto_id": "Id",
   "cliente_show_clienteContacto_nombre": "Name",

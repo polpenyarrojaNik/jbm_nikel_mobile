@@ -1741,15 +1741,15 @@ class ClienteGrupoNetoRouteArgs {
 class ClienteListaRoute extends PageRouteInfo<ClienteListaRouteArgs> {
   ClienteListaRoute({
     Key? key,
-    required bool isSearchClienteForFrom,
     bool? isCreatedFromSalesOrder,
+    bool? isCreatedFromVisits,
     List<PageRouteInfo>? children,
   }) : super(
          ClienteListaRoute.name,
          args: ClienteListaRouteArgs(
            key: key,
-           isSearchClienteForFrom: isSearchClienteForFrom,
            isCreatedFromSalesOrder: isCreatedFromSalesOrder,
+           isCreatedFromVisits: isCreatedFromVisits,
          ),
          initialChildren: children,
        );
@@ -1759,11 +1759,13 @@ class ClienteListaRoute extends PageRouteInfo<ClienteListaRouteArgs> {
   static PageInfo page = PageInfo(
     name,
     builder: (data) {
-      final args = data.argsAs<ClienteListaRouteArgs>();
+      final args = data.argsAs<ClienteListaRouteArgs>(
+        orElse: () => const ClienteListaRouteArgs(),
+      );
       return ClienteListaPage(
         key: args.key,
-        isSearchClienteForFrom: args.isSearchClienteForFrom,
         isCreatedFromSalesOrder: args.isCreatedFromSalesOrder,
+        isCreatedFromVisits: args.isCreatedFromVisits,
       );
     },
   );
@@ -1772,19 +1774,19 @@ class ClienteListaRoute extends PageRouteInfo<ClienteListaRouteArgs> {
 class ClienteListaRouteArgs {
   const ClienteListaRouteArgs({
     this.key,
-    required this.isSearchClienteForFrom,
     this.isCreatedFromSalesOrder,
+    this.isCreatedFromVisits,
   });
 
   final Key? key;
 
-  final bool isSearchClienteForFrom;
-
   final bool? isCreatedFromSalesOrder;
+
+  final bool? isCreatedFromVisits;
 
   @override
   String toString() {
-    return 'ClienteListaRouteArgs{key: $key, isSearchClienteForFrom: $isSearchClienteForFrom, isCreatedFromSalesOrder: $isCreatedFromSalesOrder}';
+    return 'ClienteListaRouteArgs{key: $key, isCreatedFromSalesOrder: $isCreatedFromSalesOrder, isCreatedFromVisits: $isCreatedFromVisits}';
   }
 
   @override
@@ -1792,15 +1794,15 @@ class ClienteListaRouteArgs {
     if (identical(this, other)) return true;
     if (other is! ClienteListaRouteArgs) return false;
     return key == other.key &&
-        isSearchClienteForFrom == other.isSearchClienteForFrom &&
-        isCreatedFromSalesOrder == other.isCreatedFromSalesOrder;
+        isCreatedFromSalesOrder == other.isCreatedFromSalesOrder &&
+        isCreatedFromVisits == other.isCreatedFromVisits;
   }
 
   @override
   int get hashCode =>
       key.hashCode ^
-      isSearchClienteForFrom.hashCode ^
-      isCreatedFromSalesOrder.hashCode;
+      isCreatedFromSalesOrder.hashCode ^
+      isCreatedFromVisits.hashCode;
 }
 
 /// generated route for

@@ -51,7 +51,7 @@ class AppDrawer extends StatelessWidget {
             leading: const Icon(Icons.person, size: 30),
             title: Text(S.of(context).commonWidgets_appDrawer_clientes),
             onTap: () => context.router.pushAndPopUntil(
-              ClienteListaRoute(isSearchClienteForFrom: false),
+              ClienteListaRoute(),
               predicate: (route) => false,
             ),
           ),

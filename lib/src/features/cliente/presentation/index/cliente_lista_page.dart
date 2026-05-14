@@ -14,7 +14,6 @@ import '../../../../core/presentation/common_widgets/last_sync_date_widget.dart'
 import '../../../../core/presentation/common_widgets/progress_indicator_widget.dart';
 import '../../../../core/routing/app_auto_router.dart';
 import '../../../sync/application/sync_notifier_provider.dart';
-import '../../domain/cliente.dart';
 import '../../infrastructure/cliente_repository.dart';
 import 'cliente_list_shimmer.dart';
 import 'cliente_lista_tile.dart';
@@ -24,12 +23,13 @@ import 'cliente_search_controller.dart';
 class ClienteListaPage extends ConsumerStatefulWidget {
   ClienteListaPage({
     super.key,
-    required this.isSearchClienteForFrom,
     bool? isCreatedFromSalesOrder,
-  }) : isCreatedFromSalesOrder = isCreatedFromSalesOrder ?? false;
+    bool? isCreatedFromVisits,
+  }) : isCreatedFromSalesOrder = isCreatedFromSalesOrder ?? false,
+       isCreatedFromVisits = isCreatedFromVisits ?? false;
 
-  final bool isSearchClienteForFrom;
   final bool isCreatedFromSalesOrder;
+  final bool isCreatedFromVisits;
   final String titleScreen = S.current.cliente_index_titulo;
 
   @override
@@ -37,6 +37,8 @@ class ClienteListaPage extends ConsumerStatefulWidget {
 }
 
 class _ClienteListPageState extends ConsumerState<ClienteListaPage> {
+  late bool isSearchClienteForFrom;
+
   final _debouncer = Debouncer(milliseconds: 500);
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
@@ -47,6 +49,8 @@ class _ClienteListPageState extends ConsumerState<ClienteListaPage> {
     ref
         .read(syncNotifierProvider.notifier)
         .syncAllInCompute(initAppProcess: false);
+    isSearchClienteForFrom =
+        widget.isCreatedFromSalesOrder || widget.isCreatedFromVisits;
   }
 
   @override
@@ -60,10 +64,10 @@ class _ClienteListPageState extends ConsumerState<ClienteListaPage> {
 
     return Scaffold(
       key: scaffoldKey,
-      drawer: !widget.isSearchClienteForFrom ? const AppDrawer() : null,
+      drawer: !isSearchClienteForFrom ? const AppDrawer() : null,
       appBar: CustomSearchAppBar(
         scaffoldKey: scaffoldKey,
-        isSearchingFirst: widget.isSearchClienteForFrom,
+        isSearchingFirst: isSearchClienteForFrom,
         title: S.of(context).cliente_index_titulo,
         titleScreen: widget.titleScreen,
         searchTitle: S.of(context).cliente_index_buscarClientes,
@@ -82,7 +86,7 @@ class _ClienteListPageState extends ConsumerState<ClienteListaPage> {
                   : null,
             ),
           ),
-          if (!widget.isSearchClienteForFrom)
+          if (!isSearchClienteForFrom)
             IconButton(
               onPressed: () => navigateToClientesAlrededor(context),
               icon: const Icon(Icons.near_me_outlined),
@@ -93,16 +97,18 @@ class _ClienteListPageState extends ConsumerState<ClienteListaPage> {
         orElse: () => ClientesListViewWidget(
           stateSync: stateSync,
           ref: ref,
-          isSearchClienteForFrom: widget.isSearchClienteForFrom,
+          isSearchClienteForFrom: isSearchClienteForFrom,
           isCreatedFromSalesOrder: widget.isCreatedFromSalesOrder,
+          isCreatedFromVisits: widget.isCreatedFromVisits,
         ),
         synchronized: () => RefreshIndicator(
           onRefresh: () => syncCustomerDb(ref),
           child: ClientesListViewWidget(
             stateSync: stateSync,
             ref: ref,
-            isSearchClienteForFrom: widget.isSearchClienteForFrom,
+            isSearchClienteForFrom: isSearchClienteForFrom,
             isCreatedFromSalesOrder: widget.isCreatedFromSalesOrder,
+            isCreatedFromVisits: widget.isCreatedFromVisits,
           ),
         ),
       ),
@@ -144,10 +150,11 @@ class ClientesListViewWidget extends StatelessWidget {
     required this.ref,
     required this.isSearchClienteForFrom,
     required this.isCreatedFromSalesOrder,
+    required this.isCreatedFromVisits,
   });
 
   final bool isCreatedFromSalesOrder;
-
+  final bool isCreatedFromVisits;
   final SyncControllerState stateSync;
   final WidgetRef ref;
   final bool isSearchClienteForFrom;
@@ -193,9 +200,15 @@ class ClientesListViewWidget extends StatelessWidget {
                     data: (clienteList) => ClienteListaTile(
                       cliente: clienteList[i % ClienteRepository.pageSize],
                       onTap:
-                          isCreatedFromSalesOrder &&
-                              clienteList[i % ClienteRepository.pageSize]
-                                  .bloqueoOper
+                          (clienteList[i % ClienteRepository.pageSize]
+                                      .obsoleto &&
+                                  isCreatedFromVisits) ||
+                              (isCreatedFromSalesOrder &&
+                                  (clienteList[i % ClienteRepository.pageSize]
+                                          .bloqueoOper ||
+                                      clienteList[i %
+                                              ClienteRepository.pageSize]
+                                          .obsoleto))
                           ? null
                           : () {
                               if (!isSearchClienteForFrom) {
@@ -207,11 +220,8 @@ class ClientesListViewWidget extends StatelessWidget {
                                           .id,
                                 );
                               } else {
-                                selectClienteForFromPage(
-                                  context: context,
-                                  cliente:
-                                      clienteList[i %
-                                          ClienteRepository.pageSize],
+                                context.router.maybePop(
+                                  clienteList[i % ClienteRepository.pageSize],
                                 );
                               }
                             },
@@ -229,12 +239,5 @@ class ClientesListViewWidget extends StatelessWidget {
     required String clienteId,
   }) {
     context.router.push(ClienteDetalleRoute(clienteId: clienteId));
-  }
-
-  void selectClienteForFromPage({
-    required BuildContext context,
-    required Cliente cliente,
-  }) {
-    context.router.maybePop(cliente);
   }
 }

@@ -220,6 +220,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "cliente_index_buscarClientes": MessageLookupByLibrary.simpleMessage(
       "Chercher des clients…",
     ),
+    "cliente_index_clienteAntiguo": MessageLookupByLibrary.simpleMessage(
+      "Ancien client",
+    ),
     "cliente_index_operacionesBloqueadas": MessageLookupByLibrary.simpleMessage(
       "Opérations bloquées",
     ),
