@@ -459,5 +459,6 @@
   "pricesAndNetGroups": "Precios y Grupos Netos",
   "unknownCustomer": "Cliente desconocido",
   "discontinued": "DESCATALOGADO",
-  "share": "Compartir"
+  "share": "Compartir",
+  "customerNotAvailableToSelect": "Cliente no disponible para seleccionar"
 }

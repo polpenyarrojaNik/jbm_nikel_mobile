@@ -459,5 +459,6 @@
   "pricesAndNetGroups": "Prix et Groupes Nets",
   "unknownFamily": "Famille inconnue",
   "discontinued": "ARRÊTÉ",
-  "share": "Partager"
+  "share": "Partager",
+  "customerNotAvailableToSelect": "Client non disponible pour la sélection"
 }

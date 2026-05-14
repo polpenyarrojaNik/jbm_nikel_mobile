@@ -460,5 +460,6 @@
   "visitas_show_visitaDetalle_telefono": "Telefon",
   "yes": "Ja",
   "discontinued": "EINGESTELLT",
-  "share": "Teilen"
+  "share": "Teilen",
+  "customerNotAvailableToSelect": "Kunde nicht verfügbar zur Auswahl"
 }

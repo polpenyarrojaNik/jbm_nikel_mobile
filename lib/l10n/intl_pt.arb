@@ -460,5 +460,6 @@
   "unknownCustomer": "Cliente desconhecido",
   "unknownFamily": "Família desconhecida",
   "discontinued": "DESCONTINUADO",
-  "share": "Compartilhar"
+  "share": "Compartilhar",
+  "customerNotAvailableToSelect": "Cliente não disponível para seleção"
 }

@@ -4407,6 +4407,16 @@ class S {
   String get share {
     return Intl.message('Share', name: 'share', desc: '', args: []);
   }
+
+  /// `Customer not available to select`
+  String get customerNotAvailableToSelect {
+    return Intl.message(
+      'Customer not available to select',
+      name: 'customerNotAvailableToSelect',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

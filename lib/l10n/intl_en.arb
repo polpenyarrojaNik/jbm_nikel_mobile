@@ -460,5 +460,6 @@
   "close": "Close",
   "pricesAndNetGroups": "Prices & Net Groups",
   "discontinued": "DISCONTINUED",
-  "share": "Share"
+  "share": "Share",
+  "customerNotAvailableToSelect": "Customer not available to select"
 }

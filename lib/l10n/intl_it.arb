@@ -460,5 +460,6 @@
   "unknownCustomer": "nan",
   "unknownFamily": "Famiglia sconosciuta",
   "discontinued": "FUORI CATALOGO",
-  "share": "Condividi"
+  "share": "Condividi",
+  "customerNotAvailableToSelect": "Cliente non disponibile per la selezione"
 }

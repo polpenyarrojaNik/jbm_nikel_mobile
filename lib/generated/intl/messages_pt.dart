@@ -565,6 +565,9 @@ class MessageLookup extends MessageLookupByLibrary {
       "Não foi possível validar este endereço. Ele pode conter um erro ou estar incompleto. Deseja continuar antes de o rever?",
     ),
     "currentAddress": MessageLookupByLibrary.simpleMessage("Endereço atual"),
+    "customerNotAvailableToSelect": MessageLookupByLibrary.simpleMessage(
+      "Cliente não disponível para seleção",
+    ),
     "discontinued": MessageLookupByLibrary.simpleMessage("DESCONTINUADO"),
     "downloadTemplate": MessageLookupByLibrary.simpleMessage(
       "Descarregar modelo",

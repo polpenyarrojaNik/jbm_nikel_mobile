@@ -209,7 +209,11 @@ class ClientesListViewWidget extends StatelessWidget {
                                       clienteList[i %
                                               ClienteRepository.pageSize]
                                           .obsoleto))
-                          ? null
+                          ? () => context.showInfoBar(
+                              content: Text(
+                                S.of(context).customerNotAvailableToSelect,
+                              ),
+                            )
                           : () {
                               if (!isSearchClienteForFrom) {
                                 navigateToClienteDetalle(
