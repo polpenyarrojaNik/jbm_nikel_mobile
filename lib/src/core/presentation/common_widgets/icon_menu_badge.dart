@@ -33,9 +33,9 @@ class _IconMenuBadgeState extends ConsumerState<IconMenuBadge> {
           }
 
           ref.read(openNotificationProvider.notifier).state = notificationId;
-          ref.read(handledNotificationIdsProvider.notifier).update(
-                (ids) => {...ids, notificationId},
-              );
+          ref
+              .read(handledNotificationIdsProvider.notifier)
+              .update((ids) => {...ids, notificationId});
           ref.read(notificationProvider(widget.titleScreen).notifier).clear();
 
           try {

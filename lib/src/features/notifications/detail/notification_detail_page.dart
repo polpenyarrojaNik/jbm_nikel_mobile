@@ -79,7 +79,8 @@ class NotificationDetailPage extends ConsumerWidget {
             ],
           ),
         ),
-        error: (error, _) => Center(child: ErrorMessageWidget(error.toString())),
+        error: (error, _) =>
+            Center(child: ErrorMessageWidget(error.toString())),
         loading: () => const Center(child: ProgressIndicatorWidget()),
       ),
     );

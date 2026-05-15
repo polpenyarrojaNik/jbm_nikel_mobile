@@ -5,9 +5,7 @@ import '../infrastructure/notification_repository.dart';
 
 part 'notification_provider.g.dart';
 
-final openNotificationProvider = StateProvider<String?>(
-  (ref) => null,
-);
+final openNotificationProvider = StateProvider<String?>((ref) => null);
 
 final handledNotificationIdsProvider = StateProvider<Set<String>>(
   (ref) => <String>{},
