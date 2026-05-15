@@ -904,14 +904,9 @@ class S {
     );
   }
 
-  /// `Old customer`
-  String get cliente_index_clienteAntiguo {
-    return Intl.message(
-      'Old customer',
-      name: 'cliente_index_clienteAntiguo',
-      desc: '',
-      args: [],
-    );
+  /// `Inactive`
+  String get inactivo {
+    return Intl.message('Inactive', name: 'inactivo', desc: '', args: []);
   }
 
   /// `Operations blocked`

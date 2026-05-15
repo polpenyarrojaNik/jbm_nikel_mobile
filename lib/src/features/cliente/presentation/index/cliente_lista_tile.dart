@@ -54,7 +54,7 @@ class ClienteListaTile extends StatelessWidget {
                 if (cliente.obsoleto) ...[
                   ClienteStatusChip(
                     icon: Icons.history,
-                    text: S.of(context).cliente_index_clienteAntiguo,
+                    text: S.of(context).inactivo,
                     backgroundColor: Colors.blueGrey.withValues(alpha: 0.16),
                     foregroundColor: colorScheme.onSurface,
                   ),

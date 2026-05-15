@@ -57,7 +57,7 @@
   "cliente_alrededor_direccionesEnvio": "Adresses d'envois",
   "cliente_index_buscarClientes": "Chercher des clients…",
   "cliente_index_titulo": "Clients ",
-  "cliente_index_clienteAntiguo": "Ancien client",
+  "inactive": "Inactif",
   "cliente_index_operacionesBloqueadas": "Opérations bloquées",
   "cliente_show_clienteAdjunto_abriendoArchivo": "Ouverture du fichier…",
   "cliente_show_clienteAdjunto_titulo": "Pièces jointes",

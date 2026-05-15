@@ -212,9 +212,6 @@ class MessageLookup extends MessageLookupByLibrary {
     "cliente_index_buscarClientes": MessageLookupByLibrary.simpleMessage(
       " Search customers...",
     ),
-    "cliente_index_clienteAntiguo": MessageLookupByLibrary.simpleMessage(
-      "Old customer",
-    ),
     "cliente_index_operacionesBloqueadas": MessageLookupByLibrary.simpleMessage(
       "Operations blocked",
     ),
@@ -589,6 +586,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "import": MessageLookupByLibrary.simpleMessage("Import"),
     "importedRows": MessageLookupByLibrary.simpleMessage("Imported rows"),
     "importing": MessageLookupByLibrary.simpleMessage("Importing..."),
+    "inactivo": MessageLookupByLibrary.simpleMessage("Inactive"),
     "interesCliente": MessageLookupByLibrary.simpleMessage("Customer interest"),
     "introduceClaveDeNikel": MessageLookupByLibrary.simpleMessage(
       "Introduce Nikel key",

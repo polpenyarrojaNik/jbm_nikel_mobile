@@ -484,7 +484,7 @@ class SyncService {
   Future<void> syncClientesUsuario() async {
     try {
       await _syncTable(
-        apiPath: 'api/v1/sync/clientes-usuario',
+        apiPath: 'api/v16/sync/clientes-usuario',
         tableInfo: _remoteDb.clienteUsuarioTable,
         fromJson: (e) => ClienteUsuarioDTO.fromJson(e),
       );

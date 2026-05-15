@@ -94,7 +94,7 @@
   "cliente_alrededor_ventasAnoAnterior": "Verkäufe Vorjahr",
   "cliente_index_buscarClientes": "Kunden suchen...",
   "cliente_index_titulo": "Kunden",
-  "cliente_index_clienteAntiguo": "Alter Kunde",
+  "inactive": "Inaktiv",
   "cliente_index_operacionesBloqueadas": "Vorgänge gesperrt",
   "cliente_show_clienteAdjunto_abriendoArchivo": "Datei wird geöffnet...",
   "cliente_show_clienteAdjunto_titulo": "Anhänge",

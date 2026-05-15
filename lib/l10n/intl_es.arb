@@ -79,7 +79,7 @@
   "auth_loginPage_iniciarSesion": "Iniciar sesión",
   "cliente_index_titulo": "Clientes",
   "cliente_index_buscarClientes": " Buscar clientes...",
-  "cliente_index_clienteAntiguo": "Cliente antiguo",
+  "inactive": "Inactivo",
   "cliente_index_operacionesBloqueadas": "Operaciones bloqueadas",
   "cliente_show_clienteContacto_id": "Id",
   "cliente_show_clienteContacto_nombre": "Nombre",

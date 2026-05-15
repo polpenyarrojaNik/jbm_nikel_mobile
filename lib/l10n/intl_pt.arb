@@ -59,7 +59,7 @@
   "cliente_alrededor_direccionesEnvio": "Endereços de Envio",
   "cliente_index_buscarClientes": "Buscar clientes…",
   "cliente_index_titulo": "clientes",
-  "cliente_index_clienteAntiguo": "Cliente antigo",
+  "inactive": "Inactivo",
   "cliente_index_operacionesBloqueadas": "Operações bloqueadas",
   "cliente_show_clienteAdjunto_abriendoArchivo": "Abrindo arquivo",
   "cliente_show_clienteAdjunto_titulo": "Anexos",
