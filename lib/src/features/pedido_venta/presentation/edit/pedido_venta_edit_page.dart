@@ -588,7 +588,7 @@ class PedidoVentaEditForm extends ConsumerWidget {
   }
 
   void remarksValidate(BuildContext context, WidgetRef ref) {
-    if (!oferta || oferta && ofertaFechaHasta != null) {
+    if (!oferta || ofertaFechaHasta != null) {
       if (pedidoCliente == null ||
           pedidoCliente != null && pedidoCliente!.length < 50) {
         ref

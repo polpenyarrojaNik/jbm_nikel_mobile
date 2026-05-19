@@ -357,13 +357,13 @@ class _ClienteMarker extends StatelessWidget {
     final badgeIcon = switch (tendencia) {
       TendenciaCliente.up => MdiIcons.chevronUpCircleOutline,
       TendenciaCliente.down => MdiIcons.chevronDownCircleOutline,
-      _ => null,
+      (_) => null,
     };
 
     final badgeColor = switch (tendencia) {
       TendenciaCliente.up => Colors.green,
       TendenciaCliente.down => Colors.red,
-      _ => null,
+      (_) => null,
     };
 
     return Stack(

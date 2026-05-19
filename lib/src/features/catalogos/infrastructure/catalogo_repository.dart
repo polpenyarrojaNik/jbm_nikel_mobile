@@ -478,7 +478,7 @@ class CatalogoRepository {
       catalogoOrdenList,
     );
 
-    if (priorityA.compareTo(priorityB) == 0) {
+    if (priorityA == priorityB) {
       if (priorityA == 1 || priorityA == 3) {
         return _getFechaAbierto(
           b.catalogoId,
@@ -513,12 +513,10 @@ class CatalogoRepository {
       query['tipoPrecioCatalogo'] = tipoPrecioCatalogo.tipoPrecioCatalogoId;
     }
 
-    if (idiomaCatalogo != null && idiomaCatalogo.idiomaId != '00') {
+    if (idiomaCatalogo == null) {
+      query['idiomaId'] = _usuario.idiomaId;
+    } else if (idiomaCatalogo.idiomaId != '00') {
       query['idiomaId'] = idiomaCatalogo.idiomaId;
-    } else {
-      if (idiomaCatalogo?.idiomaId != '00') {
-        query['idiomaId'] = _usuario.idiomaId;
-      }
     }
 
     if (searchText != null) {

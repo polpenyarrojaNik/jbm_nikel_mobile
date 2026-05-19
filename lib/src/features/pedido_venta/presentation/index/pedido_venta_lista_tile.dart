@@ -114,7 +114,7 @@ class PedidoVentaListaTile extends ConsumerWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            '#${pedidoVenta.clienteId} ${pedidoVenta.nombreCliente}',
+                            '#${pedidoVenta.clienteId ?? ''} ${pedidoVenta.nombreCliente}',
                             maxLines: 2,
                             overflow: TextOverflow.ellipsis,
                           ),

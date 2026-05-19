@@ -1532,23 +1532,16 @@ class PedidoVentaRepository {
     required String tarifaId,
     required String articuloId,
     required int cantidad,
-    String? divisaId,
+    required String divisaId,
   }) async {
     final articuloPrecioTarifaDTO =
         await (_remoteDb.select(_remoteDb.articuloPrecioTarifaTable)
               ..where(
-                (precioTarifa) => divisaId != null
-                    ? precioTarifa.tarifaId.equals(tarifaId) &
-                          precioTarifa.articuloId.equals(articuloId) &
-                          precioTarifa.cantidadDesde.isSmallerOrEqualValue(
-                            cantidad,
-                          ) &
-                          precioTarifa.divisaId.equals(divisaId)
-                    : precioTarifa.tarifaId.equals(tarifaId) &
-                          precioTarifa.articuloId.equals(articuloId) &
-                          precioTarifa.cantidadDesde.isSmallerOrEqualValue(
-                            cantidad,
-                          ),
+                (precioTarifa) =>
+                    precioTarifa.tarifaId.equals(tarifaId) &
+                    precioTarifa.articuloId.equals(articuloId) &
+                    precioTarifa.cantidadDesde.isSmallerOrEqualValue(cantidad) &
+                    precioTarifa.divisaId.equals(divisaId),
               )
               ..orderBy([
                 (precioTarifa) => OrderingTerm(
@@ -1573,7 +1566,7 @@ class PedidoVentaRepository {
     required String clienteId,
     required String articuloId,
     required int cantidad,
-    String? divisaId,
+    required String divisaId,
   }) async {
     final query =
         _remoteDb.select(_remoteDb.clienteGrupoNetoTable).join([
@@ -1628,7 +1621,7 @@ class PedidoVentaRepository {
     required String clienteId,
     required String articuloId,
     required int cantidad,
-    String? divisaId,
+    required String divisaId,
   }) async {
     final queryResult =
         await (_remoteDb.select(_remoteDb.clientePrecioNetoTable).join([

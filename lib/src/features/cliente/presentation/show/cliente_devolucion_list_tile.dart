@@ -70,7 +70,7 @@ class ClienteDevolucionListTile extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          '#${devolucion.clienteId} ${devolucion.nombre}',
+                          '#${devolucion.clienteId ?? ''} ${devolucion.nombre ?? ''}',
                           maxLines: 2,
                           overflow: TextOverflow.ellipsis,
                         ),

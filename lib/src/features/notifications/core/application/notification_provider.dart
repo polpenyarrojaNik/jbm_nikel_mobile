@@ -7,9 +7,7 @@ part 'notification_provider.g.dart';
 
 final openNotificationProvider = StateProvider<String?>((ref) => null);
 
-final handledNotificationIdsProvider = StateProvider<Set<String>>(
-  (ref) => <String>{},
-);
+final handledNotificationIdsProvider = StateProvider((ref) => <String>{});
 
 @riverpod
 class NotificationNotifier extends _$NotificationNotifier {

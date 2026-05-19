@@ -1129,7 +1129,7 @@ class SyncService {
 
   Future<RemoteResponse<List<Map<String, dynamic>>>> _getRemoteData({
     required String apiPath,
-    Map<String, String>? query,
+    required Map<String, String> query,
   }) async {
     try {
       final uri = Uri.https('jbm-api.nikel.es', apiPath, query);

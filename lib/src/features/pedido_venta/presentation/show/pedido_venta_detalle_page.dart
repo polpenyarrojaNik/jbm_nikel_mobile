@@ -218,7 +218,7 @@ class ClienteInfoContainer extends StatelessWidget {
           children: [
             Flexible(
               child: Text(
-                '#${pedidoVenta.clienteId} ${pedidoVenta.nombreCliente}',
+                '#${pedidoVenta.clienteId ?? ''} ${pedidoVenta.nombreCliente}',
               ),
             ),
             const Gap(12),

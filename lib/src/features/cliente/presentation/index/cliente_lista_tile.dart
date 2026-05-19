@@ -117,19 +117,15 @@ class ClienteListaTile extends StatelessWidget {
   }
 
   Color _statusColor(BuildContext context) {
-    final colorScheme = Theme.of(context).colorScheme;
-
     if (cliente.bloqueoOper && !cliente.obsoleto) {
-      return colorScheme.errorContainer;
+      return Theme.of(context).colorScheme.errorContainer;
     }
     return Colors.blueGrey;
   }
 
   Color _statusBorderColor(BuildContext context) {
-    final colorScheme = Theme.of(context).colorScheme;
-
     if (cliente.bloqueoOper && !cliente.obsoleto) {
-      return colorScheme.error;
+      return Theme.of(context).colorScheme.error;
     }
     return Colors.blueGrey;
   }

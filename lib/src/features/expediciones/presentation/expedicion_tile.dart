@@ -1,12 +1,12 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
-import '../../../core/routing/app_auto_router.dart';
-import '../domain/expedicion.dart';
 
 import '../../../../generated/l10n.dart';
 import '../../../core/helpers/formatters.dart';
+import '../../../core/routing/app_auto_router.dart';
 import '../../pedido_venta/domain/pedido_local_param.dart';
+import '../domain/expedicion.dart';
 
 class ExpedicionListaTile extends StatelessWidget {
   const ExpedicionListaTile({super.key, required this.expedicion});
@@ -35,7 +35,7 @@ class ExpedicionListaTile extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  '#${expedicion.clienteId} ${expedicion.nombreCliente}',
+                  '#${expedicion.clienteId ?? ''} ${expedicion.nombreCliente}',
                   maxLines: 2,
                   overflow: TextOverflow.ellipsis,
                 ),

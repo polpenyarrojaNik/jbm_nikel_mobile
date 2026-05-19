@@ -1057,7 +1057,7 @@ class _CajaUnitsFormField extends StatelessWidget {
             ),
           ),
           textAlign: TextAlign.right,
-          validator: (value) => validateQuantityCaja(context, value),
+          validator: (value) => null,
           onChanged: (value) {
             if (value != null && value.isNotEmpty) {
               var totalQuantity = int.tryParse(value);
@@ -1081,23 +1081,6 @@ class _CajaUnitsFormField extends StatelessWidget {
         ),
       ],
     );
-  }
-
-  String? validateQuantityCaja(BuildContext context, String? quantityStr) {
-    // if (quantityStr != null && quantityStr != '' && quantityStr != '0') {
-    //   final quantity = int.parse(quantityStr);
-    //   if (quantity * unidadesPorCaja < ventaMinimo) {
-    //     setUnitCajaQuantity(ventaMinimo % unidadesPorCaja);
-    //     return '${S.of(context).pedido_edit_selectQuantity_minimo} $ventaMinimo ${S.of(context).unidad}';
-    //   } else if ((quantity * unidadesPorCaja) % ventaMultiplo != 0) {
-    //     final multiploMasCercano = setMultiploMasCercanoCaja(ventaMultiplo);
-    //     cajaController.text = multiploMasCercano.toString();
-
-    //     setUnitCajaQuantity(multiploMasCercano * unidadesPorCaja);
-    //     return '${S.of(context).pedido_edit_selectQuantity_tieneQueSerMultiploDe} $ventaMultiplo';
-    //   }
-    // }
-    return null;
   }
 }
 
@@ -1141,7 +1124,7 @@ class _SubcajaUnitsFormField extends StatelessWidget {
             ).inputDecorationTheme.labelStyle?.copyWith(fontSize: 9),
           ),
           textAlign: TextAlign.right,
-          validator: (value) => validateQuantitySubcaja(context, value),
+          validator: (value) => null,
           onChanged: (value) {
             if (value != null && value.isNotEmpty) {
               var totalQuantity = int.tryParse(value);
@@ -1165,23 +1148,6 @@ class _SubcajaUnitsFormField extends StatelessWidget {
         ),
       ],
     );
-  }
-
-  String? validateQuantitySubcaja(BuildContext context, String? quantityStr) {
-    if (quantityStr != null && quantityStr != '' && quantityStr != '0') {
-      // final quantity = int.parse(quantityStr);
-      // if (quantity * unidadesPorSubcaja < ventaMinimo) {
-      //   setUnitSubcajaQuantity(ventaMinimo % unidadesPorSubcaja);
-      //   return '${S.of(context).pedido_edit_selectQuantity_minimo} $ventaMinimo ${S.of(context).unidad}';
-      // } else if ((quantity * unidadesPorSubcaja) % ventaMultiplo != 0) {
-      //   final multiploMasCercano = setMultiploMasCercanoSubcaja(ventaMultiplo);
-      //   subcajaController.text = multiploMasCercano.toString();
-
-      //   setUnitSubcajaQuantity(multiploMasCercano * unidadesPorSubcaja);
-      //   return '${S.of(context).pedido_edit_selectQuantity_tieneQueSerMultiploDe} $ventaMultiplo';
-      // }
-    }
-    return null;
   }
 }
 
@@ -1220,7 +1186,7 @@ class _PaletUnitsFormField extends StatelessWidget {
               context,
             ).inputDecorationTheme.labelStyle?.copyWith(fontSize: 9),
           ),
-          validator: (value) => validateQuantityPalet(context, value),
+          validator: (value) => null,
           onChanged: (value) {
             if (value != null && value.isNotEmpty) {
               var quantity = int.tryParse(value);
@@ -1244,29 +1210,6 @@ class _PaletUnitsFormField extends StatelessWidget {
         ),
       ],
     );
-  }
-
-  String? validateQuantityPalet(BuildContext context, String? quantityStr) {
-    // if (quantityStr != null && quantityStr != ''
-    // && quantityStr != '0'
-    // ) {
-    //   final quantity = int.parse(quantityStr);
-    //   if (quantity * unidadesPorPalet < ventaMinimo) {
-    //     setUnitPaletQuantity(ventaMinimo);
-    //     return '${S.of(context).pedido_edit_selectQuantity_minimo} $ventaMinimo ${S.of(context).unidad}';
-    //   } else if ((quantity * unidadesPorPalet) % ventaMultiplo != 0) {
-    //     final multiploMasCercano = setMultiploMasCercanoPalet(
-    //       quantity,
-    //       ventaMultiplo,
-    //     );
-    //     paletController.text = multiploMasCercano.toString();
-
-    //     setUnitPaletQuantity(multiploMasCercano);
-
-    //     return '${S.of(context).pedido_edit_selectQuantity_tieneQueSerMultiploDe} $ventaMultiplo';
-    //   }
-    // }
-    return null;
   }
 }
 

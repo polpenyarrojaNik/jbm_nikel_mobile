@@ -274,7 +274,9 @@ class _PedidoVentaEditDireccionManualPageState
         }
       }
 
-      unawaited(context.router.maybePop(direccionManual));
+      if (mounted) {
+        unawaited(context.router.maybePop(direccionManual));
+      }
     } else {
       unawaited(
         context.showErrorBar(
