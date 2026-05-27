@@ -358,7 +358,7 @@ class VisitaEditPage extends ConsumerWidget {
       }
 
       const locationSettings = geolocator.LocationSettings(
-        accuracy: geolocator.LocationAccuracy.medium,
+        accuracy: geolocator.LocationAccuracy.high,
       );
 
       final position = await geolocator.Geolocator.getCurrentPosition(
