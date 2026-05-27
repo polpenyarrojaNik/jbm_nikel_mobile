@@ -232,6 +232,8 @@ class CatalogoRepository {
           final filePath =
               '${cahceDirectories.path}/catalogos/${adjuntoParam.id}/${adjuntoParam.nombreArchivo ?? ''}';
 
+          log.d('File path: $filePath');
+
           final file = File(filePath);
 
           return file;

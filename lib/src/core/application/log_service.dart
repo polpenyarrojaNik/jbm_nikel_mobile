@@ -42,7 +42,7 @@ class CustomPrinter extends LogPrinter {
     return [
       truncate(
         '${emoji ?? ''}[$timeStr] > ${(event.message != null) ? event.message : 'null'}',
-        length: 120,
+        length: 300,
         rightLength: 20,
       ),
     ];
