@@ -11,6 +11,8 @@ import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:fpdart/fpdart.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:gap/gap.dart';
+import 'package:geolocator/geolocator.dart' as geolocator;
+import 'package:latlong2/latlong.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:uuid/uuid.dart';
 
@@ -221,6 +223,8 @@ class VisitaEditPage extends ConsumerWidget {
         }
       }
 
+      final location = await _getCurrentPosition();
+
       final visita = Visita(
         id: null,
         fecha: (formKey.currentState!.value['fecha'] as DateTime).toUtc(),
@@ -268,8 +272,8 @@ class VisitaEditPage extends ConsumerWidget {
         almacenPropio: getFormValue(formKey, 'almacenPropio'),
         capacidad: getFormValue(formKey, 'capacidad'),
         frecuenciaPedido: getFormValue(formKey, 'frecuenciaPedido'),
-        latitud: 0,
-        longitud: 0,
+        latitud: location?.latitude ?? 0,
+        longitud: location?.longitude ?? 0,
         visitaAppId: id,
         lastUpdated: DateTime.now().toUtc(),
         deleted: false,
@@ -336,6 +340,35 @@ class VisitaEditPage extends ConsumerWidget {
     }
 
     return true;
+  }
+
+  Future<LatLng?> _getCurrentPosition() async {
+    try {
+      var permission = await geolocator.Geolocator.checkPermission();
+      if (permission == geolocator.LocationPermission.denied) {
+        permission = await geolocator.Geolocator.requestPermission();
+        if (permission == geolocator.LocationPermission.denied) {
+          permission = await geolocator.Geolocator.requestPermission();
+          throw const AppException.locationPermissionDenied();
+        }
+      }
+
+      if (permission == geolocator.LocationPermission.deniedForever) {
+        throw const AppException.locationPermissionDenied();
+      }
+
+      const locationSettings = geolocator.LocationSettings(
+        accuracy: geolocator.LocationAccuracy.medium,
+      );
+
+      final position = await geolocator.Geolocator.getCurrentPosition(
+        locationSettings: locationSettings,
+      );
+
+      return LatLng(position.latitude, position.longitude);
+    } catch (e) {
+      return null;
+    }
   }
 }
 

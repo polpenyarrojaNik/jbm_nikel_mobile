@@ -55,7 +55,7 @@ extension AppExceptionPatterns on AppException {
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( RestApiFailure value)?  restApiFailure,TResult Function( ImportExcelFileFailure value)?  importExcelFile,TResult Function( AuthLocalFailure value)?  authLocalFailure,TResult Function( FetchLocalDataFailure value)?  fetchLocalDataFailure,TResult Function( CreateFileInCahceFailure value)?  createFileInCacheFailure,TResult Function( SyncFailure value)?  syncFailure,TResult Function( ClienteNotFoundFailure value)?  clienteNotFound,TResult Function( ArticuloNotFoundFailure value)?  articuloNotFound,TResult Function( PedidoVentaNotFoundFailure value)?  pedidoVentaNotFound,TResult Function( PedidoVentaDeleteFailure value)?  pedidoVentaDeleteFailure,TResult Function( InsertDataFailure value)?  insertDataFailure,TResult Function( NotConnectionFailure value)?  notConnection,TResult Function( ArchivoNoEncontrado value)?  noSuchFileOrDirectory,TResult Function( UnexpectedResponseFormat value)?  unexpectedResponseFormat,TResult Function( UnexpectedError value)?  unexpectedError,required TResult orElse(),}){
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( RestApiFailure value)?  restApiFailure,TResult Function( ImportExcelFileFailure value)?  importExcelFile,TResult Function( AuthLocalFailure value)?  authLocalFailure,TResult Function( FetchLocalDataFailure value)?  fetchLocalDataFailure,TResult Function( CreateFileInCahceFailure value)?  createFileInCacheFailure,TResult Function( SyncFailure value)?  syncFailure,TResult Function( ClienteNotFoundFailure value)?  clienteNotFound,TResult Function( ArticuloNotFoundFailure value)?  articuloNotFound,TResult Function( PedidoVentaNotFoundFailure value)?  pedidoVentaNotFound,TResult Function( PedidoVentaDeleteFailure value)?  pedidoVentaDeleteFailure,TResult Function( InsertDataFailure value)?  insertDataFailure,TResult Function( NotConnectionFailure value)?  notConnection,TResult Function( ArchivoNoEncontrado value)?  noSuchFileOrDirectory,TResult Function( UnexpectedResponseFormat value)?  unexpectedResponseFormat,TResult Function( UnexpectedError value)?  unexpectedError,TResult Function( _LocationPermissionDeniedFailure value)?  locationPermissionDenied,required TResult orElse(),}){
 final _that = this;
 switch (_that) {
 case RestApiFailure() when restApiFailure != null:
@@ -73,7 +73,8 @@ return insertDataFailure(_that);case NotConnectionFailure() when notConnection !
 return notConnection(_that);case ArchivoNoEncontrado() when noSuchFileOrDirectory != null:
 return noSuchFileOrDirectory(_that);case UnexpectedResponseFormat() when unexpectedResponseFormat != null:
 return unexpectedResponseFormat(_that);case UnexpectedError() when unexpectedError != null:
-return unexpectedError(_that);case _:
+return unexpectedError(_that);case _LocationPermissionDeniedFailure() when locationPermissionDenied != null:
+return locationPermissionDenied(_that);case _:
   return orElse();
 
 }
@@ -91,7 +92,7 @@ return unexpectedError(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( RestApiFailure value)  restApiFailure,required TResult Function( ImportExcelFileFailure value)  importExcelFile,required TResult Function( AuthLocalFailure value)  authLocalFailure,required TResult Function( FetchLocalDataFailure value)  fetchLocalDataFailure,required TResult Function( CreateFileInCahceFailure value)  createFileInCacheFailure,required TResult Function( SyncFailure value)  syncFailure,required TResult Function( ClienteNotFoundFailure value)  clienteNotFound,required TResult Function( ArticuloNotFoundFailure value)  articuloNotFound,required TResult Function( PedidoVentaNotFoundFailure value)  pedidoVentaNotFound,required TResult Function( PedidoVentaDeleteFailure value)  pedidoVentaDeleteFailure,required TResult Function( InsertDataFailure value)  insertDataFailure,required TResult Function( NotConnectionFailure value)  notConnection,required TResult Function( ArchivoNoEncontrado value)  noSuchFileOrDirectory,required TResult Function( UnexpectedResponseFormat value)  unexpectedResponseFormat,required TResult Function( UnexpectedError value)  unexpectedError,}){
+@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( RestApiFailure value)  restApiFailure,required TResult Function( ImportExcelFileFailure value)  importExcelFile,required TResult Function( AuthLocalFailure value)  authLocalFailure,required TResult Function( FetchLocalDataFailure value)  fetchLocalDataFailure,required TResult Function( CreateFileInCahceFailure value)  createFileInCacheFailure,required TResult Function( SyncFailure value)  syncFailure,required TResult Function( ClienteNotFoundFailure value)  clienteNotFound,required TResult Function( ArticuloNotFoundFailure value)  articuloNotFound,required TResult Function( PedidoVentaNotFoundFailure value)  pedidoVentaNotFound,required TResult Function( PedidoVentaDeleteFailure value)  pedidoVentaDeleteFailure,required TResult Function( InsertDataFailure value)  insertDataFailure,required TResult Function( NotConnectionFailure value)  notConnection,required TResult Function( ArchivoNoEncontrado value)  noSuchFileOrDirectory,required TResult Function( UnexpectedResponseFormat value)  unexpectedResponseFormat,required TResult Function( UnexpectedError value)  unexpectedError,required TResult Function( _LocationPermissionDeniedFailure value)  locationPermissionDenied,}){
 final _that = this;
 switch (_that) {
 case RestApiFailure():
@@ -109,7 +110,8 @@ return insertDataFailure(_that);case NotConnectionFailure():
 return notConnection(_that);case ArchivoNoEncontrado():
 return noSuchFileOrDirectory(_that);case UnexpectedResponseFormat():
 return unexpectedResponseFormat(_that);case UnexpectedError():
-return unexpectedError(_that);case _:
+return unexpectedError(_that);case _LocationPermissionDeniedFailure():
+return locationPermissionDenied(_that);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -126,7 +128,7 @@ return unexpectedError(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( RestApiFailure value)?  restApiFailure,TResult? Function( ImportExcelFileFailure value)?  importExcelFile,TResult? Function( AuthLocalFailure value)?  authLocalFailure,TResult? Function( FetchLocalDataFailure value)?  fetchLocalDataFailure,TResult? Function( CreateFileInCahceFailure value)?  createFileInCacheFailure,TResult? Function( SyncFailure value)?  syncFailure,TResult? Function( ClienteNotFoundFailure value)?  clienteNotFound,TResult? Function( ArticuloNotFoundFailure value)?  articuloNotFound,TResult? Function( PedidoVentaNotFoundFailure value)?  pedidoVentaNotFound,TResult? Function( PedidoVentaDeleteFailure value)?  pedidoVentaDeleteFailure,TResult? Function( InsertDataFailure value)?  insertDataFailure,TResult? Function( NotConnectionFailure value)?  notConnection,TResult? Function( ArchivoNoEncontrado value)?  noSuchFileOrDirectory,TResult? Function( UnexpectedResponseFormat value)?  unexpectedResponseFormat,TResult? Function( UnexpectedError value)?  unexpectedError,}){
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( RestApiFailure value)?  restApiFailure,TResult? Function( ImportExcelFileFailure value)?  importExcelFile,TResult? Function( AuthLocalFailure value)?  authLocalFailure,TResult? Function( FetchLocalDataFailure value)?  fetchLocalDataFailure,TResult? Function( CreateFileInCahceFailure value)?  createFileInCacheFailure,TResult? Function( SyncFailure value)?  syncFailure,TResult? Function( ClienteNotFoundFailure value)?  clienteNotFound,TResult? Function( ArticuloNotFoundFailure value)?  articuloNotFound,TResult? Function( PedidoVentaNotFoundFailure value)?  pedidoVentaNotFound,TResult? Function( PedidoVentaDeleteFailure value)?  pedidoVentaDeleteFailure,TResult? Function( InsertDataFailure value)?  insertDataFailure,TResult? Function( NotConnectionFailure value)?  notConnection,TResult? Function( ArchivoNoEncontrado value)?  noSuchFileOrDirectory,TResult? Function( UnexpectedResponseFormat value)?  unexpectedResponseFormat,TResult? Function( UnexpectedError value)?  unexpectedError,TResult? Function( _LocationPermissionDeniedFailure value)?  locationPermissionDenied,}){
 final _that = this;
 switch (_that) {
 case RestApiFailure() when restApiFailure != null:
@@ -144,7 +146,8 @@ return insertDataFailure(_that);case NotConnectionFailure() when notConnection !
 return notConnection(_that);case ArchivoNoEncontrado() when noSuchFileOrDirectory != null:
 return noSuchFileOrDirectory(_that);case UnexpectedResponseFormat() when unexpectedResponseFormat != null:
 return unexpectedResponseFormat(_that);case UnexpectedError() when unexpectedError != null:
-return unexpectedError(_that);case _:
+return unexpectedError(_that);case _LocationPermissionDeniedFailure() when locationPermissionDenied != null:
+return locationPermissionDenied(_that);case _:
   return null;
 
 }
@@ -161,7 +164,7 @@ return unexpectedError(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function( int errorCode,  String errorMessage)?  restApiFailure,TResult Function( String errorMessage)?  importExcelFile,TResult Function( String errorMessage)?  authLocalFailure,TResult Function( String errorMessage)?  fetchLocalDataFailure,TResult Function( String errorMessage)?  createFileInCacheFailure,TResult Function( String tableToSync,  String errorMessage)?  syncFailure,TResult Function()?  clienteNotFound,TResult Function()?  articuloNotFound,TResult Function()?  pedidoVentaNotFound,TResult Function( String errorMessage)?  pedidoVentaDeleteFailure,TResult Function( String errorMessage)?  insertDataFailure,TResult Function()?  notConnection,TResult Function()?  noSuchFileOrDirectory,TResult Function()?  unexpectedResponseFormat,TResult Function()?  unexpectedError,required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function( int errorCode,  String errorMessage)?  restApiFailure,TResult Function( String errorMessage)?  importExcelFile,TResult Function( String errorMessage)?  authLocalFailure,TResult Function( String errorMessage)?  fetchLocalDataFailure,TResult Function( String errorMessage)?  createFileInCacheFailure,TResult Function( String tableToSync,  String errorMessage)?  syncFailure,TResult Function()?  clienteNotFound,TResult Function()?  articuloNotFound,TResult Function()?  pedidoVentaNotFound,TResult Function( String errorMessage)?  pedidoVentaDeleteFailure,TResult Function( String errorMessage)?  insertDataFailure,TResult Function()?  notConnection,TResult Function()?  noSuchFileOrDirectory,TResult Function()?  unexpectedResponseFormat,TResult Function()?  unexpectedError,TResult Function()?  locationPermissionDenied,required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case RestApiFailure() when restApiFailure != null:
 return restApiFailure(_that.errorCode,_that.errorMessage);case ImportExcelFileFailure() when importExcelFile != null:
@@ -178,7 +181,8 @@ return insertDataFailure(_that.errorMessage);case NotConnectionFailure() when no
 return notConnection();case ArchivoNoEncontrado() when noSuchFileOrDirectory != null:
 return noSuchFileOrDirectory();case UnexpectedResponseFormat() when unexpectedResponseFormat != null:
 return unexpectedResponseFormat();case UnexpectedError() when unexpectedError != null:
-return unexpectedError();case _:
+return unexpectedError();case _LocationPermissionDeniedFailure() when locationPermissionDenied != null:
+return locationPermissionDenied();case _:
   return orElse();
 
 }
@@ -196,7 +200,7 @@ return unexpectedError();case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function( int errorCode,  String errorMessage)  restApiFailure,required TResult Function( String errorMessage)  importExcelFile,required TResult Function( String errorMessage)  authLocalFailure,required TResult Function( String errorMessage)  fetchLocalDataFailure,required TResult Function( String errorMessage)  createFileInCacheFailure,required TResult Function( String tableToSync,  String errorMessage)  syncFailure,required TResult Function()  clienteNotFound,required TResult Function()  articuloNotFound,required TResult Function()  pedidoVentaNotFound,required TResult Function( String errorMessage)  pedidoVentaDeleteFailure,required TResult Function( String errorMessage)  insertDataFailure,required TResult Function()  notConnection,required TResult Function()  noSuchFileOrDirectory,required TResult Function()  unexpectedResponseFormat,required TResult Function()  unexpectedError,}) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function( int errorCode,  String errorMessage)  restApiFailure,required TResult Function( String errorMessage)  importExcelFile,required TResult Function( String errorMessage)  authLocalFailure,required TResult Function( String errorMessage)  fetchLocalDataFailure,required TResult Function( String errorMessage)  createFileInCacheFailure,required TResult Function( String tableToSync,  String errorMessage)  syncFailure,required TResult Function()  clienteNotFound,required TResult Function()  articuloNotFound,required TResult Function()  pedidoVentaNotFound,required TResult Function( String errorMessage)  pedidoVentaDeleteFailure,required TResult Function( String errorMessage)  insertDataFailure,required TResult Function()  notConnection,required TResult Function()  noSuchFileOrDirectory,required TResult Function()  unexpectedResponseFormat,required TResult Function()  unexpectedError,required TResult Function()  locationPermissionDenied,}) {final _that = this;
 switch (_that) {
 case RestApiFailure():
 return restApiFailure(_that.errorCode,_that.errorMessage);case ImportExcelFileFailure():
@@ -213,7 +217,8 @@ return insertDataFailure(_that.errorMessage);case NotConnectionFailure():
 return notConnection();case ArchivoNoEncontrado():
 return noSuchFileOrDirectory();case UnexpectedResponseFormat():
 return unexpectedResponseFormat();case UnexpectedError():
-return unexpectedError();case _:
+return unexpectedError();case _LocationPermissionDeniedFailure():
+return locationPermissionDenied();case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -230,7 +235,7 @@ return unexpectedError();case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function( int errorCode,  String errorMessage)?  restApiFailure,TResult? Function( String errorMessage)?  importExcelFile,TResult? Function( String errorMessage)?  authLocalFailure,TResult? Function( String errorMessage)?  fetchLocalDataFailure,TResult? Function( String errorMessage)?  createFileInCacheFailure,TResult? Function( String tableToSync,  String errorMessage)?  syncFailure,TResult? Function()?  clienteNotFound,TResult? Function()?  articuloNotFound,TResult? Function()?  pedidoVentaNotFound,TResult? Function( String errorMessage)?  pedidoVentaDeleteFailure,TResult? Function( String errorMessage)?  insertDataFailure,TResult? Function()?  notConnection,TResult? Function()?  noSuchFileOrDirectory,TResult? Function()?  unexpectedResponseFormat,TResult? Function()?  unexpectedError,}) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function( int errorCode,  String errorMessage)?  restApiFailure,TResult? Function( String errorMessage)?  importExcelFile,TResult? Function( String errorMessage)?  authLocalFailure,TResult? Function( String errorMessage)?  fetchLocalDataFailure,TResult? Function( String errorMessage)?  createFileInCacheFailure,TResult? Function( String tableToSync,  String errorMessage)?  syncFailure,TResult? Function()?  clienteNotFound,TResult? Function()?  articuloNotFound,TResult? Function()?  pedidoVentaNotFound,TResult? Function( String errorMessage)?  pedidoVentaDeleteFailure,TResult? Function( String errorMessage)?  insertDataFailure,TResult? Function()?  notConnection,TResult? Function()?  noSuchFileOrDirectory,TResult? Function()?  unexpectedResponseFormat,TResult? Function()?  unexpectedError,TResult? Function()?  locationPermissionDenied,}) {final _that = this;
 switch (_that) {
 case RestApiFailure() when restApiFailure != null:
 return restApiFailure(_that.errorCode,_that.errorMessage);case ImportExcelFileFailure() when importExcelFile != null:
@@ -247,7 +252,8 @@ return insertDataFailure(_that.errorMessage);case NotConnectionFailure() when no
 return notConnection();case ArchivoNoEncontrado() when noSuchFileOrDirectory != null:
 return noSuchFileOrDirectory();case UnexpectedResponseFormat() when unexpectedResponseFormat != null:
 return unexpectedResponseFormat();case UnexpectedError() when unexpectedError != null:
-return unexpectedError();case _:
+return unexpectedError();case _LocationPermissionDeniedFailure() when locationPermissionDenied != null:
+return locationPermissionDenied();case _:
   return null;
 
 }
@@ -1003,6 +1009,38 @@ int get hashCode => runtimeType.hashCode;
 @override
 String toString() {
   return 'AppException.unexpectedError()';
+}
+
+
+}
+
+
+
+
+/// @nodoc
+
+
+class _LocationPermissionDeniedFailure implements AppException {
+  const _LocationPermissionDeniedFailure();
+  
+
+
+
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _LocationPermissionDeniedFailure);
+}
+
+
+@override
+int get hashCode => runtimeType.hashCode;
+
+@override
+String toString() {
+  return 'AppException.locationPermissionDenied()';
 }
 
 

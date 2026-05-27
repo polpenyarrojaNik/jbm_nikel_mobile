@@ -50,6 +50,9 @@ class AppException with _$AppException {
       UnexpectedResponseFormat;
 
   const factory AppException.unexpectedError() = UnexpectedError;
+
+  const factory AppException.locationPermissionDenied() =
+      _LocationPermissionDeniedFailure;
 }
 
 class AppExceptionData {
@@ -114,6 +117,10 @@ extension AppExceptionDetalles on AppException {
       importExcelFile: (errorMessage) => AppExceptionData(
         'import-excel-file-failure',
         'Error importing excel file: $errorMessage',
+      ),
+      locationPermissionDenied: () => AppExceptionData(
+        'location-permission-denied',
+        'Location permission denied.',
       ),
     );
   }
