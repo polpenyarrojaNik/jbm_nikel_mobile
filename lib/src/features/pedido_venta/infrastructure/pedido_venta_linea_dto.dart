@@ -42,7 +42,7 @@ abstract class PedidoVentaLineaDTO
     required double iva,
     required double descuentoProntoPago,
     required bool aiRecomendado,
-    required String articuloDescripcionTraducido,
+    required String? articuloDescripcionTraducido,
     String? pedidoVentaAppId,
     int? stockDisponible,
   }) {
@@ -52,7 +52,7 @@ abstract class PedidoVentaLineaDTO
       pedidoVentaAppId: pedidoVentaAppId,
       pedidoVentaLineaId: pedidoVentaLineaId,
       articuloId: articuloId,
-      articuloDescription: articuloDescripcionTraducido,
+      articuloDescription: articuloDescripcionTraducido ?? articuloDescription,
       cantidad: cantidad,
       precioDivisa: precioDivisa.toMoney(currencyId: divisaId),
       divisaId: divisaId,

@@ -2446,13 +2446,13 @@ class PedidoVentaRepository {
     return articuloDto?.stockDisponible;
   }
 
-  Future<String> _getDescripcionArticulo(String articuloId) async {
+  Future<String?> _getDescripcionArticulo(String articuloId) async {
     final articuloDto = await (_remoteDb.select(
       _remoteDb.articuloTable,
     )..where((tbl) => tbl.id.equals(articuloId))).getSingleOrNull();
 
     if (articuloDto == null) {
-      throw AppException.articuloNotFound();
+      return null;
     }
 
     return articuloDto.getDescriptionInLocalLanguage();
