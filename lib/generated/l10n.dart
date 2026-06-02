@@ -4412,6 +4412,16 @@ class S {
       args: [],
     );
   }
+
+  /// `Visit location`
+  String get visitLocation {
+    return Intl.message(
+      'Visit location',
+      name: 'visitLocation',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

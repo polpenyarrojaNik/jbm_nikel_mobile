@@ -460,5 +460,6 @@
   "unknownFamily": "Famille inconnue",
   "discontinued": "ARRÊTÉ",
   "share": "Partager",
-  "customerNotAvailableToSelect": "Client non disponible pour la sélection"
+  "customerNotAvailableToSelect": "Client non disponible pour la sélection",
+  "visitLocation": "Emplacement de la visite"
 }

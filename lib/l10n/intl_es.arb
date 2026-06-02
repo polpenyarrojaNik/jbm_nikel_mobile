@@ -460,5 +460,6 @@
   "unknownCustomer": "Cliente desconocido",
   "discontinued": "DESCATALOGADO",
   "share": "Compartir",
-  "customerNotAvailableToSelect": "Cliente no disponible para seleccionar"
+  "customerNotAvailableToSelect": "Cliente no disponible para seleccionar",
+  "visitLocation": "Ubicación de la visita"
 }

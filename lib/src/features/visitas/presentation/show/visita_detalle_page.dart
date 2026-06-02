@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gap/gap.dart';
+import 'package:map_launcher/map_launcher.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../../../../../generated/l10n.dart';
@@ -60,18 +61,26 @@ class VisitaDetallePage extends ConsumerWidget {
         titleText: (S.of(context).visita_show_visitaDetalle_titulo),
         actions: state.maybeWhen(
           orElse: () => null,
-          data: (visita) => (visita.isEditable())
-              ? [
-                  IconButton(
-                    onPressed: () => navigateToEditVisita(
-                      context,
-                      visitaIdIsLocalParam.id,
-                      visitaIdIsLocalParam.isLocal,
-                    ),
-                    icon: const Icon(Icons.edit),
-                  ),
-                ]
-              : null,
+          data: (visita) => [
+            if (visita.isGeolocalized)
+              IconButton(
+                onPressed: () => openMapWithCoordinates(
+                  context,
+                  visita.latitud,
+                  visita.longitud,
+                ),
+                icon: const Icon(Icons.location_on),
+              ),
+            if (visita.isEditable())
+              IconButton(
+                onPressed: () => navigateToEditVisita(
+                  context,
+                  visitaIdIsLocalParam.id,
+                  visitaIdIsLocalParam.isLocal,
+                ),
+                icon: const Icon(Icons.edit),
+              ),
+          ],
         ),
       ),
       body: AsyncValueWidget<Visita>(
@@ -221,5 +230,19 @@ class VisitaDetallePage extends ConsumerWidget {
 
   void navigateToEditVisita(BuildContext context, String id, bool isLocal) {
     context.router.push(VisitaEditRoute(id: id, isLocal: isLocal));
+  }
+
+  Future<void> openMapWithCoordinates(
+    BuildContext context,
+    double latitud,
+    double longitud,
+  ) async {
+    final availableMaps = await MapLauncher.installedMaps;
+    if (context.mounted && availableMaps.isNotEmpty) {
+      await availableMaps.first.showMarker(
+        coords: Coords(latitud, longitud),
+        title: S.of(context).visitLocation,
+      );
+    }
   }
 }

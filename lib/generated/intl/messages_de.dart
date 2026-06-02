@@ -948,6 +948,7 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "until": MessageLookupByLibrary.simpleMessage("Bis"),
     "uploadExcel": MessageLookupByLibrary.simpleMessage("Excel laden"),
+    "visitLocation": MessageLookupByLibrary.simpleMessage("Besuchsstandort"),
     "visita_enviada": MessageLookupByLibrary.simpleMessage("Gesendet"),
     "visita_index_buscarVisitas": MessageLookupByLibrary.simpleMessage(
       "Besuche suchen...",

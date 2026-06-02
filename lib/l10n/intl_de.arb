@@ -461,5 +461,6 @@
   "yes": "Ja",
   "discontinued": "EINGESTELLT",
   "share": "Teilen",
-  "customerNotAvailableToSelect": "Kunde nicht verfügbar zur Auswahl"
+  "customerNotAvailableToSelect": "Kunde nicht verfügbar zur Auswahl",
+  "visitLocation": "Besuchsstandort"
 }

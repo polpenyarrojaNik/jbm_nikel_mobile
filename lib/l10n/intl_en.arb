@@ -461,5 +461,6 @@
   "pricesAndNetGroups": "Prices & Net Groups",
   "discontinued": "DISCONTINUED",
   "share": "Share",
-  "customerNotAvailableToSelect": "Customer not available to select"
+  "customerNotAvailableToSelect": "Customer not available to select",
+  "visitLocation": "Visit location"
 }

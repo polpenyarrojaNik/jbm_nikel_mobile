@@ -909,6 +909,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "unknownFamily": MessageLookupByLibrary.simpleMessage("Unknown family"),
     "until": MessageLookupByLibrary.simpleMessage("Until"),
     "uploadExcel": MessageLookupByLibrary.simpleMessage("Upload Excel"),
+    "visitLocation": MessageLookupByLibrary.simpleMessage("Visit location"),
     "visita_enviada": MessageLookupByLibrary.simpleMessage("Sent"),
     "visita_index_buscarVisitas": MessageLookupByLibrary.simpleMessage(
       "Search visits...",

@@ -59,6 +59,8 @@ abstract class Visita with _$Visita {
   String getNombreMostrar() => isClienteProvisional
       ? clienteProvisionalNombre!
       : '#${cliente!.id} ${cliente?.nombreCliente ?? ''}';
+
+  bool get isGeolocalized => latitud != 0 && longitud != 0;
 }
 
 enum FrecuenciaPedido { semanal, mensual, trimestral }
