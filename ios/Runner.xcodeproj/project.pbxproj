@@ -46,7 +46,7 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		E62090EB4F7C00479EC1B14D /* Frameworks */ = {
+		97C146EB1CF9000F007C117D /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -135,7 +135,7 @@
 				97C146EC1CF9000F007C117D /* Resources */,
 				3B06AD1E1E4923F5004D2608 /* Thin Binary */,
 				BB7D7629A862EAC33811197B /* [CP] Copy Pods Resources */,
-				E62090EB4F7C00479EC1B14D /* Frameworks */,
+				97C146EB1CF9000F007C117D /* Frameworks */,
 			);
 			buildRules = (
 			);
