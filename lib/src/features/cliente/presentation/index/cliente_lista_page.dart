@@ -200,15 +200,11 @@ class ClientesListViewWidget extends StatelessWidget {
                     data: (clienteList) => ClienteListaTile(
                       cliente: clienteList[i % ClienteRepository.pageSize],
                       onTap:
-                          (clienteList[i % ClienteRepository.pageSize]
-                                      .obsoleto &&
-                                  isCreatedFromVisits) ||
-                              (isCreatedFromSalesOrder &&
-                                  (clienteList[i % ClienteRepository.pageSize]
-                                          .bloqueoOper ||
-                                      clienteList[i %
-                                              ClienteRepository.pageSize]
-                                          .obsoleto))
+                          (isCreatedFromSalesOrder &&
+                              (clienteList[i % ClienteRepository.pageSize]
+                                      .bloqueoOper ||
+                                  clienteList[i % ClienteRepository.pageSize]
+                                      .obsoleto))
                           ? () => context.showInfoBar(
                               content: Text(
                                 S.of(context).customerNotAvailableToSelect,
