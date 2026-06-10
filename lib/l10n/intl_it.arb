@@ -462,5 +462,10 @@
   "discontinued": "FUORI CATALOGO",
   "share": "Condividi",
   "customerNotAvailableToSelect": "Cliente non disponibile per la selezione",
-  "visitLocation": "Posizione della visita"
+  "visitLocation": "Posizione della visita",
+  "apply": "Apply",
+  "all": "Tutti",
+  "active": "Attivo",
+  "potential": "Potenziale",
+  "filter": "Filtra"
 }

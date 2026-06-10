@@ -462,5 +462,11 @@
   "discontinued": "DISCONTINUED",
   "share": "Share",
   "customerNotAvailableToSelect": "Customer not available to select",
-  "visitLocation": "Visit location"
+  "visitLocation": "Visit location",
+  "apply": "Apply",
+  "all": "All",
+  "active": "Active",
+  "inactive": "Inactive",
+  "potential": "Potential",
+  "filter": "Filter"
 }

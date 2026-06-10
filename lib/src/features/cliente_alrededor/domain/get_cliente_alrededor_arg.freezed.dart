@@ -14,7 +14,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$GetClienteAlrededorArg {
 
- LatLng get latLng; double get radiusDistance; bool get showDireccionesEnvio; bool get showPotenciales;
+ LatLng get latLng; double get radiusDistance;
 /// Create a copy of GetClienteAlrededorArg
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -25,16 +25,16 @@ $GetClienteAlrededorArgCopyWith<GetClienteAlrededorArg> get copyWith => _$GetCli
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is GetClienteAlrededorArg&&(identical(other.latLng, latLng) || other.latLng == latLng)&&(identical(other.radiusDistance, radiusDistance) || other.radiusDistance == radiusDistance)&&(identical(other.showDireccionesEnvio, showDireccionesEnvio) || other.showDireccionesEnvio == showDireccionesEnvio)&&(identical(other.showPotenciales, showPotenciales) || other.showPotenciales == showPotenciales));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is GetClienteAlrededorArg&&(identical(other.latLng, latLng) || other.latLng == latLng)&&(identical(other.radiusDistance, radiusDistance) || other.radiusDistance == radiusDistance));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,latLng,radiusDistance,showDireccionesEnvio,showPotenciales);
+int get hashCode => Object.hash(runtimeType,latLng,radiusDistance);
 
 @override
 String toString() {
-  return 'GetClienteAlrededorArg(latLng: $latLng, radiusDistance: $radiusDistance, showDireccionesEnvio: $showDireccionesEnvio, showPotenciales: $showPotenciales)';
+  return 'GetClienteAlrededorArg(latLng: $latLng, radiusDistance: $radiusDistance)';
 }
 
 
@@ -45,7 +45,7 @@ abstract mixin class $GetClienteAlrededorArgCopyWith<$Res>  {
   factory $GetClienteAlrededorArgCopyWith(GetClienteAlrededorArg value, $Res Function(GetClienteAlrededorArg) _then) = _$GetClienteAlrededorArgCopyWithImpl;
 @useResult
 $Res call({
- LatLng latLng, double radiusDistance, bool showDireccionesEnvio, bool showPotenciales
+ LatLng latLng, double radiusDistance
 });
 
 
@@ -62,13 +62,11 @@ class _$GetClienteAlrededorArgCopyWithImpl<$Res>
 
 /// Create a copy of GetClienteAlrededorArg
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? latLng = null,Object? radiusDistance = null,Object? showDireccionesEnvio = null,Object? showPotenciales = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? latLng = null,Object? radiusDistance = null,}) {
   return _then(_self.copyWith(
 latLng: null == latLng ? _self.latLng : latLng // ignore: cast_nullable_to_non_nullable
 as LatLng,radiusDistance: null == radiusDistance ? _self.radiusDistance : radiusDistance // ignore: cast_nullable_to_non_nullable
-as double,showDireccionesEnvio: null == showDireccionesEnvio ? _self.showDireccionesEnvio : showDireccionesEnvio // ignore: cast_nullable_to_non_nullable
-as bool,showPotenciales: null == showPotenciales ? _self.showPotenciales : showPotenciales // ignore: cast_nullable_to_non_nullable
-as bool,
+as double,
   ));
 }
 
@@ -153,10 +151,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( LatLng latLng,  double radiusDistance,  bool showDireccionesEnvio,  bool showPotenciales)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( LatLng latLng,  double radiusDistance)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _GetClienteAlrededorArg() when $default != null:
-return $default(_that.latLng,_that.radiusDistance,_that.showDireccionesEnvio,_that.showPotenciales);case _:
+return $default(_that.latLng,_that.radiusDistance);case _:
   return orElse();
 
 }
@@ -174,10 +172,10 @@ return $default(_that.latLng,_that.radiusDistance,_that.showDireccionesEnvio,_th
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( LatLng latLng,  double radiusDistance,  bool showDireccionesEnvio,  bool showPotenciales)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( LatLng latLng,  double radiusDistance)  $default,) {final _that = this;
 switch (_that) {
 case _GetClienteAlrededorArg():
-return $default(_that.latLng,_that.radiusDistance,_that.showDireccionesEnvio,_that.showPotenciales);case _:
+return $default(_that.latLng,_that.radiusDistance);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -194,10 +192,10 @@ return $default(_that.latLng,_that.radiusDistance,_that.showDireccionesEnvio,_th
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( LatLng latLng,  double radiusDistance,  bool showDireccionesEnvio,  bool showPotenciales)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( LatLng latLng,  double radiusDistance)?  $default,) {final _that = this;
 switch (_that) {
 case _GetClienteAlrededorArg() when $default != null:
-return $default(_that.latLng,_that.radiusDistance,_that.showDireccionesEnvio,_that.showPotenciales);case _:
+return $default(_that.latLng,_that.radiusDistance);case _:
   return null;
 
 }
@@ -209,13 +207,11 @@ return $default(_that.latLng,_that.radiusDistance,_that.showDireccionesEnvio,_th
 
 
 class _GetClienteAlrededorArg extends GetClienteAlrededorArg {
-  const _GetClienteAlrededorArg({required this.latLng, required this.radiusDistance, required this.showDireccionesEnvio, required this.showPotenciales}): super._();
+  const _GetClienteAlrededorArg({required this.latLng, required this.radiusDistance}): super._();
   
 
 @override final  LatLng latLng;
 @override final  double radiusDistance;
-@override final  bool showDireccionesEnvio;
-@override final  bool showPotenciales;
 
 /// Create a copy of GetClienteAlrededorArg
 /// with the given fields replaced by the non-null parameter values.
@@ -227,16 +223,16 @@ _$GetClienteAlrededorArgCopyWith<_GetClienteAlrededorArg> get copyWith => __$Get
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _GetClienteAlrededorArg&&(identical(other.latLng, latLng) || other.latLng == latLng)&&(identical(other.radiusDistance, radiusDistance) || other.radiusDistance == radiusDistance)&&(identical(other.showDireccionesEnvio, showDireccionesEnvio) || other.showDireccionesEnvio == showDireccionesEnvio)&&(identical(other.showPotenciales, showPotenciales) || other.showPotenciales == showPotenciales));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _GetClienteAlrededorArg&&(identical(other.latLng, latLng) || other.latLng == latLng)&&(identical(other.radiusDistance, radiusDistance) || other.radiusDistance == radiusDistance));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,latLng,radiusDistance,showDireccionesEnvio,showPotenciales);
+int get hashCode => Object.hash(runtimeType,latLng,radiusDistance);
 
 @override
 String toString() {
-  return 'GetClienteAlrededorArg(latLng: $latLng, radiusDistance: $radiusDistance, showDireccionesEnvio: $showDireccionesEnvio, showPotenciales: $showPotenciales)';
+  return 'GetClienteAlrededorArg(latLng: $latLng, radiusDistance: $radiusDistance)';
 }
 
 
@@ -247,7 +243,7 @@ abstract mixin class _$GetClienteAlrededorArgCopyWith<$Res> implements $GetClien
   factory _$GetClienteAlrededorArgCopyWith(_GetClienteAlrededorArg value, $Res Function(_GetClienteAlrededorArg) _then) = __$GetClienteAlrededorArgCopyWithImpl;
 @override @useResult
 $Res call({
- LatLng latLng, double radiusDistance, bool showDireccionesEnvio, bool showPotenciales
+ LatLng latLng, double radiusDistance
 });
 
 
@@ -264,13 +260,11 @@ class __$GetClienteAlrededorArgCopyWithImpl<$Res>
 
 /// Create a copy of GetClienteAlrededorArg
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? latLng = null,Object? radiusDistance = null,Object? showDireccionesEnvio = null,Object? showPotenciales = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? latLng = null,Object? radiusDistance = null,}) {
   return _then(_GetClienteAlrededorArg(
 latLng: null == latLng ? _self.latLng : latLng // ignore: cast_nullable_to_non_nullable
 as LatLng,radiusDistance: null == radiusDistance ? _self.radiusDistance : radiusDistance // ignore: cast_nullable_to_non_nullable
-as double,showDireccionesEnvio: null == showDireccionesEnvio ? _self.showDireccionesEnvio : showDireccionesEnvio // ignore: cast_nullable_to_non_nullable
-as bool,showPotenciales: null == showPotenciales ? _self.showPotenciales : showPotenciales // ignore: cast_nullable_to_non_nullable
-as bool,
+as double,
   ));
 }
 

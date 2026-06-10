@@ -28,13 +28,16 @@ class MessageLookup extends MessageLookupByLibrary {
     "PDFinvoices": MessageLookupByLibrary.simpleMessage("PDF Factures"),
     "accept": MessageLookupByLibrary.simpleMessage("Accepter"),
     "aceptar": MessageLookupByLibrary.simpleMessage("Accepter"),
+    "active": MessageLookupByLibrary.simpleMessage("Actif"),
     "addresses": MessageLookupByLibrary.simpleMessage("Adresses"),
+    "all": MessageLookupByLibrary.simpleMessage("Tous"),
     "almacenPropio": MessageLookupByLibrary.simpleMessage("Entrepôt propre"),
     "alto": MessageLookupByLibrary.simpleMessage("Haut"),
     "amount": MessageLookupByLibrary.simpleMessage("Montant"),
     "anyArticlesSpecified": MessageLookupByLibrary.simpleMessage(
       "Aucun article spécifié",
     ),
+    "apply": MessageLookupByLibrary.simpleMessage("Appliquer"),
     "articleNotFound": MessageLookupByLibrary.simpleMessage(
       "Article non trouvé",
     ),
@@ -601,6 +604,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "Le fichier Excel est vide",
     ),
     "familia": MessageLookupByLibrary.simpleMessage("Famille"),
+    "filter": MessageLookupByLibrary.simpleMessage("Filtrer"),
     "formFromImage": MessageLookupByLibrary.simpleMessage(
       "Formulaire à partir d\'une image",
     ),
@@ -618,6 +622,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "import": MessageLookupByLibrary.simpleMessage("Importer"),
     "importedRows": MessageLookupByLibrary.simpleMessage("Lignes importées"),
     "importing": MessageLookupByLibrary.simpleMessage("Importation..."),
+    "inactive": MessageLookupByLibrary.simpleMessage("Inactif"),
     "interesCliente": MessageLookupByLibrary.simpleMessage(
       "Intérêt des clients",
     ),
@@ -833,6 +838,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "pequena": MessageLookupByLibrary.simpleMessage("Petit"),
     "phones": MessageLookupByLibrary.simpleMessage("Téléphones"),
     "position": MessageLookupByLibrary.simpleMessage("Position"),
+    "potential": MessageLookupByLibrary.simpleMessage("Potentiel"),
     "precioNoPuedeSerMenorAlPrecioMinimo": MessageLookupByLibrary.simpleMessage(
       "Le prix ne peut être inférieur au prix minimum",
     ),

@@ -34,6 +34,8 @@ abstract class ClienteAlrededorDTO with _$ClienteAlrededorDTO {
     required double porcentajeAbonos,
     double? ventasPeriodoActual,
     double? ventasPeriodoAnterior,
+    required bool bloqueoOper,
+    required bool obsoleto,
   }) = _ClienteAlrededorDTO;
 
   factory ClienteAlrededorDTO.fromJson(Map<String, dynamic> json) =>
@@ -60,6 +62,8 @@ abstract class ClienteAlrededorDTO with _$ClienteAlrededorDTO {
       porcentajeAbonos: clienteAlrededorDto.porcentajeAbonos,
       ventasPeriodoActual: clienteAlrededorDto.ventasPeriodoActual,
       ventasPeriodoAnterior: clienteAlrededorDto.ventasPeriodoAnterior,
+      bloqueoOper: clienteAlrededorDto.bloqueoOper == 'S',
+      obsoleto: clienteAlrededorDto.obsoleto == 'S',
     );
   }
 
@@ -94,6 +98,8 @@ abstract class ClienteAlrededorDTO with _$ClienteAlrededorDTO {
       porcentajeAbonos: porcentajeAbonos,
       ventasPeriodoActual: ventasPeriodoActual,
       ventasPeriodoAnterior: ventasPeriodoAnterior,
+      bloqueoOper: false,
+      obsoleto: false,
     );
   }
 
@@ -118,6 +124,8 @@ abstract class ClienteAlrededorDTO with _$ClienteAlrededorDTO {
       porcentajeAbonos: porcentajeAbonos,
       ventasPeriodoActual: ventasPeriodoActual,
       ventasPeriodoAnterior: ventasPeriodoAnterior,
+      bloqueoOper: bloqueoOper,
+      obsoleto: obsoleto,
     );
   }
 }

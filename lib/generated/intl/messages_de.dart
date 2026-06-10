@@ -28,13 +28,16 @@ class MessageLookup extends MessageLookupByLibrary {
     "PDFinvoices": MessageLookupByLibrary.simpleMessage("PDF-Rechnungen"),
     "accept": MessageLookupByLibrary.simpleMessage("Akzeptieren"),
     "aceptar": MessageLookupByLibrary.simpleMessage("Akzeptieren"),
+    "active": MessageLookupByLibrary.simpleMessage("Aktiv"),
     "addresses": MessageLookupByLibrary.simpleMessage("Adressen"),
+    "all": MessageLookupByLibrary.simpleMessage("Alle"),
     "almacenPropio": MessageLookupByLibrary.simpleMessage("Eigenes Lager"),
     "alto": MessageLookupByLibrary.simpleMessage("Höhe"),
     "amount": MessageLookupByLibrary.simpleMessage("Betrag"),
     "anyArticlesSpecified": MessageLookupByLibrary.simpleMessage(
       "Keine Artikel angegeben",
     ),
+    "apply": MessageLookupByLibrary.simpleMessage("Anwenden"),
     "articleNotFound": MessageLookupByLibrary.simpleMessage(
       "Artikel nicht gefunden",
     ),
@@ -591,6 +594,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "Die Excel-Datei ist leer",
     ),
     "familia": MessageLookupByLibrary.simpleMessage("Familie"),
+    "filter": MessageLookupByLibrary.simpleMessage("Filter"),
     "formFromImage": MessageLookupByLibrary.simpleMessage(
       "Formular aus Bild erstellen",
     ),
@@ -610,6 +614,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "import": MessageLookupByLibrary.simpleMessage("Importieren"),
     "importedRows": MessageLookupByLibrary.simpleMessage("Importierte Zeilen"),
     "importing": MessageLookupByLibrary.simpleMessage("Wird importiert..."),
+    "inactive": MessageLookupByLibrary.simpleMessage("Inaktiv"),
     "interesCliente": MessageLookupByLibrary.simpleMessage("Kundeninteresse"),
     "introduceClaveDeNikel": MessageLookupByLibrary.simpleMessage(
       "Geben Sie den Nikel-Schlüssel ein",
@@ -823,6 +828,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "pequena": MessageLookupByLibrary.simpleMessage("Klein"),
     "phones": MessageLookupByLibrary.simpleMessage("Telefonnummern"),
     "position": MessageLookupByLibrary.simpleMessage("Gebühr"),
+    "potential": MessageLookupByLibrary.simpleMessage("Potentiell"),
     "precioNoPuedeSerMenorAlPrecioMinimo": MessageLookupByLibrary.simpleMessage(
       "Der Preis darf nicht unter dem Mindestpreis liegen",
     ),

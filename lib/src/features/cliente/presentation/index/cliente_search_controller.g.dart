@@ -67,56 +67,54 @@ abstract class _$ClienteIndexControllerSearchTextParameter
   }
 }
 
-@ProviderFor(ClientesPotencialesQueryParamController)
-final clientesPotencialesQueryParamControllerProvider =
-    ClientesPotencialesQueryParamControllerProvider._();
+@ProviderFor(ClientesEstadoFilterController)
+final clientesEstadoFilterControllerProvider =
+    ClientesEstadoFilterControllerProvider._();
 
-final class ClientesPotencialesQueryParamControllerProvider
-    extends $NotifierProvider<ClientesPotencialesQueryParamController, bool> {
-  ClientesPotencialesQueryParamControllerProvider._()
+final class ClientesEstadoFilterControllerProvider
+    extends $NotifierProvider<ClientesEstadoFilterController, ClienteEstado> {
+  ClientesEstadoFilterControllerProvider._()
     : super(
         from: null,
         argument: null,
         retry: null,
-        name: r'clientesPotencialesQueryParamControllerProvider',
+        name: r'clientesEstadoFilterControllerProvider',
         isAutoDispose: true,
         dependencies: null,
         $allTransitiveDependencies: null,
       );
 
   @override
-  String debugGetCreateSourceHash() =>
-      _$clientesPotencialesQueryParamControllerHash();
+  String debugGetCreateSourceHash() => _$clientesEstadoFilterControllerHash();
 
   @$internal
   @override
-  ClientesPotencialesQueryParamController create() =>
-      ClientesPotencialesQueryParamController();
+  ClientesEstadoFilterController create() => ClientesEstadoFilterController();
 
   /// {@macro riverpod.override_with_value}
-  Override overrideWithValue(bool value) {
+  Override overrideWithValue(ClienteEstado value) {
     return $ProviderOverride(
       origin: this,
-      providerOverride: $SyncValueProvider<bool>(value),
+      providerOverride: $SyncValueProvider<ClienteEstado>(value),
     );
   }
 }
 
-String _$clientesPotencialesQueryParamControllerHash() =>
-    r'bb3fda39f9da2aa2258e47243d6910d20d92bec7';
+String _$clientesEstadoFilterControllerHash() =>
+    r'b1a3bd1588c40384b31cb878f9565e4a7e5c3cb9';
 
-abstract class _$ClientesPotencialesQueryParamController
-    extends $Notifier<bool> {
-  bool build();
+abstract class _$ClientesEstadoFilterController
+    extends $Notifier<ClienteEstado> {
+  ClienteEstado build();
   @$mustCallSuper
   @override
   void runBuild() {
-    final ref = this.ref as $Ref<bool, bool>;
+    final ref = this.ref as $Ref<ClienteEstado, ClienteEstado>;
     final element =
         ref.element
             as $ClassProviderElement<
-              AnyNotifier<bool, bool>,
-              bool,
+              AnyNotifier<ClienteEstado, ClienteEstado>,
+              ClienteEstado,
               Object?,
               Object?
             >;
@@ -150,7 +148,7 @@ final class ClienteIndexScreenControllerProvider
 }
 
 String _$clienteIndexScreenControllerHash() =>
-    r'6cace43ea7935610d0269064be4199c369025cce';
+    r'dd5c6c7d4aff2262e7c74927e003bd8874972f90';
 
 abstract class _$ClienteIndexScreenController extends $AsyncNotifier<int> {
   FutureOr<int> build();
@@ -220,7 +218,7 @@ final class ClienteIndexScreenPaginatedControllerProvider
 }
 
 String _$clienteIndexScreenPaginatedControllerHash() =>
-    r'a01623353edaf5e37cd7b9f3ddd2ee28d6015269';
+    r'428d4d1a605e9cb8ebc765d2eb338140470dcf83';
 
 final class ClienteIndexScreenPaginatedControllerFamily extends $Family
     with

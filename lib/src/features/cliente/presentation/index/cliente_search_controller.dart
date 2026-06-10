@@ -1,6 +1,7 @@
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../../domain/cliente.dart';
+import '../../domain/cliente_estado.dart';
 import '../../infrastructure/cliente_repository.dart';
 
 part 'cliente_search_controller.g.dart';
@@ -19,15 +20,14 @@ class ClienteIndexControllerSearchTextParameter
 }
 
 @riverpod
-class ClientesPotencialesQueryParamController
-    extends _$ClientesPotencialesQueryParamController {
+class ClientesEstadoFilterController extends _$ClientesEstadoFilterController {
   @override
-  bool build() {
-    return false;
+  ClienteEstado build() {
+    return ClienteEstado.todos;
   }
 
-  void setFilter(bool searchPotenciales) {
-    state = searchPotenciales;
+  void setFilter(ClienteEstado searchStatus) {
+    state = searchStatus;
   }
 }
 
@@ -40,9 +40,7 @@ class ClienteIndexScreenController extends _$ClienteIndexScreenController {
     return ref
         .read(clienteRepositoryProvider)
         .getClienteCountList(
-          searchPotenciales: ref.watch(
-            clientesPotencialesQueryParamControllerProvider,
-          ),
+          clienteEstado: ref.watch(clientesEstadoFilterControllerProvider),
           searchText: ref.watch(
             clienteIndexControllerSearchTextParameterProvider,
           ),
@@ -60,9 +58,7 @@ class ClienteIndexScreenPaginatedController
     return ref
         .read(clienteRepositoryProvider)
         .getClienteLista(
-          searchPotenciales: ref.watch(
-            clientesPotencialesQueryParamControllerProvider,
-          ),
+          clienteEstado: ref.watch(clientesEstadoFilterControllerProvider),
           page: page,
           searchText: ref.watch(
             clienteIndexControllerSearchTextParameterProvider,

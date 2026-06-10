@@ -1,11 +1,14 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flash/flash_helper.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:gap/gap.dart';
 
 import '../../../../../generated/l10n.dart';
 import '../../../../core/helpers/debouncer.dart';
+import '../../../../core/helpers/formatters.dart';
 import '../../../../core/infrastructure/sync_service.dart';
 import '../../../../core/presentation/common_widgets/app_drawer.dart';
 import '../../../../core/presentation/common_widgets/async_value_ui.dart';
@@ -14,6 +17,7 @@ import '../../../../core/presentation/common_widgets/last_sync_date_widget.dart'
 import '../../../../core/presentation/common_widgets/progress_indicator_widget.dart';
 import '../../../../core/routing/app_auto_router.dart';
 import '../../../sync/application/sync_notifier_provider.dart';
+import '../../domain/cliente_estado.dart';
 import '../../infrastructure/cliente_repository.dart';
 import 'cliente_list_shimmer.dart';
 import 'cliente_lista_tile.dart';
@@ -42,7 +46,8 @@ class _ClienteListPageState extends ConsumerState<ClienteListaPage> {
   final _debouncer = Debouncer(milliseconds: 500);
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
-  bool searchClientesPotenciales = false;
+  final GlobalKey<FormBuilderState> formKey = GlobalKey<FormBuilderState>();
+
   @override
   void initState() {
     super.initState();
@@ -78,19 +83,20 @@ class _ClienteListPageState extends ConsumerState<ClienteListaPage> {
         }),
         actionButtons: [
           IconButton(
-            onPressed: () => filterClientesPotenciales(),
+            onPressed: () => _openFilter(),
             icon: Icon(
-              Icons.abc,
-              color: (searchClientesPotenciales)
+              Icons.filter_list,
+              color:
+                  (ref.watch(clientesEstadoFilterControllerProvider) !=
+                      ClienteEstado.todos)
                   ? Theme.of(context).colorScheme.surfaceTint
                   : null,
             ),
           ),
-          if (!isSearchClienteForFrom)
-            IconButton(
-              onPressed: () => navigateToClientesAlrededor(context),
-              icon: const Icon(Icons.near_me_outlined),
-            ),
+          IconButton(
+            onPressed: () => navigateToClientesAlrededor(context),
+            icon: const Icon(Icons.near_me_outlined),
+          ),
         ],
       ),
       body: stateSync.maybeWhen(
@@ -115,12 +121,11 @@ class _ClienteListPageState extends ConsumerState<ClienteListaPage> {
     );
   }
 
-  void filterClientesPotenciales() {
-    searchClientesPotenciales = !searchClientesPotenciales;
-
-    ref
-        .read(clientesPotencialesQueryParamControllerProvider.notifier)
-        .setFilter(searchClientesPotenciales);
+  void _openFilter() {
+    showDialog(
+      context: context,
+      builder: (context) => ClienteListaAlertDialog(formKey: formKey),
+    );
   }
 
   void navigateToClientesAlrededor(BuildContext context) {
@@ -239,5 +244,65 @@ class ClientesListViewWidget extends StatelessWidget {
     required String clienteId,
   }) {
     context.router.push(ClienteDetalleRoute(clienteId: clienteId));
+  }
+}
+
+class ClienteListaAlertDialog extends ConsumerWidget {
+  const ClienteListaAlertDialog({super.key, required this.formKey});
+
+  final GlobalKey<FormBuilderState> formKey;
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    return AlertDialog(
+      title: Text(S.of(context).filter),
+      content: FormBuilder(
+        key: formKey,
+        clearValueOnUnregister: false,
+        autovalidateMode: AutovalidateMode.disabled,
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            FormBuilderDropdown<ClienteEstado>(
+              name: 'estado',
+              initialValue: ref.watch(clientesEstadoFilterControllerProvider),
+              items: ClienteEstado.values
+                  .map(
+                    (estado) => DropdownMenuItem(
+                      value: estado,
+                      child: Text(estado.displayName),
+                    ),
+                  )
+                  .toList(),
+              validator: FormBuilderValidators.required(),
+            ),
+          ],
+        ),
+      ),
+      actions: [
+        TextButton(
+          onPressed: () => Navigator.of(context).pop(),
+          child: Text(S.of(context).close),
+        ),
+        FilledButton(
+          onPressed: () => applyFilter(context, ref),
+          child: Text(S.of(context).apply),
+        ),
+      ],
+    );
+  }
+
+  void applyFilter(BuildContext context, WidgetRef ref) {
+    if (formKey.currentState!.saveAndValidate()) {
+      ref
+          .read(clientesEstadoFilterControllerProvider.notifier)
+          .setFilter(getFormValue(formKey, 'estado'));
+
+      ref
+          .read(clientesEstadoFilterControllerProvider.notifier)
+          .setFilter(getFormValue(formKey, 'estado'));
+
+      Navigator.of(context).pop();
+    }
   }
 }

@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_material_design_icons/flutter_material_design_icons.dart';
 import 'package:gap/gap.dart';
 
 import '../../../../../generated/l10n.dart';
 import '../../../../core/helpers/formatters.dart';
 import '../../../../core/helpers/helpers.dart';
 import '../../../../core/presentation/common_widgets/address_text_widget.dart';
-import '../../../../core/presentation/common_widgets/chip_container.dart';
 import '../../../../core/presentation/theme/app_sizes.dart';
 import '../../domain/cliente.dart';
 import '../common_widgets/cliente_status_chip.dart';
@@ -71,11 +71,15 @@ class ClienteListaTile extends StatelessWidget {
                 ],
 
                 if (cliente.clientePotencial ?? false) ...[
-                  ChipContainer(
+                  ClienteStatusChip(
+                    icon: MdiIcons.rocketLaunchOutline,
                     text: getClienteEstadoPotencialInLocalLanguage(
                       estadoPotencial: cliente.clienteEstadoPotencial,
                     ),
-                    color: colorScheme.errorContainer,
+                    backgroundColor: Colors.yellowAccent.shade700.withValues(
+                      alpha: 0.16,
+                    ),
+                    foregroundColor: Colors.yellow.shade800,
                   ),
                   const Gap(4),
                 ],
@@ -120,12 +124,18 @@ class ClienteListaTile extends StatelessWidget {
     if (cliente.bloqueoOper && !cliente.obsoleto) {
       return Theme.of(context).colorScheme.errorContainer;
     }
+    if (cliente.clientePotencial ?? false) {
+      return Colors.yellowAccent.shade700;
+    }
     return Colors.blueGrey;
   }
 
   Color _statusBorderColor(BuildContext context) {
     if (cliente.bloqueoOper && !cliente.obsoleto) {
       return Theme.of(context).colorScheme.error;
+    }
+    if (cliente.clientePotencial ?? false) {
+      return Colors.yellowAccent.shade700;
     }
     return Colors.blueGrey;
   }

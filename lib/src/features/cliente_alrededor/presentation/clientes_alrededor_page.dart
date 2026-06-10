@@ -3,12 +3,15 @@ import 'dart:math';
 
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:flutter_map_location_marker/flutter_map_location_marker.dart';
+import 'package:flutter_material_design_icons/flutter_material_design_icons.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:gap/gap.dart';
 import 'package:latlong2/latlong.dart';
-import 'package:flutter_material_design_icons/flutter_material_design_icons.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../../../../generated/l10n.dart';
 import '../../../core/exceptions/app_exception.dart';
@@ -18,9 +21,43 @@ import '../../../core/presentation/common_widgets/error_message_widget.dart';
 import '../../../core/presentation/common_widgets/row_field_text_detail.dart';
 import '../../../core/routing/app_auto_router.dart';
 import '../../cliente/domain/cliente.dart';
+import '../../cliente/domain/cliente_estado.dart';
+import '../../cliente/presentation/common_widgets/cliente_status_chip.dart';
+import '../../cliente/presentation/index/cliente_search_controller.dart';
 import '../domain/cliente_alrededor.dart';
 import '../domain/get_cliente_alrededor_arg.dart';
 import '../infrastructure/cliente_alrededor_repository.dart';
+
+part 'clientes_alrededor_page.g.dart';
+
+@riverpod
+class ClientesAlrededorEstadoController
+    extends _$ClientesAlrededorEstadoController {
+  @override
+  ClienteEstado build() {
+    return ref.read(clientesEstadoFilterControllerProvider) ==
+            ClienteEstado.todos
+        ? ClienteEstado.activo
+        : ref.read(clientesEstadoFilterControllerProvider);
+  }
+
+  void setFilter(ClienteEstado clienteEstado) {
+    state = clienteEstado;
+  }
+}
+
+@riverpod
+class ClientesAlrededorShowDireccionesEnvioController
+    extends _$ClientesAlrededorShowDireccionesEnvioController {
+  @override
+  bool build() {
+    return false;
+  }
+
+  void setFilter(bool showDireccionesEnvio) {
+    state = showDireccionesEnvio;
+  }
+}
 
 @RoutePage()
 class ClientesAlrededorPage extends ConsumerStatefulWidget {
@@ -33,15 +70,13 @@ class ClientesAlrededorPage extends ConsumerStatefulWidget {
 
 class _ClientesAlrededorPageState extends ConsumerState<ClientesAlrededorPage> {
   late double radiusKm;
-  late bool showDireccionesEnvio;
-  late bool showPotenciales;
+
+  final formKey = GlobalKey<FormBuilderState>();
 
   @override
   void initState() {
     super.initState();
     radiusKm = 50000;
-    showDireccionesEnvio = false;
-    showPotenciales = false;
   }
 
   @override
@@ -49,7 +84,15 @@ class _ClientesAlrededorPageState extends ConsumerState<ClientesAlrededorPage> {
     final state = ref.watch(ubicacionActualProvider);
 
     return Scaffold(
-      appBar: AppBar(title: Text(S.of(context).cliente_alrededor_titulo)),
+      appBar: AppBar(
+        title: Text(S.of(context).cliente_alrededor_titulo),
+        actions: [
+          IconButton(
+            onPressed: () => _openFilter(context),
+            icon: Icon(Icons.filter_list),
+          ),
+        ],
+      ),
       body: state.when(
         data: (position) {
           return Stack(
@@ -59,28 +102,8 @@ class _ClientesAlrededorPageState extends ConsumerState<ClientesAlrededorPage> {
               FlutterMapContainer(
                 radiusKm: radiusKm,
                 currentLatLng: LatLng(position.latitude, position.longitude),
-                showDireccionesEnvio: showDireccionesEnvio,
-                showPotenciales: showPotenciales,
               ),
-              Positioned(
-                top: 8,
-                right: 8,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.end,
-                  children: [
-                    _CheckboxDireccionesEnvio(
-                      onShowDireccionesEnvioChanged: (_) =>
-                          onChangeDireccionesEnvio(),
-                      showDireccionesEnvio: showDireccionesEnvio,
-                    ),
-                    const Gap(4),
-                    _CheckboxPotenciales(
-                      onShowPotencialesChanged: (_) => onChangePotenciales(),
-                      showPotenciales: showPotenciales,
-                    ),
-                  ],
-                ),
-              ),
+
               _SliderKm(onSliderChanged: onSliderChanged, radiusKm: radiusKm),
             ],
           );
@@ -101,23 +124,18 @@ class _ClientesAlrededorPageState extends ConsumerState<ClientesAlrededorPage> {
     );
   }
 
-  void onChangeDireccionesEnvio() {
-    setState(() {
-      showDireccionesEnvio = !showDireccionesEnvio;
-    });
-  }
-
-  void onChangePotenciales() {
-    setState(() {
-      showPotenciales = !showPotenciales;
-    });
-  }
-
   void onSliderChanged(double value) {
     setState(() {
       value = (value == 0) ? 1 : value;
       radiusKm = value * 1000;
     });
+  }
+
+  void _openFilter(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (ctx) => ClienteAlrededorAlertDialog(formKey: formKey),
+    );
   }
 }
 
@@ -126,14 +144,10 @@ class FlutterMapContainer extends ConsumerStatefulWidget {
     super.key,
     required this.radiusKm,
     required this.currentLatLng,
-    required this.showDireccionesEnvio,
-    required this.showPotenciales,
   });
 
   final double radiusKm;
   final LatLng currentLatLng;
-  final bool showDireccionesEnvio;
-  final bool showPotenciales;
 
   @override
   ConsumerState<FlutterMapContainer> createState() =>
@@ -167,9 +181,7 @@ class _FlutterMapContainerState extends ConsumerState<FlutterMapContainer> {
   void didUpdateWidget(covariant FlutterMapContainer oldWidget) {
     super.didUpdateWidget(oldWidget);
 
-    if (oldWidget.radiusKm != widget.radiusKm ||
-        oldWidget.showDireccionesEnvio != widget.showDireccionesEnvio ||
-        oldWidget.showPotenciales != widget.showPotenciales) {
+    if (oldWidget.radiusKm != widget.radiusKm) {
       mapController.move(mapLatLng, getZoomLevel(widget.radiusKm));
     }
   }
@@ -181,8 +193,6 @@ class _FlutterMapContainerState extends ConsumerState<FlutterMapContainer> {
         GetClienteAlrededorArg(
           latLng: mapLatLng,
           radiusDistance: widget.radiusKm,
-          showDireccionesEnvio: widget.showDireccionesEnvio,
-          showPotenciales: widget.showPotenciales,
         ),
       ),
     );
@@ -338,7 +348,7 @@ class _FlutterMapContainerState extends ConsumerState<FlutterMapContainer> {
 
   Color _getMarkerColor(bool isDireccionFiscal, bool? isClientePotencial) {
     if (isClientePotencial ?? false) {
-      return Colors.yellow.shade700;
+      return Colors.yellowAccent.shade700;
     } else if (isDireccionFiscal) {
       return Colors.green;
     }
@@ -439,73 +449,6 @@ class _SliderKm extends StatelessWidget {
   }
 }
 
-class _CheckboxDireccionesEnvio extends StatelessWidget {
-  const _CheckboxDireccionesEnvio({
-    required this.showDireccionesEnvio,
-    required this.onShowDireccionesEnvioChanged,
-  });
-
-  final bool showDireccionesEnvio;
-  final Function(bool value) onShowDireccionesEnvioChanged;
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        color: Theme.of(context).colorScheme.surface,
-        borderRadius: BorderRadius.circular(4),
-        border: Border.all(width: 0.5),
-      ),
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 8.0),
-        child: Row(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Text(S.of(context).cliente_alrededor_direccionesEnvio),
-            const Gap(8),
-            Switch(
-              value: showDireccionesEnvio,
-              onChanged: onShowDireccionesEnvioChanged,
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-class _CheckboxPotenciales extends StatelessWidget {
-  const _CheckboxPotenciales({
-    required this.showPotenciales,
-    required this.onShowPotencialesChanged,
-  });
-
-  final bool showPotenciales;
-  final Function(bool value) onShowPotencialesChanged;
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        color: Theme.of(context).colorScheme.surface,
-        borderRadius: BorderRadius.circular(4),
-        border: Border.all(width: 0.5),
-      ),
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 8.0),
-        child: Row(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Text(S.of(context).cliente_alrededor_potenciales),
-            const Gap(8),
-            Switch(value: showPotenciales, onChanged: onShowPotencialesChanged),
-          ],
-        ),
-      ),
-    );
-  }
-}
-
 class _ClienteAlrededorDialog extends StatelessWidget {
   const _ClienteAlrededorDialog({
     required this.clienteAlrededor,
@@ -543,6 +486,12 @@ class _ClienteAlrededorDialog extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          if ((clienteAlrededor.isClientePotencial ?? false) ||
+              clienteAlrededor.bloqueoOper ||
+              clienteAlrededor.obsoleto) ...[
+            _getClienteStatusChip(context, clienteAlrededor),
+            const Gap(8),
+          ],
           Text('#${clienteAlrededor.clienteId} ${clienteAlrededor.nombre}'),
           const Gap(2),
           Text(
@@ -603,5 +552,120 @@ class _ClienteAlrededorDialog extends StatelessWidget {
         ),
       ],
     );
+  }
+
+  Widget _getClienteStatusChip(
+    BuildContext context,
+    ClienteAlrededor clienteAlrededor,
+  ) {
+    final colorScheme = Theme.of(context).colorScheme;
+
+    if (clienteAlrededor.isClientePotencial ?? false) {
+      return ClienteStatusChip(
+        icon: MdiIcons.rocketLaunchOutline,
+        text: S.of(context).potential,
+        backgroundColor: Colors.yellowAccent.shade700.withValues(alpha: 0.16),
+        foregroundColor: Colors.yellow.shade800,
+      );
+    } else if (!clienteAlrededor.obsoleto && clienteAlrededor.bloqueoOper) {
+      return ClienteStatusChip(
+        icon: Icons.lock_outline,
+        text: S.of(context).cliente_index_operacionesBloqueadas,
+        backgroundColor: colorScheme.errorContainer,
+        foregroundColor: colorScheme.onErrorContainer,
+      );
+    } else if (clienteAlrededor.obsoleto) {
+      return ClienteStatusChip(
+        icon: Icons.history,
+        text: S.of(context).inactivo,
+        backgroundColor: Colors.blueGrey.withValues(alpha: 0.16),
+        foregroundColor: colorScheme.onSurface,
+      );
+    }
+    return const SizedBox.shrink();
+  }
+}
+
+class ClienteAlrededorAlertDialog extends ConsumerWidget {
+  const ClienteAlrededorAlertDialog({super.key, required this.formKey});
+
+  final GlobalKey<FormBuilderState> formKey;
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    return AlertDialog(
+      title: Text(S.of(context).filter),
+      content: FormBuilder(
+        key: formKey,
+        clearValueOnUnregister: false,
+        autovalidateMode: AutovalidateMode.disabled,
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            FormBuilderDropdown<ClienteEstado>(
+              name: 'estado',
+              initialValue: ref.watch(
+                clientesAlrededorEstadoControllerProvider,
+              ),
+              items: ClienteEstado.values
+                  .map(
+                    (estado) => DropdownMenuItem(
+                      value: estado,
+                      child: Text(estado.displayName),
+                    ),
+                  )
+                  .toList(),
+              validator: FormBuilderValidators.required(),
+            ),
+            const Gap(16),
+            FormBuilderRadioGroup(
+              name: 'show_direcciones',
+              initialValue: ref.watch(
+                clientesAlrededorShowDireccionesEnvioControllerProvider,
+              ),
+              decoration: InputDecoration(
+                labelText: S
+                    .of(context)
+                    .pedido_edit_pedidoEdit_direccionesEnvio,
+              ),
+              options: [
+                FormBuilderFieldOption(value: true, child: Text('Mostrar')),
+
+                FormBuilderFieldOption(
+                  value: false,
+                  child: Text('NO mostrar '),
+                ),
+              ],
+            ),
+          ],
+        ),
+      ),
+      actions: [
+        TextButton(
+          onPressed: () => Navigator.of(context).pop(),
+          child: Text(S.of(context).close),
+        ),
+        FilledButton(
+          onPressed: () => applyFilter(context, ref),
+          child: Text(S.of(context).apply),
+        ),
+      ],
+    );
+  }
+
+  void applyFilter(BuildContext context, WidgetRef ref) {
+    if (formKey.currentState!.saveAndValidate()) {
+      ref
+          .read(clientesAlrededorEstadoControllerProvider.notifier)
+          .setFilter(getFormValue(formKey, 'estado'));
+
+      ref
+          .read(
+            clientesAlrededorShowDireccionesEnvioControllerProvider.notifier,
+          )
+          .setFilter(getFormValue(formKey, 'show_direcciones'));
+
+      Navigator.of(context).pop();
+    }
   }
 }

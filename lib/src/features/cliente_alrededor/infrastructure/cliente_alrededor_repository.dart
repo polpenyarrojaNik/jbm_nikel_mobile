@@ -5,12 +5,14 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 import '../../../core/exceptions/app_exception.dart';
 import '../../../core/infrastructure/pais_dto.dart';
 import '../../../core/infrastructure/remote_database.dart';
+import '../../cliente/domain/cliente_estado.dart';
 import '../../cliente/infrastructure/cliente_direccion_dto.dart';
 import '../../cliente/infrastructure/cliente_dto.dart';
 import '../../usuario/application/usuario_notifier.dart';
 import '../../usuario/domain/usuario.dart';
 import '../domain/cliente_alrededor.dart';
 import '../domain/get_cliente_alrededor_arg.dart';
+import '../presentation/clientes_alrededor_page.dart';
 import 'cliente_alrededor_dto.dart';
 
 part 'cliente_alrededor_repository.g.dart';
@@ -45,7 +47,12 @@ class ClientesDireccionesAlrededorListStream
     final clientesAlrededorRepository = ref.watch(
       clienteAlrededorRepositoryProvider,
     );
+
     return clientesAlrededorRepository.getClienteAlrededoresLista(
+      clienteEstado: ref.watch(clientesAlrededorEstadoControllerProvider),
+      showDireccionesEnvio: ref.watch(
+        clientesAlrededorShowDireccionesEnvioControllerProvider,
+      ),
       clienteAlrededorArg: clienteAlrededorArg,
     );
   }
@@ -63,16 +70,24 @@ class ClienteAlrededorRepository {
   }
 
   Future<List<ClienteAlrededor>> getClienteAlrededoresLista({
+    required ClienteEstado clienteEstado,
+    required bool showDireccionesEnvio,
     required GetClienteAlrededorArg clienteAlrededorArg,
   }) async {
     final clienteAlrededorList = <ClienteAlrededor>[];
     final clienteDireccionesFiscalesAlrededorList =
-        await _getClienteDireccionesFiscalesList(clienteAlrededorArg);
+        await _getClienteDireccionesFiscalesList(
+          clienteAlrededorArg,
+          clienteEstado,
+        );
     clienteAlrededorList.addAll(clienteDireccionesFiscalesAlrededorList);
 
-    if (clienteAlrededorArg.showDireccionesEnvio) {
+    if (showDireccionesEnvio) {
       final clienteDireccionesAlrededorList =
-          await _getClienteDireccionesAlrededorList(clienteAlrededorArg);
+          await _getClienteDireccionesAlrededorList(
+            clienteAlrededorArg,
+            clienteEstado,
+          );
 
       clienteAlrededorList.addAll(clienteDireccionesAlrededorList);
     }
@@ -82,11 +97,11 @@ class ClienteAlrededorRepository {
 
   Future<List<ClienteAlrededor>> _getClienteDireccionesFiscalesList(
     GetClienteAlrededorArg clienteAlrededorArg,
+    ClienteEstado clienteEstado,
   ) async {
     try {
       final query = remoteDb.customSelect(
-        clienteAlrededorArg.showPotenciales
-            ? '''SELECT c.*, paises.*
+        '''SELECT c.*, paises.*
         from CLIENTES_USUARIO cUsuario
         INNER JOIN CLIENTES c ON c.cliente_id = cUsuario.cliente_id
         INNER JOIN PAISES paises ON c.pais_id_fiscal = paises.pais_id
@@ -94,15 +109,7 @@ class ClienteAlrededorRepository {
           SELECT (12742 * ASIN(SQRT(0.5 - COS((c.latitud_fiscal - :latitud) * :p) /2 + COS(:latitud * :p) * COS(c.latitud_fiscal * :p) * (1 - COS((c.longitud_fiscal - :longitud) * :p)) / 2)))
           as distanceKm
           ) < :radiusKm
-          '''
-            : '''SELECT c.*, paises.*
-        from CLIENTES_USUARIO cUsuario
-        INNER JOIN CLIENTES c ON c.cliente_id = cUsuario.cliente_id
-        INNER JOIN PAISES paises ON c.pais_id_fiscal = paises.pais_id
-        WHERE c.CLIENTE_POTENCIAL = 'N' AND (cUsuario.USUARIO_ID = :usuarioId AND c.latitud_fiscal is not null AND c.longitud_fiscal is not null) AND(
-          SELECT (12742 * ASIN(SQRT(0.5 - COS((c.latitud_fiscal - :latitud) * :p) /2 + COS(:latitud * :p) * COS(c.latitud_fiscal * :p) * (1 - COS((c.longitud_fiscal - :longitud) * :p)) / 2)))
-          as distanceKm
-          ) < :radiusKm
+          ${_clienteEstadoFilterQuery(clienteEstado)}
           ''',
         variables: [
           Variable.withString(usuario.id),
@@ -140,11 +147,11 @@ class ClienteAlrededorRepository {
 
   Future<List<ClienteAlrededor>> _getClienteDireccionesAlrededorList(
     GetClienteAlrededorArg clienteAlrededorArg,
+    ClienteEstado clienteEstado,
   ) async {
     try {
       final query = remoteDb.customSelect(
-        clienteAlrededorArg.showPotenciales
-            ? '''SELECT cd.*, paises.*
+        '''SELECT cd.*, paises.*
         FROM CLIENTES_USUARIO cUsuario
         INNER JOIN CLIENTES_DIRECCIONES_ENVIO cd ON cd.cliente_id = cUsuario.cliente_id
         INNER JOIN CLIENTES c ON c.CLIENTE_ID = cd.CLIENTE_ID
@@ -153,16 +160,7 @@ class ClienteAlrededorRepository {
           SELECT (12742 * ASIN(SQRT(0.5 - COS((cd.latitud - :latitud) * :p) /2 + COS(:latitud * :p) * COS(cd.latitud * :p) * (1 - COS((cd.longitud - :longitud) * :p)) / 2)))
           as distanceKm
           ) < :radiusKm
-          '''
-            : '''SELECT cd.*, paises.*
-        FROM CLIENTES_USUARIO cUsuario
-        INNER JOIN CLIENTES_DIRECCIONES_ENVIO cd ON cd.cliente_id = cUsuario.cliente_id
-        INNER JOIN CLIENTES c ON c.CLIENTE_ID = cd.CLIENTE_ID
-        INNER JOIN PAISES paises ON cd.pais_id = paises.pais_id
-        WHERE c.CLIENTE_POTENCIAL = 'N' AND (cUsuario.USUARIO_ID = :usuarioId AND cd.latitud is not null AND cd.longitud is not null) AND(
-          SELECT (12742 * ASIN(SQRT(0.5 - COS((cd.latitud - :latitud) * :p) /2 + COS(:latitud * :p) * COS(cd.latitud * :p) * (1 - COS((cd.longitud - :longitud) * :p)) / 2)))
-          as distanceKm
-          ) < :radiusKm
+          ${_clienteEstadoFilterQuery(clienteEstado)}
           ''',
         variables: [
           Variable.withString(usuario.id),
@@ -235,5 +233,29 @@ class ClienteAlrededorRepository {
         stackTrace,
       );
     }
+  }
+
+  String _clienteEstadoFilterQuery(ClienteEstado clienteEstado) {
+    if (clienteEstado == ClienteEstado.todos) {
+      return '';
+    }
+
+    var query = 'AND ';
+
+    switch (clienteEstado) {
+      case ClienteEstado.activo:
+        query += "c.OBSOLETO_SN = 'N' AND c.CLIENTE_POTENCIAL = 'N'";
+        break;
+      case ClienteEstado.inactivo:
+        query += "c.OBSOLETO_SN = 'S' AND c.CLIENTE_POTENCIAL = 'N'";
+        break;
+      case ClienteEstado.potencial:
+        query += "c.CLIENTE_POTENCIAL = 'S'";
+        break;
+      case ClienteEstado.todos:
+        break;
+    }
+
+    return query;
   }
 }

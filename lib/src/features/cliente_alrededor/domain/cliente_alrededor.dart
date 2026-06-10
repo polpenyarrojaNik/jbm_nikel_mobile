@@ -29,6 +29,8 @@ abstract class ClienteAlrededor with _$ClienteAlrededor {
     String? nombreRepresentante2,
     double? ventasPeriodoActual,
     double? ventasPeriodoAnterior,
+    required bool bloqueoOper,
+    required bool obsoleto,
   }) = _ClienteAlrededor;
 
   TendenciaCliente get tendenciaVentas {

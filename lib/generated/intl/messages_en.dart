@@ -28,13 +28,16 @@ class MessageLookup extends MessageLookupByLibrary {
     "PDFinvoices": MessageLookupByLibrary.simpleMessage("PDF Invoices"),
     "accept": MessageLookupByLibrary.simpleMessage("Accept"),
     "aceptar": MessageLookupByLibrary.simpleMessage("Accept"),
+    "active": MessageLookupByLibrary.simpleMessage("Active"),
     "addresses": MessageLookupByLibrary.simpleMessage("Addresses"),
+    "all": MessageLookupByLibrary.simpleMessage("All"),
     "almacenPropio": MessageLookupByLibrary.simpleMessage("Own warehouse"),
     "alto": MessageLookupByLibrary.simpleMessage("High"),
     "amount": MessageLookupByLibrary.simpleMessage("Amount"),
     "anyArticlesSpecified": MessageLookupByLibrary.simpleMessage(
       "No articles specified",
     ),
+    "apply": MessageLookupByLibrary.simpleMessage("Apply"),
     "articleNotFound": MessageLookupByLibrary.simpleMessage(
       "Article not found",
     ),
@@ -573,6 +576,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "The Excel file is empty",
     ),
     "familia": MessageLookupByLibrary.simpleMessage("Family"),
+    "filter": MessageLookupByLibrary.simpleMessage("Filter"),
     "formFromImage": MessageLookupByLibrary.simpleMessage("Form from image"),
     "frecuenciaPedido": MessageLookupByLibrary.simpleMessage("Order frequency"),
     "freightCharge": MessageLookupByLibrary.simpleMessage("Freight charge"),
@@ -586,6 +590,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "import": MessageLookupByLibrary.simpleMessage("Import"),
     "importedRows": MessageLookupByLibrary.simpleMessage("Imported rows"),
     "importing": MessageLookupByLibrary.simpleMessage("Importing..."),
+    "inactive": MessageLookupByLibrary.simpleMessage("Inactive"),
     "inactivo": MessageLookupByLibrary.simpleMessage("Inactive"),
     "interesCliente": MessageLookupByLibrary.simpleMessage("Customer interest"),
     "introduceClaveDeNikel": MessageLookupByLibrary.simpleMessage(
@@ -792,6 +797,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "pequena": MessageLookupByLibrary.simpleMessage("Small"),
     "phones": MessageLookupByLibrary.simpleMessage("Phones"),
     "position": MessageLookupByLibrary.simpleMessage("Position"),
+    "potential": MessageLookupByLibrary.simpleMessage("Potential"),
     "precioNoPuedeSerMenorAlPrecioMinimo": MessageLookupByLibrary.simpleMessage(
       "The price cannot be less than the minimum price",
     ),

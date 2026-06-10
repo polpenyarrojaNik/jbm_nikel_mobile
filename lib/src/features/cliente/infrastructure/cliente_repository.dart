@@ -41,6 +41,7 @@ import '../domain/cliente_contacto_imp.dart';
 import '../domain/cliente_descuento.dart';
 import '../domain/cliente_direccion.dart';
 import '../domain/cliente_direccion_imp.dart';
+import '../domain/cliente_estado.dart';
 import '../domain/cliente_factura.dart';
 import '../domain/cliente_grupo_neto.dart';
 import '../domain/cliente_imp.dart';
@@ -256,7 +257,7 @@ class ClienteRepository {
   Future<List<Cliente>> getClienteLista({
     required int page,
     required String searchText,
-    required bool searchPotenciales,
+    required ClienteEstado clienteEstado,
   }) async {
     try {
       final query = _remoteDb.select(_remoteDb.clienteTable).join([
@@ -348,8 +349,14 @@ class ClienteRepository {
         query.where(predicate!);
       }
 
-      if (searchPotenciales) {
+      if (clienteEstado == ClienteEstado.potencial) {
         query.where(_remoteDb.clienteTable.clientePotencial.equals('S'));
+      } else if (clienteEstado == ClienteEstado.activo) {
+        query.where(_remoteDb.clienteTable.obsoleto.equals('N'));
+        query.where(_remoteDb.clienteTable.clientePotencial.equals('N'));
+      } else if (clienteEstado == ClienteEstado.inactivo) {
+        query.where(_remoteDb.clienteTable.obsoleto.equals('S'));
+        query.where(_remoteDb.clienteTable.clientePotencial.equals('N'));
       }
 
       query.limit(pageSize, offset: page * pageSize);
@@ -413,7 +420,7 @@ class ClienteRepository {
 
   Future<int> getClienteCountList({
     required String searchText,
-    required bool searchPotenciales,
+    required ClienteEstado clienteEstado,
   }) async {
     try {
       final countExp = _remoteDb.clienteTable.id.count();
@@ -497,8 +504,12 @@ class ClienteRepository {
         query.where(predicate!);
       }
 
-      if (searchPotenciales) {
+      if (clienteEstado == ClienteEstado.potencial) {
         query.where(_remoteDb.clienteTable.clientePotencial.equals('S'));
+      } else if (clienteEstado == ClienteEstado.activo) {
+        query.where(_remoteDb.clienteTable.obsoleto.equals('N'));
+      } else if (clienteEstado == ClienteEstado.inactivo) {
+        query.where(_remoteDb.clienteTable.obsoleto.equals('S'));
       }
 
       final count = await query.map((row) => row.read(countExp)).getSingle();

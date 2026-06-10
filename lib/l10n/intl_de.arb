@@ -462,5 +462,10 @@
   "discontinued": "EINGESTELLT",
   "share": "Teilen",
   "customerNotAvailableToSelect": "Kunde nicht verfügbar zur Auswahl",
-  "visitLocation": "Besuchsstandort"
+  "visitLocation": "Besuchsstandort",
+  "apply": "Anwenden",
+  "all": "Alle",
+  "active": "Aktiv",
+  "potential": "Potentiell",
+  "filter": "Filter"
 }

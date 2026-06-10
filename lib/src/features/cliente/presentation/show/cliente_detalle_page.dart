@@ -1,15 +1,14 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_material_design_icons/flutter_material_design_icons.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gap/gap.dart';
 import 'package:map_launcher/map_launcher.dart';
-import 'package:flutter_material_design_icons/flutter_material_design_icons.dart';
 
 import '../../../../../generated/l10n.dart';
 import '../../../../core/helpers/formatters.dart';
 import '../../../../core/helpers/helpers.dart';
 import '../../../../core/presentation/common_widgets/async_value_widget.dart';
-import '../../../../core/presentation/common_widgets/chip_container.dart';
 import '../../../../core/presentation/common_widgets/column_field_text_detail.dart';
 import '../../../../core/presentation/common_widgets/common_app_bar.dart';
 import '../../../../core/presentation/common_widgets/datos_extra_row.dart';
@@ -170,11 +169,14 @@ class _ClienteHeader extends StatelessWidget {
                     ),
                     if (cliente.clientePotencial ?? false) const Gap(8),
                     if (cliente.clientePotencial ?? false)
-                      ChipContainer(
+                      ClienteStatusChip(
+                        icon: MdiIcons.rocketLaunchOutline,
                         text: getClienteEstadoPotencialInLocalLanguage(
                           estadoPotencial: cliente.clienteEstadoPotencial,
                         ),
-                        color: Theme.of(context).colorScheme.errorContainer,
+                        backgroundColor: Colors.yellowAccent.shade700
+                            .withValues(alpha: 0.16),
+                        foregroundColor: Colors.yellow.shade800,
                       ),
                   ],
                 ),

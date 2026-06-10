@@ -28,6 +28,8 @@ _ClienteAlrededorDTO _$ClienteAlrededorDTOFromJson(Map<String, dynamic> json) =>
       ventasPeriodoActual: (json['ventasPeriodoActual'] as num?)?.toDouble(),
       ventasPeriodoAnterior: (json['ventasPeriodoAnterior'] as num?)
           ?.toDouble(),
+      bloqueoOper: json['bloqueoOper'] as bool,
+      obsoleto: json['obsoleto'] as bool,
     );
 
 Map<String, dynamic> _$ClienteAlrededorDTOToJson(
@@ -52,4 +54,6 @@ Map<String, dynamic> _$ClienteAlrededorDTOToJson(
   'porcentajeAbonos': instance.porcentajeAbonos,
   'ventasPeriodoActual': instance.ventasPeriodoActual,
   'ventasPeriodoAnterior': instance.ventasPeriodoAnterior,
+  'bloqueoOper': instance.bloqueoOper,
+  'obsoleto': instance.obsoleto,
 };
