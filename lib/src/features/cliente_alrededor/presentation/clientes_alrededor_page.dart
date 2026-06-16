@@ -577,7 +577,7 @@ class _ClienteAlrededorDialog extends StatelessWidget {
     } else if (clienteAlrededor.obsoleto) {
       return ClienteStatusChip(
         icon: Icons.history,
-        text: S.of(context).inactivo,
+        text: S.of(context).inactive,
         backgroundColor: Colors.blueGrey.withValues(alpha: 0.16),
         foregroundColor: colorScheme.onSurface,
       );

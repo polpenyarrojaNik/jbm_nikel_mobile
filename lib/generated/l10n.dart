@@ -904,11 +904,6 @@ class S {
     );
   }
 
-  /// `Inactive`
-  String get inactivo {
-    return Intl.message('Inactive', name: 'inactivo', desc: '', args: []);
-  }
-
   /// `Operations blocked`
   String get cliente_index_operacionesBloqueadas {
     return Intl.message(
