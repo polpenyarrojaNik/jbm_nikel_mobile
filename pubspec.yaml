@@ -4,8 +4,8 @@ publish_to: "none"
 version: 1.2.128+200
 
 environment:
-  sdk: ^3.12.1
-  flutter: ^3.44.1
+  sdk: ^3.12.2
+  flutter: ^3.44.4
 
 dependencies:
   flutter_localizations:
@@ -46,7 +46,7 @@ dependencies:
   google_fonts: ^8.1.0
   google_mlkit_entity_extraction: ^0.15.3
   google_mlkit_text_recognition: ^0.15.1
-  image: ^4.8.0
+  image: ^4.0.0
   intl: ^0.20.2
   json_annotation: ^4.11.0
   jwt_decoder: ^2.0.1
@@ -55,9 +55,9 @@ dependencies:
   map_launcher: ^4.5.0
   flutter_material_design_icons: ^3.1.0+7447
   money2: ^6.3.0
-  open_file: ^3.5.11
+  open_file: ^4.0.0
   package_info_plus: ^9.0.1
-  path_provider: ^2.1.5
+  path_provider: ^2.1.6
   path: ^1.9.1
   reactive_forms: ^18.2.2
   riverpod_annotation: ^4.0.2
