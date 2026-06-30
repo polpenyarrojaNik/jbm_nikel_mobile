@@ -13,7 +13,7 @@ abstract class ArticuloTopDTO with _$ArticuloTopDTO {
   const ArticuloTopDTO._();
   const factory ArticuloTopDTO({
     @JsonKey(name: 'ARTICULO_ID') required String articuloId,
-    @JsonKey(name: 'DESCRIPCION_ES') required String descripcion,
+    @JsonKey(name: 'DESCRIPCION') required String descripcion,
     @JsonKey(name: 'VENTAS_TOTAL') required double ventasTotal,
     @JsonKey(name: 'VENTAS_CLIENTE') required double ventasCliente,
     @JsonKey(name: 'DIVISA_ID') required String divisaId,

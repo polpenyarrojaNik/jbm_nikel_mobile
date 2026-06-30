@@ -15,7 +15,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$ArticuloTopDTO {
 
-@JsonKey(name: 'ARTICULO_ID') String get articuloId;@JsonKey(name: 'DESCRIPCION_ES') String get descripcion;@JsonKey(name: 'VENTAS_TOTAL') double get ventasTotal;@JsonKey(name: 'VENTAS_CLIENTE') double get ventasCliente;@JsonKey(name: 'DIVISA_ID') String get divisaId;
+@JsonKey(name: 'ARTICULO_ID') String get articuloId;@JsonKey(name: 'DESCRIPCION') String get descripcion;@JsonKey(name: 'VENTAS_TOTAL') double get ventasTotal;@JsonKey(name: 'VENTAS_CLIENTE') double get ventasCliente;@JsonKey(name: 'DIVISA_ID') String get divisaId;
 /// Create a copy of ArticuloTopDTO
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -48,7 +48,7 @@ abstract mixin class $ArticuloTopDTOCopyWith<$Res>  {
   factory $ArticuloTopDTOCopyWith(ArticuloTopDTO value, $Res Function(ArticuloTopDTO) _then) = _$ArticuloTopDTOCopyWithImpl;
 @useResult
 $Res call({
-@JsonKey(name: 'ARTICULO_ID') String articuloId,@JsonKey(name: 'DESCRIPCION_ES') String descripcion,@JsonKey(name: 'VENTAS_TOTAL') double ventasTotal,@JsonKey(name: 'VENTAS_CLIENTE') double ventasCliente,@JsonKey(name: 'DIVISA_ID') String divisaId
+@JsonKey(name: 'ARTICULO_ID') String articuloId,@JsonKey(name: 'DESCRIPCION') String descripcion,@JsonKey(name: 'VENTAS_TOTAL') double ventasTotal,@JsonKey(name: 'VENTAS_CLIENTE') double ventasCliente,@JsonKey(name: 'DIVISA_ID') String divisaId
 });
 
 
@@ -157,7 +157,7 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function(@JsonKey(name: 'ARTICULO_ID')  String articuloId, @JsonKey(name: 'DESCRIPCION_ES')  String descripcion, @JsonKey(name: 'VENTAS_TOTAL')  double ventasTotal, @JsonKey(name: 'VENTAS_CLIENTE')  double ventasCliente, @JsonKey(name: 'DIVISA_ID')  String divisaId)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function(@JsonKey(name: 'ARTICULO_ID')  String articuloId, @JsonKey(name: 'DESCRIPCION')  String descripcion, @JsonKey(name: 'VENTAS_TOTAL')  double ventasTotal, @JsonKey(name: 'VENTAS_CLIENTE')  double ventasCliente, @JsonKey(name: 'DIVISA_ID')  String divisaId)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _ArticuloTopDTO() when $default != null:
 return $default(_that.articuloId,_that.descripcion,_that.ventasTotal,_that.ventasCliente,_that.divisaId);case _:
@@ -178,7 +178,7 @@ return $default(_that.articuloId,_that.descripcion,_that.ventasTotal,_that.venta
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function(@JsonKey(name: 'ARTICULO_ID')  String articuloId, @JsonKey(name: 'DESCRIPCION_ES')  String descripcion, @JsonKey(name: 'VENTAS_TOTAL')  double ventasTotal, @JsonKey(name: 'VENTAS_CLIENTE')  double ventasCliente, @JsonKey(name: 'DIVISA_ID')  String divisaId)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function(@JsonKey(name: 'ARTICULO_ID')  String articuloId, @JsonKey(name: 'DESCRIPCION')  String descripcion, @JsonKey(name: 'VENTAS_TOTAL')  double ventasTotal, @JsonKey(name: 'VENTAS_CLIENTE')  double ventasCliente, @JsonKey(name: 'DIVISA_ID')  String divisaId)  $default,) {final _that = this;
 switch (_that) {
 case _ArticuloTopDTO():
 return $default(_that.articuloId,_that.descripcion,_that.ventasTotal,_that.ventasCliente,_that.divisaId);case _:
@@ -198,7 +198,7 @@ return $default(_that.articuloId,_that.descripcion,_that.ventasTotal,_that.venta
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function(@JsonKey(name: 'ARTICULO_ID')  String articuloId, @JsonKey(name: 'DESCRIPCION_ES')  String descripcion, @JsonKey(name: 'VENTAS_TOTAL')  double ventasTotal, @JsonKey(name: 'VENTAS_CLIENTE')  double ventasCliente, @JsonKey(name: 'DIVISA_ID')  String divisaId)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function(@JsonKey(name: 'ARTICULO_ID')  String articuloId, @JsonKey(name: 'DESCRIPCION')  String descripcion, @JsonKey(name: 'VENTAS_TOTAL')  double ventasTotal, @JsonKey(name: 'VENTAS_CLIENTE')  double ventasCliente, @JsonKey(name: 'DIVISA_ID')  String divisaId)?  $default,) {final _that = this;
 switch (_that) {
 case _ArticuloTopDTO() when $default != null:
 return $default(_that.articuloId,_that.descripcion,_that.ventasTotal,_that.ventasCliente,_that.divisaId);case _:
@@ -213,11 +213,11 @@ return $default(_that.articuloId,_that.descripcion,_that.ventasTotal,_that.venta
 @JsonSerializable()
 
 class _ArticuloTopDTO extends ArticuloTopDTO {
-  const _ArticuloTopDTO({@JsonKey(name: 'ARTICULO_ID') required this.articuloId, @JsonKey(name: 'DESCRIPCION_ES') required this.descripcion, @JsonKey(name: 'VENTAS_TOTAL') required this.ventasTotal, @JsonKey(name: 'VENTAS_CLIENTE') required this.ventasCliente, @JsonKey(name: 'DIVISA_ID') required this.divisaId}): super._();
+  const _ArticuloTopDTO({@JsonKey(name: 'ARTICULO_ID') required this.articuloId, @JsonKey(name: 'DESCRIPCION') required this.descripcion, @JsonKey(name: 'VENTAS_TOTAL') required this.ventasTotal, @JsonKey(name: 'VENTAS_CLIENTE') required this.ventasCliente, @JsonKey(name: 'DIVISA_ID') required this.divisaId}): super._();
   factory _ArticuloTopDTO.fromJson(Map<String, dynamic> json) => _$ArticuloTopDTOFromJson(json);
 
 @override@JsonKey(name: 'ARTICULO_ID') final  String articuloId;
-@override@JsonKey(name: 'DESCRIPCION_ES') final  String descripcion;
+@override@JsonKey(name: 'DESCRIPCION') final  String descripcion;
 @override@JsonKey(name: 'VENTAS_TOTAL') final  double ventasTotal;
 @override@JsonKey(name: 'VENTAS_CLIENTE') final  double ventasCliente;
 @override@JsonKey(name: 'DIVISA_ID') final  String divisaId;
@@ -255,7 +255,7 @@ abstract mixin class _$ArticuloTopDTOCopyWith<$Res> implements $ArticuloTopDTOCo
   factory _$ArticuloTopDTOCopyWith(_ArticuloTopDTO value, $Res Function(_ArticuloTopDTO) _then) = __$ArticuloTopDTOCopyWithImpl;
 @override @useResult
 $Res call({
-@JsonKey(name: 'ARTICULO_ID') String articuloId,@JsonKey(name: 'DESCRIPCION_ES') String descripcion,@JsonKey(name: 'VENTAS_TOTAL') double ventasTotal,@JsonKey(name: 'VENTAS_CLIENTE') double ventasCliente,@JsonKey(name: 'DIVISA_ID') String divisaId
+@JsonKey(name: 'ARTICULO_ID') String articuloId,@JsonKey(name: 'DESCRIPCION') String descripcion,@JsonKey(name: 'VENTAS_TOTAL') double ventasTotal,@JsonKey(name: 'VENTAS_CLIENTE') double ventasCliente,@JsonKey(name: 'DIVISA_ID') String divisaId
 });
 
 

@@ -1,4 +1,5 @@
 import 'package:drift/drift.dart';
+import 'package:intl/intl.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../../features/articulos/domain/articulo.dart';
@@ -36,7 +37,13 @@ class ArticuloTopRepository {
         .customSelect(
           '''
           SELECT estadisticas_articulos_top.ARTICULO_ID
-, ARTICULOS.DESCRIPCION_ES
+, case :idioma when 'es' then ARTICULOS.descripcion_ES
+                  when 'de' then IFNULL(ARTICULOS.descripcion_DE,  ARTICULOS.descripcion_ES)
+                  when 'en' then IFNULL(ARTICULOS.descripcion_EN,  ARTICULOS.descripcion_ES)
+                  when 'fr' then IFNULL(ARTICULOS.descripcion_FR,  ARTICULOS.descripcion_ES)
+                  when 'it' then IFNULL(ARTICULOS.descripcion_IT,  ARTICULOS.descripcion_ES)
+                  when 'pt' then IFNULL(ARTICULOS.descripcion_PT,  ARTICULOS.descripcion_ES)
+                  else ARTICULOS.descripcion_ES end DESCRIPCION
 ,IFNULL((SELECT SUM (estadisticas_venta.importe)
 FROM estadisticas_venta
 WHERE estadisticas_venta.articulo_id = estadisticas_articulos_top.articulo_id
@@ -53,7 +60,7 @@ FROM estadisticas_articulos_top
 INNER JOIN ARTICULOS ON ARTICULOS.articulo_id = ESTADISTICAS_ARTICULOS_TOP.ARTICULO_ID
 ORDER BY VENTAS_TOTAL DESC
 ''',
-          variables: [Variable(clienteId)],
+          variables: [Variable(Intl.getCurrentLocale()), Variable(clienteId)],
           readsFrom: {
             db.estadisticasArticulosTopTable,
             db.estadisticasClienteUsuarioVentasTable,
