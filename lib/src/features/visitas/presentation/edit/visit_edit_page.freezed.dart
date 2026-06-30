@@ -14,7 +14,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$VisitEditScreenData {
 
- Visita? get visita; List<Pais> get paises; List<Provincia> get provincias;
+ Visita? get visita; List<Pais> get paises; List<Provincia> get provincias; Cliente? get createVisitaFromCliente;
 /// Create a copy of VisitEditScreenData
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -25,16 +25,16 @@ $VisitEditScreenDataCopyWith<VisitEditScreenData> get copyWith => _$VisitEditScr
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is VisitEditScreenData&&(identical(other.visita, visita) || other.visita == visita)&&const DeepCollectionEquality().equals(other.paises, paises)&&const DeepCollectionEquality().equals(other.provincias, provincias));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is VisitEditScreenData&&(identical(other.visita, visita) || other.visita == visita)&&const DeepCollectionEquality().equals(other.paises, paises)&&const DeepCollectionEquality().equals(other.provincias, provincias)&&(identical(other.createVisitaFromCliente, createVisitaFromCliente) || other.createVisitaFromCliente == createVisitaFromCliente));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,visita,const DeepCollectionEquality().hash(paises),const DeepCollectionEquality().hash(provincias));
+int get hashCode => Object.hash(runtimeType,visita,const DeepCollectionEquality().hash(paises),const DeepCollectionEquality().hash(provincias),createVisitaFromCliente);
 
 @override
 String toString() {
-  return 'VisitEditScreenData(visita: $visita, paises: $paises, provincias: $provincias)';
+  return 'VisitEditScreenData(visita: $visita, paises: $paises, provincias: $provincias, createVisitaFromCliente: $createVisitaFromCliente)';
 }
 
 
@@ -45,11 +45,11 @@ abstract mixin class $VisitEditScreenDataCopyWith<$Res>  {
   factory $VisitEditScreenDataCopyWith(VisitEditScreenData value, $Res Function(VisitEditScreenData) _then) = _$VisitEditScreenDataCopyWithImpl;
 @useResult
 $Res call({
- Visita? visita, List<Pais> paises, List<Provincia> provincias
+ Visita? visita, List<Pais> paises, List<Provincia> provincias, Cliente? createVisitaFromCliente
 });
 
 
-$VisitaCopyWith<$Res>? get visita;
+$VisitaCopyWith<$Res>? get visita;$ClienteCopyWith<$Res>? get createVisitaFromCliente;
 
 }
 /// @nodoc
@@ -62,12 +62,13 @@ class _$VisitEditScreenDataCopyWithImpl<$Res>
 
 /// Create a copy of VisitEditScreenData
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? visita = freezed,Object? paises = null,Object? provincias = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? visita = freezed,Object? paises = null,Object? provincias = null,Object? createVisitaFromCliente = freezed,}) {
   return _then(_self.copyWith(
 visita: freezed == visita ? _self.visita : visita // ignore: cast_nullable_to_non_nullable
 as Visita?,paises: null == paises ? _self.paises : paises // ignore: cast_nullable_to_non_nullable
 as List<Pais>,provincias: null == provincias ? _self.provincias : provincias // ignore: cast_nullable_to_non_nullable
-as List<Provincia>,
+as List<Provincia>,createVisitaFromCliente: freezed == createVisitaFromCliente ? _self.createVisitaFromCliente : createVisitaFromCliente // ignore: cast_nullable_to_non_nullable
+as Cliente?,
   ));
 }
 /// Create a copy of VisitEditScreenData
@@ -81,6 +82,18 @@ $VisitaCopyWith<$Res>? get visita {
 
   return $VisitaCopyWith<$Res>(_self.visita!, (value) {
     return _then(_self.copyWith(visita: value));
+  });
+}/// Create a copy of VisitEditScreenData
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$ClienteCopyWith<$Res>? get createVisitaFromCliente {
+    if (_self.createVisitaFromCliente == null) {
+    return null;
+  }
+
+  return $ClienteCopyWith<$Res>(_self.createVisitaFromCliente!, (value) {
+    return _then(_self.copyWith(createVisitaFromCliente: value));
   });
 }
 }
@@ -164,10 +177,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( Visita? visita,  List<Pais> paises,  List<Provincia> provincias)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( Visita? visita,  List<Pais> paises,  List<Provincia> provincias,  Cliente? createVisitaFromCliente)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _VisitEditScreenData() when $default != null:
-return $default(_that.visita,_that.paises,_that.provincias);case _:
+return $default(_that.visita,_that.paises,_that.provincias,_that.createVisitaFromCliente);case _:
   return orElse();
 
 }
@@ -185,10 +198,10 @@ return $default(_that.visita,_that.paises,_that.provincias);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( Visita? visita,  List<Pais> paises,  List<Provincia> provincias)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( Visita? visita,  List<Pais> paises,  List<Provincia> provincias,  Cliente? createVisitaFromCliente)  $default,) {final _that = this;
 switch (_that) {
 case _VisitEditScreenData():
-return $default(_that.visita,_that.paises,_that.provincias);case _:
+return $default(_that.visita,_that.paises,_that.provincias,_that.createVisitaFromCliente);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -205,10 +218,10 @@ return $default(_that.visita,_that.paises,_that.provincias);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( Visita? visita,  List<Pais> paises,  List<Provincia> provincias)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( Visita? visita,  List<Pais> paises,  List<Provincia> provincias,  Cliente? createVisitaFromCliente)?  $default,) {final _that = this;
 switch (_that) {
 case _VisitEditScreenData() when $default != null:
-return $default(_that.visita,_that.paises,_that.provincias);case _:
+return $default(_that.visita,_that.paises,_that.provincias,_that.createVisitaFromCliente);case _:
   return null;
 
 }
@@ -220,7 +233,7 @@ return $default(_that.visita,_that.paises,_that.provincias);case _:
 
 
 class _VisitEditScreenData extends VisitEditScreenData {
-  const _VisitEditScreenData({this.visita, required final  List<Pais> paises, required final  List<Provincia> provincias}): _paises = paises,_provincias = provincias,super._();
+  const _VisitEditScreenData({this.visita, required final  List<Pais> paises, required final  List<Provincia> provincias, this.createVisitaFromCliente}): _paises = paises,_provincias = provincias,super._();
   
 
 @override final  Visita? visita;
@@ -238,6 +251,7 @@ class _VisitEditScreenData extends VisitEditScreenData {
   return EqualUnmodifiableListView(_provincias);
 }
 
+@override final  Cliente? createVisitaFromCliente;
 
 /// Create a copy of VisitEditScreenData
 /// with the given fields replaced by the non-null parameter values.
@@ -249,16 +263,16 @@ _$VisitEditScreenDataCopyWith<_VisitEditScreenData> get copyWith => __$VisitEdit
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _VisitEditScreenData&&(identical(other.visita, visita) || other.visita == visita)&&const DeepCollectionEquality().equals(other._paises, _paises)&&const DeepCollectionEquality().equals(other._provincias, _provincias));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _VisitEditScreenData&&(identical(other.visita, visita) || other.visita == visita)&&const DeepCollectionEquality().equals(other._paises, _paises)&&const DeepCollectionEquality().equals(other._provincias, _provincias)&&(identical(other.createVisitaFromCliente, createVisitaFromCliente) || other.createVisitaFromCliente == createVisitaFromCliente));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,visita,const DeepCollectionEquality().hash(_paises),const DeepCollectionEquality().hash(_provincias));
+int get hashCode => Object.hash(runtimeType,visita,const DeepCollectionEquality().hash(_paises),const DeepCollectionEquality().hash(_provincias),createVisitaFromCliente);
 
 @override
 String toString() {
-  return 'VisitEditScreenData(visita: $visita, paises: $paises, provincias: $provincias)';
+  return 'VisitEditScreenData(visita: $visita, paises: $paises, provincias: $provincias, createVisitaFromCliente: $createVisitaFromCliente)';
 }
 
 
@@ -269,11 +283,11 @@ abstract mixin class _$VisitEditScreenDataCopyWith<$Res> implements $VisitEditSc
   factory _$VisitEditScreenDataCopyWith(_VisitEditScreenData value, $Res Function(_VisitEditScreenData) _then) = __$VisitEditScreenDataCopyWithImpl;
 @override @useResult
 $Res call({
- Visita? visita, List<Pais> paises, List<Provincia> provincias
+ Visita? visita, List<Pais> paises, List<Provincia> provincias, Cliente? createVisitaFromCliente
 });
 
 
-@override $VisitaCopyWith<$Res>? get visita;
+@override $VisitaCopyWith<$Res>? get visita;@override $ClienteCopyWith<$Res>? get createVisitaFromCliente;
 
 }
 /// @nodoc
@@ -286,12 +300,13 @@ class __$VisitEditScreenDataCopyWithImpl<$Res>
 
 /// Create a copy of VisitEditScreenData
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? visita = freezed,Object? paises = null,Object? provincias = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? visita = freezed,Object? paises = null,Object? provincias = null,Object? createVisitaFromCliente = freezed,}) {
   return _then(_VisitEditScreenData(
 visita: freezed == visita ? _self.visita : visita // ignore: cast_nullable_to_non_nullable
 as Visita?,paises: null == paises ? _self._paises : paises // ignore: cast_nullable_to_non_nullable
 as List<Pais>,provincias: null == provincias ? _self._provincias : provincias // ignore: cast_nullable_to_non_nullable
-as List<Provincia>,
+as List<Provincia>,createVisitaFromCliente: freezed == createVisitaFromCliente ? _self.createVisitaFromCliente : createVisitaFromCliente // ignore: cast_nullable_to_non_nullable
+as Cliente?,
   ));
 }
 
@@ -306,6 +321,18 @@ $VisitaCopyWith<$Res>? get visita {
 
   return $VisitaCopyWith<$Res>(_self.visita!, (value) {
     return _then(_self.copyWith(visita: value));
+  });
+}/// Create a copy of VisitEditScreenData
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$ClienteCopyWith<$Res>? get createVisitaFromCliente {
+    if (_self.createVisitaFromCliente == null) {
+    return null;
+  }
+
+  return $ClienteCopyWith<$Res>(_self.createVisitaFromCliente!, (value) {
+    return _then(_self.copyWith(createVisitaFromCliente: value));
   });
 }
 }

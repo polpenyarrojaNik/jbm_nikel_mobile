@@ -17,7 +17,7 @@ final class VisitEditPageControllerProvider
         $AsyncNotifierProvider<VisitEditPageController, VisitEditScreenData> {
   VisitEditPageControllerProvider._({
     required VisitEditPageControllerFamily super.from,
-    required (String, bool, bool) super.argument,
+    required (String, bool, bool, String?) super.argument,
   }) : super(
          retry: null,
          name: r'visitEditPageControllerProvider',
@@ -53,7 +53,7 @@ final class VisitEditPageControllerProvider
 }
 
 String _$visitEditPageControllerHash() =>
-    r'ea44a540ebad8d7acdef6ac8d4945c22bbc3f516';
+    r'f65c32a8257b147372bc061b5de3e802ea48cc5c';
 
 final class VisitEditPageControllerFamily extends $Family
     with
@@ -62,7 +62,7 @@ final class VisitEditPageControllerFamily extends $Family
           AsyncValue<VisitEditScreenData>,
           VisitEditScreenData,
           FutureOr<VisitEditScreenData>,
-          (String, bool, bool)
+          (String, bool, bool, String?)
         > {
   VisitEditPageControllerFamily._()
     : super(
@@ -77,8 +77,9 @@ final class VisitEditPageControllerFamily extends $Family
     String visitaId,
     bool isLocal,
     bool isNew,
+    String? createVisitaFromClienteId,
   ) => VisitEditPageControllerProvider._(
-    argument: (visitaId, isLocal, isNew),
+    argument: (visitaId, isLocal, isNew, createVisitaFromClienteId),
     from: this,
   );
 
@@ -88,15 +89,17 @@ final class VisitEditPageControllerFamily extends $Family
 
 abstract class _$VisitEditPageController
     extends $AsyncNotifier<VisitEditScreenData> {
-  late final _$args = ref.$arg as (String, bool, bool);
+  late final _$args = ref.$arg as (String, bool, bool, String?);
   String get visitaId => _$args.$1;
   bool get isLocal => _$args.$2;
   bool get isNew => _$args.$3;
+  String? get createVisitaFromClienteId => _$args.$4;
 
   FutureOr<VisitEditScreenData> build(
     String visitaId,
     bool isLocal,
     bool isNew,
+    String? createVisitaFromClienteId,
   );
   @$mustCallSuper
   @override
@@ -111,6 +114,9 @@ abstract class _$VisitEditPageController
               Object?,
               Object?
             >;
-    element.handleCreate(ref, () => build(_$args.$1, _$args.$2, _$args.$3));
+    element.handleCreate(
+      ref,
+      () => build(_$args.$1, _$args.$2, _$args.$3, _$args.$4),
+    );
   }
 }

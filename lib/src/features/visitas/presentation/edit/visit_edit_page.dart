@@ -30,6 +30,7 @@ import '../../../../core/presentation/common_widgets/progress_indicator_widget.d
 import '../../../../core/routing/app_auto_router.dart';
 import '../../../cliente/domain/cliente.dart';
 import '../../../cliente/domain/cliente_contacto.dart';
+import '../../../cliente/infrastructure/cliente_repository.dart';
 import '../../../usuario/application/usuario_notifier.dart';
 import '../../domain/image_form_data.dart';
 import '../../domain/visita.dart';
@@ -53,6 +54,7 @@ abstract class VisitEditScreenData with _$VisitEditScreenData {
     Visita? visita,
     required List<Pais> paises,
     required List<Provincia> provincias,
+    Cliente? createVisitaFromCliente,
   }) = _VisitEditScreenData;
 
   bool get isNew => visita == null;
@@ -67,6 +69,7 @@ class VisitEditPageController extends _$VisitEditPageController {
     String visitaId,
     bool isLocal,
     bool isNew,
+    String? createVisitaFromClienteId,
   ) async {
     Visita? visit;
 
@@ -90,6 +93,11 @@ class VisitEditPageController extends _$VisitEditPageController {
       visita: visit,
       paises: paises,
       provincias: provincias,
+      createVisitaFromCliente: createVisitaFromClienteId != null
+          ? await ref
+                .read(clienteRepositoryProvider)
+                .getClienteById(clienteId: createVisitaFromClienteId)
+          : null,
     );
   }
 
@@ -132,7 +140,12 @@ class VisitaEditPage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final state = ref.watch(
-      visitEditPageControllerProvider(id, isLocal, isNew),
+      visitEditPageControllerProvider(
+        id,
+        isLocal,
+        isNew,
+        createVisitaFromClienteId,
+      ),
     );
 
     final stateSaveForm = ref.watch(visitaSaveFormMutation);
@@ -284,7 +297,12 @@ class VisitaEditPage extends ConsumerWidget {
       unawaited(
         runMutationSafe(ref, visitaSaveFormMutation, (tsx) async {
           final controller = tsx.get(
-            visitEditPageControllerProvider(id, isLocal, isNew).notifier,
+            visitEditPageControllerProvider(
+              id,
+              isLocal,
+              isNew,
+              createVisitaFromClienteId,
+            ).notifier,
           );
           final result = await controller.saveForm(visita);
 
@@ -403,7 +421,9 @@ class _VisitaFormState extends ConsumerState<_VisitaForm> {
     isClienteProvisional =
         widget.visitaEditScreenData.visita?.isClienteProvisional ?? false;
 
-    isClienteLinked = widget.visitaEditScreenData.visita?.cliente != null;
+    isClienteLinked =
+        widget.visitaEditScreenData.visita?.cliente != null ||
+        widget.visitaEditScreenData.createVisitaFromCliente != null;
   }
 
   @override
@@ -437,7 +457,9 @@ class _VisitaFormState extends ConsumerState<_VisitaForm> {
           if (isClienteProvisional) const Divider(),
           if (!isClienteProvisional)
             SelectClienteWidget(
-              visita: widget.visitaEditScreenData.visita,
+              initialValue:
+                  widget.visitaEditScreenData.visita?.cliente ??
+                  widget.visitaEditScreenData.createVisitaFromCliente,
               readOnly: widget.readOnly,
               formKey: widget.formKey,
               onSelectedCliente: (newCliente) => setState(() {
@@ -981,13 +1003,13 @@ class _ClienteProvisionalContainerState
 class SelectClienteWidget extends StatelessWidget {
   const SelectClienteWidget({
     super.key,
-    required this.visita,
+    required this.initialValue,
     required this.readOnly,
     required this.formKey,
     required this.onSelectedCliente,
   });
 
-  final Visita? visita;
+  final Cliente? initialValue;
   final bool readOnly;
   final GlobalKey<FormBuilderState> formKey;
   final Function(Cliente? cliente) onSelectedCliente;
@@ -1012,7 +1034,7 @@ class SelectClienteWidget extends StatelessWidget {
                 )
               : Container(),
         ),
-        initialValue: visita?.cliente,
+        initialValue: initialValue,
       ),
     );
   }
