@@ -11,7 +11,9 @@ import '../../../../core/presentation/common_widgets/error_message_widget.dart';
 import '../../../../core/presentation/common_widgets/header_datos_relacionados.dart';
 import '../../../../core/presentation/common_widgets/progress_indicator_widget.dart';
 import '../../../../core/presentation/theme/app_sizes.dart';
+import '../../../../core/routing/app_auto_router.dart';
 import '../../../visitas/domain/visita.dart';
+import '../../../visitas/domain/visita_id_param.dart';
 import '../../infrastructure/cliente_repository.dart';
 
 @RoutePage()
@@ -76,49 +78,83 @@ class ClienteVisitaListaTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: Colors.transparent,
-      padding: kPaddingList,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(dateFormatter(visita.fecha.toLocal().toIso8601String())),
-              if (getEstadoVisitaLocal(
-                    context,
-                    visita.enviada,
-                    visita.tratada,
-                  ) !=
-                  null)
-                ChipContainer(
-                  text: getEstadoVisitaLocal(
-                    context,
-                    visita.enviada,
-                    visita.tratada,
-                  )!,
-                  color: getColorEstadoVisitaLocal(
-                    context,
-                    visita.enviada,
-                    visita.tratada,
+    return GestureDetector(
+      behavior: HitTestBehavior.opaque,
+      onTap: () => context.router.push(
+        VisitaDetalleRoute(
+          visitaIdIsLocalParam: VisitaIdIsLocalParam(
+            id: visita.id!,
+            isLocal: visita.getIsLocal(),
+            createVisitaFromClienteId: visita.cliente?.id,
+          ),
+        ),
+      ),
+      child: Container(
+        color: Colors.transparent,
+        padding: kPaddingList,
+        child: Row(
+          children: [
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        dateFormatter(visita.fecha.toLocal().toIso8601String()),
+                      ),
+                      if (getEstadoVisitaLocal(
+                            context,
+                            visita.enviada,
+                            visita.tratada,
+                          ) !=
+                          null)
+                        ChipContainer(
+                          text: getEstadoVisitaLocal(
+                            context,
+                            visita.enviada,
+                            visita.tratada,
+                          )!,
+                          color: getColorEstadoVisitaLocal(
+                            context,
+                            visita.enviada,
+                            visita.tratada,
+                          ),
+                        ),
+                    ],
+                  ),
+                  if (visita.contacto != null)
+                    Text(
+                      visita.contacto!,
+                      style: Theme.of(context).textTheme.titleSmall,
+                    ),
+                  const Gap(8),
+                  if (visita.resumen != null)
+                    Text(
+                      visita.resumen!,
+                      maxLines: 3,
+                      overflow: TextOverflow.ellipsis,
+                      style: Theme.of(context).textTheme.bodySmall,
+                    ),
+                ],
+              ),
+            ),
+            const Gap(2),
+            IconButton(
+              onPressed: () => context.router.push(
+                VisitaDetalleRoute(
+                  visitaIdIsLocalParam: VisitaIdIsLocalParam(
+                    id: visita.id!,
+                    isLocal: visita.getIsLocal(),
+                    createVisitaFromClienteId: visita.cliente?.id,
                   ),
                 ),
-            ],
-          ),
-          if (visita.contacto != null)
-            Text(
-              visita.contacto!,
-              style: Theme.of(context).textTheme.titleSmall,
+              ),
+              icon: Icon(Icons.chevron_right),
             ),
-          const Gap(8),
-          if (visita.resumen != null)
-            Text(
-              visita.resumen!,
-              maxLines: 3,
-              style: Theme.of(context).textTheme.bodySmall,
-            ),
-        ],
+          ],
+        ),
       ),
     );
   }
