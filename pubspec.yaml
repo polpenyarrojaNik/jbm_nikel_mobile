@@ -1,7 +1,7 @@
 name: jbm_nikel_mobile
 description: JBM Nikel Mobile
 publish_to: "none"
-version: 1.2.129+202
+version: 1.2.129+203
 
 environment:
   sdk: ^3.12.2
