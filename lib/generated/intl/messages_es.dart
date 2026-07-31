@@ -835,6 +835,7 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "results": MessageLookupByLibrary.simpleMessage("Resultados"),
     "retry": MessageLookupByLibrary.simpleMessage("Reintentar"),
+    "salesOrderSent": MessageLookupByLibrary.simpleMessage("Pedido enviado"),
     "save": MessageLookupByLibrary.simpleMessage("Guardar"),
     "saveAs": MessageLookupByLibrary.simpleMessage("Guardar como"),
     "search": MessageLookupByLibrary.simpleMessage("Buscar..."),

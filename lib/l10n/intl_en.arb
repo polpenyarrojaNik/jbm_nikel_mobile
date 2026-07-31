@@ -467,5 +467,6 @@
   "active": "Active",
   "inactive": "Inactive",
   "potential": "Potential",
-  "filter": "Filter"
+  "filter": "Filter",
+  "salesOrderSent": "Sales order sent"
 }

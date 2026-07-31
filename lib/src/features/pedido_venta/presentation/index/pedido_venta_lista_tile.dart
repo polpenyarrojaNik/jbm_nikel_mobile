@@ -74,7 +74,7 @@ class PedidoVentaListaTile extends ConsumerWidget {
                             pedidoVenta.pedidoVentaId ??
                                 (pedidoVenta.enviada
                                     ? S.of(context).pending
-                                    : S.of(context).pedido_index_offline),
+                                    : S.of(context).salesOrderSent),
                             style: Theme.of(context).textTheme.bodySmall
                                 ?.copyWith(
                                   color: Theme.of(

@@ -39,6 +39,16 @@ class PedidoVentaDetallePage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final state = ref.watch(pedidoVentaByIdProvider(pedidoLocalParam));
+    String pedidoTitleValue;
+    if (pedidoLocalParam.isLocal && (pedidoLocalParam.enviada ?? false)) {
+      pedidoTitleValue = S.of(context).salesOrderSent;
+    } else if (pedidoLocalParam.isLocal) {
+      pedidoTitleValue = S.of(context).pedido_index_offline;
+    } else {
+      pedidoTitleValue = pedidoLocalParam.pedidoId != null
+          ? ('${S.of(context).pedido_show_pedidoVentaDetalle_titulo} ${pedidoLocalParam.pedidoId}')
+          : S.of(context).pedido_index_offline;
+    }
 
     ref.listen(pedidoVentaAdjuntoMutation, (_, state) {
       if (state is MutationPending<File?>) {
@@ -58,8 +68,7 @@ class PedidoVentaDetallePage extends ConsumerWidget {
 
     return Scaffold(
       appBar: CommonAppBar(
-        titleText:
-            ('${S.of(context).pedido_show_pedidoVentaDetalle_titulo} ${(pedidoLocalParam.isLocal) ? S.of(context).pedido_index_offline : pedidoLocalParam.pedidoId}'),
+        titleText: pedidoTitleValue,
         actions: state.maybeWhen(
           orElse: () => null,
           data: (pedidoVenta) {

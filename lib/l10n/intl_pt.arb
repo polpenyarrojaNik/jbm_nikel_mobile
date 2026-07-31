@@ -463,9 +463,10 @@
   "share": "Compartilhar",
   "customerNotAvailableToSelect": "Cliente não disponível para seleção",
   "visitLocation": "Localização da visita",
-  "apply": "Apply",
+  "apply": "Aplicar",
   "all": "Todos",
   "active": "Ativo",
   "potential": "Potencial",
-  "filter": "Filtrar"
+  "filter": "Filtrar",
+  "salesOrderSent": "Pedido enviado"
 }

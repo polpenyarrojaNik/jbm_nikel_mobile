@@ -4447,6 +4447,16 @@ class S {
   String get filter {
     return Intl.message('Filter', name: 'filter', desc: '', args: []);
   }
+
+  /// `Sales order sent`
+  String get salesOrderSent {
+    return Intl.message(
+      'Sales order sent',
+      name: 'salesOrderSent',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

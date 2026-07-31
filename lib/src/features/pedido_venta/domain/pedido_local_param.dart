@@ -13,6 +13,7 @@ abstract class PedidoLocalParam with _$PedidoLocalParam {
     String? empresaId,
     required bool isEdit,
     bool? tratada,
+    bool? enviada,
     String? createPedidoFromClienteId,
     PedidoVentaLinea? addLineaDesdeArticulo,
   }) = _PedidoLocalParam;

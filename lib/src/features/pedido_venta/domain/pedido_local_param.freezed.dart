@@ -14,7 +14,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$PedidoLocalParam {
 
- String? get pedidoAppId; String? get pedidoId; String? get empresaId; bool get isEdit; bool? get tratada; String? get createPedidoFromClienteId; PedidoVentaLinea? get addLineaDesdeArticulo;
+ String? get pedidoAppId; String? get pedidoId; String? get empresaId; bool get isEdit; bool? get tratada; bool? get enviada; String? get createPedidoFromClienteId; PedidoVentaLinea? get addLineaDesdeArticulo;
 /// Create a copy of PedidoLocalParam
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -25,16 +25,16 @@ $PedidoLocalParamCopyWith<PedidoLocalParam> get copyWith => _$PedidoLocalParamCo
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is PedidoLocalParam&&(identical(other.pedidoAppId, pedidoAppId) || other.pedidoAppId == pedidoAppId)&&(identical(other.pedidoId, pedidoId) || other.pedidoId == pedidoId)&&(identical(other.empresaId, empresaId) || other.empresaId == empresaId)&&(identical(other.isEdit, isEdit) || other.isEdit == isEdit)&&(identical(other.tratada, tratada) || other.tratada == tratada)&&(identical(other.createPedidoFromClienteId, createPedidoFromClienteId) || other.createPedidoFromClienteId == createPedidoFromClienteId)&&(identical(other.addLineaDesdeArticulo, addLineaDesdeArticulo) || other.addLineaDesdeArticulo == addLineaDesdeArticulo));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is PedidoLocalParam&&(identical(other.pedidoAppId, pedidoAppId) || other.pedidoAppId == pedidoAppId)&&(identical(other.pedidoId, pedidoId) || other.pedidoId == pedidoId)&&(identical(other.empresaId, empresaId) || other.empresaId == empresaId)&&(identical(other.isEdit, isEdit) || other.isEdit == isEdit)&&(identical(other.tratada, tratada) || other.tratada == tratada)&&(identical(other.enviada, enviada) || other.enviada == enviada)&&(identical(other.createPedidoFromClienteId, createPedidoFromClienteId) || other.createPedidoFromClienteId == createPedidoFromClienteId)&&(identical(other.addLineaDesdeArticulo, addLineaDesdeArticulo) || other.addLineaDesdeArticulo == addLineaDesdeArticulo));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,pedidoAppId,pedidoId,empresaId,isEdit,tratada,createPedidoFromClienteId,addLineaDesdeArticulo);
+int get hashCode => Object.hash(runtimeType,pedidoAppId,pedidoId,empresaId,isEdit,tratada,enviada,createPedidoFromClienteId,addLineaDesdeArticulo);
 
 @override
 String toString() {
-  return 'PedidoLocalParam(pedidoAppId: $pedidoAppId, pedidoId: $pedidoId, empresaId: $empresaId, isEdit: $isEdit, tratada: $tratada, createPedidoFromClienteId: $createPedidoFromClienteId, addLineaDesdeArticulo: $addLineaDesdeArticulo)';
+  return 'PedidoLocalParam(pedidoAppId: $pedidoAppId, pedidoId: $pedidoId, empresaId: $empresaId, isEdit: $isEdit, tratada: $tratada, enviada: $enviada, createPedidoFromClienteId: $createPedidoFromClienteId, addLineaDesdeArticulo: $addLineaDesdeArticulo)';
 }
 
 
@@ -45,7 +45,7 @@ abstract mixin class $PedidoLocalParamCopyWith<$Res>  {
   factory $PedidoLocalParamCopyWith(PedidoLocalParam value, $Res Function(PedidoLocalParam) _then) = _$PedidoLocalParamCopyWithImpl;
 @useResult
 $Res call({
- String? pedidoAppId, String? pedidoId, String? empresaId, bool isEdit, bool? tratada, String? createPedidoFromClienteId, PedidoVentaLinea? addLineaDesdeArticulo
+ String? pedidoAppId, String? pedidoId, String? empresaId, bool isEdit, bool? tratada, bool? enviada, String? createPedidoFromClienteId, PedidoVentaLinea? addLineaDesdeArticulo
 });
 
 
@@ -62,13 +62,14 @@ class _$PedidoLocalParamCopyWithImpl<$Res>
 
 /// Create a copy of PedidoLocalParam
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? pedidoAppId = freezed,Object? pedidoId = freezed,Object? empresaId = freezed,Object? isEdit = null,Object? tratada = freezed,Object? createPedidoFromClienteId = freezed,Object? addLineaDesdeArticulo = freezed,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? pedidoAppId = freezed,Object? pedidoId = freezed,Object? empresaId = freezed,Object? isEdit = null,Object? tratada = freezed,Object? enviada = freezed,Object? createPedidoFromClienteId = freezed,Object? addLineaDesdeArticulo = freezed,}) {
   return _then(_self.copyWith(
 pedidoAppId: freezed == pedidoAppId ? _self.pedidoAppId : pedidoAppId // ignore: cast_nullable_to_non_nullable
 as String?,pedidoId: freezed == pedidoId ? _self.pedidoId : pedidoId // ignore: cast_nullable_to_non_nullable
 as String?,empresaId: freezed == empresaId ? _self.empresaId : empresaId // ignore: cast_nullable_to_non_nullable
 as String?,isEdit: null == isEdit ? _self.isEdit : isEdit // ignore: cast_nullable_to_non_nullable
 as bool,tratada: freezed == tratada ? _self.tratada : tratada // ignore: cast_nullable_to_non_nullable
+as bool?,enviada: freezed == enviada ? _self.enviada : enviada // ignore: cast_nullable_to_non_nullable
 as bool?,createPedidoFromClienteId: freezed == createPedidoFromClienteId ? _self.createPedidoFromClienteId : createPedidoFromClienteId // ignore: cast_nullable_to_non_nullable
 as String?,addLineaDesdeArticulo: freezed == addLineaDesdeArticulo ? _self.addLineaDesdeArticulo : addLineaDesdeArticulo // ignore: cast_nullable_to_non_nullable
 as PedidoVentaLinea?,
@@ -168,10 +169,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String? pedidoAppId,  String? pedidoId,  String? empresaId,  bool isEdit,  bool? tratada,  String? createPedidoFromClienteId,  PedidoVentaLinea? addLineaDesdeArticulo)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String? pedidoAppId,  String? pedidoId,  String? empresaId,  bool isEdit,  bool? tratada,  bool? enviada,  String? createPedidoFromClienteId,  PedidoVentaLinea? addLineaDesdeArticulo)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _PedidoLocalParam() when $default != null:
-return $default(_that.pedidoAppId,_that.pedidoId,_that.empresaId,_that.isEdit,_that.tratada,_that.createPedidoFromClienteId,_that.addLineaDesdeArticulo);case _:
+return $default(_that.pedidoAppId,_that.pedidoId,_that.empresaId,_that.isEdit,_that.tratada,_that.enviada,_that.createPedidoFromClienteId,_that.addLineaDesdeArticulo);case _:
   return orElse();
 
 }
@@ -189,10 +190,10 @@ return $default(_that.pedidoAppId,_that.pedidoId,_that.empresaId,_that.isEdit,_t
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String? pedidoAppId,  String? pedidoId,  String? empresaId,  bool isEdit,  bool? tratada,  String? createPedidoFromClienteId,  PedidoVentaLinea? addLineaDesdeArticulo)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String? pedidoAppId,  String? pedidoId,  String? empresaId,  bool isEdit,  bool? tratada,  bool? enviada,  String? createPedidoFromClienteId,  PedidoVentaLinea? addLineaDesdeArticulo)  $default,) {final _that = this;
 switch (_that) {
 case _PedidoLocalParam():
-return $default(_that.pedidoAppId,_that.pedidoId,_that.empresaId,_that.isEdit,_that.tratada,_that.createPedidoFromClienteId,_that.addLineaDesdeArticulo);case _:
+return $default(_that.pedidoAppId,_that.pedidoId,_that.empresaId,_that.isEdit,_that.tratada,_that.enviada,_that.createPedidoFromClienteId,_that.addLineaDesdeArticulo);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -209,10 +210,10 @@ return $default(_that.pedidoAppId,_that.pedidoId,_that.empresaId,_that.isEdit,_t
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String? pedidoAppId,  String? pedidoId,  String? empresaId,  bool isEdit,  bool? tratada,  String? createPedidoFromClienteId,  PedidoVentaLinea? addLineaDesdeArticulo)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String? pedidoAppId,  String? pedidoId,  String? empresaId,  bool isEdit,  bool? tratada,  bool? enviada,  String? createPedidoFromClienteId,  PedidoVentaLinea? addLineaDesdeArticulo)?  $default,) {final _that = this;
 switch (_that) {
 case _PedidoLocalParam() when $default != null:
-return $default(_that.pedidoAppId,_that.pedidoId,_that.empresaId,_that.isEdit,_that.tratada,_that.createPedidoFromClienteId,_that.addLineaDesdeArticulo);case _:
+return $default(_that.pedidoAppId,_that.pedidoId,_that.empresaId,_that.isEdit,_that.tratada,_that.enviada,_that.createPedidoFromClienteId,_that.addLineaDesdeArticulo);case _:
   return null;
 
 }
@@ -224,7 +225,7 @@ return $default(_that.pedidoAppId,_that.pedidoId,_that.empresaId,_that.isEdit,_t
 
 
 class _PedidoLocalParam extends PedidoLocalParam {
-  const _PedidoLocalParam({this.pedidoAppId, this.pedidoId, this.empresaId, required this.isEdit, this.tratada, this.createPedidoFromClienteId, this.addLineaDesdeArticulo}): super._();
+  const _PedidoLocalParam({this.pedidoAppId, this.pedidoId, this.empresaId, required this.isEdit, this.tratada, this.enviada, this.createPedidoFromClienteId, this.addLineaDesdeArticulo}): super._();
   
 
 @override final  String? pedidoAppId;
@@ -232,6 +233,7 @@ class _PedidoLocalParam extends PedidoLocalParam {
 @override final  String? empresaId;
 @override final  bool isEdit;
 @override final  bool? tratada;
+@override final  bool? enviada;
 @override final  String? createPedidoFromClienteId;
 @override final  PedidoVentaLinea? addLineaDesdeArticulo;
 
@@ -245,16 +247,16 @@ _$PedidoLocalParamCopyWith<_PedidoLocalParam> get copyWith => __$PedidoLocalPara
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _PedidoLocalParam&&(identical(other.pedidoAppId, pedidoAppId) || other.pedidoAppId == pedidoAppId)&&(identical(other.pedidoId, pedidoId) || other.pedidoId == pedidoId)&&(identical(other.empresaId, empresaId) || other.empresaId == empresaId)&&(identical(other.isEdit, isEdit) || other.isEdit == isEdit)&&(identical(other.tratada, tratada) || other.tratada == tratada)&&(identical(other.createPedidoFromClienteId, createPedidoFromClienteId) || other.createPedidoFromClienteId == createPedidoFromClienteId)&&(identical(other.addLineaDesdeArticulo, addLineaDesdeArticulo) || other.addLineaDesdeArticulo == addLineaDesdeArticulo));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _PedidoLocalParam&&(identical(other.pedidoAppId, pedidoAppId) || other.pedidoAppId == pedidoAppId)&&(identical(other.pedidoId, pedidoId) || other.pedidoId == pedidoId)&&(identical(other.empresaId, empresaId) || other.empresaId == empresaId)&&(identical(other.isEdit, isEdit) || other.isEdit == isEdit)&&(identical(other.tratada, tratada) || other.tratada == tratada)&&(identical(other.enviada, enviada) || other.enviada == enviada)&&(identical(other.createPedidoFromClienteId, createPedidoFromClienteId) || other.createPedidoFromClienteId == createPedidoFromClienteId)&&(identical(other.addLineaDesdeArticulo, addLineaDesdeArticulo) || other.addLineaDesdeArticulo == addLineaDesdeArticulo));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,pedidoAppId,pedidoId,empresaId,isEdit,tratada,createPedidoFromClienteId,addLineaDesdeArticulo);
+int get hashCode => Object.hash(runtimeType,pedidoAppId,pedidoId,empresaId,isEdit,tratada,enviada,createPedidoFromClienteId,addLineaDesdeArticulo);
 
 @override
 String toString() {
-  return 'PedidoLocalParam(pedidoAppId: $pedidoAppId, pedidoId: $pedidoId, empresaId: $empresaId, isEdit: $isEdit, tratada: $tratada, createPedidoFromClienteId: $createPedidoFromClienteId, addLineaDesdeArticulo: $addLineaDesdeArticulo)';
+  return 'PedidoLocalParam(pedidoAppId: $pedidoAppId, pedidoId: $pedidoId, empresaId: $empresaId, isEdit: $isEdit, tratada: $tratada, enviada: $enviada, createPedidoFromClienteId: $createPedidoFromClienteId, addLineaDesdeArticulo: $addLineaDesdeArticulo)';
 }
 
 
@@ -265,7 +267,7 @@ abstract mixin class _$PedidoLocalParamCopyWith<$Res> implements $PedidoLocalPar
   factory _$PedidoLocalParamCopyWith(_PedidoLocalParam value, $Res Function(_PedidoLocalParam) _then) = __$PedidoLocalParamCopyWithImpl;
 @override @useResult
 $Res call({
- String? pedidoAppId, String? pedidoId, String? empresaId, bool isEdit, bool? tratada, String? createPedidoFromClienteId, PedidoVentaLinea? addLineaDesdeArticulo
+ String? pedidoAppId, String? pedidoId, String? empresaId, bool isEdit, bool? tratada, bool? enviada, String? createPedidoFromClienteId, PedidoVentaLinea? addLineaDesdeArticulo
 });
 
 
@@ -282,13 +284,14 @@ class __$PedidoLocalParamCopyWithImpl<$Res>
 
 /// Create a copy of PedidoLocalParam
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? pedidoAppId = freezed,Object? pedidoId = freezed,Object? empresaId = freezed,Object? isEdit = null,Object? tratada = freezed,Object? createPedidoFromClienteId = freezed,Object? addLineaDesdeArticulo = freezed,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? pedidoAppId = freezed,Object? pedidoId = freezed,Object? empresaId = freezed,Object? isEdit = null,Object? tratada = freezed,Object? enviada = freezed,Object? createPedidoFromClienteId = freezed,Object? addLineaDesdeArticulo = freezed,}) {
   return _then(_PedidoLocalParam(
 pedidoAppId: freezed == pedidoAppId ? _self.pedidoAppId : pedidoAppId // ignore: cast_nullable_to_non_nullable
 as String?,pedidoId: freezed == pedidoId ? _self.pedidoId : pedidoId // ignore: cast_nullable_to_non_nullable
 as String?,empresaId: freezed == empresaId ? _self.empresaId : empresaId // ignore: cast_nullable_to_non_nullable
 as String?,isEdit: null == isEdit ? _self.isEdit : isEdit // ignore: cast_nullable_to_non_nullable
 as bool,tratada: freezed == tratada ? _self.tratada : tratada // ignore: cast_nullable_to_non_nullable
+as bool?,enviada: freezed == enviada ? _self.enviada : enviada // ignore: cast_nullable_to_non_nullable
 as bool?,createPedidoFromClienteId: freezed == createPedidoFromClienteId ? _self.createPedidoFromClienteId : createPedidoFromClienteId // ignore: cast_nullable_to_non_nullable
 as String?,addLineaDesdeArticulo: freezed == addLineaDesdeArticulo ? _self.addLineaDesdeArticulo : addLineaDesdeArticulo // ignore: cast_nullable_to_non_nullable
 as PedidoVentaLinea?,

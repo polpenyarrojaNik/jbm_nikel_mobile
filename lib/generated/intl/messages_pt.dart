@@ -37,7 +37,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "anyArticlesSpecified": MessageLookupByLibrary.simpleMessage(
       "Nenhum artigo especificado",
     ),
-    "apply": MessageLookupByLibrary.simpleMessage("Apply"),
+    "apply": MessageLookupByLibrary.simpleMessage("Aplicar"),
     "articleNotFound": MessageLookupByLibrary.simpleMessage(
       "Artigo não encontrado",
     ),
@@ -836,6 +836,7 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "results": MessageLookupByLibrary.simpleMessage("Resultados"),
     "retry": MessageLookupByLibrary.simpleMessage("Tentar novamente"),
+    "salesOrderSent": MessageLookupByLibrary.simpleMessage("Pedido enviado"),
     "save": MessageLookupByLibrary.simpleMessage("Salvar"),
     "saveAs": MessageLookupByLibrary.simpleMessage("Guardar como"),
     "search": MessageLookupByLibrary.simpleMessage("Pesquisar ..."),

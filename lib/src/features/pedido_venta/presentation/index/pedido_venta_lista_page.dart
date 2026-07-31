@@ -219,6 +219,11 @@ class PedidosListViewWidget extends StatelessWidget {
                                                         .pageSize]
                                                 .pedidoVentaAppId,
                                         isEdit: false,
+                                        enviada:
+                                            pedidoVentaList[i %
+                                                    PedidoVentaRepository
+                                                        .pageSize]
+                                                .enviada,
                                         tratada:
                                             pedidoVentaList[i %
                                                     PedidoVentaRepository

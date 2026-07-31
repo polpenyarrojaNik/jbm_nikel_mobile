@@ -466,5 +466,6 @@
   "all": "Todos",
   "active": "Activo",
   "potential": "Potencial",
-  "filter": "Filtrar"
+  "filter": "Filtrar",
+  "salesOrderSent": "Pedido enviado"
 }
