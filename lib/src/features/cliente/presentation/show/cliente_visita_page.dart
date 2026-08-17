@@ -140,19 +140,23 @@ class ClienteVisitaListaTile extends StatelessWidget {
                 ],
               ),
             ),
-            const Gap(2),
-            IconButton(
-              onPressed: () => context.router.push(
-                VisitaDetalleRoute(
-                  visitaIdIsLocalParam: VisitaIdIsLocalParam(
-                    id: visita.id!,
-                    isLocal: visita.getIsLocal(),
-                    createVisitaFromClienteId: visita.cliente?.id,
+
+            if (visita.id != null) ...[
+              const Gap(2),
+
+              IconButton(
+                onPressed: () => context.router.push(
+                  VisitaDetalleRoute(
+                    visitaIdIsLocalParam: VisitaIdIsLocalParam(
+                      id: visita.id!,
+                      isLocal: visita.getIsLocal(),
+                      createVisitaFromClienteId: visita.cliente?.id,
+                    ),
                   ),
                 ),
+                icon: Icon(Icons.chevron_right),
               ),
-              icon: Icon(Icons.chevron_right),
-            ),
+            ],
           ],
         ),
       ),

@@ -1,5 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
+import '../../../../generated/l10n.dart';
 import '../../../core/domain/pais.dart';
 import '../../../core/domain/provincia.dart';
 import '../../cliente/domain/cliente.dart';
@@ -57,7 +58,7 @@ abstract class Visita with _$Visita {
   bool isEditable() => (!tratada && !enviada);
 
   String getNombreMostrar() => isClienteProvisional
-      ? clienteProvisionalNombre!
+      ? (clienteProvisionalNombre ?? S.current.unknownCustomer)
       : '#${cliente!.id} ${cliente?.nombreCliente ?? ''}';
 
   bool get isGeolocalized => latitud != 0 && longitud != 0;
