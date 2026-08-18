@@ -30,6 +30,9 @@ final syncNotifierProvider =
     });
 
 class SyncNotifier extends StateNotifier<SyncControllerState> {
+  static const defaultSyncInterval = Duration(minutes: 30);
+  static const pendingSalesOrderSyncInterval = Duration(minutes: 5);
+
   final Usuario? user;
   final LocalAppDatabase _localDb;
   final UsuarioService usuarioService;
@@ -39,7 +42,7 @@ class SyncNotifier extends StateNotifier<SyncControllerState> {
 
   Future<void> syncAllInCompute({required bool initAppProcess}) async {
     if (state != const SyncControllerState.synchronizing()) {
-      if (initAppProcess || await more30MinFromLastSync()) {
+      if (initAppProcess || await shouldSyncFromLastSync()) {
         state = const SyncControllerState.synchronizing();
 
         await usuarioService.syncUser();
@@ -109,51 +112,73 @@ class SyncNotifier extends StateNotifier<SyncControllerState> {
     }
   }
 
-  Future<bool> more30MinFromLastSync() async {
+  Future<bool> shouldSyncFromLastSync() async {
     final syncDateTimeDTO = await _localDb
         .select(_localDb.syncDateTimeTable)
         .getSingle();
-    final isMore30MinSalesOrder = more30MinFromPedidoVenta(syncDateTimeDTO);
-    if (isMore30MinSalesOrder) {
+    final hasPendingSalesOrders = await hasPedidosPendientesSync();
+    final shouldSyncSalesOrder = shouldSyncPedidoVenta(
+      syncDateTimeDTO,
+      syncInterval: hasPendingSalesOrders
+          ? pendingSalesOrderSyncInterval
+          : defaultSyncInterval,
+    );
+    if (shouldSyncSalesOrder) {
       return true;
     }
 
-    final isMore30MinArticulo = more30MinFromArticulos(syncDateTimeDTO);
-    if (isMore30MinArticulo) {
+    final shouldSyncArticulo = shouldSyncArticulos(syncDateTimeDTO);
+    if (shouldSyncArticulo) {
       return true;
     }
-    final isMore30MinCliente = more30MinFromClientes(syncDateTimeDTO);
-    if (isMore30MinCliente) {
+    final shouldSyncCliente = shouldSyncClientes(syncDateTimeDTO);
+    if (shouldSyncCliente) {
       return true;
     }
-    final isMore30MinVisitas = more30MinFromVisitas(syncDateTimeDTO);
-    if (isMore30MinVisitas) {
+    final shouldSyncVisits = shouldSyncVisitas(syncDateTimeDTO);
+    if (shouldSyncVisits) {
       return true;
     }
     return false;
   }
 
-  bool more30MinFromPedidoVenta(SyncDateTimeDTO syncDateTimeDTO) {
+  Future<bool> hasPedidosPendientesSync() async {
+    final query = _localDb.select(_localDb.pedidoVentaLocalTable)
+      ..where(
+        (tbl) =>
+            tbl.borrador.equals('N') &
+            (tbl.tratada.equals('N') | tbl.enviada.equals('N')),
+      )
+      ..limit(1);
+
+    final pedidoPendiente = await query.getSingleOrNull();
+    return pedidoPendiente != null;
+  }
+
+  bool shouldSyncPedidoVenta(
+    SyncDateTimeDTO syncDateTimeDTO, {
+    Duration syncInterval = defaultSyncInterval,
+  }) {
     return syncDateTimeDTO.pedidoUltimaSync
-        .add(const Duration(minutes: 30))
+        .add(syncInterval)
         .isBefore(DateTime.now().toUtc());
   }
 
-  bool more30MinFromArticulos(SyncDateTimeDTO syncDateTimeDTO) {
+  bool shouldSyncArticulos(SyncDateTimeDTO syncDateTimeDTO) {
     return syncDateTimeDTO.articuloUltimaSync
-        .add(const Duration(minutes: 30))
+        .add(defaultSyncInterval)
         .isBefore(DateTime.now().toUtc());
   }
 
-  bool more30MinFromClientes(SyncDateTimeDTO syncDateTimeDTO) {
+  bool shouldSyncClientes(SyncDateTimeDTO syncDateTimeDTO) {
     return syncDateTimeDTO.clienteUltimaSync
-        .add(const Duration(minutes: 30))
+        .add(defaultSyncInterval)
         .isBefore(DateTime.now().toUtc());
   }
 
-  bool more30MinFromVisitas(SyncDateTimeDTO syncDateTimeDTO) {
+  bool shouldSyncVisitas(SyncDateTimeDTO syncDateTimeDTO) {
     return syncDateTimeDTO.visitaUltimaSync
-        .add(const Duration(minutes: 30))
+        .add(defaultSyncInterval)
         .isBefore(DateTime.now().toUtc());
   }
 }
