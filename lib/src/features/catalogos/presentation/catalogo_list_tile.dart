@@ -6,7 +6,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/experimental/mutation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gap/gap.dart';
-import 'package:open_file/open_file.dart';
 
 import '../../../../generated/l10n.dart';
 import '../../../core/domain/adjunto_param.dart';
@@ -258,10 +257,8 @@ class _OpenCatalogoListTileDialogState
           final data = state.value;
           Navigator.of(widget.dialogCtx).pop();
 
-          if (data.file != null && data.descarga) {
-            OpenFile.open(data.file!.path);
-          } else if (data.file != null) {
-            context.router.push(CatalogoPdfViewerRoute(pdfFile: data.file!));
+          if (data.file != null) {
+            context.router.push(CatalogoPdfViewerRoute(adjuntoData: data));
           }
         }
       },

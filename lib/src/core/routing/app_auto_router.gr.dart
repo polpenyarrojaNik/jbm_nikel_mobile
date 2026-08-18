@@ -825,11 +825,11 @@ class CatalogoListaRouteArgs {
 class CatalogoPdfViewerRoute extends PageRouteInfo<CatalogoPdfViewerRouteArgs> {
   CatalogoPdfViewerRoute({
     Key? key,
-    required File pdfFile,
+    required CatalogoAdjuntoData adjuntoData,
     List<PageRouteInfo>? children,
   }) : super(
          CatalogoPdfViewerRoute.name,
-         args: CatalogoPdfViewerRouteArgs(key: key, pdfFile: pdfFile),
+         args: CatalogoPdfViewerRouteArgs(key: key, adjuntoData: adjuntoData),
          initialChildren: children,
        );
 
@@ -839,32 +839,35 @@ class CatalogoPdfViewerRoute extends PageRouteInfo<CatalogoPdfViewerRouteArgs> {
     name,
     builder: (data) {
       final args = data.argsAs<CatalogoPdfViewerRouteArgs>();
-      return CatalogoPdfViewerPage(key: args.key, pdfFile: args.pdfFile);
+      return CatalogoPdfViewerPage(
+        key: args.key,
+        adjuntoData: args.adjuntoData,
+      );
     },
   );
 }
 
 class CatalogoPdfViewerRouteArgs {
-  const CatalogoPdfViewerRouteArgs({this.key, required this.pdfFile});
+  const CatalogoPdfViewerRouteArgs({this.key, required this.adjuntoData});
 
   final Key? key;
 
-  final File pdfFile;
+  final CatalogoAdjuntoData adjuntoData;
 
   @override
   String toString() {
-    return 'CatalogoPdfViewerRouteArgs{key: $key, pdfFile: $pdfFile}';
+    return 'CatalogoPdfViewerRouteArgs{key: $key, adjuntoData: $adjuntoData}';
   }
 
   @override
   bool operator ==(Object other) {
     if (identical(this, other)) return true;
     if (other is! CatalogoPdfViewerRouteArgs) return false;
-    return key == other.key && pdfFile == other.pdfFile;
+    return key == other.key && adjuntoData == other.adjuntoData;
   }
 
   @override
-  int get hashCode => key.hashCode ^ pdfFile.hashCode;
+  int get hashCode => key.hashCode ^ adjuntoData.hashCode;
 }
 
 /// generated route for

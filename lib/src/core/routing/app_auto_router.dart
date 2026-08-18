@@ -70,6 +70,8 @@ import '../../features/visitas/presentation/edit/visit_edit_page.dart';
 import '../../features/visitas/presentation/edit/visita_edit_select_contact_page.dart';
 import '../../features/visitas/presentation/index/visita_lista_page.dart';
 import '../../features/visitas/presentation/show/visita_detalle_page.dart';
+import '../../features/catalogos/presentation/catalogo_search_controller.dart';
+
 import '../application/log_service.dart';
 import '../domain/pais.dart';
 import '../presentation/common_widgets/cliente_sector_page.dart';
