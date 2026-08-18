@@ -12,18 +12,11 @@ part of 'sector_dto.dart';
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // dart format off
 T _$identity<T>(T value) => value;
-SectorDTO _$SectorDTOFromJson(
-  Map<String, dynamic> json
-) {
-    return _PaisDTO.fromJson(
-      json
-    );
-}
 
 /// @nodoc
 mixin _$SectorDTO {
 
-@JsonKey(name: 'sector_id') String get id;@JsonKey(name: 'alta_sn') String get altaSN;@JsonKey(name: 'descripcion_es') String get descripcionES;@JsonKey(name: 'descripcion_en') String? get descripcionEN;@JsonKey(name: 'descripcion_fr') String? get descripcionFR;@JsonKey(name: 'descripcion_de') String? get descripcionDE;@JsonKey(name: 'descripcion_ca') String? get descripcionCA;@JsonKey(name: 'descripcion_gb') String? get descripcionGB;@JsonKey(name: 'descripcion_hu') String? get descripcionHU;@JsonKey(name: 'descripcion_it') String? get descripcionIT;@JsonKey(name: 'descripcion_nl') String? get descripcionNL;@JsonKey(name: 'descripcion_pl') String? get descripcionPL;@JsonKey(name: 'last_updated') DateTime get lastUpdated;@JsonKey(name: 'deleted') String get deleted;
+@JsonKey(name: 'SECTOR_ID') String get id;@JsonKey(name: 'ALTA_SN') String get altaSN;@JsonKey(name: 'DESCRIPCION_ES') String get descripcionES;@JsonKey(name: 'DESCRIPCION_EN') String? get descripcionEN;@JsonKey(name: 'DESCRIPCION_FR') String? get descripcionFR;@JsonKey(name: 'DESCRIPCION_DE') String? get descripcionDE;@JsonKey(name: 'DESCRIPCION_CA') String? get descripcionCA;@JsonKey(name: 'DESCRIPCION_GB') String? get descripcionGB;@JsonKey(name: 'DESCRIPCION_HU') String? get descripcionHU;@JsonKey(name: 'DESCRIPCION_IT') String? get descripcionIT;@JsonKey(name: 'DESCRIPCION_NL') String? get descripcionNL;@JsonKey(name: 'DESCRIPCION_PL') String? get descripcionPL;@JsonKey(name: 'LAST_UPDATED') DateTime get lastUpdated;@JsonKey(name: 'DELETED') String get deleted;
 /// Create a copy of SectorDTO
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -56,7 +49,7 @@ abstract mixin class $SectorDTOCopyWith<$Res>  {
   factory $SectorDTOCopyWith(SectorDTO value, $Res Function(SectorDTO) _then) = _$SectorDTOCopyWithImpl;
 @useResult
 $Res call({
-@JsonKey(name: 'sector_id') String id,@JsonKey(name: 'alta_sn') String altaSN,@JsonKey(name: 'descripcion_es') String descripcionES,@JsonKey(name: 'descripcion_en') String? descripcionEN,@JsonKey(name: 'descripcion_fr') String? descripcionFR,@JsonKey(name: 'descripcion_de') String? descripcionDE,@JsonKey(name: 'descripcion_ca') String? descripcionCA,@JsonKey(name: 'descripcion_gb') String? descripcionGB,@JsonKey(name: 'descripcion_hu') String? descripcionHU,@JsonKey(name: 'descripcion_it') String? descripcionIT,@JsonKey(name: 'descripcion_nl') String? descripcionNL,@JsonKey(name: 'descripcion_pl') String? descripcionPL,@JsonKey(name: 'last_updated') DateTime lastUpdated,@JsonKey(name: 'deleted') String deleted
+@JsonKey(name: 'SECTOR_ID') String id,@JsonKey(name: 'ALTA_SN') String altaSN,@JsonKey(name: 'DESCRIPCION_ES') String descripcionES,@JsonKey(name: 'DESCRIPCION_EN') String? descripcionEN,@JsonKey(name: 'DESCRIPCION_FR') String? descripcionFR,@JsonKey(name: 'DESCRIPCION_DE') String? descripcionDE,@JsonKey(name: 'DESCRIPCION_CA') String? descripcionCA,@JsonKey(name: 'DESCRIPCION_GB') String? descripcionGB,@JsonKey(name: 'DESCRIPCION_HU') String? descripcionHU,@JsonKey(name: 'DESCRIPCION_IT') String? descripcionIT,@JsonKey(name: 'DESCRIPCION_NL') String? descripcionNL,@JsonKey(name: 'DESCRIPCION_PL') String? descripcionPL,@JsonKey(name: 'LAST_UPDATED') DateTime lastUpdated,@JsonKey(name: 'DELETED') String deleted
 });
 
 
@@ -110,10 +103,10 @@ extension SectorDTOPatterns on SectorDTO {
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _PaisDTO value)?  $default,{required TResult orElse(),}){
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _SectorDTO value)?  $default,{required TResult orElse(),}){
 final _that = this;
 switch (_that) {
-case _PaisDTO() when $default != null:
+case _SectorDTO() when $default != null:
 return $default(_that);case _:
   return orElse();
 
@@ -132,10 +125,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _PaisDTO value)  $default,){
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _SectorDTO value)  $default,){
 final _that = this;
 switch (_that) {
-case _PaisDTO():
+case _SectorDTO():
 return $default(_that);case _:
   throw StateError('Unexpected subclass');
 
@@ -153,10 +146,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _PaisDTO value)?  $default,){
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _SectorDTO value)?  $default,){
 final _that = this;
 switch (_that) {
-case _PaisDTO() when $default != null:
+case _SectorDTO() when $default != null:
 return $default(_that);case _:
   return null;
 
@@ -174,9 +167,9 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function(@JsonKey(name: 'sector_id')  String id, @JsonKey(name: 'alta_sn')  String altaSN, @JsonKey(name: 'descripcion_es')  String descripcionES, @JsonKey(name: 'descripcion_en')  String? descripcionEN, @JsonKey(name: 'descripcion_fr')  String? descripcionFR, @JsonKey(name: 'descripcion_de')  String? descripcionDE, @JsonKey(name: 'descripcion_ca')  String? descripcionCA, @JsonKey(name: 'descripcion_gb')  String? descripcionGB, @JsonKey(name: 'descripcion_hu')  String? descripcionHU, @JsonKey(name: 'descripcion_it')  String? descripcionIT, @JsonKey(name: 'descripcion_nl')  String? descripcionNL, @JsonKey(name: 'descripcion_pl')  String? descripcionPL, @JsonKey(name: 'last_updated')  DateTime lastUpdated, @JsonKey(name: 'deleted')  String deleted)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function(@JsonKey(name: 'SECTOR_ID')  String id, @JsonKey(name: 'ALTA_SN')  String altaSN, @JsonKey(name: 'DESCRIPCION_ES')  String descripcionES, @JsonKey(name: 'DESCRIPCION_EN')  String? descripcionEN, @JsonKey(name: 'DESCRIPCION_FR')  String? descripcionFR, @JsonKey(name: 'DESCRIPCION_DE')  String? descripcionDE, @JsonKey(name: 'DESCRIPCION_CA')  String? descripcionCA, @JsonKey(name: 'DESCRIPCION_GB')  String? descripcionGB, @JsonKey(name: 'DESCRIPCION_HU')  String? descripcionHU, @JsonKey(name: 'DESCRIPCION_IT')  String? descripcionIT, @JsonKey(name: 'DESCRIPCION_NL')  String? descripcionNL, @JsonKey(name: 'DESCRIPCION_PL')  String? descripcionPL, @JsonKey(name: 'LAST_UPDATED')  DateTime lastUpdated, @JsonKey(name: 'DELETED')  String deleted)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
-case _PaisDTO() when $default != null:
+case _SectorDTO() when $default != null:
 return $default(_that.id,_that.altaSN,_that.descripcionES,_that.descripcionEN,_that.descripcionFR,_that.descripcionDE,_that.descripcionCA,_that.descripcionGB,_that.descripcionHU,_that.descripcionIT,_that.descripcionNL,_that.descripcionPL,_that.lastUpdated,_that.deleted);case _:
   return orElse();
 
@@ -195,9 +188,9 @@ return $default(_that.id,_that.altaSN,_that.descripcionES,_that.descripcionEN,_t
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function(@JsonKey(name: 'sector_id')  String id, @JsonKey(name: 'alta_sn')  String altaSN, @JsonKey(name: 'descripcion_es')  String descripcionES, @JsonKey(name: 'descripcion_en')  String? descripcionEN, @JsonKey(name: 'descripcion_fr')  String? descripcionFR, @JsonKey(name: 'descripcion_de')  String? descripcionDE, @JsonKey(name: 'descripcion_ca')  String? descripcionCA, @JsonKey(name: 'descripcion_gb')  String? descripcionGB, @JsonKey(name: 'descripcion_hu')  String? descripcionHU, @JsonKey(name: 'descripcion_it')  String? descripcionIT, @JsonKey(name: 'descripcion_nl')  String? descripcionNL, @JsonKey(name: 'descripcion_pl')  String? descripcionPL, @JsonKey(name: 'last_updated')  DateTime lastUpdated, @JsonKey(name: 'deleted')  String deleted)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function(@JsonKey(name: 'SECTOR_ID')  String id, @JsonKey(name: 'ALTA_SN')  String altaSN, @JsonKey(name: 'DESCRIPCION_ES')  String descripcionES, @JsonKey(name: 'DESCRIPCION_EN')  String? descripcionEN, @JsonKey(name: 'DESCRIPCION_FR')  String? descripcionFR, @JsonKey(name: 'DESCRIPCION_DE')  String? descripcionDE, @JsonKey(name: 'DESCRIPCION_CA')  String? descripcionCA, @JsonKey(name: 'DESCRIPCION_GB')  String? descripcionGB, @JsonKey(name: 'DESCRIPCION_HU')  String? descripcionHU, @JsonKey(name: 'DESCRIPCION_IT')  String? descripcionIT, @JsonKey(name: 'DESCRIPCION_NL')  String? descripcionNL, @JsonKey(name: 'DESCRIPCION_PL')  String? descripcionPL, @JsonKey(name: 'LAST_UPDATED')  DateTime lastUpdated, @JsonKey(name: 'DELETED')  String deleted)  $default,) {final _that = this;
 switch (_that) {
-case _PaisDTO():
+case _SectorDTO():
 return $default(_that.id,_that.altaSN,_that.descripcionES,_that.descripcionEN,_that.descripcionFR,_that.descripcionDE,_that.descripcionCA,_that.descripcionGB,_that.descripcionHU,_that.descripcionIT,_that.descripcionNL,_that.descripcionPL,_that.lastUpdated,_that.deleted);case _:
   throw StateError('Unexpected subclass');
 
@@ -215,9 +208,9 @@ return $default(_that.id,_that.altaSN,_that.descripcionES,_that.descripcionEN,_t
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function(@JsonKey(name: 'sector_id')  String id, @JsonKey(name: 'alta_sn')  String altaSN, @JsonKey(name: 'descripcion_es')  String descripcionES, @JsonKey(name: 'descripcion_en')  String? descripcionEN, @JsonKey(name: 'descripcion_fr')  String? descripcionFR, @JsonKey(name: 'descripcion_de')  String? descripcionDE, @JsonKey(name: 'descripcion_ca')  String? descripcionCA, @JsonKey(name: 'descripcion_gb')  String? descripcionGB, @JsonKey(name: 'descripcion_hu')  String? descripcionHU, @JsonKey(name: 'descripcion_it')  String? descripcionIT, @JsonKey(name: 'descripcion_nl')  String? descripcionNL, @JsonKey(name: 'descripcion_pl')  String? descripcionPL, @JsonKey(name: 'last_updated')  DateTime lastUpdated, @JsonKey(name: 'deleted')  String deleted)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function(@JsonKey(name: 'SECTOR_ID')  String id, @JsonKey(name: 'ALTA_SN')  String altaSN, @JsonKey(name: 'DESCRIPCION_ES')  String descripcionES, @JsonKey(name: 'DESCRIPCION_EN')  String? descripcionEN, @JsonKey(name: 'DESCRIPCION_FR')  String? descripcionFR, @JsonKey(name: 'DESCRIPCION_DE')  String? descripcionDE, @JsonKey(name: 'DESCRIPCION_CA')  String? descripcionCA, @JsonKey(name: 'DESCRIPCION_GB')  String? descripcionGB, @JsonKey(name: 'DESCRIPCION_HU')  String? descripcionHU, @JsonKey(name: 'DESCRIPCION_IT')  String? descripcionIT, @JsonKey(name: 'DESCRIPCION_NL')  String? descripcionNL, @JsonKey(name: 'DESCRIPCION_PL')  String? descripcionPL, @JsonKey(name: 'LAST_UPDATED')  DateTime lastUpdated, @JsonKey(name: 'DELETED')  String deleted)?  $default,) {final _that = this;
 switch (_that) {
-case _PaisDTO() when $default != null:
+case _SectorDTO() when $default != null:
 return $default(_that.id,_that.altaSN,_that.descripcionES,_that.descripcionEN,_that.descripcionFR,_that.descripcionDE,_that.descripcionCA,_that.descripcionGB,_that.descripcionHU,_that.descripcionIT,_that.descripcionNL,_that.descripcionPL,_that.lastUpdated,_that.deleted);case _:
   return null;
 
@@ -229,39 +222,39 @@ return $default(_that.id,_that.altaSN,_that.descripcionES,_that.descripcionEN,_t
 /// @nodoc
 @JsonSerializable()
 
-class _PaisDTO extends SectorDTO {
-  const _PaisDTO({@JsonKey(name: 'sector_id') required this.id, @JsonKey(name: 'alta_sn') required this.altaSN, @JsonKey(name: 'descripcion_es') required this.descripcionES, @JsonKey(name: 'descripcion_en') this.descripcionEN, @JsonKey(name: 'descripcion_fr') this.descripcionFR, @JsonKey(name: 'descripcion_de') this.descripcionDE, @JsonKey(name: 'descripcion_ca') this.descripcionCA, @JsonKey(name: 'descripcion_gb') this.descripcionGB, @JsonKey(name: 'descripcion_hu') this.descripcionHU, @JsonKey(name: 'descripcion_it') this.descripcionIT, @JsonKey(name: 'descripcion_nl') this.descripcionNL, @JsonKey(name: 'descripcion_pl') this.descripcionPL, @JsonKey(name: 'last_updated') required this.lastUpdated, @JsonKey(name: 'deleted') this.deleted = 'N'}): super._();
-  factory _PaisDTO.fromJson(Map<String, dynamic> json) => _$PaisDTOFromJson(json);
+class _SectorDTO extends SectorDTO {
+  const _SectorDTO({@JsonKey(name: 'SECTOR_ID') required this.id, @JsonKey(name: 'ALTA_SN') required this.altaSN, @JsonKey(name: 'DESCRIPCION_ES') required this.descripcionES, @JsonKey(name: 'DESCRIPCION_EN') this.descripcionEN, @JsonKey(name: 'DESCRIPCION_FR') this.descripcionFR, @JsonKey(name: 'DESCRIPCION_DE') this.descripcionDE, @JsonKey(name: 'DESCRIPCION_CA') this.descripcionCA, @JsonKey(name: 'DESCRIPCION_GB') this.descripcionGB, @JsonKey(name: 'DESCRIPCION_HU') this.descripcionHU, @JsonKey(name: 'DESCRIPCION_IT') this.descripcionIT, @JsonKey(name: 'DESCRIPCION_NL') this.descripcionNL, @JsonKey(name: 'DESCRIPCION_PL') this.descripcionPL, @JsonKey(name: 'LAST_UPDATED') required this.lastUpdated, @JsonKey(name: 'DELETED') this.deleted = 'N'}): super._();
+  factory _SectorDTO.fromJson(Map<String, dynamic> json) => _$SectorDTOFromJson(json);
 
-@override@JsonKey(name: 'sector_id') final  String id;
-@override@JsonKey(name: 'alta_sn') final  String altaSN;
-@override@JsonKey(name: 'descripcion_es') final  String descripcionES;
-@override@JsonKey(name: 'descripcion_en') final  String? descripcionEN;
-@override@JsonKey(name: 'descripcion_fr') final  String? descripcionFR;
-@override@JsonKey(name: 'descripcion_de') final  String? descripcionDE;
-@override@JsonKey(name: 'descripcion_ca') final  String? descripcionCA;
-@override@JsonKey(name: 'descripcion_gb') final  String? descripcionGB;
-@override@JsonKey(name: 'descripcion_hu') final  String? descripcionHU;
-@override@JsonKey(name: 'descripcion_it') final  String? descripcionIT;
-@override@JsonKey(name: 'descripcion_nl') final  String? descripcionNL;
-@override@JsonKey(name: 'descripcion_pl') final  String? descripcionPL;
-@override@JsonKey(name: 'last_updated') final  DateTime lastUpdated;
-@override@JsonKey(name: 'deleted') final  String deleted;
+@override@JsonKey(name: 'SECTOR_ID') final  String id;
+@override@JsonKey(name: 'ALTA_SN') final  String altaSN;
+@override@JsonKey(name: 'DESCRIPCION_ES') final  String descripcionES;
+@override@JsonKey(name: 'DESCRIPCION_EN') final  String? descripcionEN;
+@override@JsonKey(name: 'DESCRIPCION_FR') final  String? descripcionFR;
+@override@JsonKey(name: 'DESCRIPCION_DE') final  String? descripcionDE;
+@override@JsonKey(name: 'DESCRIPCION_CA') final  String? descripcionCA;
+@override@JsonKey(name: 'DESCRIPCION_GB') final  String? descripcionGB;
+@override@JsonKey(name: 'DESCRIPCION_HU') final  String? descripcionHU;
+@override@JsonKey(name: 'DESCRIPCION_IT') final  String? descripcionIT;
+@override@JsonKey(name: 'DESCRIPCION_NL') final  String? descripcionNL;
+@override@JsonKey(name: 'DESCRIPCION_PL') final  String? descripcionPL;
+@override@JsonKey(name: 'LAST_UPDATED') final  DateTime lastUpdated;
+@override@JsonKey(name: 'DELETED') final  String deleted;
 
 /// Create a copy of SectorDTO
 /// with the given fields replaced by the non-null parameter values.
 @override @JsonKey(includeFromJson: false, includeToJson: false)
 @pragma('vm:prefer-inline')
-_$PaisDTOCopyWith<_PaisDTO> get copyWith => __$PaisDTOCopyWithImpl<_PaisDTO>(this, _$identity);
+_$SectorDTOCopyWith<_SectorDTO> get copyWith => __$SectorDTOCopyWithImpl<_SectorDTO>(this, _$identity);
 
 @override
 Map<String, dynamic> toJson() {
-  return _$PaisDTOToJson(this, );
+  return _$SectorDTOToJson(this, );
 }
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _PaisDTO&&(identical(other.id, id) || other.id == id)&&(identical(other.altaSN, altaSN) || other.altaSN == altaSN)&&(identical(other.descripcionES, descripcionES) || other.descripcionES == descripcionES)&&(identical(other.descripcionEN, descripcionEN) || other.descripcionEN == descripcionEN)&&(identical(other.descripcionFR, descripcionFR) || other.descripcionFR == descripcionFR)&&(identical(other.descripcionDE, descripcionDE) || other.descripcionDE == descripcionDE)&&(identical(other.descripcionCA, descripcionCA) || other.descripcionCA == descripcionCA)&&(identical(other.descripcionGB, descripcionGB) || other.descripcionGB == descripcionGB)&&(identical(other.descripcionHU, descripcionHU) || other.descripcionHU == descripcionHU)&&(identical(other.descripcionIT, descripcionIT) || other.descripcionIT == descripcionIT)&&(identical(other.descripcionNL, descripcionNL) || other.descripcionNL == descripcionNL)&&(identical(other.descripcionPL, descripcionPL) || other.descripcionPL == descripcionPL)&&(identical(other.lastUpdated, lastUpdated) || other.lastUpdated == lastUpdated)&&(identical(other.deleted, deleted) || other.deleted == deleted));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _SectorDTO&&(identical(other.id, id) || other.id == id)&&(identical(other.altaSN, altaSN) || other.altaSN == altaSN)&&(identical(other.descripcionES, descripcionES) || other.descripcionES == descripcionES)&&(identical(other.descripcionEN, descripcionEN) || other.descripcionEN == descripcionEN)&&(identical(other.descripcionFR, descripcionFR) || other.descripcionFR == descripcionFR)&&(identical(other.descripcionDE, descripcionDE) || other.descripcionDE == descripcionDE)&&(identical(other.descripcionCA, descripcionCA) || other.descripcionCA == descripcionCA)&&(identical(other.descripcionGB, descripcionGB) || other.descripcionGB == descripcionGB)&&(identical(other.descripcionHU, descripcionHU) || other.descripcionHU == descripcionHU)&&(identical(other.descripcionIT, descripcionIT) || other.descripcionIT == descripcionIT)&&(identical(other.descripcionNL, descripcionNL) || other.descripcionNL == descripcionNL)&&(identical(other.descripcionPL, descripcionPL) || other.descripcionPL == descripcionPL)&&(identical(other.lastUpdated, lastUpdated) || other.lastUpdated == lastUpdated)&&(identical(other.deleted, deleted) || other.deleted == deleted));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -277,11 +270,11 @@ String toString() {
 }
 
 /// @nodoc
-abstract mixin class _$PaisDTOCopyWith<$Res> implements $SectorDTOCopyWith<$Res> {
-  factory _$PaisDTOCopyWith(_PaisDTO value, $Res Function(_PaisDTO) _then) = __$PaisDTOCopyWithImpl;
+abstract mixin class _$SectorDTOCopyWith<$Res> implements $SectorDTOCopyWith<$Res> {
+  factory _$SectorDTOCopyWith(_SectorDTO value, $Res Function(_SectorDTO) _then) = __$SectorDTOCopyWithImpl;
 @override @useResult
 $Res call({
-@JsonKey(name: 'sector_id') String id,@JsonKey(name: 'alta_sn') String altaSN,@JsonKey(name: 'descripcion_es') String descripcionES,@JsonKey(name: 'descripcion_en') String? descripcionEN,@JsonKey(name: 'descripcion_fr') String? descripcionFR,@JsonKey(name: 'descripcion_de') String? descripcionDE,@JsonKey(name: 'descripcion_ca') String? descripcionCA,@JsonKey(name: 'descripcion_gb') String? descripcionGB,@JsonKey(name: 'descripcion_hu') String? descripcionHU,@JsonKey(name: 'descripcion_it') String? descripcionIT,@JsonKey(name: 'descripcion_nl') String? descripcionNL,@JsonKey(name: 'descripcion_pl') String? descripcionPL,@JsonKey(name: 'last_updated') DateTime lastUpdated,@JsonKey(name: 'deleted') String deleted
+@JsonKey(name: 'SECTOR_ID') String id,@JsonKey(name: 'ALTA_SN') String altaSN,@JsonKey(name: 'DESCRIPCION_ES') String descripcionES,@JsonKey(name: 'DESCRIPCION_EN') String? descripcionEN,@JsonKey(name: 'DESCRIPCION_FR') String? descripcionFR,@JsonKey(name: 'DESCRIPCION_DE') String? descripcionDE,@JsonKey(name: 'DESCRIPCION_CA') String? descripcionCA,@JsonKey(name: 'DESCRIPCION_GB') String? descripcionGB,@JsonKey(name: 'DESCRIPCION_HU') String? descripcionHU,@JsonKey(name: 'DESCRIPCION_IT') String? descripcionIT,@JsonKey(name: 'DESCRIPCION_NL') String? descripcionNL,@JsonKey(name: 'DESCRIPCION_PL') String? descripcionPL,@JsonKey(name: 'LAST_UPDATED') DateTime lastUpdated,@JsonKey(name: 'DELETED') String deleted
 });
 
 
@@ -289,17 +282,17 @@ $Res call({
 
 }
 /// @nodoc
-class __$PaisDTOCopyWithImpl<$Res>
-    implements _$PaisDTOCopyWith<$Res> {
-  __$PaisDTOCopyWithImpl(this._self, this._then);
+class __$SectorDTOCopyWithImpl<$Res>
+    implements _$SectorDTOCopyWith<$Res> {
+  __$SectorDTOCopyWithImpl(this._self, this._then);
 
-  final _PaisDTO _self;
-  final $Res Function(_PaisDTO) _then;
+  final _SectorDTO _self;
+  final $Res Function(_SectorDTO) _then;
 
 /// Create a copy of SectorDTO
 /// with the given fields replaced by the non-null parameter values.
 @override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? altaSN = null,Object? descripcionES = null,Object? descripcionEN = freezed,Object? descripcionFR = freezed,Object? descripcionDE = freezed,Object? descripcionCA = freezed,Object? descripcionGB = freezed,Object? descripcionHU = freezed,Object? descripcionIT = freezed,Object? descripcionNL = freezed,Object? descripcionPL = freezed,Object? lastUpdated = null,Object? deleted = null,}) {
-  return _then(_PaisDTO(
+  return _then(_SectorDTO(
 id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as String,altaSN: null == altaSN ? _self.altaSN : altaSN // ignore: cast_nullable_to_non_nullable
 as String,descripcionES: null == descripcionES ? _self.descripcionES : descripcionES // ignore: cast_nullable_to_non_nullable

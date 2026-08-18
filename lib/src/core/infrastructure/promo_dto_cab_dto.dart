@@ -50,13 +50,13 @@ class PromoDtoCabTable extends Table {
   @override
   Set<Column> get primaryKey => {empresaId, promoDtoId};
 
-  TextColumn get empresaId => text().named('EMPRESA_ID')();
-  TextColumn get promoDtoId => text().named('PROMO_DTO_ID')();
-  TextColumn get nombre => text().named('NOMBRE')();
-  DateTimeColumn get fechaDesde => dateTime().named('FECHA_DESDE')();
-  DateTimeColumn get fechaHasta => dateTime().nullable().named('FECHA_HASTA')();
-  TextColumn get divisaId => text().named('DIVISA_ID')();
-  DateTimeColumn get lastUpdated => dateTime().named('LAST_UPDATED')();
+  TextColumn get empresaId => text().named('empresa_id')();
+  TextColumn get promoDtoId => text().named('promo_dto_id')();
+  TextColumn get nombre => text().named('nombre')();
+  DateTimeColumn get fechaDesde => dateTime().named('fecha_desde')();
+  DateTimeColumn get fechaHasta => dateTime().nullable().named('fecha_hasta')();
+  TextColumn get divisaId => text().named('divisa_id')();
+  DateTimeColumn get lastUpdated => dateTime().named('last_updated')();
   TextColumn get deleted =>
-      text().withDefault(const Constant('N')).named('DELETED')();
+      text().withDefault(const Constant('N')).named('deleted')();
 }

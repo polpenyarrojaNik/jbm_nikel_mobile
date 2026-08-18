@@ -57,15 +57,15 @@ class PromoDtoLinTable extends Table {
     cantidadDesde,
   };
 
-  TextColumn get empresaId => text().named('EMPRESA_ID')();
-  TextColumn get promoDtoId => text().named('PROMO_DTO_ID')();
-  TextColumn get articuloId => text().named('ARTICULO_ID')();
-  IntColumn get cantidadDesde => integer().named('CANTIDAD_DESDE')();
-  RealColumn get precio => real().named('PRECIO')();
-  IntColumn get tipoPrecio => integer().nullable().named('TIPO_PRECIO')();
-  RealColumn get dto => real().named('DTO')();
+  TextColumn get empresaId => text().named('empresa_id')();
+  TextColumn get promoDtoId => text().named('promo_dto_id')();
+  TextColumn get articuloId => text().named('articulo_id')();
+  IntColumn get cantidadDesde => integer().named('cantidad_desde')();
+  RealColumn get precio => real().named('precio')();
+  IntColumn get tipoPrecio => integer().nullable().named('tipo_precio')();
+  RealColumn get dto => real().named('dto')();
 
-  DateTimeColumn get lastUpdated => dateTime().named('LAST_UPDATED')();
+  DateTimeColumn get lastUpdated => dateTime().named('last_updated')();
   TextColumn get deleted =>
-      text().withDefault(const Constant('N')).named('DELETED')();
+      text().withDefault(const Constant('N')).named('deleted')();
 }

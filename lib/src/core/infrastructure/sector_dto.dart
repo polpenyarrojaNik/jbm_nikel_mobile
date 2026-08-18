@@ -14,21 +14,21 @@ part 'sector_dto.g.dart';
 abstract class SectorDTO with _$SectorDTO implements Insertable<SectorDTO> {
   const SectorDTO._();
   const factory SectorDTO({
-    @JsonKey(name: 'sector_id') required String id,
-    @JsonKey(name: 'alta_sn') required String altaSN,
-    @JsonKey(name: 'descripcion_es') required String descripcionES,
-    @JsonKey(name: 'descripcion_en') String? descripcionEN,
-    @JsonKey(name: 'descripcion_fr') String? descripcionFR,
-    @JsonKey(name: 'descripcion_de') String? descripcionDE,
-    @JsonKey(name: 'descripcion_ca') String? descripcionCA,
-    @JsonKey(name: 'descripcion_gb') String? descripcionGB,
-    @JsonKey(name: 'descripcion_hu') String? descripcionHU,
-    @JsonKey(name: 'descripcion_it') String? descripcionIT,
-    @JsonKey(name: 'descripcion_nl') String? descripcionNL,
-    @JsonKey(name: 'descripcion_pl') String? descripcionPL,
-    @JsonKey(name: 'last_updated') required DateTime lastUpdated,
-    @JsonKey(name: 'deleted') @Default('N') String deleted,
-  }) = _PaisDTO;
+    @JsonKey(name: 'SECTOR_ID') required String id,
+    @JsonKey(name: 'ALTA_SN') required String altaSN,
+    @JsonKey(name: 'DESCRIPCION_ES') required String descripcionES,
+    @JsonKey(name: 'DESCRIPCION_EN') String? descripcionEN,
+    @JsonKey(name: 'DESCRIPCION_FR') String? descripcionFR,
+    @JsonKey(name: 'DESCRIPCION_DE') String? descripcionDE,
+    @JsonKey(name: 'DESCRIPCION_CA') String? descripcionCA,
+    @JsonKey(name: 'DESCRIPCION_GB') String? descripcionGB,
+    @JsonKey(name: 'DESCRIPCION_HU') String? descripcionHU,
+    @JsonKey(name: 'DESCRIPCION_IT') String? descripcionIT,
+    @JsonKey(name: 'DESCRIPCION_NL') String? descripcionNL,
+    @JsonKey(name: 'DESCRIPCION_PL') String? descripcionPL,
+    @JsonKey(name: 'LAST_UPDATED') required DateTime lastUpdated,
+    @JsonKey(name: 'DELETED') @Default('N') String deleted,
+  }) = _SectorDTO;
 
   factory SectorDTO.fromJson(Map<String, dynamic> json) =>
       _$SectorDTOFromJson(json);

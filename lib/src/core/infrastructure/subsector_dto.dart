@@ -92,19 +92,19 @@ class SubsectorTable extends Table {
   @override
   Set<Column> get primaryKey => {sectorId, subsectorId};
 
-  TextColumn get sectorId => text().named('SECTOR_ID')();
-  TextColumn get subsectorId => text().named('SUBSECTOR_ID')();
-  TextColumn get descripcionES => text().named('DESCRIPCION_ES')();
-  TextColumn get descripcionEN => text().nullable().named('DESCRIPCION_EN')();
-  TextColumn get descripcionFR => text().nullable().named('DESCRIPCION_FR')();
-  TextColumn get descripcionDE => text().nullable().named('DESCRIPCION_DE')();
-  TextColumn get descripcionCA => text().nullable().named('DESCRIPCION_CA')();
-  TextColumn get descripcionGB => text().nullable().named('DESCRIPCION_GB')();
-  TextColumn get descripcionHU => text().nullable().named('DESCRIPCION_HU')();
-  TextColumn get descripcionIT => text().nullable().named('DESCRIPCION_IT')();
-  TextColumn get descripcionNL => text().nullable().named('DESCRIPCION_NL')();
-  TextColumn get descripcionPL => text().nullable().named('DESCRIPCION_PL')();
-  DateTimeColumn get lastUpdated => dateTime().named('LAST_UPDATED')();
+  TextColumn get sectorId => text().named('sector_id')();
+  TextColumn get subsectorId => text().named('subsector_id')();
+  TextColumn get descripcionES => text().named('descripcion_es')();
+  TextColumn get descripcionEN => text().nullable().named('descripcion_en')();
+  TextColumn get descripcionFR => text().nullable().named('descripcion_fr')();
+  TextColumn get descripcionDE => text().nullable().named('descripcion_de')();
+  TextColumn get descripcionCA => text().nullable().named('descripcion_ca')();
+  TextColumn get descripcionGB => text().nullable().named('descripcion_gb')();
+  TextColumn get descripcionHU => text().nullable().named('descripcion_hu')();
+  TextColumn get descripcionIT => text().nullable().named('descripcion_it')();
+  TextColumn get descripcionNL => text().nullable().named('descripcion_nl')();
+  TextColumn get descripcionPL => text().nullable().named('descripcion_pl')();
+  DateTimeColumn get lastUpdated => dateTime().named('last_updated')();
   TextColumn get deleted =>
-      text().withDefault(const Constant('N')).named('DELETED')();
+      text().withDefault(const Constant('N')).named('deleted')();
 }

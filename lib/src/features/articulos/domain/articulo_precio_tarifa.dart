@@ -28,6 +28,7 @@ abstract class ArticuloPrecioTarifa with _$ArticuloPrecioTarifa {
   ) => ArticuloPrecioTarifa(
     articuloId: promoDtoLinDTO.articuloId,
     tarifaId: promoDtoLinDTO.promoDtoId,
+    tarifaDescripcion: promoDtoLinDTO.promoDtoId,
     cantidadDesde: promoDtoLinDTO.cantidadDesde,
     precio: Money.fromNum(promoDtoLinDTO.precio, isoCode: divisaId),
     divisaId: divisaId,
