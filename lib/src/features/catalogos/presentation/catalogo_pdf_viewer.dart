@@ -12,11 +12,42 @@ class CatalogoPdfViewerPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isLandscape =
+        MediaQuery.orientationOf(context) == Orientation.landscape;
+
     return Scaffold(
-      appBar: AppBar(title: Text(getPdfFileName(pdfFile.path))),
-      body: Padding(
-        padding: const EdgeInsets.all(16),
-        child: SfPdfViewer.file(pdfFile, pageSpacing: 8),
+      appBar: isLandscape
+          ? null
+          : AppBar(title: Text(getPdfFileName(pdfFile.path))),
+      body: Stack(
+        children: [
+          Padding(
+            padding: isLandscape ? EdgeInsets.zero : const EdgeInsets.all(16),
+            child: SfPdfViewer.file(
+              pdfFile,
+              key: ValueKey(isLandscape),
+              canShowScrollHead: !isLandscape,
+              pageLayoutMode: isLandscape
+                  ? PdfPageLayoutMode.single
+                  : PdfPageLayoutMode.continuous,
+              pageSpacing: isLandscape ? 0 : 8,
+              scrollDirection: isLandscape
+                  ? PdfScrollDirection.horizontal
+                  : PdfScrollDirection.vertical,
+            ),
+          ),
+          if (isLandscape)
+            SafeArea(
+              child: Padding(
+                padding: const EdgeInsets.all(8),
+                child: IconButton.filledTonal(
+                  onPressed: () => Navigator.of(context).maybePop(),
+                  icon: const Icon(Icons.arrow_back),
+                  tooltip: MaterialLocalizations.of(context).backButtonTooltip,
+                ),
+              ),
+            ),
+        ],
       ),
     );
   }
