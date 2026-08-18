@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // coverage:ignore-file
-// ignore_for_file: type=lint
+// ignore_for_file: type=lint, type=warning, deprecated_member_use, deprecated_member_use_from_same_package
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'cliente_pago_pendiente_dto.dart';
@@ -9,6 +9,7 @@ part of 'cliente_pago_pendiente_dto.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// GENERATED CODE - DO NOT MODIFY BY HAND
 // dart format off
 T _$identity<T>(T value) => value;
 
@@ -66,7 +67,7 @@ class _$ClientePagoPendienteDTOCopyWithImpl<$Res>
 /// Create a copy of ClientePagoPendienteDTO
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? clienteId = null,Object? efectoId = null,Object? facutaId = freezed,Object? fechaFactura = freezed,Object? fechaExpiracion = freezed,Object? metodoDeCobroId = freezed,Object? estadoCobroId = freezed,Object? importe = freezed,Object? fechaExpiracionInicial = freezed,Object? vencidoJBM = freezed,Object? lastUpdated = null,Object? deleted = null,}) {
-  return _then(_self.copyWith(
+  return _then(ClientePagoPendienteDTO(
 clienteId: null == clienteId ? _self.clienteId : clienteId // ignore: cast_nullable_to_non_nullable
 as String,efectoId: null == efectoId ? _self.efectoId : efectoId // ignore: cast_nullable_to_non_nullable
 as String,facutaId: freezed == facutaId ? _self.facutaId : facutaId // ignore: cast_nullable_to_non_nullable

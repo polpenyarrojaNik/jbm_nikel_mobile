@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // coverage:ignore-file
-// ignore_for_file: type=lint
+// ignore_for_file: type=lint, type=warning, deprecated_member_use, deprecated_member_use_from_same_package
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'visit_edit_page.dart';
@@ -9,6 +9,7 @@ part of 'visit_edit_page.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// GENERATED CODE - DO NOT MODIFY BY HAND
 // dart format off
 T _$identity<T>(T value) => value;
 /// @nodoc
@@ -63,7 +64,7 @@ class _$VisitEditScreenDataCopyWithImpl<$Res>
 /// Create a copy of VisitEditScreenData
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? visita = freezed,Object? paises = null,Object? provincias = null,Object? createVisitaFromCliente = freezed,}) {
-  return _then(_self.copyWith(
+  return _then(VisitEditScreenData(
 visita: freezed == visita ? _self.visita : visita // ignore: cast_nullable_to_non_nullable
 as Visita?,paises: null == paises ? _self.paises : paises // ignore: cast_nullable_to_non_nullable
 as List<Pais>,provincias: null == provincias ? _self.provincias : provincias // ignore: cast_nullable_to_non_nullable
@@ -233,7 +234,7 @@ return $default(_that.visita,_that.paises,_that.provincias,_that.createVisitaFro
 
 
 class _VisitEditScreenData extends VisitEditScreenData {
-  const _VisitEditScreenData({this.visita, required final  List<Pais> paises, required final  List<Provincia> provincias, this.createVisitaFromCliente}): _paises = paises,_provincias = provincias,super._();
+  const _VisitEditScreenData({this.visita, required  List<Pais> paises, required  List<Provincia> provincias, this.createVisitaFromCliente}): _paises = paises,_provincias = provincias,super._();
   
 
 @override final  Visita? visita;

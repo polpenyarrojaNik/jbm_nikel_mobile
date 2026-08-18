@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // coverage:ignore-file
-// ignore_for_file: type=lint
+// ignore_for_file: type=lint, type=warning, deprecated_member_use, deprecated_member_use_from_same_package
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'seleccionar_cantidad_param.dart';
@@ -9,6 +9,7 @@ part of 'seleccionar_cantidad_param.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// GENERATED CODE - DO NOT MODIFY BY HAND
 // dart format off
 T _$identity<T>(T value) => value;
 /// @nodoc
@@ -63,7 +64,7 @@ class _$SeleccionarCantidadParamCopyWithImpl<$Res>
 /// Create a copy of SeleccionarCantidadParam
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? pedidoVentaParam = null,Object? clienteId = null,Object? articuloId = null,Object? cantidad = freezed,Object? precio = freezed,Object? descuento1 = freezed,Object? descuento2 = freezed,Object? createdFromCliente = freezed,Object? posicionLinea = null,Object? addNewLineaDesdeArticulo = null,Object? recomendado = null,}) {
-  return _then(_self.copyWith(
+  return _then(SeleccionarCantidadParam(
 pedidoVentaParam: null == pedidoVentaParam ? _self.pedidoVentaParam : pedidoVentaParam // ignore: cast_nullable_to_non_nullable
 as PedidoLocalParam,clienteId: null == clienteId ? _self.clienteId : clienteId // ignore: cast_nullable_to_non_nullable
 as String,articuloId: null == articuloId ? _self.articuloId : articuloId // ignore: cast_nullable_to_non_nullable
@@ -368,7 +369,7 @@ class _$SelectQuantityInitialDataCopyWithImpl<$Res>
 /// Create a copy of SelectQuantityInitialData
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? articulo = null,Object? cliente = null,}) {
-  return _then(_self.copyWith(
+  return _then(SelectQuantityInitialData(
 articulo: null == articulo ? _self.articulo : articulo // ignore: cast_nullable_to_non_nullable
 as Articulo,cliente: null == cliente ? _self.cliente : cliente // ignore: cast_nullable_to_non_nullable
 as Cliente,

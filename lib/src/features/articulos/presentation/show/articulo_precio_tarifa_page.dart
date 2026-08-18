@@ -72,8 +72,11 @@ class ArticuloPrecioTarifaTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
+    return Container(
       padding: kPaddingList,
+      color: articuloPrecioTarifa.isPromo
+          ? Theme.of(context).colorScheme.secondaryContainer
+          : null,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [

@@ -98,7 +98,7 @@ abstract class _$ClienteDireccionEditPageController
   FutureOr<ClienteDireccionEditPageData> build(ClienteImpParam clienteImpParam);
   @$mustCallSuper
   @override
-  void runBuild() {
+  WhenComplete runBuild() {
     final ref =
         this.ref
             as $Ref<
@@ -116,6 +116,6 @@ abstract class _$ClienteDireccionEditPageController
               Object?,
               Object?
             >;
-    element.handleCreate(ref, () => build(_$args));
+    return element.handleCreate(ref, () => build(_$args));
   }
 }

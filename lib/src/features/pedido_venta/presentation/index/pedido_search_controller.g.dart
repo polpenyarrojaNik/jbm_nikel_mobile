@@ -51,7 +51,7 @@ abstract class _$PedidosSearchQueryParamController extends $Notifier<String> {
   String build();
   @$mustCallSuper
   @override
-  void runBuild() {
+  WhenComplete runBuild() {
     final ref = this.ref as $Ref<String, String>;
     final element =
         ref.element
@@ -61,7 +61,7 @@ abstract class _$PedidosSearchQueryParamController extends $Notifier<String> {
               Object?,
               Object?
             >;
-    element.handleCreate(ref, build);
+    return element.handleCreate(ref, build);
   }
 }
 
@@ -112,7 +112,7 @@ abstract class _$PedidoVentaEstadoQueryParamController
   PedidoVentaEstado? build();
   @$mustCallSuper
   @override
-  void runBuild() {
+  WhenComplete runBuild() {
     final ref = this.ref as $Ref<PedidoVentaEstado?, PedidoVentaEstado?>;
     final element =
         ref.element
@@ -122,7 +122,7 @@ abstract class _$PedidoVentaEstadoQueryParamController
               Object?,
               Object?
             >;
-    element.handleCreate(ref, build);
+    return element.handleCreate(ref, build);
   }
 }
 
@@ -159,7 +159,7 @@ abstract class _$PedidoVentaIndexScreenController extends $AsyncNotifier<int> {
   FutureOr<int> build();
   @$mustCallSuper
   @override
-  void runBuild() {
+  WhenComplete runBuild() {
     final ref = this.ref as $Ref<AsyncValue<int>, int>;
     final element =
         ref.element
@@ -169,7 +169,7 @@ abstract class _$PedidoVentaIndexScreenController extends $AsyncNotifier<int> {
               Object?,
               Object?
             >;
-    element.handleCreate(ref, build);
+    return element.handleCreate(ref, build);
   }
 }
 
@@ -261,7 +261,7 @@ abstract class _$PedidoVentaIndexScreenPaginatedController
   FutureOr<List<PedidoVenta>> build({required int page});
   @$mustCallSuper
   @override
-  void runBuild() {
+  WhenComplete runBuild() {
     final ref =
         this.ref as $Ref<AsyncValue<List<PedidoVenta>>, List<PedidoVenta>>;
     final element =
@@ -272,6 +272,6 @@ abstract class _$PedidoVentaIndexScreenPaginatedController
               Object?,
               Object?
             >;
-    element.handleCreate(ref, () => build(page: _$args));
+    return element.handleCreate(ref, () => build(page: _$args));
   }
 }

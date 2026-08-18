@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // coverage:ignore-file
-// ignore_for_file: type=lint
+// ignore_for_file: type=lint, type=warning, deprecated_member_use, deprecated_member_use_from_same_package
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'visita_local_dto.dart';
@@ -9,6 +9,7 @@ part of 'visita_local_dto.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// GENERATED CODE - DO NOT MODIFY BY HAND
 // dart format off
 T _$identity<T>(T value) => value;
 
@@ -66,7 +67,7 @@ class _$VisitaLocalDTOCopyWithImpl<$Res>
 /// Create a copy of VisitaLocalDTO
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? visitaAppId = freezed,Object? fecha = null,Object? clienteId = freezed,Object? isClienteProvisional = null,Object? clienteProvisionalNombre = freezed,Object? clienteProvisionalEmail = freezed,Object? clienteProvisionalTelefono = freezed,Object? clienteProvisionalDireccion1 = freezed,Object? clienteProvisionalDireccion2 = freezed,Object? clienteProvisionalCodigoPostal = freezed,Object? clienteProvisionalPoblacion = freezed,Object? clienteProvisionalProvinciaId = freezed,Object? clienteProvisionalRegionId = freezed,Object? clienteProvisionalPaisId = freezed,Object? numEmpl = null,Object? contacto = null,Object? atendidoPor = freezed,Object? resumen = freezed,Object? marcasCompetencia = freezed,Object? ofertaRealizada = null,Object? interesCliente = freezed,Object? pedidoRealizado = null,Object? codigoMotivoNoInteres = freezed,Object? codigoMotivoNoPedido = freezed,Object? codigoSector = freezed,Object? codigoCompetencia = freezed,Object? almacenPropio = freezed,Object? capacidad = freezed,Object? frecuenciaPedido = freezed,Object? latitud = null,Object? longitud = null,Object? enviada = null,Object? tratada = null,Object? errorSyncMessage = freezed,}) {
-  return _then(_self.copyWith(
+  return _then(VisitaLocalDTO(
 visitaAppId: freezed == visitaAppId ? _self.visitaAppId : visitaAppId // ignore: cast_nullable_to_non_nullable
 as String?,fecha: null == fecha ? _self.fecha : fecha // ignore: cast_nullable_to_non_nullable
 as DateTime,clienteId: freezed == clienteId ? _self.clienteId : clienteId // ignore: cast_nullable_to_non_nullable

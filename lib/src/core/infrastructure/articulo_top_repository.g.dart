@@ -132,7 +132,7 @@ abstract class _$ArticuloTopList extends $AsyncNotifier<List<ArticuloTop>> {
   FutureOr<List<ArticuloTop>> build(String clienteId);
   @$mustCallSuper
   @override
-  void runBuild() {
+  WhenComplete runBuild() {
     final ref =
         this.ref as $Ref<AsyncValue<List<ArticuloTop>>, List<ArticuloTop>>;
     final element =
@@ -143,6 +143,6 @@ abstract class _$ArticuloTopList extends $AsyncNotifier<List<ArticuloTop>> {
               Object?,
               Object?
             >;
-    element.handleCreate(ref, () => build(_$args));
+    return element.handleCreate(ref, () => build(_$args));
   }
 }

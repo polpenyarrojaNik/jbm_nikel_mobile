@@ -101,7 +101,7 @@ abstract class _$SelectQuantityPageController
   });
   @$mustCallSuper
   @override
-  void runBuild() {
+  WhenComplete runBuild() {
     final ref =
         this.ref
             as $Ref<
@@ -119,7 +119,7 @@ abstract class _$SelectQuantityPageController
               Object?,
               Object?
             >;
-    element.handleCreate(
+    return element.handleCreate(
       ref,
       () => build(clienteId: _$args.clienteId, articuloId: _$args.articuloId),
     );

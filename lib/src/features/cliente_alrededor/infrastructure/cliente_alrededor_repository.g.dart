@@ -88,7 +88,7 @@ abstract class _$UbicacionActual extends $AsyncNotifier<Position> {
   FutureOr<Position> build();
   @$mustCallSuper
   @override
-  void runBuild() {
+  WhenComplete runBuild() {
     final ref = this.ref as $Ref<AsyncValue<Position>, Position>;
     final element =
         ref.element
@@ -98,7 +98,7 @@ abstract class _$UbicacionActual extends $AsyncNotifier<Position> {
               Object?,
               Object?
             >;
-    element.handleCreate(ref, build);
+    return element.handleCreate(ref, build);
   }
 }
 
@@ -193,7 +193,7 @@ abstract class _$ClientesDireccionesAlrededorListStream
   );
   @$mustCallSuper
   @override
-  void runBuild() {
+  WhenComplete runBuild() {
     final ref =
         this.ref
             as $Ref<AsyncValue<List<ClienteAlrededor>>, List<ClienteAlrededor>>;
@@ -208,6 +208,6 @@ abstract class _$ClientesDireccionesAlrededorListStream
               Object?,
               Object?
             >;
-    element.handleCreate(ref, () => build(_$args));
+    return element.handleCreate(ref, () => build(_$args));
   }
 }

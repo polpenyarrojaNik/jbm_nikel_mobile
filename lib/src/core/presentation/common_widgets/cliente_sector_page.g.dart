@@ -42,7 +42,7 @@ abstract class _$ClienteSectorPageController
   FutureOr<List<Sector>> build();
   @$mustCallSuper
   @override
-  void runBuild() {
+  WhenComplete runBuild() {
     final ref = this.ref as $Ref<AsyncValue<List<Sector>>, List<Sector>>;
     final element =
         ref.element
@@ -52,6 +52,6 @@ abstract class _$ClienteSectorPageController
               Object?,
               Object?
             >;
-    element.handleCreate(ref, build);
+    return element.handleCreate(ref, build);
   }
 }

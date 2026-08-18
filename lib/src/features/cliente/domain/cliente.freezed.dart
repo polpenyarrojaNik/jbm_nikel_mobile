@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // coverage:ignore-file
-// ignore_for_file: type=lint
+// ignore_for_file: type=lint, type=warning, deprecated_member_use, deprecated_member_use_from_same_package
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'cliente.dart';
@@ -9,6 +9,7 @@ part of 'cliente.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// GENERATED CODE - DO NOT MODIFY BY HAND
 // dart format off
 T _$identity<T>(T value) => value;
 /// @nodoc
@@ -63,7 +64,7 @@ class _$ClienteCopyWithImpl<$Res>
 /// Create a copy of Cliente
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? nombreCliente = null,Object? nombreFiscal = null,Object? nif = freezed,Object? direccionFiscal1 = freezed,Object? direccionFiscal2 = freezed,Object? codigoPostalFiscal = freezed,Object? poblacionFiscal = freezed,Object? provinciaFiscal = freezed,Object? paisFiscal = freezed,Object? latitudFiscal = null,Object? longitudFiscal = null,Object? direccionPredeterminada1 = freezed,Object? direccionPredeterminada2 = freezed,Object? codigoPostalPredeterminada = freezed,Object? poblacionPredeterminada = freezed,Object? provinciaPredeterminada = freezed,Object? paisPredeterminada = freezed,Object? latitudPredeterminada = freezed,Object? longitudPredeterminada = freezed,Object? empresaId = null,Object? iva = null,Object? ventasAnyoActual = null,Object? ventasAnyoAnterior = null,Object? ventasHaceDosAnyos = null,Object? margenAnyoActual = null,Object? margenAnyoAnterior = null,Object? margenHaceDosAnyos = null,Object? porcentajeAbonos = null,Object? porcentajeGarantias = null,Object? centralCompras = freezed,Object? urlWeb = freezed,Object? divisa = freezed,Object? tarifaId = freezed,Object? tarifaDescripcion = freezed,Object? descuentoGeneralId = freezed,Object? descripcionDescuentoGeneral = freezed,Object? tipoCalculoPrecio = null,Object? plazoDeCobro = freezed,Object? metodoDeCobro = freezed,Object? descuentoProntoPago = null,Object? riesgoConcedidoInterno = null,Object? riesgoConcedidoInternoDate = freezed,Object? riesgoConcedidoCoafe = null,Object? riesgoConcedidoCoafeFecha = freezed,Object? riesgoActual = null,Object? riesgoConcedido = freezed,Object? riesgoPendienteCobroVencido = freezed,Object? riesgoPendienteCobroNoVencido = freezed,Object? riesgoPendienteServir = freezed,Object? riesgoPendienteFacturar = freezed,Object? riesgoExcedido = null,Object? obvservacionesInternas = freezed,Object? clientePotencial = freezed,Object? clienteEstadoPotencial = freezed,Object? clienteTipoPotencial = freezed,Object? representante1Id = freezed,Object? representante1Nombre = freezed,Object? representante2Id = freezed,Object? representante2Nombre = freezed,Object? telefonoMovil = freezed,Object? telefonoFijo = freezed,Object? email = freezed,Object? sector = freezed,Object? subsector = freezed,Object? franqPortes1 = freezed,Object? franqPortes2 = freezed,Object? franqPortes3 = freezed,Object? importePortes1 = freezed,Object? importePortes2 = freezed,Object? importePortes3 = freezed,Object? ventasPeriodoActual = freezed,Object? ventasPeriodoAnterior = freezed,Object? bloqueoOper = null,Object? obsoleto = null,Object? lastUpdated = freezed,Object? deleted = null,}) {
-  return _then(_self.copyWith(
+  return _then(Cliente(
 id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as String,nombreCliente: null == nombreCliente ? _self.nombreCliente : nombreCliente // ignore: cast_nullable_to_non_nullable
 as String,nombreFiscal: null == nombreFiscal ? _self.nombreFiscal : nombreFiscal // ignore: cast_nullable_to_non_nullable

@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // coverage:ignore-file
-// ignore_for_file: type=lint
+// ignore_for_file: type=lint, type=warning, deprecated_member_use, deprecated_member_use_from_same_package
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'image_form_data.dart';
@@ -9,13 +9,13 @@ part of 'image_form_data.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// GENERATED CODE - DO NOT MODIFY BY HAND
 // dart format off
 T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$ImageFormData {
 
- String? get name; String? get company; String? get cargo; List<String> get phoneList; String? get email;// String? website,
- String? get streetAddress1; String? get zipCode; String? get city; Provincia? get state; Pais? get country; String? get referenceStreetAddress;
+ String? get name; String? get company; String? get cargo; List<String> get phoneList; String? get email; String? get streetAddress1; String? get zipCode; String? get city; Provincia? get state; Pais? get country; String? get referenceStreetAddress;
 /// Create a copy of ImageFormData
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -64,7 +64,7 @@ class _$ImageFormDataCopyWithImpl<$Res>
 /// Create a copy of ImageFormData
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? name = freezed,Object? company = freezed,Object? cargo = freezed,Object? phoneList = null,Object? email = freezed,Object? streetAddress1 = freezed,Object? zipCode = freezed,Object? city = freezed,Object? state = freezed,Object? country = freezed,Object? referenceStreetAddress = freezed,}) {
-  return _then(_self.copyWith(
+  return _then(ImageFormData(
 name: freezed == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
 as String?,company: freezed == company ? _self.company : company // ignore: cast_nullable_to_non_nullable
 as String?,cargo: freezed == cargo ? _self.cargo : cargo // ignore: cast_nullable_to_non_nullable
@@ -241,7 +241,7 @@ return $default(_that.name,_that.company,_that.cargo,_that.phoneList,_that.email
 
 
 class _ImageFormData implements ImageFormData {
-   _ImageFormData({this.name, this.company, this.cargo, required final  List<String> phoneList, this.email, this.streetAddress1, this.zipCode, this.city, this.state, this.country, this.referenceStreetAddress}): _phoneList = phoneList;
+   _ImageFormData({this.name, this.company, this.cargo, required  List<String> phoneList, this.email, this.streetAddress1, this.zipCode, this.city, this.state, this.country, this.referenceStreetAddress}): _phoneList = phoneList;
   
 
 @override final  String? name;
@@ -255,7 +255,6 @@ class _ImageFormData implements ImageFormData {
 }
 
 @override final  String? email;
-// String? website,
 @override final  String? streetAddress1;
 @override final  String? zipCode;
 @override final  String? city;

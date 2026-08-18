@@ -53,7 +53,7 @@ abstract class _$ClienteVentasArticuloQueryParamsController
   String build();
   @$mustCallSuper
   @override
-  void runBuild() {
+  WhenComplete runBuild() {
     final ref = this.ref as $Ref<String, String>;
     final element =
         ref.element
@@ -63,7 +63,7 @@ abstract class _$ClienteVentasArticuloQueryParamsController
               Object?,
               Object?
             >;
-    element.handleCreate(ref, build);
+    return element.handleCreate(ref, build);
   }
 }
 
@@ -160,7 +160,7 @@ abstract class _$ClienteVentasArticuloIndexScreenPaginatedController
   FutureOr<List<ClienteVentasArticulo>> build({required String clienteId});
   @$mustCallSuper
   @override
-  void runBuild() {
+  WhenComplete runBuild() {
     final ref =
         this.ref
             as $Ref<
@@ -178,6 +178,6 @@ abstract class _$ClienteVentasArticuloIndexScreenPaginatedController
               Object?,
               Object?
             >;
-    element.handleCreate(ref, () => build(clienteId: _$args));
+    return element.handleCreate(ref, () => build(clienteId: _$args));
   }
 }

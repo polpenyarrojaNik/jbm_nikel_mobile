@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // coverage:ignore-file
-// ignore_for_file: type=lint
+// ignore_for_file: type=lint, type=warning, deprecated_member_use, deprecated_member_use_from_same_package
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'cliente_direccion.dart';
@@ -9,6 +9,7 @@ part of 'cliente_direccion.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// GENERATED CODE - DO NOT MODIFY BY HAND
 // dart format off
 T _$identity<T>(T value) => value;
 /// @nodoc
@@ -63,7 +64,7 @@ class _$ClienteDireccionCopyWithImpl<$Res>
 /// Create a copy of ClienteDireccion
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? clienteId = null,Object? direccionId = freezed,Object? direccionImpGuid = freezed,Object? nombre = freezed,Object? direccion1 = freezed,Object? direccion2 = freezed,Object? codigoPostal = freezed,Object? poblacion = freezed,Object? provincia = freezed,Object? pais = freezed,Object? telefono = freezed,Object? latitud = null,Object? longitud = null,Object? predeterminada = null,Object? lastUpdated = null,Object? enviada = null,Object? tratada = null,Object? deleted = null,Object? isManual = null,}) {
-  return _then(_self.copyWith(
+  return _then(ClienteDireccion(
 clienteId: null == clienteId ? _self.clienteId : clienteId // ignore: cast_nullable_to_non_nullable
 as String,direccionId: freezed == direccionId ? _self.direccionId : direccionId // ignore: cast_nullable_to_non_nullable
 as String?,direccionImpGuid: freezed == direccionImpGuid ? _self.direccionImpGuid : direccionImpGuid // ignore: cast_nullable_to_non_nullable

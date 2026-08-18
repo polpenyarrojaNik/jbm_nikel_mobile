@@ -5,7 +5,7 @@ import 'dart:math' as math;
 import 'package:csv/csv.dart';
 import 'package:dio/dio.dart';
 import 'package:drift/drift.dart';
-import 'package:excel/excel.dart';
+import 'package:excel_community/excel_community.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:money2/money2.dart';

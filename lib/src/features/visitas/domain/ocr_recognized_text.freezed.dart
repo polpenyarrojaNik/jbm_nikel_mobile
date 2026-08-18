@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // coverage:ignore-file
-// ignore_for_file: type=lint
+// ignore_for_file: type=lint, type=warning, deprecated_member_use, deprecated_member_use_from_same_package
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'ocr_recognized_text.dart';
@@ -9,6 +9,7 @@ part of 'ocr_recognized_text.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// GENERATED CODE - DO NOT MODIFY BY HAND
 // dart format off
 T _$identity<T>(T value) => value;
 
@@ -66,9 +67,9 @@ class _$OcrRecognizedTextCopyWithImpl<$Res>
 /// Create a copy of OcrRecognizedText
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? text = null,Object? type = null,Object? dischargeDate = freezed,Object? telfText = freezed,Object? emailText = freezed,Object? websiteText = freezed,}) {
-  return _then(_self.copyWith(
-text: null == text ? _self.text : text // ignore: cast_nullable_to_non_nullable
-as String,type: null == type ? _self.type : type // ignore: cast_nullable_to_non_nullable
+  return _then(OcrRecognizedText(
+null == text ? _self.text : text // ignore: cast_nullable_to_non_nullable
+as String,null == type ? _self.type : type // ignore: cast_nullable_to_non_nullable
 as RecognizedTextType,dischargeDate: freezed == dischargeDate ? _self.dischargeDate : dischargeDate // ignore: cast_nullable_to_non_nullable
 as DateTime?,telfText: freezed == telfText ? _self.telfText : telfText // ignore: cast_nullable_to_non_nullable
 as String?,emailText: freezed == emailText ? _self.emailText : emailText // ignore: cast_nullable_to_non_nullable

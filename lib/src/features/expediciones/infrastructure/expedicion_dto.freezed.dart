@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // coverage:ignore-file
-// ignore_for_file: type=lint
+// ignore_for_file: type=lint, type=warning, deprecated_member_use, deprecated_member_use_from_same_package
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'expedicion_dto.dart';
@@ -9,6 +9,7 @@ part of 'expedicion_dto.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// GENERATED CODE - DO NOT MODIFY BY HAND
 // dart format off
 T _$identity<T>(T value) => value;
 
@@ -66,7 +67,7 @@ class _$ExpedicionDTOCopyWithImpl<$Res>
 /// Create a copy of ExpedicionDTO
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? empresaId = null,Object? pedidoVentaId = null,Object? pedidoVentaDate = null,Object? clienteId = null,Object? direccionId = freezed,Object? nombreCliente = null,Object? codigoPostal = freezed,Object? poblacion = freezed,Object? provincia = freezed,Object? paisId = freezed,Object? divisaId = null,Object? baseImponible = null,Object? pedidoVentaEstadoId = null,Object? numLineas = null,Object? estadoTrackingId = null,Object? albaranId = null,Object? trackId = freezed,Object? agencia = freezed,Object? fechaAlbaran = null,Object? oferta = null,Object? lastUpdated = null,Object? deleted = null,}) {
-  return _then(_self.copyWith(
+  return _then(ExpedicionDTO(
 empresaId: null == empresaId ? _self.empresaId : empresaId // ignore: cast_nullable_to_non_nullable
 as String,pedidoVentaId: null == pedidoVentaId ? _self.pedidoVentaId : pedidoVentaId // ignore: cast_nullable_to_non_nullable
 as String,pedidoVentaDate: null == pedidoVentaDate ? _self.pedidoVentaDate : pedidoVentaDate // ignore: cast_nullable_to_non_nullable

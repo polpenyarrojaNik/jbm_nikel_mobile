@@ -88,7 +88,7 @@ abstract class _$ArticuloLastSyncDate extends $AsyncNotifier<DateTime> {
   FutureOr<DateTime> build();
   @$mustCallSuper
   @override
-  void runBuild() {
+  WhenComplete runBuild() {
     final ref = this.ref as $Ref<AsyncValue<DateTime>, DateTime>;
     final element =
         ref.element
@@ -98,7 +98,7 @@ abstract class _$ArticuloLastSyncDate extends $AsyncNotifier<DateTime> {
               Object?,
               Object?
             >;
-    element.handleCreate(ref, build);
+    return element.handleCreate(ref, build);
   }
 }
 
@@ -177,7 +177,7 @@ abstract class _$GetArticuloById extends $AsyncNotifier<Articulo> {
   FutureOr<Articulo> build(String articuloId);
   @$mustCallSuper
   @override
-  void runBuild() {
+  WhenComplete runBuild() {
     final ref = this.ref as $Ref<AsyncValue<Articulo>, Articulo>;
     final element =
         ref.element
@@ -187,7 +187,7 @@ abstract class _$GetArticuloById extends $AsyncNotifier<Articulo> {
               Object?,
               Object?
             >;
-    element.handleCreate(ref, () => build(_$args));
+    return element.handleCreate(ref, () => build(_$args));
   }
 }
 
@@ -277,7 +277,7 @@ abstract class _$GetArticuloComponenteListaById
   FutureOr<List<ArticuloComponente>> build(String articuloId);
   @$mustCallSuper
   @override
-  void runBuild() {
+  WhenComplete runBuild() {
     final ref =
         this.ref
             as $Ref<
@@ -295,7 +295,7 @@ abstract class _$GetArticuloComponenteListaById
               Object?,
               Object?
             >;
-    element.handleCreate(ref, () => build(_$args));
+    return element.handleCreate(ref, () => build(_$args));
   }
 }
 
@@ -386,7 +386,7 @@ abstract class _$GetArticuloPrecioTarifaListaById
   FutureOr<List<ArticuloPrecioTarifa>> build(String articuloId);
   @$mustCallSuper
   @override
-  void runBuild() {
+  WhenComplete runBuild() {
     final ref =
         this.ref
             as $Ref<
@@ -404,7 +404,7 @@ abstract class _$GetArticuloPrecioTarifaListaById
               Object?,
               Object?
             >;
-    element.handleCreate(ref, () => build(_$args));
+    return element.handleCreate(ref, () => build(_$args));
   }
 }
 
@@ -491,7 +491,7 @@ abstract class _$GetArticuloGrupoNetoListaById
   FutureOr<List<ArticuloGrupoNeto>> build(String articuloId);
   @$mustCallSuper
   @override
-  void runBuild() {
+  WhenComplete runBuild() {
     final ref =
         this.ref
             as $Ref<
@@ -509,7 +509,7 @@ abstract class _$GetArticuloGrupoNetoListaById
               Object?,
               Object?
             >;
-    element.handleCreate(ref, () => build(_$args));
+    return element.handleCreate(ref, () => build(_$args));
   }
 }
 
@@ -599,7 +599,7 @@ abstract class _$GetArticuloSustitutivoListaById
   FutureOr<List<ArticuloSustitutivo>> build(String articuloId);
   @$mustCallSuper
   @override
-  void runBuild() {
+  WhenComplete runBuild() {
     final ref =
         this.ref
             as $Ref<
@@ -617,7 +617,7 @@ abstract class _$GetArticuloSustitutivoListaById
               Object?,
               Object?
             >;
-    element.handleCreate(ref, () => build(_$args));
+    return element.handleCreate(ref, () => build(_$args));
   }
 }
 
@@ -704,7 +704,7 @@ abstract class _$GetArticuloRecambioListaById
   FutureOr<List<ArticuloRecambio>> build(String articuloId);
   @$mustCallSuper
   @override
-  void runBuild() {
+  WhenComplete runBuild() {
     final ref =
         this.ref
             as $Ref<AsyncValue<List<ArticuloRecambio>>, List<ArticuloRecambio>>;
@@ -719,7 +719,7 @@ abstract class _$GetArticuloRecambioListaById
               Object?,
               Object?
             >;
-    element.handleCreate(ref, () => build(_$args));
+    return element.handleCreate(ref, () => build(_$args));
   }
 }
 
@@ -805,7 +805,7 @@ abstract class _$GetArticuloImagenListaById
   FutureOr<List<ArticuloImagen>> build(String articuloId);
   @$mustCallSuper
   @override
-  void runBuild() {
+  WhenComplete runBuild() {
     final ref =
         this.ref
             as $Ref<AsyncValue<List<ArticuloImagen>>, List<ArticuloImagen>>;
@@ -820,7 +820,7 @@ abstract class _$GetArticuloImagenListaById
               Object?,
               Object?
             >;
-    element.handleCreate(ref, () => build(_$args));
+    return element.handleCreate(ref, () => build(_$args));
   }
 }
 
@@ -907,7 +907,7 @@ abstract class _$GetArticuloDocumentoListaById
   FutureOr<List<ArticuloDocumento>> build(String articuloId);
   @$mustCallSuper
   @override
-  void runBuild() {
+  WhenComplete runBuild() {
     final ref =
         this.ref
             as $Ref<
@@ -925,7 +925,7 @@ abstract class _$GetArticuloDocumentoListaById
               Object?,
               Object?
             >;
-    element.handleCreate(ref, () => build(_$args));
+    return element.handleCreate(ref, () => build(_$args));
   }
 }
 
@@ -1017,7 +1017,7 @@ abstract class _$GetArticuloPedidoVentaLineaListById
   FutureOr<List<ArticuloPedidoVentaLinea>> build(String articuloId);
   @$mustCallSuper
   @override
-  void runBuild() {
+  WhenComplete runBuild() {
     final ref =
         this.ref
             as $Ref<
@@ -1035,7 +1035,7 @@ abstract class _$GetArticuloPedidoVentaLineaListById
               Object?,
               Object?
             >;
-    element.handleCreate(ref, () => build(_$args));
+    return element.handleCreate(ref, () => build(_$args));
   }
 }
 
@@ -1121,7 +1121,7 @@ abstract class _$GetArticuloVentasMesById
   FutureOr<List<ArticuloVentasMes>> build(String articuloId);
   @$mustCallSuper
   @override
-  void runBuild() {
+  WhenComplete runBuild() {
     final ref =
         this.ref
             as $Ref<
@@ -1139,7 +1139,7 @@ abstract class _$GetArticuloVentasMesById
               Object?,
               Object?
             >;
-    element.handleCreate(ref, () => build(_$args));
+    return element.handleCreate(ref, () => build(_$args));
   }
 }
 
@@ -1226,7 +1226,7 @@ abstract class _$GetArticuloVentasClienteById
   FutureOr<List<ArticuloVentasCliente>> build(String articuloId);
   @$mustCallSuper
   @override
-  void runBuild() {
+  WhenComplete runBuild() {
     final ref =
         this.ref
             as $Ref<
@@ -1244,7 +1244,7 @@ abstract class _$GetArticuloVentasClienteById
               Object?,
               Object?
             >;
-    element.handleCreate(ref, () => build(_$args));
+    return element.handleCreate(ref, () => build(_$args));
   }
 }
 
@@ -1337,7 +1337,7 @@ abstract class _$GetArticuloUltimosPreciosById
   );
   @$mustCallSuper
   @override
-  void runBuild() {
+  WhenComplete runBuild() {
     final ref =
         this.ref
             as $Ref<
@@ -1355,6 +1355,6 @@ abstract class _$GetArticuloUltimosPreciosById
               Object?,
               Object?
             >;
-    element.handleCreate(ref, () => build(_$args));
+    return element.handleCreate(ref, () => build(_$args));
   }
 }

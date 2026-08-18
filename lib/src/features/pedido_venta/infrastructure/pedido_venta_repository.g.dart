@@ -132,7 +132,7 @@ abstract class _$PedidoVentaById extends $AsyncNotifier<PedidoVenta> {
   FutureOr<PedidoVenta> build(PedidoLocalParam pedidoLocalParam);
   @$mustCallSuper
   @override
-  void runBuild() {
+  WhenComplete runBuild() {
     final ref = this.ref as $Ref<AsyncValue<PedidoVenta>, PedidoVenta>;
     final element =
         ref.element
@@ -142,7 +142,7 @@ abstract class _$PedidoVentaById extends $AsyncNotifier<PedidoVenta> {
               Object?,
               Object?
             >;
-    element.handleCreate(ref, () => build(_$args));
+    return element.handleCreate(ref, () => build(_$args));
   }
 }
 
@@ -225,7 +225,7 @@ abstract class _$PedidoVentaAlbaranById
   FutureOr<List<PedidoAlbaran>> build(String pedidoVentaId);
   @$mustCallSuper
   @override
-  void runBuild() {
+  WhenComplete runBuild() {
     final ref =
         this.ref as $Ref<AsyncValue<List<PedidoAlbaran>>, List<PedidoAlbaran>>;
     final element =
@@ -236,7 +236,7 @@ abstract class _$PedidoVentaAlbaranById
               Object?,
               Object?
             >;
-    element.handleCreate(ref, () => build(_$args));
+    return element.handleCreate(ref, () => build(_$args));
   }
 }
 
@@ -273,7 +273,7 @@ abstract class _$PedidoVentaEstadoList
   FutureOr<List<PedidoVentaEstado>> build();
   @$mustCallSuper
   @override
-  void runBuild() {
+  WhenComplete runBuild() {
     final ref =
         this.ref
             as $Ref<
@@ -291,7 +291,7 @@ abstract class _$PedidoVentaEstadoList
               Object?,
               Object?
             >;
-    element.handleCreate(ref, build);
+    return element.handleCreate(ref, build);
   }
 }
 
@@ -326,7 +326,7 @@ abstract class _$PedidoVentaLastSyncDate extends $AsyncNotifier<DateTime> {
   FutureOr<DateTime> build();
   @$mustCallSuper
   @override
-  void runBuild() {
+  WhenComplete runBuild() {
     final ref = this.ref as $Ref<AsyncValue<DateTime>, DateTime>;
     final element =
         ref.element
@@ -336,7 +336,7 @@ abstract class _$PedidoVentaLastSyncDate extends $AsyncNotifier<DateTime> {
               Object?,
               Object?
             >;
-    element.handleCreate(ref, build);
+    return element.handleCreate(ref, build);
   }
 }
 
@@ -422,7 +422,7 @@ abstract class _$GetPedidoVentaLineaList
   FutureOr<List<PedidoVentaLinea>> build(PedidoLocalParam pedidoLocalParam);
   @$mustCallSuper
   @override
-  void runBuild() {
+  WhenComplete runBuild() {
     final ref =
         this.ref
             as $Ref<AsyncValue<List<PedidoVentaLinea>>, List<PedidoVentaLinea>>;
@@ -437,7 +437,7 @@ abstract class _$GetPedidoVentaLineaList
               Object?,
               Object?
             >;
-    element.handleCreate(ref, () => build(_$args));
+    return element.handleCreate(ref, () => build(_$args));
   }
 }
 
@@ -517,7 +517,7 @@ abstract class _$GetStockDisponible extends $AsyncNotifier<int> {
   FutureOr<int> build(String articuloId);
   @$mustCallSuper
   @override
-  void runBuild() {
+  WhenComplete runBuild() {
     final ref = this.ref as $Ref<AsyncValue<int>, int>;
     final element =
         ref.element
@@ -527,7 +527,7 @@ abstract class _$GetStockDisponible extends $AsyncNotifier<int> {
               Object?,
               Object?
             >;
-    element.handleCreate(ref, () => build(_$args));
+    return element.handleCreate(ref, () => build(_$args));
   }
 }
 
@@ -568,7 +568,7 @@ abstract class _$GetPedidoVentaBorradoresList
   FutureOr<List<PedidoVenta>> build();
   @$mustCallSuper
   @override
-  void runBuild() {
+  WhenComplete runBuild() {
     final ref =
         this.ref as $Ref<AsyncValue<List<PedidoVenta>>, List<PedidoVenta>>;
     final element =
@@ -579,7 +579,7 @@ abstract class _$GetPedidoVentaBorradoresList
               Object?,
               Object?
             >;
-    element.handleCreate(ref, build);
+    return element.handleCreate(ref, build);
   }
 }
 
@@ -659,7 +659,7 @@ abstract class _$OfertaHaveAttachment extends $AsyncNotifier<bool> {
   FutureOr<bool> build(String pedidoVentaId);
   @$mustCallSuper
   @override
-  void runBuild() {
+  WhenComplete runBuild() {
     final ref = this.ref as $Ref<AsyncValue<bool>, bool>;
     final element =
         ref.element
@@ -669,7 +669,7 @@ abstract class _$OfertaHaveAttachment extends $AsyncNotifier<bool> {
               Object?,
               Object?
             >;
-    element.handleCreate(ref, () => build(_$args));
+    return element.handleCreate(ref, () => build(_$args));
   }
 }
 
@@ -750,7 +750,7 @@ abstract class _$PedidoHaveProformaAdjunta extends $AsyncNotifier<bool> {
   FutureOr<bool> build(String pedidoVentaId);
   @$mustCallSuper
   @override
-  void runBuild() {
+  WhenComplete runBuild() {
     final ref = this.ref as $Ref<AsyncValue<bool>, bool>;
     final element =
         ref.element
@@ -760,7 +760,7 @@ abstract class _$PedidoHaveProformaAdjunta extends $AsyncNotifier<bool> {
               Object?,
               Object?
             >;
-    element.handleCreate(ref, () => build(_$args));
+    return element.handleCreate(ref, () => build(_$args));
   }
 }
 
@@ -839,7 +839,7 @@ abstract class _$DeletePedidoVenta extends $AsyncNotifier<void> {
   FutureOr<void> build(String pedidoVentaAppId);
   @$mustCallSuper
   @override
-  void runBuild() {
+  WhenComplete runBuild() {
     final ref = this.ref as $Ref<AsyncValue<void>, void>;
     final element =
         ref.element
@@ -849,6 +849,6 @@ abstract class _$DeletePedidoVenta extends $AsyncNotifier<void> {
               Object?,
               Object?
             >;
-    element.handleCreate(ref, () => build(_$args));
+    return element.handleCreate(ref, () => build(_$args));
   }
 }

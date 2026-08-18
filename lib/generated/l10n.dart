@@ -1,6 +1,7 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+
 import 'intl/messages_all.dart';
 
 // **************************************************************************
@@ -1359,8 +1360,7 @@ class S {
   get cliente_show_clienteDetalle_metodoCalculoPrecioMejorPrecioDescripcion {
     return Intl.message(
       'Best price',
-      name:
-          'cliente_show_clienteDetalle_metodoCalculoPrecioMejorPrecioDescripcion',
+      name: 'cliente_show_clienteDetalle_metodoCalculoPrecioMejorPrecioDescripcion',
       desc: '',
       args: [],
     );
@@ -1371,8 +1371,7 @@ class S {
   get cliente_show_clienteDetalle_metodoCalculoPrecioPreciosNetosDescripcion {
     return Intl.message(
       'Net prices',
-      name:
-          'cliente_show_clienteDetalle_metodoCalculoPrecioPreciosNetosDescripcion',
+      name: 'cliente_show_clienteDetalle_metodoCalculoPrecioPreciosNetosDescripcion',
       desc: '',
       args: [],
     );
@@ -1745,8 +1744,7 @@ class S {
   get cliente_show_clienteContacto_clienteContactoEditPage_contactoGuardadoConExito {
     return Intl.message(
       'Contact saved successfully',
-      name:
-          'cliente_show_clienteContacto_clienteContactoEditPage_contactoGuardadoConExito',
+      name: 'cliente_show_clienteContacto_clienteContactoEditPage_contactoGuardadoConExito',
       desc: '',
       args: [],
     );
@@ -1757,8 +1755,7 @@ class S {
   get cliente_show_clienteContacto_clienteContactoEditPage_contactoNoGuardado {
     return Intl.message(
       'Contact saved successfully',
-      name:
-          'cliente_show_clienteContacto_clienteContactoEditPage_contactoNoGuardado',
+      name: 'cliente_show_clienteContacto_clienteContactoEditPage_contactoNoGuardado',
       desc: '',
       args: [],
     );
@@ -1789,8 +1786,7 @@ class S {
   get cliente_show_clienteContacto_clienteContactoEditPage_segundoApellido {
     return Intl.message(
       'Second Last Name',
-      name:
-          'cliente_show_clienteContacto_clienteContactoEditPage_segundoApellido',
+      name: 'cliente_show_clienteContacto_clienteContactoEditPage_segundoApellido',
       desc: '',
       args: [],
     );
@@ -1843,8 +1839,7 @@ class S {
   get cliente_show_clienteContacto_clienteContactoEditPage_cambiosPendientesDeTramitar {
     return Intl.message(
       'Changes pending to process',
-      name:
-          'cliente_show_clienteContacto_clienteContactoEditPage_cambiosPendientesDeTramitar',
+      name: 'cliente_show_clienteContacto_clienteContactoEditPage_cambiosPendientesDeTramitar',
       desc: '',
       args: [],
     );
@@ -1855,8 +1850,7 @@ class S {
   get cliente_show_clienteContacto_clienteContactoListPage_cambiosPendientesDeTramitar {
     return Intl.message(
       'Changes pending to process',
-      name:
-          'cliente_show_clienteContacto_clienteContactoListPage_cambiosPendientesDeTramitar',
+      name: 'cliente_show_clienteContacto_clienteContactoListPage_cambiosPendientesDeTramitar',
       desc: '',
       args: [],
     );
@@ -1867,8 +1861,7 @@ class S {
   get cliente_show_clienteContacto_clienteContactoImpListTile_contactoEliminado {
     return Intl.message(
       'Contact deleted',
-      name:
-          'cliente_show_clienteContacto_clienteContactoImpListTile_contactoEliminado',
+      name: 'cliente_show_clienteContacto_clienteContactoImpListTile_contactoEliminado',
       desc: '',
       args: [],
     );
@@ -1889,8 +1882,7 @@ class S {
   get cliente_show_clienteDireccion_clienteDireccionEditPage_editarDireccion {
     return Intl.message(
       'Edit shipping address',
-      name:
-          'cliente_show_clienteDireccion_clienteDireccionEditPage_editarDireccion',
+      name: 'cliente_show_clienteDireccion_clienteDireccionEditPage_editarDireccion',
       desc: '',
       args: [],
     );
@@ -1901,8 +1893,7 @@ class S {
   get cliente_show_clienteDireccion_clienteDireccionEditPage_direccionGuardadaConExito {
     return Intl.message(
       'Shipping address saved successfully',
-      name:
-          'cliente_show_clienteDireccion_clienteDireccionEditPage_direccionGuardadaConExito',
+      name: 'cliente_show_clienteDireccion_clienteDireccionEditPage_direccionGuardadaConExito',
       desc: '',
       args: [],
     );
@@ -1913,8 +1904,7 @@ class S {
   get cliente_show_clienteDireccion_clienteDireccionEditPage_direccionNoGuardada {
     return Intl.message(
       'Shipping address saved successfully',
-      name:
-          'cliente_show_clienteDireccion_clienteDireccionEditPage_direccionNoGuardada',
+      name: 'cliente_show_clienteDireccion_clienteDireccionEditPage_direccionNoGuardada',
       desc: '',
       args: [],
     );
@@ -1997,8 +1987,7 @@ class S {
   get cliente_show_clienteDireccion_clienteDireccionEditPage_cambiosPendientesDeTramitar {
     return Intl.message(
       'Changes pending to process',
-      name:
-          'cliente_show_clienteDireccion_clienteDireccionEditPage_cambiosPendientesDeTramitar',
+      name: 'cliente_show_clienteDireccion_clienteDireccionEditPage_cambiosPendientesDeTramitar',
       desc: '',
       args: [],
     );
@@ -2009,8 +1998,7 @@ class S {
   get cliente_show_clienteDireccion_clienteDireccionListPage_cambiosPendientesDeTramitar {
     return Intl.message(
       'Changes pending to process',
-      name:
-          'cliente_show_clienteDireccion_clienteDireccionListPage_cambiosPendientesDeTramitar',
+      name: 'cliente_show_clienteDireccion_clienteDireccionListPage_cambiosPendientesDeTramitar',
       desc: '',
       args: [],
     );
@@ -2021,8 +2009,7 @@ class S {
   get cliente_show_clienteDireccion_clienteDireccionImpListTile_direccionEliminada {
     return Intl.message(
       'Shipping address deleted',
-      name:
-          'cliente_show_clienteDireccion_clienteDireccionImpListTile_direccionEliminada',
+      name: 'cliente_show_clienteDireccion_clienteDireccionImpListTile_direccionEliminada',
       desc: '',
       args: [],
     );

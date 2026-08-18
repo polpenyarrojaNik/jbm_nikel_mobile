@@ -97,7 +97,7 @@ class PedidoVentaEditImportExcelPage extends ConsumerWidget {
                             children: [
                               Icon(
                                 getIconFromExtension(
-                                  selectedFile.value!.extension,
+                                  getExtension(selectedFile.value!.name),
                                 ),
                                 color: Theme.of(
                                   context,
@@ -201,12 +201,12 @@ class UploadExcelFileButton extends ConsumerWidget {
     if (Platform.isAndroid || Platform.isIOS) {
       await FilePicker.clearTemporaryFiles();
     }
-    final result = await FilePicker.pickFiles(
+    final result = await FilePicker.pickFile(
       allowedExtensions: ['xls', 'xlsx', 'csv', 'ods'],
       type: FileType.custom,
     );
     if (result != null) {
-      selectedFile.value = result.files.firstOrNull;
+      selectedFile.value = result;
 
       unawaited(
         runMutationSafe(ref, importLinesMutation, (tsx) async {

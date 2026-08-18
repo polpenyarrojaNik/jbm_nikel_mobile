@@ -48,7 +48,7 @@ abstract class _$VisitaSectorListFormDropdownController
   FutureOr<List<VisitaSector>> build();
   @$mustCallSuper
   @override
-  void runBuild() {
+  WhenComplete runBuild() {
     final ref =
         this.ref as $Ref<AsyncValue<List<VisitaSector>>, List<VisitaSector>>;
     final element =
@@ -59,7 +59,7 @@ abstract class _$VisitaSectorListFormDropdownController
               Object?,
               Object?
             >;
-    element.handleCreate(ref, build);
+    return element.handleCreate(ref, build);
   }
 }
 
@@ -102,7 +102,7 @@ abstract class _$VisitaCompetidorListFormDropdownController
   FutureOr<List<VisitaCompetidor>> build();
   @$mustCallSuper
   @override
-  void runBuild() {
+  WhenComplete runBuild() {
     final ref =
         this.ref
             as $Ref<AsyncValue<List<VisitaCompetidor>>, List<VisitaCompetidor>>;
@@ -117,7 +117,7 @@ abstract class _$VisitaCompetidorListFormDropdownController
               Object?,
               Object?
             >;
-    element.handleCreate(ref, build);
+    return element.handleCreate(ref, build);
   }
 }
 
@@ -160,7 +160,7 @@ abstract class _$VisitaMotivosNoVentaListFormDropdownController
   FutureOr<List<VisitaMotivoNoVenta>> build();
   @$mustCallSuper
   @override
-  void runBuild() {
+  WhenComplete runBuild() {
     final ref =
         this.ref
             as $Ref<
@@ -178,6 +178,6 @@ abstract class _$VisitaMotivosNoVentaListFormDropdownController
               Object?,
               Object?
             >;
-    element.handleCreate(ref, build);
+    return element.handleCreate(ref, build);
   }
 }

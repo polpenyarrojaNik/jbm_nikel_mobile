@@ -51,7 +51,7 @@ abstract class _$CatalogoSearchQueryParamsController extends $Notifier<String> {
   String build();
   @$mustCallSuper
   @override
-  void runBuild() {
+  WhenComplete runBuild() {
     final ref = this.ref as $Ref<String, String>;
     final element =
         ref.element
@@ -61,7 +61,7 @@ abstract class _$CatalogoSearchQueryParamsController extends $Notifier<String> {
               Object?,
               Object?
             >;
-    element.handleCreate(ref, build);
+    return element.handleCreate(ref, build);
   }
 }
 
@@ -107,7 +107,7 @@ abstract class _$TipoCatalogoQueryParamController
   TipoCatalogo? build();
   @$mustCallSuper
   @override
-  void runBuild() {
+  WhenComplete runBuild() {
     final ref = this.ref as $Ref<TipoCatalogo?, TipoCatalogo?>;
     final element =
         ref.element
@@ -117,7 +117,7 @@ abstract class _$TipoCatalogoQueryParamController
               Object?,
               Object?
             >;
-    element.handleCreate(ref, build);
+    return element.handleCreate(ref, build);
   }
 }
 
@@ -168,7 +168,7 @@ abstract class _$TipoPrecioCatalogoQueryParamController
   TipoPrecioCatalogo? build();
   @$mustCallSuper
   @override
-  void runBuild() {
+  WhenComplete runBuild() {
     final ref = this.ref as $Ref<TipoPrecioCatalogo?, TipoPrecioCatalogo?>;
     final element =
         ref.element
@@ -178,7 +178,7 @@ abstract class _$TipoPrecioCatalogoQueryParamController
               Object?,
               Object?
             >;
-    element.handleCreate(ref, build);
+    return element.handleCreate(ref, build);
   }
 }
 
@@ -226,7 +226,7 @@ abstract class _$IdiomaCatalogoQueryParamController
   IdiomaCatalogo? build();
   @$mustCallSuper
   @override
-  void runBuild() {
+  WhenComplete runBuild() {
     final ref = this.ref as $Ref<IdiomaCatalogo?, IdiomaCatalogo?>;
     final element =
         ref.element
@@ -236,7 +236,7 @@ abstract class _$IdiomaCatalogoQueryParamController
               Object?,
               Object?
             >;
-    element.handleCreate(ref, build);
+    return element.handleCreate(ref, build);
   }
 }
 
@@ -274,7 +274,7 @@ abstract class _$CatalogoIndexScreenController
   FutureOr<List<Catalogo>> build();
   @$mustCallSuper
   @override
-  void runBuild() {
+  WhenComplete runBuild() {
     final ref = this.ref as $Ref<AsyncValue<List<Catalogo>>, List<Catalogo>>;
     final element =
         ref.element
@@ -284,6 +284,6 @@ abstract class _$CatalogoIndexScreenController
               Object?,
               Object?
             >;
-    element.handleCreate(ref, build);
+    return element.handleCreate(ref, build);
   }
 }

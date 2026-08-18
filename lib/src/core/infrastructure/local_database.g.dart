@@ -8173,38 +8173,36 @@ typedef $$SyncDateTimeTableTableProcessedTableManager =
       SyncDateTimeDTO,
       PrefetchHooks Function()
     >;
-typedef $$LogTableTableCreateCompanionBuilder =
-    LogTableCompanion Function({
-      Value<int> id,
-      required String level,
-      required String message,
-      Value<String?> error,
-      Value<String?> stackTrace,
-      required String appId,
-      required String appBuild,
-      required String appBuildName,
-      required String device,
-      required String userId,
-      Value<String?> userEmail,
-      Value<String?> userName,
-      required DateTime timestamp,
-    });
-typedef $$LogTableTableUpdateCompanionBuilder =
-    LogTableCompanion Function({
-      Value<int> id,
-      Value<String> level,
-      Value<String> message,
-      Value<String?> error,
-      Value<String?> stackTrace,
-      Value<String> appId,
-      Value<String> appBuild,
-      Value<String> appBuildName,
-      Value<String> device,
-      Value<String> userId,
-      Value<String?> userEmail,
-      Value<String?> userName,
-      Value<DateTime> timestamp,
-    });
+typedef $$LogTableTableCreateCompanionBuilder = LogTableCompanion Function({
+  Value<int> id,
+  required String level,
+  required String message,
+  Value<String?> error,
+  Value<String?> stackTrace,
+  required String appId,
+  required String appBuild,
+  required String appBuildName,
+  required String device,
+  required String userId,
+  Value<String?> userEmail,
+  Value<String?> userName,
+  required DateTime timestamp,
+});
+typedef $$LogTableTableUpdateCompanionBuilder = LogTableCompanion Function({
+  Value<int> id,
+  Value<String> level,
+  Value<String> message,
+  Value<String?> error,
+  Value<String?> stackTrace,
+  Value<String> appId,
+  Value<String> appBuild,
+  Value<String> appBuildName,
+  Value<String> device,
+  Value<String> userId,
+  Value<String?> userEmail,
+  Value<String?> userName,
+  Value<DateTime> timestamp,
+});
 
 class $$LogTableTableFilterComposer
     extends Composer<_$LocalAppDatabase, $LogTableTable> {

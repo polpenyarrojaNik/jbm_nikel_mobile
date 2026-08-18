@@ -87,7 +87,7 @@ abstract class _$TipoCatalogoList extends $AsyncNotifier<List<TipoCatalogo>> {
   FutureOr<List<TipoCatalogo>> build();
   @$mustCallSuper
   @override
-  void runBuild() {
+  WhenComplete runBuild() {
     final ref =
         this.ref as $Ref<AsyncValue<List<TipoCatalogo>>, List<TipoCatalogo>>;
     final element =
@@ -98,7 +98,7 @@ abstract class _$TipoCatalogoList extends $AsyncNotifier<List<TipoCatalogo>> {
               Object?,
               Object?
             >;
-    element.handleCreate(ref, build);
+    return element.handleCreate(ref, build);
   }
 }
 
@@ -138,7 +138,7 @@ abstract class _$TipoPrecioCatalogoList
   FutureOr<List<TipoPrecioCatalogo>> build();
   @$mustCallSuper
   @override
-  void runBuild() {
+  WhenComplete runBuild() {
     final ref =
         this.ref
             as $Ref<
@@ -156,7 +156,7 @@ abstract class _$TipoPrecioCatalogoList
               Object?,
               Object?
             >;
-    element.handleCreate(ref, build);
+    return element.handleCreate(ref, build);
   }
 }
 
@@ -192,7 +192,7 @@ abstract class _$IdiomaCatalogoList
   FutureOr<List<IdiomaCatalogo>> build();
   @$mustCallSuper
   @override
-  void runBuild() {
+  WhenComplete runBuild() {
     final ref =
         this.ref
             as $Ref<AsyncValue<List<IdiomaCatalogo>>, List<IdiomaCatalogo>>;
@@ -207,6 +207,6 @@ abstract class _$IdiomaCatalogoList
               Object?,
               Object?
             >;
-    element.handleCreate(ref, build);
+    return element.handleCreate(ref, build);
   }
 }

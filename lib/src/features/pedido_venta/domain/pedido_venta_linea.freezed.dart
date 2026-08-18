@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // coverage:ignore-file
-// ignore_for_file: type=lint
+// ignore_for_file: type=lint, type=warning, deprecated_member_use, deprecated_member_use_from_same_package
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'pedido_venta_linea.dart';
@@ -9,13 +9,13 @@ part of 'pedido_venta_linea.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// GENERATED CODE - DO NOT MODIFY BY HAND
 // dart format off
 T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$PedidoVentaLinea {
 
- String? get empresaId; String? get pedidoId; String? get pedidoVentaLineaId; String? get pedidoVentaAppId;// String? pedidoVentaLineaAppId,
- String get articuloId; String get articuloDescription; int get cantidad; Money get precioDivisa; String get divisaId; int get tipoPrecio; double get descuento1; double get descuento2; double get descuento3; double? get descuentoProntoPago; String? get pedidoLineaIdComponente; Money? get importeLinea; bool? get stockDisponibleSN; int? get stockDisponible; DateTime? get fechaDisponible; double? get iva; bool get aiRecomendado; int get cantidadPendiente; DateTime get lastUpdated; bool get deleted;
+ String? get empresaId; String? get pedidoId; String? get pedidoVentaLineaId; String? get pedidoVentaAppId; String get articuloId; String get articuloDescription; int get cantidad; Money get precioDivisa; String get divisaId; int get tipoPrecio; double get descuento1; double get descuento2; double get descuento3; double? get descuentoProntoPago; String? get pedidoLineaIdComponente; Money? get importeLinea; bool? get stockDisponibleSN; int? get stockDisponible; DateTime? get fechaDisponible; double? get iva; bool get aiRecomendado; int get cantidadPendiente; DateTime get lastUpdated; bool get deleted;
 /// Create a copy of PedidoVentaLinea
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -64,7 +64,7 @@ class _$PedidoVentaLineaCopyWithImpl<$Res>
 /// Create a copy of PedidoVentaLinea
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? empresaId = freezed,Object? pedidoId = freezed,Object? pedidoVentaLineaId = freezed,Object? pedidoVentaAppId = freezed,Object? articuloId = null,Object? articuloDescription = null,Object? cantidad = null,Object? precioDivisa = null,Object? divisaId = null,Object? tipoPrecio = null,Object? descuento1 = null,Object? descuento2 = null,Object? descuento3 = null,Object? descuentoProntoPago = freezed,Object? pedidoLineaIdComponente = freezed,Object? importeLinea = freezed,Object? stockDisponibleSN = freezed,Object? stockDisponible = freezed,Object? fechaDisponible = freezed,Object? iva = freezed,Object? aiRecomendado = null,Object? cantidadPendiente = null,Object? lastUpdated = null,Object? deleted = null,}) {
-  return _then(_self.copyWith(
+  return _then(PedidoVentaLinea(
 empresaId: freezed == empresaId ? _self.empresaId : empresaId // ignore: cast_nullable_to_non_nullable
 as String?,pedidoId: freezed == pedidoId ? _self.pedidoId : pedidoId // ignore: cast_nullable_to_non_nullable
 as String?,pedidoVentaLineaId: freezed == pedidoVentaLineaId ? _self.pedidoVentaLineaId : pedidoVentaLineaId // ignore: cast_nullable_to_non_nullable
@@ -237,7 +237,6 @@ class _PedidoVentaLinea extends PedidoVentaLinea {
 @override final  String? pedidoId;
 @override final  String? pedidoVentaLineaId;
 @override final  String? pedidoVentaAppId;
-// String? pedidoVentaLineaAppId,
 @override final  String articuloId;
 @override final  String articuloDescription;
 @override final  int cantidad;

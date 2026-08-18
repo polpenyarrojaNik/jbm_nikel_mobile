@@ -237,12 +237,13 @@ class VisitaDetallePage extends ConsumerWidget {
     double latitud,
     double longitud,
   ) async {
-    final availableMaps = await MapLauncher.installedMaps;
+    final marker = MapLauncher.marker(
+      Location.coords(latitud, longitud, title: S.of(context).visitLocation),
+    );
+    final availableMaps = await marker.getSupportedMaps([.apple, .google]);
+
     if (context.mounted && availableMaps.isNotEmpty) {
-      await availableMaps.first.showMarker(
-        coords: Coords(latitud, longitud),
-        title: S.of(context).visitLocation,
-      );
+      await availableMaps.first.show();
     }
   }
 }

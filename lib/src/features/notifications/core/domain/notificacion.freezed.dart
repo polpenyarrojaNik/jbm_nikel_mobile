@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // coverage:ignore-file
-// ignore_for_file: type=lint
+// ignore_for_file: type=lint, type=warning, deprecated_member_use, deprecated_member_use_from_same_package
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'notificacion.dart';
@@ -9,6 +9,7 @@ part of 'notificacion.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// GENERATED CODE - DO NOT MODIFY BY HAND
 // dart format off
 T _$identity<T>(T value) => value;
 /// @nodoc
@@ -63,7 +64,7 @@ class _$NotificacionCopyWithImpl<$Res>
 /// Create a copy of Notificacion
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? notificationId = null,Object? fecha = null,Object? leidoSN = null,Object? mensaje = null,Object? adjuntos = null,}) {
-  return _then(_self.copyWith(
+  return _then(Notificacion(
 notificationId: null == notificationId ? _self.notificationId : notificationId // ignore: cast_nullable_to_non_nullable
 as String,fecha: null == fecha ? _self.fecha : fecha // ignore: cast_nullable_to_non_nullable
 as DateTime,leidoSN: null == leidoSN ? _self.leidoSN : leidoSN // ignore: cast_nullable_to_non_nullable
@@ -210,7 +211,7 @@ return $default(_that.notificationId,_that.fecha,_that.leidoSN,_that.mensaje,_th
 
 
 class _Notificacion extends Notificacion {
-  const _Notificacion({required this.notificationId, required this.fecha, required this.leidoSN, required this.mensaje, required final  List<NotificationAdjunto> adjuntos}): _adjuntos = adjuntos,super._();
+  const _Notificacion({required this.notificationId, required this.fecha, required this.leidoSN, required this.mensaje, required  List<NotificationAdjunto> adjuntos}): _adjuntos = adjuntos,super._();
   
 
 @override final  String notificationId;

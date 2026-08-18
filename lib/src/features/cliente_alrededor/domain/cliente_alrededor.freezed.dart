@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // coverage:ignore-file
-// ignore_for_file: type=lint
+// ignore_for_file: type=lint, type=warning, deprecated_member_use, deprecated_member_use_from_same_package
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'cliente_alrededor.dart';
@@ -9,6 +9,7 @@ part of 'cliente_alrededor.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// GENERATED CODE - DO NOT MODIFY BY HAND
 // dart format off
 T _$identity<T>(T value) => value;
 /// @nodoc
@@ -63,7 +64,7 @@ class _$ClienteAlrededorCopyWithImpl<$Res>
 /// Create a copy of ClienteAlrededor
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? clienteId = null,Object? markerId = null,Object? nombre = null,Object? isDireccionFiscal = null,Object? direccion = freezed,Object? codigoPostal = freezed,Object? poblacion = freezed,Object? provincia = freezed,Object? pais = freezed,Object? isClientePotencial = freezed,Object? latitud = null,Object? longitud = null,Object? ventasAnyoActual = null,Object? ventasAnyoAnterior = null,Object? porcentajeAbonos = null,Object? nombreRepresentante1 = freezed,Object? nombreRepresentante2 = freezed,Object? ventasPeriodoActual = freezed,Object? ventasPeriodoAnterior = freezed,Object? bloqueoOper = null,Object? obsoleto = null,}) {
-  return _then(_self.copyWith(
+  return _then(ClienteAlrededor(
 clienteId: null == clienteId ? _self.clienteId : clienteId // ignore: cast_nullable_to_non_nullable
 as String,markerId: null == markerId ? _self.markerId : markerId // ignore: cast_nullable_to_non_nullable
 as String,nombre: null == nombre ? _self.nombre : nombre // ignore: cast_nullable_to_non_nullable

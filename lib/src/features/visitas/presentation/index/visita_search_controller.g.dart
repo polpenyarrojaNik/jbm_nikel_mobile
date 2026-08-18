@@ -51,7 +51,7 @@ abstract class _$VisitaSearchQueryParamsController extends $Notifier<String> {
   String build();
   @$mustCallSuper
   @override
-  void runBuild() {
+  WhenComplete runBuild() {
     final ref = this.ref as $Ref<String, String>;
     final element =
         ref.element
@@ -61,7 +61,7 @@ abstract class _$VisitaSearchQueryParamsController extends $Notifier<String> {
               Object?,
               Object?
             >;
-    element.handleCreate(ref, build);
+    return element.handleCreate(ref, build);
   }
 }
 
@@ -97,7 +97,7 @@ abstract class _$VisitaIndexScreenController extends $AsyncNotifier<int> {
   FutureOr<int> build();
   @$mustCallSuper
   @override
-  void runBuild() {
+  WhenComplete runBuild() {
     final ref = this.ref as $Ref<AsyncValue<int>, int>;
     final element =
         ref.element
@@ -107,7 +107,7 @@ abstract class _$VisitaIndexScreenController extends $AsyncNotifier<int> {
               Object?,
               Object?
             >;
-    element.handleCreate(ref, build);
+    return element.handleCreate(ref, build);
   }
 }
 
@@ -199,7 +199,7 @@ abstract class _$VisitaIndexScreenPaginatedController
   FutureOr<List<Visita>> build({required int page});
   @$mustCallSuper
   @override
-  void runBuild() {
+  WhenComplete runBuild() {
     final ref = this.ref as $Ref<AsyncValue<List<Visita>>, List<Visita>>;
     final element =
         ref.element
@@ -209,6 +209,6 @@ abstract class _$VisitaIndexScreenPaginatedController
               Object?,
               Object?
             >;
-    element.handleCreate(ref, () => build(page: _$args));
+    return element.handleCreate(ref, () => build(page: _$args));
   }
 }

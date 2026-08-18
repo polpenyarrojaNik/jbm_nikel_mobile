@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // coverage:ignore-file
-// ignore_for_file: type=lint
+// ignore_for_file: type=lint, type=warning, deprecated_member_use, deprecated_member_use_from_same_package
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'pedido_import_result.dart';
@@ -9,6 +9,7 @@ part of 'pedido_import_result.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// GENERATED CODE - DO NOT MODIFY BY HAND
 // dart format off
 T _$identity<T>(T value) => value;
 /// @nodoc
@@ -63,7 +64,7 @@ class _$PedidoImportResultCopyWithImpl<$Res>
 /// Create a copy of PedidoImportResult
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? sheetName = null,Object? pedidoImportLineas = null,Object? pedidoImportLineaErrors = null,}) {
-  return _then(_self.copyWith(
+  return _then(PedidoImportResult(
 sheetName: null == sheetName ? _self.sheetName : sheetName // ignore: cast_nullable_to_non_nullable
 as String,pedidoImportLineas: null == pedidoImportLineas ? _self.pedidoImportLineas : pedidoImportLineas // ignore: cast_nullable_to_non_nullable
 as List<PedidoImportLinea>,pedidoImportLineaErrors: null == pedidoImportLineaErrors ? _self.pedidoImportLineaErrors : pedidoImportLineaErrors // ignore: cast_nullable_to_non_nullable
@@ -208,7 +209,7 @@ return $default(_that.sheetName,_that.pedidoImportLineas,_that.pedidoImportLinea
 
 
 class _PedidoImportResult extends PedidoImportResult {
-  const _PedidoImportResult({required this.sheetName, required final  List<PedidoImportLinea> pedidoImportLineas, required final  List<PedidoImportLineaError> pedidoImportLineaErrors}): _pedidoImportLineas = pedidoImportLineas,_pedidoImportLineaErrors = pedidoImportLineaErrors,super._();
+  const _PedidoImportResult({required this.sheetName, required  List<PedidoImportLinea> pedidoImportLineas, required  List<PedidoImportLineaError> pedidoImportLineaErrors}): _pedidoImportLineas = pedidoImportLineas,_pedidoImportLineaErrors = pedidoImportLineaErrors,super._();
   
 
 @override final  String sheetName;

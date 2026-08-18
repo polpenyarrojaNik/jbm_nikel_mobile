@@ -51,7 +51,7 @@ abstract class _$ArticuloSearchQueryParamsController extends $Notifier<String> {
   String build();
   @$mustCallSuper
   @override
-  void runBuild() {
+  WhenComplete runBuild() {
     final ref = this.ref as $Ref<String, String>;
     final element =
         ref.element
@@ -61,7 +61,7 @@ abstract class _$ArticuloSearchQueryParamsController extends $Notifier<String> {
               Object?,
               Object?
             >;
-    element.handleCreate(ref, build);
+    return element.handleCreate(ref, build);
   }
 }
 
@@ -105,7 +105,7 @@ abstract class _$ArticuloFromFormController extends $Notifier<Articulo?> {
   Articulo? build();
   @$mustCallSuper
   @override
-  void runBuild() {
+  WhenComplete runBuild() {
     final ref = this.ref as $Ref<Articulo?, Articulo?>;
     final element =
         ref.element
@@ -115,7 +115,7 @@ abstract class _$ArticuloFromFormController extends $Notifier<Articulo?> {
               Object?,
               Object?
             >;
-    element.handleCreate(ref, build);
+    return element.handleCreate(ref, build);
   }
 }
 
@@ -200,7 +200,7 @@ abstract class _$ArticuloIndexScreenController extends $AsyncNotifier<int> {
   FutureOr<int> build(bool isSearchArticuloForForm);
   @$mustCallSuper
   @override
-  void runBuild() {
+  WhenComplete runBuild() {
     final ref = this.ref as $Ref<AsyncValue<int>, int>;
     final element =
         ref.element
@@ -210,7 +210,7 @@ abstract class _$ArticuloIndexScreenController extends $AsyncNotifier<int> {
               Object?,
               Object?
             >;
-    element.handleCreate(ref, () => build(_$args));
+    return element.handleCreate(ref, () => build(_$args));
   }
 }
 
@@ -308,7 +308,7 @@ abstract class _$ArticuloIndexScreenPaginatedController
   });
   @$mustCallSuper
   @override
-  void runBuild() {
+  WhenComplete runBuild() {
     final ref = this.ref as $Ref<AsyncValue<List<Articulo>>, List<Articulo>>;
     final element =
         ref.element
@@ -318,7 +318,7 @@ abstract class _$ArticuloIndexScreenPaginatedController
               Object?,
               Object?
             >;
-    element.handleCreate(
+    return element.handleCreate(
       ref,
       () => build(
         page: _$args.page,

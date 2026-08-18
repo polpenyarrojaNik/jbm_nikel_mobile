@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // coverage:ignore-file
-// ignore_for_file: type=lint
+// ignore_for_file: type=lint, type=warning, deprecated_member_use, deprecated_member_use_from_same_package
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'visita_dto.dart';
@@ -9,6 +9,7 @@ part of 'visita_dto.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// GENERATED CODE - DO NOT MODIFY BY HAND
 // dart format off
 T _$identity<T>(T value) => value;
 
@@ -66,7 +67,7 @@ class _$VisitaDTOCopyWithImpl<$Res>
 /// Create a copy of VisitaDTO
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? fecha = null,Object? clienteId = freezed,Object? isClienteProvisional = null,Object? clienteProvisionalNombre = freezed,Object? clienteProvisionalEmail = freezed,Object? clienteProvisionalTelefono = freezed,Object? clienteProvisionalPoblacion = freezed,Object? numEmpl = null,Object? contacto = freezed,Object? atendidoPor = freezed,Object? resumen = freezed,Object? marcasCompetencia = freezed,Object? ofertaRealizada = null,Object? interesCliente = null,Object? pedidoRealizado = null,Object? codigoMotivoNoInteres = freezed,Object? codigoMotivoNoPedido = freezed,Object? codigoSector = freezed,Object? codigoCompetencia = freezed,Object? almacenPropio = null,Object? capacidad = null,Object? frecuenciaPedido = null,Object? latitud = null,Object? longitud = null,Object? visitaAppId = freezed,Object? lastUpdated = null,Object? deleted = null,}) {
-  return _then(_self.copyWith(
+  return _then(VisitaDTO(
 id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as String,fecha: null == fecha ? _self.fecha : fecha // ignore: cast_nullable_to_non_nullable
 as DateTime,clienteId: freezed == clienteId ? _self.clienteId : clienteId // ignore: cast_nullable_to_non_nullable

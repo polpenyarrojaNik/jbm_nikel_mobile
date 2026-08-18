@@ -85,7 +85,7 @@ abstract class _$NotificationNotifier extends $AsyncNotifier<String?> {
   FutureOr<String?> build(String titleScreen);
   @$mustCallSuper
   @override
-  void runBuild() {
+  WhenComplete runBuild() {
     final ref = this.ref as $Ref<AsyncValue<String?>, String?>;
     final element =
         ref.element
@@ -95,6 +95,6 @@ abstract class _$NotificationNotifier extends $AsyncNotifier<String?> {
               Object?,
               Object?
             >;
-    element.handleCreate(ref, () => build(_$args));
+    return element.handleCreate(ref, () => build(_$args));
   }
 }

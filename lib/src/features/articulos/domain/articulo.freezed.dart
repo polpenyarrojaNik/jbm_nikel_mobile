@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // coverage:ignore-file
-// ignore_for_file: type=lint
+// ignore_for_file: type=lint, type=warning, deprecated_member_use, deprecated_member_use_from_same_package
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'articulo.dart';
@@ -9,6 +9,7 @@ part of 'articulo.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// GENERATED CODE - DO NOT MODIFY BY HAND
 // dart format off
 T _$identity<T>(T value) => value;
 /// @nodoc
@@ -63,7 +64,7 @@ class _$ArticuloCopyWithImpl<$Res>
 /// Create a copy of Articulo
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? descripcionES = null,Object? descripcionEN = freezed,Object? descripcionFR = freezed,Object? descripcionDE = freezed,Object? descripcionCA = freezed,Object? descripcionGB = freezed,Object? descripcionHU = freezed,Object? descripcionIT = freezed,Object? descripcionNL = freezed,Object? descripcionPL = freezed,Object? descripcionPT = freezed,Object? descripcionRO = freezed,Object? descripcionRU = freezed,Object? descripcionCN = freezed,Object? descripcionEL = freezed,Object? familia = freezed,Object? subfamilia = freezed,Object? ventaMinimo = null,Object? ventaMultiplo = null,Object? unidadesSubcaja = null,Object? unidadesCaja = null,Object? unidadesPalet = null,Object? activoWeb = null,Object? activoApp = null,Object? enCatalogo = null,Object? descatalogado = null,Object? paginaEnCatalgo = freezed,Object? paginaEnCatalgo2 = freezed,Object? pesoKg = null,Object? largoCm = null,Object? anchoCm = null,Object? altoCm = null,Object? resumenES = freezed,Object? resumenEN = freezed,Object? resumenFR = freezed,Object? resumenDE = freezed,Object? resumenCA = freezed,Object? resumenGB = freezed,Object? resumenHU = freezed,Object? resumenIT = freezed,Object? resumenNL = freezed,Object? resumenPL = freezed,Object? resumenPT = freezed,Object? resumenRO = freezed,Object? resumenRU = freezed,Object? resumenCN = freezed,Object? resumenEL = freezed,Object? stockDisponible = null,Object? ventasActual = null,Object? ventasAnterior = null,Object? comprasEntregaCantidad1 = null,Object? comprasEntregaCantidad2 = null,Object? comprasEntregaCantidad3 = null,Object? comprasEntregaCantidadMas3 = null,Object? comprasEntregaFecha1 = freezed,Object? comprasEntregaFecha2 = freezed,Object? comprasEntregaFecha3 = freezed,Object? comprasEntregaEstado1 = freezed,Object? comprasEntregaEstado2 = freezed,Object? comprasEntregaEstado3 = freezed,Object? imagenPrincipal = freezed,Object? gtin13Unidad = freezed,Object? gs1128Subcaja = freezed,Object? gs1128Caja = freezed,Object? gs1128Palet = freezed,Object? ventasOrden = freezed,Object? costeUnitario = freezed,Object? ventasAnyoActual = null,Object? ventasAnyoAnterior = null,Object? ventasHaceDosAnyos = null,Object? margenAnyoActual = null,Object? margenAnyoAnterior = null,Object? margenHaceDosAnyos = null,Object? lastUpdated = null,Object? deleted = null,}) {
-  return _then(_self.copyWith(
+  return _then(Articulo(
 id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as String,descripcionES: null == descripcionES ? _self.descripcionES : descripcionES // ignore: cast_nullable_to_non_nullable
 as String,descripcionEN: freezed == descripcionEN ? _self.descripcionEN : descripcionEN // ignore: cast_nullable_to_non_nullable

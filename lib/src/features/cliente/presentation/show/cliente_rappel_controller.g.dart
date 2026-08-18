@@ -86,7 +86,7 @@ abstract class _$ClienteRappelListById
   FutureOr<List<ClienteRappel>> build(String clienteId);
   @$mustCallSuper
   @override
-  void runBuild() {
+  WhenComplete runBuild() {
     final ref =
         this.ref as $Ref<AsyncValue<List<ClienteRappel>>, List<ClienteRappel>>;
     final element =
@@ -97,6 +97,6 @@ abstract class _$ClienteRappelListById
               Object?,
               Object?
             >;
-    element.handleCreate(ref, () => build(_$args));
+    return element.handleCreate(ref, () => build(_$args));
   }
 }

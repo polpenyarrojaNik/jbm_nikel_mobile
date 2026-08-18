@@ -103,7 +103,7 @@ abstract class _$VisitEditPageController
   );
   @$mustCallSuper
   @override
-  void runBuild() {
+  WhenComplete runBuild() {
     final ref =
         this.ref as $Ref<AsyncValue<VisitEditScreenData>, VisitEditScreenData>;
     final element =
@@ -114,7 +114,7 @@ abstract class _$VisitEditPageController
               Object?,
               Object?
             >;
-    element.handleCreate(
+    return element.handleCreate(
       ref,
       () => build(_$args.$1, _$args.$2, _$args.$3, _$args.$4),
     );

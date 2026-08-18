@@ -94,7 +94,7 @@ abstract class _$NotificationIndexScreenController
   FutureOr<List<NotificationList>> build(int page);
   @$mustCallSuper
   @override
-  void runBuild() {
+  WhenComplete runBuild() {
     final ref =
         this.ref
             as $Ref<AsyncValue<List<NotificationList>>, List<NotificationList>>;
@@ -109,7 +109,7 @@ abstract class _$NotificationIndexScreenController
               Object?,
               Object?
             >;
-    element.handleCreate(ref, () => build(_$args));
+    return element.handleCreate(ref, () => build(_$args));
   }
 }
 
@@ -146,7 +146,7 @@ abstract class _$NotificationIndexCountController extends $AsyncNotifier<int> {
   FutureOr<int> build();
   @$mustCallSuper
   @override
-  void runBuild() {
+  WhenComplete runBuild() {
     final ref = this.ref as $Ref<AsyncValue<int>, int>;
     final element =
         ref.element
@@ -156,6 +156,6 @@ abstract class _$NotificationIndexCountController extends $AsyncNotifier<int> {
               Object?,
               Object?
             >;
-    element.handleCreate(ref, build);
+    return element.handleCreate(ref, build);
   }
 }

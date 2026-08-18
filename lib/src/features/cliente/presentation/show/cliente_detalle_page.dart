@@ -333,22 +333,12 @@ class _ClienteHeader extends StatelessWidget {
     double? longitude,
   ) async {
     if (latitude != null && longitude != null) {
-      final isAvailable = await MapLauncher.isMapAvailable(MapType.google);
-      if (isAvailable) {
-        await MapLauncher.showMarker(
-          mapType: MapType.google,
-          coords: Coords(latitude, longitude),
-          title: nombre,
-        );
-      } else {
-        final isAvailable = await MapLauncher.isMapAvailable(MapType.apple);
-        if (isAvailable) {
-          await MapLauncher.showMarker(
-            mapType: MapType.apple,
-            coords: Coords(latitude, longitude),
-            title: nombre,
-          );
-        }
+      final marker = MapLauncher.marker(
+        Location.coords(latitude, longitude, title: nombre),
+      );
+      final availableMaps = await marker.getSupportedMaps([.google, .apple]);
+      if (availableMaps.isNotEmpty) {
+        await availableMaps.first.show();
       }
     }
   }

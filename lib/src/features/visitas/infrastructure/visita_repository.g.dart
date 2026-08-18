@@ -86,7 +86,7 @@ abstract class _$VisitaLastSyncDate extends $AsyncNotifier<DateTime> {
   FutureOr<DateTime> build();
   @$mustCallSuper
   @override
-  void runBuild() {
+  WhenComplete runBuild() {
     final ref = this.ref as $Ref<AsyncValue<DateTime>, DateTime>;
     final element =
         ref.element
@@ -96,6 +96,6 @@ abstract class _$VisitaLastSyncDate extends $AsyncNotifier<DateTime> {
               Object?,
               Object?
             >;
-    element.handleCreate(ref, build);
+    return element.handleCreate(ref, build);
   }
 }

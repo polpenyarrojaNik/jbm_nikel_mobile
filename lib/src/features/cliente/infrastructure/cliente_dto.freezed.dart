@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // coverage:ignore-file
-// ignore_for_file: type=lint
+// ignore_for_file: type=lint, type=warning, deprecated_member_use, deprecated_member_use_from_same_package
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'cliente_dto.dart';
@@ -9,6 +9,7 @@ part of 'cliente_dto.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// GENERATED CODE - DO NOT MODIFY BY HAND
 // dart format off
 T _$identity<T>(T value) => value;
 
@@ -66,7 +67,7 @@ class _$ClienteDTOCopyWithImpl<$Res>
 /// Create a copy of ClienteDTO
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? nombreCliente = null,Object? nif = freezed,Object? nombreFiscal = null,Object? direccionFiscal1 = freezed,Object? direccionFiscal2 = freezed,Object? codigoPostalFiscal = freezed,Object? poblacionFiscal = freezed,Object? paisFiscalId = freezed,Object? provinciaFiscal = freezed,Object? latitudFiscal = null,Object? longitudFiscal = null,Object? empresaId = null,Object? iva = null,Object? ventasAnyoActual = null,Object? ventasAnyoAnterior = null,Object? ventasHaceDosAnyos = null,Object? margenAnyoActual = null,Object? margenAnyoAnterior = null,Object? margenHaceDosAnyos = null,Object? porcentajeAbonos = null,Object? porcentajeGarantias = null,Object? centralCompras = freezed,Object? urlWeb = freezed,Object? divisaId = freezed,Object? tarifaId = freezed,Object? tarifaDescripcion = freezed,Object? descuentoGeneralId = freezed,Object? descripcionDescuentoGeneral = freezed,Object? tipoCalculoPrecio = null,Object? plazoDeCobroId = freezed,Object? metodoDeCobroId = freezed,Object? descuentoProntoPago = null,Object? riesgoConcedidoInterno = null,Object? riesgoConcedidoInternoDate = freezed,Object? riesgoConcedidoCoafe = null,Object? riesgoConcedidoCoafeFecha = freezed,Object? riesgoConcedido = freezed,Object? riesgoPendienteCobroVencido = freezed,Object? riesgoPendienteCobroNoVencido = freezed,Object? riesgoPendienteServir = freezed,Object? riesgoPendienteFacturar = freezed,Object? obvservacionesInternas = freezed,Object? clientePotencial = freezed,Object? clienteEstadoPotencialId = freezed,Object? clienteTipoPotencialId = freezed,Object? representante1Id = freezed,Object? representante1Nombre = freezed,Object? representante2Id = freezed,Object? representante2Nombre = freezed,Object? telefonoFijo = freezed,Object? telefonoMovil = freezed,Object? email = freezed,Object? sectorId = freezed,Object? subsectorId = freezed,Object? franqPortes1 = freezed,Object? franqPortes2 = freezed,Object? franqPortes3 = freezed,Object? importePortes1 = freezed,Object? importePortes2 = freezed,Object? importePortes3 = freezed,Object? ventasPeriodoActual = freezed,Object? ventasPeriodoAnterior = freezed,Object? bloqueoOper = null,Object? obsoleto = null,Object? lastUpdated = null,Object? deleted = null,}) {
-  return _then(_self.copyWith(
+  return _then(ClienteDTO(
 id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as String,nombreCliente: null == nombreCliente ? _self.nombreCliente : nombreCliente // ignore: cast_nullable_to_non_nullable
 as String,nif: freezed == nif ? _self.nif : nif // ignore: cast_nullable_to_non_nullable

@@ -1,8 +1,11 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:data_table_2/data_table_2.dart';
-import 'package:flutter/material.dart';
+import 'package:flutter/material.dart' hide DataCell, DataRow, DataTableSource;
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gap/gap.dart';
+import 'package:material_ui/material_ui.dart'
+    show DataCell, DataRow, DataTableSource;
+import 'package:material_ui/material_ui.dart' as modern;
 
 import '../../../../../generated/l10n.dart';
 import '../../../../core/helpers/debouncer.dart';
@@ -66,8 +69,6 @@ class VentasArticuloDataTable extends ConsumerStatefulWidget {
 
 class _VentasArticuloDataTableState
     extends ConsumerState<VentasArticuloDataTable> {
-  List<DataColumn> columns = [];
-  List<DataRow> rows = [];
   int selectedRow = -1;
   int _currentSortColumn = 0;
   bool _sortAsc = true;
@@ -99,22 +100,24 @@ class _VentasArticuloDataTableState
       child: state.maybeWhen(
         orElse: () => const ProgressIndicatorWidget(),
         error: (error, _) => ErrorMessageWidget(error.toString()),
-        data: (clienteVentasArticuloList) => PaginatedDataTable2(
-          sortColumnIndex: _currentSortColumn,
-          sortAscending: _sortAsc,
-          horizontalMargin: 12,
-          columnSpacing: 12,
-          autoRowsToHeight: true,
-          minWidth: 1500,
-          lmRatio: 2,
-          smRatio: 0.7,
-          fit: FlexFit.tight,
-          columns: _createColumns(clienteVentasArticuloList),
-          source: _ClienteVentasArticuloDataList(
-            clienteVentasArticuloList,
-            selectedRow,
-            (numRow) => setState(() => selectedRow = numRow),
-            context,
+        data: (clienteVentasArticuloList) => _ModernMaterialBridge(
+          child: PaginatedDataTable2(
+            sortColumnIndex: _currentSortColumn,
+            sortAscending: _sortAsc,
+            horizontalMargin: 12,
+            columnSpacing: 12,
+            autoRowsToHeight: true,
+            minWidth: 1500,
+            lmRatio: 2,
+            smRatio: 0.7,
+            fit: FlexFit.tight,
+            columns: _createColumns(clienteVentasArticuloList),
+            source: _ClienteVentasArticuloDataList(
+              clienteVentasArticuloList,
+              selectedRow,
+              (numRow) => setState(() => selectedRow = numRow),
+              context,
+            ),
           ),
         ),
       ),
@@ -400,6 +403,86 @@ class _VentasArticuloDataTableState
         },
       ),
     ];
+  }
+}
+
+/// `data_table_2` 3.0.0 renders using `package:material_ui`, while the rest
+/// of the app is built on the legacy `package:flutter/material.dart`. This
+/// bridges the ambient legacy [Theme] and [MaterialLocalizations] into their
+/// `material_ui` equivalents so [PaginatedDataTable2] can resolve them.
+class _ModernMaterialBridge extends StatelessWidget {
+  const _ModernMaterialBridge({required this.child});
+
+  final Widget child;
+
+  @override
+  Widget build(BuildContext context) {
+    final scheme = Theme.of(context).colorScheme;
+    final textTheme = Theme.of(context).textTheme;
+
+    return modern.Theme(
+      data: modern.ThemeData(
+        colorScheme: modern.ColorScheme(
+          brightness: scheme.brightness,
+          primary: scheme.primary,
+          onPrimary: scheme.onPrimary,
+          primaryContainer: scheme.primaryContainer,
+          onPrimaryContainer: scheme.onPrimaryContainer,
+          secondary: scheme.secondary,
+          onSecondary: scheme.onSecondary,
+          secondaryContainer: scheme.secondaryContainer,
+          onSecondaryContainer: scheme.onSecondaryContainer,
+          tertiary: scheme.tertiary,
+          onTertiary: scheme.onTertiary,
+          tertiaryContainer: scheme.tertiaryContainer,
+          onTertiaryContainer: scheme.onTertiaryContainer,
+          error: scheme.error,
+          onError: scheme.onError,
+          errorContainer: scheme.errorContainer,
+          onErrorContainer: scheme.onErrorContainer,
+          surface: scheme.surface,
+          onSurface: scheme.onSurface,
+          surfaceDim: scheme.surfaceDim,
+          surfaceBright: scheme.surfaceBright,
+          surfaceContainerLowest: scheme.surfaceContainerLowest,
+          surfaceContainerLow: scheme.surfaceContainerLow,
+          surfaceContainer: scheme.surfaceContainer,
+          surfaceContainerHigh: scheme.surfaceContainerHigh,
+          surfaceContainerHighest: scheme.surfaceContainerHighest,
+          onSurfaceVariant: scheme.onSurfaceVariant,
+          outline: scheme.outline,
+          outlineVariant: scheme.outlineVariant,
+          shadow: scheme.shadow,
+          scrim: scheme.scrim,
+          inverseSurface: scheme.inverseSurface,
+          onInverseSurface: scheme.onInverseSurface,
+          inversePrimary: scheme.inversePrimary,
+          surfaceTint: scheme.surfaceTint,
+        ),
+        textTheme: modern.TextTheme(
+          displayLarge: textTheme.displayLarge,
+          displayMedium: textTheme.displayMedium,
+          displaySmall: textTheme.displaySmall,
+          headlineLarge: textTheme.headlineLarge,
+          headlineMedium: textTheme.headlineMedium,
+          headlineSmall: textTheme.headlineSmall,
+          titleLarge: textTheme.titleLarge,
+          titleMedium: textTheme.titleMedium,
+          titleSmall: textTheme.titleSmall,
+          bodyLarge: textTheme.bodyLarge,
+          bodyMedium: textTheme.bodyMedium,
+          bodySmall: textTheme.bodySmall,
+          labelLarge: textTheme.labelLarge,
+          labelMedium: textTheme.labelMedium,
+          labelSmall: textTheme.labelSmall,
+        ),
+      ),
+      child: Localizations.override(
+        context: context,
+        delegates: const [modern.GlobalMaterialLocalizations.delegate],
+        child: child,
+      ),
+    );
   }
 }
 

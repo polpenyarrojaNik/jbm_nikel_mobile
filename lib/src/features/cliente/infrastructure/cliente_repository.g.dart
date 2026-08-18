@@ -131,7 +131,7 @@ abstract class _$ClienteById extends $AsyncNotifier<Cliente> {
   FutureOr<Cliente> build(String clienteId);
   @$mustCallSuper
   @override
-  void runBuild() {
+  WhenComplete runBuild() {
     final ref = this.ref as $Ref<AsyncValue<Cliente>, Cliente>;
     final element =
         ref.element
@@ -141,7 +141,7 @@ abstract class _$ClienteById extends $AsyncNotifier<Cliente> {
               Object?,
               Object?
             >;
-    element.handleCreate(ref, () => build(_$args));
+    return element.handleCreate(ref, () => build(_$args));
   }
 }
 
@@ -176,7 +176,7 @@ abstract class _$ClienteLastSyncDate extends $AsyncNotifier<DateTime> {
   FutureOr<DateTime> build();
   @$mustCallSuper
   @override
-  void runBuild() {
+  WhenComplete runBuild() {
     final ref = this.ref as $Ref<AsyncValue<DateTime>, DateTime>;
     final element =
         ref.element
@@ -186,7 +186,7 @@ abstract class _$ClienteLastSyncDate extends $AsyncNotifier<DateTime> {
               Object?,
               Object?
             >;
-    element.handleCreate(ref, build);
+    return element.handleCreate(ref, build);
   }
 }
 
@@ -272,7 +272,7 @@ abstract class _$ClienteDireccionListById
   FutureOr<List<ClienteDireccion>> build(String clienteId);
   @$mustCallSuper
   @override
-  void runBuild() {
+  WhenComplete runBuild() {
     final ref =
         this.ref
             as $Ref<AsyncValue<List<ClienteDireccion>>, List<ClienteDireccion>>;
@@ -287,7 +287,7 @@ abstract class _$ClienteDireccionListById
               Object?,
               Object?
             >;
-    element.handleCreate(ref, () => build(_$args));
+    return element.handleCreate(ref, () => build(_$args));
   }
 }
 
@@ -373,7 +373,7 @@ abstract class _$ClienteContactosListById
   FutureOr<List<ClienteContacto>> build(String clienteId);
   @$mustCallSuper
   @override
-  void runBuild() {
+  WhenComplete runBuild() {
     final ref =
         this.ref
             as $Ref<AsyncValue<List<ClienteContacto>>, List<ClienteContacto>>;
@@ -388,7 +388,7 @@ abstract class _$ClienteContactosListById
               Object?,
               Object?
             >;
-    element.handleCreate(ref, () => build(_$args));
+    return element.handleCreate(ref, () => build(_$args));
   }
 }
 
@@ -474,7 +474,7 @@ abstract class _$ClienteDescuentosListById
   FutureOr<List<ClienteDescuento>> build(String clienteId);
   @$mustCallSuper
   @override
-  void runBuild() {
+  WhenComplete runBuild() {
     final ref =
         this.ref
             as $Ref<AsyncValue<List<ClienteDescuento>>, List<ClienteDescuento>>;
@@ -489,7 +489,7 @@ abstract class _$ClienteDescuentosListById
               Object?,
               Object?
             >;
-    element.handleCreate(ref, () => build(_$args));
+    return element.handleCreate(ref, () => build(_$args));
   }
 }
 
@@ -575,7 +575,7 @@ abstract class _$ClienteGrupoNetoListById
   FutureOr<List<ClienteGrupoNeto>> build(String clienteId);
   @$mustCallSuper
   @override
-  void runBuild() {
+  WhenComplete runBuild() {
     final ref =
         this.ref
             as $Ref<AsyncValue<List<ClienteGrupoNeto>>, List<ClienteGrupoNeto>>;
@@ -590,7 +590,7 @@ abstract class _$ClienteGrupoNetoListById
               Object?,
               Object?
             >;
-    element.handleCreate(ref, () => build(_$args));
+    return element.handleCreate(ref, () => build(_$args));
   }
 }
 
@@ -676,7 +676,7 @@ abstract class _$ClientePrecioNetoListById
   FutureOr<List<ClientePrecioNeto>> build(String clienteId);
   @$mustCallSuper
   @override
-  void runBuild() {
+  WhenComplete runBuild() {
     final ref =
         this.ref
             as $Ref<
@@ -694,7 +694,7 @@ abstract class _$ClientePrecioNetoListById
               Object?,
               Object?
             >;
-    element.handleCreate(ref, () => build(_$args));
+    return element.handleCreate(ref, () => build(_$args));
   }
 }
 
@@ -781,7 +781,7 @@ abstract class _$ClientePendientePagoListById
   FutureOr<List<ClientePagoPendiente>> build(String clienteId);
   @$mustCallSuper
   @override
-  void runBuild() {
+  WhenComplete runBuild() {
     final ref =
         this.ref
             as $Ref<
@@ -799,7 +799,7 @@ abstract class _$ClientePendientePagoListById
               Object?,
               Object?
             >;
-    element.handleCreate(ref, () => build(_$args));
+    return element.handleCreate(ref, () => build(_$args));
   }
 }
 
@@ -885,7 +885,7 @@ abstract class _$ClienteVentasMesListById
   FutureOr<List<ClienteVentasMes>> build(String clienteId);
   @$mustCallSuper
   @override
-  void runBuild() {
+  WhenComplete runBuild() {
     final ref =
         this.ref
             as $Ref<AsyncValue<List<ClienteVentasMes>>, List<ClienteVentasMes>>;
@@ -900,7 +900,7 @@ abstract class _$ClienteVentasMesListById
               Object?,
               Object?
             >;
-    element.handleCreate(ref, () => build(_$args));
+    return element.handleCreate(ref, () => build(_$args));
   }
 }
 
@@ -981,7 +981,7 @@ abstract class _$ClienteVisitasListById extends $AsyncNotifier<List<Visita>> {
   FutureOr<List<Visita>> build(String clienteId);
   @$mustCallSuper
   @override
-  void runBuild() {
+  WhenComplete runBuild() {
     final ref = this.ref as $Ref<AsyncValue<List<Visita>>, List<Visita>>;
     final element =
         ref.element
@@ -991,7 +991,7 @@ abstract class _$ClienteVisitasListById extends $AsyncNotifier<List<Visita>> {
               Object?,
               Object?
             >;
-    element.handleCreate(ref, () => build(_$args));
+    return element.handleCreate(ref, () => build(_$args));
   }
 }
 
@@ -1073,7 +1073,7 @@ abstract class _$ClientePedidosListById
   FutureOr<List<PedidoVenta>> build(String clienteId);
   @$mustCallSuper
   @override
-  void runBuild() {
+  WhenComplete runBuild() {
     final ref =
         this.ref as $Ref<AsyncValue<List<PedidoVenta>>, List<PedidoVenta>>;
     final element =
@@ -1084,7 +1084,7 @@ abstract class _$ClientePedidosListById
               Object?,
               Object?
             >;
-    element.handleCreate(ref, () => build(_$args));
+    return element.handleCreate(ref, () => build(_$args));
   }
 }
 
@@ -1168,7 +1168,7 @@ abstract class _$ClienteDevolucionesListById
   FutureOr<List<Devolucion>> build(String clienteId);
   @$mustCallSuper
   @override
-  void runBuild() {
+  WhenComplete runBuild() {
     final ref =
         this.ref as $Ref<AsyncValue<List<Devolucion>>, List<Devolucion>>;
     final element =
@@ -1179,7 +1179,7 @@ abstract class _$ClienteDevolucionesListById
               Object?,
               Object?
             >;
-    element.handleCreate(ref, () => build(_$args));
+    return element.handleCreate(ref, () => build(_$args));
   }
 }
 
@@ -1270,7 +1270,7 @@ abstract class _$ClienteDevolucionesLineaListById
   FutureOr<List<DevolucionLinea>> build(String devolucionId);
   @$mustCallSuper
   @override
-  void runBuild() {
+  WhenComplete runBuild() {
     final ref =
         this.ref
             as $Ref<AsyncValue<List<DevolucionLinea>>, List<DevolucionLinea>>;
@@ -1285,7 +1285,7 @@ abstract class _$ClienteDevolucionesLineaListById
               Object?,
               Object?
             >;
-    element.handleCreate(ref, () => build(_$args));
+    return element.handleCreate(ref, () => build(_$args));
   }
 }
 
@@ -1364,7 +1364,7 @@ abstract class _$ClientePais extends $AsyncNotifier<Pais?> {
   FutureOr<Pais?> build(String clienteId);
   @$mustCallSuper
   @override
-  void runBuild() {
+  WhenComplete runBuild() {
     final ref = this.ref as $Ref<AsyncValue<Pais?>, Pais?>;
     final element =
         ref.element
@@ -1374,7 +1374,7 @@ abstract class _$ClientePais extends $AsyncNotifier<Pais?> {
               Object?,
               Object?
             >;
-    element.handleCreate(ref, () => build(_$args));
+    return element.handleCreate(ref, () => build(_$args));
   }
 }
 
@@ -1467,7 +1467,7 @@ abstract class _$ClienteContactoImpListInSyncByCliente
   FutureOr<List<ClienteContactoImp>> build(ClienteImpParam clienteImpParam);
   @$mustCallSuper
   @override
-  void runBuild() {
+  WhenComplete runBuild() {
     final ref =
         this.ref
             as $Ref<
@@ -1485,7 +1485,7 @@ abstract class _$ClienteContactoImpListInSyncByCliente
               Object?,
               Object?
             >;
-    element.handleCreate(ref, () => build(_$args));
+    return element.handleCreate(ref, () => build(_$args));
   }
 }
 
@@ -1578,7 +1578,7 @@ abstract class _$ClienteDireccionImpListInSyncByCliente
   FutureOr<List<ClienteDireccionImp>> build(ClienteImpParam clienteImpParam);
   @$mustCallSuper
   @override
-  void runBuild() {
+  WhenComplete runBuild() {
     final ref =
         this.ref
             as $Ref<
@@ -1596,6 +1596,6 @@ abstract class _$ClienteDireccionImpListInSyncByCliente
               Object?,
               Object?
             >;
-    element.handleCreate(ref, () => build(_$args));
+    return element.handleCreate(ref, () => build(_$args));
   }
 }

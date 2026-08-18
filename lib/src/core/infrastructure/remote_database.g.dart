@@ -31192,52 +31192,50 @@ abstract class _$RemoteAppDatabase extends GeneratedDatabase {
       const DriftDatabaseOptions(storeDateTimeAsText: true);
 }
 
-typedef $$PaisTableTableCreateCompanionBuilder =
-    PaisTableCompanion Function({
-      required String id,
-      Value<String?> isoCode,
-      required String descripcionES,
-      Value<String?> descripcionEN,
-      Value<String?> descripcionFR,
-      Value<String?> descripcionDE,
-      Value<String?> descripcionCA,
-      Value<String?> descripcionGB,
-      Value<String?> descripcionHU,
-      Value<String?> descripcionIT,
-      Value<String?> descripcionNL,
-      Value<String?> descripcionPL,
-      Value<String?> descripcionPT,
-      Value<String?> descripcionRO,
-      Value<String?> descripcionRU,
-      Value<String?> descripcionCN,
-      Value<String?> descripcionEL,
-      required DateTime lastUpdated,
-      Value<String> deleted,
-      Value<int> rowid,
-    });
-typedef $$PaisTableTableUpdateCompanionBuilder =
-    PaisTableCompanion Function({
-      Value<String> id,
-      Value<String?> isoCode,
-      Value<String> descripcionES,
-      Value<String?> descripcionEN,
-      Value<String?> descripcionFR,
-      Value<String?> descripcionDE,
-      Value<String?> descripcionCA,
-      Value<String?> descripcionGB,
-      Value<String?> descripcionHU,
-      Value<String?> descripcionIT,
-      Value<String?> descripcionNL,
-      Value<String?> descripcionPL,
-      Value<String?> descripcionPT,
-      Value<String?> descripcionRO,
-      Value<String?> descripcionRU,
-      Value<String?> descripcionCN,
-      Value<String?> descripcionEL,
-      Value<DateTime> lastUpdated,
-      Value<String> deleted,
-      Value<int> rowid,
-    });
+typedef $$PaisTableTableCreateCompanionBuilder = PaisTableCompanion Function({
+  required String id,
+  Value<String?> isoCode,
+  required String descripcionES,
+  Value<String?> descripcionEN,
+  Value<String?> descripcionFR,
+  Value<String?> descripcionDE,
+  Value<String?> descripcionCA,
+  Value<String?> descripcionGB,
+  Value<String?> descripcionHU,
+  Value<String?> descripcionIT,
+  Value<String?> descripcionNL,
+  Value<String?> descripcionPL,
+  Value<String?> descripcionPT,
+  Value<String?> descripcionRO,
+  Value<String?> descripcionRU,
+  Value<String?> descripcionCN,
+  Value<String?> descripcionEL,
+  required DateTime lastUpdated,
+  Value<String> deleted,
+  Value<int> rowid,
+});
+typedef $$PaisTableTableUpdateCompanionBuilder = PaisTableCompanion Function({
+  Value<String> id,
+  Value<String?> isoCode,
+  Value<String> descripcionES,
+  Value<String?> descripcionEN,
+  Value<String?> descripcionFR,
+  Value<String?> descripcionDE,
+  Value<String?> descripcionCA,
+  Value<String?> descripcionGB,
+  Value<String?> descripcionHU,
+  Value<String?> descripcionIT,
+  Value<String?> descripcionNL,
+  Value<String?> descripcionPL,
+  Value<String?> descripcionPT,
+  Value<String?> descripcionRO,
+  Value<String?> descripcionRU,
+  Value<String?> descripcionCN,
+  Value<String?> descripcionEL,
+  Value<DateTime> lastUpdated,
+  Value<String> deleted,
+  Value<int> rowid,
+});
 
 final class $$PaisTableTableReferences
     extends BaseReferences<_$RemoteAppDatabase, $PaisTableTable, PaisDTO> {
@@ -31247,10 +31245,7 @@ final class $$PaisTableTableReferences
   _pedidoVentaTableRefsTable(_$RemoteAppDatabase db) =>
       MultiTypedResultKey.fromTable(
         db.pedidoVentaTable,
-        aliasName: $_aliasNameGenerator(
-          db.paisTable.id,
-          db.pedidoVentaTable.paisId,
-        ),
+        aliasName: 'PAISES__PAIS_ID__PEDIDOS__PAIS_ID',
       );
 
   $$PedidoVentaTableTableProcessedTableManager get pedidoVentaTableRefs {
@@ -31271,10 +31266,7 @@ final class $$PaisTableTableReferences
   _clienteTableRefsTable(_$RemoteAppDatabase db) =>
       MultiTypedResultKey.fromTable(
         db.clienteTable,
-        aliasName: $_aliasNameGenerator(
-          db.paisTable.id,
-          db.clienteTable.paisFiscalId,
-        ),
+        aliasName: 'PAISES__PAIS_ID__CLIENTES__PAIS_ID_FISCAL',
       );
 
   $$ClienteTableTableProcessedTableManager get clienteTableRefs {
@@ -31296,10 +31288,7 @@ final class $$PaisTableTableReferences
   _clienteDireccionTableRefsTable(_$RemoteAppDatabase db) =>
       MultiTypedResultKey.fromTable(
         db.clienteDireccionTable,
-        aliasName: $_aliasNameGenerator(
-          db.paisTable.id,
-          db.clienteDireccionTable.paisId,
-        ),
+        aliasName: 'PAISES__PAIS_ID__CLIENTES_DIRECCIONES_ENVIO__PAIS_ID',
       );
 
   $$ClienteDireccionTableTableProcessedTableManager
@@ -32069,10 +32058,7 @@ final class $$DivisaTableTableReferences
   _pedidoVentaTableRefsTable(_$RemoteAppDatabase db) =>
       MultiTypedResultKey.fromTable(
         db.pedidoVentaTable,
-        aliasName: $_aliasNameGenerator(
-          db.divisaTable.id,
-          db.pedidoVentaTable.divisaId,
-        ),
+        aliasName: 'DIVISAS__DIVISA_ID__PEDIDOS__DIVISA_ID',
       );
 
   $$PedidoVentaTableTableProcessedTableManager get pedidoVentaTableRefs {
@@ -32093,10 +32079,7 @@ final class $$DivisaTableTableReferences
   _clienteTableRefsTable(_$RemoteAppDatabase db) =>
       MultiTypedResultKey.fromTable(
         db.clienteTable,
-        aliasName: $_aliasNameGenerator(
-          db.divisaTable.id,
-          db.clienteTable.divisaId,
-        ),
+        aliasName: 'DIVISAS__DIVISA_ID__CLIENTES__DIVISA_ID',
       );
 
   $$ClienteTableTableProcessedTableManager get clienteTableRefs {
@@ -32815,10 +32798,8 @@ final class $$PedidoVentaEstadoTableTableReferences
   _pedidoVentaTableRefsTable(_$RemoteAppDatabase db) =>
       MultiTypedResultKey.fromTable(
         db.pedidoVentaTable,
-        aliasName: $_aliasNameGenerator(
-          db.pedidoVentaEstadoTable.id,
-          db.pedidoVentaTable.pedidoVentaEstadoId,
-        ),
+        aliasName:
+            'PEDIDOS_ESTADOS__ESTADO_PEDIDO_ID__PEDIDOS__ESTADO_PEDIDO_ID',
       );
 
   $$PedidoVentaTableTableProcessedTableManager get pedidoVentaTableRefs {
@@ -33417,9 +33398,7 @@ final class $$PedidoVentaTableTableReferences
   );
 
   static $PaisTableTable _paisIdTable(_$RemoteAppDatabase db) =>
-      db.paisTable.createAlias(
-        $_aliasNameGenerator(db.pedidoVentaTable.paisId, db.paisTable.id),
-      );
+      db.paisTable.createAlias('PEDIDOS__PAIS_ID__PAISES__PAIS_ID');
 
   $$PaisTableTableProcessedTableManager? get paisId {
     final $_column = $_itemColumn<String>('PAIS_ID');
@@ -33436,9 +33415,7 @@ final class $$PedidoVentaTableTableReferences
   }
 
   static $DivisaTableTable _divisaIdTable(_$RemoteAppDatabase db) =>
-      db.divisaTable.createAlias(
-        $_aliasNameGenerator(db.pedidoVentaTable.divisaId, db.divisaTable.id),
-      );
+      db.divisaTable.createAlias('PEDIDOS__DIVISA_ID__DIVISAS__DIVISA_ID');
 
   $$DivisaTableTableProcessedTableManager get divisaId {
     final $_column = $_itemColumn<String>('DIVISA_ID')!;
@@ -33457,10 +33434,7 @@ final class $$PedidoVentaTableTableReferences
   static $PedidoVentaEstadoTableTable _pedidoVentaEstadoIdTable(
     _$RemoteAppDatabase db,
   ) => db.pedidoVentaEstadoTable.createAlias(
-    $_aliasNameGenerator(
-      db.pedidoVentaTable.pedidoVentaEstadoId,
-      db.pedidoVentaEstadoTable.id,
-    ),
+    'PEDIDOS__ESTADO_PEDIDO_ID__PEDIDOS_ESTADOS__ESTADO_PEDIDO_ID',
   );
 
   $$PedidoVentaEstadoTableTableProcessedTableManager get pedidoVentaEstadoId {
@@ -34227,49 +34201,37 @@ class $$PedidoVentaTableTableTableManager
                         >
                       >(state) {
                         if (paisId) {
-                          state =
-                              state.withJoin(
-                                    currentTable: table,
-                                    currentColumn: table.paisId,
-                                    referencedTable:
-                                        $$PedidoVentaTableTableReferences
-                                            ._paisIdTable(db),
-                                    referencedColumn:
-                                        $$PedidoVentaTableTableReferences
-                                            ._paisIdTable(db)
-                                            .id,
-                                  )
-                                  as T;
+                          state = state.withJoin(
+                            currentTable: table,
+                            currentColumn: table.paisId,
+                            referencedTable: $$PedidoVentaTableTableReferences
+                                ._paisIdTable(db),
+                            referencedColumn: $$PedidoVentaTableTableReferences
+                                ._paisIdTable(db)
+                                .id,
+                          ) as T;
                         }
                         if (divisaId) {
-                          state =
-                              state.withJoin(
-                                    currentTable: table,
-                                    currentColumn: table.divisaId,
-                                    referencedTable:
-                                        $$PedidoVentaTableTableReferences
-                                            ._divisaIdTable(db),
-                                    referencedColumn:
-                                        $$PedidoVentaTableTableReferences
-                                            ._divisaIdTable(db)
-                                            .id,
-                                  )
-                                  as T;
+                          state = state.withJoin(
+                            currentTable: table,
+                            currentColumn: table.divisaId,
+                            referencedTable: $$PedidoVentaTableTableReferences
+                                ._divisaIdTable(db),
+                            referencedColumn: $$PedidoVentaTableTableReferences
+                                ._divisaIdTable(db)
+                                .id,
+                          ) as T;
                         }
                         if (pedidoVentaEstadoId) {
-                          state =
-                              state.withJoin(
-                                    currentTable: table,
-                                    currentColumn: table.pedidoVentaEstadoId,
-                                    referencedTable:
-                                        $$PedidoVentaTableTableReferences
-                                            ._pedidoVentaEstadoIdTable(db),
-                                    referencedColumn:
-                                        $$PedidoVentaTableTableReferences
-                                            ._pedidoVentaEstadoIdTable(db)
-                                            .id,
-                                  )
-                                  as T;
+                          state = state.withJoin(
+                            currentTable: table,
+                            currentColumn: table.pedidoVentaEstadoId,
+                            referencedTable: $$PedidoVentaTableTableReferences
+                                ._pedidoVentaEstadoIdTable(db),
+                            referencedColumn: $$PedidoVentaTableTableReferences
+                                ._pedidoVentaEstadoIdTable(db)
+                                .id,
+                          ) as T;
                         }
 
                         return state;
@@ -34815,10 +34777,7 @@ final class $$PlazoDeCobroTableTableReferences
   _clienteTableRefsTable(_$RemoteAppDatabase db) =>
       MultiTypedResultKey.fromTable(
         db.clienteTable,
-        aliasName: $_aliasNameGenerator(
-          db.plazoDeCobroTable.id,
-          db.clienteTable.plazoDeCobroId,
-        ),
+        aliasName: 'PLAZOS_COBRO__PLAZO_COBRO_ID__CLIENTES__PLAZO_COBRO_ID',
       );
 
   $$ClienteTableTableProcessedTableManager get clienteTableRefs {
@@ -35417,10 +35376,7 @@ final class $$MetodoDeCobroTableTableReferences
   _clienteTableRefsTable(_$RemoteAppDatabase db) =>
       MultiTypedResultKey.fromTable(
         db.clienteTable,
-        aliasName: $_aliasNameGenerator(
-          db.metodoDeCobroTable.id,
-          db.clienteTable.metodoDeCobroId,
-        ),
+        aliasName: 'METODOS_COBRO__METODO_COBRO_ID__CLIENTES__METODO_COBRO_ID',
       );
 
   $$ClienteTableTableProcessedTableManager get clienteTableRefs {
@@ -35444,10 +35400,7 @@ final class $$MetodoDeCobroTableTableReferences
   _clientePagoPendienteTableRefsTable(_$RemoteAppDatabase db) =>
       MultiTypedResultKey.fromTable(
         db.clientePagoPendienteTable,
-        aliasName: $_aliasNameGenerator(
-          db.metodoDeCobroTable.id,
-          db.clientePagoPendienteTable.metodoDeCobroId,
-        ),
+        aliasName: 'METODOS_COBRO__METODO_COBRO_ID__CLIENTES_PAGOS_PENDIENTES__METODO_COBRO_ID',
       );
 
   $$ClientePagoPendienteTableTableProcessedTableManager
@@ -36228,9 +36181,7 @@ final class $$ClienteTableTableReferences
   $$ClienteTableTableReferences(super.$_db, super.$_table, super.$_typedResult);
 
   static $PaisTableTable _paisFiscalIdTable(_$RemoteAppDatabase db) =>
-      db.paisTable.createAlias(
-        $_aliasNameGenerator(db.clienteTable.paisFiscalId, db.paisTable.id),
-      );
+      db.paisTable.createAlias('CLIENTES__PAIS_ID_FISCAL__PAISES__PAIS_ID');
 
   $$PaisTableTableProcessedTableManager? get paisFiscalId {
     final $_column = $_itemColumn<String>('PAIS_ID_FISCAL');
@@ -36247,9 +36198,7 @@ final class $$ClienteTableTableReferences
   }
 
   static $DivisaTableTable _divisaIdTable(_$RemoteAppDatabase db) =>
-      db.divisaTable.createAlias(
-        $_aliasNameGenerator(db.clienteTable.divisaId, db.divisaTable.id),
-      );
+      db.divisaTable.createAlias('CLIENTES__DIVISA_ID__DIVISAS__DIVISA_ID');
 
   $$DivisaTableTableProcessedTableManager? get divisaId {
     final $_column = $_itemColumn<String>('DIVISA_ID');
@@ -36267,10 +36216,7 @@ final class $$ClienteTableTableReferences
 
   static $PlazoDeCobroTableTable _plazoDeCobroIdTable(_$RemoteAppDatabase db) =>
       db.plazoDeCobroTable.createAlias(
-        $_aliasNameGenerator(
-          db.clienteTable.plazoDeCobroId,
-          db.plazoDeCobroTable.id,
-        ),
+        'CLIENTES__PLAZO_COBRO_ID__PLAZOS_COBRO__PLAZO_COBRO_ID',
       );
 
   $$PlazoDeCobroTableTableProcessedTableManager? get plazoDeCobroId {
@@ -36290,10 +36236,7 @@ final class $$ClienteTableTableReferences
   static $MetodoDeCobroTableTable _metodoDeCobroIdTable(
     _$RemoteAppDatabase db,
   ) => db.metodoDeCobroTable.createAlias(
-    $_aliasNameGenerator(
-      db.clienteTable.metodoDeCobroId,
-      db.metodoDeCobroTable.id,
-    ),
+    'CLIENTES__METODO_COBRO_ID__METODOS_COBRO__METODO_COBRO_ID',
   );
 
   $$MetodoDeCobroTableTableProcessedTableManager? get metodoDeCobroId {
@@ -37906,64 +37849,48 @@ class $$ClienteTableTableTableManager
                         >
                       >(state) {
                         if (paisFiscalId) {
-                          state =
-                              state.withJoin(
-                                    currentTable: table,
-                                    currentColumn: table.paisFiscalId,
-                                    referencedTable:
-                                        $$ClienteTableTableReferences
-                                            ._paisFiscalIdTable(db),
-                                    referencedColumn:
-                                        $$ClienteTableTableReferences
-                                            ._paisFiscalIdTable(db)
-                                            .id,
-                                  )
-                                  as T;
+                          state = state.withJoin(
+                            currentTable: table,
+                            currentColumn: table.paisFiscalId,
+                            referencedTable: $$ClienteTableTableReferences
+                                ._paisFiscalIdTable(db),
+                            referencedColumn: $$ClienteTableTableReferences
+                                ._paisFiscalIdTable(db)
+                                .id,
+                          ) as T;
                         }
                         if (divisaId) {
-                          state =
-                              state.withJoin(
-                                    currentTable: table,
-                                    currentColumn: table.divisaId,
-                                    referencedTable:
-                                        $$ClienteTableTableReferences
-                                            ._divisaIdTable(db),
-                                    referencedColumn:
-                                        $$ClienteTableTableReferences
-                                            ._divisaIdTable(db)
-                                            .id,
-                                  )
-                                  as T;
+                          state = state.withJoin(
+                            currentTable: table,
+                            currentColumn: table.divisaId,
+                            referencedTable: $$ClienteTableTableReferences
+                                ._divisaIdTable(db),
+                            referencedColumn: $$ClienteTableTableReferences
+                                ._divisaIdTable(db)
+                                .id,
+                          ) as T;
                         }
                         if (plazoDeCobroId) {
-                          state =
-                              state.withJoin(
-                                    currentTable: table,
-                                    currentColumn: table.plazoDeCobroId,
-                                    referencedTable:
-                                        $$ClienteTableTableReferences
-                                            ._plazoDeCobroIdTable(db),
-                                    referencedColumn:
-                                        $$ClienteTableTableReferences
-                                            ._plazoDeCobroIdTable(db)
-                                            .id,
-                                  )
-                                  as T;
+                          state = state.withJoin(
+                            currentTable: table,
+                            currentColumn: table.plazoDeCobroId,
+                            referencedTable: $$ClienteTableTableReferences
+                                ._plazoDeCobroIdTable(db),
+                            referencedColumn: $$ClienteTableTableReferences
+                                ._plazoDeCobroIdTable(db)
+                                .id,
+                          ) as T;
                         }
                         if (metodoDeCobroId) {
-                          state =
-                              state.withJoin(
-                                    currentTable: table,
-                                    currentColumn: table.metodoDeCobroId,
-                                    referencedTable:
-                                        $$ClienteTableTableReferences
-                                            ._metodoDeCobroIdTable(db),
-                                    referencedColumn:
-                                        $$ClienteTableTableReferences
-                                            ._metodoDeCobroIdTable(db)
-                                            .id,
-                                  )
-                                  as T;
+                          state = state.withJoin(
+                            currentTable: table,
+                            currentColumn: table.metodoDeCobroId,
+                            referencedTable: $$ClienteTableTableReferences
+                                ._metodoDeCobroIdTable(db),
+                            referencedColumn: $$ClienteTableTableReferences
+                                ._metodoDeCobroIdTable(db)
+                                .id,
+                          ) as T;
                         }
 
                         return state;
@@ -38498,10 +38425,7 @@ final class $$FamiliaTableTableReferences
   _clienteDescuentoTableRefsTable(_$RemoteAppDatabase db) =>
       MultiTypedResultKey.fromTable(
         db.clienteDescuentoTable,
-        aliasName: $_aliasNameGenerator(
-          db.familiaTable.id,
-          db.clienteDescuentoTable.familiaId,
-        ),
+        aliasName: 'FAMILIAS__FAMILIA_ID__CLIENTES_DESCUENTOS__FAMILIA_ID',
       );
 
   $$ClienteDescuentoTableTableProcessedTableManager
@@ -38526,10 +38450,7 @@ final class $$FamiliaTableTableReferences
   _articuloTableRefsTable(_$RemoteAppDatabase db) =>
       MultiTypedResultKey.fromTable(
         db.articuloTable,
-        aliasName: $_aliasNameGenerator(
-          db.familiaTable.id,
-          db.articuloTable.familiaId,
-        ),
+        aliasName: 'FAMILIAS__FAMILIA_ID__ARTICULOS__FAMILIA_ID',
       );
 
   $$ArticuloTableTableProcessedTableManager get articuloTableRefs {
@@ -39211,10 +39132,8 @@ final class $$SubfamiliaTableTableReferences
   _clienteDescuentoTableRefsTable(_$RemoteAppDatabase db) =>
       MultiTypedResultKey.fromTable(
         db.clienteDescuentoTable,
-        aliasName: $_aliasNameGenerator(
-          db.subfamiliaTable.id,
-          db.clienteDescuentoTable.subfamiliaId,
-        ),
+        aliasName:
+            'SUBFAMILIAS__SUBFAMILIA_ID__CLIENTES_DESCUENTOS__SUBFAMILIA_ID',
       );
 
   $$ClienteDescuentoTableTableProcessedTableManager
@@ -39241,10 +39160,7 @@ final class $$SubfamiliaTableTableReferences
   _articuloTableRefsTable(_$RemoteAppDatabase db) =>
       MultiTypedResultKey.fromTable(
         db.articuloTable,
-        aliasName: $_aliasNameGenerator(
-          db.subfamiliaTable.id,
-          db.articuloTable.subfamiliaId,
-        ),
+        aliasName: 'SUBFAMILIAS__SUBFAMILIA_ID__ARTICULOS__SUBFAMILIA_ID',
       );
 
   $$ArticuloTableTableProcessedTableManager get articuloTableRefs {
@@ -39916,13 +39832,9 @@ final class $$ClienteDescuentoTableTableReferences
     super.$_typedResult,
   );
 
-  static $FamiliaTableTable _familiaIdTable(_$RemoteAppDatabase db) =>
-      db.familiaTable.createAlias(
-        $_aliasNameGenerator(
-          db.clienteDescuentoTable.familiaId,
-          db.familiaTable.id,
-        ),
-      );
+  static $FamiliaTableTable _familiaIdTable(_$RemoteAppDatabase db) => db
+      .familiaTable
+      .createAlias('CLIENTES_DESCUENTOS__FAMILIA_ID__FAMILIAS__FAMILIA_ID');
 
   $$FamiliaTableTableProcessedTableManager get familiaId {
     final $_column = $_itemColumn<String>('FAMILIA_ID')!;
@@ -39940,10 +39852,7 @@ final class $$ClienteDescuentoTableTableReferences
 
   static $SubfamiliaTableTable _subfamiliaIdTable(_$RemoteAppDatabase db) =>
       db.subfamiliaTable.createAlias(
-        $_aliasNameGenerator(
-          db.clienteDescuentoTable.subfamiliaId,
-          db.subfamiliaTable.id,
-        ),
+        'CLIENTES_DESCUENTOS__SUBFAMILIA_ID__SUBFAMILIAS__SUBFAMILIA_ID',
       );
 
   $$SubfamiliaTableTableProcessedTableManager get subfamiliaId {
@@ -40323,34 +40232,26 @@ class $$ClienteDescuentoTableTableTableManager
                     >
                   >(state) {
                     if (familiaId) {
-                      state =
-                          state.withJoin(
-                                currentTable: table,
-                                currentColumn: table.familiaId,
-                                referencedTable:
-                                    $$ClienteDescuentoTableTableReferences
-                                        ._familiaIdTable(db),
-                                referencedColumn:
-                                    $$ClienteDescuentoTableTableReferences
-                                        ._familiaIdTable(db)
-                                        .id,
-                              )
-                              as T;
+                      state = state.withJoin(
+                        currentTable: table,
+                        currentColumn: table.familiaId,
+                        referencedTable: $$ClienteDescuentoTableTableReferences
+                            ._familiaIdTable(db),
+                        referencedColumn: $$ClienteDescuentoTableTableReferences
+                            ._familiaIdTable(db)
+                            .id,
+                      ) as T;
                     }
                     if (subfamiliaId) {
-                      state =
-                          state.withJoin(
-                                currentTable: table,
-                                currentColumn: table.subfamiliaId,
-                                referencedTable:
-                                    $$ClienteDescuentoTableTableReferences
-                                        ._subfamiliaIdTable(db),
-                                referencedColumn:
-                                    $$ClienteDescuentoTableTableReferences
-                                        ._subfamiliaIdTable(db)
-                                        .id,
-                              )
-                              as T;
+                      state = state.withJoin(
+                        currentTable: table,
+                        currentColumn: table.subfamiliaId,
+                        referencedTable: $$ClienteDescuentoTableTableReferences
+                            ._subfamiliaIdTable(db),
+                        referencedColumn: $$ClienteDescuentoTableTableReferences
+                            ._subfamiliaIdTable(db)
+                            .id,
+                      ) as T;
                     }
 
                     return state;
@@ -40766,10 +40667,8 @@ final class $$ClienteDireccionTableTableReferences
     super.$_typedResult,
   );
 
-  static $PaisTableTable _paisIdTable(_$RemoteAppDatabase db) =>
-      db.paisTable.createAlias(
-        $_aliasNameGenerator(db.clienteDireccionTable.paisId, db.paisTable.id),
-      );
+  static $PaisTableTable _paisIdTable(_$RemoteAppDatabase db) => db.paisTable
+      .createAlias('CLIENTES_DIRECCIONES_ENVIO__PAIS_ID__PAISES__PAIS_ID');
 
   $$PaisTableTableProcessedTableManager? get paisId {
     final $_column = $_itemColumn<String>('PAIS_ID');
@@ -41217,19 +41116,15 @@ class $$ClienteDireccionTableTableTableManager
                     >
                   >(state) {
                     if (paisId) {
-                      state =
-                          state.withJoin(
-                                currentTable: table,
-                                currentColumn: table.paisId,
-                                referencedTable:
-                                    $$ClienteDireccionTableTableReferences
-                                        ._paisIdTable(db),
-                                referencedColumn:
-                                    $$ClienteDireccionTableTableReferences
-                                        ._paisIdTable(db)
-                                        .id,
-                              )
-                              as T;
+                      state = state.withJoin(
+                        currentTable: table,
+                        currentColumn: table.paisId,
+                        referencedTable: $$ClienteDireccionTableTableReferences
+                            ._paisIdTable(db),
+                        referencedColumn: $$ClienteDireccionTableTableReferences
+                            ._paisIdTable(db)
+                            .id,
+                      ) as T;
                     }
 
                     return state;
@@ -41306,10 +41201,7 @@ final class $$ClientePagoPendienteTableTableReferences
   static $MetodoDeCobroTableTable _metodoDeCobroIdTable(
     _$RemoteAppDatabase db,
   ) => db.metodoDeCobroTable.createAlias(
-    $_aliasNameGenerator(
-      db.clientePagoPendienteTable.metodoDeCobroId,
-      db.metodoDeCobroTable.id,
-    ),
+    'CLIENTES_PAGOS_PENDIENTES__METODO_COBRO_ID__METODOS_COBRO__METODO_COBRO_ID',
   );
 
   $$MetodoDeCobroTableTableProcessedTableManager? get metodoDeCobroId {
@@ -41708,19 +41600,17 @@ class $$ClientePagoPendienteTableTableTableManager
                     >
                   >(state) {
                     if (metodoDeCobroId) {
-                      state =
-                          state.withJoin(
-                                currentTable: table,
-                                currentColumn: table.metodoDeCobroId,
-                                referencedTable:
-                                    $$ClientePagoPendienteTableTableReferences
-                                        ._metodoDeCobroIdTable(db),
-                                referencedColumn:
-                                    $$ClientePagoPendienteTableTableReferences
-                                        ._metodoDeCobroIdTable(db)
-                                        .id,
-                              )
-                              as T;
+                      state = state.withJoin(
+                        currentTable: table,
+                        currentColumn: table.metodoDeCobroId,
+                        referencedTable:
+                            $$ClientePagoPendienteTableTableReferences
+                                ._metodoDeCobroIdTable(db),
+                        referencedColumn:
+                            $$ClientePagoPendienteTableTableReferences
+                                ._metodoDeCobroIdTable(db)
+                                .id,
+                      ) as T;
                     }
 
                     return state;
@@ -43672,10 +43562,9 @@ final class $$ArticuloTableTableReferences
     super.$_typedResult,
   );
 
-  static $FamiliaTableTable _familiaIdTable(_$RemoteAppDatabase db) =>
-      db.familiaTable.createAlias(
-        $_aliasNameGenerator(db.articuloTable.familiaId, db.familiaTable.id),
-      );
+  static $FamiliaTableTable _familiaIdTable(_$RemoteAppDatabase db) => db
+      .familiaTable
+      .createAlias('ARTICULOS__FAMILIA_ID__FAMILIAS__FAMILIA_ID');
 
   $$FamiliaTableTableProcessedTableManager? get familiaId {
     final $_column = $_itemColumn<String>('FAMILIA_ID');
@@ -43691,13 +43580,9 @@ final class $$ArticuloTableTableReferences
     );
   }
 
-  static $SubfamiliaTableTable _subfamiliaIdTable(_$RemoteAppDatabase db) =>
-      db.subfamiliaTable.createAlias(
-        $_aliasNameGenerator(
-          db.articuloTable.subfamiliaId,
-          db.subfamiliaTable.id,
-        ),
-      );
+  static $SubfamiliaTableTable _subfamiliaIdTable(_$RemoteAppDatabase db) => db
+      .subfamiliaTable
+      .createAlias('ARTICULOS__SUBFAMILIA_ID__SUBFAMILIAS__SUBFAMILIA_ID');
 
   $$SubfamiliaTableTableProcessedTableManager? get subfamiliaId {
     final $_column = $_itemColumn<String>('SUBFAMILIA_ID');
@@ -45205,30 +45090,26 @@ class $$ArticuloTableTableTableManager
                     >
                   >(state) {
                     if (familiaId) {
-                      state =
-                          state.withJoin(
-                                currentTable: table,
-                                currentColumn: table.familiaId,
-                                referencedTable: $$ArticuloTableTableReferences
-                                    ._familiaIdTable(db),
-                                referencedColumn: $$ArticuloTableTableReferences
-                                    ._familiaIdTable(db)
-                                    .id,
-                              )
-                              as T;
+                      state = state.withJoin(
+                        currentTable: table,
+                        currentColumn: table.familiaId,
+                        referencedTable: $$ArticuloTableTableReferences
+                            ._familiaIdTable(db),
+                        referencedColumn: $$ArticuloTableTableReferences
+                            ._familiaIdTable(db)
+                            .id,
+                      ) as T;
                     }
                     if (subfamiliaId) {
-                      state =
-                          state.withJoin(
-                                currentTable: table,
-                                currentColumn: table.subfamiliaId,
-                                referencedTable: $$ArticuloTableTableReferences
-                                    ._subfamiliaIdTable(db),
-                                referencedColumn: $$ArticuloTableTableReferences
-                                    ._subfamiliaIdTable(db)
-                                    .id,
-                              )
-                              as T;
+                      state = state.withJoin(
+                        currentTable: table,
+                        currentColumn: table.subfamiliaId,
+                        referencedTable: $$ArticuloTableTableReferences
+                            ._subfamiliaIdTable(db),
+                        referencedColumn: $$ArticuloTableTableReferences
+                            ._subfamiliaIdTable(db)
+                            .id,
+                      ) as T;
                     }
 
                     return state;

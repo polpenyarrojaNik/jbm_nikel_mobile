@@ -53,7 +53,7 @@ abstract class _$ClienteIndexControllerSearchTextParameter
   String build();
   @$mustCallSuper
   @override
-  void runBuild() {
+  WhenComplete runBuild() {
     final ref = this.ref as $Ref<String, String>;
     final element =
         ref.element
@@ -63,7 +63,7 @@ abstract class _$ClienteIndexControllerSearchTextParameter
               Object?,
               Object?
             >;
-    element.handleCreate(ref, build);
+    return element.handleCreate(ref, build);
   }
 }
 
@@ -108,7 +108,7 @@ abstract class _$ClientesEstadoFilterController
   ClienteEstado build();
   @$mustCallSuper
   @override
-  void runBuild() {
+  WhenComplete runBuild() {
     final ref = this.ref as $Ref<ClienteEstado, ClienteEstado>;
     final element =
         ref.element
@@ -118,7 +118,7 @@ abstract class _$ClientesEstadoFilterController
               Object?,
               Object?
             >;
-    element.handleCreate(ref, build);
+    return element.handleCreate(ref, build);
   }
 }
 
@@ -154,7 +154,7 @@ abstract class _$ClienteIndexScreenController extends $AsyncNotifier<int> {
   FutureOr<int> build();
   @$mustCallSuper
   @override
-  void runBuild() {
+  WhenComplete runBuild() {
     final ref = this.ref as $Ref<AsyncValue<int>, int>;
     final element =
         ref.element
@@ -164,7 +164,7 @@ abstract class _$ClienteIndexScreenController extends $AsyncNotifier<int> {
               Object?,
               Object?
             >;
-    element.handleCreate(ref, build);
+    return element.handleCreate(ref, build);
   }
 }
 
@@ -256,7 +256,7 @@ abstract class _$ClienteIndexScreenPaginatedController
   FutureOr<List<Cliente>> build({required int page});
   @$mustCallSuper
   @override
-  void runBuild() {
+  WhenComplete runBuild() {
     final ref = this.ref as $Ref<AsyncValue<List<Cliente>>, List<Cliente>>;
     final element =
         ref.element
@@ -266,6 +266,6 @@ abstract class _$ClienteIndexScreenPaginatedController
               Object?,
               Object?
             >;
-    element.handleCreate(ref, () => build(page: _$args));
+    return element.handleCreate(ref, () => build(page: _$args));
   }
 }

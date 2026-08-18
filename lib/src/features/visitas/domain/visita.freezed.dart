@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // coverage:ignore-file
-// ignore_for_file: type=lint
+// ignore_for_file: type=lint, type=warning, deprecated_member_use, deprecated_member_use_from_same_package
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'visita.dart';
@@ -9,6 +9,7 @@ part of 'visita.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// GENERATED CODE - DO NOT MODIFY BY HAND
 // dart format off
 T _$identity<T>(T value) => value;
 /// @nodoc
@@ -63,7 +64,7 @@ class _$VisitaCopyWithImpl<$Res>
 /// Create a copy of Visita
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? id = freezed,Object? cliente = freezed,Object? isClienteProvisional = null,Object? clienteProvisionalNombre = freezed,Object? clienteProvisionalEmail = freezed,Object? clienteProvisionalTelefono = freezed,Object? clienteProvisionalDireccion1 = freezed,Object? clienteProvisionalDireccion2 = freezed,Object? clienteProvisionalCodigoPostal = freezed,Object? clienteProvisionalPoblacion = freezed,Object? clienteProvisionalProvincia = freezed,Object? clienteProvisionalRegionId = freezed,Object? clienteProvisionalPais = freezed,Object? fecha = null,Object? numEmpl = null,Object? contacto = freezed,Object? atendidoPor = freezed,Object? resumen = freezed,Object? marcasCompetencia = freezed,Object? latitud = null,Object? longitud = null,Object? visitaAppId = freezed,Object? ofertaRealizada = null,Object? interesCliente = freezed,Object? pedidoRealizado = null,Object? motivoNoInteres = freezed,Object? motivoNoPedido = freezed,Object? sector = freezed,Object? competenciaList = null,Object? almacenPropio = freezed,Object? capacidad = freezed,Object? frecuenciaPedido = freezed,Object? lastUpdated = null,Object? deleted = null,Object? enviada = null,Object? tratada = null,Object? errorSyncMessage = freezed,}) {
-  return _then(_self.copyWith(
+  return _then(Visita(
 id: freezed == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as String?,cliente: freezed == cliente ? _self.cliente : cliente // ignore: cast_nullable_to_non_nullable
 as Cliente?,isClienteProvisional: null == isClienteProvisional ? _self.isClienteProvisional : isClienteProvisional // ignore: cast_nullable_to_non_nullable
@@ -314,7 +315,7 @@ return $default(_that.id,_that.cliente,_that.isClienteProvisional,_that.clienteP
 
 
 class _Visita extends Visita {
-  const _Visita({this.id, this.cliente, required this.isClienteProvisional, this.clienteProvisionalNombre, this.clienteProvisionalEmail, this.clienteProvisionalTelefono, this.clienteProvisionalDireccion1, this.clienteProvisionalDireccion2, this.clienteProvisionalCodigoPostal, this.clienteProvisionalPoblacion, this.clienteProvisionalProvincia, this.clienteProvisionalRegionId, this.clienteProvisionalPais, required this.fecha, required this.numEmpl, this.contacto, this.atendidoPor, this.resumen, this.marcasCompetencia, required this.latitud, required this.longitud, this.visitaAppId, required this.ofertaRealizada, required this.interesCliente, required this.pedidoRealizado, this.motivoNoInteres, this.motivoNoPedido, this.sector, required final  List<VisitaCompetidor> competenciaList, required this.almacenPropio, required this.capacidad, required this.frecuenciaPedido, required this.lastUpdated, required this.deleted, required this.enviada, required this.tratada, this.errorSyncMessage}): _competenciaList = competenciaList,super._();
+  const _Visita({this.id, this.cliente, required this.isClienteProvisional, this.clienteProvisionalNombre, this.clienteProvisionalEmail, this.clienteProvisionalTelefono, this.clienteProvisionalDireccion1, this.clienteProvisionalDireccion2, this.clienteProvisionalCodigoPostal, this.clienteProvisionalPoblacion, this.clienteProvisionalProvincia, this.clienteProvisionalRegionId, this.clienteProvisionalPais, required this.fecha, required this.numEmpl, this.contacto, this.atendidoPor, this.resumen, this.marcasCompetencia, required this.latitud, required this.longitud, this.visitaAppId, required this.ofertaRealizada, required this.interesCliente, required this.pedidoRealizado, this.motivoNoInteres, this.motivoNoPedido, this.sector, required  List<VisitaCompetidor> competenciaList, required this.almacenPropio, required this.capacidad, required this.frecuenciaPedido, required this.lastUpdated, required this.deleted, required this.enviada, required this.tratada, this.errorSyncMessage}): _competenciaList = competenciaList,super._();
   
 
 @override final  String? id;

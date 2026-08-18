@@ -87,7 +87,7 @@ abstract class _$ClienteFacturaCountController extends $AsyncNotifier<int> {
   FutureOr<int> build(String clienteId);
   @$mustCallSuper
   @override
-  void runBuild() {
+  WhenComplete runBuild() {
     final ref = this.ref as $Ref<AsyncValue<int>, int>;
     final element =
         ref.element
@@ -97,7 +97,7 @@ abstract class _$ClienteFacturaCountController extends $AsyncNotifier<int> {
               Object?,
               Object?
             >;
-    element.handleCreate(ref, () => build(_$args));
+    return element.handleCreate(ref, () => build(_$args));
   }
 }
 
@@ -195,7 +195,7 @@ abstract class _$ClienteFacturaPaginationController
   });
   @$mustCallSuper
   @override
-  void runBuild() {
+  WhenComplete runBuild() {
     final ref =
         this.ref
             as $Ref<AsyncValue<List<ClienteFactura>>, List<ClienteFactura>>;
@@ -210,7 +210,7 @@ abstract class _$ClienteFacturaPaginationController
               Object?,
               Object?
             >;
-    element.handleCreate(
+    return element.handleCreate(
       ref,
       () => build(page: _$args.page, customerId: _$args.customerId),
     );
@@ -307,7 +307,7 @@ abstract class _$ClienteFacturaDocumentController extends $Notifier<void> {
   void build({required String facturaId});
   @$mustCallSuper
   @override
-  void runBuild() {
+  WhenComplete runBuild() {
     final ref = this.ref as $Ref<void, void>;
     final element =
         ref.element
@@ -317,6 +317,6 @@ abstract class _$ClienteFacturaDocumentController extends $Notifier<void> {
               Object?,
               Object?
             >;
-    element.handleCreate(ref, () => build(facturaId: _$args));
+    return element.handleCreate(ref, () => build(facturaId: _$args));
   }
 }

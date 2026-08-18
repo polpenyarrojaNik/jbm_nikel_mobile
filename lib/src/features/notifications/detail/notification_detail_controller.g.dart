@@ -94,7 +94,7 @@ abstract class _$NotificationDetailScreenController
   FutureOr<Notificacion> build(String id);
   @$mustCallSuper
   @override
-  void runBuild() {
+  WhenComplete runBuild() {
     final ref = this.ref as $Ref<AsyncValue<Notificacion>, Notificacion>;
     final element =
         ref.element
@@ -104,6 +104,6 @@ abstract class _$NotificationDetailScreenController
               Object?,
               Object?
             >;
-    element.handleCreate(ref, () => build(_$args));
+    return element.handleCreate(ref, () => build(_$args));
   }
 }

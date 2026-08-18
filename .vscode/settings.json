@@ -4,12 +4,16 @@
     "**/.git": true,
     "**/.svn": true,
     "**/.hg": true,
-    "**/CVS": true,
     "**/.DS_Store": true,
     "**/Thumbs.db": true,
-    "**/*.freezed.dart": true,
-    "**/*.g.dart": true,
+    "**/flutter/ephemeral": true,
+    "**/Flutter/ephemeral": true,
+    "**/.symlinks": true,
+    "**/.plugin_symlinks": true,
+    "**/*.freezed.dart": false,
+    "**/*.g.dart": false,
     "**/.gitkeep": true,
+    "**/CVS": true,
     "**/.classpath": true,
     "**/.project": true,
     "**/.settings": true,
@@ -20,9 +24,7 @@
   },
   "explorerExclude.backup": {},
   "java.configuration.updateBuildConfiguration": "interactive",
-  "cSpell.words": [
-    "Catalago"
-  ],
-    "dart.flutterSdkPath": "/Users/polpenarroja/.puro/envs/jbm/flutter",
-    "dart.sdkPath": "/Users/polpenarroja/.puro/envs/jbm/flutter/bin/cache/dart-sdk"
+  "cSpell.words": ["Catalago"],
+  "dart.flutterSdkPath": "/Users/polpenarroja/.puro/envs/jbm/flutter",
+  "dart.sdkPath": "/Users/polpenarroja/.puro/envs/jbm/flutter/bin/cache/dart-sdk"
 }

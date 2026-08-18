@@ -541,9 +541,18 @@ SELECT *
                 )
                 .get();
 
-      return query
+      final precioTarfiaList = query
           .map((row) => ArticuloPrecioTarifaDTO.fromJson(row.data).toDomain())
           .toList();
+
+      final promoTarifaDtoList = await _getPromoTarifaList(
+        articuloId,
+        precioTarfiaList.firstOrNull?.divisaId ?? 'EU',
+      );
+
+      precioTarfiaList.addAll(promoTarifaDtoList);
+
+      return precioTarfiaList;
     } catch (e, stackTrace) {
       Error.throwWithStackTrace(
         AppException.fetchLocalDataFailure(e.toString()),
@@ -1596,5 +1605,23 @@ ORDER  BY IMPORTE_ANYO DESC
         .select(_localDb.syncDateTimeTable)
         .getSingle();
     return lastSyncDTO.articuloUltimaSync;
+  }
+
+  Future<List<ArticuloPrecioTarifa>> _getPromoTarifaList(
+    String articuloId,
+    String dividaId,
+  ) async {
+    try {
+      final promoLinList = await (_remoteDb.select(
+        _remoteDb.promoDtoLinTable,
+      )..where((tbl) => tbl.articuloId.equalsNullable(articuloId))).get();
+
+      return promoLinList
+          .map((e) => ArticuloPrecioTarifa.fromPromo(e, dividaId))
+          .toList();
+    } catch (e, str) {
+      log.e('_getPromoTarifaList articuloId=$articuloId: $e', stackTrace: str);
+      return [];
+    }
   }
 }

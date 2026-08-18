@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // coverage:ignore-file
-// ignore_for_file: type=lint
+// ignore_for_file: type=lint, type=warning, deprecated_member_use, deprecated_member_use_from_same_package
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'notification_dto.dart';
@@ -9,6 +9,7 @@ part of 'notification_dto.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// GENERATED CODE - DO NOT MODIFY BY HAND
 // dart format off
 T _$identity<T>(T value) => value;
 
@@ -66,7 +67,7 @@ class _$NotificationDtoCopyWithImpl<$Res>
 /// Create a copy of NotificationDto
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? notificacionId = null,Object? fecha = null,Object? leidoSN = null,Object? mensaje = null,Object? adjuntos = null,}) {
-  return _then(_self.copyWith(
+  return _then(NotificationDto(
 notificacionId: null == notificacionId ? _self.notificacionId : notificacionId // ignore: cast_nullable_to_non_nullable
 as String,fecha: null == fecha ? _self.fecha : fecha // ignore: cast_nullable_to_non_nullable
 as DateTime,leidoSN: null == leidoSN ? _self.leidoSN : leidoSN // ignore: cast_nullable_to_non_nullable
@@ -213,7 +214,7 @@ return $default(_that.notificacionId,_that.fecha,_that.leidoSN,_that.mensaje,_th
 @JsonSerializable()
 
 class _NotificationDto extends NotificationDto {
-  const _NotificationDto({@JsonKey(name: 'NOTIFICACION_GUID') required this.notificacionId, @JsonKey(name: 'F_ALTA') required this.fecha, @JsonKey(name: 'LEIDO_SN') required this.leidoSN, @JsonKey(name: 'MENSAJE_MARKDOWN') required this.mensaje, @JsonKey(name: 'NOTIFICACION_ADJUNTO') required final  List<NotificationAdjuntoDTO> adjuntos}): _adjuntos = adjuntos,super._();
+  const _NotificationDto({@JsonKey(name: 'NOTIFICACION_GUID') required this.notificacionId, @JsonKey(name: 'F_ALTA') required this.fecha, @JsonKey(name: 'LEIDO_SN') required this.leidoSN, @JsonKey(name: 'MENSAJE_MARKDOWN') required this.mensaje, @JsonKey(name: 'NOTIFICACION_ADJUNTO') required  List<NotificationAdjuntoDTO> adjuntos}): _adjuntos = adjuntos,super._();
   factory _NotificationDto.fromJson(Map<String, dynamic> json) => _$NotificationDtoFromJson(json);
 
 @override@JsonKey(name: 'NOTIFICACION_GUID') final  String notificacionId;

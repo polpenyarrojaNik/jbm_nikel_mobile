@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // coverage:ignore-file
-// ignore_for_file: type=lint
+// ignore_for_file: type=lint, type=warning, deprecated_member_use, deprecated_member_use_from_same_package
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'cliente_ventas_articulo_dto.dart';
@@ -9,6 +9,7 @@ part of 'cliente_ventas_articulo_dto.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// GENERATED CODE - DO NOT MODIFY BY HAND
 // dart format off
 T _$identity<T>(T value) => value;
 
@@ -66,7 +67,7 @@ class _$ClienteVentasArticuloDTOCopyWithImpl<$Res>
 /// Create a copy of ClienteVentasArticuloDTO
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? articuloId = null,Object? descripcion = null,Object? importeAnyo = null,Object? importeAnyo_1 = null,Object? importeAnyo_2 = null,Object? importeAnyo_3 = null,Object? importeAnyo_4 = null,Object? cantidadAnyo = null,Object? cantidadAnyo_1 = null,Object? cantidadAnyo_2 = null,Object? cantidadAnyo_3 = null,Object? cantidadAnyo_4 = null,}) {
-  return _then(_self.copyWith(
+  return _then(ClienteVentasArticuloDTO(
 articuloId: null == articuloId ? _self.articuloId : articuloId // ignore: cast_nullable_to_non_nullable
 as String,descripcion: null == descripcion ? _self.descripcion : descripcion // ignore: cast_nullable_to_non_nullable
 as String,importeAnyo: null == importeAnyo ? _self.importeAnyo : importeAnyo // ignore: cast_nullable_to_non_nullable

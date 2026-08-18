@@ -56,7 +56,7 @@ abstract class _$ArticuloUltimosPreciosSearchQueryParamsController
   String build();
   @$mustCallSuper
   @override
-  void runBuild() {
+  WhenComplete runBuild() {
     final ref = this.ref as $Ref<String, String>;
     final element =
         ref.element
@@ -66,7 +66,7 @@ abstract class _$ArticuloUltimosPreciosSearchQueryParamsController
               Object?,
               Object?
             >;
-    element.handleCreate(ref, build);
+    return element.handleCreate(ref, build);
   }
 }
 
@@ -159,7 +159,7 @@ abstract class _$ArticuloUltimosPreciosIndexScreenController
   FutureOr<int> build({required String articuloId});
   @$mustCallSuper
   @override
-  void runBuild() {
+  WhenComplete runBuild() {
     final ref = this.ref as $Ref<AsyncValue<int>, int>;
     final element =
         ref.element
@@ -169,7 +169,7 @@ abstract class _$ArticuloUltimosPreciosIndexScreenController
               Object?,
               Object?
             >;
-    element.handleCreate(ref, () => build(articuloId: _$args));
+    return element.handleCreate(ref, () => build(articuloId: _$args));
   }
 }
 
@@ -271,7 +271,7 @@ abstract class _$ArticuloUltimosPreciosIndexScreenPaginatedController
   });
   @$mustCallSuper
   @override
-  void runBuild() {
+  WhenComplete runBuild() {
     final ref =
         this.ref
             as $Ref<
@@ -289,7 +289,7 @@ abstract class _$ArticuloUltimosPreciosIndexScreenPaginatedController
               Object?,
               Object?
             >;
-    element.handleCreate(
+    return element.handleCreate(
       ref,
       () => build(page: _$args.page, articuloId: _$args.articuloId),
     );
