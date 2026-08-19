@@ -15,7 +15,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$ArticuloGrupoNeto {
 
- String get articuloId; String get grupoNetoId; String get grupoNetoDescripcion; int get cantidadDesde; Money get precio; String get divisaId; int get tipoPrecio; DateTime get lastUpdated; bool get deleted;
+ String get articuloId; String get grupoNetoId; String get grupoNetoDescripcion; int get cantidadDesde; Money get precio; String get divisaId; int get tipoPrecio; DateTime get lastUpdated; bool get deleted; bool get isPromo;
 /// Create a copy of ArticuloGrupoNeto
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -26,16 +26,16 @@ $ArticuloGrupoNetoCopyWith<ArticuloGrupoNeto> get copyWith => _$ArticuloGrupoNet
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ArticuloGrupoNeto&&(identical(other.articuloId, articuloId) || other.articuloId == articuloId)&&(identical(other.grupoNetoId, grupoNetoId) || other.grupoNetoId == grupoNetoId)&&(identical(other.grupoNetoDescripcion, grupoNetoDescripcion) || other.grupoNetoDescripcion == grupoNetoDescripcion)&&(identical(other.cantidadDesde, cantidadDesde) || other.cantidadDesde == cantidadDesde)&&(identical(other.precio, precio) || other.precio == precio)&&(identical(other.divisaId, divisaId) || other.divisaId == divisaId)&&(identical(other.tipoPrecio, tipoPrecio) || other.tipoPrecio == tipoPrecio)&&(identical(other.lastUpdated, lastUpdated) || other.lastUpdated == lastUpdated)&&(identical(other.deleted, deleted) || other.deleted == deleted));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ArticuloGrupoNeto&&(identical(other.articuloId, articuloId) || other.articuloId == articuloId)&&(identical(other.grupoNetoId, grupoNetoId) || other.grupoNetoId == grupoNetoId)&&(identical(other.grupoNetoDescripcion, grupoNetoDescripcion) || other.grupoNetoDescripcion == grupoNetoDescripcion)&&(identical(other.cantidadDesde, cantidadDesde) || other.cantidadDesde == cantidadDesde)&&(identical(other.precio, precio) || other.precio == precio)&&(identical(other.divisaId, divisaId) || other.divisaId == divisaId)&&(identical(other.tipoPrecio, tipoPrecio) || other.tipoPrecio == tipoPrecio)&&(identical(other.lastUpdated, lastUpdated) || other.lastUpdated == lastUpdated)&&(identical(other.deleted, deleted) || other.deleted == deleted)&&(identical(other.isPromo, isPromo) || other.isPromo == isPromo));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,articuloId,grupoNetoId,grupoNetoDescripcion,cantidadDesde,precio,divisaId,tipoPrecio,lastUpdated,deleted);
+int get hashCode => Object.hash(runtimeType,articuloId,grupoNetoId,grupoNetoDescripcion,cantidadDesde,precio,divisaId,tipoPrecio,lastUpdated,deleted,isPromo);
 
 @override
 String toString() {
-  return 'ArticuloGrupoNeto(articuloId: $articuloId, grupoNetoId: $grupoNetoId, grupoNetoDescripcion: $grupoNetoDescripcion, cantidadDesde: $cantidadDesde, precio: $precio, divisaId: $divisaId, tipoPrecio: $tipoPrecio, lastUpdated: $lastUpdated, deleted: $deleted)';
+  return 'ArticuloGrupoNeto(articuloId: $articuloId, grupoNetoId: $grupoNetoId, grupoNetoDescripcion: $grupoNetoDescripcion, cantidadDesde: $cantidadDesde, precio: $precio, divisaId: $divisaId, tipoPrecio: $tipoPrecio, lastUpdated: $lastUpdated, deleted: $deleted, isPromo: $isPromo)';
 }
 
 
@@ -46,7 +46,7 @@ abstract mixin class $ArticuloGrupoNetoCopyWith<$Res>  {
   factory $ArticuloGrupoNetoCopyWith(ArticuloGrupoNeto value, $Res Function(ArticuloGrupoNeto) _then) = _$ArticuloGrupoNetoCopyWithImpl;
 @useResult
 $Res call({
- String articuloId, String grupoNetoId, String grupoNetoDescripcion, int cantidadDesde, Money precio, String divisaId, int tipoPrecio, DateTime lastUpdated, bool deleted
+ String articuloId, String grupoNetoId, String grupoNetoDescripcion, int cantidadDesde, Money precio, String divisaId, int tipoPrecio, DateTime lastUpdated, bool deleted, bool isPromo
 });
 
 
@@ -63,7 +63,7 @@ class _$ArticuloGrupoNetoCopyWithImpl<$Res>
 
 /// Create a copy of ArticuloGrupoNeto
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? articuloId = null,Object? grupoNetoId = null,Object? grupoNetoDescripcion = null,Object? cantidadDesde = null,Object? precio = null,Object? divisaId = null,Object? tipoPrecio = null,Object? lastUpdated = null,Object? deleted = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? articuloId = null,Object? grupoNetoId = null,Object? grupoNetoDescripcion = null,Object? cantidadDesde = null,Object? precio = null,Object? divisaId = null,Object? tipoPrecio = null,Object? lastUpdated = null,Object? deleted = null,Object? isPromo = null,}) {
   return _then(ArticuloGrupoNeto(
 articuloId: null == articuloId ? _self.articuloId : articuloId // ignore: cast_nullable_to_non_nullable
 as String,grupoNetoId: null == grupoNetoId ? _self.grupoNetoId : grupoNetoId // ignore: cast_nullable_to_non_nullable
@@ -74,6 +74,7 @@ as Money,divisaId: null == divisaId ? _self.divisaId : divisaId // ignore: cast_
 as String,tipoPrecio: null == tipoPrecio ? _self.tipoPrecio : tipoPrecio // ignore: cast_nullable_to_non_nullable
 as int,lastUpdated: null == lastUpdated ? _self.lastUpdated : lastUpdated // ignore: cast_nullable_to_non_nullable
 as DateTime,deleted: null == deleted ? _self.deleted : deleted // ignore: cast_nullable_to_non_nullable
+as bool,isPromo: null == isPromo ? _self.isPromo : isPromo // ignore: cast_nullable_to_non_nullable
 as bool,
   ));
 }
@@ -159,10 +160,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String articuloId,  String grupoNetoId,  String grupoNetoDescripcion,  int cantidadDesde,  Money precio,  String divisaId,  int tipoPrecio,  DateTime lastUpdated,  bool deleted)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String articuloId,  String grupoNetoId,  String grupoNetoDescripcion,  int cantidadDesde,  Money precio,  String divisaId,  int tipoPrecio,  DateTime lastUpdated,  bool deleted,  bool isPromo)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _ArticuloGrupoNeto() when $default != null:
-return $default(_that.articuloId,_that.grupoNetoId,_that.grupoNetoDescripcion,_that.cantidadDesde,_that.precio,_that.divisaId,_that.tipoPrecio,_that.lastUpdated,_that.deleted);case _:
+return $default(_that.articuloId,_that.grupoNetoId,_that.grupoNetoDescripcion,_that.cantidadDesde,_that.precio,_that.divisaId,_that.tipoPrecio,_that.lastUpdated,_that.deleted,_that.isPromo);case _:
   return orElse();
 
 }
@@ -180,10 +181,10 @@ return $default(_that.articuloId,_that.grupoNetoId,_that.grupoNetoDescripcion,_t
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String articuloId,  String grupoNetoId,  String grupoNetoDescripcion,  int cantidadDesde,  Money precio,  String divisaId,  int tipoPrecio,  DateTime lastUpdated,  bool deleted)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String articuloId,  String grupoNetoId,  String grupoNetoDescripcion,  int cantidadDesde,  Money precio,  String divisaId,  int tipoPrecio,  DateTime lastUpdated,  bool deleted,  bool isPromo)  $default,) {final _that = this;
 switch (_that) {
 case _ArticuloGrupoNeto():
-return $default(_that.articuloId,_that.grupoNetoId,_that.grupoNetoDescripcion,_that.cantidadDesde,_that.precio,_that.divisaId,_that.tipoPrecio,_that.lastUpdated,_that.deleted);case _:
+return $default(_that.articuloId,_that.grupoNetoId,_that.grupoNetoDescripcion,_that.cantidadDesde,_that.precio,_that.divisaId,_that.tipoPrecio,_that.lastUpdated,_that.deleted,_that.isPromo);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -200,10 +201,10 @@ return $default(_that.articuloId,_that.grupoNetoId,_that.grupoNetoDescripcion,_t
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String articuloId,  String grupoNetoId,  String grupoNetoDescripcion,  int cantidadDesde,  Money precio,  String divisaId,  int tipoPrecio,  DateTime lastUpdated,  bool deleted)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String articuloId,  String grupoNetoId,  String grupoNetoDescripcion,  int cantidadDesde,  Money precio,  String divisaId,  int tipoPrecio,  DateTime lastUpdated,  bool deleted,  bool isPromo)?  $default,) {final _that = this;
 switch (_that) {
 case _ArticuloGrupoNeto() when $default != null:
-return $default(_that.articuloId,_that.grupoNetoId,_that.grupoNetoDescripcion,_that.cantidadDesde,_that.precio,_that.divisaId,_that.tipoPrecio,_that.lastUpdated,_that.deleted);case _:
+return $default(_that.articuloId,_that.grupoNetoId,_that.grupoNetoDescripcion,_that.cantidadDesde,_that.precio,_that.divisaId,_that.tipoPrecio,_that.lastUpdated,_that.deleted,_that.isPromo);case _:
   return null;
 
 }
@@ -215,7 +216,7 @@ return $default(_that.articuloId,_that.grupoNetoId,_that.grupoNetoDescripcion,_t
 
 
 class _ArticuloGrupoNeto extends ArticuloGrupoNeto {
-  const _ArticuloGrupoNeto({required this.articuloId, required this.grupoNetoId, required this.grupoNetoDescripcion, required this.cantidadDesde, required this.precio, required this.divisaId, required this.tipoPrecio, required this.lastUpdated, required this.deleted}): super._();
+  const _ArticuloGrupoNeto({required this.articuloId, required this.grupoNetoId, required this.grupoNetoDescripcion, required this.cantidadDesde, required this.precio, required this.divisaId, required this.tipoPrecio, required this.lastUpdated, required this.deleted, required this.isPromo}): super._();
   
 
 @override final  String articuloId;
@@ -227,6 +228,7 @@ class _ArticuloGrupoNeto extends ArticuloGrupoNeto {
 @override final  int tipoPrecio;
 @override final  DateTime lastUpdated;
 @override final  bool deleted;
+@override final  bool isPromo;
 
 /// Create a copy of ArticuloGrupoNeto
 /// with the given fields replaced by the non-null parameter values.
@@ -238,16 +240,16 @@ _$ArticuloGrupoNetoCopyWith<_ArticuloGrupoNeto> get copyWith => __$ArticuloGrupo
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ArticuloGrupoNeto&&(identical(other.articuloId, articuloId) || other.articuloId == articuloId)&&(identical(other.grupoNetoId, grupoNetoId) || other.grupoNetoId == grupoNetoId)&&(identical(other.grupoNetoDescripcion, grupoNetoDescripcion) || other.grupoNetoDescripcion == grupoNetoDescripcion)&&(identical(other.cantidadDesde, cantidadDesde) || other.cantidadDesde == cantidadDesde)&&(identical(other.precio, precio) || other.precio == precio)&&(identical(other.divisaId, divisaId) || other.divisaId == divisaId)&&(identical(other.tipoPrecio, tipoPrecio) || other.tipoPrecio == tipoPrecio)&&(identical(other.lastUpdated, lastUpdated) || other.lastUpdated == lastUpdated)&&(identical(other.deleted, deleted) || other.deleted == deleted));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ArticuloGrupoNeto&&(identical(other.articuloId, articuloId) || other.articuloId == articuloId)&&(identical(other.grupoNetoId, grupoNetoId) || other.grupoNetoId == grupoNetoId)&&(identical(other.grupoNetoDescripcion, grupoNetoDescripcion) || other.grupoNetoDescripcion == grupoNetoDescripcion)&&(identical(other.cantidadDesde, cantidadDesde) || other.cantidadDesde == cantidadDesde)&&(identical(other.precio, precio) || other.precio == precio)&&(identical(other.divisaId, divisaId) || other.divisaId == divisaId)&&(identical(other.tipoPrecio, tipoPrecio) || other.tipoPrecio == tipoPrecio)&&(identical(other.lastUpdated, lastUpdated) || other.lastUpdated == lastUpdated)&&(identical(other.deleted, deleted) || other.deleted == deleted)&&(identical(other.isPromo, isPromo) || other.isPromo == isPromo));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,articuloId,grupoNetoId,grupoNetoDescripcion,cantidadDesde,precio,divisaId,tipoPrecio,lastUpdated,deleted);
+int get hashCode => Object.hash(runtimeType,articuloId,grupoNetoId,grupoNetoDescripcion,cantidadDesde,precio,divisaId,tipoPrecio,lastUpdated,deleted,isPromo);
 
 @override
 String toString() {
-  return 'ArticuloGrupoNeto(articuloId: $articuloId, grupoNetoId: $grupoNetoId, grupoNetoDescripcion: $grupoNetoDescripcion, cantidadDesde: $cantidadDesde, precio: $precio, divisaId: $divisaId, tipoPrecio: $tipoPrecio, lastUpdated: $lastUpdated, deleted: $deleted)';
+  return 'ArticuloGrupoNeto(articuloId: $articuloId, grupoNetoId: $grupoNetoId, grupoNetoDescripcion: $grupoNetoDescripcion, cantidadDesde: $cantidadDesde, precio: $precio, divisaId: $divisaId, tipoPrecio: $tipoPrecio, lastUpdated: $lastUpdated, deleted: $deleted, isPromo: $isPromo)';
 }
 
 
@@ -258,7 +260,7 @@ abstract mixin class _$ArticuloGrupoNetoCopyWith<$Res> implements $ArticuloGrupo
   factory _$ArticuloGrupoNetoCopyWith(_ArticuloGrupoNeto value, $Res Function(_ArticuloGrupoNeto) _then) = __$ArticuloGrupoNetoCopyWithImpl;
 @override @useResult
 $Res call({
- String articuloId, String grupoNetoId, String grupoNetoDescripcion, int cantidadDesde, Money precio, String divisaId, int tipoPrecio, DateTime lastUpdated, bool deleted
+ String articuloId, String grupoNetoId, String grupoNetoDescripcion, int cantidadDesde, Money precio, String divisaId, int tipoPrecio, DateTime lastUpdated, bool deleted, bool isPromo
 });
 
 
@@ -275,7 +277,7 @@ class __$ArticuloGrupoNetoCopyWithImpl<$Res>
 
 /// Create a copy of ArticuloGrupoNeto
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? articuloId = null,Object? grupoNetoId = null,Object? grupoNetoDescripcion = null,Object? cantidadDesde = null,Object? precio = null,Object? divisaId = null,Object? tipoPrecio = null,Object? lastUpdated = null,Object? deleted = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? articuloId = null,Object? grupoNetoId = null,Object? grupoNetoDescripcion = null,Object? cantidadDesde = null,Object? precio = null,Object? divisaId = null,Object? tipoPrecio = null,Object? lastUpdated = null,Object? deleted = null,Object? isPromo = null,}) {
   return _then(_ArticuloGrupoNeto(
 articuloId: null == articuloId ? _self.articuloId : articuloId // ignore: cast_nullable_to_non_nullable
 as String,grupoNetoId: null == grupoNetoId ? _self.grupoNetoId : grupoNetoId // ignore: cast_nullable_to_non_nullable
@@ -286,6 +288,7 @@ as Money,divisaId: null == divisaId ? _self.divisaId : divisaId // ignore: cast_
 as String,tipoPrecio: null == tipoPrecio ? _self.tipoPrecio : tipoPrecio // ignore: cast_nullable_to_non_nullable
 as int,lastUpdated: null == lastUpdated ? _self.lastUpdated : lastUpdated // ignore: cast_nullable_to_non_nullable
 as DateTime,deleted: null == deleted ? _self.deleted : deleted // ignore: cast_nullable_to_non_nullable
+as bool,isPromo: null == isPromo ? _self.isPromo : isPromo // ignore: cast_nullable_to_non_nullable
 as bool,
   ));
 }

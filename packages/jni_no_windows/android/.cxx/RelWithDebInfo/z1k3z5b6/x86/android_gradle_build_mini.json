@@ -1,0 +1,27 @@
+{
+  "buildFiles": [
+    "/Users/polpenarroja/Documents/Flutter Projects/jbm_nikel_mobile/packages/jni_no_windows/src/CMakeLists.txt"
+  ],
+  "cleanCommandsComponents": [
+    [
+      "/Users/polpenarroja/Library/Android/sdk/cmake/3.22.1/bin/ninja",
+      "-C",
+      "/Users/polpenarroja/Documents/Flutter Projects/jbm_nikel_mobile/packages/jni_no_windows/android/.cxx/RelWithDebInfo/z1k3z5b6/x86",
+      "clean"
+    ]
+  ],
+  "buildTargetsCommandComponents": [
+    "/Users/polpenarroja/Library/Android/sdk/cmake/3.22.1/bin/ninja",
+    "-C",
+    "/Users/polpenarroja/Documents/Flutter Projects/jbm_nikel_mobile/packages/jni_no_windows/android/.cxx/RelWithDebInfo/z1k3z5b6/x86",
+    "{LIST_OF_TARGETS_TO_BUILD}"
+  ],
+  "libraries": {
+    "jni::@6890427a1f51a3e7e1df": {
+      "artifactName": "jni",
+      "abi": "x86",
+      "output": "/Users/polpenarroja/Documents/Flutter Projects/jbm_nikel_mobile/build/jni/intermediates/cxx/RelWithDebInfo/z1k3z5b6/obj/x86/libdartjni.so",
+      "runtimeFiles": []
+    }
+  }
+}

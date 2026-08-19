@@ -15,6 +15,7 @@ import '../../../core/exceptions/get_api_error.dart';
 import '../../../core/helpers/error_logger.dart';
 import '../../../core/helpers/formatters.dart';
 import '../../../core/infrastructure/local_database.dart';
+import '../../../core/infrastructure/promo_dto_lin_dto.dart';
 import '../../../core/infrastructure/remote_database.dart';
 import '../../../core/presentation/app.dart';
 import '../../estadisticas/domain/estadisticas_ultimos_precios.dart';
@@ -541,18 +542,9 @@ SELECT *
                 )
                 .get();
 
-      final precioTarfiaList = query
+      return query
           .map((row) => ArticuloPrecioTarifaDTO.fromJson(row.data).toDomain())
           .toList();
-
-      final promoTarifaDtoList = await _getPromoTarifaList(
-        articuloId,
-        precioTarfiaList.firstOrNull?.divisaId ?? 'EU',
-      );
-
-      precioTarfiaList.addAll(promoTarifaDtoList);
-
-      return precioTarfiaList;
     } catch (e, stackTrace) {
       Error.throwWithStackTrace(
         AppException.fetchLocalDataFailure(e.toString()),
@@ -588,9 +580,22 @@ ORDER BY articulos_grupos_netos_precio.grupo_neto_descripcion, articulos_grupos_
           )
           .get();
 
-      return query
+      final articuloGruposNetos = query
           .map((row) => ArticuloGrupoNetoDTO.fromJson(row.data).toDomain())
           .toList();
+
+      final promoDescuentLineaDtoList = await _getPromoLineaList(articuloId);
+
+      articuloGruposNetos.addAll(
+        promoDescuentLineaDtoList.map(
+          (e) => ArticuloGrupoNeto.fromPromo(
+            e,
+            articuloGruposNetos.firstOrNull?.divisaId ?? 'EU',
+          ),
+        ),
+      );
+
+      return articuloGruposNetos;
     } catch (e, stackTrace) {
       Error.throwWithStackTrace(
         AppException.fetchLocalDataFailure(e.toString()),
@@ -1606,20 +1611,12 @@ ORDER  BY IMPORTE_ANYO DESC
     return lastSyncDTO.articuloUltimaSync;
   }
 
-  Future<List<ArticuloPrecioTarifa>> _getPromoTarifaList(
-    String articuloId,
-    String dividaId,
-  ) async {
+  Future<List<PromoDtoLineaDTO>> _getPromoLineaList(String articuloId) async {
     try {
-      final promoLinList = await (_remoteDb.select(
+      return await (_remoteDb.select(
         _remoteDb.promoDtoLinTable,
       )..where((tbl) => tbl.articuloId.equalsNullable(articuloId))).get();
-
-      return promoLinList
-          .map((e) => ArticuloPrecioTarifa.fromPromo(e, dividaId))
-          .toList();
-    } catch (e, str) {
-      log.e('_getPromoTarifaList articuloId=$articuloId: $e', stackTrace: str);
+    } catch (e) {
       return [];
     }
   }

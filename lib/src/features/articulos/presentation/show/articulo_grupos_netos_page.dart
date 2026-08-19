@@ -66,8 +66,11 @@ class ArticuloGrupoNetoTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
+    return Container(
       padding: kPaddingList,
+      color: articuloGrupoNeto.isPromo
+          ? Theme.of(context).colorScheme.secondaryContainer
+          : null,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [

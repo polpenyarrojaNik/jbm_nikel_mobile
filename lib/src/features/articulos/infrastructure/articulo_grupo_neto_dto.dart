@@ -42,6 +42,7 @@ abstract class ArticuloGrupoNetoDTO
       tipoPrecio: tipoPrecio,
       lastUpdated: lastUpdated,
       deleted: (deleted == 'S'),
+      isPromo: false,
     );
   }
 

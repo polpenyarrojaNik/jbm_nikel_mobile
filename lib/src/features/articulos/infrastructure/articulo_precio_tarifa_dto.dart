@@ -43,7 +43,6 @@ abstract class ArticuloPrecioTarifaDTO
       visibleSN: visibleSN == 'S',
       lastUpdated: lastUpdated,
       deleted: (deleted == 'S'),
-      isPromo: false,
     );
   }
 

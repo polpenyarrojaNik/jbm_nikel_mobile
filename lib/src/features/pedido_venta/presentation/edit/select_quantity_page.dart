@@ -1525,38 +1525,46 @@ class _ArticuloGrupoNetoSelectQuantityTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
+    return DecoratedBox(
+      decoration: BoxDecoration(
+        color: articuloGrupoNeto.isPromo
+            ? Theme.of(context).colorScheme.secondaryContainer
+            : Colors.transparent,
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
 
-      children: [
-        Row(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Flexible(
-              child: Text(
-                articuloGrupoNeto.grupoNetoDescripcion,
-                style: Theme.of(context).textTheme.bodySmall
-                    ?.copyWith(fontSize: 9),
+        children: [
+          Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Flexible(
+                child: Text(
+                  articuloGrupoNeto.grupoNetoDescripcion,
+                  style: Theme.of(context).textTheme.bodySmall
+                      ?.copyWith(fontSize: 9),
+                ),
               ),
-            ),
-            if (articuloGrupoNeto.cantidadDesde != 1) ...[
-              const Gap(4),
-              Text(
-                '≥ ${numberFormatCantidades(articuloGrupoNeto.cantidadDesde)} ${S.of(context).unidad}',
-                style: Theme.of(context).textTheme.bodySmall
-                    ?.copyWith(fontSize: 9),
-              ),
+              if (articuloGrupoNeto.cantidadDesde != 1) ...[
+                const Gap(4),
+                Text(
+                  '≥ ${numberFormatCantidades(articuloGrupoNeto.cantidadDesde)} ${S.of(context).unidad}',
+                  style: Theme.of(context).textTheme.bodySmall
+                      ?.copyWith(fontSize: 9),
+                ),
+              ],
             ],
-          ],
-        ),
-        Text(
-          formatPrecios(
-            precio: articuloGrupoNeto.precio,
-            tipoPrecio: articuloGrupoNeto.tipoPrecio,
           ),
-          style: Theme.of(context).textTheme.bodyMedium?.copyWith(fontSize: 12),
-        ),
-      ],
+          Text(
+            formatPrecios(
+              precio: articuloGrupoNeto.precio,
+              tipoPrecio: articuloGrupoNeto.tipoPrecio,
+            ),
+            style: Theme.of(context).textTheme.bodyMedium
+                ?.copyWith(fontSize: 12),
+          ),
+        ],
+      ),
     );
   }
 }
