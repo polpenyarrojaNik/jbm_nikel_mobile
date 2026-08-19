@@ -1,7 +1,9 @@
 .PHONY: all run run_test install_pubspec upgrade_pubspec install_pubspec deploy_mobile icons run_dependency_validator run_build_runner watch_build_runner deploy_windows update_i18n help
 
 FLUTTER=puro flutter
-DART=puro dart
+PURO_ENV=$(shell sed -n 's/.*"env"[[:space:]]*:[[:space:]]*"\([^"]*\)".*/\1/p' .puro.json)
+DART_BIN=$(HOME)/.puro/envs/$(PURO_ENV)/flutter/bin/cache/dart-sdk/bin/dart
+DART=$(DART_BIN) --suppress-analytics
 RIMRAF=rimraf
 PERL=perl
 GIT=git
@@ -28,7 +30,12 @@ run_test: ## Runs all unit tests
 
 format: ## Formats the code
 	@echo ":: Formatting code..."
-	@$(DART) format .
+	@find lib -type f -name '*.dart' \
+		! -path 'lib/generated/*' \
+		! -name '*.g.dart' \
+		! -name '*.gr.dart' \
+		! -name '*.freezed.dart' \
+		-print0 | xargs -0 $(DART) format
 
 lint: ## Lints the code
 	@echo ":: Verifying code..."
