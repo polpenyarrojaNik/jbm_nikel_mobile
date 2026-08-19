@@ -64,7 +64,7 @@ dependencies:
   riverpod_annotation: ^4.0.6
   share_plus: ^13.3.0
   shimmer: ^3.0.0
-  sentry_flutter: ^8.14.2
+  sentry_flutter: ^9.27.0
   sqlite3_flutter_libs: ^0.5.42
   syncfusion_flutter_pdf: ^34.2.3
   syncfusion_flutter_pdfviewer: ^34.2.3
@@ -90,6 +90,7 @@ dev_dependencies:
 
 dependency_overrides:
   flutter_rotation_sensor: 0.2.0
+  jni: 1.0.3
 
 flutter_icons:
   android: true
