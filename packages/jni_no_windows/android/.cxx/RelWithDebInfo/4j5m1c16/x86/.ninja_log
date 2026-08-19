@@ -1,0 +1,7 @@
+# ninja log v5
+1	71	1780911965502543446	CMakeFiles/jni.dir/include/dart_api_dl.c.o	4c5e4595d48194
+1	104	1780911965536166070	CMakeFiles/jni.dir/dartjni.c.o	3cb616d944a531d
+1	340	1780911965770020362	CMakeFiles/jni.dir/third_party/global_jni_env.c.o	d38e356b03cb5201
+340	381	1780911965812889945	/Users/polpenarroja/Documents/Flutter Projects/celo_cim/build/jni/intermediates/cxx/RelWithDebInfo/4j5m1c16/obj/x86/libdartjni.so	a7873915dc21b6d8
+0	55	1781776088171044707	/Users/polpenarroja/Documents/Flutter Projects/celo_cim/build/jni/intermediates/cxx/RelWithDebInfo/4j5m1c16/obj/x86/libdartjni.so	a7873915dc21b6d8
+2	59	1784101681407926207	/Users/polpenarroja/Documents/Flutter Projects/celo_cim/build/jni/intermediates/cxx/RelWithDebInfo/4j5m1c16/obj/x86/libdartjni.so	a7873915dc21b6d8

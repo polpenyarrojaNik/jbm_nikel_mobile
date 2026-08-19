@@ -90,7 +90,11 @@ dev_dependencies:
 
 dependency_overrides:
   flutter_rotation_sensor: 0.2.0
-  jni: 1.0.3
+  # sentry_flutter 9.20.0 depends on jni for Android. The upstream jni
+  # Windows plugin requires a local JDK during CMake generation, so this local
+  # copy keeps Android support but does not register jni on Windows.
+  jni:
+    path: packages/jni_no_windows
 
 flutter_icons:
   android: true

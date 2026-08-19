@@ -1,0 +1,1 @@
+/Users/polpenarroja/Documents/Flutter Projects/celo_cim/build/jni/intermediates/cxx/Debug/352lm3s4/obj/x86_64

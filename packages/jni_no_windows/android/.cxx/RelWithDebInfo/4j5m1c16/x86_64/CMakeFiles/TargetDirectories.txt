@@ -1,0 +1,3 @@
+/Users/polpenarroja/Documents/Flutter Projects/celo_cim/packages/jni_no_windows/android/.cxx/RelWithDebInfo/4j5m1c16/x86_64/CMakeFiles/jni.dir
+/Users/polpenarroja/Documents/Flutter Projects/celo_cim/packages/jni_no_windows/android/.cxx/RelWithDebInfo/4j5m1c16/x86_64/CMakeFiles/edit_cache.dir
+/Users/polpenarroja/Documents/Flutter Projects/celo_cim/packages/jni_no_windows/android/.cxx/RelWithDebInfo/4j5m1c16/x86_64/CMakeFiles/rebuild_cache.dir

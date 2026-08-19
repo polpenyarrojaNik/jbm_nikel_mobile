@@ -1,0 +1,3 @@
+/Users/polpenarroja/Documents/Flutter Projects/jbm_nikel_mobile/packages/jni_no_windows/android/.cxx/Debug/6w6y15dc/x86/CMakeFiles/jni.dir
+/Users/polpenarroja/Documents/Flutter Projects/jbm_nikel_mobile/packages/jni_no_windows/android/.cxx/Debug/6w6y15dc/x86/CMakeFiles/edit_cache.dir
+/Users/polpenarroja/Documents/Flutter Projects/jbm_nikel_mobile/packages/jni_no_windows/android/.cxx/Debug/6w6y15dc/x86/CMakeFiles/rebuild_cache.dir

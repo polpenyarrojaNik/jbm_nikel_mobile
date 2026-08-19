@@ -1,0 +1,5 @@
+# ninja log v5
+1	108	1787126190097919248	CMakeFiles/jni.dir/include/dart_api_dl.c.o	db921dc426feb0ed
+0	171	1787126190141570915	CMakeFiles/jni.dir/dartjni.c.o	337cc1fb9a15468f
+0	255	1787126190245434999	CMakeFiles/jni.dir/third_party/global_jni_env.c.o	377b2a8d51662199
+255	301	1787126190293348249	/Users/polpenarroja/Documents/Flutter Projects/jbm_nikel_mobile/build/jni/intermediates/cxx/Debug/6w6y15dc/obj/armeabi-v7a/libdartjni.so	faeeeaa2729c7da5

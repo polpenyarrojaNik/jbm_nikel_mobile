@@ -1,0 +1,1 @@
+/Users/polpenarroja/Documents/Flutter Projects/celo_cim/build/jni/intermediates/cxx/RelWithDebInfo/4j5m1c16/obj/x86
