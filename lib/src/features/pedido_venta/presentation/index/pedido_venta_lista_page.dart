@@ -121,16 +121,14 @@ class _PedidoVentaListPageState extends ConsumerState<PedidoVentaListPage> {
   }
 
   void searchFilterByEstado() async {
-    final filterEstado =
-        await showDialog(
-              context: context,
-              barrierDismissible: false,
-              builder: (ctx) => PedidoVentaFilterDialog(
-                filteredStatus: filteredStatus,
-                dialogContext: ctx,
-              ),
-            )
-            as PedidoVentaEstado?;
+    final filterEstado = await showDialog(
+      context: context,
+      barrierDismissible: false,
+      builder: (ctx) => PedidoVentaFilterDialog(
+        filteredStatus: filteredStatus,
+        dialogContext: ctx,
+      ),
+    ) as PedidoVentaEstado?;
 
     filteredStatus = filterEstado;
 

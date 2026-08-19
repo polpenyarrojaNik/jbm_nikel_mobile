@@ -80,9 +80,8 @@ class PhoneTextFormField extends ConsumerWidget {
             (result) => result != null
                 ? Text(
                     '${S.of(context).esteNumeroTelefonoExisiteEnElCliente} #${result.clienteId} ${result.nombre}',
-                    style: Theme.of(
-                      context,
-                    ).textTheme.labelSmall?.copyWith(color: Colors.orange),
+                    style: Theme.of(context).textTheme.labelSmall
+                        ?.copyWith(color: Colors.orange),
                   )
                 : Container(),
           )

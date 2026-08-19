@@ -29,16 +29,13 @@ class CommonChipWidget extends StatelessWidget {
           if (label != null)
             Text(
               label!,
-              style: Theme.of(
-                context,
-              ).textTheme.labelSmall?.copyWith(color: customTextColor),
+              style: Theme.of(context).textTheme.labelSmall
+                  ?.copyWith(color: customTextColor),
             ),
           Text(
             value,
-            style: Theme.of(context).textTheme.labelMedium?.copyWith(
-              color: customTextColor,
-              fontWeight: FontWeight.bold,
-            ),
+            style: Theme.of(context).textTheme.labelMedium
+                ?.copyWith(color: customTextColor, fontWeight: FontWeight.bold),
             textAlign: TextAlign.center,
           ),
         ],

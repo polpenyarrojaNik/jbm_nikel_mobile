@@ -433,9 +433,8 @@ class _SliderKm extends StatelessWidget {
               ),
               child: Text(
                 '${(radiusKm / 1000).round()} Km',
-                style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                  color: Theme.of(context).colorScheme.onSurface,
-                ),
+                style: Theme.of(context).textTheme.bodyMedium
+                    ?.copyWith(color: Theme.of(context).colorScheme.onSurface),
               ),
             ),
           ),
@@ -496,9 +495,8 @@ class _ClienteAlrededorDialog extends StatelessWidget {
           const Gap(2),
           Text(
             clienteAlrededor.direccion ?? '',
-            style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-              color: Theme.of(context).textTheme.bodySmall!.color,
-            ),
+            style: Theme.of(context).textTheme.bodyMedium!
+                .copyWith(color: Theme.of(context).textTheme.bodySmall!.color),
           ),
           const Gap(2),
           AddressTextWidget(

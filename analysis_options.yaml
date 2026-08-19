@@ -22,6 +22,7 @@ analyzer:
     - windows/**
     - macos/**
     - linux/**
+    - packages/**
   plugins:
     - custom_lint
 
@@ -34,7 +35,6 @@ linter:
     prefer_relative_imports: true
     prefer_single_quotes: true
     unawaited_futures: true
-    unnecessary_await_in_return: true
 
 dart_code_metrics:
   metrics:

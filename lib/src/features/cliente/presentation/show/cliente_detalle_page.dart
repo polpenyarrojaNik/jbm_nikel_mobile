@@ -255,9 +255,10 @@ class _ClienteHeader extends StatelessWidget {
                             ),
                             style: Theme.of(context).textTheme.bodyMedium
                                 ?.copyWith(
-                                  color: Theme.of(
-                                    context,
-                                  ).textTheme.bodySmall?.color,
+                                  color: Theme.of(context)
+                                      .textTheme
+                                      .bodySmall
+                                      ?.color,
                                 ),
                           ),
                         ),
@@ -416,9 +417,8 @@ class _VentasRowWidget extends StatelessWidget {
       children: [
         Text(
           S.of(context).cliente_show_clienteDetalle_ventas,
-          style: Theme.of(context).textTheme.titleSmall!.copyWith(
-            color: Theme.of(context).textTheme.bodySmall!.color,
-          ),
+          style: Theme.of(context).textTheme.titleSmall!
+              .copyWith(color: Theme.of(context).textTheme.bodySmall!.color),
         ),
         const Gap(4),
         Row(
@@ -497,9 +497,8 @@ class _MargenRowWidget extends StatelessWidget {
       children: [
         Text(
           S.of(context).cliente_show_clienteDetalle_margen,
-          style: Theme.of(context).textTheme.titleSmall!.copyWith(
-            color: Theme.of(context).textTheme.bodySmall!.color,
-          ),
+          style: Theme.of(context).textTheme.titleSmall!
+              .copyWith(color: Theme.of(context).textTheme.bodySmall!.color),
         ),
         const Gap(4),
         Row(
@@ -769,9 +768,10 @@ class _ClienteRiesgosContainer extends StatelessWidget {
                                 .cliente_show_clienteDetalle_riesgoActual,
                             style: Theme.of(context).textTheme.titleSmall!
                                 .copyWith(
-                                  color: Theme.of(
-                                    context,
-                                  ).textTheme.bodySmall!.color,
+                                  color: Theme.of(context)
+                                      .textTheme
+                                      .bodySmall!
+                                      .color,
                                 ),
                           ),
                           SelectableTextWidget(
@@ -792,9 +792,10 @@ class _ClienteRiesgosContainer extends StatelessWidget {
                                   .cliente_show_clienteDetalle_riesgoExcedido,
                               style: Theme.of(context).textTheme.titleSmall!
                                   .copyWith(
-                                    color: Theme.of(
-                                      context,
-                                    ).textTheme.bodySmall!.color,
+                                    color: Theme.of(context)
+                                        .textTheme
+                                        .bodySmall!
+                                        .color,
                                   ),
                             ),
                             SelectableTextWidget(
@@ -818,9 +819,10 @@ class _ClienteRiesgosContainer extends StatelessWidget {
                                 .cliente_show_clienteDetalle_pdteCobroVencido,
                             style: Theme.of(context).textTheme.bodyMedium!
                                 .copyWith(
-                                  color: Theme.of(
-                                    context,
-                                  ).textTheme.bodySmall!.color,
+                                  color: Theme.of(context)
+                                      .textTheme
+                                      .bodySmall!
+                                      .color,
                                 ),
                           ),
                           SelectableTextWidget(
@@ -830,11 +832,12 @@ class _ClienteRiesgosContainer extends StatelessWidget {
                             ),
                             style:
                                 (!cliente.riesgoPendienteCobroVencido!.isZero)
-                                ? Theme.of(
-                                    context,
-                                  ).textTheme.bodyMedium!.copyWith(
-                                    color: Theme.of(context).colorScheme.error,
-                                  )
+                                ? Theme.of(context).textTheme.bodyMedium!
+                                      .copyWith(
+                                        color: Theme.of(context)
+                                            .colorScheme
+                                            .error,
+                                      )
                                 : Theme.of(context).textTheme.bodyMedium,
                           ),
                         ],
@@ -848,9 +851,10 @@ class _ClienteRiesgosContainer extends StatelessWidget {
                                 .cliente_show_clienteDetalle_pdteCobroNoVencido,
                             style: Theme.of(context).textTheme.bodyMedium!
                                 .copyWith(
-                                  color: Theme.of(
-                                    context,
-                                  ).textTheme.bodySmall!.color,
+                                  color: Theme.of(context)
+                                      .textTheme
+                                      .bodySmall!
+                                      .color,
                                 ),
                           ),
                           SelectableTextWidget(
@@ -870,9 +874,10 @@ class _ClienteRiesgosContainer extends StatelessWidget {
                                 .cliente_show_clienteDetalle_pdteServir,
                             style: Theme.of(context).textTheme.bodyMedium!
                                 .copyWith(
-                                  color: Theme.of(
-                                    context,
-                                  ).textTheme.bodySmall!.color,
+                                  color: Theme.of(context)
+                                      .textTheme
+                                      .bodySmall!
+                                      .color,
                                 ),
                           ),
                           SelectableTextWidget(
@@ -892,9 +897,10 @@ class _ClienteRiesgosContainer extends StatelessWidget {
                                 .cliente_show_clienteDetalle_pdteFacturar,
                             style: Theme.of(context).textTheme.bodyMedium!
                                 .copyWith(
-                                  color: Theme.of(
-                                    context,
-                                  ).textTheme.bodySmall!.color,
+                                  color: Theme.of(context)
+                                      .textTheme
+                                      .bodySmall!
+                                      .color,
                                 ),
                           ),
                           SelectableTextWidget(
@@ -921,9 +927,10 @@ class _ClienteRiesgosContainer extends StatelessWidget {
                                   .cliente_show_clienteDetalle_riesgoConcedido,
                               style: Theme.of(context).textTheme.titleSmall!
                                   .copyWith(
-                                    color: Theme.of(
-                                      context,
-                                    ).textTheme.bodySmall!.color,
+                                    color: Theme.of(context)
+                                        .textTheme
+                                        .bodySmall!
+                                        .color,
                                   ),
                             ),
                             SelectableTextWidget(
@@ -941,9 +948,10 @@ class _ClienteRiesgosContainer extends StatelessWidget {
                             'JBM',
                             style: Theme.of(context).textTheme.bodyMedium!
                                 .copyWith(
-                                  color: Theme.of(
-                                    context,
-                                  ).textTheme.bodySmall!.color,
+                                  color: Theme.of(context)
+                                      .textTheme
+                                      .bodySmall!
+                                      .color,
                                 ),
                           ),
                           SelectableTextWidget(
@@ -970,9 +978,10 @@ class _ClienteRiesgosContainer extends StatelessWidget {
                             'COFACE',
                             style: Theme.of(context).textTheme.bodyMedium!
                                 .copyWith(
-                                  color: Theme.of(
-                                    context,
-                                  ).textTheme.bodySmall!.color,
+                                  color: Theme.of(context)
+                                      .textTheme
+                                      .bodySmall!
+                                      .color,
                                 ),
                           ),
                           SelectableTextWidget(

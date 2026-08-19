@@ -293,9 +293,8 @@ class _ClienteDireccionActionButtons extends ConsumerWidget {
   ) {
     ref
         .read(
-          clienteDireccionDeleteControllerProvider(
-            clienteImpEditParam,
-          ).notifier,
+          clienteDireccionDeleteControllerProvider(clienteImpEditParam)
+              .notifier,
         )
         .deleteClienteDireccion();
   }

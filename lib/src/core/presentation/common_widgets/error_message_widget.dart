@@ -7,9 +7,8 @@ class ErrorMessageWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       errorMessage,
-      style: Theme.of(context).textTheme.labelMedium!.copyWith(
-        color: Theme.of(context).colorScheme.error,
-      ),
+      style: Theme.of(context).textTheme.labelMedium!
+          .copyWith(color: Theme.of(context).colorScheme.error),
     );
   }
 }

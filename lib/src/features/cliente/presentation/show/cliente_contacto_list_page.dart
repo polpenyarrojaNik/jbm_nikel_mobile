@@ -129,9 +129,10 @@ class ClienteContactoTile extends StatelessWidget {
                               clienteContacto.email!,
                               style: Theme.of(context).textTheme.bodyMedium
                                   ?.copyWith(
-                                    color: Theme.of(
-                                      context,
-                                    ).textTheme.bodySmall?.color,
+                                    color: Theme.of(context)
+                                        .textTheme
+                                        .bodySmall
+                                        ?.color,
                                   ),
                             ),
                           ),
@@ -151,9 +152,10 @@ class ClienteContactoTile extends StatelessWidget {
                               clienteContacto.telefono1!,
                               style: Theme.of(context).textTheme.bodyMedium
                                   ?.copyWith(
-                                    color: Theme.of(
-                                      context,
-                                    ).textTheme.bodySmall?.color,
+                                    color: Theme.of(context)
+                                        .textTheme
+                                        .bodySmall
+                                        ?.color,
                                   ),
                             ),
                           ),
@@ -172,9 +174,10 @@ class ClienteContactoTile extends StatelessWidget {
                             clienteContacto.telefono2!,
                             style: Theme.of(context).textTheme.bodyMedium
                                 ?.copyWith(
-                                  color: Theme.of(
-                                    context,
-                                  ).textTheme.bodySmall?.color,
+                                  color: Theme.of(context)
+                                      .textTheme
+                                      .bodySmall
+                                      ?.color,
                                 ),
                           ),
                         ],
@@ -225,9 +228,8 @@ class ClienteContactoTile extends StatelessWidget {
                     S
                         .of(context)
                         .cliente_show_clienteContacto_hayCambiosDeEnviar,
-                    style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                      color: Theme.of(context).colorScheme.error,
-                    ),
+                    style: Theme.of(context).textTheme.bodyMedium
+                        ?.copyWith(color: Theme.of(context).colorScheme.error),
                   ),
                 ),
               ],

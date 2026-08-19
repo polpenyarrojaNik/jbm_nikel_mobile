@@ -207,9 +207,8 @@ class _ReemplazarArchivoBaseDeDatosLocalButton extends ConsumerWidget {
           Flexible(
             child: Text(
               S.of(context).settings_reemplazarBaseDeDatosLocal,
-              style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                color: Theme.of(context).colorScheme.onError,
-              ),
+              style: Theme.of(context).textTheme.bodyMedium
+                  ?.copyWith(color: Theme.of(context).colorScheme.onError),
             ),
           ),
         ],

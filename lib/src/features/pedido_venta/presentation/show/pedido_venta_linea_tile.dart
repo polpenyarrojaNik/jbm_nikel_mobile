@@ -39,9 +39,10 @@ class PedidoVentaLineaTile extends StatelessWidget {
                         style: (!pedidoVentaLinea.isComponente)
                             ? Theme.of(context).textTheme.titleSmall
                             : Theme.of(context).textTheme.titleSmall?.copyWith(
-                                color: Theme.of(
-                                  context,
-                                ).textTheme.bodySmall?.color,
+                                color: Theme.of(context)
+                                    .textTheme
+                                    .bodySmall
+                                    ?.color,
                               ),
                       ),
                       Row(
@@ -50,13 +51,13 @@ class PedidoVentaLineaTile extends StatelessWidget {
                             '${numberFormatCantidades(pedidoVentaLinea.cantidad)} ${S.of(context).unidad}',
                             style: (!pedidoVentaLinea.isComponente)
                                 ? Theme.of(context).textTheme.titleSmall
-                                : Theme.of(
-                                    context,
-                                  ).textTheme.titleSmall?.copyWith(
-                                    color: Theme.of(
-                                      context,
-                                    ).textTheme.bodySmall?.color,
-                                  ),
+                                : Theme.of(context).textTheme.titleSmall
+                                      ?.copyWith(
+                                        color: Theme.of(context)
+                                            .textTheme
+                                            .bodySmall
+                                            ?.color,
+                                      ),
                           ),
                         ],
                       ),

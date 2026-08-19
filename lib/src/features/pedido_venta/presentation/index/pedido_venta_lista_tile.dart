@@ -32,9 +32,8 @@ class PedidoVentaListaTile extends ConsumerWidget {
               ? (direction) {
                   ref
                       .read(
-                        deletePedidoVentaProvider(
-                          pedidoVenta.pedidoVentaAppId!,
-                        ).future,
+                        deletePedidoVentaProvider(pedidoVenta.pedidoVentaAppId!)
+                            .future,
                       )
                       .then((_) {
                         ref.invalidate(
@@ -77,9 +76,10 @@ class PedidoVentaListaTile extends ConsumerWidget {
                                     : S.of(context).salesOrderSent),
                             style: Theme.of(context).textTheme.bodySmall
                                 ?.copyWith(
-                                  color: Theme.of(
-                                    context,
-                                  ).textTheme.bodyMedium?.color,
+                                  color: Theme.of(context)
+                                      .textTheme
+                                      .bodyMedium
+                                      ?.color,
                                 ),
                           ),
                           Text(
@@ -127,9 +127,8 @@ class PedidoVentaListaTile extends ConsumerWidget {
                                   codigoPostal: pedidoVenta.codigoPostal,
                                   poblacion: pedidoVenta.poblacion,
                                 ),
-                                style: Theme.of(
-                                  context,
-                                ).textTheme.bodySmall?.copyWith(fontSize: 10),
+                                style: Theme.of(context).textTheme.bodySmall
+                                    ?.copyWith(fontSize: 10),
                                 maxLines: 2,
                                 overflow: TextOverflow.ellipsis,
                               ),
@@ -138,9 +137,8 @@ class PedidoVentaListaTile extends ConsumerWidget {
                                   province: pedidoVenta.provincia,
                                   pais: pedidoVenta.pais,
                                 ),
-                                style: Theme.of(
-                                  context,
-                                ).textTheme.bodySmall?.copyWith(fontSize: 10),
+                                style: Theme.of(context).textTheme.bodySmall
+                                    ?.copyWith(fontSize: 10),
                               ),
                             ],
                           ),

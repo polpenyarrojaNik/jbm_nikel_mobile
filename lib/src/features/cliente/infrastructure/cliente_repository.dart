@@ -1528,9 +1528,8 @@ GROUP BY ARTICULO_ID, DESCRIPCION
       await _updateContactoImpInLocalDB(clienteContactoImpDtoEnviado);
     }
 
-    return ClienteContactoDTO.fromContactoImp(
-      clienteContactoImpDtoEnviado,
-    ).toDomain();
+    return ClienteContactoDTO.fromContactoImp(clienteContactoImpDtoEnviado)
+        .toDomain();
   }
 
   Future<void> deleteClienteContacto(
@@ -1874,14 +1873,13 @@ GROUP BY ARTICULO_ID, DESCRIPCION
         clienteId: clienteDireccionImpDto.clienteId,
       );
 
-      return ClienteDireccionDTO.fromDireccionImp(
-        clienteDireccionImpDto,
-      ).toDomain(
-        pais,
-        enviada: false,
-        tratada: false,
-        direccionImpGuid: clienteDireccionImpDto.id,
-      );
+      return ClienteDireccionDTO.fromDireccionImp(clienteDireccionImpDto)
+          .toDomain(
+            pais,
+            enviada: false,
+            tratada: false,
+            direccionImpGuid: clienteDireccionImpDto.id,
+          );
     } catch (e, stackTrace) {
       Error.throwWithStackTrace(
         AppException.fetchLocalDataFailure(e.toString()),
@@ -1913,9 +1911,8 @@ GROUP BY ARTICULO_ID, DESCRIPCION
     final pais = await _getPaisCliente(
       clienteId: clienteDireccionImpDtoEnviada.clienteId,
     );
-    return ClienteDireccionDTO.fromDireccionImp(
-      clienteDireccionImpDtoEnviada,
-    ).toDomain(pais);
+    return ClienteDireccionDTO.fromDireccionImp(clienteDireccionImpDtoEnviada)
+        .toDomain(pais);
   }
 
   Future<void> deleteClienteDireccion(

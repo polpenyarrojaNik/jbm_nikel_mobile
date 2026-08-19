@@ -399,9 +399,10 @@ class _ArticuloInfoContainer extends ConsumerWidget {
                                 .articulo_show_articuloDetalle_entrega1,
                             style: Theme.of(context).textTheme.titleSmall!
                                 .copyWith(
-                                  color: Theme.of(
-                                    context,
-                                  ).textTheme.bodySmall!.color,
+                                  color: Theme.of(context)
+                                      .textTheme
+                                      .bodySmall!
+                                      .color,
                                 ),
                           ),
                           if (articulo.comprasEntregaCantidad1 != 0)
@@ -413,9 +414,10 @@ class _ArticuloInfoContainer extends ConsumerWidget {
                                   .articulo_show_articuloDetalle_entrega2,
                               style: Theme.of(context).textTheme.titleSmall!
                                   .copyWith(
-                                    color: Theme.of(
-                                      context,
-                                    ).textTheme.bodySmall!.color,
+                                    color: Theme.of(context)
+                                        .textTheme
+                                        .bodySmall!
+                                        .color,
                                   ),
                             ),
                           if (articulo.comprasEntregaCantidad2 != 0)
@@ -427,9 +429,10 @@ class _ArticuloInfoContainer extends ConsumerWidget {
                                   .articulo_show_articuloDetalle_entrega3,
                               style: Theme.of(context).textTheme.titleSmall!
                                   .copyWith(
-                                    color: Theme.of(
-                                      context,
-                                    ).textTheme.bodySmall!.color,
+                                    color: Theme.of(context)
+                                        .textTheme
+                                        .bodySmall!
+                                        .color,
                                   ),
                             ),
                           if (articulo.comprasEntregaCantidad3 != 0)
@@ -439,9 +442,10 @@ class _ArticuloInfoContainer extends ConsumerWidget {
                               S.of(context).articulo_show_articuloDetalle_mas,
                               style: Theme.of(context).textTheme.titleSmall!
                                   .copyWith(
-                                    color: Theme.of(
-                                      context,
-                                    ).textTheme.bodySmall!.color,
+                                    color: Theme.of(context)
+                                        .textTheme
+                                        .bodySmall!
+                                        .color,
                                   ),
                             ),
                         ],
@@ -994,9 +998,8 @@ class _DescriptionResumenRow extends StatelessWidget {
       children: [
         Text(
           title,
-          style: Theme.of(context).textTheme.bodySmall?.copyWith(
-            color: Theme.of(context).textTheme.bodyMedium?.color,
-          ),
+          style: Theme.of(context).textTheme.bodySmall
+              ?.copyWith(color: Theme.of(context).textTheme.bodyMedium?.color),
         ),
         const Gap(4),
         Flexible(
@@ -1113,9 +1116,8 @@ class _ArticuloImageCarrouselState
                           child: Padding(
                             padding: const EdgeInsets.only(right: 8),
                             child: Material(
-                              color: Theme.of(
-                                context,
-                              ).colorScheme.surface.withValues(alpha: 0.9),
+                              color: Theme.of(context).colorScheme.surface
+                                  .withValues(alpha: 0.9),
                               shape: const CircleBorder(),
                               child: IconButton(
                                 tooltip: S.of(context).share,
@@ -1530,9 +1532,8 @@ class _VentasRowWidget extends StatelessWidget {
       children: [
         Text(
           S.of(context).articulo_show_articuloDetalle_ventas,
-          style: Theme.of(context).textTheme.titleSmall!.copyWith(
-            color: Theme.of(context).textTheme.bodySmall!.color,
-          ),
+          style: Theme.of(context).textTheme.titleSmall!
+              .copyWith(color: Theme.of(context).textTheme.bodySmall!.color),
         ),
         const Gap(4),
         Row(
@@ -1611,9 +1612,8 @@ class _MargenRowWidget extends StatelessWidget {
       children: [
         Text(
           S.of(context).articulo_show_articuloDetalle_margen,
-          style: Theme.of(context).textTheme.titleSmall!.copyWith(
-            color: Theme.of(context).textTheme.bodySmall!.color,
-          ),
+          style: Theme.of(context).textTheme.titleSmall!
+              .copyWith(color: Theme.of(context).textTheme.bodySmall!.color),
         ),
         const Gap(4),
         Row(

@@ -86,9 +86,8 @@ RemoteAppDatabase appRemoteDatabase(Ref ref) {
 }
 
 void onDisposeDatabase(RemoteAppDatabase database) async {
-  await DriftIsolate.fromConnectPort(
-    isolateRemoteDatabaseConnectPort!,
-  ).shutdownAll();
+  await DriftIsolate.fromConnectPort(isolateRemoteDatabaseConnectPort!)
+      .shutdownAll();
   isolateRemoteDatabaseConnectPort = null;
   await database.close();
 }

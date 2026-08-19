@@ -5,6 +5,7 @@ import '../domain/usuario.dart';
 
 part 'usuario_dto.freezed.dart';
 part 'usuario_dto.g.dart';
+
 // ignore_for_file: invalid_annotation_target
 
 @freezed

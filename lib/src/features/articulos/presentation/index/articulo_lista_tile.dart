@@ -30,12 +30,12 @@ class ArticuloListaTile extends StatelessWidget {
                     CommonChipWidget(
                       value: S.of(context).discontinued,
 
-                      backgroundColor: Theme.of(
-                        context,
-                      ).colorScheme.errorContainer,
-                      customTextColor: Theme.of(
-                        context,
-                      ).colorScheme.onSurfaceVariant,
+                      backgroundColor: Theme.of(context)
+                          .colorScheme
+                          .errorContainer,
+                      customTextColor: Theme.of(context)
+                          .colorScheme
+                          .onSurfaceVariant,
                     ),
                     const Gap(4),
                   ],

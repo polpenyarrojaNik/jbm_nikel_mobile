@@ -120,10 +120,8 @@ class CameraPageState extends State<CameraPage> {
     }
 
     try {
-      const xRatio =
-          0.8; // Relación de ancho del recuadro con respecto al ancho de la pantalla
-      const yRatio =
-          0.3; // Relación de altura del recuadro con respecto a la altura de la pantalla
+      const xRatio = 0.8; // Relación de ancho del recuadro con respecto al ancho de la pantalla
+      const yRatio = 0.3; // Relación de altura del recuadro con respecto a la altura de la pantalla
 
       final screenWidth = MediaQuery.sizeOf(context).width;
       final screenHeight = MediaQuery.sizeOf(context).height;

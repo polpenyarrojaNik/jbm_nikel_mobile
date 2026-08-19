@@ -25,9 +25,8 @@ class AppDrawer extends StatelessWidget {
               children: [
                 Text(
                   'JBM Nikel Mobile',
-                  style: Theme.of(context).textTheme.headlineSmall!.copyWith(
-                    fontWeight: FontWeight.bold,
-                  ),
+                  style: Theme.of(context).textTheme.headlineSmall!
+                      .copyWith(fontWeight: FontWeight.bold),
                 ),
                 const Gap(4),
                 Consumer(

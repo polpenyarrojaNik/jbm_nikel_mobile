@@ -69,17 +69,15 @@ class SettingsRepository {
         directory: directory,
         remoteDatabaseName: remoteDatabaseName,
       )) {
-        File(
-          (join(directory.path, remoteDatabaseName)),
-        ).deleteSync(recursive: true);
+        File((join(directory.path, remoteDatabaseName)))
+            .deleteSync(recursive: true);
       }
       if (await _databaseFileExist(
         directory: directory,
         remoteDatabaseName: remoteDatabaseJournalName,
       )) {
-        File(
-          (join(directory.path, remoteDatabaseJournalName)),
-        ).deleteSync(recursive: true);
+        File((join(directory.path, remoteDatabaseJournalName)))
+            .deleteSync(recursive: true);
       }
 
       await localDb.delete(localDb.syncDateTimeTable).go();
@@ -101,22 +99,19 @@ class SettingsRepository {
         directory: directory,
         remoteDatabaseName: localDatabaseName,
       )) {
-        File(
-          (join(directory.path, localDatabaseName)),
-        ).deleteSync(recursive: true);
+        File((join(directory.path, localDatabaseName)))
+            .deleteSync(recursive: true);
       }
       if (await _databaseFileExist(
         directory: directory,
         remoteDatabaseName: localDatabaseJournalName,
       )) {
-        File(
-          (join(directory.path, localDatabaseJournalName)),
-        ).deleteSync(recursive: true);
+        File((join(directory.path, localDatabaseJournalName)))
+            .deleteSync(recursive: true);
       }
 
-      await DriftIsolate.fromConnectPort(
-        isolateLocalDatabaseConnectPort!,
-      ).shutdownAll();
+      await DriftIsolate.fromConnectPort(isolateLocalDatabaseConnectPort!)
+          .shutdownAll();
       isolateLocalDatabaseConnectPort = null;
     } on AppException catch (e) {
       log.e(e.details);

@@ -891,9 +891,8 @@ class VisitaRepository {
 
   Future<void> deleteVisitasLocalAntiguas() async {
     final currentDate = DateTime.now();
-    final visitaLocalList = await (_localDb.select(
-      _localDb.visitaLocalTable,
-    )).get();
+    final visitaLocalList = await (_localDb.select(_localDb.visitaLocalTable))
+        .get();
 
     for (var i = 0; i < visitaLocalList.length; i++) {
       if (visitaLocalList[i].tratada == 'S' &&

@@ -41,9 +41,8 @@ class ExpedicionListaTile extends StatelessWidget {
                 ),
                 Text(
                   '${formatCodigoPostalAndPoblacion(codigoPostal: expedicion.codigoPostal, poblacion: expedicion.poblacion)} ${formatProvinciaAndPais(province: expedicion.provincia, pais: expedicion.pais)}',
-                  style: Theme.of(
-                    context,
-                  ).textTheme.bodySmall?.copyWith(fontSize: 10),
+                  style: Theme.of(context).textTheme.bodySmall
+                      ?.copyWith(fontSize: 10),
                   maxLines: 2,
                   overflow: TextOverflow.ellipsis,
                 ),
@@ -63,9 +62,9 @@ class ExpedicionListaTile extends StatelessWidget {
                           Container(
                             padding: const EdgeInsets.symmetric(vertical: 4.0),
                             decoration: BoxDecoration(
-                              color: Theme.of(
-                                context,
-                              ).colorScheme.primaryContainer,
+                              color: Theme.of(context)
+                                  .colorScheme
+                                  .primaryContainer,
                             ),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.center,
@@ -75,9 +74,9 @@ class ExpedicionListaTile extends StatelessWidget {
                                   style: Theme.of(context).textTheme.bodySmall
                                       ?.copyWith(
                                         fontSize: 10,
-                                        color: Theme.of(
-                                          context,
-                                        ).colorScheme.onPrimaryContainer,
+                                        color: Theme.of(context)
+                                            .colorScheme
+                                            .onPrimaryContainer,
                                       ),
                                 ),
                               ],
@@ -94,9 +93,8 @@ class ExpedicionListaTile extends StatelessWidget {
                                         .toLocal()
                                         .toIso8601String(),
                                   ),
-                                  style: Theme.of(
-                                    context,
-                                  ).textTheme.bodySmall?.copyWith(fontSize: 10),
+                                  style: Theme.of(context).textTheme.bodySmall
+                                      ?.copyWith(fontSize: 10),
                                 ),
                                 Text(
                                   expedicion.pedidoVentaId ??
@@ -118,15 +116,13 @@ class ExpedicionListaTile extends StatelessWidget {
                                         )!,
                                   maxLines: 1,
                                   overflow: TextOverflow.ellipsis,
-                                  style: Theme.of(
-                                    context,
-                                  ).textTheme.bodySmall?.copyWith(fontSize: 10),
+                                  style: Theme.of(context).textTheme.bodySmall
+                                      ?.copyWith(fontSize: 10),
                                 ),
                                 Text(
                                   '${S.of(context).numLineas}: ${expedicion.numLineas.toString()}',
-                                  style: Theme.of(
-                                    context,
-                                  ).textTheme.bodySmall?.copyWith(fontSize: 10),
+                                  style: Theme.of(context).textTheme.bodySmall
+                                      ?.copyWith(fontSize: 10),
                                 ),
                               ],
                             ),
@@ -149,9 +145,9 @@ class ExpedicionListaTile extends StatelessWidget {
                           Container(
                             padding: const EdgeInsets.symmetric(vertical: 4.0),
                             decoration: BoxDecoration(
-                              color: Theme.of(
-                                context,
-                              ).colorScheme.primaryContainer,
+                              color: Theme.of(context)
+                                  .colorScheme
+                                  .primaryContainer,
                             ),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.center,
@@ -163,9 +159,9 @@ class ExpedicionListaTile extends StatelessWidget {
                                   style: Theme.of(context).textTheme.bodySmall
                                       ?.copyWith(
                                         fontSize: 10,
-                                        color: Theme.of(
-                                          context,
-                                        ).colorScheme.onPrimaryContainer,
+                                        color: Theme.of(context)
+                                            .colorScheme
+                                            .onPrimaryContainer,
                                       ),
                                 ),
                               ],
@@ -183,9 +179,8 @@ class ExpedicionListaTile extends StatelessWidget {
                                         .toIso8601String(),
                                     allDay: true,
                                   ),
-                                  style: Theme.of(
-                                    context,
-                                  ).textTheme.bodySmall?.copyWith(fontSize: 10),
+                                  style: Theme.of(context).textTheme.bodySmall
+                                      ?.copyWith(fontSize: 10),
                                 ),
                                 Text(
                                   expedicion.albaranId,
@@ -193,9 +188,8 @@ class ExpedicionListaTile extends StatelessWidget {
                                 ),
                                 Text(
                                   expedicion.trackingEstado.descripcion,
-                                  style: Theme.of(
-                                    context,
-                                  ).textTheme.bodySmall?.copyWith(fontSize: 10),
+                                  style: Theme.of(context).textTheme.bodySmall
+                                      ?.copyWith(fontSize: 10),
                                   maxLines: 1,
                                   overflow: TextOverflow.ellipsis,
                                 ),

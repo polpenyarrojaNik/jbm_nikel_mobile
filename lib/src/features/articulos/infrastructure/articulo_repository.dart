@@ -1079,9 +1079,8 @@ ORDER BY articulos_grupos_netos_precio.grupo_neto_descripcion, articulos_grupos_
 
         for (var i = 0; i < queryVentasMes.length; i++) {
           articuloVentaMesList.add(
-            ArticuloVentasMesDTO.fromJson(
-              queryVentasMes[i].data,
-            ).toDomain(articulosVentasMesTodos: ventasMesTodos[i]),
+            ArticuloVentasMesDTO.fromJson(queryVentasMes[i].data)
+                .toDomain(articulosVentasMesTodos: ventasMesTodos[i]),
           );
         }
 

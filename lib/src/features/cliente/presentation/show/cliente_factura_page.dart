@@ -270,9 +270,8 @@ class ClienteFacturaListTile extends ConsumerWidget {
 
     runMutationSafe(ref, openFacturaDocumentMutation, (tsx) async {
       final clienteFacturaDocumentControllerStateNotifier = tsx.get(
-        clienteFacturaDocumentControllerProvider(
-          facturaId: adjuntoParam.id,
-        ).notifier,
+        clienteFacturaDocumentControllerProvider(facturaId: adjuntoParam.id)
+            .notifier,
       );
 
       final result = await clienteFacturaDocumentControllerStateNotifier

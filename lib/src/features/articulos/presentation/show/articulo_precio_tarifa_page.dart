@@ -101,9 +101,8 @@ class ArticuloPrecioTarifaTile extends StatelessWidget {
               precio: articuloPrecioTarifa.precio,
               tipoPrecio: articuloPrecioTarifa.tipoPrecio,
             ),
-            style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-              color: Theme.of(context).textTheme.bodySmall?.color,
-            ),
+            style: Theme.of(context).textTheme.bodyMedium
+                ?.copyWith(color: Theme.of(context).textTheme.bodySmall?.color),
           ),
         ],
       ),

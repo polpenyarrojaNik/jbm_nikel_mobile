@@ -99,9 +99,9 @@ class PedidoVentaEditImportExcelPage extends ConsumerWidget {
                                 getIconFromExtension(
                                   getExtension(selectedFile.value!.name),
                                 ),
-                                color: Theme.of(
-                                  context,
-                                ).colorScheme.primaryContainer,
+                                color: Theme.of(context)
+                                    .colorScheme
+                                    .primaryContainer,
                               ),
                               const Gap(8),
                               Text(
@@ -354,9 +354,8 @@ class ImportExcelResultDetailTile extends StatelessWidget {
       children: [
         Text(
           title,
-          style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-            color: Theme.of(context).colorScheme.onSurfaceVariant,
-          ),
+          style: Theme.of(context).textTheme.bodyMedium
+              ?.copyWith(color: Theme.of(context).colorScheme.onSurfaceVariant),
         ),
         const Gap(8),
         Flexible(
@@ -496,9 +495,8 @@ class PedidoImportLineaErrorListTile extends StatelessWidget {
         Expanded(
           child: Text(
             pedidoImportLineaError.errorMessage,
-            style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-              color: Theme.of(context).colorScheme.error,
-            ),
+            style: Theme.of(context).textTheme.bodyMedium
+                ?.copyWith(color: Theme.of(context).colorScheme.error),
           ),
         ),
       ],

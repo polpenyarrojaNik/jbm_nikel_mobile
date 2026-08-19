@@ -367,16 +367,12 @@ class _DraggableFormState extends ConsumerState<DraggableForm> {
     String selectedText, {
     required Function(RecognizedTextType) removeTextFromList,
   }) async {
-    final recognizedTexType =
-        await showDialog(
-              context: context,
-              barrierDismissible: false,
-              builder: (ctx) => SelectTextTypeDialog(
-                selectedText: selectedText,
-                dialogContext: ctx,
-              ),
-            )
-            as RecognizedTextType?;
+    final recognizedTexType = await showDialog(
+      context: context,
+      barrierDismissible: false,
+      builder: (ctx) =>
+          SelectTextTypeDialog(selectedText: selectedText, dialogContext: ctx),
+    ) as RecognizedTextType?;
 
     if (recognizedTexType != null) {
       removeTextFromList(recognizedTexType);
@@ -458,9 +454,8 @@ class TargetTextField extends StatelessWidget {
                   child: Center(
                     child: Text(
                       S.of(context).empty,
-                      style: Theme.of(
-                        context,
-                      ).textTheme.bodySmall?.copyWith(color: Colors.grey),
+                      style: Theme.of(context).textTheme.bodySmall
+                          ?.copyWith(color: Colors.grey),
                     ),
                   ),
                 ),
@@ -473,16 +468,12 @@ class TargetTextField extends StatelessWidget {
     BuildContext context,
     String? selectedText,
   ) async {
-    final recognizedTexType =
-        await showDialog(
-              context: context,
-              barrierDismissible: false,
-              builder: (ctx) => SelectTextTypeDialog(
-                selectedText: selectedText!,
-                dialogContext: ctx,
-              ),
-            )
-            as RecognizedTextType?;
+    final recognizedTexType = await showDialog(
+      context: context,
+      barrierDismissible: false,
+      builder: (ctx) =>
+          SelectTextTypeDialog(selectedText: selectedText!, dialogContext: ctx),
+    ) as RecognizedTextType?;
 
     if (recognizedTexType != null) {
       updateDataValue(recognizedTexType);
@@ -538,9 +529,8 @@ class TargetListView extends StatelessWidget {
                         padding: const EdgeInsets.all(16.0),
                         child: Text(
                           S.of(context).empty,
-                          style: Theme.of(
-                            context,
-                          ).textTheme.bodySmall?.copyWith(color: Colors.grey),
+                          style: Theme.of(context).textTheme.bodySmall
+                              ?.copyWith(color: Colors.grey),
                         ),
                       ),
                     ),
@@ -555,16 +545,12 @@ class TargetListView extends StatelessWidget {
     BuildContext context,
     String selectedText,
   ) async {
-    final recognizedTexType =
-        await showDialog(
-              context: context,
-              barrierDismissible: false,
-              builder: (ctx) => SelectTextTypeDialog(
-                selectedText: selectedText,
-                dialogContext: ctx,
-              ),
-            )
-            as RecognizedTextType?;
+    final recognizedTexType = await showDialog(
+      context: context,
+      barrierDismissible: false,
+      builder: (ctx) =>
+          SelectTextTypeDialog(selectedText: selectedText, dialogContext: ctx),
+    ) as RecognizedTextType?;
 
     if (recognizedTexType != null) {
       updateDataListValue(recognizedTexType, selectedText);

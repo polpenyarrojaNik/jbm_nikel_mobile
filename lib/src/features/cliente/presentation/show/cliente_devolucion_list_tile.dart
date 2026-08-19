@@ -40,9 +40,10 @@ class ClienteDevolucionListTile extends StatelessWidget {
                           devolucion.id,
                           style: Theme.of(context).textTheme.bodySmall
                               ?.copyWith(
-                                color: Theme.of(
-                                  context,
-                                ).textTheme.bodyMedium?.color,
+                                color: Theme.of(context)
+                                    .textTheme
+                                    .bodyMedium
+                                    ?.color,
                               ),
                         ),
                         Text(

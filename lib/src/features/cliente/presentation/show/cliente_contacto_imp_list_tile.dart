@@ -65,9 +65,10 @@ class ClienteContactoImpListTile extends ConsumerWidget {
                           clienteContactoImp.email!,
                           style: Theme.of(context).textTheme.bodyMedium
                               ?.copyWith(
-                                color: Theme.of(
-                                  context,
-                                ).textTheme.bodySmall?.color,
+                                color: Theme.of(context)
+                                    .textTheme
+                                    .bodySmall
+                                    ?.color,
                               ),
                         ),
                       ),
@@ -87,9 +88,10 @@ class ClienteContactoImpListTile extends ConsumerWidget {
                           clienteContactoImp.telefono1!,
                           style: Theme.of(context).textTheme.bodyMedium
                               ?.copyWith(
-                                color: Theme.of(
-                                  context,
-                                ).textTheme.bodySmall?.color,
+                                color: Theme.of(context)
+                                    .textTheme
+                                    .bodySmall
+                                    ?.color,
                               ),
                         ),
                       ),
@@ -117,9 +119,8 @@ class ClienteContactoImpListTile extends ConsumerWidget {
                     S
                         .of(context)
                         .cliente_show_clienteContacto_clienteContactoImpListTile_contactoEliminado,
-                    style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                      color: Theme.of(context).colorScheme.error,
-                    ),
+                    style: Theme.of(context).textTheme.bodySmall
+                        ?.copyWith(color: Theme.of(context).colorScheme.error),
                   ),
               ],
             ),

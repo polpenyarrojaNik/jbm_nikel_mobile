@@ -18,9 +18,8 @@ class RowFieldTextDetalle extends StatelessWidget {
         Text(
           fieldTitleValue,
           textAlign: TextAlign.end,
-          style: Theme.of(context).textTheme.titleSmall?.copyWith(
-            color: Theme.of(context).textTheme.bodySmall?.color,
-          ),
+          style: Theme.of(context).textTheme.titleSmall
+              ?.copyWith(color: Theme.of(context).textTheme.bodySmall?.color),
         ),
         (value is String)
             ? Flexible(

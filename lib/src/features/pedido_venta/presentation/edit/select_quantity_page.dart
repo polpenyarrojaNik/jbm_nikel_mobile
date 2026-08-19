@@ -977,9 +977,8 @@ class _UnitsFormField extends StatelessWidget {
           controller: unitsController,
           decoration: InputDecoration(
             labelText: S.of(context).pedido_edit_selectQuantity_unidades,
-            labelStyle: Theme.of(
-              context,
-            ).inputDecorationTheme.labelStyle?.copyWith(fontSize: 9),
+            labelStyle: Theme.of(context).inputDecorationTheme.labelStyle
+                ?.copyWith(fontSize: 9),
             errorStyle: Theme.of(context).textTheme.bodySmall?.copyWith(
               fontSize: 9,
               color: Theme.of(context).colorScheme.error,
@@ -1048,9 +1047,8 @@ class _CajaUnitsFormField extends StatelessWidget {
           controller: cajaController,
           decoration: InputDecoration(
             labelText: S.of(context).pedido_edit_selectQuantity_cajas,
-            labelStyle: Theme.of(
-              context,
-            ).inputDecorationTheme.labelStyle?.copyWith(fontSize: 9),
+            labelStyle: Theme.of(context).inputDecorationTheme.labelStyle
+                ?.copyWith(fontSize: 9),
             errorStyle: Theme.of(context).textTheme.bodySmall?.copyWith(
               fontSize: 9,
               color: Theme.of(context).colorScheme.error,
@@ -1119,9 +1117,8 @@ class _SubcajaUnitsFormField extends StatelessWidget {
               fontSize: 9,
               color: Theme.of(context).colorScheme.error,
             ),
-            labelStyle: Theme.of(
-              context,
-            ).inputDecorationTheme.labelStyle?.copyWith(fontSize: 9),
+            labelStyle: Theme.of(context).inputDecorationTheme.labelStyle
+                ?.copyWith(fontSize: 9),
           ),
           textAlign: TextAlign.right,
           validator: (value) => null,
@@ -1182,9 +1179,8 @@ class _PaletUnitsFormField extends StatelessWidget {
           controller: paletController,
           decoration: InputDecoration(
             labelText: S.of(context).pedido_edit_selectQuantity_pallets,
-            labelStyle: Theme.of(
-              context,
-            ).inputDecorationTheme.labelStyle?.copyWith(fontSize: 9),
+            labelStyle: Theme.of(context).inputDecorationTheme.labelStyle
+                ?.copyWith(fontSize: 9),
           ),
           validator: (value) => null,
           onChanged: (value) {
@@ -1539,18 +1535,16 @@ class _ArticuloGrupoNetoSelectQuantityTile extends StatelessWidget {
             Flexible(
               child: Text(
                 articuloGrupoNeto.grupoNetoDescripcion,
-                style: Theme.of(
-                  context,
-                ).textTheme.bodySmall?.copyWith(fontSize: 9),
+                style: Theme.of(context).textTheme.bodySmall
+                    ?.copyWith(fontSize: 9),
               ),
             ),
             if (articuloGrupoNeto.cantidadDesde != 1) ...[
               const Gap(4),
               Text(
                 '≥ ${numberFormatCantidades(articuloGrupoNeto.cantidadDesde)} ${S.of(context).unidad}',
-                style: Theme.of(
-                  context,
-                ).textTheme.bodySmall?.copyWith(fontSize: 9),
+                style: Theme.of(context).textTheme.bodySmall
+                    ?.copyWith(fontSize: 9),
               ),
             ],
           ],
@@ -1587,18 +1581,16 @@ class _ArticuloPrecioTarifaSelectQuantityTile extends StatelessWidget {
               Flexible(
                 child: Text(
                   articuloPrecioTarifa.tarifaDescripcion!,
-                  style: Theme.of(
-                    context,
-                  ).textTheme.bodySmall?.copyWith(fontSize: 9),
+                  style: Theme.of(context).textTheme.bodySmall
+                      ?.copyWith(fontSize: 9),
                 ),
               ),
             if (articuloPrecioTarifa.cantidadDesde != 1) ...[
               const Gap(4),
               Text(
                 '≥ ${numberFormatCantidades(articuloPrecioTarifa.cantidadDesde)} ${S.of(context).unidad}',
-                style: Theme.of(
-                  context,
-                ).textTheme.bodySmall?.copyWith(fontSize: 9),
+                style: Theme.of(context).textTheme.bodySmall
+                    ?.copyWith(fontSize: 9),
               ),
             ],
           ],
