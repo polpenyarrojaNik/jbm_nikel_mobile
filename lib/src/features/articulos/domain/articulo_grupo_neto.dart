@@ -19,6 +19,7 @@ abstract class ArticuloGrupoNeto with _$ArticuloGrupoNeto {
     required DateTime lastUpdated,
     required bool deleted,
     required bool isPromo,
+    required double dto,
   }) = _ArticuloGrupoNeto;
 
   factory ArticuloGrupoNeto.fromPromo(
@@ -35,5 +36,6 @@ abstract class ArticuloGrupoNeto with _$ArticuloGrupoNeto {
     lastUpdated: promoDtoLinDTO.lastUpdated,
     deleted: promoDtoLinDTO.deleted == 'S',
     isPromo: true,
+    dto: promoDtoLinDTO.dto,
   );
 }

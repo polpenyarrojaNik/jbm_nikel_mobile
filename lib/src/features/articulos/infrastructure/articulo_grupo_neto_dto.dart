@@ -43,6 +43,7 @@ abstract class ArticuloGrupoNetoDTO
       lastUpdated: lastUpdated,
       deleted: (deleted == 'S'),
       isPromo: false,
+      dto: 0,
     );
   }
 

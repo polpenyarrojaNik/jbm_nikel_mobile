@@ -92,10 +92,16 @@ class ArticuloGrupoNetoTile extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text(
-                articuloGrupoNeto.grupoNetoDescripcion,
-                style: Theme.of(context).textTheme.bodySmall,
-              ),
+              if (articuloGrupoNeto.isPromo)
+                Text(
+                  '${articuloGrupoNeto.dto}%',
+                  style: Theme.of(context).textTheme.bodySmall,
+                )
+              else
+                Text(
+                  articuloGrupoNeto.grupoNetoDescripcion,
+                  style: Theme.of(context).textTheme.bodySmall,
+                ),
               if (articuloGrupoNeto.cantidadDesde != 1) const Spacer(),
               if (articuloGrupoNeto.cantidadDesde != 1)
                 Text(
