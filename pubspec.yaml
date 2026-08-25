@@ -4,8 +4,8 @@ publish_to: "none"
 version: 1.2.132+206
 
 environment:
-  sdk: ^3.13.0
-  flutter: ^3.47.0
+  sdk: ^3.13.1
+  flutter: ^3.47.1
 
 dependencies:
   flutter_localizations:
@@ -13,7 +13,7 @@ dependencies:
   flutter:
     sdk: flutter
 
-  archive: ^4.0.9
+  archive: ^4.2.0
   auto_route: ^11.1.0
   auto_updater: ^1.0.0
   cached_network_image: ^3.4.1
@@ -24,7 +24,7 @@ dependencies:
   dio: ^5.11.0
   dotted_border: ^3.1.0
   drift: ^2.31.0
-  excel_community: ^2.2.1
+  excel_community: ^2.3.0
   fl_chart: ^1.2.0
   flash: ^3.1.1
   flex_color_scheme: ^8.4.0
@@ -46,14 +46,14 @@ dependencies:
   google_fonts: ^8.2.1
   google_mlkit_entity_extraction: ^0.17.1
   google_mlkit_text_recognition: ^0.17.1
-  image: ^4.9.1
+  image: ^4.9.2
   intl: ^0.20.3
   json_annotation: ^4.12.0
   jwt_decoder: ^2.0.1
   latlong2: ^0.9.1
   logger: ^2.7.0
   map_launcher: ^6.0.0
-  material_ui: ^1.0.0
+  material_ui: ^1.1.0
   flutter_material_design_icons: ^3.1.0+7447
   money2: ^6.3.0
   open_file: ^4.0.0
@@ -66,9 +66,9 @@ dependencies:
   shimmer: ^3.0.0
   sentry_flutter: ^9.27.0
   sqlite3_flutter_libs: ^0.5.42
-  syncfusion_flutter_pdf: ^34.2.3
-  syncfusion_flutter_pdfviewer: ^34.2.3
-  upgrader: ^13.6.0
+  syncfusion_flutter_pdf: ^34.2.5
+  syncfusion_flutter_pdfviewer: ^34.2.5
+  upgrader: ^13.7.0
   url_launcher: ^6.3.2
   uuid: ^4.6.0
   gap: ^3.0.1
@@ -83,7 +83,7 @@ dev_dependencies:
   drift_dev: ^2.31.0
   flutter_launcher_icons: ^0.14.4
   flutter_lints: ^6.0.0
-  freezed: ^4.0.0-dev.3
+  freezed: ^4.0.0
   json_serializable: ^6.14.1
   riverpod_generator: ^4.0.8
   intl_utils: ^2.8.16
