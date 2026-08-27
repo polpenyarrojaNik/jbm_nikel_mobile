@@ -21,31 +21,31 @@
           <set>
             <option value="$USER_HOME$/.puro/envs/jbm/flutter/packages/flutter_tools/gradle" />
             <option value="$USER_HOME$/.puro/shared/pub_cache/hosted/pub.dev/android_file_picker-1.0.1/android" />
-            <option value="$USER_HOME$/.puro/shared/pub_cache/hosted/pub.dev/camera_android_camerax-0.7.2+1/android" />
+            <option value="$USER_HOME$/.puro/shared/pub_cache/hosted/pub.dev/camera_android_camerax-0.7.4+5/android" />
             <option value="$USER_HOME$/.puro/shared/pub_cache/hosted/pub.dev/device_info_plus-13.2.0/android" />
             <option value="$USER_HOME$/.puro/shared/pub_cache/hosted/pub.dev/flutter_keyboard_visibility-6.0.0/android" />
             <option value="$USER_HOME$/.puro/shared/pub_cache/hosted/pub.dev/flutter_plugin_android_lifecycle-2.0.35/android" />
             <option value="$USER_HOME$/.puro/shared/pub_cache/hosted/pub.dev/flutter_rotation_sensor-0.2.0/android" />
-            <option value="$USER_HOME$/.puro/shared/pub_cache/hosted/pub.dev/flutter_secure_storage-11.0.0/android" />
+            <option value="$USER_HOME$/.puro/shared/pub_cache/hosted/pub.dev/flutter_secure_storage-10.3.1/android" />
             <option value="$USER_HOME$/.puro/shared/pub_cache/hosted/pub.dev/geolocator_android-5.0.3/android" />
             <option value="$USER_HOME$/.puro/shared/pub_cache/hosted/pub.dev/google_mlkit_commons-0.13.0/android" />
             <option value="$USER_HOME$/.puro/shared/pub_cache/hosted/pub.dev/google_mlkit_entity_extraction-0.17.1/android" />
             <option value="$USER_HOME$/.puro/shared/pub_cache/hosted/pub.dev/google_mlkit_text_recognition-0.17.1/android" />
-            <option value="$USER_HOME$/.puro/shared/pub_cache/hosted/pub.dev/jni-1.0.0/android" />
-            <option value="$USER_HOME$/.puro/shared/pub_cache/hosted/pub.dev/jni_flutter-1.0.1/android" />
             <option value="$USER_HOME$/.puro/shared/pub_cache/hosted/pub.dev/map_launcher-6.0.0/android" />
             <option value="$USER_HOME$/.puro/shared/pub_cache/hosted/pub.dev/native_device_orientation-2.1.1/android" />
             <option value="$USER_HOME$/.puro/shared/pub_cache/hosted/pub.dev/open_file_android-1.1.0/android" />
             <option value="$USER_HOME$/.puro/shared/pub_cache/hosted/pub.dev/package_info_plus-10.2.1/android" />
-            <option value="$USER_HOME$/.puro/shared/pub_cache/hosted/pub.dev/sentry_flutter-8.14.2/android" />
+            <option value="$USER_HOME$/.puro/shared/pub_cache/hosted/pub.dev/path_provider_android-2.2.23/android" />
+            <option value="$USER_HOME$/.puro/shared/pub_cache/hosted/pub.dev/sentry_flutter-9.27.0/android" />
             <option value="$USER_HOME$/.puro/shared/pub_cache/hosted/pub.dev/share_plus-13.3.0/android" />
-            <option value="$USER_HOME$/.puro/shared/pub_cache/hosted/pub.dev/shared_preferences_android-2.4.25/android" />
+            <option value="$USER_HOME$/.puro/shared/pub_cache/hosted/pub.dev/shared_preferences_android-2.4.27/android" />
             <option value="$USER_HOME$/.puro/shared/pub_cache/hosted/pub.dev/sqflite_android-2.4.3/android" />
             <option value="$USER_HOME$/.puro/shared/pub_cache/hosted/pub.dev/sqlite3_flutter_libs-0.5.42/android" />
-            <option value="$USER_HOME$/.puro/shared/pub_cache/hosted/pub.dev/syncfusion_flutter_pdfviewer-34.2.3/android" />
+            <option value="$USER_HOME$/.puro/shared/pub_cache/hosted/pub.dev/syncfusion_flutter_pdfviewer-34.2.5/android" />
             <option value="$USER_HOME$/.puro/shared/pub_cache/hosted/pub.dev/url_launcher_android-6.3.32/android" />
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
+            <option value="$PROJECT_DIR$/../packages/jni_no_windows/android" />
           </set>
         </option>
       </GradleProjectSettings>
