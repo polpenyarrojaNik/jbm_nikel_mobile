@@ -24,6 +24,8 @@ void main() async {
       await dotenv.load();
       Currencies().registerList(currencies);
 
+      PaintingBinding.instance.imageCache.maximumSizeBytes = 50 << 20;
+
       if (isDesktop) {
         await windowManager.ensureInitialized();
 

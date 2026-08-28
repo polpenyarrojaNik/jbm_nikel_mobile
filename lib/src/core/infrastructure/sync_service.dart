@@ -1021,7 +1021,7 @@ class SyncService {
     }
   }
 
-  Future<List<T>> _syncTable<T>({
+  Future<void> _syncTable<T>({
     required String apiPath,
     required TableInfo<Table, dynamic> tableInfo,
     required T Function(Map<String, dynamic> e) fromJson,
@@ -1029,8 +1029,6 @@ class SyncService {
     var page = 1;
     var isNextPageAvailable = true;
     int? totalRows;
-
-    final syncValuesList = <T>[];
 
     try {
       final remoteDatabaseDateTime = await getRemoteDatabaseDateTime();
@@ -1057,8 +1055,6 @@ class SyncService {
             log.d('NUM VALUES ${tableInfo.actualTableName}: $responseRows');
             final tableValueDTOList = data.map((e) => fromJson(e)).toList();
 
-            syncValuesList.addAll(tableValueDTOList);
-
             for (var i = 0; i < tableValueDTOList.length; i++) {
               final tableValue = tableValueDTOList[i] as dynamic;
 
@@ -1081,8 +1077,6 @@ class SyncService {
           },
         );
       }
-
-      return syncValuesList;
     } on AppException catch (e) {
       log.e(e.details);
       rethrow;

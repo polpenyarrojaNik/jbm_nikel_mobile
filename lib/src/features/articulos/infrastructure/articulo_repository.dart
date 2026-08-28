@@ -713,7 +713,7 @@ ORDER BY articulos_grupos_netos_precio.grupo_neto_descripcion, articulos_grupos_
       final dataImage = await _remoteGetAttachment(
         requestUri: (test)
             ? Uri.http(
-                dotenv.get('URL_TEST', fallback: 'localhost:3001'),
+                dotenv.get('URL', fallback: 'localhost:3001'),
                 'api/v1/online/adjunto/articulo/${adjuntoParam.id}/img',
                 query,
               )

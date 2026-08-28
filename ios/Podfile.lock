@@ -249,7 +249,7 @@ SPEC CHECKSUMS:
   Flutter: 71a624a5bc0c04062bf19101d501e466baf2fb47
   flutter_keyboard_visibility: 4625131e43015dbbe759d9b20daaf77e0e3f6619
   flutter_rotation_sensor: bf55ead3f64f27207dacc5972fe8ebe932f3de0b
-  flutter_secure_storage_darwin: 46e401699982ee74142909676535e0f6a7321e58
+  flutter_secure_storage_darwin: acdb3f316ed05a3e68f856e0353b133eec373a23
   geolocator_apple: ab36aa0e8b7d7a2d7639b3b4e48308394e8cef5e
   google_mlkit_commons: b2c0a76e7ef4ff555e70e5d71f21d66ce3d08a97
   google_mlkit_entity_extraction: 496fba2b2f33032c154d3c4abf52e1b9356d374b
