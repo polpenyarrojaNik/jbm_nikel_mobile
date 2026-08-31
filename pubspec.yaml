@@ -4,8 +4,8 @@ publish_to: "none"
 version: 1.2.132+206
 
 environment:
-  sdk: ^3.13.1
-  flutter: ^3.47.1
+  sdk: ^3.13.2
+  flutter: ^3.47.2
 
 dependencies:
   flutter_localizations:
@@ -16,7 +16,7 @@ dependencies:
   archive: ^4.2.0
   auto_route: ^11.1.0
   auto_updater: ^1.0.0
-  cached_network_image: ^3.4.1
+  cached_network_image: ^4.0.0
   camera: ^0.12.0+2
   csv: ^8.0.0
   data_table_2: ^3.0.0
@@ -31,12 +31,12 @@ dependencies:
   flutter_dotenv: ^6.0.1
   flutter_form_builder: ^10.3.0+2
   flutter_hooks: ^0.21.3+1
-  flutter_map: ^8.3.1
+  flutter_map: ^8.3.2
   flutter_map_location_marker: ^10.3.0
   flutter_markdown: ^0.7.7+1
   flutter_riverpod: ^3.4.2
   flutter_secure_storage: ^10.3.1
-  file_picker: ^12.0.0
+  file_picker: ^12.1.2
   font_awesome_flutter: ^11.0.0
   form_builder_extra_fields: ^12.2.0
   form_builder_validators: ^11.3.0
@@ -63,8 +63,8 @@ dependencies:
   reactive_forms: ^18.2.2
   riverpod_annotation: ^4.0.6
   share_plus: ^13.3.0
-  shimmer: ^3.0.0
-  sentry_flutter: ^9.27.0
+  shimmer: ^4.0.0
+  sentry_flutter: ^9.28.0
   sqlite3_flutter_libs: ^0.5.42
   syncfusion_flutter_pdf: ^34.2.5
   syncfusion_flutter_pdfviewer: ^34.2.5
@@ -83,7 +83,7 @@ dev_dependencies:
   drift_dev: ^2.31.0
   flutter_launcher_icons: ^0.14.4
   flutter_lints: ^6.0.0
-  freezed: ^4.0.0
+  freezed: ^4.0.1
   json_serializable: ^6.14.1
   riverpod_generator: ^4.0.8
   intl_utils: ^2.8.16
@@ -95,6 +95,10 @@ dependency_overrides:
   # copy keeps Android support but does not register jni on Windows.
   jni:
     path: packages/jni_no_windows
+  # path_provider_android 2.3.0+ depends on jni_flutter, which requires
+  # jni ^1.0.0 — incompatible with the jni_no_windows override above (0.14.2
+  # API). Pin to the last version without that dependency.
+  path_provider_android: 2.2.23
 
 flutter_icons:
   android: true
