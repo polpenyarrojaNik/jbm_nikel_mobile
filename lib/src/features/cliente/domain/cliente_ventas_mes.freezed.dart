@@ -26,16 +26,21 @@ $ClienteVentasMesCopyWith<ClienteVentasMes> get copyWith => _$ClienteVentasMesCo
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ClienteVentasMes&&(identical(other.mes, mes) || other.mes == mes)&&(identical(other.importeAnyo, importeAnyo) || other.importeAnyo == importeAnyo)&&(identical(other.importeAnyo_1, importeAnyo_1) || other.importeAnyo_1 == importeAnyo_1)&&(identical(other.importeAnyo_2, importeAnyo_2) || other.importeAnyo_2 == importeAnyo_2)&&(identical(other.importeAnyo_3, importeAnyo_3) || other.importeAnyo_3 == importeAnyo_3)&&(identical(other.importeAnyo_4, importeAnyo_4) || other.importeAnyo_4 == importeAnyo_4));
+  final _this = this as ClienteVentasMes;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ClienteVentasMes&&(identical(other.mes, _this.mes) || other.mes == _this.mes)&&(identical(other.importeAnyo, _this.importeAnyo) || other.importeAnyo == _this.importeAnyo)&&(identical(other.importeAnyo_1, _this.importeAnyo_1) || other.importeAnyo_1 == _this.importeAnyo_1)&&(identical(other.importeAnyo_2, _this.importeAnyo_2) || other.importeAnyo_2 == _this.importeAnyo_2)&&(identical(other.importeAnyo_3, _this.importeAnyo_3) || other.importeAnyo_3 == _this.importeAnyo_3)&&(identical(other.importeAnyo_4, _this.importeAnyo_4) || other.importeAnyo_4 == _this.importeAnyo_4));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,mes,importeAnyo,importeAnyo_1,importeAnyo_2,importeAnyo_3,importeAnyo_4);
+int get hashCode {
+  final _this = this as ClienteVentasMes;
+  return Object.hash(runtimeType,_this.mes,_this.importeAnyo,_this.importeAnyo_1,_this.importeAnyo_2,_this.importeAnyo_3,_this.importeAnyo_4);
+}
 
 @override
 String toString() {
-  return 'ClienteVentasMes(mes: $mes, importeAnyo: $importeAnyo, importeAnyo_1: $importeAnyo_1, importeAnyo_2: $importeAnyo_2, importeAnyo_3: $importeAnyo_3, importeAnyo_4: $importeAnyo_4)';
+  final _this = this as ClienteVentasMes;
+  return 'ClienteVentasMes(mes: ${_this.mes}, importeAnyo: ${_this.importeAnyo}, importeAnyo_1: ${_this.importeAnyo_1}, importeAnyo_2: ${_this.importeAnyo_2}, importeAnyo_3: ${_this.importeAnyo_3}, importeAnyo_4: ${_this.importeAnyo_4})';
 }
 
 
@@ -232,16 +237,18 @@ _$ClienteVentasMesCopyWith<_ClienteVentasMes> get copyWith => __$ClienteVentasMe
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ClienteVentasMes&&(identical(other.mes, mes) || other.mes == mes)&&(identical(other.importeAnyo, importeAnyo) || other.importeAnyo == importeAnyo)&&(identical(other.importeAnyo_1, importeAnyo_1) || other.importeAnyo_1 == importeAnyo_1)&&(identical(other.importeAnyo_2, importeAnyo_2) || other.importeAnyo_2 == importeAnyo_2)&&(identical(other.importeAnyo_3, importeAnyo_3) || other.importeAnyo_3 == importeAnyo_3)&&(identical(other.importeAnyo_4, importeAnyo_4) || other.importeAnyo_4 == importeAnyo_4));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _ClienteVentasMes&&(identical(other.mes, mes) || other.mes == mes)&&(identical(other.importeAnyo, importeAnyo) || other.importeAnyo == importeAnyo)&&(identical(other.importeAnyo_1, importeAnyo_1) || other.importeAnyo_1 == importeAnyo_1)&&(identical(other.importeAnyo_2, importeAnyo_2) || other.importeAnyo_2 == importeAnyo_2)&&(identical(other.importeAnyo_3, importeAnyo_3) || other.importeAnyo_3 == importeAnyo_3)&&(identical(other.importeAnyo_4, importeAnyo_4) || other.importeAnyo_4 == importeAnyo_4));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,mes,importeAnyo,importeAnyo_1,importeAnyo_2,importeAnyo_3,importeAnyo_4);
+int get hashCode {
+    return Object.hash(runtimeType,mes,importeAnyo,importeAnyo_1,importeAnyo_2,importeAnyo_3,importeAnyo_4);
+}
 
 @override
 String toString() {
-  return 'ClienteVentasMes(mes: $mes, importeAnyo: $importeAnyo, importeAnyo_1: $importeAnyo_1, importeAnyo_2: $importeAnyo_2, importeAnyo_3: $importeAnyo_3, importeAnyo_4: $importeAnyo_4)';
+    return 'ClienteVentasMes(mes: $mes, importeAnyo: $importeAnyo, importeAnyo_1: $importeAnyo_1, importeAnyo_2: $importeAnyo_2, importeAnyo_3: $importeAnyo_3, importeAnyo_4: $importeAnyo_4)';
 }
 
 

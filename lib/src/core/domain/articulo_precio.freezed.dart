@@ -26,16 +26,21 @@ $ArticuloPrecioCopyWith<ArticuloPrecio> get copyWith => _$ArticuloPrecioCopyWith
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ArticuloPrecio&&(identical(other.precio, precio) || other.precio == precio)&&(identical(other.divisaId, divisaId) || other.divisaId == divisaId)&&(identical(other.descuento1, descuento1) || other.descuento1 == descuento1)&&(identical(other.descuento2, descuento2) || other.descuento2 == descuento2)&&(identical(other.descuento3, descuento3) || other.descuento3 == descuento3)&&(identical(other.iva, iva) || other.iva == iva));
+  final _this = this as ArticuloPrecio;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ArticuloPrecio&&(identical(other.precio, _this.precio) || other.precio == _this.precio)&&(identical(other.divisaId, _this.divisaId) || other.divisaId == _this.divisaId)&&(identical(other.descuento1, _this.descuento1) || other.descuento1 == _this.descuento1)&&(identical(other.descuento2, _this.descuento2) || other.descuento2 == _this.descuento2)&&(identical(other.descuento3, _this.descuento3) || other.descuento3 == _this.descuento3)&&(identical(other.iva, _this.iva) || other.iva == _this.iva));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,precio,divisaId,descuento1,descuento2,descuento3,iva);
+int get hashCode {
+  final _this = this as ArticuloPrecio;
+  return Object.hash(runtimeType,_this.precio,_this.divisaId,_this.descuento1,_this.descuento2,_this.descuento3,_this.iva);
+}
 
 @override
 String toString() {
-  return 'ArticuloPrecio(precio: $precio, divisaId: $divisaId, descuento1: $descuento1, descuento2: $descuento2, descuento3: $descuento3, iva: $iva)';
+  final _this = this as ArticuloPrecio;
+  return 'ArticuloPrecio(precio: ${_this.precio}, divisaId: ${_this.divisaId}, descuento1: ${_this.descuento1}, descuento2: ${_this.descuento2}, descuento3: ${_this.descuento3}, iva: ${_this.iva})';
 }
 
 
@@ -241,16 +246,18 @@ _$ArticuloPrecioCopyWith<_ArticuloPrecio> get copyWith => __$ArticuloPrecioCopyW
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ArticuloPrecio&&(identical(other.precio, precio) || other.precio == precio)&&(identical(other.divisaId, divisaId) || other.divisaId == divisaId)&&(identical(other.descuento1, descuento1) || other.descuento1 == descuento1)&&(identical(other.descuento2, descuento2) || other.descuento2 == descuento2)&&(identical(other.descuento3, descuento3) || other.descuento3 == descuento3)&&(identical(other.iva, iva) || other.iva == iva));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _ArticuloPrecio&&(identical(other.precio, precio) || other.precio == precio)&&(identical(other.divisaId, divisaId) || other.divisaId == divisaId)&&(identical(other.descuento1, descuento1) || other.descuento1 == descuento1)&&(identical(other.descuento2, descuento2) || other.descuento2 == descuento2)&&(identical(other.descuento3, descuento3) || other.descuento3 == descuento3)&&(identical(other.iva, iva) || other.iva == iva));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,precio,divisaId,descuento1,descuento2,descuento3,iva);
+int get hashCode {
+    return Object.hash(runtimeType,precio,divisaId,descuento1,descuento2,descuento3,iva);
+}
 
 @override
 String toString() {
-  return 'ArticuloPrecio(precio: $precio, divisaId: $divisaId, descuento1: $descuento1, descuento2: $descuento2, descuento3: $descuento3, iva: $iva)';
+    return 'ArticuloPrecio(precio: $precio, divisaId: $divisaId, descuento1: $descuento1, descuento2: $descuento2, descuento3: $descuento3, iva: $iva)';
 }
 
 

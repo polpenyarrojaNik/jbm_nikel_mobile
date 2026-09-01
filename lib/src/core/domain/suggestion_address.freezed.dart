@@ -26,16 +26,21 @@ $SuggestionAddressCopyWith<SuggestionAddress> get copyWith => _$SuggestionAddres
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is SuggestionAddress&&(identical(other.direccion, direccion) || other.direccion == direccion)&&(identical(other.codigoPostal, codigoPostal) || other.codigoPostal == codigoPostal)&&(identical(other.poblacion, poblacion) || other.poblacion == poblacion)&&(identical(other.provincia, provincia) || other.provincia == provincia)&&(identical(other.pais, pais) || other.pais == pais)&&(identical(other.formattedAddress, formattedAddress) || other.formattedAddress == formattedAddress)&&(identical(other.formattedAddressResult, formattedAddressResult) || other.formattedAddressResult == formattedAddressResult));
+  final _this = this as SuggestionAddress;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is SuggestionAddress&&(identical(other.direccion, _this.direccion) || other.direccion == _this.direccion)&&(identical(other.codigoPostal, _this.codigoPostal) || other.codigoPostal == _this.codigoPostal)&&(identical(other.poblacion, _this.poblacion) || other.poblacion == _this.poblacion)&&(identical(other.provincia, _this.provincia) || other.provincia == _this.provincia)&&(identical(other.pais, _this.pais) || other.pais == _this.pais)&&(identical(other.formattedAddress, _this.formattedAddress) || other.formattedAddress == _this.formattedAddress)&&(identical(other.formattedAddressResult, _this.formattedAddressResult) || other.formattedAddressResult == _this.formattedAddressResult));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,direccion,codigoPostal,poblacion,provincia,pais,formattedAddress,formattedAddressResult);
+int get hashCode {
+  final _this = this as SuggestionAddress;
+  return Object.hash(runtimeType,_this.direccion,_this.codigoPostal,_this.poblacion,_this.provincia,_this.pais,_this.formattedAddress,_this.formattedAddressResult);
+}
 
 @override
 String toString() {
-  return 'SuggestionAddress(direccion: $direccion, codigoPostal: $codigoPostal, poblacion: $poblacion, provincia: $provincia, pais: $pais, formattedAddress: $formattedAddress, formattedAddressResult: $formattedAddressResult)';
+  final _this = this as SuggestionAddress;
+  return 'SuggestionAddress(direccion: ${_this.direccion}, codigoPostal: ${_this.codigoPostal}, poblacion: ${_this.poblacion}, provincia: ${_this.provincia}, pais: ${_this.pais}, formattedAddress: ${_this.formattedAddress}, formattedAddressResult: ${_this.formattedAddressResult})';
 }
 
 
@@ -258,16 +263,18 @@ _$SuggestionAddressCopyWith<_SuggestionAddress> get copyWith => __$SuggestionAdd
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _SuggestionAddress&&(identical(other.direccion, direccion) || other.direccion == direccion)&&(identical(other.codigoPostal, codigoPostal) || other.codigoPostal == codigoPostal)&&(identical(other.poblacion, poblacion) || other.poblacion == poblacion)&&(identical(other.provincia, provincia) || other.provincia == provincia)&&(identical(other.pais, pais) || other.pais == pais)&&(identical(other.formattedAddress, formattedAddress) || other.formattedAddress == formattedAddress)&&(identical(other.formattedAddressResult, formattedAddressResult) || other.formattedAddressResult == formattedAddressResult));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _SuggestionAddress&&(identical(other.direccion, direccion) || other.direccion == direccion)&&(identical(other.codigoPostal, codigoPostal) || other.codigoPostal == codigoPostal)&&(identical(other.poblacion, poblacion) || other.poblacion == poblacion)&&(identical(other.provincia, provincia) || other.provincia == provincia)&&(identical(other.pais, pais) || other.pais == pais)&&(identical(other.formattedAddress, formattedAddress) || other.formattedAddress == formattedAddress)&&(identical(other.formattedAddressResult, formattedAddressResult) || other.formattedAddressResult == formattedAddressResult));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,direccion,codigoPostal,poblacion,provincia,pais,formattedAddress,formattedAddressResult);
+int get hashCode {
+    return Object.hash(runtimeType,direccion,codigoPostal,poblacion,provincia,pais,formattedAddress,formattedAddressResult);
+}
 
 @override
 String toString() {
-  return 'SuggestionAddress(direccion: $direccion, codigoPostal: $codigoPostal, poblacion: $poblacion, provincia: $provincia, pais: $pais, formattedAddress: $formattedAddress, formattedAddressResult: $formattedAddressResult)';
+    return 'SuggestionAddress(direccion: $direccion, codigoPostal: $codigoPostal, poblacion: $poblacion, provincia: $provincia, pais: $pais, formattedAddress: $formattedAddress, formattedAddressResult: $formattedAddressResult)';
 }
 
 

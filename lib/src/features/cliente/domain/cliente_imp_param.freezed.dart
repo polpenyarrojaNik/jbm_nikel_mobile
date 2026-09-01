@@ -26,16 +26,21 @@ $ClienteImpParamCopyWith<ClienteImpParam> get copyWith => _$ClienteImpParamCopyW
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ClienteImpParam&&(identical(other.clienteId, clienteId) || other.clienteId == clienteId)&&(identical(other.id, id) || other.id == id)&&(identical(other.impId, impId) || other.impId == impId)&&(identical(other.clientePais, clientePais) || other.clientePais == clientePais));
+  final _this = this as ClienteImpParam;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ClienteImpParam&&(identical(other.clienteId, _this.clienteId) || other.clienteId == _this.clienteId)&&(identical(other.id, _this.id) || other.id == _this.id)&&(identical(other.impId, _this.impId) || other.impId == _this.impId)&&(identical(other.clientePais, _this.clientePais) || other.clientePais == _this.clientePais));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,clienteId,id,impId,clientePais);
+int get hashCode {
+  final _this = this as ClienteImpParam;
+  return Object.hash(runtimeType,_this.clienteId,_this.id,_this.impId,_this.clientePais);
+}
 
 @override
 String toString() {
-  return 'ClienteImpParam(clienteId: $clienteId, id: $id, impId: $impId, clientePais: $clientePais)';
+  final _this = this as ClienteImpParam;
+  return 'ClienteImpParam(clienteId: ${_this.clienteId}, id: ${_this.id}, impId: ${_this.impId}, clientePais: ${_this.clientePais})';
 }
 
 
@@ -240,16 +245,18 @@ _$ClienteImpParamCopyWith<_ClienteImpParam> get copyWith => __$ClienteImpParamCo
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ClienteImpParam&&(identical(other.clienteId, clienteId) || other.clienteId == clienteId)&&(identical(other.id, id) || other.id == id)&&(identical(other.impId, impId) || other.impId == impId)&&(identical(other.clientePais, clientePais) || other.clientePais == clientePais));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _ClienteImpParam&&(identical(other.clienteId, clienteId) || other.clienteId == clienteId)&&(identical(other.id, id) || other.id == id)&&(identical(other.impId, impId) || other.impId == impId)&&(identical(other.clientePais, clientePais) || other.clientePais == clientePais));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,clienteId,id,impId,clientePais);
+int get hashCode {
+    return Object.hash(runtimeType,clienteId,id,impId,clientePais);
+}
 
 @override
 String toString() {
-  return 'ClienteImpParam(clienteId: $clienteId, id: $id, impId: $impId, clientePais: $clientePais)';
+    return 'ClienteImpParam(clienteId: $clienteId, id: $id, impId: $impId, clientePais: $clientePais)';
 }
 
 

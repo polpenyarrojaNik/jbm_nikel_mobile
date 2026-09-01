@@ -26,16 +26,21 @@ $PedidoAlbaranCopyWith<PedidoAlbaran> get copyWith => _$PedidoAlbaranCopyWithImp
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is PedidoAlbaran&&(identical(other.empresaId, empresaId) || other.empresaId == empresaId)&&(identical(other.pedidoVentaId, pedidoVentaId) || other.pedidoVentaId == pedidoVentaId)&&(identical(other.albaranId, albaranId) || other.albaranId == albaranId)&&(identical(other.fechaAlbaran, fechaAlbaran) || other.fechaAlbaran == fechaAlbaran)&&(identical(other.agencia, agencia) || other.agencia == agencia)&&(identical(other.trackId, trackId) || other.trackId == trackId)&&(identical(other.trackingEstado, trackingEstado) || other.trackingEstado == trackingEstado)&&(identical(other.lastUpdated, lastUpdated) || other.lastUpdated == lastUpdated)&&(identical(other.deleted, deleted) || other.deleted == deleted));
+  final _this = this as PedidoAlbaran;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is PedidoAlbaran&&(identical(other.empresaId, _this.empresaId) || other.empresaId == _this.empresaId)&&(identical(other.pedidoVentaId, _this.pedidoVentaId) || other.pedidoVentaId == _this.pedidoVentaId)&&(identical(other.albaranId, _this.albaranId) || other.albaranId == _this.albaranId)&&(identical(other.fechaAlbaran, _this.fechaAlbaran) || other.fechaAlbaran == _this.fechaAlbaran)&&(identical(other.agencia, _this.agencia) || other.agencia == _this.agencia)&&(identical(other.trackId, _this.trackId) || other.trackId == _this.trackId)&&(identical(other.trackingEstado, _this.trackingEstado) || other.trackingEstado == _this.trackingEstado)&&(identical(other.lastUpdated, _this.lastUpdated) || other.lastUpdated == _this.lastUpdated)&&(identical(other.deleted, _this.deleted) || other.deleted == _this.deleted));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,empresaId,pedidoVentaId,albaranId,fechaAlbaran,agencia,trackId,trackingEstado,lastUpdated,deleted);
+int get hashCode {
+  final _this = this as PedidoAlbaran;
+  return Object.hash(runtimeType,_this.empresaId,_this.pedidoVentaId,_this.albaranId,_this.fechaAlbaran,_this.agencia,_this.trackId,_this.trackingEstado,_this.lastUpdated,_this.deleted);
+}
 
 @override
 String toString() {
-  return 'PedidoAlbaran(empresaId: $empresaId, pedidoVentaId: $pedidoVentaId, albaranId: $albaranId, fechaAlbaran: $fechaAlbaran, agencia: $agencia, trackId: $trackId, trackingEstado: $trackingEstado, lastUpdated: $lastUpdated, deleted: $deleted)';
+  final _this = this as PedidoAlbaran;
+  return 'PedidoAlbaran(empresaId: ${_this.empresaId}, pedidoVentaId: ${_this.pedidoVentaId}, albaranId: ${_this.albaranId}, fechaAlbaran: ${_this.fechaAlbaran}, agencia: ${_this.agencia}, trackId: ${_this.trackId}, trackingEstado: ${_this.trackingEstado}, lastUpdated: ${_this.lastUpdated}, deleted: ${_this.deleted})';
 }
 
 
@@ -250,16 +255,18 @@ _$PedidoAlbaranCopyWith<_PedidoAlbaran> get copyWith => __$PedidoAlbaranCopyWith
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _PedidoAlbaran&&(identical(other.empresaId, empresaId) || other.empresaId == empresaId)&&(identical(other.pedidoVentaId, pedidoVentaId) || other.pedidoVentaId == pedidoVentaId)&&(identical(other.albaranId, albaranId) || other.albaranId == albaranId)&&(identical(other.fechaAlbaran, fechaAlbaran) || other.fechaAlbaran == fechaAlbaran)&&(identical(other.agencia, agencia) || other.agencia == agencia)&&(identical(other.trackId, trackId) || other.trackId == trackId)&&(identical(other.trackingEstado, trackingEstado) || other.trackingEstado == trackingEstado)&&(identical(other.lastUpdated, lastUpdated) || other.lastUpdated == lastUpdated)&&(identical(other.deleted, deleted) || other.deleted == deleted));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _PedidoAlbaran&&(identical(other.empresaId, empresaId) || other.empresaId == empresaId)&&(identical(other.pedidoVentaId, pedidoVentaId) || other.pedidoVentaId == pedidoVentaId)&&(identical(other.albaranId, albaranId) || other.albaranId == albaranId)&&(identical(other.fechaAlbaran, fechaAlbaran) || other.fechaAlbaran == fechaAlbaran)&&(identical(other.agencia, agencia) || other.agencia == agencia)&&(identical(other.trackId, trackId) || other.trackId == trackId)&&(identical(other.trackingEstado, trackingEstado) || other.trackingEstado == trackingEstado)&&(identical(other.lastUpdated, lastUpdated) || other.lastUpdated == lastUpdated)&&(identical(other.deleted, deleted) || other.deleted == deleted));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,empresaId,pedidoVentaId,albaranId,fechaAlbaran,agencia,trackId,trackingEstado,lastUpdated,deleted);
+int get hashCode {
+    return Object.hash(runtimeType,empresaId,pedidoVentaId,albaranId,fechaAlbaran,agencia,trackId,trackingEstado,lastUpdated,deleted);
+}
 
 @override
 String toString() {
-  return 'PedidoAlbaran(empresaId: $empresaId, pedidoVentaId: $pedidoVentaId, albaranId: $albaranId, fechaAlbaran: $fechaAlbaran, agencia: $agencia, trackId: $trackId, trackingEstado: $trackingEstado, lastUpdated: $lastUpdated, deleted: $deleted)';
+    return 'PedidoAlbaran(empresaId: $empresaId, pedidoVentaId: $pedidoVentaId, albaranId: $albaranId, fechaAlbaran: $fechaAlbaran, agencia: $agencia, trackId: $trackId, trackingEstado: $trackingEstado, lastUpdated: $lastUpdated, deleted: $deleted)';
 }
 
 

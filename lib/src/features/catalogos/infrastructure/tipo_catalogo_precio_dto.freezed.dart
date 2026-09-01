@@ -36,16 +36,21 @@ $TipoPrecioCatalogoDTOCopyWith<TipoPrecioCatalogoDTO> get copyWith => _$TipoPrec
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is TipoPrecioCatalogoDTO&&(identical(other.tipoPrecioCatalogoId, tipoPrecioCatalogoId) || other.tipoPrecioCatalogoId == tipoPrecioCatalogoId)&&(identical(other.descripcionES, descripcionES) || other.descripcionES == descripcionES)&&(identical(other.descripcionEN, descripcionEN) || other.descripcionEN == descripcionEN)&&(identical(other.descripcionFR, descripcionFR) || other.descripcionFR == descripcionFR)&&(identical(other.descripcionDE, descripcionDE) || other.descripcionDE == descripcionDE)&&(identical(other.descripcionCA, descripcionCA) || other.descripcionCA == descripcionCA)&&(identical(other.descripcionGB, descripcionGB) || other.descripcionGB == descripcionGB)&&(identical(other.descripcionHU, descripcionHU) || other.descripcionHU == descripcionHU)&&(identical(other.descripcionIT, descripcionIT) || other.descripcionIT == descripcionIT)&&(identical(other.descripcionNL, descripcionNL) || other.descripcionNL == descripcionNL)&&(identical(other.descripcionPL, descripcionPL) || other.descripcionPL == descripcionPL));
+  final _this = this as TipoPrecioCatalogoDTO;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is TipoPrecioCatalogoDTO&&(identical(other.tipoPrecioCatalogoId, _this.tipoPrecioCatalogoId) || other.tipoPrecioCatalogoId == _this.tipoPrecioCatalogoId)&&(identical(other.descripcionES, _this.descripcionES) || other.descripcionES == _this.descripcionES)&&(identical(other.descripcionEN, _this.descripcionEN) || other.descripcionEN == _this.descripcionEN)&&(identical(other.descripcionFR, _this.descripcionFR) || other.descripcionFR == _this.descripcionFR)&&(identical(other.descripcionDE, _this.descripcionDE) || other.descripcionDE == _this.descripcionDE)&&(identical(other.descripcionCA, _this.descripcionCA) || other.descripcionCA == _this.descripcionCA)&&(identical(other.descripcionGB, _this.descripcionGB) || other.descripcionGB == _this.descripcionGB)&&(identical(other.descripcionHU, _this.descripcionHU) || other.descripcionHU == _this.descripcionHU)&&(identical(other.descripcionIT, _this.descripcionIT) || other.descripcionIT == _this.descripcionIT)&&(identical(other.descripcionNL, _this.descripcionNL) || other.descripcionNL == _this.descripcionNL)&&(identical(other.descripcionPL, _this.descripcionPL) || other.descripcionPL == _this.descripcionPL));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,tipoPrecioCatalogoId,descripcionES,descripcionEN,descripcionFR,descripcionDE,descripcionCA,descripcionGB,descripcionHU,descripcionIT,descripcionNL,descripcionPL);
+int get hashCode {
+  final _this = this as TipoPrecioCatalogoDTO;
+  return Object.hash(runtimeType,_this.tipoPrecioCatalogoId,_this.descripcionES,_this.descripcionEN,_this.descripcionFR,_this.descripcionDE,_this.descripcionCA,_this.descripcionGB,_this.descripcionHU,_this.descripcionIT,_this.descripcionNL,_this.descripcionPL);
+}
 
 @override
 String toString() {
-  return 'TipoPrecioCatalogoDTO(tipoPrecioCatalogoId: $tipoPrecioCatalogoId, descripcionES: $descripcionES, descripcionEN: $descripcionEN, descripcionFR: $descripcionFR, descripcionDE: $descripcionDE, descripcionCA: $descripcionCA, descripcionGB: $descripcionGB, descripcionHU: $descripcionHU, descripcionIT: $descripcionIT, descripcionNL: $descripcionNL, descripcionPL: $descripcionPL)';
+  final _this = this as TipoPrecioCatalogoDTO;
+  return 'TipoPrecioCatalogoDTO(tipoPrecioCatalogoId: ${_this.tipoPrecioCatalogoId}, descripcionES: ${_this.descripcionES}, descripcionEN: ${_this.descripcionEN}, descripcionFR: ${_this.descripcionFR}, descripcionDE: ${_this.descripcionDE}, descripcionCA: ${_this.descripcionCA}, descripcionGB: ${_this.descripcionGB}, descripcionHU: ${_this.descripcionHU}, descripcionIT: ${_this.descripcionIT}, descripcionNL: ${_this.descripcionNL}, descripcionPL: ${_this.descripcionPL})';
 }
 
 
@@ -255,16 +260,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _TipoCatalogoDTO&&(identical(other.tipoPrecioCatalogoId, tipoPrecioCatalogoId) || other.tipoPrecioCatalogoId == tipoPrecioCatalogoId)&&(identical(other.descripcionES, descripcionES) || other.descripcionES == descripcionES)&&(identical(other.descripcionEN, descripcionEN) || other.descripcionEN == descripcionEN)&&(identical(other.descripcionFR, descripcionFR) || other.descripcionFR == descripcionFR)&&(identical(other.descripcionDE, descripcionDE) || other.descripcionDE == descripcionDE)&&(identical(other.descripcionCA, descripcionCA) || other.descripcionCA == descripcionCA)&&(identical(other.descripcionGB, descripcionGB) || other.descripcionGB == descripcionGB)&&(identical(other.descripcionHU, descripcionHU) || other.descripcionHU == descripcionHU)&&(identical(other.descripcionIT, descripcionIT) || other.descripcionIT == descripcionIT)&&(identical(other.descripcionNL, descripcionNL) || other.descripcionNL == descripcionNL)&&(identical(other.descripcionPL, descripcionPL) || other.descripcionPL == descripcionPL));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _TipoCatalogoDTO&&(identical(other.tipoPrecioCatalogoId, tipoPrecioCatalogoId) || other.tipoPrecioCatalogoId == tipoPrecioCatalogoId)&&(identical(other.descripcionES, descripcionES) || other.descripcionES == descripcionES)&&(identical(other.descripcionEN, descripcionEN) || other.descripcionEN == descripcionEN)&&(identical(other.descripcionFR, descripcionFR) || other.descripcionFR == descripcionFR)&&(identical(other.descripcionDE, descripcionDE) || other.descripcionDE == descripcionDE)&&(identical(other.descripcionCA, descripcionCA) || other.descripcionCA == descripcionCA)&&(identical(other.descripcionGB, descripcionGB) || other.descripcionGB == descripcionGB)&&(identical(other.descripcionHU, descripcionHU) || other.descripcionHU == descripcionHU)&&(identical(other.descripcionIT, descripcionIT) || other.descripcionIT == descripcionIT)&&(identical(other.descripcionNL, descripcionNL) || other.descripcionNL == descripcionNL)&&(identical(other.descripcionPL, descripcionPL) || other.descripcionPL == descripcionPL));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,tipoPrecioCatalogoId,descripcionES,descripcionEN,descripcionFR,descripcionDE,descripcionCA,descripcionGB,descripcionHU,descripcionIT,descripcionNL,descripcionPL);
+int get hashCode {
+    return Object.hash(runtimeType,tipoPrecioCatalogoId,descripcionES,descripcionEN,descripcionFR,descripcionDE,descripcionCA,descripcionGB,descripcionHU,descripcionIT,descripcionNL,descripcionPL);
+}
 
 @override
 String toString() {
-  return 'TipoPrecioCatalogoDTO(tipoPrecioCatalogoId: $tipoPrecioCatalogoId, descripcionES: $descripcionES, descripcionEN: $descripcionEN, descripcionFR: $descripcionFR, descripcionDE: $descripcionDE, descripcionCA: $descripcionCA, descripcionGB: $descripcionGB, descripcionHU: $descripcionHU, descripcionIT: $descripcionIT, descripcionNL: $descripcionNL, descripcionPL: $descripcionPL)';
+    return 'TipoPrecioCatalogoDTO(tipoPrecioCatalogoId: $tipoPrecioCatalogoId, descripcionES: $descripcionES, descripcionEN: $descripcionEN, descripcionFR: $descripcionFR, descripcionDE: $descripcionDE, descripcionCA: $descripcionCA, descripcionGB: $descripcionGB, descripcionHU: $descripcionHU, descripcionIT: $descripcionIT, descripcionNL: $descripcionNL, descripcionPL: $descripcionPL)';
 }
 
 

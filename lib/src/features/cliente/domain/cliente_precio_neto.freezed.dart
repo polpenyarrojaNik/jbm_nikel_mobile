@@ -26,16 +26,21 @@ $ClientePrecioNetoCopyWith<ClientePrecioNeto> get copyWith => _$ClientePrecioNet
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ClientePrecioNeto&&(identical(other.clienteId, clienteId) || other.clienteId == clienteId)&&(identical(other.articuloId, articuloId) || other.articuloId == articuloId)&&(identical(other.descripcion, descripcion) || other.descripcion == descripcion)&&(identical(other.cantidadDesde, cantidadDesde) || other.cantidadDesde == cantidadDesde)&&(identical(other.precio, precio) || other.precio == precio)&&(identical(other.tipoPrecio, tipoPrecio) || other.tipoPrecio == tipoPrecio)&&(identical(other.dtoAdicional, dtoAdicional) || other.dtoAdicional == dtoAdicional)&&(identical(other.lastUpdated, lastUpdated) || other.lastUpdated == lastUpdated)&&(identical(other.deleted, deleted) || other.deleted == deleted));
+  final _this = this as ClientePrecioNeto;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ClientePrecioNeto&&(identical(other.clienteId, _this.clienteId) || other.clienteId == _this.clienteId)&&(identical(other.articuloId, _this.articuloId) || other.articuloId == _this.articuloId)&&(identical(other.descripcion, _this.descripcion) || other.descripcion == _this.descripcion)&&(identical(other.cantidadDesde, _this.cantidadDesde) || other.cantidadDesde == _this.cantidadDesde)&&(identical(other.precio, _this.precio) || other.precio == _this.precio)&&(identical(other.tipoPrecio, _this.tipoPrecio) || other.tipoPrecio == _this.tipoPrecio)&&(identical(other.dtoAdicional, _this.dtoAdicional) || other.dtoAdicional == _this.dtoAdicional)&&(identical(other.lastUpdated, _this.lastUpdated) || other.lastUpdated == _this.lastUpdated)&&(identical(other.deleted, _this.deleted) || other.deleted == _this.deleted));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,clienteId,articuloId,descripcion,cantidadDesde,precio,tipoPrecio,dtoAdicional,lastUpdated,deleted);
+int get hashCode {
+  final _this = this as ClientePrecioNeto;
+  return Object.hash(runtimeType,_this.clienteId,_this.articuloId,_this.descripcion,_this.cantidadDesde,_this.precio,_this.tipoPrecio,_this.dtoAdicional,_this.lastUpdated,_this.deleted);
+}
 
 @override
 String toString() {
-  return 'ClientePrecioNeto(clienteId: $clienteId, articuloId: $articuloId, descripcion: $descripcion, cantidadDesde: $cantidadDesde, precio: $precio, tipoPrecio: $tipoPrecio, dtoAdicional: $dtoAdicional, lastUpdated: $lastUpdated, deleted: $deleted)';
+  final _this = this as ClientePrecioNeto;
+  return 'ClientePrecioNeto(clienteId: ${_this.clienteId}, articuloId: ${_this.articuloId}, descripcion: ${_this.descripcion}, cantidadDesde: ${_this.cantidadDesde}, precio: ${_this.precio}, tipoPrecio: ${_this.tipoPrecio}, dtoAdicional: ${_this.dtoAdicional}, lastUpdated: ${_this.lastUpdated}, deleted: ${_this.deleted})';
 }
 
 
@@ -238,16 +243,18 @@ _$ClientePrecioNetoCopyWith<_ClientePrecioNeto> get copyWith => __$ClientePrecio
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ClientePrecioNeto&&(identical(other.clienteId, clienteId) || other.clienteId == clienteId)&&(identical(other.articuloId, articuloId) || other.articuloId == articuloId)&&(identical(other.descripcion, descripcion) || other.descripcion == descripcion)&&(identical(other.cantidadDesde, cantidadDesde) || other.cantidadDesde == cantidadDesde)&&(identical(other.precio, precio) || other.precio == precio)&&(identical(other.tipoPrecio, tipoPrecio) || other.tipoPrecio == tipoPrecio)&&(identical(other.dtoAdicional, dtoAdicional) || other.dtoAdicional == dtoAdicional)&&(identical(other.lastUpdated, lastUpdated) || other.lastUpdated == lastUpdated)&&(identical(other.deleted, deleted) || other.deleted == deleted));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _ClientePrecioNeto&&(identical(other.clienteId, clienteId) || other.clienteId == clienteId)&&(identical(other.articuloId, articuloId) || other.articuloId == articuloId)&&(identical(other.descripcion, descripcion) || other.descripcion == descripcion)&&(identical(other.cantidadDesde, cantidadDesde) || other.cantidadDesde == cantidadDesde)&&(identical(other.precio, precio) || other.precio == precio)&&(identical(other.tipoPrecio, tipoPrecio) || other.tipoPrecio == tipoPrecio)&&(identical(other.dtoAdicional, dtoAdicional) || other.dtoAdicional == dtoAdicional)&&(identical(other.lastUpdated, lastUpdated) || other.lastUpdated == lastUpdated)&&(identical(other.deleted, deleted) || other.deleted == deleted));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,clienteId,articuloId,descripcion,cantidadDesde,precio,tipoPrecio,dtoAdicional,lastUpdated,deleted);
+int get hashCode {
+    return Object.hash(runtimeType,clienteId,articuloId,descripcion,cantidadDesde,precio,tipoPrecio,dtoAdicional,lastUpdated,deleted);
+}
 
 @override
 String toString() {
-  return 'ClientePrecioNeto(clienteId: $clienteId, articuloId: $articuloId, descripcion: $descripcion, cantidadDesde: $cantidadDesde, precio: $precio, tipoPrecio: $tipoPrecio, dtoAdicional: $dtoAdicional, lastUpdated: $lastUpdated, deleted: $deleted)';
+    return 'ClientePrecioNeto(clienteId: $clienteId, articuloId: $articuloId, descripcion: $descripcion, cantidadDesde: $cantidadDesde, precio: $precio, tipoPrecio: $tipoPrecio, dtoAdicional: $dtoAdicional, lastUpdated: $lastUpdated, deleted: $deleted)';
 }
 
 

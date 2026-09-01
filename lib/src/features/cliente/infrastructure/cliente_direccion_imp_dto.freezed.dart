@@ -29,16 +29,21 @@ $ClienteDireccionImpDTOCopyWith<ClienteDireccionImpDTO> get copyWith => _$Client
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ClienteDireccionImpDTO&&(identical(other.id, id) || other.id == id)&&(identical(other.fecha, fecha) || other.fecha == fecha)&&(identical(other.usuarioId, usuarioId) || other.usuarioId == usuarioId)&&(identical(other.clienteId, clienteId) || other.clienteId == clienteId)&&(identical(other.direccionId, direccionId) || other.direccionId == direccionId)&&(identical(other.nombre, nombre) || other.nombre == nombre)&&(identical(other.direccion1, direccion1) || other.direccion1 == direccion1)&&(identical(other.direccion2, direccion2) || other.direccion2 == direccion2)&&(identical(other.codigoPostal, codigoPostal) || other.codigoPostal == codigoPostal)&&(identical(other.poblacion, poblacion) || other.poblacion == poblacion)&&(identical(other.provincia, provincia) || other.provincia == provincia)&&(identical(other.paisId, paisId) || other.paisId == paisId)&&(identical(other.telefono, telefono) || other.telefono == telefono)&&(identical(other.enviada, enviada) || other.enviada == enviada)&&(identical(other.borrar, borrar) || other.borrar == borrar));
+  final _this = this as ClienteDireccionImpDTO;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ClienteDireccionImpDTO&&(identical(other.id, _this.id) || other.id == _this.id)&&(identical(other.fecha, _this.fecha) || other.fecha == _this.fecha)&&(identical(other.usuarioId, _this.usuarioId) || other.usuarioId == _this.usuarioId)&&(identical(other.clienteId, _this.clienteId) || other.clienteId == _this.clienteId)&&(identical(other.direccionId, _this.direccionId) || other.direccionId == _this.direccionId)&&(identical(other.nombre, _this.nombre) || other.nombre == _this.nombre)&&(identical(other.direccion1, _this.direccion1) || other.direccion1 == _this.direccion1)&&(identical(other.direccion2, _this.direccion2) || other.direccion2 == _this.direccion2)&&(identical(other.codigoPostal, _this.codigoPostal) || other.codigoPostal == _this.codigoPostal)&&(identical(other.poblacion, _this.poblacion) || other.poblacion == _this.poblacion)&&(identical(other.provincia, _this.provincia) || other.provincia == _this.provincia)&&(identical(other.paisId, _this.paisId) || other.paisId == _this.paisId)&&(identical(other.telefono, _this.telefono) || other.telefono == _this.telefono)&&(identical(other.enviada, _this.enviada) || other.enviada == _this.enviada)&&(identical(other.borrar, _this.borrar) || other.borrar == _this.borrar));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,id,fecha,usuarioId,clienteId,direccionId,nombre,direccion1,direccion2,codigoPostal,poblacion,provincia,paisId,telefono,enviada,borrar);
+int get hashCode {
+  final _this = this as ClienteDireccionImpDTO;
+  return Object.hash(runtimeType,_this.id,_this.fecha,_this.usuarioId,_this.clienteId,_this.direccionId,_this.nombre,_this.direccion1,_this.direccion2,_this.codigoPostal,_this.poblacion,_this.provincia,_this.paisId,_this.telefono,_this.enviada,_this.borrar);
+}
 
 @override
 String toString() {
-  return 'ClienteDireccionImpDTO(id: $id, fecha: $fecha, usuarioId: $usuarioId, clienteId: $clienteId, direccionId: $direccionId, nombre: $nombre, direccion1: $direccion1, direccion2: $direccion2, codigoPostal: $codigoPostal, poblacion: $poblacion, provincia: $provincia, paisId: $paisId, telefono: $telefono, enviada: $enviada, borrar: $borrar)';
+  final _this = this as ClienteDireccionImpDTO;
+  return 'ClienteDireccionImpDTO(id: ${_this.id}, fecha: ${_this.fecha}, usuarioId: ${_this.usuarioId}, clienteId: ${_this.clienteId}, direccionId: ${_this.direccionId}, nombre: ${_this.nombre}, direccion1: ${_this.direccion1}, direccion2: ${_this.direccion2}, codigoPostal: ${_this.codigoPostal}, poblacion: ${_this.poblacion}, provincia: ${_this.provincia}, paisId: ${_this.paisId}, telefono: ${_this.telefono}, enviada: ${_this.enviada}, borrar: ${_this.borrar})';
 }
 
 
@@ -256,16 +261,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ClienteDireccionImpDTO&&(identical(other.id, id) || other.id == id)&&(identical(other.fecha, fecha) || other.fecha == fecha)&&(identical(other.usuarioId, usuarioId) || other.usuarioId == usuarioId)&&(identical(other.clienteId, clienteId) || other.clienteId == clienteId)&&(identical(other.direccionId, direccionId) || other.direccionId == direccionId)&&(identical(other.nombre, nombre) || other.nombre == nombre)&&(identical(other.direccion1, direccion1) || other.direccion1 == direccion1)&&(identical(other.direccion2, direccion2) || other.direccion2 == direccion2)&&(identical(other.codigoPostal, codigoPostal) || other.codigoPostal == codigoPostal)&&(identical(other.poblacion, poblacion) || other.poblacion == poblacion)&&(identical(other.provincia, provincia) || other.provincia == provincia)&&(identical(other.paisId, paisId) || other.paisId == paisId)&&(identical(other.telefono, telefono) || other.telefono == telefono)&&(identical(other.enviada, enviada) || other.enviada == enviada)&&(identical(other.borrar, borrar) || other.borrar == borrar));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _ClienteDireccionImpDTO&&(identical(other.id, id) || other.id == id)&&(identical(other.fecha, fecha) || other.fecha == fecha)&&(identical(other.usuarioId, usuarioId) || other.usuarioId == usuarioId)&&(identical(other.clienteId, clienteId) || other.clienteId == clienteId)&&(identical(other.direccionId, direccionId) || other.direccionId == direccionId)&&(identical(other.nombre, nombre) || other.nombre == nombre)&&(identical(other.direccion1, direccion1) || other.direccion1 == direccion1)&&(identical(other.direccion2, direccion2) || other.direccion2 == direccion2)&&(identical(other.codigoPostal, codigoPostal) || other.codigoPostal == codigoPostal)&&(identical(other.poblacion, poblacion) || other.poblacion == poblacion)&&(identical(other.provincia, provincia) || other.provincia == provincia)&&(identical(other.paisId, paisId) || other.paisId == paisId)&&(identical(other.telefono, telefono) || other.telefono == telefono)&&(identical(other.enviada, enviada) || other.enviada == enviada)&&(identical(other.borrar, borrar) || other.borrar == borrar));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,id,fecha,usuarioId,clienteId,direccionId,nombre,direccion1,direccion2,codigoPostal,poblacion,provincia,paisId,telefono,enviada,borrar);
+int get hashCode {
+    return Object.hash(runtimeType,id,fecha,usuarioId,clienteId,direccionId,nombre,direccion1,direccion2,codigoPostal,poblacion,provincia,paisId,telefono,enviada,borrar);
+}
 
 @override
 String toString() {
-  return 'ClienteDireccionImpDTO(id: $id, fecha: $fecha, usuarioId: $usuarioId, clienteId: $clienteId, direccionId: $direccionId, nombre: $nombre, direccion1: $direccion1, direccion2: $direccion2, codigoPostal: $codigoPostal, poblacion: $poblacion, provincia: $provincia, paisId: $paisId, telefono: $telefono, enviada: $enviada, borrar: $borrar)';
+    return 'ClienteDireccionImpDTO(id: $id, fecha: $fecha, usuarioId: $usuarioId, clienteId: $clienteId, direccionId: $direccionId, nombre: $nombre, direccion1: $direccion1, direccion2: $direccion2, codigoPostal: $codigoPostal, poblacion: $poblacion, provincia: $provincia, paisId: $paisId, telefono: $telefono, enviada: $enviada, borrar: $borrar)';
 }
 
 

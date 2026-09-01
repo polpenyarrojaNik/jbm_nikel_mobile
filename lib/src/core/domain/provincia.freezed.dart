@@ -26,16 +26,21 @@ $ProvinciaCopyWith<Provincia> get copyWith => _$ProvinciaCopyWithImpl<Provincia>
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is Provincia&&(identical(other.paisId, paisId) || other.paisId == paisId)&&(identical(other.regionId, regionId) || other.regionId == regionId)&&(identical(other.provinciaId, provinciaId) || other.provinciaId == provinciaId)&&(identical(other.provincia, provincia) || other.provincia == provincia)&&(identical(other.lastUpdate, lastUpdate) || other.lastUpdate == lastUpdate)&&(identical(other.deleted, deleted) || other.deleted == deleted));
+  final _this = this as Provincia;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is Provincia&&(identical(other.paisId, _this.paisId) || other.paisId == _this.paisId)&&(identical(other.regionId, _this.regionId) || other.regionId == _this.regionId)&&(identical(other.provinciaId, _this.provinciaId) || other.provinciaId == _this.provinciaId)&&(identical(other.provincia, _this.provincia) || other.provincia == _this.provincia)&&(identical(other.lastUpdate, _this.lastUpdate) || other.lastUpdate == _this.lastUpdate)&&(identical(other.deleted, _this.deleted) || other.deleted == _this.deleted));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,paisId,regionId,provinciaId,provincia,lastUpdate,deleted);
+int get hashCode {
+  final _this = this as Provincia;
+  return Object.hash(runtimeType,_this.paisId,_this.regionId,_this.provinciaId,_this.provincia,_this.lastUpdate,_this.deleted);
+}
 
 @override
 String toString() {
-  return 'Provincia(paisId: $paisId, regionId: $regionId, provinciaId: $provinciaId, provincia: $provincia, lastUpdate: $lastUpdate, deleted: $deleted)';
+  final _this = this as Provincia;
+  return 'Provincia(paisId: ${_this.paisId}, regionId: ${_this.regionId}, provinciaId: ${_this.provinciaId}, provincia: ${_this.provincia}, lastUpdate: ${_this.lastUpdate}, deleted: ${_this.deleted})';
 }
 
 
@@ -232,16 +237,18 @@ _$ProvinciaCopyWith<_Provincia> get copyWith => __$ProvinciaCopyWithImpl<_Provin
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Provincia&&(identical(other.paisId, paisId) || other.paisId == paisId)&&(identical(other.regionId, regionId) || other.regionId == regionId)&&(identical(other.provinciaId, provinciaId) || other.provinciaId == provinciaId)&&(identical(other.provincia, provincia) || other.provincia == provincia)&&(identical(other.lastUpdate, lastUpdate) || other.lastUpdate == lastUpdate)&&(identical(other.deleted, deleted) || other.deleted == deleted));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _Provincia&&(identical(other.paisId, paisId) || other.paisId == paisId)&&(identical(other.regionId, regionId) || other.regionId == regionId)&&(identical(other.provinciaId, provinciaId) || other.provinciaId == provinciaId)&&(identical(other.provincia, provincia) || other.provincia == provincia)&&(identical(other.lastUpdate, lastUpdate) || other.lastUpdate == lastUpdate)&&(identical(other.deleted, deleted) || other.deleted == deleted));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,paisId,regionId,provinciaId,provincia,lastUpdate,deleted);
+int get hashCode {
+    return Object.hash(runtimeType,paisId,regionId,provinciaId,provincia,lastUpdate,deleted);
+}
 
 @override
 String toString() {
-  return 'Provincia(paisId: $paisId, regionId: $regionId, provinciaId: $provinciaId, provincia: $provincia, lastUpdate: $lastUpdate, deleted: $deleted)';
+    return 'Provincia(paisId: $paisId, regionId: $regionId, provinciaId: $provinciaId, provincia: $provincia, lastUpdate: $lastUpdate, deleted: $deleted)';
 }
 
 

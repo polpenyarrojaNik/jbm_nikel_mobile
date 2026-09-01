@@ -170,7 +170,11 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "auth_loginPage_titulo": MessageLookupByLibrary.simpleMessage("Welcome to"),
     "auth_loginPage_usuario": MessageLookupByLibrary.simpleMessage("User"),
+    "backorders": MessageLookupByLibrary.simpleMessage("Backorders"),
     "bajo": MessageLookupByLibrary.simpleMessage("Low"),
+    "buscarBackorders": MessageLookupByLibrary.simpleMessage(
+      "Search backorders...",
+    ),
     "camera": MessageLookupByLibrary.simpleMessage("Camera"),
     "cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
     "cancelar": MessageLookupByLibrary.simpleMessage("Cancel"),

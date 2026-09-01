@@ -29,16 +29,21 @@ $ArticuloVentasMesDTOCopyWith<ArticuloVentasMesDTO> get copyWith => _$ArticuloVe
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ArticuloVentasMesDTO&&(identical(other.mes, mes) || other.mes == mes)&&(identical(other.unidadesAnyo, unidadesAnyo) || other.unidadesAnyo == unidadesAnyo)&&(identical(other.unidadesAnyo_1, unidadesAnyo_1) || other.unidadesAnyo_1 == unidadesAnyo_1)&&(identical(other.unidadesAnyo_2, unidadesAnyo_2) || other.unidadesAnyo_2 == unidadesAnyo_2)&&(identical(other.unidadesAnyo_3, unidadesAnyo_3) || other.unidadesAnyo_3 == unidadesAnyo_3)&&(identical(other.unidadesAnyo_4, unidadesAnyo_4) || other.unidadesAnyo_4 == unidadesAnyo_4));
+  final _this = this as ArticuloVentasMesDTO;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ArticuloVentasMesDTO&&(identical(other.mes, _this.mes) || other.mes == _this.mes)&&(identical(other.unidadesAnyo, _this.unidadesAnyo) || other.unidadesAnyo == _this.unidadesAnyo)&&(identical(other.unidadesAnyo_1, _this.unidadesAnyo_1) || other.unidadesAnyo_1 == _this.unidadesAnyo_1)&&(identical(other.unidadesAnyo_2, _this.unidadesAnyo_2) || other.unidadesAnyo_2 == _this.unidadesAnyo_2)&&(identical(other.unidadesAnyo_3, _this.unidadesAnyo_3) || other.unidadesAnyo_3 == _this.unidadesAnyo_3)&&(identical(other.unidadesAnyo_4, _this.unidadesAnyo_4) || other.unidadesAnyo_4 == _this.unidadesAnyo_4));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,mes,unidadesAnyo,unidadesAnyo_1,unidadesAnyo_2,unidadesAnyo_3,unidadesAnyo_4);
+int get hashCode {
+  final _this = this as ArticuloVentasMesDTO;
+  return Object.hash(runtimeType,_this.mes,_this.unidadesAnyo,_this.unidadesAnyo_1,_this.unidadesAnyo_2,_this.unidadesAnyo_3,_this.unidadesAnyo_4);
+}
 
 @override
 String toString() {
-  return 'ArticuloVentasMesDTO(mes: $mes, unidadesAnyo: $unidadesAnyo, unidadesAnyo_1: $unidadesAnyo_1, unidadesAnyo_2: $unidadesAnyo_2, unidadesAnyo_3: $unidadesAnyo_3, unidadesAnyo_4: $unidadesAnyo_4)';
+  final _this = this as ArticuloVentasMesDTO;
+  return 'ArticuloVentasMesDTO(mes: ${_this.mes}, unidadesAnyo: ${_this.unidadesAnyo}, unidadesAnyo_1: ${_this.unidadesAnyo_1}, unidadesAnyo_2: ${_this.unidadesAnyo_2}, unidadesAnyo_3: ${_this.unidadesAnyo_3}, unidadesAnyo_4: ${_this.unidadesAnyo_4})';
 }
 
 
@@ -238,16 +243,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ArticuloVentasMesDTO&&(identical(other.mes, mes) || other.mes == mes)&&(identical(other.unidadesAnyo, unidadesAnyo) || other.unidadesAnyo == unidadesAnyo)&&(identical(other.unidadesAnyo_1, unidadesAnyo_1) || other.unidadesAnyo_1 == unidadesAnyo_1)&&(identical(other.unidadesAnyo_2, unidadesAnyo_2) || other.unidadesAnyo_2 == unidadesAnyo_2)&&(identical(other.unidadesAnyo_3, unidadesAnyo_3) || other.unidadesAnyo_3 == unidadesAnyo_3)&&(identical(other.unidadesAnyo_4, unidadesAnyo_4) || other.unidadesAnyo_4 == unidadesAnyo_4));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _ArticuloVentasMesDTO&&(identical(other.mes, mes) || other.mes == mes)&&(identical(other.unidadesAnyo, unidadesAnyo) || other.unidadesAnyo == unidadesAnyo)&&(identical(other.unidadesAnyo_1, unidadesAnyo_1) || other.unidadesAnyo_1 == unidadesAnyo_1)&&(identical(other.unidadesAnyo_2, unidadesAnyo_2) || other.unidadesAnyo_2 == unidadesAnyo_2)&&(identical(other.unidadesAnyo_3, unidadesAnyo_3) || other.unidadesAnyo_3 == unidadesAnyo_3)&&(identical(other.unidadesAnyo_4, unidadesAnyo_4) || other.unidadesAnyo_4 == unidadesAnyo_4));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,mes,unidadesAnyo,unidadesAnyo_1,unidadesAnyo_2,unidadesAnyo_3,unidadesAnyo_4);
+int get hashCode {
+    return Object.hash(runtimeType,mes,unidadesAnyo,unidadesAnyo_1,unidadesAnyo_2,unidadesAnyo_3,unidadesAnyo_4);
+}
 
 @override
 String toString() {
-  return 'ArticuloVentasMesDTO(mes: $mes, unidadesAnyo: $unidadesAnyo, unidadesAnyo_1: $unidadesAnyo_1, unidadesAnyo_2: $unidadesAnyo_2, unidadesAnyo_3: $unidadesAnyo_3, unidadesAnyo_4: $unidadesAnyo_4)';
+    return 'ArticuloVentasMesDTO(mes: $mes, unidadesAnyo: $unidadesAnyo, unidadesAnyo_1: $unidadesAnyo_1, unidadesAnyo_2: $unidadesAnyo_2, unidadesAnyo_3: $unidadesAnyo_3, unidadesAnyo_4: $unidadesAnyo_4)';
 }
 
 

@@ -29,16 +29,21 @@ $VisitaCompetenciaLocalDTOCopyWith<VisitaCompetenciaLocalDTO> get copyWith => _$
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is VisitaCompetenciaLocalDTO&&(identical(other.visitaAppId, visitaAppId) || other.visitaAppId == visitaAppId)&&(identical(other.codigoCompetencia, codigoCompetencia) || other.codigoCompetencia == codigoCompetencia));
+  final _this = this as VisitaCompetenciaLocalDTO;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is VisitaCompetenciaLocalDTO&&(identical(other.visitaAppId, _this.visitaAppId) || other.visitaAppId == _this.visitaAppId)&&(identical(other.codigoCompetencia, _this.codigoCompetencia) || other.codigoCompetencia == _this.codigoCompetencia));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,visitaAppId,codigoCompetencia);
+int get hashCode {
+  final _this = this as VisitaCompetenciaLocalDTO;
+  return Object.hash(runtimeType,_this.visitaAppId,_this.codigoCompetencia);
+}
 
 @override
 String toString() {
-  return 'VisitaCompetenciaLocalDTO(visitaAppId: $visitaAppId, codigoCompetencia: $codigoCompetencia)';
+  final _this = this as VisitaCompetenciaLocalDTO;
+  return 'VisitaCompetenciaLocalDTO(visitaAppId: ${_this.visitaAppId}, codigoCompetencia: ${_this.codigoCompetencia})';
 }
 
 
@@ -230,16 +235,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _VisitaCompetenciaLocalDTO&&(identical(other.visitaAppId, visitaAppId) || other.visitaAppId == visitaAppId)&&(identical(other.codigoCompetencia, codigoCompetencia) || other.codigoCompetencia == codigoCompetencia));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _VisitaCompetenciaLocalDTO&&(identical(other.visitaAppId, visitaAppId) || other.visitaAppId == visitaAppId)&&(identical(other.codigoCompetencia, codigoCompetencia) || other.codigoCompetencia == codigoCompetencia));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,visitaAppId,codigoCompetencia);
+int get hashCode {
+    return Object.hash(runtimeType,visitaAppId,codigoCompetencia);
+}
 
 @override
 String toString() {
-  return 'VisitaCompetenciaLocalDTO(visitaAppId: $visitaAppId, codigoCompetencia: $codigoCompetencia)';
+    return 'VisitaCompetenciaLocalDTO(visitaAppId: $visitaAppId, codigoCompetencia: $codigoCompetencia)';
 }
 
 

@@ -29,16 +29,21 @@ $ArticuloVentasMesTodosDTOCopyWith<ArticuloVentasMesTodosDTO> get copyWith => _$
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ArticuloVentasMesTodosDTO&&(identical(other.mes, mes) || other.mes == mes)&&(identical(other.unidadesAnyoTodos, unidadesAnyoTodos) || other.unidadesAnyoTodos == unidadesAnyoTodos)&&(identical(other.unidadesAnyoTodos_1, unidadesAnyoTodos_1) || other.unidadesAnyoTodos_1 == unidadesAnyoTodos_1)&&(identical(other.unidadesAnyoTodos_2, unidadesAnyoTodos_2) || other.unidadesAnyoTodos_2 == unidadesAnyoTodos_2)&&(identical(other.unidadesAnyoTodos_3, unidadesAnyoTodos_3) || other.unidadesAnyoTodos_3 == unidadesAnyoTodos_3)&&(identical(other.unidadesAnyoTodos_4, unidadesAnyoTodos_4) || other.unidadesAnyoTodos_4 == unidadesAnyoTodos_4));
+  final _this = this as ArticuloVentasMesTodosDTO;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ArticuloVentasMesTodosDTO&&(identical(other.mes, _this.mes) || other.mes == _this.mes)&&(identical(other.unidadesAnyoTodos, _this.unidadesAnyoTodos) || other.unidadesAnyoTodos == _this.unidadesAnyoTodos)&&(identical(other.unidadesAnyoTodos_1, _this.unidadesAnyoTodos_1) || other.unidadesAnyoTodos_1 == _this.unidadesAnyoTodos_1)&&(identical(other.unidadesAnyoTodos_2, _this.unidadesAnyoTodos_2) || other.unidadesAnyoTodos_2 == _this.unidadesAnyoTodos_2)&&(identical(other.unidadesAnyoTodos_3, _this.unidadesAnyoTodos_3) || other.unidadesAnyoTodos_3 == _this.unidadesAnyoTodos_3)&&(identical(other.unidadesAnyoTodos_4, _this.unidadesAnyoTodos_4) || other.unidadesAnyoTodos_4 == _this.unidadesAnyoTodos_4));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,mes,unidadesAnyoTodos,unidadesAnyoTodos_1,unidadesAnyoTodos_2,unidadesAnyoTodos_3,unidadesAnyoTodos_4);
+int get hashCode {
+  final _this = this as ArticuloVentasMesTodosDTO;
+  return Object.hash(runtimeType,_this.mes,_this.unidadesAnyoTodos,_this.unidadesAnyoTodos_1,_this.unidadesAnyoTodos_2,_this.unidadesAnyoTodos_3,_this.unidadesAnyoTodos_4);
+}
 
 @override
 String toString() {
-  return 'ArticuloVentasMesTodosDTO(mes: $mes, unidadesAnyoTodos: $unidadesAnyoTodos, unidadesAnyoTodos_1: $unidadesAnyoTodos_1, unidadesAnyoTodos_2: $unidadesAnyoTodos_2, unidadesAnyoTodos_3: $unidadesAnyoTodos_3, unidadesAnyoTodos_4: $unidadesAnyoTodos_4)';
+  final _this = this as ArticuloVentasMesTodosDTO;
+  return 'ArticuloVentasMesTodosDTO(mes: ${_this.mes}, unidadesAnyoTodos: ${_this.unidadesAnyoTodos}, unidadesAnyoTodos_1: ${_this.unidadesAnyoTodos_1}, unidadesAnyoTodos_2: ${_this.unidadesAnyoTodos_2}, unidadesAnyoTodos_3: ${_this.unidadesAnyoTodos_3}, unidadesAnyoTodos_4: ${_this.unidadesAnyoTodos_4})';
 }
 
 
@@ -238,16 +243,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ArticuloVentasMesTodosDTO&&(identical(other.mes, mes) || other.mes == mes)&&(identical(other.unidadesAnyoTodos, unidadesAnyoTodos) || other.unidadesAnyoTodos == unidadesAnyoTodos)&&(identical(other.unidadesAnyoTodos_1, unidadesAnyoTodos_1) || other.unidadesAnyoTodos_1 == unidadesAnyoTodos_1)&&(identical(other.unidadesAnyoTodos_2, unidadesAnyoTodos_2) || other.unidadesAnyoTodos_2 == unidadesAnyoTodos_2)&&(identical(other.unidadesAnyoTodos_3, unidadesAnyoTodos_3) || other.unidadesAnyoTodos_3 == unidadesAnyoTodos_3)&&(identical(other.unidadesAnyoTodos_4, unidadesAnyoTodos_4) || other.unidadesAnyoTodos_4 == unidadesAnyoTodos_4));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _ArticuloVentasMesTodosDTO&&(identical(other.mes, mes) || other.mes == mes)&&(identical(other.unidadesAnyoTodos, unidadesAnyoTodos) || other.unidadesAnyoTodos == unidadesAnyoTodos)&&(identical(other.unidadesAnyoTodos_1, unidadesAnyoTodos_1) || other.unidadesAnyoTodos_1 == unidadesAnyoTodos_1)&&(identical(other.unidadesAnyoTodos_2, unidadesAnyoTodos_2) || other.unidadesAnyoTodos_2 == unidadesAnyoTodos_2)&&(identical(other.unidadesAnyoTodos_3, unidadesAnyoTodos_3) || other.unidadesAnyoTodos_3 == unidadesAnyoTodos_3)&&(identical(other.unidadesAnyoTodos_4, unidadesAnyoTodos_4) || other.unidadesAnyoTodos_4 == unidadesAnyoTodos_4));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,mes,unidadesAnyoTodos,unidadesAnyoTodos_1,unidadesAnyoTodos_2,unidadesAnyoTodos_3,unidadesAnyoTodos_4);
+int get hashCode {
+    return Object.hash(runtimeType,mes,unidadesAnyoTodos,unidadesAnyoTodos_1,unidadesAnyoTodos_2,unidadesAnyoTodos_3,unidadesAnyoTodos_4);
+}
 
 @override
 String toString() {
-  return 'ArticuloVentasMesTodosDTO(mes: $mes, unidadesAnyoTodos: $unidadesAnyoTodos, unidadesAnyoTodos_1: $unidadesAnyoTodos_1, unidadesAnyoTodos_2: $unidadesAnyoTodos_2, unidadesAnyoTodos_3: $unidadesAnyoTodos_3, unidadesAnyoTodos_4: $unidadesAnyoTodos_4)';
+    return 'ArticuloVentasMesTodosDTO(mes: $mes, unidadesAnyoTodos: $unidadesAnyoTodos, unidadesAnyoTodos_1: $unidadesAnyoTodos_1, unidadesAnyoTodos_2: $unidadesAnyoTodos_2, unidadesAnyoTodos_3: $unidadesAnyoTodos_3, unidadesAnyoTodos_4: $unidadesAnyoTodos_4)';
 }
 
 

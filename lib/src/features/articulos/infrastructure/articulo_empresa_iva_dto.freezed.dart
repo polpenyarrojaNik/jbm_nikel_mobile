@@ -29,16 +29,21 @@ $ArticuloEmpresaIvaDTOCopyWith<ArticuloEmpresaIvaDTO> get copyWith => _$Articulo
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ArticuloEmpresaIvaDTO&&(identical(other.articuloId, articuloId) || other.articuloId == articuloId)&&(identical(other.empresaId, empresaId) || other.empresaId == empresaId)&&(identical(other.iva, iva) || other.iva == iva)&&(identical(other.lastUpdated, lastUpdated) || other.lastUpdated == lastUpdated)&&(identical(other.deleted, deleted) || other.deleted == deleted));
+  final _this = this as ArticuloEmpresaIvaDTO;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ArticuloEmpresaIvaDTO&&(identical(other.articuloId, _this.articuloId) || other.articuloId == _this.articuloId)&&(identical(other.empresaId, _this.empresaId) || other.empresaId == _this.empresaId)&&(identical(other.iva, _this.iva) || other.iva == _this.iva)&&(identical(other.lastUpdated, _this.lastUpdated) || other.lastUpdated == _this.lastUpdated)&&(identical(other.deleted, _this.deleted) || other.deleted == _this.deleted));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,articuloId,empresaId,iva,lastUpdated,deleted);
+int get hashCode {
+  final _this = this as ArticuloEmpresaIvaDTO;
+  return Object.hash(runtimeType,_this.articuloId,_this.empresaId,_this.iva,_this.lastUpdated,_this.deleted);
+}
 
 @override
 String toString() {
-  return 'ArticuloEmpresaIvaDTO(articuloId: $articuloId, empresaId: $empresaId, iva: $iva, lastUpdated: $lastUpdated, deleted: $deleted)';
+  final _this = this as ArticuloEmpresaIvaDTO;
+  return 'ArticuloEmpresaIvaDTO(articuloId: ${_this.articuloId}, empresaId: ${_this.empresaId}, iva: ${_this.iva}, lastUpdated: ${_this.lastUpdated}, deleted: ${_this.deleted})';
 }
 
 
@@ -236,16 +241,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ArticuloEmpresaIvaDTO&&(identical(other.articuloId, articuloId) || other.articuloId == articuloId)&&(identical(other.empresaId, empresaId) || other.empresaId == empresaId)&&(identical(other.iva, iva) || other.iva == iva)&&(identical(other.lastUpdated, lastUpdated) || other.lastUpdated == lastUpdated)&&(identical(other.deleted, deleted) || other.deleted == deleted));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _ArticuloEmpresaIvaDTO&&(identical(other.articuloId, articuloId) || other.articuloId == articuloId)&&(identical(other.empresaId, empresaId) || other.empresaId == empresaId)&&(identical(other.iva, iva) || other.iva == iva)&&(identical(other.lastUpdated, lastUpdated) || other.lastUpdated == lastUpdated)&&(identical(other.deleted, deleted) || other.deleted == deleted));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,articuloId,empresaId,iva,lastUpdated,deleted);
+int get hashCode {
+    return Object.hash(runtimeType,articuloId,empresaId,iva,lastUpdated,deleted);
+}
 
 @override
 String toString() {
-  return 'ArticuloEmpresaIvaDTO(articuloId: $articuloId, empresaId: $empresaId, iva: $iva, lastUpdated: $lastUpdated, deleted: $deleted)';
+    return 'ArticuloEmpresaIvaDTO(articuloId: $articuloId, empresaId: $empresaId, iva: $iva, lastUpdated: $lastUpdated, deleted: $deleted)';
 }
 
 

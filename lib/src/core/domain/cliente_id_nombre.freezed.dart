@@ -26,16 +26,21 @@ $ClienteIdNombreCopyWith<ClienteIdNombre> get copyWith => _$ClienteIdNombreCopyW
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ClienteIdNombre&&(identical(other.id, id) || other.id == id)&&(identical(other.nombreCliente, nombreCliente) || other.nombreCliente == nombreCliente));
+  final _this = this as ClienteIdNombre;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ClienteIdNombre&&(identical(other.id, _this.id) || other.id == _this.id)&&(identical(other.nombreCliente, _this.nombreCliente) || other.nombreCliente == _this.nombreCliente));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,id,nombreCliente);
+int get hashCode {
+  final _this = this as ClienteIdNombre;
+  return Object.hash(runtimeType,_this.id,_this.nombreCliente);
+}
 
 @override
 String toString() {
-  return 'ClienteIdNombre(id: $id, nombreCliente: $nombreCliente)';
+  final _this = this as ClienteIdNombre;
+  return 'ClienteIdNombre(id: ${_this.id}, nombreCliente: ${_this.nombreCliente})';
 }
 
 
@@ -224,16 +229,18 @@ _$ClienteIdNombreCopyWith<_ClienteIdNombre> get copyWith => __$ClienteIdNombreCo
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ClienteIdNombre&&(identical(other.id, id) || other.id == id)&&(identical(other.nombreCliente, nombreCliente) || other.nombreCliente == nombreCliente));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _ClienteIdNombre&&(identical(other.id, id) || other.id == id)&&(identical(other.nombreCliente, nombreCliente) || other.nombreCliente == nombreCliente));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,id,nombreCliente);
+int get hashCode {
+    return Object.hash(runtimeType,id,nombreCliente);
+}
 
 @override
 String toString() {
-  return 'ClienteIdNombre(id: $id, nombreCliente: $nombreCliente)';
+    return 'ClienteIdNombre(id: $id, nombreCliente: $nombreCliente)';
 }
 
 

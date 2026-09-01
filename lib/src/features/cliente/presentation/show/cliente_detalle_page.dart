@@ -1126,6 +1126,7 @@ class _Consultas extends StatelessWidget {
             ClienteVentasMesRoute(
               clienteId: cliente.id,
               nombreCliente: cliente.nombreCliente,
+              applyDireccionFilter: false,
             ),
           ),
         ),

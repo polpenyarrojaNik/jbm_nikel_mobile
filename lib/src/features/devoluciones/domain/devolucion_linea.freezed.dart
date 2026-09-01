@@ -26,16 +26,21 @@ $DevolucionLineaCopyWith<DevolucionLinea> get copyWith => _$DevolucionLineaCopyW
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is DevolucionLinea&&(identical(other.empresaId, empresaId) || other.empresaId == empresaId)&&(identical(other.devolucionId, devolucionId) || other.devolucionId == devolucionId)&&(identical(other.articuloId, articuloId) || other.articuloId == articuloId)&&(identical(other.articuloDescription, articuloDescription) || other.articuloDescription == articuloDescription)&&(identical(other.cantidadDevolucion, cantidadDevolucion) || other.cantidadDevolucion == cantidadDevolucion)&&(identical(other.cantidadRecibida, cantidadRecibida) || other.cantidadRecibida == cantidadRecibida)&&(identical(other.devolucionMotivo, devolucionMotivo) || other.devolucionMotivo == devolucionMotivo)&&(identical(other.devolucionEstado, devolucionEstado) || other.devolucionEstado == devolucionEstado)&&(identical(other.observaciones, observaciones) || other.observaciones == observaciones)&&(identical(other.lastUpdated, lastUpdated) || other.lastUpdated == lastUpdated)&&(identical(other.deleted, deleted) || other.deleted == deleted));
+  final _this = this as DevolucionLinea;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is DevolucionLinea&&(identical(other.empresaId, _this.empresaId) || other.empresaId == _this.empresaId)&&(identical(other.devolucionId, _this.devolucionId) || other.devolucionId == _this.devolucionId)&&(identical(other.articuloId, _this.articuloId) || other.articuloId == _this.articuloId)&&(identical(other.articuloDescription, _this.articuloDescription) || other.articuloDescription == _this.articuloDescription)&&(identical(other.cantidadDevolucion, _this.cantidadDevolucion) || other.cantidadDevolucion == _this.cantidadDevolucion)&&(identical(other.cantidadRecibida, _this.cantidadRecibida) || other.cantidadRecibida == _this.cantidadRecibida)&&(identical(other.devolucionMotivo, _this.devolucionMotivo) || other.devolucionMotivo == _this.devolucionMotivo)&&(identical(other.devolucionEstado, _this.devolucionEstado) || other.devolucionEstado == _this.devolucionEstado)&&(identical(other.observaciones, _this.observaciones) || other.observaciones == _this.observaciones)&&(identical(other.lastUpdated, _this.lastUpdated) || other.lastUpdated == _this.lastUpdated)&&(identical(other.deleted, _this.deleted) || other.deleted == _this.deleted));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,empresaId,devolucionId,articuloId,articuloDescription,cantidadDevolucion,cantidadRecibida,devolucionMotivo,devolucionEstado,observaciones,lastUpdated,deleted);
+int get hashCode {
+  final _this = this as DevolucionLinea;
+  return Object.hash(runtimeType,_this.empresaId,_this.devolucionId,_this.articuloId,_this.articuloDescription,_this.cantidadDevolucion,_this.cantidadRecibida,_this.devolucionMotivo,_this.devolucionEstado,_this.observaciones,_this.lastUpdated,_this.deleted);
+}
 
 @override
 String toString() {
-  return 'DevolucionLinea(empresaId: $empresaId, devolucionId: $devolucionId, articuloId: $articuloId, articuloDescription: $articuloDescription, cantidadDevolucion: $cantidadDevolucion, cantidadRecibida: $cantidadRecibida, devolucionMotivo: $devolucionMotivo, devolucionEstado: $devolucionEstado, observaciones: $observaciones, lastUpdated: $lastUpdated, deleted: $deleted)';
+  final _this = this as DevolucionLinea;
+  return 'DevolucionLinea(empresaId: ${_this.empresaId}, devolucionId: ${_this.devolucionId}, articuloId: ${_this.articuloId}, articuloDescription: ${_this.articuloDescription}, cantidadDevolucion: ${_this.cantidadDevolucion}, cantidadRecibida: ${_this.cantidadRecibida}, devolucionMotivo: ${_this.devolucionMotivo}, devolucionEstado: ${_this.devolucionEstado}, observaciones: ${_this.observaciones}, lastUpdated: ${_this.lastUpdated}, deleted: ${_this.deleted})';
 }
 
 
@@ -266,16 +271,18 @@ _$DevolucionLineaCopyWith<_DevolucionLinea> get copyWith => __$DevolucionLineaCo
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _DevolucionLinea&&(identical(other.empresaId, empresaId) || other.empresaId == empresaId)&&(identical(other.devolucionId, devolucionId) || other.devolucionId == devolucionId)&&(identical(other.articuloId, articuloId) || other.articuloId == articuloId)&&(identical(other.articuloDescription, articuloDescription) || other.articuloDescription == articuloDescription)&&(identical(other.cantidadDevolucion, cantidadDevolucion) || other.cantidadDevolucion == cantidadDevolucion)&&(identical(other.cantidadRecibida, cantidadRecibida) || other.cantidadRecibida == cantidadRecibida)&&(identical(other.devolucionMotivo, devolucionMotivo) || other.devolucionMotivo == devolucionMotivo)&&(identical(other.devolucionEstado, devolucionEstado) || other.devolucionEstado == devolucionEstado)&&(identical(other.observaciones, observaciones) || other.observaciones == observaciones)&&(identical(other.lastUpdated, lastUpdated) || other.lastUpdated == lastUpdated)&&(identical(other.deleted, deleted) || other.deleted == deleted));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _DevolucionLinea&&(identical(other.empresaId, empresaId) || other.empresaId == empresaId)&&(identical(other.devolucionId, devolucionId) || other.devolucionId == devolucionId)&&(identical(other.articuloId, articuloId) || other.articuloId == articuloId)&&(identical(other.articuloDescription, articuloDescription) || other.articuloDescription == articuloDescription)&&(identical(other.cantidadDevolucion, cantidadDevolucion) || other.cantidadDevolucion == cantidadDevolucion)&&(identical(other.cantidadRecibida, cantidadRecibida) || other.cantidadRecibida == cantidadRecibida)&&(identical(other.devolucionMotivo, devolucionMotivo) || other.devolucionMotivo == devolucionMotivo)&&(identical(other.devolucionEstado, devolucionEstado) || other.devolucionEstado == devolucionEstado)&&(identical(other.observaciones, observaciones) || other.observaciones == observaciones)&&(identical(other.lastUpdated, lastUpdated) || other.lastUpdated == lastUpdated)&&(identical(other.deleted, deleted) || other.deleted == deleted));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,empresaId,devolucionId,articuloId,articuloDescription,cantidadDevolucion,cantidadRecibida,devolucionMotivo,devolucionEstado,observaciones,lastUpdated,deleted);
+int get hashCode {
+    return Object.hash(runtimeType,empresaId,devolucionId,articuloId,articuloDescription,cantidadDevolucion,cantidadRecibida,devolucionMotivo,devolucionEstado,observaciones,lastUpdated,deleted);
+}
 
 @override
 String toString() {
-  return 'DevolucionLinea(empresaId: $empresaId, devolucionId: $devolucionId, articuloId: $articuloId, articuloDescription: $articuloDescription, cantidadDevolucion: $cantidadDevolucion, cantidadRecibida: $cantidadRecibida, devolucionMotivo: $devolucionMotivo, devolucionEstado: $devolucionEstado, observaciones: $observaciones, lastUpdated: $lastUpdated, deleted: $deleted)';
+    return 'DevolucionLinea(empresaId: $empresaId, devolucionId: $devolucionId, articuloId: $articuloId, articuloDescription: $articuloDescription, cantidadDevolucion: $cantidadDevolucion, cantidadRecibida: $cantidadRecibida, devolucionMotivo: $devolucionMotivo, devolucionEstado: $devolucionEstado, observaciones: $observaciones, lastUpdated: $lastUpdated, deleted: $deleted)';
 }
 
 

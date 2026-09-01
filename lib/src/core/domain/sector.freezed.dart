@@ -26,16 +26,21 @@ $SectorCopyWith<Sector> get copyWith => _$SectorCopyWithImpl<Sector>(this as Sec
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is Sector&&(identical(other.id, id) || other.id == id)&&(identical(other.isAlta, isAlta) || other.isAlta == isAlta)&&(identical(other.descripcion, descripcion) || other.descripcion == descripcion)&&(identical(other.lastUpdate, lastUpdate) || other.lastUpdate == lastUpdate)&&(identical(other.deleted, deleted) || other.deleted == deleted));
+  final _this = this as Sector;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is Sector&&(identical(other.id, _this.id) || other.id == _this.id)&&(identical(other.isAlta, _this.isAlta) || other.isAlta == _this.isAlta)&&(identical(other.descripcion, _this.descripcion) || other.descripcion == _this.descripcion)&&(identical(other.lastUpdate, _this.lastUpdate) || other.lastUpdate == _this.lastUpdate)&&(identical(other.deleted, _this.deleted) || other.deleted == _this.deleted));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,id,isAlta,descripcion,lastUpdate,deleted);
+int get hashCode {
+  final _this = this as Sector;
+  return Object.hash(runtimeType,_this.id,_this.isAlta,_this.descripcion,_this.lastUpdate,_this.deleted);
+}
 
 @override
 String toString() {
-  return 'Sector(id: $id, isAlta: $isAlta, descripcion: $descripcion, lastUpdate: $lastUpdate, deleted: $deleted)';
+  final _this = this as Sector;
+  return 'Sector(id: ${_this.id}, isAlta: ${_this.isAlta}, descripcion: ${_this.descripcion}, lastUpdate: ${_this.lastUpdate}, deleted: ${_this.deleted})';
 }
 
 
@@ -230,16 +235,18 @@ _$SectorCopyWith<_Sector> get copyWith => __$SectorCopyWithImpl<_Sector>(this, _
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Sector&&(identical(other.id, id) || other.id == id)&&(identical(other.isAlta, isAlta) || other.isAlta == isAlta)&&(identical(other.descripcion, descripcion) || other.descripcion == descripcion)&&(identical(other.lastUpdate, lastUpdate) || other.lastUpdate == lastUpdate)&&(identical(other.deleted, deleted) || other.deleted == deleted));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _Sector&&(identical(other.id, id) || other.id == id)&&(identical(other.isAlta, isAlta) || other.isAlta == isAlta)&&(identical(other.descripcion, descripcion) || other.descripcion == descripcion)&&(identical(other.lastUpdate, lastUpdate) || other.lastUpdate == lastUpdate)&&(identical(other.deleted, deleted) || other.deleted == deleted));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,id,isAlta,descripcion,lastUpdate,deleted);
+int get hashCode {
+    return Object.hash(runtimeType,id,isAlta,descripcion,lastUpdate,deleted);
+}
 
 @override
 String toString() {
-  return 'Sector(id: $id, isAlta: $isAlta, descripcion: $descripcion, lastUpdate: $lastUpdate, deleted: $deleted)';
+    return 'Sector(id: $id, isAlta: $isAlta, descripcion: $descripcion, lastUpdate: $lastUpdate, deleted: $deleted)';
 }
 
 

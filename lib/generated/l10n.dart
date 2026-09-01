@@ -4444,6 +4444,21 @@ class S {
       args: [],
     );
   }
+
+  /// `Backorders`
+  String get backorders {
+    return Intl.message('Backorders', name: 'backorders', desc: '', args: []);
+  }
+
+  /// `Search backorders...`
+  String get buscarBackorders {
+    return Intl.message(
+      'Search backorders...',
+      name: 'buscarBackorders',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

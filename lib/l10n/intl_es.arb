@@ -467,5 +467,7 @@
   "active": "Activo",
   "potential": "Potencial",
   "filter": "Filtrar",
-  "salesOrderSent": "Pedido enviado"
+  "salesOrderSent": "Pedido enviado",
+  "backorders": "Pedidos pendientes",
+  "buscarBackorders": "Buscar pedidos pendientes..."
 }

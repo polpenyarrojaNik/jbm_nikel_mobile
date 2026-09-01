@@ -29,16 +29,21 @@ $UsuarioAuxDTOCopyWith<UsuarioAuxDTO> get copyWith => _$UsuarioAuxDTOCopyWithImp
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is UsuarioAuxDTO&&(identical(other.id, id) || other.id == id)&&(identical(other.usuario, usuario) || other.usuario == usuario)&&(identical(other.nombreUsuario, nombreUsuario) || other.nombreUsuario == nombreUsuario)&&(identical(other.idiomaId, idiomaId) || other.idiomaId == idiomaId)&&(identical(other.modificarPedido, modificarPedido) || other.modificarPedido == modificarPedido)&&(identical(other.verTotalVentas, verTotalVentas) || other.verTotalVentas == verTotalVentas)&&(identical(other.margenComercial, margenComercial) || other.margenComercial == margenComercial)&&(identical(other.costeSn, costeSn) || other.costeSn == costeSn)&&(identical(other.filtroRepresentante, filtroRepresentante) || other.filtroRepresentante == filtroRepresentante)&&(identical(other.aiSN, aiSN) || other.aiSN == aiSN));
+  final _this = this as UsuarioAuxDTO;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is UsuarioAuxDTO&&(identical(other.id, _this.id) || other.id == _this.id)&&(identical(other.usuario, _this.usuario) || other.usuario == _this.usuario)&&(identical(other.nombreUsuario, _this.nombreUsuario) || other.nombreUsuario == _this.nombreUsuario)&&(identical(other.idiomaId, _this.idiomaId) || other.idiomaId == _this.idiomaId)&&(identical(other.modificarPedido, _this.modificarPedido) || other.modificarPedido == _this.modificarPedido)&&(identical(other.verTotalVentas, _this.verTotalVentas) || other.verTotalVentas == _this.verTotalVentas)&&(identical(other.margenComercial, _this.margenComercial) || other.margenComercial == _this.margenComercial)&&(identical(other.costeSn, _this.costeSn) || other.costeSn == _this.costeSn)&&(identical(other.filtroRepresentante, _this.filtroRepresentante) || other.filtroRepresentante == _this.filtroRepresentante)&&(identical(other.aiSN, _this.aiSN) || other.aiSN == _this.aiSN));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,id,usuario,nombreUsuario,idiomaId,modificarPedido,verTotalVentas,margenComercial,costeSn,filtroRepresentante,aiSN);
+int get hashCode {
+  final _this = this as UsuarioAuxDTO;
+  return Object.hash(runtimeType,_this.id,_this.usuario,_this.nombreUsuario,_this.idiomaId,_this.modificarPedido,_this.verTotalVentas,_this.margenComercial,_this.costeSn,_this.filtroRepresentante,_this.aiSN);
+}
 
 @override
 String toString() {
-  return 'UsuarioAuxDTO(id: $id, usuario: $usuario, nombreUsuario: $nombreUsuario, idiomaId: $idiomaId, modificarPedido: $modificarPedido, verTotalVentas: $verTotalVentas, margenComercial: $margenComercial, costeSn: $costeSn, filtroRepresentante: $filtroRepresentante, aiSN: $aiSN)';
+  final _this = this as UsuarioAuxDTO;
+  return 'UsuarioAuxDTO(id: ${_this.id}, usuario: ${_this.usuario}, nombreUsuario: ${_this.nombreUsuario}, idiomaId: ${_this.idiomaId}, modificarPedido: ${_this.modificarPedido}, verTotalVentas: ${_this.verTotalVentas}, margenComercial: ${_this.margenComercial}, costeSn: ${_this.costeSn}, filtroRepresentante: ${_this.filtroRepresentante}, aiSN: ${_this.aiSN})';
 }
 
 
@@ -246,16 +251,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _UsuarioAuxDTO&&(identical(other.id, id) || other.id == id)&&(identical(other.usuario, usuario) || other.usuario == usuario)&&(identical(other.nombreUsuario, nombreUsuario) || other.nombreUsuario == nombreUsuario)&&(identical(other.idiomaId, idiomaId) || other.idiomaId == idiomaId)&&(identical(other.modificarPedido, modificarPedido) || other.modificarPedido == modificarPedido)&&(identical(other.verTotalVentas, verTotalVentas) || other.verTotalVentas == verTotalVentas)&&(identical(other.margenComercial, margenComercial) || other.margenComercial == margenComercial)&&(identical(other.costeSn, costeSn) || other.costeSn == costeSn)&&(identical(other.filtroRepresentante, filtroRepresentante) || other.filtroRepresentante == filtroRepresentante)&&(identical(other.aiSN, aiSN) || other.aiSN == aiSN));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _UsuarioAuxDTO&&(identical(other.id, id) || other.id == id)&&(identical(other.usuario, usuario) || other.usuario == usuario)&&(identical(other.nombreUsuario, nombreUsuario) || other.nombreUsuario == nombreUsuario)&&(identical(other.idiomaId, idiomaId) || other.idiomaId == idiomaId)&&(identical(other.modificarPedido, modificarPedido) || other.modificarPedido == modificarPedido)&&(identical(other.verTotalVentas, verTotalVentas) || other.verTotalVentas == verTotalVentas)&&(identical(other.margenComercial, margenComercial) || other.margenComercial == margenComercial)&&(identical(other.costeSn, costeSn) || other.costeSn == costeSn)&&(identical(other.filtroRepresentante, filtroRepresentante) || other.filtroRepresentante == filtroRepresentante)&&(identical(other.aiSN, aiSN) || other.aiSN == aiSN));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,id,usuario,nombreUsuario,idiomaId,modificarPedido,verTotalVentas,margenComercial,costeSn,filtroRepresentante,aiSN);
+int get hashCode {
+    return Object.hash(runtimeType,id,usuario,nombreUsuario,idiomaId,modificarPedido,verTotalVentas,margenComercial,costeSn,filtroRepresentante,aiSN);
+}
 
 @override
 String toString() {
-  return 'UsuarioAuxDTO(id: $id, usuario: $usuario, nombreUsuario: $nombreUsuario, idiomaId: $idiomaId, modificarPedido: $modificarPedido, verTotalVentas: $verTotalVentas, margenComercial: $margenComercial, costeSn: $costeSn, filtroRepresentante: $filtroRepresentante, aiSN: $aiSN)';
+    return 'UsuarioAuxDTO(id: $id, usuario: $usuario, nombreUsuario: $nombreUsuario, idiomaId: $idiomaId, modificarPedido: $modificarPedido, verTotalVentas: $verTotalVentas, margenComercial: $margenComercial, costeSn: $costeSn, filtroRepresentante: $filtroRepresentante, aiSN: $aiSN)';
 }
 
 

@@ -26,16 +26,21 @@ $PedidoImportLineaCopyWith<PedidoImportLinea> get copyWith => _$PedidoImportLine
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is PedidoImportLinea&&(identical(other.lineNumber, lineNumber) || other.lineNumber == lineNumber)&&(identical(other.articuloId, articuloId) || other.articuloId == articuloId)&&(identical(other.articuloDescription, articuloDescription) || other.articuloDescription == articuloDescription)&&(identical(other.cantidad, cantidad) || other.cantidad == cantidad)&&(identical(other.precioDivisa, precioDivisa) || other.precioDivisa == precioDivisa)&&(identical(other.divisaId, divisaId) || other.divisaId == divisaId)&&(identical(other.tipoPrecio, tipoPrecio) || other.tipoPrecio == tipoPrecio)&&(identical(other.descuento1, descuento1) || other.descuento1 == descuento1)&&(identical(other.descuento2, descuento2) || other.descuento2 == descuento2)&&(identical(other.descuento3, descuento3) || other.descuento3 == descuento3)&&(identical(other.importeLinea, importeLinea) || other.importeLinea == importeLinea)&&(identical(other.stockDisponible, stockDisponible) || other.stockDisponible == stockDisponible)&&(identical(other.iva, iva) || other.iva == iva));
+  final _this = this as PedidoImportLinea;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is PedidoImportLinea&&(identical(other.lineNumber, _this.lineNumber) || other.lineNumber == _this.lineNumber)&&(identical(other.articuloId, _this.articuloId) || other.articuloId == _this.articuloId)&&(identical(other.articuloDescription, _this.articuloDescription) || other.articuloDescription == _this.articuloDescription)&&(identical(other.cantidad, _this.cantidad) || other.cantidad == _this.cantidad)&&(identical(other.precioDivisa, _this.precioDivisa) || other.precioDivisa == _this.precioDivisa)&&(identical(other.divisaId, _this.divisaId) || other.divisaId == _this.divisaId)&&(identical(other.tipoPrecio, _this.tipoPrecio) || other.tipoPrecio == _this.tipoPrecio)&&(identical(other.descuento1, _this.descuento1) || other.descuento1 == _this.descuento1)&&(identical(other.descuento2, _this.descuento2) || other.descuento2 == _this.descuento2)&&(identical(other.descuento3, _this.descuento3) || other.descuento3 == _this.descuento3)&&(identical(other.importeLinea, _this.importeLinea) || other.importeLinea == _this.importeLinea)&&(identical(other.stockDisponible, _this.stockDisponible) || other.stockDisponible == _this.stockDisponible)&&(identical(other.iva, _this.iva) || other.iva == _this.iva));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,lineNumber,articuloId,articuloDescription,cantidad,precioDivisa,divisaId,tipoPrecio,descuento1,descuento2,descuento3,importeLinea,stockDisponible,iva);
+int get hashCode {
+  final _this = this as PedidoImportLinea;
+  return Object.hash(runtimeType,_this.lineNumber,_this.articuloId,_this.articuloDescription,_this.cantidad,_this.precioDivisa,_this.divisaId,_this.tipoPrecio,_this.descuento1,_this.descuento2,_this.descuento3,_this.importeLinea,_this.stockDisponible,_this.iva);
+}
 
 @override
 String toString() {
-  return 'PedidoImportLinea(lineNumber: $lineNumber, articuloId: $articuloId, articuloDescription: $articuloDescription, cantidad: $cantidad, precioDivisa: $precioDivisa, divisaId: $divisaId, tipoPrecio: $tipoPrecio, descuento1: $descuento1, descuento2: $descuento2, descuento3: $descuento3, importeLinea: $importeLinea, stockDisponible: $stockDisponible, iva: $iva)';
+  final _this = this as PedidoImportLinea;
+  return 'PedidoImportLinea(lineNumber: ${_this.lineNumber}, articuloId: ${_this.articuloId}, articuloDescription: ${_this.articuloDescription}, cantidad: ${_this.cantidad}, precioDivisa: ${_this.precioDivisa}, divisaId: ${_this.divisaId}, tipoPrecio: ${_this.tipoPrecio}, descuento1: ${_this.descuento1}, descuento2: ${_this.descuento2}, descuento3: ${_this.descuento3}, importeLinea: ${_this.importeLinea}, stockDisponible: ${_this.stockDisponible}, iva: ${_this.iva})';
 }
 
 
@@ -246,16 +251,18 @@ _$PedidoImportLineaCopyWith<_PedidoImportLinea> get copyWith => __$PedidoImportL
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _PedidoImportLinea&&(identical(other.lineNumber, lineNumber) || other.lineNumber == lineNumber)&&(identical(other.articuloId, articuloId) || other.articuloId == articuloId)&&(identical(other.articuloDescription, articuloDescription) || other.articuloDescription == articuloDescription)&&(identical(other.cantidad, cantidad) || other.cantidad == cantidad)&&(identical(other.precioDivisa, precioDivisa) || other.precioDivisa == precioDivisa)&&(identical(other.divisaId, divisaId) || other.divisaId == divisaId)&&(identical(other.tipoPrecio, tipoPrecio) || other.tipoPrecio == tipoPrecio)&&(identical(other.descuento1, descuento1) || other.descuento1 == descuento1)&&(identical(other.descuento2, descuento2) || other.descuento2 == descuento2)&&(identical(other.descuento3, descuento3) || other.descuento3 == descuento3)&&(identical(other.importeLinea, importeLinea) || other.importeLinea == importeLinea)&&(identical(other.stockDisponible, stockDisponible) || other.stockDisponible == stockDisponible)&&(identical(other.iva, iva) || other.iva == iva));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _PedidoImportLinea&&(identical(other.lineNumber, lineNumber) || other.lineNumber == lineNumber)&&(identical(other.articuloId, articuloId) || other.articuloId == articuloId)&&(identical(other.articuloDescription, articuloDescription) || other.articuloDescription == articuloDescription)&&(identical(other.cantidad, cantidad) || other.cantidad == cantidad)&&(identical(other.precioDivisa, precioDivisa) || other.precioDivisa == precioDivisa)&&(identical(other.divisaId, divisaId) || other.divisaId == divisaId)&&(identical(other.tipoPrecio, tipoPrecio) || other.tipoPrecio == tipoPrecio)&&(identical(other.descuento1, descuento1) || other.descuento1 == descuento1)&&(identical(other.descuento2, descuento2) || other.descuento2 == descuento2)&&(identical(other.descuento3, descuento3) || other.descuento3 == descuento3)&&(identical(other.importeLinea, importeLinea) || other.importeLinea == importeLinea)&&(identical(other.stockDisponible, stockDisponible) || other.stockDisponible == stockDisponible)&&(identical(other.iva, iva) || other.iva == iva));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,lineNumber,articuloId,articuloDescription,cantidad,precioDivisa,divisaId,tipoPrecio,descuento1,descuento2,descuento3,importeLinea,stockDisponible,iva);
+int get hashCode {
+    return Object.hash(runtimeType,lineNumber,articuloId,articuloDescription,cantidad,precioDivisa,divisaId,tipoPrecio,descuento1,descuento2,descuento3,importeLinea,stockDisponible,iva);
+}
 
 @override
 String toString() {
-  return 'PedidoImportLinea(lineNumber: $lineNumber, articuloId: $articuloId, articuloDescription: $articuloDescription, cantidad: $cantidad, precioDivisa: $precioDivisa, divisaId: $divisaId, tipoPrecio: $tipoPrecio, descuento1: $descuento1, descuento2: $descuento2, descuento3: $descuento3, importeLinea: $importeLinea, stockDisponible: $stockDisponible, iva: $iva)';
+    return 'PedidoImportLinea(lineNumber: $lineNumber, articuloId: $articuloId, articuloDescription: $articuloDescription, cantidad: $cantidad, precioDivisa: $precioDivisa, divisaId: $divisaId, tipoPrecio: $tipoPrecio, descuento1: $descuento1, descuento2: $descuento2, descuento3: $descuento3, importeLinea: $importeLinea, stockDisponible: $stockDisponible, iva: $iva)';
 }
 
 
@@ -319,16 +326,21 @@ $PedidoImportLineaErrorCopyWith<PedidoImportLineaError> get copyWith => _$Pedido
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is PedidoImportLineaError&&(identical(other.lineNumber, lineNumber) || other.lineNumber == lineNumber)&&(identical(other.errorMessage, errorMessage) || other.errorMessage == errorMessage));
+  final _this = this as PedidoImportLineaError;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is PedidoImportLineaError&&(identical(other.lineNumber, _this.lineNumber) || other.lineNumber == _this.lineNumber)&&(identical(other.errorMessage, _this.errorMessage) || other.errorMessage == _this.errorMessage));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,lineNumber,errorMessage);
+int get hashCode {
+  final _this = this as PedidoImportLineaError;
+  return Object.hash(runtimeType,_this.lineNumber,_this.errorMessage);
+}
 
 @override
 String toString() {
-  return 'PedidoImportLineaError(lineNumber: $lineNumber, errorMessage: $errorMessage)';
+  final _this = this as PedidoImportLineaError;
+  return 'PedidoImportLineaError(lineNumber: ${_this.lineNumber}, errorMessage: ${_this.errorMessage})';
 }
 
 
@@ -517,16 +529,18 @@ _$PedidoImportLineaErrorCopyWith<_PedidoImportLineaError> get copyWith => __$Ped
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _PedidoImportLineaError&&(identical(other.lineNumber, lineNumber) || other.lineNumber == lineNumber)&&(identical(other.errorMessage, errorMessage) || other.errorMessage == errorMessage));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _PedidoImportLineaError&&(identical(other.lineNumber, lineNumber) || other.lineNumber == lineNumber)&&(identical(other.errorMessage, errorMessage) || other.errorMessage == errorMessage));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,lineNumber,errorMessage);
+int get hashCode {
+    return Object.hash(runtimeType,lineNumber,errorMessage);
+}
 
 @override
 String toString() {
-  return 'PedidoImportLineaError(lineNumber: $lineNumber, errorMessage: $errorMessage)';
+    return 'PedidoImportLineaError(lineNumber: $lineNumber, errorMessage: $errorMessage)';
 }
 
 

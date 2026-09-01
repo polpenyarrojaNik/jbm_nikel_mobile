@@ -26,16 +26,21 @@ $UltimosPreciosParamCopyWith<UltimosPreciosParam> get copyWith => _$UltimosPreci
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is UltimosPreciosParam&&(identical(other.clienteId, clienteId) || other.clienteId == clienteId)&&(identical(other.articuloId, articuloId) || other.articuloId == articuloId));
+  final _this = this as UltimosPreciosParam;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is UltimosPreciosParam&&(identical(other.clienteId, _this.clienteId) || other.clienteId == _this.clienteId)&&(identical(other.articuloId, _this.articuloId) || other.articuloId == _this.articuloId));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,clienteId,articuloId);
+int get hashCode {
+  final _this = this as UltimosPreciosParam;
+  return Object.hash(runtimeType,_this.clienteId,_this.articuloId);
+}
 
 @override
 String toString() {
-  return 'UltimosPreciosParam(clienteId: $clienteId, articuloId: $articuloId)';
+  final _this = this as UltimosPreciosParam;
+  return 'UltimosPreciosParam(clienteId: ${_this.clienteId}, articuloId: ${_this.articuloId})';
 }
 
 
@@ -224,16 +229,18 @@ _$UltimosPreciosParamCopyWith<_UltimosPreciosParam> get copyWith => __$UltimosPr
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _UltimosPreciosParam&&(identical(other.clienteId, clienteId) || other.clienteId == clienteId)&&(identical(other.articuloId, articuloId) || other.articuloId == articuloId));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _UltimosPreciosParam&&(identical(other.clienteId, clienteId) || other.clienteId == clienteId)&&(identical(other.articuloId, articuloId) || other.articuloId == articuloId));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,clienteId,articuloId);
+int get hashCode {
+    return Object.hash(runtimeType,clienteId,articuloId);
+}
 
 @override
 String toString() {
-  return 'UltimosPreciosParam(clienteId: $clienteId, articuloId: $articuloId)';
+    return 'UltimosPreciosParam(clienteId: $clienteId, articuloId: $articuloId)';
 }
 
 

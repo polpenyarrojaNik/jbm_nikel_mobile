@@ -26,16 +26,21 @@ $GetClienteAlrededorArgCopyWith<GetClienteAlrededorArg> get copyWith => _$GetCli
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is GetClienteAlrededorArg&&(identical(other.latLng, latLng) || other.latLng == latLng)&&(identical(other.radiusDistance, radiusDistance) || other.radiusDistance == radiusDistance));
+  final _this = this as GetClienteAlrededorArg;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is GetClienteAlrededorArg&&(identical(other.latLng, _this.latLng) || other.latLng == _this.latLng)&&(identical(other.radiusDistance, _this.radiusDistance) || other.radiusDistance == _this.radiusDistance));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,latLng,radiusDistance);
+int get hashCode {
+  final _this = this as GetClienteAlrededorArg;
+  return Object.hash(runtimeType,_this.latLng,_this.radiusDistance);
+}
 
 @override
 String toString() {
-  return 'GetClienteAlrededorArg(latLng: $latLng, radiusDistance: $radiusDistance)';
+  final _this = this as GetClienteAlrededorArg;
+  return 'GetClienteAlrededorArg(latLng: ${_this.latLng}, radiusDistance: ${_this.radiusDistance})';
 }
 
 
@@ -224,16 +229,18 @@ _$GetClienteAlrededorArgCopyWith<_GetClienteAlrededorArg> get copyWith => __$Get
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _GetClienteAlrededorArg&&(identical(other.latLng, latLng) || other.latLng == latLng)&&(identical(other.radiusDistance, radiusDistance) || other.radiusDistance == radiusDistance));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _GetClienteAlrededorArg&&(identical(other.latLng, latLng) || other.latLng == latLng)&&(identical(other.radiusDistance, radiusDistance) || other.radiusDistance == radiusDistance));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,latLng,radiusDistance);
+int get hashCode {
+    return Object.hash(runtimeType,latLng,radiusDistance);
+}
 
 @override
 String toString() {
-  return 'GetClienteAlrededorArg(latLng: $latLng, radiusDistance: $radiusDistance)';
+    return 'GetClienteAlrededorArg(latLng: $latLng, radiusDistance: $radiusDistance)';
 }
 
 

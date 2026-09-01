@@ -26,16 +26,21 @@ $PrecioCopyWith<Precio> get copyWith => _$PrecioCopyWithImpl<Precio>(this as Pre
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is Precio&&(identical(other.precio, precio) || other.precio == precio)&&(identical(other.tipoPrecio, tipoPrecio) || other.tipoPrecio == tipoPrecio));
+  final _this = this as Precio;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is Precio&&(identical(other.precio, _this.precio) || other.precio == _this.precio)&&(identical(other.tipoPrecio, _this.tipoPrecio) || other.tipoPrecio == _this.tipoPrecio));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,precio,tipoPrecio);
+int get hashCode {
+  final _this = this as Precio;
+  return Object.hash(runtimeType,_this.precio,_this.tipoPrecio);
+}
 
 @override
 String toString() {
-  return 'Precio(precio: $precio, tipoPrecio: $tipoPrecio)';
+  final _this = this as Precio;
+  return 'Precio(precio: ${_this.precio}, tipoPrecio: ${_this.tipoPrecio})';
 }
 
 
@@ -224,16 +229,18 @@ _$PrecioCopyWith<_Precio> get copyWith => __$PrecioCopyWithImpl<_Precio>(this, _
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Precio&&(identical(other.precio, precio) || other.precio == precio)&&(identical(other.tipoPrecio, tipoPrecio) || other.tipoPrecio == tipoPrecio));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _Precio&&(identical(other.precio, precio) || other.precio == precio)&&(identical(other.tipoPrecio, tipoPrecio) || other.tipoPrecio == tipoPrecio));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,precio,tipoPrecio);
+int get hashCode {
+    return Object.hash(runtimeType,precio,tipoPrecio);
+}
 
 @override
 String toString() {
-  return 'Precio(precio: $precio, tipoPrecio: $tipoPrecio)';
+    return 'Precio(precio: $precio, tipoPrecio: $tipoPrecio)';
 }
 
 

@@ -29,16 +29,21 @@ $ClienteContactoDTOCopyWith<ClienteContactoDTO> get copyWith => _$ClienteContact
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ClienteContactoDTO&&(identical(other.clienteId, clienteId) || other.clienteId == clienteId)&&(identical(other.contactoId, contactoId) || other.contactoId == contactoId)&&(identical(other.observaciones, observaciones) || other.observaciones == observaciones)&&(identical(other.nombre, nombre) || other.nombre == nombre)&&(identical(other.apellido1, apellido1) || other.apellido1 == apellido1)&&(identical(other.apellido2, apellido2) || other.apellido2 == apellido2)&&(identical(other.telefono1, telefono1) || other.telefono1 == telefono1)&&(identical(other.telefono2, telefono2) || other.telefono2 == telefono2)&&(identical(other.email, email) || other.email == email)&&(identical(other.lastUpdated, lastUpdated) || other.lastUpdated == lastUpdated)&&(identical(other.deleted, deleted) || other.deleted == deleted));
+  final _this = this as ClienteContactoDTO;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ClienteContactoDTO&&(identical(other.clienteId, _this.clienteId) || other.clienteId == _this.clienteId)&&(identical(other.contactoId, _this.contactoId) || other.contactoId == _this.contactoId)&&(identical(other.observaciones, _this.observaciones) || other.observaciones == _this.observaciones)&&(identical(other.nombre, _this.nombre) || other.nombre == _this.nombre)&&(identical(other.apellido1, _this.apellido1) || other.apellido1 == _this.apellido1)&&(identical(other.apellido2, _this.apellido2) || other.apellido2 == _this.apellido2)&&(identical(other.telefono1, _this.telefono1) || other.telefono1 == _this.telefono1)&&(identical(other.telefono2, _this.telefono2) || other.telefono2 == _this.telefono2)&&(identical(other.email, _this.email) || other.email == _this.email)&&(identical(other.lastUpdated, _this.lastUpdated) || other.lastUpdated == _this.lastUpdated)&&(identical(other.deleted, _this.deleted) || other.deleted == _this.deleted));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,clienteId,contactoId,observaciones,nombre,apellido1,apellido2,telefono1,telefono2,email,lastUpdated,deleted);
+int get hashCode {
+  final _this = this as ClienteContactoDTO;
+  return Object.hash(runtimeType,_this.clienteId,_this.contactoId,_this.observaciones,_this.nombre,_this.apellido1,_this.apellido2,_this.telefono1,_this.telefono2,_this.email,_this.lastUpdated,_this.deleted);
+}
 
 @override
 String toString() {
-  return 'ClienteContactoDTO(clienteId: $clienteId, contactoId: $contactoId, observaciones: $observaciones, nombre: $nombre, apellido1: $apellido1, apellido2: $apellido2, telefono1: $telefono1, telefono2: $telefono2, email: $email, lastUpdated: $lastUpdated, deleted: $deleted)';
+  final _this = this as ClienteContactoDTO;
+  return 'ClienteContactoDTO(clienteId: ${_this.clienteId}, contactoId: ${_this.contactoId}, observaciones: ${_this.observaciones}, nombre: ${_this.nombre}, apellido1: ${_this.apellido1}, apellido2: ${_this.apellido2}, telefono1: ${_this.telefono1}, telefono2: ${_this.telefono2}, email: ${_this.email}, lastUpdated: ${_this.lastUpdated}, deleted: ${_this.deleted})';
 }
 
 
@@ -248,16 +253,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ClienteContactoDTO&&(identical(other.clienteId, clienteId) || other.clienteId == clienteId)&&(identical(other.contactoId, contactoId) || other.contactoId == contactoId)&&(identical(other.observaciones, observaciones) || other.observaciones == observaciones)&&(identical(other.nombre, nombre) || other.nombre == nombre)&&(identical(other.apellido1, apellido1) || other.apellido1 == apellido1)&&(identical(other.apellido2, apellido2) || other.apellido2 == apellido2)&&(identical(other.telefono1, telefono1) || other.telefono1 == telefono1)&&(identical(other.telefono2, telefono2) || other.telefono2 == telefono2)&&(identical(other.email, email) || other.email == email)&&(identical(other.lastUpdated, lastUpdated) || other.lastUpdated == lastUpdated)&&(identical(other.deleted, deleted) || other.deleted == deleted));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _ClienteContactoDTO&&(identical(other.clienteId, clienteId) || other.clienteId == clienteId)&&(identical(other.contactoId, contactoId) || other.contactoId == contactoId)&&(identical(other.observaciones, observaciones) || other.observaciones == observaciones)&&(identical(other.nombre, nombre) || other.nombre == nombre)&&(identical(other.apellido1, apellido1) || other.apellido1 == apellido1)&&(identical(other.apellido2, apellido2) || other.apellido2 == apellido2)&&(identical(other.telefono1, telefono1) || other.telefono1 == telefono1)&&(identical(other.telefono2, telefono2) || other.telefono2 == telefono2)&&(identical(other.email, email) || other.email == email)&&(identical(other.lastUpdated, lastUpdated) || other.lastUpdated == lastUpdated)&&(identical(other.deleted, deleted) || other.deleted == deleted));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,clienteId,contactoId,observaciones,nombre,apellido1,apellido2,telefono1,telefono2,email,lastUpdated,deleted);
+int get hashCode {
+    return Object.hash(runtimeType,clienteId,contactoId,observaciones,nombre,apellido1,apellido2,telefono1,telefono2,email,lastUpdated,deleted);
+}
 
 @override
 String toString() {
-  return 'ClienteContactoDTO(clienteId: $clienteId, contactoId: $contactoId, observaciones: $observaciones, nombre: $nombre, apellido1: $apellido1, apellido2: $apellido2, telefono1: $telefono1, telefono2: $telefono2, email: $email, lastUpdated: $lastUpdated, deleted: $deleted)';
+    return 'ClienteContactoDTO(clienteId: $clienteId, contactoId: $contactoId, observaciones: $observaciones, nombre: $nombre, apellido1: $apellido1, apellido2: $apellido2, telefono1: $telefono1, telefono2: $telefono2, email: $email, lastUpdated: $lastUpdated, deleted: $deleted)';
 }
 
 

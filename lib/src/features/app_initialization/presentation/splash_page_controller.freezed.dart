@@ -20,14 +20,14 @@ mixin _$SplashControllerState implements DiagnosticableTreeMixin {
 
 @override
 void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-  properties
+    properties
     ..add(DiagnosticsProperty('type', 'SplashControllerState'))
     ;
 }
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is SplashControllerState);
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is SplashControllerState);
 }
 
 
@@ -36,7 +36,7 @@ int get hashCode => runtimeType.hashCode;
 
 @override
 String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
-  return 'SplashControllerState()';
+    return 'SplashControllerState()';
 }
 
 
@@ -227,23 +227,25 @@ _$downloadDatabaseCopyWith<_downloadDatabase> get copyWith => __$downloadDatabas
 
 @override
 void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-  properties
+    properties
     ..add(DiagnosticsProperty('type', 'SplashControllerState.downloadDatabase'))
     ..add(DiagnosticsProperty('lastScehmaVersion', lastScehmaVersion))..add(DiagnosticsProperty('newScehmaVersion', newScehmaVersion));
 }
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _downloadDatabase&&(identical(other.lastScehmaVersion, lastScehmaVersion) || other.lastScehmaVersion == lastScehmaVersion)&&(identical(other.newScehmaVersion, newScehmaVersion) || other.newScehmaVersion == newScehmaVersion));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _downloadDatabase&&(identical(other.lastScehmaVersion, lastScehmaVersion) || other.lastScehmaVersion == lastScehmaVersion)&&(identical(other.newScehmaVersion, newScehmaVersion) || other.newScehmaVersion == newScehmaVersion));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,lastScehmaVersion,newScehmaVersion);
+int get hashCode {
+    return Object.hash(runtimeType,lastScehmaVersion,newScehmaVersion);
+}
 
 @override
 String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
-  return 'SplashControllerState.downloadDatabase(lastScehmaVersion: $lastScehmaVersion, newScehmaVersion: $newScehmaVersion)';
+    return 'SplashControllerState.downloadDatabase(lastScehmaVersion: $lastScehmaVersion, newScehmaVersion: $newScehmaVersion)';
 }
 
 
@@ -295,14 +297,14 @@ class _loading extends SplashControllerState with DiagnosticableTreeMixin {
 
 @override
 void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-  properties
+    properties
     ..add(DiagnosticsProperty('type', 'SplashControllerState.loading'))
     ;
 }
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _loading);
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _loading);
 }
 
 
@@ -311,7 +313,7 @@ int get hashCode => runtimeType.hashCode;
 
 @override
 String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
-  return 'SplashControllerState.loading()';
+    return 'SplashControllerState.loading()';
 }
 
 
@@ -333,14 +335,14 @@ class _initial extends SplashControllerState with DiagnosticableTreeMixin {
 
 @override
 void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-  properties
+    properties
     ..add(DiagnosticsProperty('type', 'SplashControllerState.initial'))
     ;
 }
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _initial);
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _initial);
 }
 
 
@@ -349,7 +351,7 @@ int get hashCode => runtimeType.hashCode;
 
 @override
 String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
-  return 'SplashControllerState.initial()';
+    return 'SplashControllerState.initial()';
 }
 
 
@@ -371,14 +373,14 @@ class _notDownloaded extends SplashControllerState with DiagnosticableTreeMixin 
 
 @override
 void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-  properties
+    properties
     ..add(DiagnosticsProperty('type', 'SplashControllerState.notDownloaded'))
     ;
 }
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _notDownloaded);
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _notDownloaded);
 }
 
 
@@ -387,7 +389,7 @@ int get hashCode => runtimeType.hashCode;
 
 @override
 String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
-  return 'SplashControllerState.notDownloaded()';
+    return 'SplashControllerState.notDownloaded()';
 }
 
 
@@ -415,23 +417,25 @@ _$errorCopyWith<_error> get copyWith => __$errorCopyWithImpl<_error>(this, _$ide
 
 @override
 void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-  properties
+    properties
     ..add(DiagnosticsProperty('type', 'SplashControllerState.error'))
     ..add(DiagnosticsProperty('error', error))..add(DiagnosticsProperty('stackTrace', stackTrace));
 }
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _error&&const DeepCollectionEquality().equals(other.error, error)&&(identical(other.stackTrace, stackTrace) || other.stackTrace == stackTrace));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _error&&const DeepCollectionEquality().equals(other.error, error)&&(identical(other.stackTrace, stackTrace) || other.stackTrace == stackTrace));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(error),stackTrace);
+int get hashCode {
+    return Object.hash(runtimeType,const DeepCollectionEquality().hash(error),stackTrace);
+}
 
 @override
 String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
-  return 'SplashControllerState.error(error: $error, stackTrace: $stackTrace)';
+    return 'SplashControllerState.error(error: $error, stackTrace: $stackTrace)';
 }
 
 
@@ -482,14 +486,14 @@ class _data extends SplashControllerState with DiagnosticableTreeMixin {
 
 @override
 void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-  properties
+    properties
     ..add(DiagnosticsProperty('type', 'SplashControllerState.data'))
     ;
 }
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _data);
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _data);
 }
 
 
@@ -498,7 +502,7 @@ int get hashCode => runtimeType.hashCode;
 
 @override
 String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
-  return 'SplashControllerState.data()';
+    return 'SplashControllerState.data()';
 }
 
 

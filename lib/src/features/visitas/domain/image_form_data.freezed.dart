@@ -26,16 +26,21 @@ $ImageFormDataCopyWith<ImageFormData> get copyWith => _$ImageFormDataCopyWithImp
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ImageFormData&&(identical(other.name, name) || other.name == name)&&(identical(other.company, company) || other.company == company)&&(identical(other.cargo, cargo) || other.cargo == cargo)&&const DeepCollectionEquality().equals(other.phoneList, phoneList)&&(identical(other.email, email) || other.email == email)&&(identical(other.streetAddress1, streetAddress1) || other.streetAddress1 == streetAddress1)&&(identical(other.zipCode, zipCode) || other.zipCode == zipCode)&&(identical(other.city, city) || other.city == city)&&(identical(other.state, state) || other.state == state)&&(identical(other.country, country) || other.country == country)&&(identical(other.referenceStreetAddress, referenceStreetAddress) || other.referenceStreetAddress == referenceStreetAddress));
+  final _this = this as ImageFormData;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ImageFormData&&(identical(other.name, _this.name) || other.name == _this.name)&&(identical(other.company, _this.company) || other.company == _this.company)&&(identical(other.cargo, _this.cargo) || other.cargo == _this.cargo)&&const DeepCollectionEquality().equals(other.phoneList, _this.phoneList)&&(identical(other.email, _this.email) || other.email == _this.email)&&(identical(other.streetAddress1, _this.streetAddress1) || other.streetAddress1 == _this.streetAddress1)&&(identical(other.zipCode, _this.zipCode) || other.zipCode == _this.zipCode)&&(identical(other.city, _this.city) || other.city == _this.city)&&(identical(other.state, _this.state) || other.state == _this.state)&&(identical(other.country, _this.country) || other.country == _this.country)&&(identical(other.referenceStreetAddress, _this.referenceStreetAddress) || other.referenceStreetAddress == _this.referenceStreetAddress));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,name,company,cargo,const DeepCollectionEquality().hash(phoneList),email,streetAddress1,zipCode,city,state,country,referenceStreetAddress);
+int get hashCode {
+  final _this = this as ImageFormData;
+  return Object.hash(runtimeType,_this.name,_this.company,_this.cargo,const DeepCollectionEquality().hash(_this.phoneList),_this.email,_this.streetAddress1,_this.zipCode,_this.city,_this.state,_this.country,_this.referenceStreetAddress);
+}
 
 @override
 String toString() {
-  return 'ImageFormData(name: $name, company: $company, cargo: $cargo, phoneList: $phoneList, email: $email, streetAddress1: $streetAddress1, zipCode: $zipCode, city: $city, state: $state, country: $country, referenceStreetAddress: $referenceStreetAddress)';
+  final _this = this as ImageFormData;
+  return 'ImageFormData(name: ${_this.name}, company: ${_this.company}, cargo: ${_this.cargo}, phoneList: ${_this.phoneList}, email: ${_this.email}, streetAddress1: ${_this.streetAddress1}, zipCode: ${_this.zipCode}, city: ${_this.city}, state: ${_this.state}, country: ${_this.country}, referenceStreetAddress: ${_this.referenceStreetAddress})';
 }
 
 
@@ -272,16 +277,18 @@ _$ImageFormDataCopyWith<_ImageFormData> get copyWith => __$ImageFormDataCopyWith
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ImageFormData&&(identical(other.name, name) || other.name == name)&&(identical(other.company, company) || other.company == company)&&(identical(other.cargo, cargo) || other.cargo == cargo)&&const DeepCollectionEquality().equals(other._phoneList, _phoneList)&&(identical(other.email, email) || other.email == email)&&(identical(other.streetAddress1, streetAddress1) || other.streetAddress1 == streetAddress1)&&(identical(other.zipCode, zipCode) || other.zipCode == zipCode)&&(identical(other.city, city) || other.city == city)&&(identical(other.state, state) || other.state == state)&&(identical(other.country, country) || other.country == country)&&(identical(other.referenceStreetAddress, referenceStreetAddress) || other.referenceStreetAddress == referenceStreetAddress));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _ImageFormData&&(identical(other.name, name) || other.name == name)&&(identical(other.company, company) || other.company == company)&&(identical(other.cargo, cargo) || other.cargo == cargo)&&const DeepCollectionEquality().equals(other.phoneList, _phoneList)&&(identical(other.email, email) || other.email == email)&&(identical(other.streetAddress1, streetAddress1) || other.streetAddress1 == streetAddress1)&&(identical(other.zipCode, zipCode) || other.zipCode == zipCode)&&(identical(other.city, city) || other.city == city)&&(identical(other.state, state) || other.state == state)&&(identical(other.country, country) || other.country == country)&&(identical(other.referenceStreetAddress, referenceStreetAddress) || other.referenceStreetAddress == referenceStreetAddress));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,name,company,cargo,const DeepCollectionEquality().hash(_phoneList),email,streetAddress1,zipCode,city,state,country,referenceStreetAddress);
+int get hashCode {
+    return Object.hash(runtimeType,name,company,cargo,const DeepCollectionEquality().hash(_phoneList),email,streetAddress1,zipCode,city,state,country,referenceStreetAddress);
+}
 
 @override
 String toString() {
-  return 'ImageFormData(name: $name, company: $company, cargo: $cargo, phoneList: $phoneList, email: $email, streetAddress1: $streetAddress1, zipCode: $zipCode, city: $city, state: $state, country: $country, referenceStreetAddress: $referenceStreetAddress)';
+    return 'ImageFormData(name: $name, company: $company, cargo: $cargo, phoneList: $phoneList, email: $email, streetAddress1: $streetAddress1, zipCode: $zipCode, city: $city, state: $state, country: $country, referenceStreetAddress: $referenceStreetAddress)';
 }
 
 

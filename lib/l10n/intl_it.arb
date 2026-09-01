@@ -468,5 +468,7 @@
   "active": "Attivo",
   "potential": "Potenziale",
   "filter": "Filtra",
-  "salesOrderSent": "Ordine inviato"
+  "salesOrderSent": "Ordine inviato",
+  "backorders": "Ordini in sospeso",
+  "buscarBackorders": "Cerca ordini in sospeso..."
 }

@@ -29,16 +29,21 @@ $ClienteRappelDTOCopyWith<ClienteRappelDTO> get copyWith => _$ClienteRappelDTOCo
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ClienteRappelDTO&&(identical(other.clienteId, clienteId) || other.clienteId == clienteId)&&(identical(other.rappelId, rappelId) || other.rappelId == rappelId)&&(identical(other.descripcion, descripcion) || other.descripcion == descripcion)&&(identical(other.fechaDesDe, fechaDesDe) || other.fechaDesDe == fechaDesDe)&&(identical(other.fechaHasta, fechaHasta) || other.fechaHasta == fechaHasta)&&(identical(other.nombreArchivo, nombreArchivo) || other.nombreArchivo == nombreArchivo)&&(identical(other.firmado, firmado) || other.firmado == firmado)&&(identical(other.lastUpdated, lastUpdated) || other.lastUpdated == lastUpdated)&&(identical(other.deleted, deleted) || other.deleted == deleted));
+  final _this = this as ClienteRappelDTO;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ClienteRappelDTO&&(identical(other.clienteId, _this.clienteId) || other.clienteId == _this.clienteId)&&(identical(other.rappelId, _this.rappelId) || other.rappelId == _this.rappelId)&&(identical(other.descripcion, _this.descripcion) || other.descripcion == _this.descripcion)&&(identical(other.fechaDesDe, _this.fechaDesDe) || other.fechaDesDe == _this.fechaDesDe)&&(identical(other.fechaHasta, _this.fechaHasta) || other.fechaHasta == _this.fechaHasta)&&(identical(other.nombreArchivo, _this.nombreArchivo) || other.nombreArchivo == _this.nombreArchivo)&&(identical(other.firmado, _this.firmado) || other.firmado == _this.firmado)&&(identical(other.lastUpdated, _this.lastUpdated) || other.lastUpdated == _this.lastUpdated)&&(identical(other.deleted, _this.deleted) || other.deleted == _this.deleted));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,clienteId,rappelId,descripcion,fechaDesDe,fechaHasta,nombreArchivo,firmado,lastUpdated,deleted);
+int get hashCode {
+  final _this = this as ClienteRappelDTO;
+  return Object.hash(runtimeType,_this.clienteId,_this.rappelId,_this.descripcion,_this.fechaDesDe,_this.fechaHasta,_this.nombreArchivo,_this.firmado,_this.lastUpdated,_this.deleted);
+}
 
 @override
 String toString() {
-  return 'ClienteRappelDTO(clienteId: $clienteId, rappelId: $rappelId, descripcion: $descripcion, fechaDesDe: $fechaDesDe, fechaHasta: $fechaHasta, nombreArchivo: $nombreArchivo, firmado: $firmado, lastUpdated: $lastUpdated, deleted: $deleted)';
+  final _this = this as ClienteRappelDTO;
+  return 'ClienteRappelDTO(clienteId: ${_this.clienteId}, rappelId: ${_this.rappelId}, descripcion: ${_this.descripcion}, fechaDesDe: ${_this.fechaDesDe}, fechaHasta: ${_this.fechaHasta}, nombreArchivo: ${_this.nombreArchivo}, firmado: ${_this.firmado}, lastUpdated: ${_this.lastUpdated}, deleted: ${_this.deleted})';
 }
 
 
@@ -244,16 +249,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ClienteRappelDTO&&(identical(other.clienteId, clienteId) || other.clienteId == clienteId)&&(identical(other.rappelId, rappelId) || other.rappelId == rappelId)&&(identical(other.descripcion, descripcion) || other.descripcion == descripcion)&&(identical(other.fechaDesDe, fechaDesDe) || other.fechaDesDe == fechaDesDe)&&(identical(other.fechaHasta, fechaHasta) || other.fechaHasta == fechaHasta)&&(identical(other.nombreArchivo, nombreArchivo) || other.nombreArchivo == nombreArchivo)&&(identical(other.firmado, firmado) || other.firmado == firmado)&&(identical(other.lastUpdated, lastUpdated) || other.lastUpdated == lastUpdated)&&(identical(other.deleted, deleted) || other.deleted == deleted));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _ClienteRappelDTO&&(identical(other.clienteId, clienteId) || other.clienteId == clienteId)&&(identical(other.rappelId, rappelId) || other.rappelId == rappelId)&&(identical(other.descripcion, descripcion) || other.descripcion == descripcion)&&(identical(other.fechaDesDe, fechaDesDe) || other.fechaDesDe == fechaDesDe)&&(identical(other.fechaHasta, fechaHasta) || other.fechaHasta == fechaHasta)&&(identical(other.nombreArchivo, nombreArchivo) || other.nombreArchivo == nombreArchivo)&&(identical(other.firmado, firmado) || other.firmado == firmado)&&(identical(other.lastUpdated, lastUpdated) || other.lastUpdated == lastUpdated)&&(identical(other.deleted, deleted) || other.deleted == deleted));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,clienteId,rappelId,descripcion,fechaDesDe,fechaHasta,nombreArchivo,firmado,lastUpdated,deleted);
+int get hashCode {
+    return Object.hash(runtimeType,clienteId,rappelId,descripcion,fechaDesDe,fechaHasta,nombreArchivo,firmado,lastUpdated,deleted);
+}
 
 @override
 String toString() {
-  return 'ClienteRappelDTO(clienteId: $clienteId, rappelId: $rappelId, descripcion: $descripcion, fechaDesDe: $fechaDesDe, fechaHasta: $fechaHasta, nombreArchivo: $nombreArchivo, firmado: $firmado, lastUpdated: $lastUpdated, deleted: $deleted)';
+    return 'ClienteRappelDTO(clienteId: $clienteId, rappelId: $rappelId, descripcion: $descripcion, fechaDesDe: $fechaDesDe, fechaHasta: $fechaHasta, nombreArchivo: $nombreArchivo, firmado: $firmado, lastUpdated: $lastUpdated, deleted: $deleted)';
 }
 
 

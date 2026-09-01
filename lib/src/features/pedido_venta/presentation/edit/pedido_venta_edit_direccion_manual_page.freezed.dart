@@ -26,16 +26,21 @@ $DireccionManualScreenDataCopyWith<DireccionManualScreenData> get copyWith => _$
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is DireccionManualScreenData&&const DeepCollectionEquality().equals(other.paises, paises)&&const DeepCollectionEquality().equals(other.provincias, provincias));
+  final _this = this as DireccionManualScreenData;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is DireccionManualScreenData&&const DeepCollectionEquality().equals(other.paises, _this.paises)&&const DeepCollectionEquality().equals(other.provincias, _this.provincias));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(paises),const DeepCollectionEquality().hash(provincias));
+int get hashCode {
+  final _this = this as DireccionManualScreenData;
+  return Object.hash(runtimeType,const DeepCollectionEquality().hash(_this.paises),const DeepCollectionEquality().hash(_this.provincias));
+}
 
 @override
 String toString() {
-  return 'DireccionManualScreenData(paises: $paises, provincias: $provincias)';
+  final _this = this as DireccionManualScreenData;
+  return 'DireccionManualScreenData(paises: ${_this.paises}, provincias: ${_this.provincias})';
 }
 
 
@@ -236,16 +241,18 @@ _$DireccionManualScreenDataCopyWith<_DireccionManualScreenData> get copyWith => 
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _DireccionManualScreenData&&const DeepCollectionEquality().equals(other._paises, _paises)&&const DeepCollectionEquality().equals(other._provincias, _provincias));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _DireccionManualScreenData&&const DeepCollectionEquality().equals(other.paises, _paises)&&const DeepCollectionEquality().equals(other.provincias, _provincias));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(_paises),const DeepCollectionEquality().hash(_provincias));
+int get hashCode {
+    return Object.hash(runtimeType,const DeepCollectionEquality().hash(_paises),const DeepCollectionEquality().hash(_provincias));
+}
 
 @override
 String toString() {
-  return 'DireccionManualScreenData(paises: $paises, provincias: $provincias)';
+    return 'DireccionManualScreenData(paises: $paises, provincias: $provincias)';
 }
 
 

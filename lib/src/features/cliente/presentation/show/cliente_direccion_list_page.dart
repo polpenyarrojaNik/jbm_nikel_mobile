@@ -93,6 +93,22 @@ class _ClienteDireccionesListPageState
                           impId: clienteDireccionList[i].direccionImpGuid,
                           clientePais: widget.paisCliente,
                         ),
+                        onTap: () => context.router.push(
+                          ClienteVentasMesRoute(
+                            clienteId: widget.clienteId,
+                            nombreCliente: widget.nombreCliente,
+                            applyDireccionFilter: true,
+                            direccionId: clienteDireccionList[i].direccionId,
+                            nombreDireccion: clienteDireccionList[i].nombre,
+                            addressText: formatCustomerAddress(
+                              clienteDireccionList[i].direccion1,
+                              clienteDireccionList[i].codigoPostal,
+                              clienteDireccionList[i].poblacion,
+                              clienteDireccionList[i].provincia,
+                              clienteDireccionList[i].pais,
+                            ),
+                          ),
+                        ),
                       ),
                       separatorBuilder: (context, i) => const Divider(),
                     ),
@@ -129,87 +145,96 @@ class ClienteDireccionTile extends StatelessWidget {
     required this.clienteDireccion,
     required this.clienteImpParam,
     this.isFromPedido = false,
+    required this.onTap,
   });
 
   final ClienteDireccion clienteDireccion;
   final ClienteImpParam clienteImpParam;
   final bool isFromPedido;
+  final Function() onTap;
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: kPaddingList,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              SizedBox(
-                width: 50,
-                child: (clienteDireccion.direccionId != null)
-                    ? Text(
-                        (clienteDireccion.direccionId!.length > 3)
-                            ? 'PRV'
-                            : clienteDireccion.direccionId!,
-                      )
-                    : null,
-              ),
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    if (clienteDireccion.nombre != null)
-                      Text(
-                        clienteDireccion.nombre!,
-                        style: Theme.of(context).textTheme.titleSmall,
-                      ),
-                    if (clienteDireccion.nombre != null) const Gap(4),
-                    if (clienteDireccion.direccion1 != null)
-                      Text(
-                        formatCustomerAddress(
-                          clienteDireccion.direccion1,
-                          clienteDireccion.codigoPostal,
-                          clienteDireccion.poblacion,
-                          clienteDireccion.provincia,
-                          clienteDireccion.pais,
-                        ),
-                        style: Theme.of(context).textTheme.bodySmall!,
-                      ),
-                    if ((!clienteDireccion.enviada && clienteDireccion.deleted))
-                      Row(
-                        children: [
-                          Icon(
-                            Icons.error,
-                            color: Theme.of(context).colorScheme.error,
-                            size: 14,
-                          ),
-                          const Gap(4),
-                          Flexible(
-                            child: Text(
-                              S
-                                  .of(context)
-                                  .cliente_show_clienteDireccion_hayCambiosDeEnviar,
-                              style: Theme.of(context).textTheme.bodyMedium
-                                  ?.copyWith(
-                                    color: Theme.of(context).colorScheme.error,
-                                  ),
-                            ),
-                          ),
-                        ],
-                      ),
-
-                    if (clienteDireccion.tratada && clienteImpParam.id != null)
-                      _CambiosPendientesDeTramitarListView(clienteImpParam),
-                  ],
+    return GestureDetector(
+      onTap: onTap,
+      child: Padding(
+        padding: kPaddingList,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                SizedBox(
+                  width: 50,
+                  child: (clienteDireccion.direccionId != null)
+                      ? Text(
+                          (clienteDireccion.direccionId!.length > 3)
+                              ? 'PRV'
+                              : clienteDireccion.direccionId!,
+                        )
+                      : null,
                 ),
-              ),
-              if (!isFromPedido &&
-                  !(clienteDireccion.enviada && !clienteDireccion.tratada))
-                _ClienteDireccionActionButtons(clienteImpParam),
-            ],
-          ),
-        ],
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      if (clienteDireccion.nombre != null)
+                        Text(
+                          clienteDireccion.nombre!,
+                          style: Theme.of(context).textTheme.titleSmall,
+                        ),
+                      if (clienteDireccion.nombre != null) const Gap(4),
+                      if (clienteDireccion.direccion1 != null)
+                        Text(
+                          formatCustomerAddress(
+                            clienteDireccion.direccion1,
+                            clienteDireccion.codigoPostal,
+                            clienteDireccion.poblacion,
+                            clienteDireccion.provincia,
+                            clienteDireccion.pais,
+                          ),
+                          style: Theme.of(context).textTheme.bodySmall!,
+                        ),
+                      if ((!clienteDireccion.enviada &&
+                          clienteDireccion.deleted))
+                        Row(
+                          children: [
+                            Icon(
+                              Icons.error,
+                              color: Theme.of(context).colorScheme.error,
+                              size: 14,
+                            ),
+                            const Gap(4),
+                            Flexible(
+                              child: Text(
+                                S
+                                    .of(context)
+                                    .cliente_show_clienteDireccion_hayCambiosDeEnviar,
+                                style: Theme.of(context).textTheme.bodyMedium
+                                    ?.copyWith(
+                                      color: Theme.of(context)
+                                          .colorScheme
+                                          .error,
+                                    ),
+                              ),
+                            ),
+                          ],
+                        ),
+
+                      if (clienteDireccion.tratada &&
+                          clienteImpParam.id != null)
+                        _CambiosPendientesDeTramitarListView(clienteImpParam),
+                    ],
+                  ),
+                ),
+                if (!isFromPedido &&
+                    !(clienteDireccion.enviada && !clienteDireccion.tratada))
+                  _ClienteDireccionActionButtons(clienteImpParam),
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }

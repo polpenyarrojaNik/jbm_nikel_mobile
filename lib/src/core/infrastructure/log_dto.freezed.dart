@@ -29,16 +29,21 @@ $LogDTOCopyWith<LogDTO> get copyWith => _$LogDTOCopyWithImpl<LogDTO>(this as Log
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is LogDTO&&(identical(other.id, id) || other.id == id)&&(identical(other.level, level) || other.level == level)&&(identical(other.message, message) || other.message == message)&&(identical(other.error, error) || other.error == error)&&(identical(other.appId, appId) || other.appId == appId)&&(identical(other.appBuild, appBuild) || other.appBuild == appBuild)&&(identical(other.appBuildName, appBuildName) || other.appBuildName == appBuildName)&&(identical(other.device, device) || other.device == device)&&(identical(other.userId, userId) || other.userId == userId)&&(identical(other.userEmail, userEmail) || other.userEmail == userEmail)&&(identical(other.userName, userName) || other.userName == userName)&&(identical(other.timestamp, timestamp) || other.timestamp == timestamp));
+  final _this = this as LogDTO;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is LogDTO&&(identical(other.id, _this.id) || other.id == _this.id)&&(identical(other.level, _this.level) || other.level == _this.level)&&(identical(other.message, _this.message) || other.message == _this.message)&&(identical(other.error, _this.error) || other.error == _this.error)&&(identical(other.appId, _this.appId) || other.appId == _this.appId)&&(identical(other.appBuild, _this.appBuild) || other.appBuild == _this.appBuild)&&(identical(other.appBuildName, _this.appBuildName) || other.appBuildName == _this.appBuildName)&&(identical(other.device, _this.device) || other.device == _this.device)&&(identical(other.userId, _this.userId) || other.userId == _this.userId)&&(identical(other.userEmail, _this.userEmail) || other.userEmail == _this.userEmail)&&(identical(other.userName, _this.userName) || other.userName == _this.userName)&&(identical(other.timestamp, _this.timestamp) || other.timestamp == _this.timestamp));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,id,level,message,error,appId,appBuild,appBuildName,device,userId,userEmail,userName,timestamp);
+int get hashCode {
+  final _this = this as LogDTO;
+  return Object.hash(runtimeType,_this.id,_this.level,_this.message,_this.error,_this.appId,_this.appBuild,_this.appBuildName,_this.device,_this.userId,_this.userEmail,_this.userName,_this.timestamp);
+}
 
 @override
 String toString() {
-  return 'LogDTO(id: $id, level: $level, message: $message, error: $error, appId: $appId, appBuild: $appBuild, appBuildName: $appBuildName, device: $device, userId: $userId, userEmail: $userEmail, userName: $userName, timestamp: $timestamp)';
+  final _this = this as LogDTO;
+  return 'LogDTO(id: ${_this.id}, level: ${_this.level}, message: ${_this.message}, error: ${_this.error}, appId: ${_this.appId}, appBuild: ${_this.appBuild}, appBuildName: ${_this.appBuildName}, device: ${_this.device}, userId: ${_this.userId}, userEmail: ${_this.userEmail}, userName: ${_this.userName}, timestamp: ${_this.timestamp})';
 }
 
 
@@ -250,16 +255,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _LogDTO&&(identical(other.id, id) || other.id == id)&&(identical(other.level, level) || other.level == level)&&(identical(other.message, message) || other.message == message)&&(identical(other.error, error) || other.error == error)&&(identical(other.appId, appId) || other.appId == appId)&&(identical(other.appBuild, appBuild) || other.appBuild == appBuild)&&(identical(other.appBuildName, appBuildName) || other.appBuildName == appBuildName)&&(identical(other.device, device) || other.device == device)&&(identical(other.userId, userId) || other.userId == userId)&&(identical(other.userEmail, userEmail) || other.userEmail == userEmail)&&(identical(other.userName, userName) || other.userName == userName)&&(identical(other.timestamp, timestamp) || other.timestamp == timestamp));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _LogDTO&&(identical(other.id, id) || other.id == id)&&(identical(other.level, level) || other.level == level)&&(identical(other.message, message) || other.message == message)&&(identical(other.error, error) || other.error == error)&&(identical(other.appId, appId) || other.appId == appId)&&(identical(other.appBuild, appBuild) || other.appBuild == appBuild)&&(identical(other.appBuildName, appBuildName) || other.appBuildName == appBuildName)&&(identical(other.device, device) || other.device == device)&&(identical(other.userId, userId) || other.userId == userId)&&(identical(other.userEmail, userEmail) || other.userEmail == userEmail)&&(identical(other.userName, userName) || other.userName == userName)&&(identical(other.timestamp, timestamp) || other.timestamp == timestamp));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,id,level,message,error,appId,appBuild,appBuildName,device,userId,userEmail,userName,timestamp);
+int get hashCode {
+    return Object.hash(runtimeType,id,level,message,error,appId,appBuild,appBuildName,device,userId,userEmail,userName,timestamp);
+}
 
 @override
 String toString() {
-  return 'LogDTO(id: $id, level: $level, message: $message, error: $error, appId: $appId, appBuild: $appBuild, appBuildName: $appBuildName, device: $device, userId: $userId, userEmail: $userEmail, userName: $userName, timestamp: $timestamp)';
+    return 'LogDTO(id: $id, level: $level, message: $message, error: $error, appId: $appId, appBuild: $appBuild, appBuildName: $appBuildName, device: $device, userId: $userId, userEmail: $userEmail, userName: $userName, timestamp: $timestamp)';
 }
 
 

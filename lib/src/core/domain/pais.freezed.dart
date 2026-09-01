@@ -26,16 +26,21 @@ $PaisCopyWith<Pais> get copyWith => _$PaisCopyWithImpl<Pais>(this as Pais, _$ide
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is Pais&&(identical(other.id, id) || other.id == id)&&(identical(other.isoCode, isoCode) || other.isoCode == isoCode)&&(identical(other.descripcion, descripcion) || other.descripcion == descripcion)&&(identical(other.lastUpdate, lastUpdate) || other.lastUpdate == lastUpdate)&&(identical(other.deleted, deleted) || other.deleted == deleted));
+  final _this = this as Pais;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is Pais&&(identical(other.id, _this.id) || other.id == _this.id)&&(identical(other.isoCode, _this.isoCode) || other.isoCode == _this.isoCode)&&(identical(other.descripcion, _this.descripcion) || other.descripcion == _this.descripcion)&&(identical(other.lastUpdate, _this.lastUpdate) || other.lastUpdate == _this.lastUpdate)&&(identical(other.deleted, _this.deleted) || other.deleted == _this.deleted));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,id,isoCode,descripcion,lastUpdate,deleted);
+int get hashCode {
+  final _this = this as Pais;
+  return Object.hash(runtimeType,_this.id,_this.isoCode,_this.descripcion,_this.lastUpdate,_this.deleted);
+}
 
 @override
 String toString() {
-  return 'Pais(id: $id, isoCode: $isoCode, descripcion: $descripcion, lastUpdate: $lastUpdate, deleted: $deleted)';
+  final _this = this as Pais;
+  return 'Pais(id: ${_this.id}, isoCode: ${_this.isoCode}, descripcion: ${_this.descripcion}, lastUpdate: ${_this.lastUpdate}, deleted: ${_this.deleted})';
 }
 
 
@@ -230,16 +235,18 @@ _$PaisCopyWith<_Pais> get copyWith => __$PaisCopyWithImpl<_Pais>(this, _$identit
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Pais&&(identical(other.id, id) || other.id == id)&&(identical(other.isoCode, isoCode) || other.isoCode == isoCode)&&(identical(other.descripcion, descripcion) || other.descripcion == descripcion)&&(identical(other.lastUpdate, lastUpdate) || other.lastUpdate == lastUpdate)&&(identical(other.deleted, deleted) || other.deleted == deleted));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _Pais&&(identical(other.id, id) || other.id == id)&&(identical(other.isoCode, isoCode) || other.isoCode == isoCode)&&(identical(other.descripcion, descripcion) || other.descripcion == descripcion)&&(identical(other.lastUpdate, lastUpdate) || other.lastUpdate == lastUpdate)&&(identical(other.deleted, deleted) || other.deleted == deleted));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,id,isoCode,descripcion,lastUpdate,deleted);
+int get hashCode {
+    return Object.hash(runtimeType,id,isoCode,descripcion,lastUpdate,deleted);
+}
 
 @override
 String toString() {
-  return 'Pais(id: $id, isoCode: $isoCode, descripcion: $descripcion, lastUpdate: $lastUpdate, deleted: $deleted)';
+    return 'Pais(id: $id, isoCode: $isoCode, descripcion: $descripcion, lastUpdate: $lastUpdate, deleted: $deleted)';
 }
 
 

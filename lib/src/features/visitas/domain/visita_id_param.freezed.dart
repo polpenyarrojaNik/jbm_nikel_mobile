@@ -26,16 +26,21 @@ $VisitaIdIsLocalParamCopyWith<VisitaIdIsLocalParam> get copyWith => _$VisitaIdIs
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is VisitaIdIsLocalParam&&(identical(other.id, id) || other.id == id)&&(identical(other.isLocal, isLocal) || other.isLocal == isLocal)&&(identical(other.createVisitaFromClienteId, createVisitaFromClienteId) || other.createVisitaFromClienteId == createVisitaFromClienteId));
+  final _this = this as VisitaIdIsLocalParam;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is VisitaIdIsLocalParam&&(identical(other.id, _this.id) || other.id == _this.id)&&(identical(other.isLocal, _this.isLocal) || other.isLocal == _this.isLocal)&&(identical(other.createVisitaFromClienteId, _this.createVisitaFromClienteId) || other.createVisitaFromClienteId == _this.createVisitaFromClienteId));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,id,isLocal,createVisitaFromClienteId);
+int get hashCode {
+  final _this = this as VisitaIdIsLocalParam;
+  return Object.hash(runtimeType,_this.id,_this.isLocal,_this.createVisitaFromClienteId);
+}
 
 @override
 String toString() {
-  return 'VisitaIdIsLocalParam(id: $id, isLocal: $isLocal, createVisitaFromClienteId: $createVisitaFromClienteId)';
+  final _this = this as VisitaIdIsLocalParam;
+  return 'VisitaIdIsLocalParam(id: ${_this.id}, isLocal: ${_this.isLocal}, createVisitaFromClienteId: ${_this.createVisitaFromClienteId})';
 }
 
 
@@ -226,16 +231,18 @@ _$VisitaIdIsLocalParamCopyWith<_VisitaIdIsLocalParam> get copyWith => __$VisitaI
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _VisitaIdIsLocalParam&&(identical(other.id, id) || other.id == id)&&(identical(other.isLocal, isLocal) || other.isLocal == isLocal)&&(identical(other.createVisitaFromClienteId, createVisitaFromClienteId) || other.createVisitaFromClienteId == createVisitaFromClienteId));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _VisitaIdIsLocalParam&&(identical(other.id, id) || other.id == id)&&(identical(other.isLocal, isLocal) || other.isLocal == isLocal)&&(identical(other.createVisitaFromClienteId, createVisitaFromClienteId) || other.createVisitaFromClienteId == createVisitaFromClienteId));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,id,isLocal,createVisitaFromClienteId);
+int get hashCode {
+    return Object.hash(runtimeType,id,isLocal,createVisitaFromClienteId);
+}
 
 @override
 String toString() {
-  return 'VisitaIdIsLocalParam(id: $id, isLocal: $isLocal, createVisitaFromClienteId: $createVisitaFromClienteId)';
+    return 'VisitaIdIsLocalParam(id: $id, isLocal: $isLocal, createVisitaFromClienteId: $createVisitaFromClienteId)';
 }
 
 

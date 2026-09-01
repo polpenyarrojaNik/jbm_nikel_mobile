@@ -26,16 +26,21 @@ $ClienteRappelCopyWith<ClienteRappel> get copyWith => _$ClienteRappelCopyWithImp
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ClienteRappel&&(identical(other.clienteId, clienteId) || other.clienteId == clienteId)&&(identical(other.rappelId, rappelId) || other.rappelId == rappelId)&&(identical(other.descripcion, descripcion) || other.descripcion == descripcion)&&(identical(other.fechaDesDe, fechaDesDe) || other.fechaDesDe == fechaDesDe)&&(identical(other.fechaHasta, fechaHasta) || other.fechaHasta == fechaHasta)&&(identical(other.nombreArchivo, nombreArchivo) || other.nombreArchivo == nombreArchivo)&&(identical(other.firmado, firmado) || other.firmado == firmado)&&(identical(other.lastUpdated, lastUpdated) || other.lastUpdated == lastUpdated)&&(identical(other.deleted, deleted) || other.deleted == deleted));
+  final _this = this as ClienteRappel;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ClienteRappel&&(identical(other.clienteId, _this.clienteId) || other.clienteId == _this.clienteId)&&(identical(other.rappelId, _this.rappelId) || other.rappelId == _this.rappelId)&&(identical(other.descripcion, _this.descripcion) || other.descripcion == _this.descripcion)&&(identical(other.fechaDesDe, _this.fechaDesDe) || other.fechaDesDe == _this.fechaDesDe)&&(identical(other.fechaHasta, _this.fechaHasta) || other.fechaHasta == _this.fechaHasta)&&(identical(other.nombreArchivo, _this.nombreArchivo) || other.nombreArchivo == _this.nombreArchivo)&&(identical(other.firmado, _this.firmado) || other.firmado == _this.firmado)&&(identical(other.lastUpdated, _this.lastUpdated) || other.lastUpdated == _this.lastUpdated)&&(identical(other.deleted, _this.deleted) || other.deleted == _this.deleted));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,clienteId,rappelId,descripcion,fechaDesDe,fechaHasta,nombreArchivo,firmado,lastUpdated,deleted);
+int get hashCode {
+  final _this = this as ClienteRappel;
+  return Object.hash(runtimeType,_this.clienteId,_this.rappelId,_this.descripcion,_this.fechaDesDe,_this.fechaHasta,_this.nombreArchivo,_this.firmado,_this.lastUpdated,_this.deleted);
+}
 
 @override
 String toString() {
-  return 'ClienteRappel(clienteId: $clienteId, rappelId: $rappelId, descripcion: $descripcion, fechaDesDe: $fechaDesDe, fechaHasta: $fechaHasta, nombreArchivo: $nombreArchivo, firmado: $firmado, lastUpdated: $lastUpdated, deleted: $deleted)';
+  final _this = this as ClienteRappel;
+  return 'ClienteRappel(clienteId: ${_this.clienteId}, rappelId: ${_this.rappelId}, descripcion: ${_this.descripcion}, fechaDesDe: ${_this.fechaDesDe}, fechaHasta: ${_this.fechaHasta}, nombreArchivo: ${_this.nombreArchivo}, firmado: ${_this.firmado}, lastUpdated: ${_this.lastUpdated}, deleted: ${_this.deleted})';
 }
 
 
@@ -238,16 +243,18 @@ _$ClienteRappelCopyWith<_ClienteRappel> get copyWith => __$ClienteRappelCopyWith
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ClienteRappel&&(identical(other.clienteId, clienteId) || other.clienteId == clienteId)&&(identical(other.rappelId, rappelId) || other.rappelId == rappelId)&&(identical(other.descripcion, descripcion) || other.descripcion == descripcion)&&(identical(other.fechaDesDe, fechaDesDe) || other.fechaDesDe == fechaDesDe)&&(identical(other.fechaHasta, fechaHasta) || other.fechaHasta == fechaHasta)&&(identical(other.nombreArchivo, nombreArchivo) || other.nombreArchivo == nombreArchivo)&&(identical(other.firmado, firmado) || other.firmado == firmado)&&(identical(other.lastUpdated, lastUpdated) || other.lastUpdated == lastUpdated)&&(identical(other.deleted, deleted) || other.deleted == deleted));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _ClienteRappel&&(identical(other.clienteId, clienteId) || other.clienteId == clienteId)&&(identical(other.rappelId, rappelId) || other.rappelId == rappelId)&&(identical(other.descripcion, descripcion) || other.descripcion == descripcion)&&(identical(other.fechaDesDe, fechaDesDe) || other.fechaDesDe == fechaDesDe)&&(identical(other.fechaHasta, fechaHasta) || other.fechaHasta == fechaHasta)&&(identical(other.nombreArchivo, nombreArchivo) || other.nombreArchivo == nombreArchivo)&&(identical(other.firmado, firmado) || other.firmado == firmado)&&(identical(other.lastUpdated, lastUpdated) || other.lastUpdated == lastUpdated)&&(identical(other.deleted, deleted) || other.deleted == deleted));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,clienteId,rappelId,descripcion,fechaDesDe,fechaHasta,nombreArchivo,firmado,lastUpdated,deleted);
+int get hashCode {
+    return Object.hash(runtimeType,clienteId,rappelId,descripcion,fechaDesDe,fechaHasta,nombreArchivo,firmado,lastUpdated,deleted);
+}
 
 @override
 String toString() {
-  return 'ClienteRappel(clienteId: $clienteId, rappelId: $rappelId, descripcion: $descripcion, fechaDesDe: $fechaDesDe, fechaHasta: $fechaHasta, nombreArchivo: $nombreArchivo, firmado: $firmado, lastUpdated: $lastUpdated, deleted: $deleted)';
+    return 'ClienteRappel(clienteId: $clienteId, rappelId: $rappelId, descripcion: $descripcion, fechaDesDe: $fechaDesDe, fechaHasta: $fechaHasta, nombreArchivo: $nombreArchivo, firmado: $firmado, lastUpdated: $lastUpdated, deleted: $deleted)';
 }
 
 

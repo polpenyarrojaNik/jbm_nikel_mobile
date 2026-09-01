@@ -26,16 +26,21 @@ $VisitEditScreenDataCopyWith<VisitEditScreenData> get copyWith => _$VisitEditScr
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is VisitEditScreenData&&(identical(other.visita, visita) || other.visita == visita)&&const DeepCollectionEquality().equals(other.paises, paises)&&const DeepCollectionEquality().equals(other.provincias, provincias)&&(identical(other.createVisitaFromCliente, createVisitaFromCliente) || other.createVisitaFromCliente == createVisitaFromCliente));
+  final _this = this as VisitEditScreenData;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is VisitEditScreenData&&(identical(other.visita, _this.visita) || other.visita == _this.visita)&&const DeepCollectionEquality().equals(other.paises, _this.paises)&&const DeepCollectionEquality().equals(other.provincias, _this.provincias)&&(identical(other.createVisitaFromCliente, _this.createVisitaFromCliente) || other.createVisitaFromCliente == _this.createVisitaFromCliente));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,visita,const DeepCollectionEquality().hash(paises),const DeepCollectionEquality().hash(provincias),createVisitaFromCliente);
+int get hashCode {
+  final _this = this as VisitEditScreenData;
+  return Object.hash(runtimeType,_this.visita,const DeepCollectionEquality().hash(_this.paises),const DeepCollectionEquality().hash(_this.provincias),_this.createVisitaFromCliente);
+}
 
 @override
 String toString() {
-  return 'VisitEditScreenData(visita: $visita, paises: $paises, provincias: $provincias, createVisitaFromCliente: $createVisitaFromCliente)';
+  final _this = this as VisitEditScreenData;
+  return 'VisitEditScreenData(visita: ${_this.visita}, paises: ${_this.paises}, provincias: ${_this.provincias}, createVisitaFromCliente: ${_this.createVisitaFromCliente})';
 }
 
 
@@ -264,16 +269,18 @@ _$VisitEditScreenDataCopyWith<_VisitEditScreenData> get copyWith => __$VisitEdit
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _VisitEditScreenData&&(identical(other.visita, visita) || other.visita == visita)&&const DeepCollectionEquality().equals(other._paises, _paises)&&const DeepCollectionEquality().equals(other._provincias, _provincias)&&(identical(other.createVisitaFromCliente, createVisitaFromCliente) || other.createVisitaFromCliente == createVisitaFromCliente));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _VisitEditScreenData&&(identical(other.visita, visita) || other.visita == visita)&&const DeepCollectionEquality().equals(other.paises, _paises)&&const DeepCollectionEquality().equals(other.provincias, _provincias)&&(identical(other.createVisitaFromCliente, createVisitaFromCliente) || other.createVisitaFromCliente == createVisitaFromCliente));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,visita,const DeepCollectionEquality().hash(_paises),const DeepCollectionEquality().hash(_provincias),createVisitaFromCliente);
+int get hashCode {
+    return Object.hash(runtimeType,visita,const DeepCollectionEquality().hash(_paises),const DeepCollectionEquality().hash(_provincias),createVisitaFromCliente);
+}
 
 @override
 String toString() {
-  return 'VisitEditScreenData(visita: $visita, paises: $paises, provincias: $provincias, createVisitaFromCliente: $createVisitaFromCliente)';
+    return 'VisitEditScreenData(visita: $visita, paises: $paises, provincias: $provincias, createVisitaFromCliente: $createVisitaFromCliente)';
 }
 
 

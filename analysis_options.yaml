@@ -23,8 +23,6 @@ analyzer:
     - macos/**
     - linux/**
     - packages/**
-  plugins:
-    - custom_lint
 
 linter:
   rules:

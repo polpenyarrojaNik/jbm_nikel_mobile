@@ -26,16 +26,21 @@ $CatalogoAdjuntoDataCopyWith<CatalogoAdjuntoData> get copyWith => _$CatalogoAdju
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is CatalogoAdjuntoData&&(identical(other.file, file) || other.file == file)&&(identical(other.descarga, descarga) || other.descarga == descarga));
+  final _this = this as CatalogoAdjuntoData;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is CatalogoAdjuntoData&&(identical(other.file, _this.file) || other.file == _this.file)&&(identical(other.descarga, _this.descarga) || other.descarga == _this.descarga));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,file,descarga);
+int get hashCode {
+  final _this = this as CatalogoAdjuntoData;
+  return Object.hash(runtimeType,_this.file,_this.descarga);
+}
 
 @override
 String toString() {
-  return 'CatalogoAdjuntoData(file: $file, descarga: $descarga)';
+  final _this = this as CatalogoAdjuntoData;
+  return 'CatalogoAdjuntoData(file: ${_this.file}, descarga: ${_this.descarga})';
 }
 
 
@@ -224,16 +229,18 @@ _$CatalogoAdjuntoDataCopyWith<_CatalogoAdjuntoData> get copyWith => __$CatalogoA
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _CatalogoAdjuntoData&&(identical(other.file, file) || other.file == file)&&(identical(other.descarga, descarga) || other.descarga == descarga));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _CatalogoAdjuntoData&&(identical(other.file, file) || other.file == file)&&(identical(other.descarga, descarga) || other.descarga == descarga));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,file,descarga);
+int get hashCode {
+    return Object.hash(runtimeType,file,descarga);
+}
 
 @override
 String toString() {
-  return 'CatalogoAdjuntoData(file: $file, descarga: $descarga)';
+    return 'CatalogoAdjuntoData(file: $file, descarga: $descarga)';
 }
 
 

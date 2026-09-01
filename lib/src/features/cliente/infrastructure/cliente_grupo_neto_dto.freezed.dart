@@ -29,16 +29,21 @@ $ClienteGrupoNetoDTOCopyWith<ClienteGrupoNetoDTO> get copyWith => _$ClienteGrupo
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ClienteGrupoNetoDTO&&(identical(other.clienteId, clienteId) || other.clienteId == clienteId)&&(identical(other.grupoNetoId, grupoNetoId) || other.grupoNetoId == grupoNetoId)&&(identical(other.grupoNetoDescripcion, grupoNetoDescripcion) || other.grupoNetoDescripcion == grupoNetoDescripcion)&&(identical(other.dtoAdicional, dtoAdicional) || other.dtoAdicional == dtoAdicional)&&(identical(other.lastUpdated, lastUpdated) || other.lastUpdated == lastUpdated)&&(identical(other.deleted, deleted) || other.deleted == deleted));
+  final _this = this as ClienteGrupoNetoDTO;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ClienteGrupoNetoDTO&&(identical(other.clienteId, _this.clienteId) || other.clienteId == _this.clienteId)&&(identical(other.grupoNetoId, _this.grupoNetoId) || other.grupoNetoId == _this.grupoNetoId)&&(identical(other.grupoNetoDescripcion, _this.grupoNetoDescripcion) || other.grupoNetoDescripcion == _this.grupoNetoDescripcion)&&(identical(other.dtoAdicional, _this.dtoAdicional) || other.dtoAdicional == _this.dtoAdicional)&&(identical(other.lastUpdated, _this.lastUpdated) || other.lastUpdated == _this.lastUpdated)&&(identical(other.deleted, _this.deleted) || other.deleted == _this.deleted));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,clienteId,grupoNetoId,grupoNetoDescripcion,dtoAdicional,lastUpdated,deleted);
+int get hashCode {
+  final _this = this as ClienteGrupoNetoDTO;
+  return Object.hash(runtimeType,_this.clienteId,_this.grupoNetoId,_this.grupoNetoDescripcion,_this.dtoAdicional,_this.lastUpdated,_this.deleted);
+}
 
 @override
 String toString() {
-  return 'ClienteGrupoNetoDTO(clienteId: $clienteId, grupoNetoId: $grupoNetoId, grupoNetoDescripcion: $grupoNetoDescripcion, dtoAdicional: $dtoAdicional, lastUpdated: $lastUpdated, deleted: $deleted)';
+  final _this = this as ClienteGrupoNetoDTO;
+  return 'ClienteGrupoNetoDTO(clienteId: ${_this.clienteId}, grupoNetoId: ${_this.grupoNetoId}, grupoNetoDescripcion: ${_this.grupoNetoDescripcion}, dtoAdicional: ${_this.dtoAdicional}, lastUpdated: ${_this.lastUpdated}, deleted: ${_this.deleted})';
 }
 
 
@@ -238,16 +243,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ClienteGrupoNetoDTO&&(identical(other.clienteId, clienteId) || other.clienteId == clienteId)&&(identical(other.grupoNetoId, grupoNetoId) || other.grupoNetoId == grupoNetoId)&&(identical(other.grupoNetoDescripcion, grupoNetoDescripcion) || other.grupoNetoDescripcion == grupoNetoDescripcion)&&(identical(other.dtoAdicional, dtoAdicional) || other.dtoAdicional == dtoAdicional)&&(identical(other.lastUpdated, lastUpdated) || other.lastUpdated == lastUpdated)&&(identical(other.deleted, deleted) || other.deleted == deleted));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _ClienteGrupoNetoDTO&&(identical(other.clienteId, clienteId) || other.clienteId == clienteId)&&(identical(other.grupoNetoId, grupoNetoId) || other.grupoNetoId == grupoNetoId)&&(identical(other.grupoNetoDescripcion, grupoNetoDescripcion) || other.grupoNetoDescripcion == grupoNetoDescripcion)&&(identical(other.dtoAdicional, dtoAdicional) || other.dtoAdicional == dtoAdicional)&&(identical(other.lastUpdated, lastUpdated) || other.lastUpdated == lastUpdated)&&(identical(other.deleted, deleted) || other.deleted == deleted));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,clienteId,grupoNetoId,grupoNetoDescripcion,dtoAdicional,lastUpdated,deleted);
+int get hashCode {
+    return Object.hash(runtimeType,clienteId,grupoNetoId,grupoNetoDescripcion,dtoAdicional,lastUpdated,deleted);
+}
 
 @override
 String toString() {
-  return 'ClienteGrupoNetoDTO(clienteId: $clienteId, grupoNetoId: $grupoNetoId, grupoNetoDescripcion: $grupoNetoDescripcion, dtoAdicional: $dtoAdicional, lastUpdated: $lastUpdated, deleted: $deleted)';
+    return 'ClienteGrupoNetoDTO(clienteId: $clienteId, grupoNetoId: $grupoNetoId, grupoNetoDescripcion: $grupoNetoDescripcion, dtoAdicional: $dtoAdicional, lastUpdated: $lastUpdated, deleted: $deleted)';
 }
 
 

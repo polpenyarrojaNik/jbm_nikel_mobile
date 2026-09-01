@@ -29,16 +29,21 @@ $RecomendacionProductoDTOCopyWith<RecomendacionProductoDTO> get copyWith => _$Re
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is RecomendacionProductoDTO&&(identical(other.articuloId, articuloId) || other.articuloId == articuloId)&&(identical(other.probabilidad, probabilidad) || other.probabilidad == probabilidad)&&(identical(other.motivo, motivo) || other.motivo == motivo));
+  final _this = this as RecomendacionProductoDTO;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is RecomendacionProductoDTO&&(identical(other.articuloId, _this.articuloId) || other.articuloId == _this.articuloId)&&(identical(other.probabilidad, _this.probabilidad) || other.probabilidad == _this.probabilidad)&&(identical(other.motivo, _this.motivo) || other.motivo == _this.motivo));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,articuloId,probabilidad,motivo);
+int get hashCode {
+  final _this = this as RecomendacionProductoDTO;
+  return Object.hash(runtimeType,_this.articuloId,_this.probabilidad,_this.motivo);
+}
 
 @override
 String toString() {
-  return 'RecomendacionProductoDTO(articuloId: $articuloId, probabilidad: $probabilidad, motivo: $motivo)';
+  final _this = this as RecomendacionProductoDTO;
+  return 'RecomendacionProductoDTO(articuloId: ${_this.articuloId}, probabilidad: ${_this.probabilidad}, motivo: ${_this.motivo})';
 }
 
 
@@ -232,16 +237,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _RecomendacionProductoDTO&&(identical(other.articuloId, articuloId) || other.articuloId == articuloId)&&(identical(other.probabilidad, probabilidad) || other.probabilidad == probabilidad)&&(identical(other.motivo, motivo) || other.motivo == motivo));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _RecomendacionProductoDTO&&(identical(other.articuloId, articuloId) || other.articuloId == articuloId)&&(identical(other.probabilidad, probabilidad) || other.probabilidad == probabilidad)&&(identical(other.motivo, motivo) || other.motivo == motivo));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,articuloId,probabilidad,motivo);
+int get hashCode {
+    return Object.hash(runtimeType,articuloId,probabilidad,motivo);
+}
 
 @override
 String toString() {
-  return 'RecomendacionProductoDTO(articuloId: $articuloId, probabilidad: $probabilidad, motivo: $motivo)';
+    return 'RecomendacionProductoDTO(articuloId: $articuloId, probabilidad: $probabilidad, motivo: $motivo)';
 }
 
 

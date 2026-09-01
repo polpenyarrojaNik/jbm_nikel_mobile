@@ -154,9 +154,17 @@ class ClientePendientePagoListById extends _$ClientePendientePagoListById {
 @riverpod
 class ClienteVentasMesListById extends _$ClienteVentasMesListById {
   @override
-  Future<List<ClienteVentasMes>> build(String clienteId) {
+  Future<List<ClienteVentasMes>> build(
+    String clienteId, {
+    String? direccionId,
+    bool applyDireccionFilter = false,
+  }) {
     final clienteRepository = ref.watch(clienteRepositoryProvider);
-    return clienteRepository.getVentasMesById(clienteId: clienteId);
+    return clienteRepository.getVentasMesById(
+      clienteId: clienteId,
+      direccionId: direccionId,
+      applyDireccionFilter: applyDireccionFilter,
+    );
   }
 }
 
@@ -782,12 +790,20 @@ class ClienteRepository {
 
   Future<List<ClienteVentasMes>> getVentasMesById({
     required String clienteId,
+    required String? direccionId,
+    required bool applyDireccionFilter,
   }) async {
     try {
+      final varaibles = [Variable(clienteId)];
+
+      if (applyDireccionFilter) {
+        varaibles.add(Variable(direccionId));
+      }
+
       final query = await _remoteDb
           .customSelect(
-            _getVentasMesCustomSelect(),
-            variables: [Variable(clienteId)],
+            _getVentasMesCustomSelect(applyDireccionFilter),
+            variables: varaibles,
             readsFrom: {_remoteDb.estadisticasClienteUsuarioVentasTable},
           )
           .get();
@@ -997,7 +1013,7 @@ class ClienteRepository {
     }
   }
 
-  String _getVentasMesCustomSelect() {
+  String _getVentasMesCustomSelect(bool applyDireccionFilter) {
     var select = '''
 SELECT mes MES
         , SUM(importe_anyo_0) IMPORTE_ANYO
@@ -1021,6 +1037,7 @@ FROM (
                 , 0 importe_anyo_3
                 , 0 importe_anyo_4
     FROM estadisticas_venta WHERE cliente_id = :clienteId
+    ${applyDireccionFilter ? 'AND direccion_id = :direccionId' : ''}
       AND anyo = strftime('%Y' ,DATE())
       AND mes = $mes
   UNION ALL
@@ -1031,6 +1048,7 @@ FROM (
                 , 0 importe_anyo_3
                 , 0 importe_anyo_4
     FROM estadisticas_venta WHERE cliente_id = :clienteId
+    ${applyDireccionFilter ? 'AND direccion_id = :direccionId' : ''}
       AND anyo = strftime('%Y' ,DATE()) - 1
       AND mes = $mes
   UNION ALL
@@ -1041,6 +1059,7 @@ FROM (
                 , 0 importe_anyo_3
                 , 0 importe_anyo_4
     FROM estadisticas_venta WHERE cliente_id = :clienteId
+    ${applyDireccionFilter ? 'AND direccion_id = :direccionId' : ''}
       AND anyo = strftime('%Y' ,DATE()) - 2
       AND mes = $mes
   UNION ALL
@@ -1051,6 +1070,7 @@ FROM (
                 , SUM(importe) importe_anyo_3
                 , 0 importe_anyo_4
     FROM estadisticas_venta WHERE cliente_id = :clienteId
+    ${applyDireccionFilter ? 'AND direccion_id = :direccionId' : ''}
       AND anyo = strftime('%Y' ,DATE()) - 3
       AND mes = $mes
    UNION ALL
@@ -1061,6 +1081,7 @@ FROM (
                 , 0 importe_anyo_3
                 , SUM(importe) importe_anyo_4
     FROM estadisticas_venta WHERE cliente_id = :clienteId
+    ${applyDireccionFilter ? 'AND direccion_id = :direccionId' : ''}
       AND anyo = strftime('%Y' ,DATE()) - 4
       AND mes = $mes
 ''';

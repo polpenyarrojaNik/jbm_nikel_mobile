@@ -29,16 +29,21 @@ $UsuarioTarifaDTOCopyWith<UsuarioTarifaDTO> get copyWith => _$UsuarioTarifaDTOCo
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is UsuarioTarifaDTO&&(identical(other.usuarioId, usuarioId) || other.usuarioId == usuarioId)&&(identical(other.tarifaId, tarifaId) || other.tarifaId == tarifaId)&&(identical(other.lastUpdated, lastUpdated) || other.lastUpdated == lastUpdated)&&(identical(other.deleted, deleted) || other.deleted == deleted));
+  final _this = this as UsuarioTarifaDTO;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is UsuarioTarifaDTO&&(identical(other.usuarioId, _this.usuarioId) || other.usuarioId == _this.usuarioId)&&(identical(other.tarifaId, _this.tarifaId) || other.tarifaId == _this.tarifaId)&&(identical(other.lastUpdated, _this.lastUpdated) || other.lastUpdated == _this.lastUpdated)&&(identical(other.deleted, _this.deleted) || other.deleted == _this.deleted));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,usuarioId,tarifaId,lastUpdated,deleted);
+int get hashCode {
+  final _this = this as UsuarioTarifaDTO;
+  return Object.hash(runtimeType,_this.usuarioId,_this.tarifaId,_this.lastUpdated,_this.deleted);
+}
 
 @override
 String toString() {
-  return 'UsuarioTarifaDTO(usuarioId: $usuarioId, tarifaId: $tarifaId, lastUpdated: $lastUpdated, deleted: $deleted)';
+  final _this = this as UsuarioTarifaDTO;
+  return 'UsuarioTarifaDTO(usuarioId: ${_this.usuarioId}, tarifaId: ${_this.tarifaId}, lastUpdated: ${_this.lastUpdated}, deleted: ${_this.deleted})';
 }
 
 
@@ -234,16 +239,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _UsuarioTarifaDTO&&(identical(other.usuarioId, usuarioId) || other.usuarioId == usuarioId)&&(identical(other.tarifaId, tarifaId) || other.tarifaId == tarifaId)&&(identical(other.lastUpdated, lastUpdated) || other.lastUpdated == lastUpdated)&&(identical(other.deleted, deleted) || other.deleted == deleted));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _UsuarioTarifaDTO&&(identical(other.usuarioId, usuarioId) || other.usuarioId == usuarioId)&&(identical(other.tarifaId, tarifaId) || other.tarifaId == tarifaId)&&(identical(other.lastUpdated, lastUpdated) || other.lastUpdated == lastUpdated)&&(identical(other.deleted, deleted) || other.deleted == deleted));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,usuarioId,tarifaId,lastUpdated,deleted);
+int get hashCode {
+    return Object.hash(runtimeType,usuarioId,tarifaId,lastUpdated,deleted);
+}
 
 @override
 String toString() {
-  return 'UsuarioTarifaDTO(usuarioId: $usuarioId, tarifaId: $tarifaId, lastUpdated: $lastUpdated, deleted: $deleted)';
+    return 'UsuarioTarifaDTO(usuarioId: $usuarioId, tarifaId: $tarifaId, lastUpdated: $lastUpdated, deleted: $deleted)';
 }
 
 

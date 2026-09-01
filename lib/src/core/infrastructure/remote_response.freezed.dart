@@ -21,7 +21,7 @@ mixin _$RemoteResponse<T> {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is RemoteResponse<T>);
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is RemoteResponse<T>);
 }
 
 
@@ -30,7 +30,7 @@ int get hashCode => runtimeType.hashCode;
 
 @override
 String toString() {
-  return 'RemoteResponse<$T>()';
+    return 'RemoteResponse<$T>()';
 }
 
 
@@ -198,7 +198,7 @@ class _NoConnection<T> extends RemoteResponse<T> {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _NoConnection<T>);
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _NoConnection<T>);
 }
 
 
@@ -207,7 +207,7 @@ int get hashCode => runtimeType.hashCode;
 
 @override
 String toString() {
-  return 'RemoteResponse<$T>.noConnection()';
+    return 'RemoteResponse<$T>.noConnection()';
 }
 
 
@@ -235,16 +235,18 @@ _$NotModifiedCopyWith<T, _NotModified<T>> get copyWith => __$NotModifiedCopyWith
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _NotModified<T>&&(identical(other.maxPage, maxPage) || other.maxPage == maxPage));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _NotModified<T>&&(identical(other.maxPage, maxPage) || other.maxPage == maxPage));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,maxPage);
+int get hashCode {
+    return Object.hash(runtimeType,maxPage);
+}
 
 @override
 String toString() {
-  return 'RemoteResponse<$T>.notModified(maxPage: $maxPage)';
+    return 'RemoteResponse<$T>.notModified(maxPage: $maxPage)';
 }
 
 
@@ -303,16 +305,18 @@ _$WithNewDataCopyWith<T, _WithNewData<T>> get copyWith => __$WithNewDataCopyWith
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _WithNewData<T>&&const DeepCollectionEquality().equals(other.data, data)&&(identical(other.maxPage, maxPage) || other.maxPage == maxPage)&&(identical(other.totalRows, totalRows) || other.totalRows == totalRows));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _WithNewData<T>&&const DeepCollectionEquality().equals(other.data, data)&&(identical(other.maxPage, maxPage) || other.maxPage == maxPage)&&(identical(other.totalRows, totalRows) || other.totalRows == totalRows));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(data),maxPage,totalRows);
+int get hashCode {
+    return Object.hash(runtimeType,const DeepCollectionEquality().hash(data),maxPage,totalRows);
+}
 
 @override
 String toString() {
-  return 'RemoteResponse<$T>.withNewData(data: $data, maxPage: $maxPage, totalRows: $totalRows)';
+    return 'RemoteResponse<$T>.withNewData(data: $data, maxPage: $maxPage, totalRows: $totalRows)';
 }
 
 

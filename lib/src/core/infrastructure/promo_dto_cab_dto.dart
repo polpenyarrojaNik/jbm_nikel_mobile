@@ -21,6 +21,7 @@ abstract class PromoDtoCabDTO
     @JsonKey(name: 'FECHA_HASTA') DateTime? fechaHasta,
     @JsonKey(name: 'DIVISA_ID') required String divisaId,
     @JsonKey(name: 'LAST_UPDATED') required DateTime lastUpdated,
+    @JsonKey(name: 'VISIBLE_SN') required String visibleSN,
     @JsonKey(name: 'DELETED') @Default('N') String deleted,
   }) = _PromoDtoCabDTO;
 
@@ -37,6 +38,7 @@ abstract class PromoDtoCabDTO
       fechaHasta: Value(fechaHasta),
       divisaId: Value(divisaId),
       lastUpdated: Value(lastUpdated),
+      visibleSN: Value(visibleSN),
       deleted: Value(deleted),
     ).toColumns(nullToAbsent);
   }
@@ -56,6 +58,7 @@ class PromoDtoCabTable extends Table {
   DateTimeColumn get fechaDesde => dateTime().named('fecha_desde')();
   DateTimeColumn get fechaHasta => dateTime().nullable().named('fecha_hasta')();
   TextColumn get divisaId => text().named('divisa_id')();
+  TextColumn get visibleSN => text().named('visible_sn')();
   DateTimeColumn get lastUpdated => dateTime().named('last_updated')();
   TextColumn get deleted =>
       text().withDefault(const Constant('N')).named('deleted')();

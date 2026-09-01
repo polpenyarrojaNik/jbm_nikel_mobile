@@ -26,16 +26,21 @@ $PedidoLocalParamCopyWith<PedidoLocalParam> get copyWith => _$PedidoLocalParamCo
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is PedidoLocalParam&&(identical(other.pedidoAppId, pedidoAppId) || other.pedidoAppId == pedidoAppId)&&(identical(other.pedidoId, pedidoId) || other.pedidoId == pedidoId)&&(identical(other.empresaId, empresaId) || other.empresaId == empresaId)&&(identical(other.isEdit, isEdit) || other.isEdit == isEdit)&&(identical(other.tratada, tratada) || other.tratada == tratada)&&(identical(other.enviada, enviada) || other.enviada == enviada)&&(identical(other.createPedidoFromClienteId, createPedidoFromClienteId) || other.createPedidoFromClienteId == createPedidoFromClienteId)&&(identical(other.addLineaDesdeArticulo, addLineaDesdeArticulo) || other.addLineaDesdeArticulo == addLineaDesdeArticulo));
+  final _this = this as PedidoLocalParam;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is PedidoLocalParam&&(identical(other.pedidoAppId, _this.pedidoAppId) || other.pedidoAppId == _this.pedidoAppId)&&(identical(other.pedidoId, _this.pedidoId) || other.pedidoId == _this.pedidoId)&&(identical(other.empresaId, _this.empresaId) || other.empresaId == _this.empresaId)&&(identical(other.isEdit, _this.isEdit) || other.isEdit == _this.isEdit)&&(identical(other.tratada, _this.tratada) || other.tratada == _this.tratada)&&(identical(other.enviada, _this.enviada) || other.enviada == _this.enviada)&&(identical(other.createPedidoFromClienteId, _this.createPedidoFromClienteId) || other.createPedidoFromClienteId == _this.createPedidoFromClienteId)&&(identical(other.addLineaDesdeArticulo, _this.addLineaDesdeArticulo) || other.addLineaDesdeArticulo == _this.addLineaDesdeArticulo));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,pedidoAppId,pedidoId,empresaId,isEdit,tratada,enviada,createPedidoFromClienteId,addLineaDesdeArticulo);
+int get hashCode {
+  final _this = this as PedidoLocalParam;
+  return Object.hash(runtimeType,_this.pedidoAppId,_this.pedidoId,_this.empresaId,_this.isEdit,_this.tratada,_this.enviada,_this.createPedidoFromClienteId,_this.addLineaDesdeArticulo);
+}
 
 @override
 String toString() {
-  return 'PedidoLocalParam(pedidoAppId: $pedidoAppId, pedidoId: $pedidoId, empresaId: $empresaId, isEdit: $isEdit, tratada: $tratada, enviada: $enviada, createPedidoFromClienteId: $createPedidoFromClienteId, addLineaDesdeArticulo: $addLineaDesdeArticulo)';
+  final _this = this as PedidoLocalParam;
+  return 'PedidoLocalParam(pedidoAppId: ${_this.pedidoAppId}, pedidoId: ${_this.pedidoId}, empresaId: ${_this.empresaId}, isEdit: ${_this.isEdit}, tratada: ${_this.tratada}, enviada: ${_this.enviada}, createPedidoFromClienteId: ${_this.createPedidoFromClienteId}, addLineaDesdeArticulo: ${_this.addLineaDesdeArticulo})';
 }
 
 
@@ -248,16 +253,18 @@ _$PedidoLocalParamCopyWith<_PedidoLocalParam> get copyWith => __$PedidoLocalPara
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _PedidoLocalParam&&(identical(other.pedidoAppId, pedidoAppId) || other.pedidoAppId == pedidoAppId)&&(identical(other.pedidoId, pedidoId) || other.pedidoId == pedidoId)&&(identical(other.empresaId, empresaId) || other.empresaId == empresaId)&&(identical(other.isEdit, isEdit) || other.isEdit == isEdit)&&(identical(other.tratada, tratada) || other.tratada == tratada)&&(identical(other.enviada, enviada) || other.enviada == enviada)&&(identical(other.createPedidoFromClienteId, createPedidoFromClienteId) || other.createPedidoFromClienteId == createPedidoFromClienteId)&&(identical(other.addLineaDesdeArticulo, addLineaDesdeArticulo) || other.addLineaDesdeArticulo == addLineaDesdeArticulo));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _PedidoLocalParam&&(identical(other.pedidoAppId, pedidoAppId) || other.pedidoAppId == pedidoAppId)&&(identical(other.pedidoId, pedidoId) || other.pedidoId == pedidoId)&&(identical(other.empresaId, empresaId) || other.empresaId == empresaId)&&(identical(other.isEdit, isEdit) || other.isEdit == isEdit)&&(identical(other.tratada, tratada) || other.tratada == tratada)&&(identical(other.enviada, enviada) || other.enviada == enviada)&&(identical(other.createPedidoFromClienteId, createPedidoFromClienteId) || other.createPedidoFromClienteId == createPedidoFromClienteId)&&(identical(other.addLineaDesdeArticulo, addLineaDesdeArticulo) || other.addLineaDesdeArticulo == addLineaDesdeArticulo));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,pedidoAppId,pedidoId,empresaId,isEdit,tratada,enviada,createPedidoFromClienteId,addLineaDesdeArticulo);
+int get hashCode {
+    return Object.hash(runtimeType,pedidoAppId,pedidoId,empresaId,isEdit,tratada,enviada,createPedidoFromClienteId,addLineaDesdeArticulo);
+}
 
 @override
 String toString() {
-  return 'PedidoLocalParam(pedidoAppId: $pedidoAppId, pedidoId: $pedidoId, empresaId: $empresaId, isEdit: $isEdit, tratada: $tratada, enviada: $enviada, createPedidoFromClienteId: $createPedidoFromClienteId, addLineaDesdeArticulo: $addLineaDesdeArticulo)';
+    return 'PedidoLocalParam(pedidoAppId: $pedidoAppId, pedidoId: $pedidoId, empresaId: $empresaId, isEdit: $isEdit, tratada: $tratada, enviada: $enviada, createPedidoFromClienteId: $createPedidoFromClienteId, addLineaDesdeArticulo: $addLineaDesdeArticulo)';
 }
 
 

@@ -29,16 +29,21 @@ $ArticuloDocumentoDTOCopyWith<ArticuloDocumentoDTO> get copyWith => _$ArticuloDo
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ArticuloDocumentoDTO&&(identical(other.articuloId, articuloId) || other.articuloId == articuloId)&&(identical(other.nombreArchivo, nombreArchivo) || other.nombreArchivo == nombreArchivo)&&(identical(other.idiomaId, idiomaId) || other.idiomaId == idiomaId)&&(identical(other.observaciones, observaciones) || other.observaciones == observaciones));
+  final _this = this as ArticuloDocumentoDTO;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ArticuloDocumentoDTO&&(identical(other.articuloId, _this.articuloId) || other.articuloId == _this.articuloId)&&(identical(other.nombreArchivo, _this.nombreArchivo) || other.nombreArchivo == _this.nombreArchivo)&&(identical(other.idiomaId, _this.idiomaId) || other.idiomaId == _this.idiomaId)&&(identical(other.observaciones, _this.observaciones) || other.observaciones == _this.observaciones));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,articuloId,nombreArchivo,idiomaId,observaciones);
+int get hashCode {
+  final _this = this as ArticuloDocumentoDTO;
+  return Object.hash(runtimeType,_this.articuloId,_this.nombreArchivo,_this.idiomaId,_this.observaciones);
+}
 
 @override
 String toString() {
-  return 'ArticuloDocumentoDTO(articuloId: $articuloId, nombreArchivo: $nombreArchivo, idiomaId: $idiomaId, observaciones: $observaciones)';
+  final _this = this as ArticuloDocumentoDTO;
+  return 'ArticuloDocumentoDTO(articuloId: ${_this.articuloId}, nombreArchivo: ${_this.nombreArchivo}, idiomaId: ${_this.idiomaId}, observaciones: ${_this.observaciones})';
 }
 
 
@@ -234,16 +239,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ArticuloDocumentoDTO&&(identical(other.articuloId, articuloId) || other.articuloId == articuloId)&&(identical(other.nombreArchivo, nombreArchivo) || other.nombreArchivo == nombreArchivo)&&(identical(other.idiomaId, idiomaId) || other.idiomaId == idiomaId)&&(identical(other.observaciones, observaciones) || other.observaciones == observaciones));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _ArticuloDocumentoDTO&&(identical(other.articuloId, articuloId) || other.articuloId == articuloId)&&(identical(other.nombreArchivo, nombreArchivo) || other.nombreArchivo == nombreArchivo)&&(identical(other.idiomaId, idiomaId) || other.idiomaId == idiomaId)&&(identical(other.observaciones, observaciones) || other.observaciones == observaciones));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,articuloId,nombreArchivo,idiomaId,observaciones);
+int get hashCode {
+    return Object.hash(runtimeType,articuloId,nombreArchivo,idiomaId,observaciones);
+}
 
 @override
 String toString() {
-  return 'ArticuloDocumentoDTO(articuloId: $articuloId, nombreArchivo: $nombreArchivo, idiomaId: $idiomaId, observaciones: $observaciones)';
+    return 'ArticuloDocumentoDTO(articuloId: $articuloId, nombreArchivo: $nombreArchivo, idiomaId: $idiomaId, observaciones: $observaciones)';
 }
 
 

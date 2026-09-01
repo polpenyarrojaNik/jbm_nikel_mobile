@@ -29,16 +29,21 @@ $EstadisitcasArticulosTopDTOCopyWith<EstadisitcasArticulosTopDTO> get copyWith =
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is EstadisitcasArticulosTopDTO&&(identical(other.articuloId, articuloId) || other.articuloId == articuloId)&&(identical(other.lastUpdated, lastUpdated) || other.lastUpdated == lastUpdated)&&(identical(other.deleted, deleted) || other.deleted == deleted));
+  final _this = this as EstadisitcasArticulosTopDTO;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is EstadisitcasArticulosTopDTO&&(identical(other.articuloId, _this.articuloId) || other.articuloId == _this.articuloId)&&(identical(other.lastUpdated, _this.lastUpdated) || other.lastUpdated == _this.lastUpdated)&&(identical(other.deleted, _this.deleted) || other.deleted == _this.deleted));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,articuloId,lastUpdated,deleted);
+int get hashCode {
+  final _this = this as EstadisitcasArticulosTopDTO;
+  return Object.hash(runtimeType,_this.articuloId,_this.lastUpdated,_this.deleted);
+}
 
 @override
 String toString() {
-  return 'EstadisitcasArticulosTopDTO(articuloId: $articuloId, lastUpdated: $lastUpdated, deleted: $deleted)';
+  final _this = this as EstadisitcasArticulosTopDTO;
+  return 'EstadisitcasArticulosTopDTO(articuloId: ${_this.articuloId}, lastUpdated: ${_this.lastUpdated}, deleted: ${_this.deleted})';
 }
 
 
@@ -232,16 +237,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _EstadisitcasArticulosTopDTO&&(identical(other.articuloId, articuloId) || other.articuloId == articuloId)&&(identical(other.lastUpdated, lastUpdated) || other.lastUpdated == lastUpdated)&&(identical(other.deleted, deleted) || other.deleted == deleted));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _EstadisitcasArticulosTopDTO&&(identical(other.articuloId, articuloId) || other.articuloId == articuloId)&&(identical(other.lastUpdated, lastUpdated) || other.lastUpdated == lastUpdated)&&(identical(other.deleted, deleted) || other.deleted == deleted));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,articuloId,lastUpdated,deleted);
+int get hashCode {
+    return Object.hash(runtimeType,articuloId,lastUpdated,deleted);
+}
 
 @override
 String toString() {
-  return 'EstadisitcasArticulosTopDTO(articuloId: $articuloId, lastUpdated: $lastUpdated, deleted: $deleted)';
+    return 'EstadisitcasArticulosTopDTO(articuloId: $articuloId, lastUpdated: $lastUpdated, deleted: $deleted)';
 }
 
 

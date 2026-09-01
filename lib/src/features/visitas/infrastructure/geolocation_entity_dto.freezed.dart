@@ -29,16 +29,21 @@ $GeolocationEntityDTOCopyWith<GeolocationEntityDTO> get copyWith => _$Geolocatio
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is GeolocationEntityDTO&&(identical(other.formattedAddress, formattedAddress) || other.formattedAddress == formattedAddress)&&(identical(other.streetName, streetName) || other.streetName == streetName)&&(identical(other.streetNumber, streetNumber) || other.streetNumber == streetNumber)&&(identical(other.city, city) || other.city == city)&&(identical(other.countryCode, countryCode) || other.countryCode == countryCode)&&(identical(other.zipCode, zipCode) || other.zipCode == zipCode)&&(identical(other.advinistrativeLevels, advinistrativeLevels) || other.advinistrativeLevels == advinistrativeLevels)&&(identical(other.extra, extra) || other.extra == extra));
+  final _this = this as GeolocationEntityDTO;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is GeolocationEntityDTO&&(identical(other.formattedAddress, _this.formattedAddress) || other.formattedAddress == _this.formattedAddress)&&(identical(other.streetName, _this.streetName) || other.streetName == _this.streetName)&&(identical(other.streetNumber, _this.streetNumber) || other.streetNumber == _this.streetNumber)&&(identical(other.city, _this.city) || other.city == _this.city)&&(identical(other.countryCode, _this.countryCode) || other.countryCode == _this.countryCode)&&(identical(other.zipCode, _this.zipCode) || other.zipCode == _this.zipCode)&&(identical(other.advinistrativeLevels, _this.advinistrativeLevels) || other.advinistrativeLevels == _this.advinistrativeLevels)&&(identical(other.extra, _this.extra) || other.extra == _this.extra));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,formattedAddress,streetName,streetNumber,city,countryCode,zipCode,advinistrativeLevels,extra);
+int get hashCode {
+  final _this = this as GeolocationEntityDTO;
+  return Object.hash(runtimeType,_this.formattedAddress,_this.streetName,_this.streetNumber,_this.city,_this.countryCode,_this.zipCode,_this.advinistrativeLevels,_this.extra);
+}
 
 @override
 String toString() {
-  return 'GeolocationEntityDTO(formattedAddress: $formattedAddress, streetName: $streetName, streetNumber: $streetNumber, city: $city, countryCode: $countryCode, zipCode: $zipCode, advinistrativeLevels: $advinistrativeLevels, extra: $extra)';
+  final _this = this as GeolocationEntityDTO;
+  return 'GeolocationEntityDTO(formattedAddress: ${_this.formattedAddress}, streetName: ${_this.streetName}, streetNumber: ${_this.streetNumber}, city: ${_this.city}, countryCode: ${_this.countryCode}, zipCode: ${_this.zipCode}, advinistrativeLevels: ${_this.advinistrativeLevels}, extra: ${_this.extra})';
 }
 
 
@@ -266,16 +271,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _GeolocationEntityDTO&&(identical(other.formattedAddress, formattedAddress) || other.formattedAddress == formattedAddress)&&(identical(other.streetName, streetName) || other.streetName == streetName)&&(identical(other.streetNumber, streetNumber) || other.streetNumber == streetNumber)&&(identical(other.city, city) || other.city == city)&&(identical(other.countryCode, countryCode) || other.countryCode == countryCode)&&(identical(other.zipCode, zipCode) || other.zipCode == zipCode)&&(identical(other.advinistrativeLevels, advinistrativeLevels) || other.advinistrativeLevels == advinistrativeLevels)&&(identical(other.extra, extra) || other.extra == extra));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _GeolocationEntityDTO&&(identical(other.formattedAddress, formattedAddress) || other.formattedAddress == formattedAddress)&&(identical(other.streetName, streetName) || other.streetName == streetName)&&(identical(other.streetNumber, streetNumber) || other.streetNumber == streetNumber)&&(identical(other.city, city) || other.city == city)&&(identical(other.countryCode, countryCode) || other.countryCode == countryCode)&&(identical(other.zipCode, zipCode) || other.zipCode == zipCode)&&(identical(other.advinistrativeLevels, advinistrativeLevels) || other.advinistrativeLevels == advinistrativeLevels)&&(identical(other.extra, extra) || other.extra == extra));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,formattedAddress,streetName,streetNumber,city,countryCode,zipCode,advinistrativeLevels,extra);
+int get hashCode {
+    return Object.hash(runtimeType,formattedAddress,streetName,streetNumber,city,countryCode,zipCode,advinistrativeLevels,extra);
+}
 
 @override
 String toString() {
-  return 'GeolocationEntityDTO(formattedAddress: $formattedAddress, streetName: $streetName, streetNumber: $streetNumber, city: $city, countryCode: $countryCode, zipCode: $zipCode, advinistrativeLevels: $advinistrativeLevels, extra: $extra)';
+    return 'GeolocationEntityDTO(formattedAddress: $formattedAddress, streetName: $streetName, streetNumber: $streetNumber, city: $city, countryCode: $countryCode, zipCode: $zipCode, advinistrativeLevels: $advinistrativeLevels, extra: $extra)';
 }
 
 
@@ -361,16 +368,21 @@ $AdministrativeLevelsDTOCopyWith<AdministrativeLevelsDTO> get copyWith => _$Admi
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is AdministrativeLevelsDTO&&(identical(other.state, state) || other.state == state));
+  final _this = this as AdministrativeLevelsDTO;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is AdministrativeLevelsDTO&&(identical(other.state, _this.state) || other.state == _this.state));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,state);
+int get hashCode {
+  final _this = this as AdministrativeLevelsDTO;
+  return Object.hash(runtimeType,_this.state);
+}
 
 @override
 String toString() {
-  return 'AdministrativeLevelsDTO(state: $state)';
+  final _this = this as AdministrativeLevelsDTO;
+  return 'AdministrativeLevelsDTO(state: ${_this.state})';
 }
 
 
@@ -560,16 +572,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _AdministrativeLevelsDTO&&(identical(other.state, state) || other.state == state));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _AdministrativeLevelsDTO&&(identical(other.state, state) || other.state == state));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,state);
+int get hashCode {
+    return Object.hash(runtimeType,state);
+}
 
 @override
 String toString() {
-  return 'AdministrativeLevelsDTO(state: $state)';
+    return 'AdministrativeLevelsDTO(state: $state)';
 }
 
 
@@ -624,16 +638,21 @@ $ExtraDTOCopyWith<ExtraDTO> get copyWith => _$ExtraDTOCopyWithImpl<ExtraDTO>(thi
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ExtraDTO&&(identical(other.subpremise, subpremise) || other.subpremise == subpremise));
+  final _this = this as ExtraDTO;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ExtraDTO&&(identical(other.subpremise, _this.subpremise) || other.subpremise == _this.subpremise));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,subpremise);
+int get hashCode {
+  final _this = this as ExtraDTO;
+  return Object.hash(runtimeType,_this.subpremise);
+}
 
 @override
 String toString() {
-  return 'ExtraDTO(subpremise: $subpremise)';
+  final _this = this as ExtraDTO;
+  return 'ExtraDTO(subpremise: ${_this.subpremise})';
 }
 
 
@@ -823,16 +842,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ExtraDTO&&(identical(other.subpremise, subpremise) || other.subpremise == subpremise));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _ExtraDTO&&(identical(other.subpremise, subpremise) || other.subpremise == subpremise));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,subpremise);
+int get hashCode {
+    return Object.hash(runtimeType,subpremise);
+}
 
 @override
 String toString() {
-  return 'ExtraDTO(subpremise: $subpremise)';
+    return 'ExtraDTO(subpremise: $subpremise)';
 }
 
 

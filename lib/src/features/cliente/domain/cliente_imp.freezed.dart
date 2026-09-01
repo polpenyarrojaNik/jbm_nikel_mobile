@@ -26,16 +26,21 @@ $ClienteImpCopyWith<ClienteImp> get copyWith => _$ClienteImpCopyWithImpl<Cliente
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ClienteImp&&(identical(other.clienteId, clienteId) || other.clienteId == clienteId)&&(identical(other.sector, sector) || other.sector == sector));
+  final _this = this as ClienteImp;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ClienteImp&&(identical(other.clienteId, _this.clienteId) || other.clienteId == _this.clienteId)&&(identical(other.sector, _this.sector) || other.sector == _this.sector));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,clienteId,sector);
+int get hashCode {
+  final _this = this as ClienteImp;
+  return Object.hash(runtimeType,_this.clienteId,_this.sector);
+}
 
 @override
 String toString() {
-  return 'ClienteImp(clienteId: $clienteId, sector: $sector)';
+  final _this = this as ClienteImp;
+  return 'ClienteImp(clienteId: ${_this.clienteId}, sector: ${_this.sector})';
 }
 
 
@@ -233,16 +238,18 @@ _$ClienteImpCopyWith<_ClienteImp> get copyWith => __$ClienteImpCopyWithImpl<_Cli
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ClienteImp&&(identical(other.clienteId, clienteId) || other.clienteId == clienteId)&&(identical(other.sector, sector) || other.sector == sector));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _ClienteImp&&(identical(other.clienteId, clienteId) || other.clienteId == clienteId)&&(identical(other.sector, sector) || other.sector == sector));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,clienteId,sector);
+int get hashCode {
+    return Object.hash(runtimeType,clienteId,sector);
+}
 
 @override
 String toString() {
-  return 'ClienteImp(clienteId: $clienteId, sector: $sector)';
+    return 'ClienteImp(clienteId: $clienteId, sector: $sector)';
 }
 
 

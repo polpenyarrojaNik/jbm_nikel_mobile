@@ -29,16 +29,21 @@ $CatalogoOrdenDTOCopyWith<CatalogoOrdenDTO> get copyWith => _$CatalogoOrdenDTOCo
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is CatalogoOrdenDTO&&(identical(other.catalogoId, catalogoId) || other.catalogoId == catalogoId)&&(identical(other.fechaAbierto, fechaAbierto) || other.fechaAbierto == fechaAbierto));
+  final _this = this as CatalogoOrdenDTO;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is CatalogoOrdenDTO&&(identical(other.catalogoId, _this.catalogoId) || other.catalogoId == _this.catalogoId)&&(identical(other.fechaAbierto, _this.fechaAbierto) || other.fechaAbierto == _this.fechaAbierto));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,catalogoId,fechaAbierto);
+int get hashCode {
+  final _this = this as CatalogoOrdenDTO;
+  return Object.hash(runtimeType,_this.catalogoId,_this.fechaAbierto);
+}
 
 @override
 String toString() {
-  return 'CatalogoOrdenDTO(catalogoId: $catalogoId, fechaAbierto: $fechaAbierto)';
+  final _this = this as CatalogoOrdenDTO;
+  return 'CatalogoOrdenDTO(catalogoId: ${_this.catalogoId}, fechaAbierto: ${_this.fechaAbierto})';
 }
 
 
@@ -230,16 +235,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _CatalogoOrdenDTO&&(identical(other.catalogoId, catalogoId) || other.catalogoId == catalogoId)&&(identical(other.fechaAbierto, fechaAbierto) || other.fechaAbierto == fechaAbierto));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _CatalogoOrdenDTO&&(identical(other.catalogoId, catalogoId) || other.catalogoId == catalogoId)&&(identical(other.fechaAbierto, fechaAbierto) || other.fechaAbierto == fechaAbierto));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,catalogoId,fechaAbierto);
+int get hashCode {
+    return Object.hash(runtimeType,catalogoId,fechaAbierto);
+}
 
 @override
 String toString() {
-  return 'CatalogoOrdenDTO(catalogoId: $catalogoId, fechaAbierto: $fechaAbierto)';
+    return 'CatalogoOrdenDTO(catalogoId: $catalogoId, fechaAbierto: $fechaAbierto)';
 }
 
 

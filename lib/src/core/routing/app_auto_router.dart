@@ -17,8 +17,10 @@ import '../../features/articulos/presentation/show/articulo_sustitutivo_page.dar
 import '../../features/articulos/presentation/show/articulo_ventas_cliente_page.dart';
 import '../../features/articulos/presentation/show/articulo_ventas_mes_page.dart';
 import '../../features/articulos/presentation/show/ultimos_precios/articulo_ultimos_precios_page.dart';
+import '../../features/backorders/backorder_lista_page.dart';
 import '../../features/catalogos/presentation/catalogo_list_page.dart';
 import '../../features/catalogos/presentation/catalogo_pdf_viewer.dart';
+import '../../features/catalogos/presentation/catalogo_search_controller.dart';
 import '../../features/cliente/domain/cliente.dart';
 import '../../features/cliente/domain/cliente_direccion.dart';
 import '../../features/cliente/domain/cliente_imp_param.dart';
@@ -70,8 +72,6 @@ import '../../features/visitas/presentation/edit/visit_edit_page.dart';
 import '../../features/visitas/presentation/edit/visita_edit_select_contact_page.dart';
 import '../../features/visitas/presentation/index/visita_lista_page.dart';
 import '../../features/visitas/presentation/show/visita_detalle_page.dart';
-import '../../features/catalogos/presentation/catalogo_search_controller.dart';
-
 import '../application/log_service.dart';
 import '../domain/pais.dart';
 import '../presentation/common_widgets/cliente_sector_page.dart';
@@ -179,7 +179,7 @@ class AppRouter extends RootStackRouter {
     ),
     AutoRoute(page: ClienteAlbaranRoute.page, path: '/cliente/:id/albaran'),
     AutoRoute(page: ClienteFacturaRoute.page, path: '/cliente/:id/factura'),
-
+    AutoRoute(page: BackorderListRoute.page, path: '/backorder'),
     AutoRoute(page: PedidoVentaListRoute.page, path: '/pedido'),
     AutoRoute(page: PedidoVentaDetalleRoute.page, path: '/pedido/:id'),
     AutoRoute(

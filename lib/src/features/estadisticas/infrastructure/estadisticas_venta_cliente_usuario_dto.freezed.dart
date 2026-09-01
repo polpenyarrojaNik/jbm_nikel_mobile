@@ -29,16 +29,21 @@ $EstadisticasVentaClienteUsuarioDTOCopyWith<EstadisticasVentaClienteUsuarioDTO> 
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is EstadisticasVentaClienteUsuarioDTO&&(identical(other.anyo, anyo) || other.anyo == anyo)&&(identical(other.mes, mes) || other.mes == mes)&&(identical(other.clienteId, clienteId) || other.clienteId == clienteId)&&(identical(other.articuloId, articuloId) || other.articuloId == articuloId)&&(identical(other.unidades, unidades) || other.unidades == unidades)&&(identical(other.importe, importe) || other.importe == importe)&&(identical(other.coste, coste) || other.coste == coste)&&(identical(other.lastUpdated, lastUpdated) || other.lastUpdated == lastUpdated)&&(identical(other.deleted, deleted) || other.deleted == deleted));
+  final _this = this as EstadisticasVentaClienteUsuarioDTO;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is EstadisticasVentaClienteUsuarioDTO&&(identical(other.anyo, _this.anyo) || other.anyo == _this.anyo)&&(identical(other.mes, _this.mes) || other.mes == _this.mes)&&(identical(other.clienteId, _this.clienteId) || other.clienteId == _this.clienteId)&&(identical(other.articuloId, _this.articuloId) || other.articuloId == _this.articuloId)&&(identical(other.unidades, _this.unidades) || other.unidades == _this.unidades)&&(identical(other.importe, _this.importe) || other.importe == _this.importe)&&(identical(other.coste, _this.coste) || other.coste == _this.coste)&&(identical(other.lastUpdated, _this.lastUpdated) || other.lastUpdated == _this.lastUpdated)&&(identical(other.deleted, _this.deleted) || other.deleted == _this.deleted));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,anyo,mes,clienteId,articuloId,unidades,importe,coste,lastUpdated,deleted);
+int get hashCode {
+  final _this = this as EstadisticasVentaClienteUsuarioDTO;
+  return Object.hash(runtimeType,_this.anyo,_this.mes,_this.clienteId,_this.articuloId,_this.unidades,_this.importe,_this.coste,_this.lastUpdated,_this.deleted);
+}
 
 @override
 String toString() {
-  return 'EstadisticasVentaClienteUsuarioDTO(anyo: $anyo, mes: $mes, clienteId: $clienteId, articuloId: $articuloId, unidades: $unidades, importe: $importe, coste: $coste, lastUpdated: $lastUpdated, deleted: $deleted)';
+  final _this = this as EstadisticasVentaClienteUsuarioDTO;
+  return 'EstadisticasVentaClienteUsuarioDTO(anyo: ${_this.anyo}, mes: ${_this.mes}, clienteId: ${_this.clienteId}, articuloId: ${_this.articuloId}, unidades: ${_this.unidades}, importe: ${_this.importe}, coste: ${_this.coste}, lastUpdated: ${_this.lastUpdated}, deleted: ${_this.deleted})';
 }
 
 
@@ -244,16 +249,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _EstadisticasVentaClienteUsuarioDTO&&(identical(other.anyo, anyo) || other.anyo == anyo)&&(identical(other.mes, mes) || other.mes == mes)&&(identical(other.clienteId, clienteId) || other.clienteId == clienteId)&&(identical(other.articuloId, articuloId) || other.articuloId == articuloId)&&(identical(other.unidades, unidades) || other.unidades == unidades)&&(identical(other.importe, importe) || other.importe == importe)&&(identical(other.coste, coste) || other.coste == coste)&&(identical(other.lastUpdated, lastUpdated) || other.lastUpdated == lastUpdated)&&(identical(other.deleted, deleted) || other.deleted == deleted));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _EstadisticasVentaClienteUsuarioDTO&&(identical(other.anyo, anyo) || other.anyo == anyo)&&(identical(other.mes, mes) || other.mes == mes)&&(identical(other.clienteId, clienteId) || other.clienteId == clienteId)&&(identical(other.articuloId, articuloId) || other.articuloId == articuloId)&&(identical(other.unidades, unidades) || other.unidades == unidades)&&(identical(other.importe, importe) || other.importe == importe)&&(identical(other.coste, coste) || other.coste == coste)&&(identical(other.lastUpdated, lastUpdated) || other.lastUpdated == lastUpdated)&&(identical(other.deleted, deleted) || other.deleted == deleted));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,anyo,mes,clienteId,articuloId,unidades,importe,coste,lastUpdated,deleted);
+int get hashCode {
+    return Object.hash(runtimeType,anyo,mes,clienteId,articuloId,unidades,importe,coste,lastUpdated,deleted);
+}
 
 @override
 String toString() {
-  return 'EstadisticasVentaClienteUsuarioDTO(anyo: $anyo, mes: $mes, clienteId: $clienteId, articuloId: $articuloId, unidades: $unidades, importe: $importe, coste: $coste, lastUpdated: $lastUpdated, deleted: $deleted)';
+    return 'EstadisticasVentaClienteUsuarioDTO(anyo: $anyo, mes: $mes, clienteId: $clienteId, articuloId: $articuloId, unidades: $unidades, importe: $importe, coste: $coste, lastUpdated: $lastUpdated, deleted: $deleted)';
 }
 
 

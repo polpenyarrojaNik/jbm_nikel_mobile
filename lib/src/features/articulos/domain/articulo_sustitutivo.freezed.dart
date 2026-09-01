@@ -26,16 +26,21 @@ $ArticuloSustitutivoCopyWith<ArticuloSustitutivo> get copyWith => _$ArticuloSust
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ArticuloSustitutivo&&(identical(other.articuloId, articuloId) || other.articuloId == articuloId)&&(identical(other.articuloSustitutivoId, articuloSustitutivoId) || other.articuloSustitutivoId == articuloSustitutivoId)&&(identical(other.articuloSustitutivoDescription, articuloSustitutivoDescription) || other.articuloSustitutivoDescription == articuloSustitutivoDescription)&&(identical(other.orden, orden) || other.orden == orden)&&(identical(other.stockDisponible, stockDisponible) || other.stockDisponible == stockDisponible)&&(identical(other.lastUpdated, lastUpdated) || other.lastUpdated == lastUpdated)&&(identical(other.deleted, deleted) || other.deleted == deleted));
+  final _this = this as ArticuloSustitutivo;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ArticuloSustitutivo&&(identical(other.articuloId, _this.articuloId) || other.articuloId == _this.articuloId)&&(identical(other.articuloSustitutivoId, _this.articuloSustitutivoId) || other.articuloSustitutivoId == _this.articuloSustitutivoId)&&(identical(other.articuloSustitutivoDescription, _this.articuloSustitutivoDescription) || other.articuloSustitutivoDescription == _this.articuloSustitutivoDescription)&&(identical(other.orden, _this.orden) || other.orden == _this.orden)&&(identical(other.stockDisponible, _this.stockDisponible) || other.stockDisponible == _this.stockDisponible)&&(identical(other.lastUpdated, _this.lastUpdated) || other.lastUpdated == _this.lastUpdated)&&(identical(other.deleted, _this.deleted) || other.deleted == _this.deleted));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,articuloId,articuloSustitutivoId,articuloSustitutivoDescription,orden,stockDisponible,lastUpdated,deleted);
+int get hashCode {
+  final _this = this as ArticuloSustitutivo;
+  return Object.hash(runtimeType,_this.articuloId,_this.articuloSustitutivoId,_this.articuloSustitutivoDescription,_this.orden,_this.stockDisponible,_this.lastUpdated,_this.deleted);
+}
 
 @override
 String toString() {
-  return 'ArticuloSustitutivo(articuloId: $articuloId, articuloSustitutivoId: $articuloSustitutivoId, articuloSustitutivoDescription: $articuloSustitutivoDescription, orden: $orden, stockDisponible: $stockDisponible, lastUpdated: $lastUpdated, deleted: $deleted)';
+  final _this = this as ArticuloSustitutivo;
+  return 'ArticuloSustitutivo(articuloId: ${_this.articuloId}, articuloSustitutivoId: ${_this.articuloSustitutivoId}, articuloSustitutivoDescription: ${_this.articuloSustitutivoDescription}, orden: ${_this.orden}, stockDisponible: ${_this.stockDisponible}, lastUpdated: ${_this.lastUpdated}, deleted: ${_this.deleted})';
 }
 
 
@@ -234,16 +239,18 @@ _$ArticuloSustitutivoCopyWith<_ArticuloSustitutivo> get copyWith => __$ArticuloS
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ArticuloSustitutivo&&(identical(other.articuloId, articuloId) || other.articuloId == articuloId)&&(identical(other.articuloSustitutivoId, articuloSustitutivoId) || other.articuloSustitutivoId == articuloSustitutivoId)&&(identical(other.articuloSustitutivoDescription, articuloSustitutivoDescription) || other.articuloSustitutivoDescription == articuloSustitutivoDescription)&&(identical(other.orden, orden) || other.orden == orden)&&(identical(other.stockDisponible, stockDisponible) || other.stockDisponible == stockDisponible)&&(identical(other.lastUpdated, lastUpdated) || other.lastUpdated == lastUpdated)&&(identical(other.deleted, deleted) || other.deleted == deleted));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _ArticuloSustitutivo&&(identical(other.articuloId, articuloId) || other.articuloId == articuloId)&&(identical(other.articuloSustitutivoId, articuloSustitutivoId) || other.articuloSustitutivoId == articuloSustitutivoId)&&(identical(other.articuloSustitutivoDescription, articuloSustitutivoDescription) || other.articuloSustitutivoDescription == articuloSustitutivoDescription)&&(identical(other.orden, orden) || other.orden == orden)&&(identical(other.stockDisponible, stockDisponible) || other.stockDisponible == stockDisponible)&&(identical(other.lastUpdated, lastUpdated) || other.lastUpdated == lastUpdated)&&(identical(other.deleted, deleted) || other.deleted == deleted));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,articuloId,articuloSustitutivoId,articuloSustitutivoDescription,orden,stockDisponible,lastUpdated,deleted);
+int get hashCode {
+    return Object.hash(runtimeType,articuloId,articuloSustitutivoId,articuloSustitutivoDescription,orden,stockDisponible,lastUpdated,deleted);
+}
 
 @override
 String toString() {
-  return 'ArticuloSustitutivo(articuloId: $articuloId, articuloSustitutivoId: $articuloSustitutivoId, articuloSustitutivoDescription: $articuloSustitutivoDescription, orden: $orden, stockDisponible: $stockDisponible, lastUpdated: $lastUpdated, deleted: $deleted)';
+    return 'ArticuloSustitutivo(articuloId: $articuloId, articuloSustitutivoId: $articuloSustitutivoId, articuloSustitutivoDescription: $articuloSustitutivoDescription, orden: $orden, stockDisponible: $stockDisponible, lastUpdated: $lastUpdated, deleted: $deleted)';
 }
 
 

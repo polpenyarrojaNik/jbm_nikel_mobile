@@ -174,7 +174,11 @@ class MessageLookup extends MessageLookupByLibrary {
       "Benvenuto in",
     ),
     "auth_loginPage_usuario": MessageLookupByLibrary.simpleMessage("Utente"),
+    "backorders": MessageLookupByLibrary.simpleMessage("Ordini in sospeso"),
     "bajo": MessageLookupByLibrary.simpleMessage("Basso"),
+    "buscarBackorders": MessageLookupByLibrary.simpleMessage(
+      "Cerca ordini in sospeso...",
+    ),
     "camera": MessageLookupByLibrary.simpleMessage("Fotocamera"),
     "cancel": MessageLookupByLibrary.simpleMessage("Annulla"),
     "cancelar": MessageLookupByLibrary.simpleMessage("Annulla"),

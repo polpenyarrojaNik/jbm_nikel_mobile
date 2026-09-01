@@ -29,16 +29,21 @@ $ArticuloImagenDTOCopyWith<ArticuloImagenDTO> get copyWith => _$ArticuloImagenDT
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ArticuloImagenDTO&&(identical(other.articuloId, articuloId) || other.articuloId == articuloId)&&(identical(other.nombreArchivo, nombreArchivo) || other.nombreArchivo == nombreArchivo));
+  final _this = this as ArticuloImagenDTO;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ArticuloImagenDTO&&(identical(other.articuloId, _this.articuloId) || other.articuloId == _this.articuloId)&&(identical(other.nombreArchivo, _this.nombreArchivo) || other.nombreArchivo == _this.nombreArchivo));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,articuloId,nombreArchivo);
+int get hashCode {
+  final _this = this as ArticuloImagenDTO;
+  return Object.hash(runtimeType,_this.articuloId,_this.nombreArchivo);
+}
 
 @override
 String toString() {
-  return 'ArticuloImagenDTO(articuloId: $articuloId, nombreArchivo: $nombreArchivo)';
+  final _this = this as ArticuloImagenDTO;
+  return 'ArticuloImagenDTO(articuloId: ${_this.articuloId}, nombreArchivo: ${_this.nombreArchivo})';
 }
 
 
@@ -230,16 +235,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ArticuloImagenDTO&&(identical(other.articuloId, articuloId) || other.articuloId == articuloId)&&(identical(other.nombreArchivo, nombreArchivo) || other.nombreArchivo == nombreArchivo));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _ArticuloImagenDTO&&(identical(other.articuloId, articuloId) || other.articuloId == articuloId)&&(identical(other.nombreArchivo, nombreArchivo) || other.nombreArchivo == nombreArchivo));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,articuloId,nombreArchivo);
+int get hashCode {
+    return Object.hash(runtimeType,articuloId,nombreArchivo);
+}
 
 @override
 String toString() {
-  return 'ArticuloImagenDTO(articuloId: $articuloId, nombreArchivo: $nombreArchivo)';
+    return 'ArticuloImagenDTO(articuloId: $articuloId, nombreArchivo: $nombreArchivo)';
 }
 
 

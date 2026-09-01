@@ -29,16 +29,21 @@ $SectorDTOCopyWith<SectorDTO> get copyWith => _$SectorDTOCopyWithImpl<SectorDTO>
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is SectorDTO&&(identical(other.id, id) || other.id == id)&&(identical(other.altaSN, altaSN) || other.altaSN == altaSN)&&(identical(other.descripcionES, descripcionES) || other.descripcionES == descripcionES)&&(identical(other.descripcionEN, descripcionEN) || other.descripcionEN == descripcionEN)&&(identical(other.descripcionFR, descripcionFR) || other.descripcionFR == descripcionFR)&&(identical(other.descripcionDE, descripcionDE) || other.descripcionDE == descripcionDE)&&(identical(other.descripcionCA, descripcionCA) || other.descripcionCA == descripcionCA)&&(identical(other.descripcionGB, descripcionGB) || other.descripcionGB == descripcionGB)&&(identical(other.descripcionHU, descripcionHU) || other.descripcionHU == descripcionHU)&&(identical(other.descripcionIT, descripcionIT) || other.descripcionIT == descripcionIT)&&(identical(other.descripcionNL, descripcionNL) || other.descripcionNL == descripcionNL)&&(identical(other.descripcionPL, descripcionPL) || other.descripcionPL == descripcionPL)&&(identical(other.lastUpdated, lastUpdated) || other.lastUpdated == lastUpdated)&&(identical(other.deleted, deleted) || other.deleted == deleted));
+  final _this = this as SectorDTO;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is SectorDTO&&(identical(other.id, _this.id) || other.id == _this.id)&&(identical(other.altaSN, _this.altaSN) || other.altaSN == _this.altaSN)&&(identical(other.descripcionES, _this.descripcionES) || other.descripcionES == _this.descripcionES)&&(identical(other.descripcionEN, _this.descripcionEN) || other.descripcionEN == _this.descripcionEN)&&(identical(other.descripcionFR, _this.descripcionFR) || other.descripcionFR == _this.descripcionFR)&&(identical(other.descripcionDE, _this.descripcionDE) || other.descripcionDE == _this.descripcionDE)&&(identical(other.descripcionCA, _this.descripcionCA) || other.descripcionCA == _this.descripcionCA)&&(identical(other.descripcionGB, _this.descripcionGB) || other.descripcionGB == _this.descripcionGB)&&(identical(other.descripcionHU, _this.descripcionHU) || other.descripcionHU == _this.descripcionHU)&&(identical(other.descripcionIT, _this.descripcionIT) || other.descripcionIT == _this.descripcionIT)&&(identical(other.descripcionNL, _this.descripcionNL) || other.descripcionNL == _this.descripcionNL)&&(identical(other.descripcionPL, _this.descripcionPL) || other.descripcionPL == _this.descripcionPL)&&(identical(other.lastUpdated, _this.lastUpdated) || other.lastUpdated == _this.lastUpdated)&&(identical(other.deleted, _this.deleted) || other.deleted == _this.deleted));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,id,altaSN,descripcionES,descripcionEN,descripcionFR,descripcionDE,descripcionCA,descripcionGB,descripcionHU,descripcionIT,descripcionNL,descripcionPL,lastUpdated,deleted);
+int get hashCode {
+  final _this = this as SectorDTO;
+  return Object.hash(runtimeType,_this.id,_this.altaSN,_this.descripcionES,_this.descripcionEN,_this.descripcionFR,_this.descripcionDE,_this.descripcionCA,_this.descripcionGB,_this.descripcionHU,_this.descripcionIT,_this.descripcionNL,_this.descripcionPL,_this.lastUpdated,_this.deleted);
+}
 
 @override
 String toString() {
-  return 'SectorDTO(id: $id, altaSN: $altaSN, descripcionES: $descripcionES, descripcionEN: $descripcionEN, descripcionFR: $descripcionFR, descripcionDE: $descripcionDE, descripcionCA: $descripcionCA, descripcionGB: $descripcionGB, descripcionHU: $descripcionHU, descripcionIT: $descripcionIT, descripcionNL: $descripcionNL, descripcionPL: $descripcionPL, lastUpdated: $lastUpdated, deleted: $deleted)';
+  final _this = this as SectorDTO;
+  return 'SectorDTO(id: ${_this.id}, altaSN: ${_this.altaSN}, descripcionES: ${_this.descripcionES}, descripcionEN: ${_this.descripcionEN}, descripcionFR: ${_this.descripcionFR}, descripcionDE: ${_this.descripcionDE}, descripcionCA: ${_this.descripcionCA}, descripcionGB: ${_this.descripcionGB}, descripcionHU: ${_this.descripcionHU}, descripcionIT: ${_this.descripcionIT}, descripcionNL: ${_this.descripcionNL}, descripcionPL: ${_this.descripcionPL}, lastUpdated: ${_this.lastUpdated}, deleted: ${_this.deleted})';
 }
 
 
@@ -254,16 +259,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _SectorDTO&&(identical(other.id, id) || other.id == id)&&(identical(other.altaSN, altaSN) || other.altaSN == altaSN)&&(identical(other.descripcionES, descripcionES) || other.descripcionES == descripcionES)&&(identical(other.descripcionEN, descripcionEN) || other.descripcionEN == descripcionEN)&&(identical(other.descripcionFR, descripcionFR) || other.descripcionFR == descripcionFR)&&(identical(other.descripcionDE, descripcionDE) || other.descripcionDE == descripcionDE)&&(identical(other.descripcionCA, descripcionCA) || other.descripcionCA == descripcionCA)&&(identical(other.descripcionGB, descripcionGB) || other.descripcionGB == descripcionGB)&&(identical(other.descripcionHU, descripcionHU) || other.descripcionHU == descripcionHU)&&(identical(other.descripcionIT, descripcionIT) || other.descripcionIT == descripcionIT)&&(identical(other.descripcionNL, descripcionNL) || other.descripcionNL == descripcionNL)&&(identical(other.descripcionPL, descripcionPL) || other.descripcionPL == descripcionPL)&&(identical(other.lastUpdated, lastUpdated) || other.lastUpdated == lastUpdated)&&(identical(other.deleted, deleted) || other.deleted == deleted));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _SectorDTO&&(identical(other.id, id) || other.id == id)&&(identical(other.altaSN, altaSN) || other.altaSN == altaSN)&&(identical(other.descripcionES, descripcionES) || other.descripcionES == descripcionES)&&(identical(other.descripcionEN, descripcionEN) || other.descripcionEN == descripcionEN)&&(identical(other.descripcionFR, descripcionFR) || other.descripcionFR == descripcionFR)&&(identical(other.descripcionDE, descripcionDE) || other.descripcionDE == descripcionDE)&&(identical(other.descripcionCA, descripcionCA) || other.descripcionCA == descripcionCA)&&(identical(other.descripcionGB, descripcionGB) || other.descripcionGB == descripcionGB)&&(identical(other.descripcionHU, descripcionHU) || other.descripcionHU == descripcionHU)&&(identical(other.descripcionIT, descripcionIT) || other.descripcionIT == descripcionIT)&&(identical(other.descripcionNL, descripcionNL) || other.descripcionNL == descripcionNL)&&(identical(other.descripcionPL, descripcionPL) || other.descripcionPL == descripcionPL)&&(identical(other.lastUpdated, lastUpdated) || other.lastUpdated == lastUpdated)&&(identical(other.deleted, deleted) || other.deleted == deleted));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,id,altaSN,descripcionES,descripcionEN,descripcionFR,descripcionDE,descripcionCA,descripcionGB,descripcionHU,descripcionIT,descripcionNL,descripcionPL,lastUpdated,deleted);
+int get hashCode {
+    return Object.hash(runtimeType,id,altaSN,descripcionES,descripcionEN,descripcionFR,descripcionDE,descripcionCA,descripcionGB,descripcionHU,descripcionIT,descripcionNL,descripcionPL,lastUpdated,deleted);
+}
 
 @override
 String toString() {
-  return 'SectorDTO(id: $id, altaSN: $altaSN, descripcionES: $descripcionES, descripcionEN: $descripcionEN, descripcionFR: $descripcionFR, descripcionDE: $descripcionDE, descripcionCA: $descripcionCA, descripcionGB: $descripcionGB, descripcionHU: $descripcionHU, descripcionIT: $descripcionIT, descripcionNL: $descripcionNL, descripcionPL: $descripcionPL, lastUpdated: $lastUpdated, deleted: $deleted)';
+    return 'SectorDTO(id: $id, altaSN: $altaSN, descripcionES: $descripcionES, descripcionEN: $descripcionEN, descripcionFR: $descripcionFR, descripcionDE: $descripcionDE, descripcionCA: $descripcionCA, descripcionGB: $descripcionGB, descripcionHU: $descripcionHU, descripcionIT: $descripcionIT, descripcionNL: $descripcionNL, descripcionPL: $descripcionPL, lastUpdated: $lastUpdated, deleted: $deleted)';
 }
 
 

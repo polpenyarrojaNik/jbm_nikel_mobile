@@ -26,16 +26,21 @@ $SubfamiliaCopyWith<Subfamilia> get copyWith => _$SubfamiliaCopyWithImpl<Subfami
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is Subfamilia&&(identical(other.id, id) || other.id == id)&&(identical(other.familiaId, familiaId) || other.familiaId == familiaId)&&(identical(other.descripcion, descripcion) || other.descripcion == descripcion)&&(identical(other.lastUpdate, lastUpdate) || other.lastUpdate == lastUpdate)&&(identical(other.deleted, deleted) || other.deleted == deleted));
+  final _this = this as Subfamilia;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is Subfamilia&&(identical(other.id, _this.id) || other.id == _this.id)&&(identical(other.familiaId, _this.familiaId) || other.familiaId == _this.familiaId)&&(identical(other.descripcion, _this.descripcion) || other.descripcion == _this.descripcion)&&(identical(other.lastUpdate, _this.lastUpdate) || other.lastUpdate == _this.lastUpdate)&&(identical(other.deleted, _this.deleted) || other.deleted == _this.deleted));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,id,familiaId,descripcion,lastUpdate,deleted);
+int get hashCode {
+  final _this = this as Subfamilia;
+  return Object.hash(runtimeType,_this.id,_this.familiaId,_this.descripcion,_this.lastUpdate,_this.deleted);
+}
 
 @override
 String toString() {
-  return 'Subfamilia(id: $id, familiaId: $familiaId, descripcion: $descripcion, lastUpdate: $lastUpdate, deleted: $deleted)';
+  final _this = this as Subfamilia;
+  return 'Subfamilia(id: ${_this.id}, familiaId: ${_this.familiaId}, descripcion: ${_this.descripcion}, lastUpdate: ${_this.lastUpdate}, deleted: ${_this.deleted})';
 }
 
 
@@ -230,16 +235,18 @@ _$SubfamiliaCopyWith<_Subfamilia> get copyWith => __$SubfamiliaCopyWithImpl<_Sub
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Subfamilia&&(identical(other.id, id) || other.id == id)&&(identical(other.familiaId, familiaId) || other.familiaId == familiaId)&&(identical(other.descripcion, descripcion) || other.descripcion == descripcion)&&(identical(other.lastUpdate, lastUpdate) || other.lastUpdate == lastUpdate)&&(identical(other.deleted, deleted) || other.deleted == deleted));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _Subfamilia&&(identical(other.id, id) || other.id == id)&&(identical(other.familiaId, familiaId) || other.familiaId == familiaId)&&(identical(other.descripcion, descripcion) || other.descripcion == descripcion)&&(identical(other.lastUpdate, lastUpdate) || other.lastUpdate == lastUpdate)&&(identical(other.deleted, deleted) || other.deleted == deleted));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,id,familiaId,descripcion,lastUpdate,deleted);
+int get hashCode {
+    return Object.hash(runtimeType,id,familiaId,descripcion,lastUpdate,deleted);
+}
 
 @override
 String toString() {
-  return 'Subfamilia(id: $id, familiaId: $familiaId, descripcion: $descripcion, lastUpdate: $lastUpdate, deleted: $deleted)';
+    return 'Subfamilia(id: $id, familiaId: $familiaId, descripcion: $descripcion, lastUpdate: $lastUpdate, deleted: $deleted)';
 }
 
 

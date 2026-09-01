@@ -20,14 +20,14 @@ mixin _$SyncControllerState implements DiagnosticableTreeMixin {
 
 @override
 void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-  properties
+    properties
     ..add(DiagnosticsProperty('type', 'SyncControllerState'))
     ;
 }
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is SyncControllerState);
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is SyncControllerState);
 }
 
 
@@ -36,7 +36,7 @@ int get hashCode => runtimeType.hashCode;
 
 @override
 String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
-  return 'SyncControllerState()';
+    return 'SyncControllerState()';
 }
 
 
@@ -209,14 +209,14 @@ class _initial extends SyncControllerState with DiagnosticableTreeMixin {
 
 @override
 void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-  properties
+    properties
     ..add(DiagnosticsProperty('type', 'SyncControllerState.initial'))
     ;
 }
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _initial);
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _initial);
 }
 
 
@@ -225,7 +225,7 @@ int get hashCode => runtimeType.hashCode;
 
 @override
 String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
-  return 'SyncControllerState.initial()';
+    return 'SyncControllerState.initial()';
 }
 
 
@@ -247,14 +247,14 @@ class _shinchronizing extends SyncControllerState with DiagnosticableTreeMixin {
 
 @override
 void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-  properties
+    properties
     ..add(DiagnosticsProperty('type', 'SyncControllerState.synchronizing'))
     ;
 }
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _shinchronizing);
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _shinchronizing);
 }
 
 
@@ -263,7 +263,7 @@ int get hashCode => runtimeType.hashCode;
 
 @override
 String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
-  return 'SyncControllerState.synchronizing()';
+    return 'SyncControllerState.synchronizing()';
 }
 
 
@@ -285,14 +285,14 @@ class _synchronized extends SyncControllerState with DiagnosticableTreeMixin {
 
 @override
 void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-  properties
+    properties
     ..add(DiagnosticsProperty('type', 'SyncControllerState.synchronized'))
     ;
 }
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _synchronized);
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _synchronized);
 }
 
 
@@ -301,7 +301,7 @@ int get hashCode => runtimeType.hashCode;
 
 @override
 String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
-  return 'SyncControllerState.synchronized()';
+    return 'SyncControllerState.synchronized()';
 }
 
 
@@ -329,23 +329,25 @@ _$errorCopyWith<_error> get copyWith => __$errorCopyWithImpl<_error>(this, _$ide
 
 @override
 void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-  properties
+    properties
     ..add(DiagnosticsProperty('type', 'SyncControllerState.error'))
     ..add(DiagnosticsProperty('error', error))..add(DiagnosticsProperty('stackTrace', stackTrace));
 }
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _error&&const DeepCollectionEquality().equals(other.error, error)&&(identical(other.stackTrace, stackTrace) || other.stackTrace == stackTrace));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _error&&const DeepCollectionEquality().equals(other.error, error)&&(identical(other.stackTrace, stackTrace) || other.stackTrace == stackTrace));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(error),stackTrace);
+int get hashCode {
+    return Object.hash(runtimeType,const DeepCollectionEquality().hash(error),stackTrace);
+}
 
 @override
 String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
-  return 'SyncControllerState.error(error: $error, stackTrace: $stackTrace)';
+    return 'SyncControllerState.error(error: $error, stackTrace: $stackTrace)';
 }
 
 

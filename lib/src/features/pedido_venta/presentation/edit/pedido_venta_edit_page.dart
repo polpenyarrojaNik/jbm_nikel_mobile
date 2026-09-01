@@ -6,11 +6,11 @@ import 'package:flash/flash_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:flutter_material_design_icons/flutter_material_design_icons.dart';
 import 'package:flutter_riverpod/experimental/mutation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:gap/gap.dart';
-import 'package:flutter_material_design_icons/flutter_material_design_icons.dart';
 import 'package:open_file/open_file.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
 import 'package:uuid/uuid.dart';
@@ -953,30 +953,25 @@ class _StepSelectClienteDireccionContentState
                         focusNode: focusNode,
                       ),
                       if (direccionManual.value != null) ...[
-                        GestureDetector(
-                          behavior: HitTestBehavior.opaque,
-                          onTap: () => onSelectAddress(
-                            ref,
-                            direccionManual.value!,
-                            userSelectAnyAddress,
-                            direccionManual,
-                          ),
-                          child: Container(
-                            color:
-                                (widget.clienteDireccion != null &&
-                                    widget.clienteDireccion!.direccionId ==
-                                        direccionManual.value!.direccionId &&
-                                    widget.clienteDireccion!.isManual)
-                                ? Theme.of(context)
-                                      .colorScheme
-                                      .secondaryContainer
-                                : Colors.transparent,
-                            child: ClienteDireccionTile(
-                              clienteDireccion: direccionManual.value!,
-                              clienteImpParam: ClienteImpParam(
-                                direccionManual.value!.clienteId,
-                              ),
-                              isFromPedido: true,
+                        Container(
+                          color:
+                              (widget.clienteDireccion != null &&
+                                  widget.clienteDireccion!.direccionId ==
+                                      direccionManual.value!.direccionId &&
+                                  widget.clienteDireccion!.isManual)
+                              ? Theme.of(context).colorScheme.secondaryContainer
+                              : Colors.transparent,
+                          child: ClienteDireccionTile(
+                            clienteDireccion: direccionManual.value!,
+                            clienteImpParam: ClienteImpParam(
+                              direccionManual.value!.clienteId,
+                            ),
+                            isFromPedido: true,
+                            onTap: () => onSelectAddress(
+                              ref,
+                              direccionManual.value!,
+                              userSelectAnyAddress,
+                              direccionManual,
                             ),
                           ),
                         ),
@@ -989,29 +984,26 @@ class _StepSelectClienteDireccionContentState
                             shrinkWrap: true,
                             itemCount: clienteDireccionesList.length,
                             physics: const BouncingScrollPhysics(),
-                            itemBuilder: (context, i) => GestureDetector(
-                              onTap: () => onSelectAddress(
-                                ref,
-                                clienteDireccionesList[i],
-                                userSelectAnyAddress,
-                                direccionManual,
-                              ),
-                              child: Container(
-                                color:
-                                    (widget.clienteDireccion != null &&
-                                        widget.clienteDireccion!.direccionId ==
-                                            clienteDireccionesList[i]
-                                                .direccionId)
-                                    ? Theme.of(context)
-                                          .colorScheme
-                                          .secondaryContainer
-                                    : Colors.transparent,
-                                child: ClienteDireccionTile(
-                                  clienteDireccion: clienteDireccionesList[i],
-                                  clienteImpParam: ClienteImpParam(
-                                    clienteDireccionesList[i].clienteId,
-                                  ),
-                                  isFromPedido: true,
+                            itemBuilder: (context, i) => Container(
+                              color:
+                                  (widget.clienteDireccion != null &&
+                                      widget.clienteDireccion!.direccionId ==
+                                          clienteDireccionesList[i].direccionId)
+                                  ? Theme.of(context)
+                                        .colorScheme
+                                        .secondaryContainer
+                                  : Colors.transparent,
+                              child: ClienteDireccionTile(
+                                clienteDireccion: clienteDireccionesList[i],
+                                clienteImpParam: ClienteImpParam(
+                                  clienteDireccionesList[i].clienteId,
+                                ),
+                                isFromPedido: true,
+                                onTap: () => onSelectAddress(
+                                  ref,
+                                  clienteDireccionesList[i],
+                                  userSelectAnyAddress,
+                                  direccionManual,
                                 ),
                               ),
                             ),

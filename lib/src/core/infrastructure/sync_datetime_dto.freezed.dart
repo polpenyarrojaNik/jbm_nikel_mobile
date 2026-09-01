@@ -29,16 +29,21 @@ $SyncDateTimeDTOCopyWith<SyncDateTimeDTO> get copyWith => _$SyncDateTimeDTOCopyW
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is SyncDateTimeDTO&&(identical(other.id, id) || other.id == id)&&(identical(other.dbSchemaVersion, dbSchemaVersion) || other.dbSchemaVersion == dbSchemaVersion)&&(identical(other.articuloUltimaSync, articuloUltimaSync) || other.articuloUltimaSync == articuloUltimaSync)&&(identical(other.clienteUltimaSync, clienteUltimaSync) || other.clienteUltimaSync == clienteUltimaSync)&&(identical(other.pedidoUltimaSync, pedidoUltimaSync) || other.pedidoUltimaSync == pedidoUltimaSync)&&(identical(other.visitaUltimaSync, visitaUltimaSync) || other.visitaUltimaSync == visitaUltimaSync));
+  final _this = this as SyncDateTimeDTO;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is SyncDateTimeDTO&&(identical(other.id, _this.id) || other.id == _this.id)&&(identical(other.dbSchemaVersion, _this.dbSchemaVersion) || other.dbSchemaVersion == _this.dbSchemaVersion)&&(identical(other.articuloUltimaSync, _this.articuloUltimaSync) || other.articuloUltimaSync == _this.articuloUltimaSync)&&(identical(other.clienteUltimaSync, _this.clienteUltimaSync) || other.clienteUltimaSync == _this.clienteUltimaSync)&&(identical(other.pedidoUltimaSync, _this.pedidoUltimaSync) || other.pedidoUltimaSync == _this.pedidoUltimaSync)&&(identical(other.visitaUltimaSync, _this.visitaUltimaSync) || other.visitaUltimaSync == _this.visitaUltimaSync));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,id,dbSchemaVersion,articuloUltimaSync,clienteUltimaSync,pedidoUltimaSync,visitaUltimaSync);
+int get hashCode {
+  final _this = this as SyncDateTimeDTO;
+  return Object.hash(runtimeType,_this.id,_this.dbSchemaVersion,_this.articuloUltimaSync,_this.clienteUltimaSync,_this.pedidoUltimaSync,_this.visitaUltimaSync);
+}
 
 @override
 String toString() {
-  return 'SyncDateTimeDTO(id: $id, dbSchemaVersion: $dbSchemaVersion, articuloUltimaSync: $articuloUltimaSync, clienteUltimaSync: $clienteUltimaSync, pedidoUltimaSync: $pedidoUltimaSync, visitaUltimaSync: $visitaUltimaSync)';
+  final _this = this as SyncDateTimeDTO;
+  return 'SyncDateTimeDTO(id: ${_this.id}, dbSchemaVersion: ${_this.dbSchemaVersion}, articuloUltimaSync: ${_this.articuloUltimaSync}, clienteUltimaSync: ${_this.clienteUltimaSync}, pedidoUltimaSync: ${_this.pedidoUltimaSync}, visitaUltimaSync: ${_this.visitaUltimaSync})';
 }
 
 
@@ -238,16 +243,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _SyncDateTimeDTO&&(identical(other.id, id) || other.id == id)&&(identical(other.dbSchemaVersion, dbSchemaVersion) || other.dbSchemaVersion == dbSchemaVersion)&&(identical(other.articuloUltimaSync, articuloUltimaSync) || other.articuloUltimaSync == articuloUltimaSync)&&(identical(other.clienteUltimaSync, clienteUltimaSync) || other.clienteUltimaSync == clienteUltimaSync)&&(identical(other.pedidoUltimaSync, pedidoUltimaSync) || other.pedidoUltimaSync == pedidoUltimaSync)&&(identical(other.visitaUltimaSync, visitaUltimaSync) || other.visitaUltimaSync == visitaUltimaSync));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _SyncDateTimeDTO&&(identical(other.id, id) || other.id == id)&&(identical(other.dbSchemaVersion, dbSchemaVersion) || other.dbSchemaVersion == dbSchemaVersion)&&(identical(other.articuloUltimaSync, articuloUltimaSync) || other.articuloUltimaSync == articuloUltimaSync)&&(identical(other.clienteUltimaSync, clienteUltimaSync) || other.clienteUltimaSync == clienteUltimaSync)&&(identical(other.pedidoUltimaSync, pedidoUltimaSync) || other.pedidoUltimaSync == pedidoUltimaSync)&&(identical(other.visitaUltimaSync, visitaUltimaSync) || other.visitaUltimaSync == visitaUltimaSync));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,id,dbSchemaVersion,articuloUltimaSync,clienteUltimaSync,pedidoUltimaSync,visitaUltimaSync);
+int get hashCode {
+    return Object.hash(runtimeType,id,dbSchemaVersion,articuloUltimaSync,clienteUltimaSync,pedidoUltimaSync,visitaUltimaSync);
+}
 
 @override
 String toString() {
-  return 'SyncDateTimeDTO(id: $id, dbSchemaVersion: $dbSchemaVersion, articuloUltimaSync: $articuloUltimaSync, clienteUltimaSync: $clienteUltimaSync, pedidoUltimaSync: $pedidoUltimaSync, visitaUltimaSync: $visitaUltimaSync)';
+    return 'SyncDateTimeDTO(id: $id, dbSchemaVersion: $dbSchemaVersion, articuloUltimaSync: $articuloUltimaSync, clienteUltimaSync: $clienteUltimaSync, pedidoUltimaSync: $pedidoUltimaSync, visitaUltimaSync: $visitaUltimaSync)';
 }
 
 

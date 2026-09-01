@@ -1,8 +1,8 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_material_design_icons/flutter_material_design_icons.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gap/gap.dart';
-import 'package:flutter_material_design_icons/flutter_material_design_icons.dart';
 
 import '../../../../generated/l10n.dart';
 import '../../../features/usuario/application/usuario_notifier.dart';
@@ -59,6 +59,14 @@ class AppDrawer extends StatelessWidget {
             title: Text(S.of(context).commonWidgets_appDrawer_pedidos),
             onTap: () => context.router.pushAndPopUntil(
               PedidoVentaListRoute(),
+              predicate: (route) => false,
+            ),
+          ),
+          ListTile(
+            leading: Icon(MdiIcons.basketRemoveOutline, size: 30),
+            title: Text(S.of(context).backorders),
+            onTap: () => context.router.pushAndPopUntil(
+              BackorderListRoute(),
               predicate: (route) => false,
             ),
           ),

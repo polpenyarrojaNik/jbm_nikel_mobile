@@ -26,16 +26,21 @@ $ArticuloEmpresaIvaCopyWith<ArticuloEmpresaIva> get copyWith => _$ArticuloEmpres
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ArticuloEmpresaIva&&(identical(other.articuloId, articuloId) || other.articuloId == articuloId)&&(identical(other.empresaId, empresaId) || other.empresaId == empresaId)&&(identical(other.iva, iva) || other.iva == iva)&&(identical(other.lastUpdated, lastUpdated) || other.lastUpdated == lastUpdated)&&(identical(other.deleted, deleted) || other.deleted == deleted));
+  final _this = this as ArticuloEmpresaIva;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ArticuloEmpresaIva&&(identical(other.articuloId, _this.articuloId) || other.articuloId == _this.articuloId)&&(identical(other.empresaId, _this.empresaId) || other.empresaId == _this.empresaId)&&(identical(other.iva, _this.iva) || other.iva == _this.iva)&&(identical(other.lastUpdated, _this.lastUpdated) || other.lastUpdated == _this.lastUpdated)&&(identical(other.deleted, _this.deleted) || other.deleted == _this.deleted));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,articuloId,empresaId,iva,lastUpdated,deleted);
+int get hashCode {
+  final _this = this as ArticuloEmpresaIva;
+  return Object.hash(runtimeType,_this.articuloId,_this.empresaId,_this.iva,_this.lastUpdated,_this.deleted);
+}
 
 @override
 String toString() {
-  return 'ArticuloEmpresaIva(articuloId: $articuloId, empresaId: $empresaId, iva: $iva, lastUpdated: $lastUpdated, deleted: $deleted)';
+  final _this = this as ArticuloEmpresaIva;
+  return 'ArticuloEmpresaIva(articuloId: ${_this.articuloId}, empresaId: ${_this.empresaId}, iva: ${_this.iva}, lastUpdated: ${_this.lastUpdated}, deleted: ${_this.deleted})';
 }
 
 
@@ -230,16 +235,18 @@ _$ArticuloEmpresaIvaCopyWith<_ArticuloEmpresaIva> get copyWith => __$ArticuloEmp
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ArticuloEmpresaIva&&(identical(other.articuloId, articuloId) || other.articuloId == articuloId)&&(identical(other.empresaId, empresaId) || other.empresaId == empresaId)&&(identical(other.iva, iva) || other.iva == iva)&&(identical(other.lastUpdated, lastUpdated) || other.lastUpdated == lastUpdated)&&(identical(other.deleted, deleted) || other.deleted == deleted));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _ArticuloEmpresaIva&&(identical(other.articuloId, articuloId) || other.articuloId == articuloId)&&(identical(other.empresaId, empresaId) || other.empresaId == empresaId)&&(identical(other.iva, iva) || other.iva == iva)&&(identical(other.lastUpdated, lastUpdated) || other.lastUpdated == lastUpdated)&&(identical(other.deleted, deleted) || other.deleted == deleted));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,articuloId,empresaId,iva,lastUpdated,deleted);
+int get hashCode {
+    return Object.hash(runtimeType,articuloId,empresaId,iva,lastUpdated,deleted);
+}
 
 @override
 String toString() {
-  return 'ArticuloEmpresaIva(articuloId: $articuloId, empresaId: $empresaId, iva: $iva, lastUpdated: $lastUpdated, deleted: $deleted)';
+    return 'ArticuloEmpresaIva(articuloId: $articuloId, empresaId: $empresaId, iva: $iva, lastUpdated: $lastUpdated, deleted: $deleted)';
 }
 
 

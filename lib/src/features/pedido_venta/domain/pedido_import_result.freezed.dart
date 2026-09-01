@@ -26,16 +26,21 @@ $PedidoImportResultCopyWith<PedidoImportResult> get copyWith => _$PedidoImportRe
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is PedidoImportResult&&(identical(other.sheetName, sheetName) || other.sheetName == sheetName)&&const DeepCollectionEquality().equals(other.pedidoImportLineas, pedidoImportLineas)&&const DeepCollectionEquality().equals(other.pedidoImportLineaErrors, pedidoImportLineaErrors));
+  final _this = this as PedidoImportResult;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is PedidoImportResult&&(identical(other.sheetName, _this.sheetName) || other.sheetName == _this.sheetName)&&const DeepCollectionEquality().equals(other.pedidoImportLineas, _this.pedidoImportLineas)&&const DeepCollectionEquality().equals(other.pedidoImportLineaErrors, _this.pedidoImportLineaErrors));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,sheetName,const DeepCollectionEquality().hash(pedidoImportLineas),const DeepCollectionEquality().hash(pedidoImportLineaErrors));
+int get hashCode {
+  final _this = this as PedidoImportResult;
+  return Object.hash(runtimeType,_this.sheetName,const DeepCollectionEquality().hash(_this.pedidoImportLineas),const DeepCollectionEquality().hash(_this.pedidoImportLineaErrors));
+}
 
 @override
 String toString() {
-  return 'PedidoImportResult(sheetName: $sheetName, pedidoImportLineas: $pedidoImportLineas, pedidoImportLineaErrors: $pedidoImportLineaErrors)';
+  final _this = this as PedidoImportResult;
+  return 'PedidoImportResult(sheetName: ${_this.sheetName}, pedidoImportLineas: ${_this.pedidoImportLineas}, pedidoImportLineaErrors: ${_this.pedidoImportLineaErrors})';
 }
 
 
@@ -238,16 +243,18 @@ _$PedidoImportResultCopyWith<_PedidoImportResult> get copyWith => __$PedidoImpor
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _PedidoImportResult&&(identical(other.sheetName, sheetName) || other.sheetName == sheetName)&&const DeepCollectionEquality().equals(other._pedidoImportLineas, _pedidoImportLineas)&&const DeepCollectionEquality().equals(other._pedidoImportLineaErrors, _pedidoImportLineaErrors));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _PedidoImportResult&&(identical(other.sheetName, sheetName) || other.sheetName == sheetName)&&const DeepCollectionEquality().equals(other.pedidoImportLineas, _pedidoImportLineas)&&const DeepCollectionEquality().equals(other.pedidoImportLineaErrors, _pedidoImportLineaErrors));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,sheetName,const DeepCollectionEquality().hash(_pedidoImportLineas),const DeepCollectionEquality().hash(_pedidoImportLineaErrors));
+int get hashCode {
+    return Object.hash(runtimeType,sheetName,const DeepCollectionEquality().hash(_pedidoImportLineas),const DeepCollectionEquality().hash(_pedidoImportLineaErrors));
+}
 
 @override
 String toString() {
-  return 'PedidoImportResult(sheetName: $sheetName, pedidoImportLineas: $pedidoImportLineas, pedidoImportLineaErrors: $pedidoImportLineaErrors)';
+    return 'PedidoImportResult(sheetName: $sheetName, pedidoImportLineas: $pedidoImportLineas, pedidoImportLineaErrors: $pedidoImportLineaErrors)';
 }
 
 

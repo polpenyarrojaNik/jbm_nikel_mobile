@@ -26,16 +26,21 @@ $ClienteVentaArticuloCopyWith<ClienteVentaArticulo> get copyWith => _$ClienteVen
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ClienteVentaArticulo&&(identical(other.clienteId, clienteId) || other.clienteId == clienteId)&&(identical(other.mes, mes) || other.mes == mes)&&(identical(other.importe, importe) || other.importe == importe)&&(identical(other.coste, coste) || other.coste == coste));
+  final _this = this as ClienteVentaArticulo;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ClienteVentaArticulo&&(identical(other.clienteId, _this.clienteId) || other.clienteId == _this.clienteId)&&(identical(other.mes, _this.mes) || other.mes == _this.mes)&&(identical(other.importe, _this.importe) || other.importe == _this.importe)&&(identical(other.coste, _this.coste) || other.coste == _this.coste));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,clienteId,mes,importe,coste);
+int get hashCode {
+  final _this = this as ClienteVentaArticulo;
+  return Object.hash(runtimeType,_this.clienteId,_this.mes,_this.importe,_this.coste);
+}
 
 @override
 String toString() {
-  return 'ClienteVentaArticulo(clienteId: $clienteId, mes: $mes, importe: $importe, coste: $coste)';
+  final _this = this as ClienteVentaArticulo;
+  return 'ClienteVentaArticulo(clienteId: ${_this.clienteId}, mes: ${_this.mes}, importe: ${_this.importe}, coste: ${_this.coste})';
 }
 
 
@@ -228,16 +233,18 @@ _$ClienteVentaArticuloCopyWith<_ClienteVentaArticulo> get copyWith => __$Cliente
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ClienteVentaArticulo&&(identical(other.clienteId, clienteId) || other.clienteId == clienteId)&&(identical(other.mes, mes) || other.mes == mes)&&(identical(other.importe, importe) || other.importe == importe)&&(identical(other.coste, coste) || other.coste == coste));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _ClienteVentaArticulo&&(identical(other.clienteId, clienteId) || other.clienteId == clienteId)&&(identical(other.mes, mes) || other.mes == mes)&&(identical(other.importe, importe) || other.importe == importe)&&(identical(other.coste, coste) || other.coste == coste));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,clienteId,mes,importe,coste);
+int get hashCode {
+    return Object.hash(runtimeType,clienteId,mes,importe,coste);
+}
 
 @override
 String toString() {
-  return 'ClienteVentaArticulo(clienteId: $clienteId, mes: $mes, importe: $importe, coste: $coste)';
+    return 'ClienteVentaArticulo(clienteId: $clienteId, mes: $mes, importe: $importe, coste: $coste)';
 }
 
 

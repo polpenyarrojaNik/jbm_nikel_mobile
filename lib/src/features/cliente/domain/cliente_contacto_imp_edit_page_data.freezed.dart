@@ -26,16 +26,21 @@ $ClienteContactoImpEditPageDataCopyWith<ClienteContactoImpEditPageData> get copy
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ClienteContactoImpEditPageData&&(identical(other.clienteContacto, clienteContacto) || other.clienteContacto == clienteContacto)&&(identical(other.isSent, isSent) || other.isSent == isSent)&&const DeepCollectionEquality().equals(other.error, error));
+  final _this = this as ClienteContactoImpEditPageData;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ClienteContactoImpEditPageData&&(identical(other.clienteContacto, _this.clienteContacto) || other.clienteContacto == _this.clienteContacto)&&(identical(other.isSent, _this.isSent) || other.isSent == _this.isSent)&&const DeepCollectionEquality().equals(other.error, _this.error));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,clienteContacto,isSent,const DeepCollectionEquality().hash(error));
+int get hashCode {
+  final _this = this as ClienteContactoImpEditPageData;
+  return Object.hash(runtimeType,_this.clienteContacto,_this.isSent,const DeepCollectionEquality().hash(_this.error));
+}
 
 @override
 String toString() {
-  return 'ClienteContactoImpEditPageData(clienteContacto: $clienteContacto, isSent: $isSent, error: $error)';
+  final _this = this as ClienteContactoImpEditPageData;
+  return 'ClienteContactoImpEditPageData(clienteContacto: ${_this.clienteContacto}, isSent: ${_this.isSent}, error: ${_this.error})';
 }
 
 
@@ -237,16 +242,18 @@ _$ClienteContactoImpEditPageDataCopyWith<_ClienteContactoImpEditPageData> get co
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ClienteContactoImpEditPageData&&(identical(other.clienteContacto, clienteContacto) || other.clienteContacto == clienteContacto)&&(identical(other.isSent, isSent) || other.isSent == isSent)&&const DeepCollectionEquality().equals(other.error, error));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _ClienteContactoImpEditPageData&&(identical(other.clienteContacto, clienteContacto) || other.clienteContacto == clienteContacto)&&(identical(other.isSent, isSent) || other.isSent == isSent)&&const DeepCollectionEquality().equals(other.error, error));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,clienteContacto,isSent,const DeepCollectionEquality().hash(error));
+int get hashCode {
+    return Object.hash(runtimeType,clienteContacto,isSent,const DeepCollectionEquality().hash(error));
+}
 
 @override
 String toString() {
-  return 'ClienteContactoImpEditPageData(clienteContacto: $clienteContacto, isSent: $isSent, error: $error)';
+    return 'ClienteContactoImpEditPageData(clienteContacto: $clienteContacto, isSent: $isSent, error: $error)';
 }
 
 

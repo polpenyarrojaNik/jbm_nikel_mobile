@@ -29,16 +29,21 @@ $OcrRecognizedTextCopyWith<OcrRecognizedText> get copyWith => _$OcrRecognizedTex
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is OcrRecognizedText&&(identical(other.text, text) || other.text == text)&&(identical(other.type, type) || other.type == type)&&(identical(other.dischargeDate, dischargeDate) || other.dischargeDate == dischargeDate)&&(identical(other.telfText, telfText) || other.telfText == telfText)&&(identical(other.emailText, emailText) || other.emailText == emailText)&&(identical(other.websiteText, websiteText) || other.websiteText == websiteText));
+  final _this = this as OcrRecognizedText;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is OcrRecognizedText&&(identical(other.text, _this.text) || other.text == _this.text)&&(identical(other.type, _this.type) || other.type == _this.type)&&(identical(other.dischargeDate, _this.dischargeDate) || other.dischargeDate == _this.dischargeDate)&&(identical(other.telfText, _this.telfText) || other.telfText == _this.telfText)&&(identical(other.emailText, _this.emailText) || other.emailText == _this.emailText)&&(identical(other.websiteText, _this.websiteText) || other.websiteText == _this.websiteText));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,text,type,dischargeDate,telfText,emailText,websiteText);
+int get hashCode {
+  final _this = this as OcrRecognizedText;
+  return Object.hash(runtimeType,_this.text,_this.type,_this.dischargeDate,_this.telfText,_this.emailText,_this.websiteText);
+}
 
 @override
 String toString() {
-  return 'OcrRecognizedText(text: $text, type: $type, dischargeDate: $dischargeDate, telfText: $telfText, emailText: $emailText, websiteText: $websiteText)';
+  final _this = this as OcrRecognizedText;
+  return 'OcrRecognizedText(text: ${_this.text}, type: ${_this.type}, dischargeDate: ${_this.dischargeDate}, telfText: ${_this.telfText}, emailText: ${_this.emailText}, websiteText: ${_this.websiteText})';
 }
 
 
@@ -238,16 +243,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _OcrRecognizedText&&(identical(other.text, text) || other.text == text)&&(identical(other.type, type) || other.type == type)&&(identical(other.dischargeDate, dischargeDate) || other.dischargeDate == dischargeDate)&&(identical(other.telfText, telfText) || other.telfText == telfText)&&(identical(other.emailText, emailText) || other.emailText == emailText)&&(identical(other.websiteText, websiteText) || other.websiteText == websiteText));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _OcrRecognizedText&&(identical(other.text, text) || other.text == text)&&(identical(other.type, type) || other.type == type)&&(identical(other.dischargeDate, dischargeDate) || other.dischargeDate == dischargeDate)&&(identical(other.telfText, telfText) || other.telfText == telfText)&&(identical(other.emailText, emailText) || other.emailText == emailText)&&(identical(other.websiteText, websiteText) || other.websiteText == websiteText));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,text,type,dischargeDate,telfText,emailText,websiteText);
+int get hashCode {
+    return Object.hash(runtimeType,text,type,dischargeDate,telfText,emailText,websiteText);
+}
 
 @override
 String toString() {
-  return 'OcrRecognizedText(text: $text, type: $type, dischargeDate: $dischargeDate, telfText: $telfText, emailText: $emailText, websiteText: $websiteText)';
+    return 'OcrRecognizedText(text: $text, type: $type, dischargeDate: $dischargeDate, telfText: $telfText, emailText: $emailText, websiteText: $websiteText)';
 }
 
 

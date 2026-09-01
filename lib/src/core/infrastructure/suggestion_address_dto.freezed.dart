@@ -29,16 +29,21 @@ $SuggestionAddressDTOCopyWith<SuggestionAddressDTO> get copyWith => _$Suggestion
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is SuggestionAddressDTO&&(identical(other.direccion, direccion) || other.direccion == direccion)&&(identical(other.codigoPostal, codigoPostal) || other.codigoPostal == codigoPostal)&&(identical(other.poblacion, poblacion) || other.poblacion == poblacion)&&(identical(other.provinciaId, provinciaId) || other.provinciaId == provinciaId)&&(identical(other.provinciaNombre, provinciaNombre) || other.provinciaNombre == provinciaNombre)&&(identical(other.paisId, paisId) || other.paisId == paisId)&&(identical(other.formattedAddress, formattedAddress) || other.formattedAddress == formattedAddress)&&(identical(other.formattedAddressResult, formattedAddressResult) || other.formattedAddressResult == formattedAddressResult));
+  final _this = this as SuggestionAddressDTO;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is SuggestionAddressDTO&&(identical(other.direccion, _this.direccion) || other.direccion == _this.direccion)&&(identical(other.codigoPostal, _this.codigoPostal) || other.codigoPostal == _this.codigoPostal)&&(identical(other.poblacion, _this.poblacion) || other.poblacion == _this.poblacion)&&(identical(other.provinciaId, _this.provinciaId) || other.provinciaId == _this.provinciaId)&&(identical(other.provinciaNombre, _this.provinciaNombre) || other.provinciaNombre == _this.provinciaNombre)&&(identical(other.paisId, _this.paisId) || other.paisId == _this.paisId)&&(identical(other.formattedAddress, _this.formattedAddress) || other.formattedAddress == _this.formattedAddress)&&(identical(other.formattedAddressResult, _this.formattedAddressResult) || other.formattedAddressResult == _this.formattedAddressResult));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,direccion,codigoPostal,poblacion,provinciaId,provinciaNombre,paisId,formattedAddress,formattedAddressResult);
+int get hashCode {
+  final _this = this as SuggestionAddressDTO;
+  return Object.hash(runtimeType,_this.direccion,_this.codigoPostal,_this.poblacion,_this.provinciaId,_this.provinciaNombre,_this.paisId,_this.formattedAddress,_this.formattedAddressResult);
+}
 
 @override
 String toString() {
-  return 'SuggestionAddressDTO(direccion: $direccion, codigoPostal: $codigoPostal, poblacion: $poblacion, provinciaId: $provinciaId, provinciaNombre: $provinciaNombre, paisId: $paisId, formattedAddress: $formattedAddress, formattedAddressResult: $formattedAddressResult)';
+  final _this = this as SuggestionAddressDTO;
+  return 'SuggestionAddressDTO(direccion: ${_this.direccion}, codigoPostal: ${_this.codigoPostal}, poblacion: ${_this.poblacion}, provinciaId: ${_this.provinciaId}, provinciaNombre: ${_this.provinciaNombre}, paisId: ${_this.paisId}, formattedAddress: ${_this.formattedAddress}, formattedAddressResult: ${_this.formattedAddressResult})';
 }
 
 
@@ -242,16 +247,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _SuggestionAddressDTO&&(identical(other.direccion, direccion) || other.direccion == direccion)&&(identical(other.codigoPostal, codigoPostal) || other.codigoPostal == codigoPostal)&&(identical(other.poblacion, poblacion) || other.poblacion == poblacion)&&(identical(other.provinciaId, provinciaId) || other.provinciaId == provinciaId)&&(identical(other.provinciaNombre, provinciaNombre) || other.provinciaNombre == provinciaNombre)&&(identical(other.paisId, paisId) || other.paisId == paisId)&&(identical(other.formattedAddress, formattedAddress) || other.formattedAddress == formattedAddress)&&(identical(other.formattedAddressResult, formattedAddressResult) || other.formattedAddressResult == formattedAddressResult));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _SuggestionAddressDTO&&(identical(other.direccion, direccion) || other.direccion == direccion)&&(identical(other.codigoPostal, codigoPostal) || other.codigoPostal == codigoPostal)&&(identical(other.poblacion, poblacion) || other.poblacion == poblacion)&&(identical(other.provinciaId, provinciaId) || other.provinciaId == provinciaId)&&(identical(other.provinciaNombre, provinciaNombre) || other.provinciaNombre == provinciaNombre)&&(identical(other.paisId, paisId) || other.paisId == paisId)&&(identical(other.formattedAddress, formattedAddress) || other.formattedAddress == formattedAddress)&&(identical(other.formattedAddressResult, formattedAddressResult) || other.formattedAddressResult == formattedAddressResult));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,direccion,codigoPostal,poblacion,provinciaId,provinciaNombre,paisId,formattedAddress,formattedAddressResult);
+int get hashCode {
+    return Object.hash(runtimeType,direccion,codigoPostal,poblacion,provinciaId,provinciaNombre,paisId,formattedAddress,formattedAddressResult);
+}
 
 @override
 String toString() {
-  return 'SuggestionAddressDTO(direccion: $direccion, codigoPostal: $codigoPostal, poblacion: $poblacion, provinciaId: $provinciaId, provinciaNombre: $provinciaNombre, paisId: $paisId, formattedAddress: $formattedAddress, formattedAddressResult: $formattedAddressResult)';
+    return 'SuggestionAddressDTO(direccion: $direccion, codigoPostal: $codigoPostal, poblacion: $poblacion, provinciaId: $provinciaId, provinciaNombre: $provinciaNombre, paisId: $paisId, formattedAddress: $formattedAddress, formattedAddressResult: $formattedAddressResult)';
 }
 
 

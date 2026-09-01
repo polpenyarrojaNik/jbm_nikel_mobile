@@ -26,16 +26,21 @@ $NotificacionCopyWith<Notificacion> get copyWith => _$NotificacionCopyWithImpl<N
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is Notificacion&&(identical(other.notificationId, notificationId) || other.notificationId == notificationId)&&(identical(other.fecha, fecha) || other.fecha == fecha)&&(identical(other.leidoSN, leidoSN) || other.leidoSN == leidoSN)&&(identical(other.mensaje, mensaje) || other.mensaje == mensaje)&&const DeepCollectionEquality().equals(other.adjuntos, adjuntos));
+  final _this = this as Notificacion;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is Notificacion&&(identical(other.notificationId, _this.notificationId) || other.notificationId == _this.notificationId)&&(identical(other.fecha, _this.fecha) || other.fecha == _this.fecha)&&(identical(other.leidoSN, _this.leidoSN) || other.leidoSN == _this.leidoSN)&&(identical(other.mensaje, _this.mensaje) || other.mensaje == _this.mensaje)&&const DeepCollectionEquality().equals(other.adjuntos, _this.adjuntos));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,notificationId,fecha,leidoSN,mensaje,const DeepCollectionEquality().hash(adjuntos));
+int get hashCode {
+  final _this = this as Notificacion;
+  return Object.hash(runtimeType,_this.notificationId,_this.fecha,_this.leidoSN,_this.mensaje,const DeepCollectionEquality().hash(_this.adjuntos));
+}
 
 @override
 String toString() {
-  return 'Notificacion(notificationId: $notificationId, fecha: $fecha, leidoSN: $leidoSN, mensaje: $mensaje, adjuntos: $adjuntos)';
+  final _this = this as Notificacion;
+  return 'Notificacion(notificationId: ${_this.notificationId}, fecha: ${_this.fecha}, leidoSN: ${_this.leidoSN}, mensaje: ${_this.mensaje}, adjuntos: ${_this.adjuntos})';
 }
 
 
@@ -236,16 +241,18 @@ _$NotificacionCopyWith<_Notificacion> get copyWith => __$NotificacionCopyWithImp
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Notificacion&&(identical(other.notificationId, notificationId) || other.notificationId == notificationId)&&(identical(other.fecha, fecha) || other.fecha == fecha)&&(identical(other.leidoSN, leidoSN) || other.leidoSN == leidoSN)&&(identical(other.mensaje, mensaje) || other.mensaje == mensaje)&&const DeepCollectionEquality().equals(other._adjuntos, _adjuntos));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _Notificacion&&(identical(other.notificationId, notificationId) || other.notificationId == notificationId)&&(identical(other.fecha, fecha) || other.fecha == fecha)&&(identical(other.leidoSN, leidoSN) || other.leidoSN == leidoSN)&&(identical(other.mensaje, mensaje) || other.mensaje == mensaje)&&const DeepCollectionEquality().equals(other.adjuntos, _adjuntos));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,notificationId,fecha,leidoSN,mensaje,const DeepCollectionEquality().hash(_adjuntos));
+int get hashCode {
+    return Object.hash(runtimeType,notificationId,fecha,leidoSN,mensaje,const DeepCollectionEquality().hash(_adjuntos));
+}
 
 @override
 String toString() {
-  return 'Notificacion(notificationId: $notificationId, fecha: $fecha, leidoSN: $leidoSN, mensaje: $mensaje, adjuntos: $adjuntos)';
+    return 'Notificacion(notificationId: $notificationId, fecha: $fecha, leidoSN: $leidoSN, mensaje: $mensaje, adjuntos: $adjuntos)';
 }
 
 

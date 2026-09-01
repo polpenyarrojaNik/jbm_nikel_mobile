@@ -29,16 +29,21 @@ $ClienteAlbaranDTOCopyWith<ClienteAlbaranDTO> get copyWith => _$ClienteAlbaranDT
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ClienteAlbaranDTO&&(identical(other.clienteId, clienteId) || other.clienteId == clienteId)&&(identical(other.albaranId, albaranId) || other.albaranId == albaranId)&&(identical(other.empresaId, empresaId) || other.empresaId == empresaId)&&(identical(other.fechaAlbaran, fechaAlbaran) || other.fechaAlbaran == fechaAlbaran)&&(identical(other.zipCode, zipCode) || other.zipCode == zipCode)&&(identical(other.poblacion, poblacion) || other.poblacion == poblacion)&&(identical(other.paisId, paisId) || other.paisId == paisId)&&(identical(other.provincia, provincia) || other.provincia == provincia)&&(identical(other.baseImponible, baseImponible) || other.baseImponible == baseImponible)&&(identical(other.documentoPdf, documentoPdf) || other.documentoPdf == documentoPdf)&&(identical(other.archivoExiste, archivoExiste) || other.archivoExiste == archivoExiste));
+  final _this = this as ClienteAlbaranDTO;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ClienteAlbaranDTO&&(identical(other.clienteId, _this.clienteId) || other.clienteId == _this.clienteId)&&(identical(other.albaranId, _this.albaranId) || other.albaranId == _this.albaranId)&&(identical(other.empresaId, _this.empresaId) || other.empresaId == _this.empresaId)&&(identical(other.fechaAlbaran, _this.fechaAlbaran) || other.fechaAlbaran == _this.fechaAlbaran)&&(identical(other.zipCode, _this.zipCode) || other.zipCode == _this.zipCode)&&(identical(other.poblacion, _this.poblacion) || other.poblacion == _this.poblacion)&&(identical(other.paisId, _this.paisId) || other.paisId == _this.paisId)&&(identical(other.provincia, _this.provincia) || other.provincia == _this.provincia)&&(identical(other.baseImponible, _this.baseImponible) || other.baseImponible == _this.baseImponible)&&(identical(other.documentoPdf, _this.documentoPdf) || other.documentoPdf == _this.documentoPdf)&&(identical(other.archivoExiste, _this.archivoExiste) || other.archivoExiste == _this.archivoExiste));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,clienteId,albaranId,empresaId,fechaAlbaran,zipCode,poblacion,paisId,provincia,baseImponible,documentoPdf,archivoExiste);
+int get hashCode {
+  final _this = this as ClienteAlbaranDTO;
+  return Object.hash(runtimeType,_this.clienteId,_this.albaranId,_this.empresaId,_this.fechaAlbaran,_this.zipCode,_this.poblacion,_this.paisId,_this.provincia,_this.baseImponible,_this.documentoPdf,_this.archivoExiste);
+}
 
 @override
 String toString() {
-  return 'ClienteAlbaranDTO(clienteId: $clienteId, albaranId: $albaranId, empresaId: $empresaId, fechaAlbaran: $fechaAlbaran, zipCode: $zipCode, poblacion: $poblacion, paisId: $paisId, provincia: $provincia, baseImponible: $baseImponible, documentoPdf: $documentoPdf, archivoExiste: $archivoExiste)';
+  final _this = this as ClienteAlbaranDTO;
+  return 'ClienteAlbaranDTO(clienteId: ${_this.clienteId}, albaranId: ${_this.albaranId}, empresaId: ${_this.empresaId}, fechaAlbaran: ${_this.fechaAlbaran}, zipCode: ${_this.zipCode}, poblacion: ${_this.poblacion}, paisId: ${_this.paisId}, provincia: ${_this.provincia}, baseImponible: ${_this.baseImponible}, documentoPdf: ${_this.documentoPdf}, archivoExiste: ${_this.archivoExiste})';
 }
 
 
@@ -248,16 +253,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ClienteAlbaranDTO&&(identical(other.clienteId, clienteId) || other.clienteId == clienteId)&&(identical(other.albaranId, albaranId) || other.albaranId == albaranId)&&(identical(other.empresaId, empresaId) || other.empresaId == empresaId)&&(identical(other.fechaAlbaran, fechaAlbaran) || other.fechaAlbaran == fechaAlbaran)&&(identical(other.zipCode, zipCode) || other.zipCode == zipCode)&&(identical(other.poblacion, poblacion) || other.poblacion == poblacion)&&(identical(other.paisId, paisId) || other.paisId == paisId)&&(identical(other.provincia, provincia) || other.provincia == provincia)&&(identical(other.baseImponible, baseImponible) || other.baseImponible == baseImponible)&&(identical(other.documentoPdf, documentoPdf) || other.documentoPdf == documentoPdf)&&(identical(other.archivoExiste, archivoExiste) || other.archivoExiste == archivoExiste));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _ClienteAlbaranDTO&&(identical(other.clienteId, clienteId) || other.clienteId == clienteId)&&(identical(other.albaranId, albaranId) || other.albaranId == albaranId)&&(identical(other.empresaId, empresaId) || other.empresaId == empresaId)&&(identical(other.fechaAlbaran, fechaAlbaran) || other.fechaAlbaran == fechaAlbaran)&&(identical(other.zipCode, zipCode) || other.zipCode == zipCode)&&(identical(other.poblacion, poblacion) || other.poblacion == poblacion)&&(identical(other.paisId, paisId) || other.paisId == paisId)&&(identical(other.provincia, provincia) || other.provincia == provincia)&&(identical(other.baseImponible, baseImponible) || other.baseImponible == baseImponible)&&(identical(other.documentoPdf, documentoPdf) || other.documentoPdf == documentoPdf)&&(identical(other.archivoExiste, archivoExiste) || other.archivoExiste == archivoExiste));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,clienteId,albaranId,empresaId,fechaAlbaran,zipCode,poblacion,paisId,provincia,baseImponible,documentoPdf,archivoExiste);
+int get hashCode {
+    return Object.hash(runtimeType,clienteId,albaranId,empresaId,fechaAlbaran,zipCode,poblacion,paisId,provincia,baseImponible,documentoPdf,archivoExiste);
+}
 
 @override
 String toString() {
-  return 'ClienteAlbaranDTO(clienteId: $clienteId, albaranId: $albaranId, empresaId: $empresaId, fechaAlbaran: $fechaAlbaran, zipCode: $zipCode, poblacion: $poblacion, paisId: $paisId, provincia: $provincia, baseImponible: $baseImponible, documentoPdf: $documentoPdf, archivoExiste: $archivoExiste)';
+    return 'ClienteAlbaranDTO(clienteId: $clienteId, albaranId: $albaranId, empresaId: $empresaId, fechaAlbaran: $fechaAlbaran, zipCode: $zipCode, poblacion: $poblacion, paisId: $paisId, provincia: $provincia, baseImponible: $baseImponible, documentoPdf: $documentoPdf, archivoExiste: $archivoExiste)';
 }
 
 

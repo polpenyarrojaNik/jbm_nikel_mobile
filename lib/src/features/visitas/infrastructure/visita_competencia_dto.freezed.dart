@@ -29,16 +29,21 @@ $VisitaCompetenciaDTOCopyWith<VisitaCompetenciaDTO> get copyWith => _$VisitaComp
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is VisitaCompetenciaDTO&&(identical(other.visitaId, visitaId) || other.visitaId == visitaId)&&(identical(other.codigoCompetencia, codigoCompetencia) || other.codigoCompetencia == codigoCompetencia)&&(identical(other.lastUpdated, lastUpdated) || other.lastUpdated == lastUpdated)&&(identical(other.deleted, deleted) || other.deleted == deleted));
+  final _this = this as VisitaCompetenciaDTO;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is VisitaCompetenciaDTO&&(identical(other.visitaId, _this.visitaId) || other.visitaId == _this.visitaId)&&(identical(other.codigoCompetencia, _this.codigoCompetencia) || other.codigoCompetencia == _this.codigoCompetencia)&&(identical(other.lastUpdated, _this.lastUpdated) || other.lastUpdated == _this.lastUpdated)&&(identical(other.deleted, _this.deleted) || other.deleted == _this.deleted));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,visitaId,codigoCompetencia,lastUpdated,deleted);
+int get hashCode {
+  final _this = this as VisitaCompetenciaDTO;
+  return Object.hash(runtimeType,_this.visitaId,_this.codigoCompetencia,_this.lastUpdated,_this.deleted);
+}
 
 @override
 String toString() {
-  return 'VisitaCompetenciaDTO(visitaId: $visitaId, codigoCompetencia: $codigoCompetencia, lastUpdated: $lastUpdated, deleted: $deleted)';
+  final _this = this as VisitaCompetenciaDTO;
+  return 'VisitaCompetenciaDTO(visitaId: ${_this.visitaId}, codigoCompetencia: ${_this.codigoCompetencia}, lastUpdated: ${_this.lastUpdated}, deleted: ${_this.deleted})';
 }
 
 
@@ -234,16 +239,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _VisitaCompetenciaDTO&&(identical(other.visitaId, visitaId) || other.visitaId == visitaId)&&(identical(other.codigoCompetencia, codigoCompetencia) || other.codigoCompetencia == codigoCompetencia)&&(identical(other.lastUpdated, lastUpdated) || other.lastUpdated == lastUpdated)&&(identical(other.deleted, deleted) || other.deleted == deleted));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _VisitaCompetenciaDTO&&(identical(other.visitaId, visitaId) || other.visitaId == visitaId)&&(identical(other.codigoCompetencia, codigoCompetencia) || other.codigoCompetencia == codigoCompetencia)&&(identical(other.lastUpdated, lastUpdated) || other.lastUpdated == lastUpdated)&&(identical(other.deleted, deleted) || other.deleted == deleted));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,visitaId,codigoCompetencia,lastUpdated,deleted);
+int get hashCode {
+    return Object.hash(runtimeType,visitaId,codigoCompetencia,lastUpdated,deleted);
+}
 
 @override
 String toString() {
-  return 'VisitaCompetenciaDTO(visitaId: $visitaId, codigoCompetencia: $codigoCompetencia, lastUpdated: $lastUpdated, deleted: $deleted)';
+    return 'VisitaCompetenciaDTO(visitaId: $visitaId, codigoCompetencia: $codigoCompetencia, lastUpdated: $lastUpdated, deleted: $deleted)';
 }
 
 

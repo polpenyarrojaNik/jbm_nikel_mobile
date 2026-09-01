@@ -29,16 +29,21 @@ $ArticuloPedidoVentaLineaDTOCopyWith<ArticuloPedidoVentaLineaDTO> get copyWith =
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ArticuloPedidoVentaLineaDTO&&(identical(other.empresaId, empresaId) || other.empresaId == empresaId)&&(identical(other.pedidoVentaId, pedidoVentaId) || other.pedidoVentaId == pedidoVentaId)&&(identical(other.id, id) || other.id == id)&&(identical(other.articuloId, articuloId) || other.articuloId == articuloId)&&(identical(other.articuloDescription, articuloDescription) || other.articuloDescription == articuloDescription)&&(identical(other.clienteId, clienteId) || other.clienteId == clienteId)&&(identical(other.nombreCliente, nombreCliente) || other.nombreCliente == nombreCliente)&&(identical(other.cantidad, cantidad) || other.cantidad == cantidad)&&(identical(other.precioDivisa, precioDivisa) || other.precioDivisa == precioDivisa)&&(identical(other.tipoPrecio, tipoPrecio) || other.tipoPrecio == tipoPrecio)&&(identical(other.descuento1, descuento1) || other.descuento1 == descuento1)&&(identical(other.descuento2, descuento2) || other.descuento2 == descuento2)&&(identical(other.descuento3, descuento3) || other.descuento3 == descuento3)&&(identical(other.lastUpdated, lastUpdated) || other.lastUpdated == lastUpdated)&&(identical(other.deleted, deleted) || other.deleted == deleted));
+  final _this = this as ArticuloPedidoVentaLineaDTO;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ArticuloPedidoVentaLineaDTO&&(identical(other.empresaId, _this.empresaId) || other.empresaId == _this.empresaId)&&(identical(other.pedidoVentaId, _this.pedidoVentaId) || other.pedidoVentaId == _this.pedidoVentaId)&&(identical(other.id, _this.id) || other.id == _this.id)&&(identical(other.articuloId, _this.articuloId) || other.articuloId == _this.articuloId)&&(identical(other.articuloDescription, _this.articuloDescription) || other.articuloDescription == _this.articuloDescription)&&(identical(other.clienteId, _this.clienteId) || other.clienteId == _this.clienteId)&&(identical(other.nombreCliente, _this.nombreCliente) || other.nombreCliente == _this.nombreCliente)&&(identical(other.cantidad, _this.cantidad) || other.cantidad == _this.cantidad)&&(identical(other.precioDivisa, _this.precioDivisa) || other.precioDivisa == _this.precioDivisa)&&(identical(other.tipoPrecio, _this.tipoPrecio) || other.tipoPrecio == _this.tipoPrecio)&&(identical(other.descuento1, _this.descuento1) || other.descuento1 == _this.descuento1)&&(identical(other.descuento2, _this.descuento2) || other.descuento2 == _this.descuento2)&&(identical(other.descuento3, _this.descuento3) || other.descuento3 == _this.descuento3)&&(identical(other.lastUpdated, _this.lastUpdated) || other.lastUpdated == _this.lastUpdated)&&(identical(other.deleted, _this.deleted) || other.deleted == _this.deleted));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,empresaId,pedidoVentaId,id,articuloId,articuloDescription,clienteId,nombreCliente,cantidad,precioDivisa,tipoPrecio,descuento1,descuento2,descuento3,lastUpdated,deleted);
+int get hashCode {
+  final _this = this as ArticuloPedidoVentaLineaDTO;
+  return Object.hash(runtimeType,_this.empresaId,_this.pedidoVentaId,_this.id,_this.articuloId,_this.articuloDescription,_this.clienteId,_this.nombreCliente,_this.cantidad,_this.precioDivisa,_this.tipoPrecio,_this.descuento1,_this.descuento2,_this.descuento3,_this.lastUpdated,_this.deleted);
+}
 
 @override
 String toString() {
-  return 'ArticuloPedidoVentaLineaDTO(empresaId: $empresaId, pedidoVentaId: $pedidoVentaId, id: $id, articuloId: $articuloId, articuloDescription: $articuloDescription, clienteId: $clienteId, nombreCliente: $nombreCliente, cantidad: $cantidad, precioDivisa: $precioDivisa, tipoPrecio: $tipoPrecio, descuento1: $descuento1, descuento2: $descuento2, descuento3: $descuento3, lastUpdated: $lastUpdated, deleted: $deleted)';
+  final _this = this as ArticuloPedidoVentaLineaDTO;
+  return 'ArticuloPedidoVentaLineaDTO(empresaId: ${_this.empresaId}, pedidoVentaId: ${_this.pedidoVentaId}, id: ${_this.id}, articuloId: ${_this.articuloId}, articuloDescription: ${_this.articuloDescription}, clienteId: ${_this.clienteId}, nombreCliente: ${_this.nombreCliente}, cantidad: ${_this.cantidad}, precioDivisa: ${_this.precioDivisa}, tipoPrecio: ${_this.tipoPrecio}, descuento1: ${_this.descuento1}, descuento2: ${_this.descuento2}, descuento3: ${_this.descuento3}, lastUpdated: ${_this.lastUpdated}, deleted: ${_this.deleted})';
 }
 
 
@@ -256,16 +261,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ArticuloPedidoVentaLineaDTO&&(identical(other.empresaId, empresaId) || other.empresaId == empresaId)&&(identical(other.pedidoVentaId, pedidoVentaId) || other.pedidoVentaId == pedidoVentaId)&&(identical(other.id, id) || other.id == id)&&(identical(other.articuloId, articuloId) || other.articuloId == articuloId)&&(identical(other.articuloDescription, articuloDescription) || other.articuloDescription == articuloDescription)&&(identical(other.clienteId, clienteId) || other.clienteId == clienteId)&&(identical(other.nombreCliente, nombreCliente) || other.nombreCliente == nombreCliente)&&(identical(other.cantidad, cantidad) || other.cantidad == cantidad)&&(identical(other.precioDivisa, precioDivisa) || other.precioDivisa == precioDivisa)&&(identical(other.tipoPrecio, tipoPrecio) || other.tipoPrecio == tipoPrecio)&&(identical(other.descuento1, descuento1) || other.descuento1 == descuento1)&&(identical(other.descuento2, descuento2) || other.descuento2 == descuento2)&&(identical(other.descuento3, descuento3) || other.descuento3 == descuento3)&&(identical(other.lastUpdated, lastUpdated) || other.lastUpdated == lastUpdated)&&(identical(other.deleted, deleted) || other.deleted == deleted));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _ArticuloPedidoVentaLineaDTO&&(identical(other.empresaId, empresaId) || other.empresaId == empresaId)&&(identical(other.pedidoVentaId, pedidoVentaId) || other.pedidoVentaId == pedidoVentaId)&&(identical(other.id, id) || other.id == id)&&(identical(other.articuloId, articuloId) || other.articuloId == articuloId)&&(identical(other.articuloDescription, articuloDescription) || other.articuloDescription == articuloDescription)&&(identical(other.clienteId, clienteId) || other.clienteId == clienteId)&&(identical(other.nombreCliente, nombreCliente) || other.nombreCliente == nombreCliente)&&(identical(other.cantidad, cantidad) || other.cantidad == cantidad)&&(identical(other.precioDivisa, precioDivisa) || other.precioDivisa == precioDivisa)&&(identical(other.tipoPrecio, tipoPrecio) || other.tipoPrecio == tipoPrecio)&&(identical(other.descuento1, descuento1) || other.descuento1 == descuento1)&&(identical(other.descuento2, descuento2) || other.descuento2 == descuento2)&&(identical(other.descuento3, descuento3) || other.descuento3 == descuento3)&&(identical(other.lastUpdated, lastUpdated) || other.lastUpdated == lastUpdated)&&(identical(other.deleted, deleted) || other.deleted == deleted));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,empresaId,pedidoVentaId,id,articuloId,articuloDescription,clienteId,nombreCliente,cantidad,precioDivisa,tipoPrecio,descuento1,descuento2,descuento3,lastUpdated,deleted);
+int get hashCode {
+    return Object.hash(runtimeType,empresaId,pedidoVentaId,id,articuloId,articuloDescription,clienteId,nombreCliente,cantidad,precioDivisa,tipoPrecio,descuento1,descuento2,descuento3,lastUpdated,deleted);
+}
 
 @override
 String toString() {
-  return 'ArticuloPedidoVentaLineaDTO(empresaId: $empresaId, pedidoVentaId: $pedidoVentaId, id: $id, articuloId: $articuloId, articuloDescription: $articuloDescription, clienteId: $clienteId, nombreCliente: $nombreCliente, cantidad: $cantidad, precioDivisa: $precioDivisa, tipoPrecio: $tipoPrecio, descuento1: $descuento1, descuento2: $descuento2, descuento3: $descuento3, lastUpdated: $lastUpdated, deleted: $deleted)';
+    return 'ArticuloPedidoVentaLineaDTO(empresaId: $empresaId, pedidoVentaId: $pedidoVentaId, id: $id, articuloId: $articuloId, articuloDescription: $articuloDescription, clienteId: $clienteId, nombreCliente: $nombreCliente, cantidad: $cantidad, precioDivisa: $precioDivisa, tipoPrecio: $tipoPrecio, descuento1: $descuento1, descuento2: $descuento2, descuento3: $descuento3, lastUpdated: $lastUpdated, deleted: $deleted)';
 }
 
 

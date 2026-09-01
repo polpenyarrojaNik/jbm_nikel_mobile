@@ -26,16 +26,21 @@ $IdiomaCatalogoCopyWith<IdiomaCatalogo> get copyWith => _$IdiomaCatalogoCopyWith
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is IdiomaCatalogo&&(identical(other.idiomaId, idiomaId) || other.idiomaId == idiomaId)&&(identical(other.descripcion, descripcion) || other.descripcion == descripcion));
+  final _this = this as IdiomaCatalogo;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is IdiomaCatalogo&&(identical(other.idiomaId, _this.idiomaId) || other.idiomaId == _this.idiomaId)&&(identical(other.descripcion, _this.descripcion) || other.descripcion == _this.descripcion));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,idiomaId,descripcion);
+int get hashCode {
+  final _this = this as IdiomaCatalogo;
+  return Object.hash(runtimeType,_this.idiomaId,_this.descripcion);
+}
 
 @override
 String toString() {
-  return 'IdiomaCatalogo(idiomaId: $idiomaId, descripcion: $descripcion)';
+  final _this = this as IdiomaCatalogo;
+  return 'IdiomaCatalogo(idiomaId: ${_this.idiomaId}, descripcion: ${_this.descripcion})';
 }
 
 
@@ -224,16 +229,18 @@ _$IdiomaCatalogoCopyWith<_IdiomaCatalogo> get copyWith => __$IdiomaCatalogoCopyW
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _IdiomaCatalogo&&(identical(other.idiomaId, idiomaId) || other.idiomaId == idiomaId)&&(identical(other.descripcion, descripcion) || other.descripcion == descripcion));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _IdiomaCatalogo&&(identical(other.idiomaId, idiomaId) || other.idiomaId == idiomaId)&&(identical(other.descripcion, descripcion) || other.descripcion == descripcion));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,idiomaId,descripcion);
+int get hashCode {
+    return Object.hash(runtimeType,idiomaId,descripcion);
+}
 
 @override
 String toString() {
-  return 'IdiomaCatalogo(idiomaId: $idiomaId, descripcion: $descripcion)';
+    return 'IdiomaCatalogo(idiomaId: $idiomaId, descripcion: $descripcion)';
 }
 
 

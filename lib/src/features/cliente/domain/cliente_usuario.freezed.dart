@@ -26,16 +26,21 @@ $ClienteUsuarioCopyWith<ClienteUsuario> get copyWith => _$ClienteUsuarioCopyWith
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ClienteUsuario&&(identical(other.clienteId, clienteId) || other.clienteId == clienteId)&&(identical(other.usuarioId, usuarioId) || other.usuarioId == usuarioId)&&(identical(other.lastUpdated, lastUpdated) || other.lastUpdated == lastUpdated)&&(identical(other.deleted, deleted) || other.deleted == deleted));
+  final _this = this as ClienteUsuario;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ClienteUsuario&&(identical(other.clienteId, _this.clienteId) || other.clienteId == _this.clienteId)&&(identical(other.usuarioId, _this.usuarioId) || other.usuarioId == _this.usuarioId)&&(identical(other.lastUpdated, _this.lastUpdated) || other.lastUpdated == _this.lastUpdated)&&(identical(other.deleted, _this.deleted) || other.deleted == _this.deleted));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,clienteId,usuarioId,lastUpdated,deleted);
+int get hashCode {
+  final _this = this as ClienteUsuario;
+  return Object.hash(runtimeType,_this.clienteId,_this.usuarioId,_this.lastUpdated,_this.deleted);
+}
 
 @override
 String toString() {
-  return 'ClienteUsuario(clienteId: $clienteId, usuarioId: $usuarioId, lastUpdated: $lastUpdated, deleted: $deleted)';
+  final _this = this as ClienteUsuario;
+  return 'ClienteUsuario(clienteId: ${_this.clienteId}, usuarioId: ${_this.usuarioId}, lastUpdated: ${_this.lastUpdated}, deleted: ${_this.deleted})';
 }
 
 
@@ -228,16 +233,18 @@ _$ClienteUsuarioCopyWith<_ClienteUsuario> get copyWith => __$ClienteUsuarioCopyW
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ClienteUsuario&&(identical(other.clienteId, clienteId) || other.clienteId == clienteId)&&(identical(other.usuarioId, usuarioId) || other.usuarioId == usuarioId)&&(identical(other.lastUpdated, lastUpdated) || other.lastUpdated == lastUpdated)&&(identical(other.deleted, deleted) || other.deleted == deleted));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _ClienteUsuario&&(identical(other.clienteId, clienteId) || other.clienteId == clienteId)&&(identical(other.usuarioId, usuarioId) || other.usuarioId == usuarioId)&&(identical(other.lastUpdated, lastUpdated) || other.lastUpdated == lastUpdated)&&(identical(other.deleted, deleted) || other.deleted == deleted));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,clienteId,usuarioId,lastUpdated,deleted);
+int get hashCode {
+    return Object.hash(runtimeType,clienteId,usuarioId,lastUpdated,deleted);
+}
 
 @override
 String toString() {
-  return 'ClienteUsuario(clienteId: $clienteId, usuarioId: $usuarioId, lastUpdated: $lastUpdated, deleted: $deleted)';
+    return 'ClienteUsuario(clienteId: $clienteId, usuarioId: $usuarioId, lastUpdated: $lastUpdated, deleted: $deleted)';
 }
 
 

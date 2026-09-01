@@ -29,16 +29,21 @@ $ClienteImpDTOCopyWith<ClienteImpDTO> get copyWith => _$ClienteImpDTOCopyWithImp
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ClienteImpDTO&&(identical(other.clienteId, clienteId) || other.clienteId == clienteId)&&(identical(other.sectorId, sectorId) || other.sectorId == sectorId));
+  final _this = this as ClienteImpDTO;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ClienteImpDTO&&(identical(other.clienteId, _this.clienteId) || other.clienteId == _this.clienteId)&&(identical(other.sectorId, _this.sectorId) || other.sectorId == _this.sectorId));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,clienteId,sectorId);
+int get hashCode {
+  final _this = this as ClienteImpDTO;
+  return Object.hash(runtimeType,_this.clienteId,_this.sectorId);
+}
 
 @override
 String toString() {
-  return 'ClienteImpDTO(clienteId: $clienteId, sectorId: $sectorId)';
+  final _this = this as ClienteImpDTO;
+  return 'ClienteImpDTO(clienteId: ${_this.clienteId}, sectorId: ${_this.sectorId})';
 }
 
 
@@ -230,16 +235,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ClienteImpDTO&&(identical(other.clienteId, clienteId) || other.clienteId == clienteId)&&(identical(other.sectorId, sectorId) || other.sectorId == sectorId));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _ClienteImpDTO&&(identical(other.clienteId, clienteId) || other.clienteId == clienteId)&&(identical(other.sectorId, sectorId) || other.sectorId == sectorId));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,clienteId,sectorId);
+int get hashCode {
+    return Object.hash(runtimeType,clienteId,sectorId);
+}
 
 @override
 String toString() {
-  return 'ClienteImpDTO(clienteId: $clienteId, sectorId: $sectorId)';
+    return 'ClienteImpDTO(clienteId: $clienteId, sectorId: $sectorId)';
 }
 
 

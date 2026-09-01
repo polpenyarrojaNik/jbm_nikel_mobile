@@ -26,16 +26,21 @@ $PrecioPromocionCopyWith<PrecioPromocion> get copyWith => _$PrecioPromocionCopyW
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is PrecioPromocion&&(identical(other.precio, precio) || other.precio == precio)&&(identical(other.tipoPrecio, tipoPrecio) || other.tipoPrecio == tipoPrecio)&&(identical(other.dto, dto) || other.dto == dto));
+  final _this = this as PrecioPromocion;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is PrecioPromocion&&(identical(other.precio, _this.precio) || other.precio == _this.precio)&&(identical(other.tipoPrecio, _this.tipoPrecio) || other.tipoPrecio == _this.tipoPrecio)&&(identical(other.dto, _this.dto) || other.dto == _this.dto));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,precio,tipoPrecio,dto);
+int get hashCode {
+  final _this = this as PrecioPromocion;
+  return Object.hash(runtimeType,_this.precio,_this.tipoPrecio,_this.dto);
+}
 
 @override
 String toString() {
-  return 'PrecioPromocion(precio: $precio, tipoPrecio: $tipoPrecio, dto: $dto)';
+  final _this = this as PrecioPromocion;
+  return 'PrecioPromocion(precio: ${_this.precio}, tipoPrecio: ${_this.tipoPrecio}, dto: ${_this.dto})';
 }
 
 
@@ -226,16 +231,18 @@ _$PrecioPromocionCopyWith<_PrecioPromocion> get copyWith => __$PrecioPromocionCo
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _PrecioPromocion&&(identical(other.precio, precio) || other.precio == precio)&&(identical(other.tipoPrecio, tipoPrecio) || other.tipoPrecio == tipoPrecio)&&(identical(other.dto, dto) || other.dto == dto));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _PrecioPromocion&&(identical(other.precio, precio) || other.precio == precio)&&(identical(other.tipoPrecio, tipoPrecio) || other.tipoPrecio == tipoPrecio)&&(identical(other.dto, dto) || other.dto == dto));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,precio,tipoPrecio,dto);
+int get hashCode {
+    return Object.hash(runtimeType,precio,tipoPrecio,dto);
+}
 
 @override
 String toString() {
-  return 'PrecioPromocion(precio: $precio, tipoPrecio: $tipoPrecio, dto: $dto)';
+    return 'PrecioPromocion(precio: $precio, tipoPrecio: $tipoPrecio, dto: $dto)';
 }
 
 

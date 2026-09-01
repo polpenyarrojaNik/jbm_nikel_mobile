@@ -26,16 +26,21 @@ $LogCopyWith<Log> get copyWith => _$LogCopyWithImpl<Log>(this as Log, _$identity
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is Log&&(identical(other.id, id) || other.id == id)&&(identical(other.level, level) || other.level == level)&&(identical(other.message, message) || other.message == message)&&(identical(other.error, error) || other.error == error)&&(identical(other.appId, appId) || other.appId == appId)&&(identical(other.appBuild, appBuild) || other.appBuild == appBuild)&&(identical(other.appBuildName, appBuildName) || other.appBuildName == appBuildName)&&(identical(other.userId, userId) || other.userId == userId)&&(identical(other.device, device) || other.device == device)&&(identical(other.userEmail, userEmail) || other.userEmail == userEmail)&&(identical(other.userName, userName) || other.userName == userName)&&(identical(other.timestamp, timestamp) || other.timestamp == timestamp));
+  final _this = this as Log;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is Log&&(identical(other.id, _this.id) || other.id == _this.id)&&(identical(other.level, _this.level) || other.level == _this.level)&&(identical(other.message, _this.message) || other.message == _this.message)&&(identical(other.error, _this.error) || other.error == _this.error)&&(identical(other.appId, _this.appId) || other.appId == _this.appId)&&(identical(other.appBuild, _this.appBuild) || other.appBuild == _this.appBuild)&&(identical(other.appBuildName, _this.appBuildName) || other.appBuildName == _this.appBuildName)&&(identical(other.userId, _this.userId) || other.userId == _this.userId)&&(identical(other.device, _this.device) || other.device == _this.device)&&(identical(other.userEmail, _this.userEmail) || other.userEmail == _this.userEmail)&&(identical(other.userName, _this.userName) || other.userName == _this.userName)&&(identical(other.timestamp, _this.timestamp) || other.timestamp == _this.timestamp));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,id,level,message,error,appId,appBuild,appBuildName,userId,device,userEmail,userName,timestamp);
+int get hashCode {
+  final _this = this as Log;
+  return Object.hash(runtimeType,_this.id,_this.level,_this.message,_this.error,_this.appId,_this.appBuild,_this.appBuildName,_this.userId,_this.device,_this.userEmail,_this.userName,_this.timestamp);
+}
 
 @override
 String toString() {
-  return 'Log(id: $id, level: $level, message: $message, error: $error, appId: $appId, appBuild: $appBuild, appBuildName: $appBuildName, userId: $userId, device: $device, userEmail: $userEmail, userName: $userName, timestamp: $timestamp)';
+  final _this = this as Log;
+  return 'Log(id: ${_this.id}, level: ${_this.level}, message: ${_this.message}, error: ${_this.error}, appId: ${_this.appId}, appBuild: ${_this.appBuild}, appBuildName: ${_this.appBuildName}, userId: ${_this.userId}, device: ${_this.device}, userEmail: ${_this.userEmail}, userName: ${_this.userName}, timestamp: ${_this.timestamp})';
 }
 
 
@@ -244,16 +249,18 @@ _$LogCopyWith<_Log> get copyWith => __$LogCopyWithImpl<_Log>(this, _$identity);
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Log&&(identical(other.id, id) || other.id == id)&&(identical(other.level, level) || other.level == level)&&(identical(other.message, message) || other.message == message)&&(identical(other.error, error) || other.error == error)&&(identical(other.appId, appId) || other.appId == appId)&&(identical(other.appBuild, appBuild) || other.appBuild == appBuild)&&(identical(other.appBuildName, appBuildName) || other.appBuildName == appBuildName)&&(identical(other.userId, userId) || other.userId == userId)&&(identical(other.device, device) || other.device == device)&&(identical(other.userEmail, userEmail) || other.userEmail == userEmail)&&(identical(other.userName, userName) || other.userName == userName)&&(identical(other.timestamp, timestamp) || other.timestamp == timestamp));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _Log&&(identical(other.id, id) || other.id == id)&&(identical(other.level, level) || other.level == level)&&(identical(other.message, message) || other.message == message)&&(identical(other.error, error) || other.error == error)&&(identical(other.appId, appId) || other.appId == appId)&&(identical(other.appBuild, appBuild) || other.appBuild == appBuild)&&(identical(other.appBuildName, appBuildName) || other.appBuildName == appBuildName)&&(identical(other.userId, userId) || other.userId == userId)&&(identical(other.device, device) || other.device == device)&&(identical(other.userEmail, userEmail) || other.userEmail == userEmail)&&(identical(other.userName, userName) || other.userName == userName)&&(identical(other.timestamp, timestamp) || other.timestamp == timestamp));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,id,level,message,error,appId,appBuild,appBuildName,userId,device,userEmail,userName,timestamp);
+int get hashCode {
+    return Object.hash(runtimeType,id,level,message,error,appId,appBuild,appBuildName,userId,device,userEmail,userName,timestamp);
+}
 
 @override
 String toString() {
-  return 'Log(id: $id, level: $level, message: $message, error: $error, appId: $appId, appBuild: $appBuild, appBuildName: $appBuildName, userId: $userId, device: $device, userEmail: $userEmail, userName: $userName, timestamp: $timestamp)';
+    return 'Log(id: $id, level: $level, message: $message, error: $error, appId: $appId, appBuild: $appBuild, appBuildName: $appBuildName, userId: $userId, device: $device, userEmail: $userEmail, userName: $userName, timestamp: $timestamp)';
 }
 
 

@@ -21,7 +21,7 @@ mixin _$ArticuloPrecioControllerState {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ArticuloPrecioControllerState);
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is ArticuloPrecioControllerState);
 }
 
 
@@ -30,7 +30,7 @@ int get hashCode => runtimeType.hashCode;
 
 @override
 String toString() {
-  return 'ArticuloPrecioControllerState()';
+    return 'ArticuloPrecioControllerState()';
 }
 
 
@@ -204,7 +204,7 @@ class _loading extends ArticuloPrecioControllerState {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _loading);
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _loading);
 }
 
 
@@ -213,7 +213,7 @@ int get hashCode => runtimeType.hashCode;
 
 @override
 String toString() {
-  return 'ArticuloPrecioControllerState.loading()';
+    return 'ArticuloPrecioControllerState.loading()';
 }
 
 
@@ -236,7 +236,7 @@ class _initial extends ArticuloPrecioControllerState {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _initial);
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _initial);
 }
 
 
@@ -245,7 +245,7 @@ int get hashCode => runtimeType.hashCode;
 
 @override
 String toString() {
-  return 'ArticuloPrecioControllerState.initial()';
+    return 'ArticuloPrecioControllerState.initial()';
 }
 
 
@@ -274,16 +274,18 @@ _$errorCopyWith<_error> get copyWith => __$errorCopyWithImpl<_error>(this, _$ide
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _error&&const DeepCollectionEquality().equals(other.error, error)&&(identical(other.stackTrace, stackTrace) || other.stackTrace == stackTrace));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _error&&const DeepCollectionEquality().equals(other.error, error)&&(identical(other.stackTrace, stackTrace) || other.stackTrace == stackTrace));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(error),stackTrace);
+int get hashCode {
+    return Object.hash(runtimeType,const DeepCollectionEquality().hash(error),stackTrace);
+}
 
 @override
 String toString() {
-  return 'ArticuloPrecioControllerState.error(error: $error, stackTrace: $stackTrace)';
+    return 'ArticuloPrecioControllerState.error(error: $error, stackTrace: $stackTrace)';
 }
 
 
@@ -340,16 +342,18 @@ _$dataCopyWith<_data> get copyWith => __$dataCopyWithImpl<_data>(this, _$identit
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _data&&(identical(other.articuloPrecio, articuloPrecio) || other.articuloPrecio == articuloPrecio));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _data&&(identical(other.articuloPrecio, articuloPrecio) || other.articuloPrecio == articuloPrecio));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,articuloPrecio);
+int get hashCode {
+    return Object.hash(runtimeType,articuloPrecio);
+}
 
 @override
 String toString() {
-  return 'ArticuloPrecioControllerState.data(articuloPrecio: $articuloPrecio)';
+    return 'ArticuloPrecioControllerState.data(articuloPrecio: $articuloPrecio)';
 }
 
 

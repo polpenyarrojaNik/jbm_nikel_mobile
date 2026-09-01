@@ -761,6 +761,50 @@ class ArticuloVentasMesRouteArgs {
 }
 
 /// generated route for
+/// [BackorderListPage]
+class BackorderListRoute extends PageRouteInfo<BackorderListRouteArgs> {
+  BackorderListRoute({Key? key, List<PageRouteInfo>? children})
+    : super(
+        BackorderListRoute.name,
+        args: BackorderListRouteArgs(key: key),
+        initialChildren: children,
+      );
+
+  static const String name = 'BackorderListRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      final args = data.argsAs<BackorderListRouteArgs>(
+        orElse: () => const BackorderListRouteArgs(),
+      );
+      return BackorderListPage(key: args.key);
+    },
+  );
+}
+
+class BackorderListRouteArgs {
+  const BackorderListRouteArgs({this.key});
+
+  final Key? key;
+
+  @override
+  String toString() {
+    return 'BackorderListRouteArgs{key: $key}';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
+    if (other is! BackorderListRouteArgs) return false;
+    return key == other.key;
+  }
+
+  @override
+  int get hashCode => key.hashCode;
+}
+
+/// generated route for
 /// [CameraPage]
 class CameraRoute extends PageRouteInfo<void> {
   const CameraRoute({List<PageRouteInfo>? children})
@@ -2255,6 +2299,10 @@ class ClienteVentasMesRoute extends PageRouteInfo<ClienteVentasMesRouteArgs> {
     Key? key,
     required String clienteId,
     required String? nombreCliente,
+    required bool applyDireccionFilter,
+    String? direccionId,
+    String? nombreDireccion,
+    String? addressText,
     List<PageRouteInfo>? children,
   }) : super(
          ClienteVentasMesRoute.name,
@@ -2262,6 +2310,10 @@ class ClienteVentasMesRoute extends PageRouteInfo<ClienteVentasMesRouteArgs> {
            key: key,
            clienteId: clienteId,
            nombreCliente: nombreCliente,
+           applyDireccionFilter: applyDireccionFilter,
+           direccionId: direccionId,
+           nombreDireccion: nombreDireccion,
+           addressText: addressText,
          ),
          initialChildren: children,
        );
@@ -2276,6 +2328,10 @@ class ClienteVentasMesRoute extends PageRouteInfo<ClienteVentasMesRouteArgs> {
         key: args.key,
         clienteId: args.clienteId,
         nombreCliente: args.nombreCliente,
+        applyDireccionFilter: args.applyDireccionFilter,
+        direccionId: args.direccionId,
+        nombreDireccion: args.nombreDireccion,
+        addressText: args.addressText,
       );
     },
   );
@@ -2286,6 +2342,10 @@ class ClienteVentasMesRouteArgs {
     this.key,
     required this.clienteId,
     required this.nombreCliente,
+    required this.applyDireccionFilter,
+    this.direccionId,
+    this.nombreDireccion,
+    this.addressText,
   });
 
   final Key? key;
@@ -2294,9 +2354,17 @@ class ClienteVentasMesRouteArgs {
 
   final String? nombreCliente;
 
+  final bool applyDireccionFilter;
+
+  final String? direccionId;
+
+  final String? nombreDireccion;
+
+  final String? addressText;
+
   @override
   String toString() {
-    return 'ClienteVentasMesRouteArgs{key: $key, clienteId: $clienteId, nombreCliente: $nombreCliente}';
+    return 'ClienteVentasMesRouteArgs{key: $key, clienteId: $clienteId, nombreCliente: $nombreCliente, applyDireccionFilter: $applyDireccionFilter, direccionId: $direccionId, nombreDireccion: $nombreDireccion, addressText: $addressText}';
   }
 
   @override
@@ -2305,12 +2373,22 @@ class ClienteVentasMesRouteArgs {
     if (other is! ClienteVentasMesRouteArgs) return false;
     return key == other.key &&
         clienteId == other.clienteId &&
-        nombreCliente == other.nombreCliente;
+        nombreCliente == other.nombreCliente &&
+        applyDireccionFilter == other.applyDireccionFilter &&
+        direccionId == other.direccionId &&
+        nombreDireccion == other.nombreDireccion &&
+        addressText == other.addressText;
   }
 
   @override
   int get hashCode =>
-      key.hashCode ^ clienteId.hashCode ^ nombreCliente.hashCode;
+      key.hashCode ^
+      clienteId.hashCode ^
+      nombreCliente.hashCode ^
+      applyDireccionFilter.hashCode ^
+      direccionId.hashCode ^
+      nombreDireccion.hashCode ^
+      addressText.hashCode;
 }
 
 /// generated route for

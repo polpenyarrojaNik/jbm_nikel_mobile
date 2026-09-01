@@ -26,16 +26,21 @@ $TipoPrecioCatalogoCopyWith<TipoPrecioCatalogo> get copyWith => _$TipoPrecioCata
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is TipoPrecioCatalogo&&(identical(other.tipoPrecioCatalogoId, tipoPrecioCatalogoId) || other.tipoPrecioCatalogoId == tipoPrecioCatalogoId)&&(identical(other.descripcion, descripcion) || other.descripcion == descripcion));
+  final _this = this as TipoPrecioCatalogo;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is TipoPrecioCatalogo&&(identical(other.tipoPrecioCatalogoId, _this.tipoPrecioCatalogoId) || other.tipoPrecioCatalogoId == _this.tipoPrecioCatalogoId)&&(identical(other.descripcion, _this.descripcion) || other.descripcion == _this.descripcion));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,tipoPrecioCatalogoId,descripcion);
+int get hashCode {
+  final _this = this as TipoPrecioCatalogo;
+  return Object.hash(runtimeType,_this.tipoPrecioCatalogoId,_this.descripcion);
+}
 
 @override
 String toString() {
-  return 'TipoPrecioCatalogo(tipoPrecioCatalogoId: $tipoPrecioCatalogoId, descripcion: $descripcion)';
+  final _this = this as TipoPrecioCatalogo;
+  return 'TipoPrecioCatalogo(tipoPrecioCatalogoId: ${_this.tipoPrecioCatalogoId}, descripcion: ${_this.descripcion})';
 }
 
 
@@ -224,16 +229,18 @@ _$TipoPrecioCatalogoCopyWith<_TipoPrecioCatalogo> get copyWith => __$TipoPrecioC
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _TipoPrecioCatalogo&&(identical(other.tipoPrecioCatalogoId, tipoPrecioCatalogoId) || other.tipoPrecioCatalogoId == tipoPrecioCatalogoId)&&(identical(other.descripcion, descripcion) || other.descripcion == descripcion));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _TipoPrecioCatalogo&&(identical(other.tipoPrecioCatalogoId, tipoPrecioCatalogoId) || other.tipoPrecioCatalogoId == tipoPrecioCatalogoId)&&(identical(other.descripcion, descripcion) || other.descripcion == descripcion));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,tipoPrecioCatalogoId,descripcion);
+int get hashCode {
+    return Object.hash(runtimeType,tipoPrecioCatalogoId,descripcion);
+}
 
 @override
 String toString() {
-  return 'TipoPrecioCatalogo(tipoPrecioCatalogoId: $tipoPrecioCatalogoId, descripcion: $descripcion)';
+    return 'TipoPrecioCatalogo(tipoPrecioCatalogoId: $tipoPrecioCatalogoId, descripcion: $descripcion)';
 }
 
 

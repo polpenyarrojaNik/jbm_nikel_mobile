@@ -29,16 +29,21 @@ $EstadisticasUltimosPreciosDTOCopyWith<EstadisticasUltimosPreciosDTO> get copyWi
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is EstadisticasUltimosPreciosDTO&&(identical(other.clienteId, clienteId) || other.clienteId == clienteId)&&(identical(other.articuloId, articuloId) || other.articuloId == articuloId)&&(identical(other.linea, linea) || other.linea == linea)&&(identical(other.cantidad, cantidad) || other.cantidad == cantidad)&&(identical(other.fecha, fecha) || other.fecha == fecha)&&(identical(other.precioDivisa, precioDivisa) || other.precioDivisa == precioDivisa)&&(identical(other.divisaId, divisaId) || other.divisaId == divisaId)&&(identical(other.tipoPrecio, tipoPrecio) || other.tipoPrecio == tipoPrecio)&&(identical(other.descuento1, descuento1) || other.descuento1 == descuento1)&&(identical(other.descuento2, descuento2) || other.descuento2 == descuento2)&&(identical(other.descuento3, descuento3) || other.descuento3 == descuento3)&&(identical(other.lastUpdated, lastUpdated) || other.lastUpdated == lastUpdated)&&(identical(other.deleted, deleted) || other.deleted == deleted));
+  final _this = this as EstadisticasUltimosPreciosDTO;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is EstadisticasUltimosPreciosDTO&&(identical(other.clienteId, _this.clienteId) || other.clienteId == _this.clienteId)&&(identical(other.articuloId, _this.articuloId) || other.articuloId == _this.articuloId)&&(identical(other.linea, _this.linea) || other.linea == _this.linea)&&(identical(other.cantidad, _this.cantidad) || other.cantidad == _this.cantidad)&&(identical(other.fecha, _this.fecha) || other.fecha == _this.fecha)&&(identical(other.precioDivisa, _this.precioDivisa) || other.precioDivisa == _this.precioDivisa)&&(identical(other.divisaId, _this.divisaId) || other.divisaId == _this.divisaId)&&(identical(other.tipoPrecio, _this.tipoPrecio) || other.tipoPrecio == _this.tipoPrecio)&&(identical(other.descuento1, _this.descuento1) || other.descuento1 == _this.descuento1)&&(identical(other.descuento2, _this.descuento2) || other.descuento2 == _this.descuento2)&&(identical(other.descuento3, _this.descuento3) || other.descuento3 == _this.descuento3)&&(identical(other.lastUpdated, _this.lastUpdated) || other.lastUpdated == _this.lastUpdated)&&(identical(other.deleted, _this.deleted) || other.deleted == _this.deleted));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,clienteId,articuloId,linea,cantidad,fecha,precioDivisa,divisaId,tipoPrecio,descuento1,descuento2,descuento3,lastUpdated,deleted);
+int get hashCode {
+  final _this = this as EstadisticasUltimosPreciosDTO;
+  return Object.hash(runtimeType,_this.clienteId,_this.articuloId,_this.linea,_this.cantidad,_this.fecha,_this.precioDivisa,_this.divisaId,_this.tipoPrecio,_this.descuento1,_this.descuento2,_this.descuento3,_this.lastUpdated,_this.deleted);
+}
 
 @override
 String toString() {
-  return 'EstadisticasUltimosPreciosDTO(clienteId: $clienteId, articuloId: $articuloId, linea: $linea, cantidad: $cantidad, fecha: $fecha, precioDivisa: $precioDivisa, divisaId: $divisaId, tipoPrecio: $tipoPrecio, descuento1: $descuento1, descuento2: $descuento2, descuento3: $descuento3, lastUpdated: $lastUpdated, deleted: $deleted)';
+  final _this = this as EstadisticasUltimosPreciosDTO;
+  return 'EstadisticasUltimosPreciosDTO(clienteId: ${_this.clienteId}, articuloId: ${_this.articuloId}, linea: ${_this.linea}, cantidad: ${_this.cantidad}, fecha: ${_this.fecha}, precioDivisa: ${_this.precioDivisa}, divisaId: ${_this.divisaId}, tipoPrecio: ${_this.tipoPrecio}, descuento1: ${_this.descuento1}, descuento2: ${_this.descuento2}, descuento3: ${_this.descuento3}, lastUpdated: ${_this.lastUpdated}, deleted: ${_this.deleted})';
 }
 
 
@@ -252,16 +257,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _EstadisticasUltimosPreciosDTO&&(identical(other.clienteId, clienteId) || other.clienteId == clienteId)&&(identical(other.articuloId, articuloId) || other.articuloId == articuloId)&&(identical(other.linea, linea) || other.linea == linea)&&(identical(other.cantidad, cantidad) || other.cantidad == cantidad)&&(identical(other.fecha, fecha) || other.fecha == fecha)&&(identical(other.precioDivisa, precioDivisa) || other.precioDivisa == precioDivisa)&&(identical(other.divisaId, divisaId) || other.divisaId == divisaId)&&(identical(other.tipoPrecio, tipoPrecio) || other.tipoPrecio == tipoPrecio)&&(identical(other.descuento1, descuento1) || other.descuento1 == descuento1)&&(identical(other.descuento2, descuento2) || other.descuento2 == descuento2)&&(identical(other.descuento3, descuento3) || other.descuento3 == descuento3)&&(identical(other.lastUpdated, lastUpdated) || other.lastUpdated == lastUpdated)&&(identical(other.deleted, deleted) || other.deleted == deleted));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _EstadisticasUltimosPreciosDTO&&(identical(other.clienteId, clienteId) || other.clienteId == clienteId)&&(identical(other.articuloId, articuloId) || other.articuloId == articuloId)&&(identical(other.linea, linea) || other.linea == linea)&&(identical(other.cantidad, cantidad) || other.cantidad == cantidad)&&(identical(other.fecha, fecha) || other.fecha == fecha)&&(identical(other.precioDivisa, precioDivisa) || other.precioDivisa == precioDivisa)&&(identical(other.divisaId, divisaId) || other.divisaId == divisaId)&&(identical(other.tipoPrecio, tipoPrecio) || other.tipoPrecio == tipoPrecio)&&(identical(other.descuento1, descuento1) || other.descuento1 == descuento1)&&(identical(other.descuento2, descuento2) || other.descuento2 == descuento2)&&(identical(other.descuento3, descuento3) || other.descuento3 == descuento3)&&(identical(other.lastUpdated, lastUpdated) || other.lastUpdated == lastUpdated)&&(identical(other.deleted, deleted) || other.deleted == deleted));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,clienteId,articuloId,linea,cantidad,fecha,precioDivisa,divisaId,tipoPrecio,descuento1,descuento2,descuento3,lastUpdated,deleted);
+int get hashCode {
+    return Object.hash(runtimeType,clienteId,articuloId,linea,cantidad,fecha,precioDivisa,divisaId,tipoPrecio,descuento1,descuento2,descuento3,lastUpdated,deleted);
+}
 
 @override
 String toString() {
-  return 'EstadisticasUltimosPreciosDTO(clienteId: $clienteId, articuloId: $articuloId, linea: $linea, cantidad: $cantidad, fecha: $fecha, precioDivisa: $precioDivisa, divisaId: $divisaId, tipoPrecio: $tipoPrecio, descuento1: $descuento1, descuento2: $descuento2, descuento3: $descuento3, lastUpdated: $lastUpdated, deleted: $deleted)';
+    return 'EstadisticasUltimosPreciosDTO(clienteId: $clienteId, articuloId: $articuloId, linea: $linea, cantidad: $cantidad, fecha: $fecha, precioDivisa: $precioDivisa, divisaId: $divisaId, tipoPrecio: $tipoPrecio, descuento1: $descuento1, descuento2: $descuento2, descuento3: $descuento3, lastUpdated: $lastUpdated, deleted: $deleted)';
 }
 
 

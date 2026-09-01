@@ -29800,6 +29800,17 @@ class $PromoDtoCabTableTable extends PromoDtoCabTable
     type: DriftSqlType.string,
     requiredDuringInsert: true,
   );
+  static const VerificationMeta _visibleSNMeta = const VerificationMeta(
+    'visibleSN',
+  );
+  @override
+  late final GeneratedColumn<String> visibleSN = GeneratedColumn<String>(
+    'visible_sn',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
   static const VerificationMeta _lastUpdatedMeta = const VerificationMeta(
     'lastUpdated',
   );
@@ -29831,6 +29842,7 @@ class $PromoDtoCabTableTable extends PromoDtoCabTable
     fechaDesde,
     fechaHasta,
     divisaId,
+    visibleSN,
     lastUpdated,
     deleted,
   ];
@@ -29895,6 +29907,14 @@ class $PromoDtoCabTableTable extends PromoDtoCabTable
     } else if (isInserting) {
       context.missing(_divisaIdMeta);
     }
+    if (data.containsKey('visible_sn')) {
+      context.handle(
+        _visibleSNMeta,
+        visibleSN.isAcceptableOrUnknown(data['visible_sn']!, _visibleSNMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_visibleSNMeta);
+    }
     if (data.containsKey('last_updated')) {
       context.handle(
         _lastUpdatedMeta,
@@ -29949,6 +29969,10 @@ class $PromoDtoCabTableTable extends PromoDtoCabTable
         DriftSqlType.dateTime,
         data['${effectivePrefix}last_updated'],
       )!,
+      visibleSN: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}visible_sn'],
+      )!,
       deleted: attachedDatabase.typeMapping.read(
         DriftSqlType.string,
         data['${effectivePrefix}deleted'],
@@ -29969,6 +29993,7 @@ class PromoDtoCabTableCompanion extends UpdateCompanion<PromoDtoCabDTO> {
   final Value<DateTime> fechaDesde;
   final Value<DateTime?> fechaHasta;
   final Value<String> divisaId;
+  final Value<String> visibleSN;
   final Value<DateTime> lastUpdated;
   final Value<String> deleted;
   final Value<int> rowid;
@@ -29979,6 +30004,7 @@ class PromoDtoCabTableCompanion extends UpdateCompanion<PromoDtoCabDTO> {
     this.fechaDesde = const Value.absent(),
     this.fechaHasta = const Value.absent(),
     this.divisaId = const Value.absent(),
+    this.visibleSN = const Value.absent(),
     this.lastUpdated = const Value.absent(),
     this.deleted = const Value.absent(),
     this.rowid = const Value.absent(),
@@ -29990,6 +30016,7 @@ class PromoDtoCabTableCompanion extends UpdateCompanion<PromoDtoCabDTO> {
     required DateTime fechaDesde,
     this.fechaHasta = const Value.absent(),
     required String divisaId,
+    required String visibleSN,
     required DateTime lastUpdated,
     this.deleted = const Value.absent(),
     this.rowid = const Value.absent(),
@@ -29998,6 +30025,7 @@ class PromoDtoCabTableCompanion extends UpdateCompanion<PromoDtoCabDTO> {
        nombre = Value(nombre),
        fechaDesde = Value(fechaDesde),
        divisaId = Value(divisaId),
+       visibleSN = Value(visibleSN),
        lastUpdated = Value(lastUpdated);
   static Insertable<PromoDtoCabDTO> custom({
     Expression<String>? empresaId,
@@ -30006,6 +30034,7 @@ class PromoDtoCabTableCompanion extends UpdateCompanion<PromoDtoCabDTO> {
     Expression<DateTime>? fechaDesde,
     Expression<DateTime>? fechaHasta,
     Expression<String>? divisaId,
+    Expression<String>? visibleSN,
     Expression<DateTime>? lastUpdated,
     Expression<String>? deleted,
     Expression<int>? rowid,
@@ -30017,6 +30046,7 @@ class PromoDtoCabTableCompanion extends UpdateCompanion<PromoDtoCabDTO> {
       if (fechaDesde != null) 'fecha_desde': fechaDesde,
       if (fechaHasta != null) 'fecha_hasta': fechaHasta,
       if (divisaId != null) 'divisa_id': divisaId,
+      if (visibleSN != null) 'visible_sn': visibleSN,
       if (lastUpdated != null) 'last_updated': lastUpdated,
       if (deleted != null) 'deleted': deleted,
       if (rowid != null) 'rowid': rowid,
@@ -30030,6 +30060,7 @@ class PromoDtoCabTableCompanion extends UpdateCompanion<PromoDtoCabDTO> {
     Value<DateTime>? fechaDesde,
     Value<DateTime?>? fechaHasta,
     Value<String>? divisaId,
+    Value<String>? visibleSN,
     Value<DateTime>? lastUpdated,
     Value<String>? deleted,
     Value<int>? rowid,
@@ -30041,6 +30072,7 @@ class PromoDtoCabTableCompanion extends UpdateCompanion<PromoDtoCabDTO> {
       fechaDesde: fechaDesde ?? this.fechaDesde,
       fechaHasta: fechaHasta ?? this.fechaHasta,
       divisaId: divisaId ?? this.divisaId,
+      visibleSN: visibleSN ?? this.visibleSN,
       lastUpdated: lastUpdated ?? this.lastUpdated,
       deleted: deleted ?? this.deleted,
       rowid: rowid ?? this.rowid,
@@ -30068,6 +30100,9 @@ class PromoDtoCabTableCompanion extends UpdateCompanion<PromoDtoCabDTO> {
     if (divisaId.present) {
       map['divisa_id'] = Variable<String>(divisaId.value);
     }
+    if (visibleSN.present) {
+      map['visible_sn'] = Variable<String>(visibleSN.value);
+    }
     if (lastUpdated.present) {
       map['last_updated'] = Variable<DateTime>(lastUpdated.value);
     }
@@ -30089,6 +30124,7 @@ class PromoDtoCabTableCompanion extends UpdateCompanion<PromoDtoCabDTO> {
           ..write('fechaDesde: $fechaDesde, ')
           ..write('fechaHasta: $fechaHasta, ')
           ..write('divisaId: $divisaId, ')
+          ..write('visibleSN: $visibleSN, ')
           ..write('lastUpdated: $lastUpdated, ')
           ..write('deleted: $deleted, ')
           ..write('rowid: $rowid')
@@ -54059,6 +54095,7 @@ typedef $$PromoDtoCabTableTableCreateCompanionBuilder =
       required DateTime fechaDesde,
       Value<DateTime?> fechaHasta,
       required String divisaId,
+      required String visibleSN,
       required DateTime lastUpdated,
       Value<String> deleted,
       Value<int> rowid,
@@ -54071,6 +54108,7 @@ typedef $$PromoDtoCabTableTableUpdateCompanionBuilder =
       Value<DateTime> fechaDesde,
       Value<DateTime?> fechaHasta,
       Value<String> divisaId,
+      Value<String> visibleSN,
       Value<DateTime> lastUpdated,
       Value<String> deleted,
       Value<int> rowid,
@@ -54112,6 +54150,11 @@ class $$PromoDtoCabTableTableFilterComposer
 
   ColumnFilters<String> get divisaId => $composableBuilder(
     column: $table.divisaId,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get visibleSN => $composableBuilder(
+    column: $table.visibleSN,
     builder: (column) => ColumnFilters(column),
   );
 
@@ -54165,6 +54208,11 @@ class $$PromoDtoCabTableTableOrderingComposer
     builder: (column) => ColumnOrderings(column),
   );
 
+  ColumnOrderings<String> get visibleSN => $composableBuilder(
+    column: $table.visibleSN,
+    builder: (column) => ColumnOrderings(column),
+  );
+
   ColumnOrderings<DateTime> get lastUpdated => $composableBuilder(
     column: $table.lastUpdated,
     builder: (column) => ColumnOrderings(column),
@@ -54208,6 +54256,9 @@ class $$PromoDtoCabTableTableAnnotationComposer
 
   GeneratedColumn<String> get divisaId =>
       $composableBuilder(column: $table.divisaId, builder: (column) => column);
+
+  GeneratedColumn<String> get visibleSN =>
+      $composableBuilder(column: $table.visibleSN, builder: (column) => column);
 
   GeneratedColumn<DateTime> get lastUpdated => $composableBuilder(
     column: $table.lastUpdated,
@@ -54261,6 +54312,7 @@ class $$PromoDtoCabTableTableTableManager
                 Value<DateTime> fechaDesde = const Value.absent(),
                 Value<DateTime?> fechaHasta = const Value.absent(),
                 Value<String> divisaId = const Value.absent(),
+                Value<String> visibleSN = const Value.absent(),
                 Value<DateTime> lastUpdated = const Value.absent(),
                 Value<String> deleted = const Value.absent(),
                 Value<int> rowid = const Value.absent(),
@@ -54271,6 +54323,7 @@ class $$PromoDtoCabTableTableTableManager
                 fechaDesde: fechaDesde,
                 fechaHasta: fechaHasta,
                 divisaId: divisaId,
+                visibleSN: visibleSN,
                 lastUpdated: lastUpdated,
                 deleted: deleted,
                 rowid: rowid,
@@ -54283,6 +54336,7 @@ class $$PromoDtoCabTableTableTableManager
                 required DateTime fechaDesde,
                 Value<DateTime?> fechaHasta = const Value.absent(),
                 required String divisaId,
+                required String visibleSN,
                 required DateTime lastUpdated,
                 Value<String> deleted = const Value.absent(),
                 Value<int> rowid = const Value.absent(),
@@ -54293,6 +54347,7 @@ class $$PromoDtoCabTableTableTableManager
                 fechaDesde: fechaDesde,
                 fechaHasta: fechaHasta,
                 divisaId: divisaId,
+                visibleSN: visibleSN,
                 lastUpdated: lastUpdated,
                 deleted: deleted,
                 rowid: rowid,

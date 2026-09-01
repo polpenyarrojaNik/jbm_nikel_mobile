@@ -213,6 +213,115 @@ class PedidoVentaRepository {
     return pedidoVentaList;
   }
 
+  Future<List<PedidoVenta>> getBackorderLista({
+    required int page,
+    required String searchText,
+    String? clienteId,
+  }) {
+    final query = _remoteDb.select(_remoteDb.pedidoVentaTable).join([
+      innerJoin(
+        _remoteDb.clienteUsuarioTable,
+        _remoteDb.clienteUsuarioTable.clienteId.equalsExp(
+          _remoteDb.pedidoVentaTable.clienteId,
+        ),
+      ),
+      leftOuterJoin(
+        _remoteDb.paisTable,
+        _remoteDb.paisTable.id.equalsExp(_remoteDb.pedidoVentaTable.paisId),
+      ),
+      leftOuterJoin(
+        _remoteDb.divisaTable,
+        _remoteDb.divisaTable.id.equalsExp(_remoteDb.pedidoVentaTable.divisaId),
+      ),
+      innerJoin(
+        _remoteDb.pedidoVentaEstadoTable,
+        _remoteDb.pedidoVentaEstadoTable.id.equalsExp(
+          _remoteDb.pedidoVentaTable.pedidoVentaEstadoId,
+        ),
+      ),
+    ]);
+
+    query.where(_remoteDb.clienteUsuarioTable.usuarioId.equals(usuario.id));
+
+    query.where(_remoteDb.pedidoVentaTable.pedidoVentaEstadoId.isIn([0, 1]));
+
+    if (searchText != '') {
+      final busqueda = searchText.toUpperCase().split(' ');
+      Expression<bool>? predicate;
+      for (var i = 0; i < busqueda.length; i++) {
+        predicate = predicate == null
+            ? (_remoteDb.pedidoVentaTable.pedidoVentaId.like(
+                    '%${busqueda[i]}%',
+                  ) |
+                  _remoteDb.pedidoVentaTable.nombreCliente.like(
+                    '%${busqueda[i]}%',
+                  ) |
+                  _remoteDb.pedidoVentaTable.clienteId.like(
+                    '%${busqueda[i]}%',
+                  ) |
+                  _remoteDb.pedidoVentaTable.pedidoVentaId.like(
+                    '%${busqueda[i]}%',
+                  ) |
+                  _remoteDb.pedidoVentaTable.poblacion.like(
+                    '%${busqueda[i]}%',
+                  ) |
+                  _remoteDb.pedidoVentaTable.codigoPostal.like(
+                    '%${busqueda[i]}%',
+                  ) |
+                  _remoteDb.pedidoVentaTable.provincia.like('%${busqueda[i]}%'))
+            : predicate &
+                  (_remoteDb.pedidoVentaTable.pedidoVentaId.like(
+                        '%${busqueda[i]}%',
+                      ) |
+                      (_remoteDb.pedidoVentaTable.nombreCliente.like(
+                            '%${busqueda[i]}%',
+                          ) |
+                          _remoteDb.pedidoVentaTable.pedidoVentaId.like(
+                            '%${busqueda[i]}%',
+                          ) |
+                          _remoteDb.pedidoVentaTable.clienteId.like(
+                            '%${busqueda[i]}%',
+                          ) |
+                          _remoteDb.pedidoVentaTable.poblacion.like(
+                            '%${busqueda[i]}%',
+                          ) |
+                          _remoteDb.pedidoVentaTable.codigoPostal.like(
+                            '%${busqueda[i]}%',
+                          ) |
+                          _remoteDb.pedidoVentaTable.provincia.like(
+                            '%${busqueda[i]}%',
+                          )));
+      }
+      query.where(predicate!);
+    }
+
+    if (clienteId != null) {
+      query.where(_remoteDb.pedidoVentaTable.clienteId.equals(clienteId));
+    }
+
+    query.limit(pageSize, offset: page * pageSize);
+
+    query.orderBy([
+      OrderingTerm.desc(_remoteDb.pedidoVentaTable.pedidoVentaDate),
+      OrderingTerm.asc(_remoteDb.pedidoVentaTable.pedidoVentaId),
+    ]);
+
+    return query.asyncMap((row) async {
+      final pedidoVentaDTO = row.readTable(_remoteDb.pedidoVentaTable);
+      final paisDTO = row.readTableOrNull(_remoteDb.paisTable);
+      final divisaDTO = row.readTable(_remoteDb.divisaTable);
+      final pedidoVentaEstadoDTO = row.readTable(
+        _remoteDb.pedidoVentaEstadoTable,
+      );
+
+      return pedidoVentaDTO.toDomain(
+        pais: paisDTO?.toDomain(),
+        divisa: divisaDTO.toDomain(),
+        pedidoVentaEstado: pedidoVentaEstadoDTO.toDomain(),
+      );
+    }).get();
+  }
+
   Future<int> getPedidoVentaCountList({
     required String searchText,
     required PedidoVentaEstado? pedidoVentaEstado,
@@ -236,6 +345,92 @@ class PedidoVentaRepository {
         stackTrace,
       );
     }
+  }
+
+  Future<int> getBackorderCountList({
+    required String searchText,
+    String? clienteId,
+  }) async {
+    final countExp = _remoteDb.pedidoVentaTable.pedidoVentaId.count();
+
+    final query = _remoteDb.selectOnly(_remoteDb.pedidoVentaTable).join([
+      innerJoin(
+        _remoteDb.clienteUsuarioTable,
+        _remoteDb.clienteUsuarioTable.clienteId.equalsExp(
+          _remoteDb.pedidoVentaTable.clienteId,
+        ),
+      ),
+      leftOuterJoin(
+        _remoteDb.paisTable,
+        _remoteDb.paisTable.id.equalsExp(_remoteDb.pedidoVentaTable.paisId),
+      ),
+      leftOuterJoin(
+        _remoteDb.divisaTable,
+        _remoteDb.divisaTable.id.equalsExp(_remoteDb.pedidoVentaTable.divisaId),
+      ),
+      innerJoin(
+        _remoteDb.pedidoVentaEstadoTable,
+        _remoteDb.pedidoVentaEstadoTable.id.equalsExp(
+          _remoteDb.pedidoVentaTable.pedidoVentaEstadoId,
+        ),
+      ),
+    ]);
+
+    query.where(_remoteDb.clienteUsuarioTable.usuarioId.equals(usuario.id));
+
+    query.where(_remoteDb.pedidoVentaTable.pedidoVentaEstadoId.isIn([0, 1]));
+
+    if (searchText != '') {
+      final busqueda = searchText.toUpperCase().split(' ');
+      Expression<bool>? predicate;
+      for (var i = 0; i < busqueda.length; i++) {
+        predicate = predicate == null
+            ? (_remoteDb.pedidoVentaTable.pedidoVentaId.like(
+                    '%${busqueda[i]}%',
+                  ) |
+                  _remoteDb.pedidoVentaTable.nombreCliente.like(
+                    '%${busqueda[i]}%',
+                  ) |
+                  _remoteDb.pedidoVentaTable.clienteId.like(
+                    '%${busqueda[i]}%',
+                  ) |
+                  _remoteDb.pedidoVentaTable.poblacion.like(
+                    '%${busqueda[i]}%',
+                  ) |
+                  _remoteDb.pedidoVentaTable.codigoPostal.like(
+                    '%${busqueda[i]}%',
+                  ) |
+                  _remoteDb.pedidoVentaTable.provincia.like('%${busqueda[i]}%'))
+            : predicate &
+                  ((_remoteDb.pedidoVentaTable.pedidoVentaId.like(
+                        '%${busqueda[i]}%',
+                      ) |
+                      _remoteDb.pedidoVentaTable.nombreCliente.like(
+                        '%${busqueda[i]}%',
+                      ) |
+                      _remoteDb.pedidoVentaTable.clienteId.like(
+                        '%${busqueda[i]}%',
+                      ) |
+                      _remoteDb.pedidoVentaTable.poblacion.like(
+                        '%${busqueda[i]}%',
+                      ) |
+                      _remoteDb.pedidoVentaTable.codigoPostal.like(
+                        '%${busqueda[i]}%',
+                      ) |
+                      _remoteDb.pedidoVentaTable.provincia.like(
+                        '%${busqueda[i]}%',
+                      )));
+      }
+      query.where(predicate!);
+    }
+
+    if (clienteId != null) {
+      query.where(_remoteDb.pedidoVentaTable.clienteId.equals(clienteId));
+    }
+    query.addColumns([countExp]);
+
+    final count = await query.map((row) => row.read(countExp)).getSingle();
+    return count ?? 0;
   }
 
   Future<List<PedidoVenta>> getPedidoVentaListaByCliente({

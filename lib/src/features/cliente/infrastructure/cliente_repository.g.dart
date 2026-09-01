@@ -814,7 +814,8 @@ final class ClienteVentasMesListByIdProvider
         > {
   ClienteVentasMesListByIdProvider._({
     required ClienteVentasMesListByIdFamily super.from,
-    required String super.argument,
+    required (String, {String? direccionId, bool applyDireccionFilter})
+    super.argument,
   }) : super(
          retry: null,
          name: r'clienteVentasMesListByIdProvider',
@@ -830,7 +831,7 @@ final class ClienteVentasMesListByIdProvider
   String toString() {
     return r'clienteVentasMesListByIdProvider'
         ''
-        '($argument)';
+        '$argument';
   }
 
   @$internal
@@ -850,7 +851,7 @@ final class ClienteVentasMesListByIdProvider
 }
 
 String _$clienteVentasMesListByIdHash() =>
-    r'4b306cfe687f8b74c6eb30a5daab1e8945b576c0';
+    r'7f9e9303a0a63bd10a59f5b9b81d03d9d0897c37';
 
 final class ClienteVentasMesListByIdFamily extends $Family
     with
@@ -859,7 +860,7 @@ final class ClienteVentasMesListByIdFamily extends $Family
           AsyncValue<List<ClienteVentasMes>>,
           List<ClienteVentasMes>,
           FutureOr<List<ClienteVentasMes>>,
-          String
+          (String, {String? direccionId, bool applyDireccionFilter})
         > {
   ClienteVentasMesListByIdFamily._()
     : super(
@@ -870,8 +871,18 @@ final class ClienteVentasMesListByIdFamily extends $Family
         isAutoDispose: true,
       );
 
-  ClienteVentasMesListByIdProvider call(String clienteId) =>
-      ClienteVentasMesListByIdProvider._(argument: clienteId, from: this);
+  ClienteVentasMesListByIdProvider call(
+    String clienteId, {
+    String? direccionId,
+    bool applyDireccionFilter = false,
+  }) => ClienteVentasMesListByIdProvider._(
+    argument: (
+      clienteId,
+      direccionId: direccionId,
+      applyDireccionFilter: applyDireccionFilter,
+    ),
+    from: this,
+  );
 
   @override
   String toString() => r'clienteVentasMesListByIdProvider';
@@ -879,10 +890,17 @@ final class ClienteVentasMesListByIdFamily extends $Family
 
 abstract class _$ClienteVentasMesListById
     extends $AsyncNotifier<List<ClienteVentasMes>> {
-  late final _$args = ref.$arg as String;
-  String get clienteId => _$args;
+  late final _$args =
+      ref.$arg as (String, {String? direccionId, bool applyDireccionFilter});
+  String get clienteId => _$args.$1;
+  String? get direccionId => _$args.direccionId;
+  bool get applyDireccionFilter => _$args.applyDireccionFilter;
 
-  FutureOr<List<ClienteVentasMes>> build(String clienteId);
+  FutureOr<List<ClienteVentasMes>> build(
+    String clienteId, {
+    String? direccionId,
+    bool applyDireccionFilter = false,
+  });
   @$mustCallSuper
   @override
   WhenComplete runBuild() {
@@ -900,7 +918,14 @@ abstract class _$ClienteVentasMesListById
               Object?,
               Object?
             >;
-    return element.handleCreate(ref, () => build(_$args));
+    return element.handleCreate(
+      ref,
+      () => build(
+        _$args.$1,
+        direccionId: _$args.direccionId,
+        applyDireccionFilter: _$args.applyDireccionFilter,
+      ),
+    );
   }
 }
 

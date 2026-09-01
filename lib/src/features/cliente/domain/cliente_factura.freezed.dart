@@ -26,16 +26,21 @@ $ClienteFacturaCopyWith<ClienteFactura> get copyWith => _$ClienteFacturaCopyWith
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ClienteFactura&&(identical(other.clienteId, clienteId) || other.clienteId == clienteId)&&(identical(other.empresaId, empresaId) || other.empresaId == empresaId)&&(identical(other.serie, serie) || other.serie == serie)&&(identical(other.facturaId, facturaId) || other.facturaId == facturaId)&&(identical(other.fechaFactura, fechaFactura) || other.fechaFactura == fechaFactura)&&(identical(other.importeFactura, importeFactura) || other.importeFactura == importeFactura)&&(identical(other.documentoPdf, documentoPdf) || other.documentoPdf == documentoPdf)&&(identical(other.archivoExiste, archivoExiste) || other.archivoExiste == archivoExiste));
+  final _this = this as ClienteFactura;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ClienteFactura&&(identical(other.clienteId, _this.clienteId) || other.clienteId == _this.clienteId)&&(identical(other.empresaId, _this.empresaId) || other.empresaId == _this.empresaId)&&(identical(other.serie, _this.serie) || other.serie == _this.serie)&&(identical(other.facturaId, _this.facturaId) || other.facturaId == _this.facturaId)&&(identical(other.fechaFactura, _this.fechaFactura) || other.fechaFactura == _this.fechaFactura)&&(identical(other.importeFactura, _this.importeFactura) || other.importeFactura == _this.importeFactura)&&(identical(other.documentoPdf, _this.documentoPdf) || other.documentoPdf == _this.documentoPdf)&&(identical(other.archivoExiste, _this.archivoExiste) || other.archivoExiste == _this.archivoExiste));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,clienteId,empresaId,serie,facturaId,fechaFactura,importeFactura,documentoPdf,archivoExiste);
+int get hashCode {
+  final _this = this as ClienteFactura;
+  return Object.hash(runtimeType,_this.clienteId,_this.empresaId,_this.serie,_this.facturaId,_this.fechaFactura,_this.importeFactura,_this.documentoPdf,_this.archivoExiste);
+}
 
 @override
 String toString() {
-  return 'ClienteFactura(clienteId: $clienteId, empresaId: $empresaId, serie: $serie, facturaId: $facturaId, fechaFactura: $fechaFactura, importeFactura: $importeFactura, documentoPdf: $documentoPdf, archivoExiste: $archivoExiste)';
+  final _this = this as ClienteFactura;
+  return 'ClienteFactura(clienteId: ${_this.clienteId}, empresaId: ${_this.empresaId}, serie: ${_this.serie}, facturaId: ${_this.facturaId}, fechaFactura: ${_this.fechaFactura}, importeFactura: ${_this.importeFactura}, documentoPdf: ${_this.documentoPdf}, archivoExiste: ${_this.archivoExiste})';
 }
 
 
@@ -236,16 +241,18 @@ _$ClienteFacturaCopyWith<_ClienteFactura> get copyWith => __$ClienteFacturaCopyW
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ClienteFactura&&(identical(other.clienteId, clienteId) || other.clienteId == clienteId)&&(identical(other.empresaId, empresaId) || other.empresaId == empresaId)&&(identical(other.serie, serie) || other.serie == serie)&&(identical(other.facturaId, facturaId) || other.facturaId == facturaId)&&(identical(other.fechaFactura, fechaFactura) || other.fechaFactura == fechaFactura)&&(identical(other.importeFactura, importeFactura) || other.importeFactura == importeFactura)&&(identical(other.documentoPdf, documentoPdf) || other.documentoPdf == documentoPdf)&&(identical(other.archivoExiste, archivoExiste) || other.archivoExiste == archivoExiste));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _ClienteFactura&&(identical(other.clienteId, clienteId) || other.clienteId == clienteId)&&(identical(other.empresaId, empresaId) || other.empresaId == empresaId)&&(identical(other.serie, serie) || other.serie == serie)&&(identical(other.facturaId, facturaId) || other.facturaId == facturaId)&&(identical(other.fechaFactura, fechaFactura) || other.fechaFactura == fechaFactura)&&(identical(other.importeFactura, importeFactura) || other.importeFactura == importeFactura)&&(identical(other.documentoPdf, documentoPdf) || other.documentoPdf == documentoPdf)&&(identical(other.archivoExiste, archivoExiste) || other.archivoExiste == archivoExiste));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,clienteId,empresaId,serie,facturaId,fechaFactura,importeFactura,documentoPdf,archivoExiste);
+int get hashCode {
+    return Object.hash(runtimeType,clienteId,empresaId,serie,facturaId,fechaFactura,importeFactura,documentoPdf,archivoExiste);
+}
 
 @override
 String toString() {
-  return 'ClienteFactura(clienteId: $clienteId, empresaId: $empresaId, serie: $serie, facturaId: $facturaId, fechaFactura: $fechaFactura, importeFactura: $importeFactura, documentoPdf: $documentoPdf, archivoExiste: $archivoExiste)';
+    return 'ClienteFactura(clienteId: $clienteId, empresaId: $empresaId, serie: $serie, facturaId: $facturaId, fechaFactura: $fechaFactura, importeFactura: $importeFactura, documentoPdf: $documentoPdf, archivoExiste: $archivoExiste)';
 }
 
 

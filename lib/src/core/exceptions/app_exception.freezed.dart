@@ -21,7 +21,7 @@ mixin _$AppException {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is AppException);
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is AppException);
 }
 
 
@@ -30,7 +30,7 @@ int get hashCode => runtimeType.hashCode;
 
 @override
 String toString() {
-  return 'AppException()';
+    return 'AppException()';
 }
 
 
@@ -282,16 +282,18 @@ $RestApiFailureCopyWith<RestApiFailure> get copyWith => _$RestApiFailureCopyWith
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is RestApiFailure&&(identical(other.errorCode, errorCode) || other.errorCode == errorCode)&&(identical(other.errorMessage, errorMessage) || other.errorMessage == errorMessage));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is RestApiFailure&&(identical(other.errorCode, errorCode) || other.errorCode == errorCode)&&(identical(other.errorMessage, errorMessage) || other.errorMessage == errorMessage));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,errorCode,errorMessage);
+int get hashCode {
+    return Object.hash(runtimeType,errorCode,errorMessage);
+}
 
 @override
 String toString() {
-  return 'AppException.restApiFailure(errorCode: $errorCode, errorMessage: $errorMessage)';
+    return 'AppException.restApiFailure(errorCode: $errorCode, errorMessage: $errorMessage)';
 }
 
 
@@ -349,16 +351,18 @@ $ImportExcelFileFailureCopyWith<ImportExcelFileFailure> get copyWith => _$Import
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ImportExcelFileFailure&&(identical(other.errorMessage, errorMessage) || other.errorMessage == errorMessage));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is ImportExcelFileFailure&&(identical(other.errorMessage, errorMessage) || other.errorMessage == errorMessage));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,errorMessage);
+int get hashCode {
+    return Object.hash(runtimeType,errorMessage);
+}
 
 @override
 String toString() {
-  return 'AppException.importExcelFile(errorMessage: $errorMessage)';
+    return 'AppException.importExcelFile(errorMessage: $errorMessage)';
 }
 
 
@@ -415,16 +419,18 @@ $AuthLocalFailureCopyWith<AuthLocalFailure> get copyWith => _$AuthLocalFailureCo
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is AuthLocalFailure&&(identical(other.errorMessage, errorMessage) || other.errorMessage == errorMessage));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is AuthLocalFailure&&(identical(other.errorMessage, errorMessage) || other.errorMessage == errorMessage));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,errorMessage);
+int get hashCode {
+    return Object.hash(runtimeType,errorMessage);
+}
 
 @override
 String toString() {
-  return 'AppException.authLocalFailure(errorMessage: $errorMessage)';
+    return 'AppException.authLocalFailure(errorMessage: $errorMessage)';
 }
 
 
@@ -481,16 +487,18 @@ $FetchLocalDataFailureCopyWith<FetchLocalDataFailure> get copyWith => _$FetchLoc
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is FetchLocalDataFailure&&(identical(other.errorMessage, errorMessage) || other.errorMessage == errorMessage));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is FetchLocalDataFailure&&(identical(other.errorMessage, errorMessage) || other.errorMessage == errorMessage));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,errorMessage);
+int get hashCode {
+    return Object.hash(runtimeType,errorMessage);
+}
 
 @override
 String toString() {
-  return 'AppException.fetchLocalDataFailure(errorMessage: $errorMessage)';
+    return 'AppException.fetchLocalDataFailure(errorMessage: $errorMessage)';
 }
 
 
@@ -547,16 +555,18 @@ $CreateFileInCahceFailureCopyWith<CreateFileInCahceFailure> get copyWith => _$Cr
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is CreateFileInCahceFailure&&(identical(other.errorMessage, errorMessage) || other.errorMessage == errorMessage));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is CreateFileInCahceFailure&&(identical(other.errorMessage, errorMessage) || other.errorMessage == errorMessage));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,errorMessage);
+int get hashCode {
+    return Object.hash(runtimeType,errorMessage);
+}
 
 @override
 String toString() {
-  return 'AppException.createFileInCacheFailure(errorMessage: $errorMessage)';
+    return 'AppException.createFileInCacheFailure(errorMessage: $errorMessage)';
 }
 
 
@@ -614,16 +624,18 @@ $SyncFailureCopyWith<SyncFailure> get copyWith => _$SyncFailureCopyWithImpl<Sync
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is SyncFailure&&(identical(other.tableToSync, tableToSync) || other.tableToSync == tableToSync)&&(identical(other.errorMessage, errorMessage) || other.errorMessage == errorMessage));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is SyncFailure&&(identical(other.tableToSync, tableToSync) || other.tableToSync == tableToSync)&&(identical(other.errorMessage, errorMessage) || other.errorMessage == errorMessage));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,tableToSync,errorMessage);
+int get hashCode {
+    return Object.hash(runtimeType,tableToSync,errorMessage);
+}
 
 @override
 String toString() {
-  return 'AppException.syncFailure(tableToSync: $tableToSync, errorMessage: $errorMessage)';
+    return 'AppException.syncFailure(tableToSync: $tableToSync, errorMessage: $errorMessage)';
 }
 
 
@@ -676,7 +688,7 @@ class ClienteNotFoundFailure implements AppException {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ClienteNotFoundFailure);
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is ClienteNotFoundFailure);
 }
 
 
@@ -685,7 +697,7 @@ int get hashCode => runtimeType.hashCode;
 
 @override
 String toString() {
-  return 'AppException.clienteNotFound()';
+    return 'AppException.clienteNotFound()';
 }
 
 
@@ -708,7 +720,7 @@ class ArticuloNotFoundFailure implements AppException {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ArticuloNotFoundFailure);
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is ArticuloNotFoundFailure);
 }
 
 
@@ -717,7 +729,7 @@ int get hashCode => runtimeType.hashCode;
 
 @override
 String toString() {
-  return 'AppException.articuloNotFound()';
+    return 'AppException.articuloNotFound()';
 }
 
 
@@ -740,7 +752,7 @@ class PedidoVentaNotFoundFailure implements AppException {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is PedidoVentaNotFoundFailure);
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is PedidoVentaNotFoundFailure);
 }
 
 
@@ -749,7 +761,7 @@ int get hashCode => runtimeType.hashCode;
 
 @override
 String toString() {
-  return 'AppException.pedidoVentaNotFound()';
+    return 'AppException.pedidoVentaNotFound()';
 }
 
 
@@ -777,16 +789,18 @@ $PedidoVentaDeleteFailureCopyWith<PedidoVentaDeleteFailure> get copyWith => _$Pe
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is PedidoVentaDeleteFailure&&(identical(other.errorMessage, errorMessage) || other.errorMessage == errorMessage));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is PedidoVentaDeleteFailure&&(identical(other.errorMessage, errorMessage) || other.errorMessage == errorMessage));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,errorMessage);
+int get hashCode {
+    return Object.hash(runtimeType,errorMessage);
+}
 
 @override
 String toString() {
-  return 'AppException.pedidoVentaDeleteFailure(errorMessage: $errorMessage)';
+    return 'AppException.pedidoVentaDeleteFailure(errorMessage: $errorMessage)';
 }
 
 
@@ -843,16 +857,18 @@ $InsertDataFailureCopyWith<InsertDataFailure> get copyWith => _$InsertDataFailur
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is InsertDataFailure&&(identical(other.errorMessage, errorMessage) || other.errorMessage == errorMessage));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is InsertDataFailure&&(identical(other.errorMessage, errorMessage) || other.errorMessage == errorMessage));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,errorMessage);
+int get hashCode {
+    return Object.hash(runtimeType,errorMessage);
+}
 
 @override
 String toString() {
-  return 'AppException.insertDataFailure(errorMessage: $errorMessage)';
+    return 'AppException.insertDataFailure(errorMessage: $errorMessage)';
 }
 
 
@@ -904,7 +920,7 @@ class NotConnectionFailure implements AppException {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is NotConnectionFailure);
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is NotConnectionFailure);
 }
 
 
@@ -913,7 +929,7 @@ int get hashCode => runtimeType.hashCode;
 
 @override
 String toString() {
-  return 'AppException.notConnection()';
+    return 'AppException.notConnection()';
 }
 
 
@@ -936,7 +952,7 @@ class ArchivoNoEncontrado implements AppException {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ArchivoNoEncontrado);
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is ArchivoNoEncontrado);
 }
 
 
@@ -945,7 +961,7 @@ int get hashCode => runtimeType.hashCode;
 
 @override
 String toString() {
-  return 'AppException.noSuchFileOrDirectory()';
+    return 'AppException.noSuchFileOrDirectory()';
 }
 
 
@@ -968,7 +984,7 @@ class UnexpectedResponseFormat implements AppException {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is UnexpectedResponseFormat);
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is UnexpectedResponseFormat);
 }
 
 
@@ -977,7 +993,7 @@ int get hashCode => runtimeType.hashCode;
 
 @override
 String toString() {
-  return 'AppException.unexpectedResponseFormat()';
+    return 'AppException.unexpectedResponseFormat()';
 }
 
 
@@ -1000,7 +1016,7 @@ class UnexpectedError implements AppException {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is UnexpectedError);
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is UnexpectedError);
 }
 
 
@@ -1009,7 +1025,7 @@ int get hashCode => runtimeType.hashCode;
 
 @override
 String toString() {
-  return 'AppException.unexpectedError()';
+    return 'AppException.unexpectedError()';
 }
 
 
@@ -1032,7 +1048,7 @@ class _LocationPermissionDeniedFailure implements AppException {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _LocationPermissionDeniedFailure);
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _LocationPermissionDeniedFailure);
 }
 
 
@@ -1041,7 +1057,7 @@ int get hashCode => runtimeType.hashCode;
 
 @override
 String toString() {
-  return 'AppException.locationPermissionDenied()';
+    return 'AppException.locationPermissionDenied()';
 }
 
 

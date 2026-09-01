@@ -26,16 +26,21 @@ $VisitaMotivoNoVentaCopyWith<VisitaMotivoNoVenta> get copyWith => _$VisitaMotivo
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is VisitaMotivoNoVenta&&(identical(other.id, id) || other.id == id)&&(identical(other.descripcion, descripcion) || other.descripcion == descripcion)&&(identical(other.lastUpdate, lastUpdate) || other.lastUpdate == lastUpdate)&&(identical(other.deleted, deleted) || other.deleted == deleted));
+  final _this = this as VisitaMotivoNoVenta;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is VisitaMotivoNoVenta&&(identical(other.id, _this.id) || other.id == _this.id)&&(identical(other.descripcion, _this.descripcion) || other.descripcion == _this.descripcion)&&(identical(other.lastUpdate, _this.lastUpdate) || other.lastUpdate == _this.lastUpdate)&&(identical(other.deleted, _this.deleted) || other.deleted == _this.deleted));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,id,descripcion,lastUpdate,deleted);
+int get hashCode {
+  final _this = this as VisitaMotivoNoVenta;
+  return Object.hash(runtimeType,_this.id,_this.descripcion,_this.lastUpdate,_this.deleted);
+}
 
 @override
 String toString() {
-  return 'VisitaMotivoNoVenta(id: $id, descripcion: $descripcion, lastUpdate: $lastUpdate, deleted: $deleted)';
+  final _this = this as VisitaMotivoNoVenta;
+  return 'VisitaMotivoNoVenta(id: ${_this.id}, descripcion: ${_this.descripcion}, lastUpdate: ${_this.lastUpdate}, deleted: ${_this.deleted})';
 }
 
 
@@ -228,16 +233,18 @@ _$VisitaMotivoNoVentaCopyWith<_VisitaMotivoNoVenta> get copyWith => __$VisitaMot
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _VisitaMotivoNoVenta&&(identical(other.id, id) || other.id == id)&&(identical(other.descripcion, descripcion) || other.descripcion == descripcion)&&(identical(other.lastUpdate, lastUpdate) || other.lastUpdate == lastUpdate)&&(identical(other.deleted, deleted) || other.deleted == deleted));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _VisitaMotivoNoVenta&&(identical(other.id, id) || other.id == id)&&(identical(other.descripcion, descripcion) || other.descripcion == descripcion)&&(identical(other.lastUpdate, lastUpdate) || other.lastUpdate == lastUpdate)&&(identical(other.deleted, deleted) || other.deleted == deleted));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,id,descripcion,lastUpdate,deleted);
+int get hashCode {
+    return Object.hash(runtimeType,id,descripcion,lastUpdate,deleted);
+}
 
 @override
 String toString() {
-  return 'VisitaMotivoNoVenta(id: $id, descripcion: $descripcion, lastUpdate: $lastUpdate, deleted: $deleted)';
+    return 'VisitaMotivoNoVenta(id: $id, descripcion: $descripcion, lastUpdate: $lastUpdate, deleted: $deleted)';
 }
 
 

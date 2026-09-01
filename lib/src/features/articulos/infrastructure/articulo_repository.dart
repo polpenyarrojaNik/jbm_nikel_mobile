@@ -1613,9 +1613,28 @@ ORDER  BY IMPORTE_ANYO DESC
 
   Future<List<PromoDtoLineaDTO>> _getPromoLineaList(String articuloId) async {
     try {
-      return await (_remoteDb.select(
-        _remoteDb.promoDtoLinTable,
-      )..where((tbl) => tbl.articuloId.equalsNullable(articuloId))).get();
+      final query = _remoteDb.select(_remoteDb.promoDtoLinTable).join([
+        innerJoin(
+          _remoteDb.promoDtoCabTable,
+          _remoteDb.promoDtoCabTable.promoDtoId.equalsExp(
+                _remoteDb.promoDtoLinTable.promoDtoId,
+              ) &
+              _remoteDb.promoDtoCabTable.empresaId.equalsExp(
+                _remoteDb.promoDtoLinTable.empresaId,
+              ),
+        ),
+      ]);
+
+      query.where(
+        _remoteDb.promoDtoLinTable.articuloId.equals(articuloId) &
+            _remoteDb.promoDtoCabTable.visibleSN.equals('S'),
+      );
+
+      return await query.map((row) {
+        final promoDtoLinDTO = row.readTable(_remoteDb.promoDtoLinTable);
+
+        return promoDtoLinDTO;
+      }).get();
     } catch (e) {
       return [];
     }

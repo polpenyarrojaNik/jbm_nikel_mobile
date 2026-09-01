@@ -29,16 +29,21 @@ $ArticuloRecambioDTOCopyWith<ArticuloRecambioDTO> get copyWith => _$ArticuloReca
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ArticuloRecambioDTO&&(identical(other.articuloId, articuloId) || other.articuloId == articuloId)&&(identical(other.id, id) || other.id == id)&&(identical(other.descripcion, descripcion) || other.descripcion == descripcion)&&(identical(other.cantidad, cantidad) || other.cantidad == cantidad)&&(identical(other.lastUpdated, lastUpdated) || other.lastUpdated == lastUpdated)&&(identical(other.deleted, deleted) || other.deleted == deleted));
+  final _this = this as ArticuloRecambioDTO;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ArticuloRecambioDTO&&(identical(other.articuloId, _this.articuloId) || other.articuloId == _this.articuloId)&&(identical(other.id, _this.id) || other.id == _this.id)&&(identical(other.descripcion, _this.descripcion) || other.descripcion == _this.descripcion)&&(identical(other.cantidad, _this.cantidad) || other.cantidad == _this.cantidad)&&(identical(other.lastUpdated, _this.lastUpdated) || other.lastUpdated == _this.lastUpdated)&&(identical(other.deleted, _this.deleted) || other.deleted == _this.deleted));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,articuloId,id,descripcion,cantidad,lastUpdated,deleted);
+int get hashCode {
+  final _this = this as ArticuloRecambioDTO;
+  return Object.hash(runtimeType,_this.articuloId,_this.id,_this.descripcion,_this.cantidad,_this.lastUpdated,_this.deleted);
+}
 
 @override
 String toString() {
-  return 'ArticuloRecambioDTO(articuloId: $articuloId, id: $id, descripcion: $descripcion, cantidad: $cantidad, lastUpdated: $lastUpdated, deleted: $deleted)';
+  final _this = this as ArticuloRecambioDTO;
+  return 'ArticuloRecambioDTO(articuloId: ${_this.articuloId}, id: ${_this.id}, descripcion: ${_this.descripcion}, cantidad: ${_this.cantidad}, lastUpdated: ${_this.lastUpdated}, deleted: ${_this.deleted})';
 }
 
 
@@ -238,16 +243,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ArticuloRecambioDTO&&(identical(other.articuloId, articuloId) || other.articuloId == articuloId)&&(identical(other.id, id) || other.id == id)&&(identical(other.descripcion, descripcion) || other.descripcion == descripcion)&&(identical(other.cantidad, cantidad) || other.cantidad == cantidad)&&(identical(other.lastUpdated, lastUpdated) || other.lastUpdated == lastUpdated)&&(identical(other.deleted, deleted) || other.deleted == deleted));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _ArticuloRecambioDTO&&(identical(other.articuloId, articuloId) || other.articuloId == articuloId)&&(identical(other.id, id) || other.id == id)&&(identical(other.descripcion, descripcion) || other.descripcion == descripcion)&&(identical(other.cantidad, cantidad) || other.cantidad == cantidad)&&(identical(other.lastUpdated, lastUpdated) || other.lastUpdated == lastUpdated)&&(identical(other.deleted, deleted) || other.deleted == deleted));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,articuloId,id,descripcion,cantidad,lastUpdated,deleted);
+int get hashCode {
+    return Object.hash(runtimeType,articuloId,id,descripcion,cantidad,lastUpdated,deleted);
+}
 
 @override
 String toString() {
-  return 'ArticuloRecambioDTO(articuloId: $articuloId, id: $id, descripcion: $descripcion, cantidad: $cantidad, lastUpdated: $lastUpdated, deleted: $deleted)';
+    return 'ArticuloRecambioDTO(articuloId: $articuloId, id: $id, descripcion: $descripcion, cantidad: $cantidad, lastUpdated: $lastUpdated, deleted: $deleted)';
 }
 
 

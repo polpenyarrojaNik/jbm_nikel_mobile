@@ -468,5 +468,7 @@
   "inactive": "Inactive",
   "potential": "Potential",
   "filter": "Filter",
-  "salesOrderSent": "Sales order sent"
+  "salesOrderSent": "Sales order sent",
+  "backorders": "Backorders",
+  "buscarBackorders": "Search backorders..."
 }

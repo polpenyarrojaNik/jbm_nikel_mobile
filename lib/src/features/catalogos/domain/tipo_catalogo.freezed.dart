@@ -26,16 +26,21 @@ $TipoCatalogoCopyWith<TipoCatalogo> get copyWith => _$TipoCatalogoCopyWithImpl<T
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is TipoCatalogo&&(identical(other.tipoCatalogoId, tipoCatalogoId) || other.tipoCatalogoId == tipoCatalogoId)&&(identical(other.descripcion, descripcion) || other.descripcion == descripcion));
+  final _this = this as TipoCatalogo;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is TipoCatalogo&&(identical(other.tipoCatalogoId, _this.tipoCatalogoId) || other.tipoCatalogoId == _this.tipoCatalogoId)&&(identical(other.descripcion, _this.descripcion) || other.descripcion == _this.descripcion));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,tipoCatalogoId,descripcion);
+int get hashCode {
+  final _this = this as TipoCatalogo;
+  return Object.hash(runtimeType,_this.tipoCatalogoId,_this.descripcion);
+}
 
 @override
 String toString() {
-  return 'TipoCatalogo(tipoCatalogoId: $tipoCatalogoId, descripcion: $descripcion)';
+  final _this = this as TipoCatalogo;
+  return 'TipoCatalogo(tipoCatalogoId: ${_this.tipoCatalogoId}, descripcion: ${_this.descripcion})';
 }
 
 
@@ -224,16 +229,18 @@ _$TipoCatalogoCopyWith<_TipoCatalogo> get copyWith => __$TipoCatalogoCopyWithImp
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _TipoCatalogo&&(identical(other.tipoCatalogoId, tipoCatalogoId) || other.tipoCatalogoId == tipoCatalogoId)&&(identical(other.descripcion, descripcion) || other.descripcion == descripcion));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _TipoCatalogo&&(identical(other.tipoCatalogoId, tipoCatalogoId) || other.tipoCatalogoId == tipoCatalogoId)&&(identical(other.descripcion, descripcion) || other.descripcion == descripcion));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,tipoCatalogoId,descripcion);
+int get hashCode {
+    return Object.hash(runtimeType,tipoCatalogoId,descripcion);
+}
 
 @override
 String toString() {
-  return 'TipoCatalogo(tipoCatalogoId: $tipoCatalogoId, descripcion: $descripcion)';
+    return 'TipoCatalogo(tipoCatalogoId: $tipoCatalogoId, descripcion: $descripcion)';
 }
 
 

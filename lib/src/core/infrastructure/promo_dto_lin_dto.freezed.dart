@@ -29,16 +29,21 @@ $PromoDtoLineaDTOCopyWith<PromoDtoLineaDTO> get copyWith => _$PromoDtoLineaDTOCo
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is PromoDtoLineaDTO&&(identical(other.empresaId, empresaId) || other.empresaId == empresaId)&&(identical(other.promoDtoId, promoDtoId) || other.promoDtoId == promoDtoId)&&(identical(other.articuloId, articuloId) || other.articuloId == articuloId)&&(identical(other.cantidadDesde, cantidadDesde) || other.cantidadDesde == cantidadDesde)&&(identical(other.precio, precio) || other.precio == precio)&&(identical(other.tipoPrecio, tipoPrecio) || other.tipoPrecio == tipoPrecio)&&(identical(other.dto, dto) || other.dto == dto)&&(identical(other.lastUpdated, lastUpdated) || other.lastUpdated == lastUpdated)&&(identical(other.deleted, deleted) || other.deleted == deleted));
+  final _this = this as PromoDtoLineaDTO;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is PromoDtoLineaDTO&&(identical(other.empresaId, _this.empresaId) || other.empresaId == _this.empresaId)&&(identical(other.promoDtoId, _this.promoDtoId) || other.promoDtoId == _this.promoDtoId)&&(identical(other.articuloId, _this.articuloId) || other.articuloId == _this.articuloId)&&(identical(other.cantidadDesde, _this.cantidadDesde) || other.cantidadDesde == _this.cantidadDesde)&&(identical(other.precio, _this.precio) || other.precio == _this.precio)&&(identical(other.tipoPrecio, _this.tipoPrecio) || other.tipoPrecio == _this.tipoPrecio)&&(identical(other.dto, _this.dto) || other.dto == _this.dto)&&(identical(other.lastUpdated, _this.lastUpdated) || other.lastUpdated == _this.lastUpdated)&&(identical(other.deleted, _this.deleted) || other.deleted == _this.deleted));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,empresaId,promoDtoId,articuloId,cantidadDesde,precio,tipoPrecio,dto,lastUpdated,deleted);
+int get hashCode {
+  final _this = this as PromoDtoLineaDTO;
+  return Object.hash(runtimeType,_this.empresaId,_this.promoDtoId,_this.articuloId,_this.cantidadDesde,_this.precio,_this.tipoPrecio,_this.dto,_this.lastUpdated,_this.deleted);
+}
 
 @override
 String toString() {
-  return 'PromoDtoLineaDTO(empresaId: $empresaId, promoDtoId: $promoDtoId, articuloId: $articuloId, cantidadDesde: $cantidadDesde, precio: $precio, tipoPrecio: $tipoPrecio, dto: $dto, lastUpdated: $lastUpdated, deleted: $deleted)';
+  final _this = this as PromoDtoLineaDTO;
+  return 'PromoDtoLineaDTO(empresaId: ${_this.empresaId}, promoDtoId: ${_this.promoDtoId}, articuloId: ${_this.articuloId}, cantidadDesde: ${_this.cantidadDesde}, precio: ${_this.precio}, tipoPrecio: ${_this.tipoPrecio}, dto: ${_this.dto}, lastUpdated: ${_this.lastUpdated}, deleted: ${_this.deleted})';
 }
 
 
@@ -244,16 +249,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _PromoDtoLineaDTO&&(identical(other.empresaId, empresaId) || other.empresaId == empresaId)&&(identical(other.promoDtoId, promoDtoId) || other.promoDtoId == promoDtoId)&&(identical(other.articuloId, articuloId) || other.articuloId == articuloId)&&(identical(other.cantidadDesde, cantidadDesde) || other.cantidadDesde == cantidadDesde)&&(identical(other.precio, precio) || other.precio == precio)&&(identical(other.tipoPrecio, tipoPrecio) || other.tipoPrecio == tipoPrecio)&&(identical(other.dto, dto) || other.dto == dto)&&(identical(other.lastUpdated, lastUpdated) || other.lastUpdated == lastUpdated)&&(identical(other.deleted, deleted) || other.deleted == deleted));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _PromoDtoLineaDTO&&(identical(other.empresaId, empresaId) || other.empresaId == empresaId)&&(identical(other.promoDtoId, promoDtoId) || other.promoDtoId == promoDtoId)&&(identical(other.articuloId, articuloId) || other.articuloId == articuloId)&&(identical(other.cantidadDesde, cantidadDesde) || other.cantidadDesde == cantidadDesde)&&(identical(other.precio, precio) || other.precio == precio)&&(identical(other.tipoPrecio, tipoPrecio) || other.tipoPrecio == tipoPrecio)&&(identical(other.dto, dto) || other.dto == dto)&&(identical(other.lastUpdated, lastUpdated) || other.lastUpdated == lastUpdated)&&(identical(other.deleted, deleted) || other.deleted == deleted));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,empresaId,promoDtoId,articuloId,cantidadDesde,precio,tipoPrecio,dto,lastUpdated,deleted);
+int get hashCode {
+    return Object.hash(runtimeType,empresaId,promoDtoId,articuloId,cantidadDesde,precio,tipoPrecio,dto,lastUpdated,deleted);
+}
 
 @override
 String toString() {
-  return 'PromoDtoLineaDTO(empresaId: $empresaId, promoDtoId: $promoDtoId, articuloId: $articuloId, cantidadDesde: $cantidadDesde, precio: $precio, tipoPrecio: $tipoPrecio, dto: $dto, lastUpdated: $lastUpdated, deleted: $deleted)';
+    return 'PromoDtoLineaDTO(empresaId: $empresaId, promoDtoId: $promoDtoId, articuloId: $articuloId, cantidadDesde: $cantidadDesde, precio: $precio, tipoPrecio: $tipoPrecio, dto: $dto, lastUpdated: $lastUpdated, deleted: $deleted)';
 }
 
 

@@ -26,16 +26,21 @@ $ArticuloDocumentoCopyWith<ArticuloDocumento> get copyWith => _$ArticuloDocument
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ArticuloDocumento&&(identical(other.articuloId, articuloId) || other.articuloId == articuloId)&&(identical(other.nombreArchivo, nombreArchivo) || other.nombreArchivo == nombreArchivo)&&(identical(other.idiomaId, idiomaId) || other.idiomaId == idiomaId)&&(identical(other.observaciones, observaciones) || other.observaciones == observaciones));
+  final _this = this as ArticuloDocumento;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ArticuloDocumento&&(identical(other.articuloId, _this.articuloId) || other.articuloId == _this.articuloId)&&(identical(other.nombreArchivo, _this.nombreArchivo) || other.nombreArchivo == _this.nombreArchivo)&&(identical(other.idiomaId, _this.idiomaId) || other.idiomaId == _this.idiomaId)&&(identical(other.observaciones, _this.observaciones) || other.observaciones == _this.observaciones));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,articuloId,nombreArchivo,idiomaId,observaciones);
+int get hashCode {
+  final _this = this as ArticuloDocumento;
+  return Object.hash(runtimeType,_this.articuloId,_this.nombreArchivo,_this.idiomaId,_this.observaciones);
+}
 
 @override
 String toString() {
-  return 'ArticuloDocumento(articuloId: $articuloId, nombreArchivo: $nombreArchivo, idiomaId: $idiomaId, observaciones: $observaciones)';
+  final _this = this as ArticuloDocumento;
+  return 'ArticuloDocumento(articuloId: ${_this.articuloId}, nombreArchivo: ${_this.nombreArchivo}, idiomaId: ${_this.idiomaId}, observaciones: ${_this.observaciones})';
 }
 
 
@@ -228,16 +233,18 @@ _$ArticuloDocumentoCopyWith<_ArticuloDocumento> get copyWith => __$ArticuloDocum
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ArticuloDocumento&&(identical(other.articuloId, articuloId) || other.articuloId == articuloId)&&(identical(other.nombreArchivo, nombreArchivo) || other.nombreArchivo == nombreArchivo)&&(identical(other.idiomaId, idiomaId) || other.idiomaId == idiomaId)&&(identical(other.observaciones, observaciones) || other.observaciones == observaciones));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _ArticuloDocumento&&(identical(other.articuloId, articuloId) || other.articuloId == articuloId)&&(identical(other.nombreArchivo, nombreArchivo) || other.nombreArchivo == nombreArchivo)&&(identical(other.idiomaId, idiomaId) || other.idiomaId == idiomaId)&&(identical(other.observaciones, observaciones) || other.observaciones == observaciones));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,articuloId,nombreArchivo,idiomaId,observaciones);
+int get hashCode {
+    return Object.hash(runtimeType,articuloId,nombreArchivo,idiomaId,observaciones);
+}
 
 @override
 String toString() {
-  return 'ArticuloDocumento(articuloId: $articuloId, nombreArchivo: $nombreArchivo, idiomaId: $idiomaId, observaciones: $observaciones)';
+    return 'ArticuloDocumento(articuloId: $articuloId, nombreArchivo: $nombreArchivo, idiomaId: $idiomaId, observaciones: $observaciones)';
 }
 
 

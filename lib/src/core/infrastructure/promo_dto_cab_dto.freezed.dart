@@ -16,7 +16,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$PromoDtoCabDTO {
 
-@JsonKey(name: 'EMPRESA_ID') String get empresaId;@JsonKey(name: 'PROMO_DTO_ID') String get promoDtoId;@JsonKey(name: 'NOMBRE') String get nombre;@JsonKey(name: 'FECHA_DESDE') DateTime get fechaDesde;@JsonKey(name: 'FECHA_HASTA') DateTime? get fechaHasta;@JsonKey(name: 'DIVISA_ID') String get divisaId;@JsonKey(name: 'LAST_UPDATED') DateTime get lastUpdated;@JsonKey(name: 'DELETED') String get deleted;
+@JsonKey(name: 'EMPRESA_ID') String get empresaId;@JsonKey(name: 'PROMO_DTO_ID') String get promoDtoId;@JsonKey(name: 'NOMBRE') String get nombre;@JsonKey(name: 'FECHA_DESDE') DateTime get fechaDesde;@JsonKey(name: 'FECHA_HASTA') DateTime? get fechaHasta;@JsonKey(name: 'DIVISA_ID') String get divisaId;@JsonKey(name: 'LAST_UPDATED') DateTime get lastUpdated;@JsonKey(name: 'VISIBLE_SN') String get visibleSN;@JsonKey(name: 'DELETED') String get deleted;
 /// Create a copy of PromoDtoCabDTO
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -29,16 +29,21 @@ $PromoDtoCabDTOCopyWith<PromoDtoCabDTO> get copyWith => _$PromoDtoCabDTOCopyWith
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is PromoDtoCabDTO&&(identical(other.empresaId, empresaId) || other.empresaId == empresaId)&&(identical(other.promoDtoId, promoDtoId) || other.promoDtoId == promoDtoId)&&(identical(other.nombre, nombre) || other.nombre == nombre)&&(identical(other.fechaDesde, fechaDesde) || other.fechaDesde == fechaDesde)&&(identical(other.fechaHasta, fechaHasta) || other.fechaHasta == fechaHasta)&&(identical(other.divisaId, divisaId) || other.divisaId == divisaId)&&(identical(other.lastUpdated, lastUpdated) || other.lastUpdated == lastUpdated)&&(identical(other.deleted, deleted) || other.deleted == deleted));
+  final _this = this as PromoDtoCabDTO;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is PromoDtoCabDTO&&(identical(other.empresaId, _this.empresaId) || other.empresaId == _this.empresaId)&&(identical(other.promoDtoId, _this.promoDtoId) || other.promoDtoId == _this.promoDtoId)&&(identical(other.nombre, _this.nombre) || other.nombre == _this.nombre)&&(identical(other.fechaDesde, _this.fechaDesde) || other.fechaDesde == _this.fechaDesde)&&(identical(other.fechaHasta, _this.fechaHasta) || other.fechaHasta == _this.fechaHasta)&&(identical(other.divisaId, _this.divisaId) || other.divisaId == _this.divisaId)&&(identical(other.lastUpdated, _this.lastUpdated) || other.lastUpdated == _this.lastUpdated)&&(identical(other.visibleSN, _this.visibleSN) || other.visibleSN == _this.visibleSN)&&(identical(other.deleted, _this.deleted) || other.deleted == _this.deleted));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,empresaId,promoDtoId,nombre,fechaDesde,fechaHasta,divisaId,lastUpdated,deleted);
+int get hashCode {
+  final _this = this as PromoDtoCabDTO;
+  return Object.hash(runtimeType,_this.empresaId,_this.promoDtoId,_this.nombre,_this.fechaDesde,_this.fechaHasta,_this.divisaId,_this.lastUpdated,_this.visibleSN,_this.deleted);
+}
 
 @override
 String toString() {
-  return 'PromoDtoCabDTO(empresaId: $empresaId, promoDtoId: $promoDtoId, nombre: $nombre, fechaDesde: $fechaDesde, fechaHasta: $fechaHasta, divisaId: $divisaId, lastUpdated: $lastUpdated, deleted: $deleted)';
+  final _this = this as PromoDtoCabDTO;
+  return 'PromoDtoCabDTO(empresaId: ${_this.empresaId}, promoDtoId: ${_this.promoDtoId}, nombre: ${_this.nombre}, fechaDesde: ${_this.fechaDesde}, fechaHasta: ${_this.fechaHasta}, divisaId: ${_this.divisaId}, lastUpdated: ${_this.lastUpdated}, visibleSN: ${_this.visibleSN}, deleted: ${_this.deleted})';
 }
 
 
@@ -49,7 +54,7 @@ abstract mixin class $PromoDtoCabDTOCopyWith<$Res>  {
   factory $PromoDtoCabDTOCopyWith(PromoDtoCabDTO value, $Res Function(PromoDtoCabDTO) _then) = _$PromoDtoCabDTOCopyWithImpl;
 @useResult
 $Res call({
-@JsonKey(name: 'EMPRESA_ID') String empresaId,@JsonKey(name: 'PROMO_DTO_ID') String promoDtoId,@JsonKey(name: 'NOMBRE') String nombre,@JsonKey(name: 'FECHA_DESDE') DateTime fechaDesde,@JsonKey(name: 'FECHA_HASTA') DateTime? fechaHasta,@JsonKey(name: 'DIVISA_ID') String divisaId,@JsonKey(name: 'LAST_UPDATED') DateTime lastUpdated,@JsonKey(name: 'DELETED') String deleted
+@JsonKey(name: 'EMPRESA_ID') String empresaId,@JsonKey(name: 'PROMO_DTO_ID') String promoDtoId,@JsonKey(name: 'NOMBRE') String nombre,@JsonKey(name: 'FECHA_DESDE') DateTime fechaDesde,@JsonKey(name: 'FECHA_HASTA') DateTime? fechaHasta,@JsonKey(name: 'DIVISA_ID') String divisaId,@JsonKey(name: 'LAST_UPDATED') DateTime lastUpdated,@JsonKey(name: 'VISIBLE_SN') String visibleSN,@JsonKey(name: 'DELETED') String deleted
 });
 
 
@@ -66,7 +71,7 @@ class _$PromoDtoCabDTOCopyWithImpl<$Res>
 
 /// Create a copy of PromoDtoCabDTO
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? empresaId = null,Object? promoDtoId = null,Object? nombre = null,Object? fechaDesde = null,Object? fechaHasta = freezed,Object? divisaId = null,Object? lastUpdated = null,Object? deleted = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? empresaId = null,Object? promoDtoId = null,Object? nombre = null,Object? fechaDesde = null,Object? fechaHasta = freezed,Object? divisaId = null,Object? lastUpdated = null,Object? visibleSN = null,Object? deleted = null,}) {
   return _then(PromoDtoCabDTO(
 empresaId: null == empresaId ? _self.empresaId : empresaId // ignore: cast_nullable_to_non_nullable
 as String,promoDtoId: null == promoDtoId ? _self.promoDtoId : promoDtoId // ignore: cast_nullable_to_non_nullable
@@ -75,7 +80,8 @@ as String,fechaDesde: null == fechaDesde ? _self.fechaDesde : fechaDesde // igno
 as DateTime,fechaHasta: freezed == fechaHasta ? _self.fechaHasta : fechaHasta // ignore: cast_nullable_to_non_nullable
 as DateTime?,divisaId: null == divisaId ? _self.divisaId : divisaId // ignore: cast_nullable_to_non_nullable
 as String,lastUpdated: null == lastUpdated ? _self.lastUpdated : lastUpdated // ignore: cast_nullable_to_non_nullable
-as DateTime,deleted: null == deleted ? _self.deleted : deleted // ignore: cast_nullable_to_non_nullable
+as DateTime,visibleSN: null == visibleSN ? _self.visibleSN : visibleSN // ignore: cast_nullable_to_non_nullable
+as String,deleted: null == deleted ? _self.deleted : deleted // ignore: cast_nullable_to_non_nullable
 as String,
   ));
 }
@@ -161,10 +167,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function(@JsonKey(name: 'EMPRESA_ID')  String empresaId, @JsonKey(name: 'PROMO_DTO_ID')  String promoDtoId, @JsonKey(name: 'NOMBRE')  String nombre, @JsonKey(name: 'FECHA_DESDE')  DateTime fechaDesde, @JsonKey(name: 'FECHA_HASTA')  DateTime? fechaHasta, @JsonKey(name: 'DIVISA_ID')  String divisaId, @JsonKey(name: 'LAST_UPDATED')  DateTime lastUpdated, @JsonKey(name: 'DELETED')  String deleted)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function(@JsonKey(name: 'EMPRESA_ID')  String empresaId, @JsonKey(name: 'PROMO_DTO_ID')  String promoDtoId, @JsonKey(name: 'NOMBRE')  String nombre, @JsonKey(name: 'FECHA_DESDE')  DateTime fechaDesde, @JsonKey(name: 'FECHA_HASTA')  DateTime? fechaHasta, @JsonKey(name: 'DIVISA_ID')  String divisaId, @JsonKey(name: 'LAST_UPDATED')  DateTime lastUpdated, @JsonKey(name: 'VISIBLE_SN')  String visibleSN, @JsonKey(name: 'DELETED')  String deleted)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _PromoDtoCabDTO() when $default != null:
-return $default(_that.empresaId,_that.promoDtoId,_that.nombre,_that.fechaDesde,_that.fechaHasta,_that.divisaId,_that.lastUpdated,_that.deleted);case _:
+return $default(_that.empresaId,_that.promoDtoId,_that.nombre,_that.fechaDesde,_that.fechaHasta,_that.divisaId,_that.lastUpdated,_that.visibleSN,_that.deleted);case _:
   return orElse();
 
 }
@@ -182,10 +188,10 @@ return $default(_that.empresaId,_that.promoDtoId,_that.nombre,_that.fechaDesde,_
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function(@JsonKey(name: 'EMPRESA_ID')  String empresaId, @JsonKey(name: 'PROMO_DTO_ID')  String promoDtoId, @JsonKey(name: 'NOMBRE')  String nombre, @JsonKey(name: 'FECHA_DESDE')  DateTime fechaDesde, @JsonKey(name: 'FECHA_HASTA')  DateTime? fechaHasta, @JsonKey(name: 'DIVISA_ID')  String divisaId, @JsonKey(name: 'LAST_UPDATED')  DateTime lastUpdated, @JsonKey(name: 'DELETED')  String deleted)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function(@JsonKey(name: 'EMPRESA_ID')  String empresaId, @JsonKey(name: 'PROMO_DTO_ID')  String promoDtoId, @JsonKey(name: 'NOMBRE')  String nombre, @JsonKey(name: 'FECHA_DESDE')  DateTime fechaDesde, @JsonKey(name: 'FECHA_HASTA')  DateTime? fechaHasta, @JsonKey(name: 'DIVISA_ID')  String divisaId, @JsonKey(name: 'LAST_UPDATED')  DateTime lastUpdated, @JsonKey(name: 'VISIBLE_SN')  String visibleSN, @JsonKey(name: 'DELETED')  String deleted)  $default,) {final _that = this;
 switch (_that) {
 case _PromoDtoCabDTO():
-return $default(_that.empresaId,_that.promoDtoId,_that.nombre,_that.fechaDesde,_that.fechaHasta,_that.divisaId,_that.lastUpdated,_that.deleted);case _:
+return $default(_that.empresaId,_that.promoDtoId,_that.nombre,_that.fechaDesde,_that.fechaHasta,_that.divisaId,_that.lastUpdated,_that.visibleSN,_that.deleted);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -202,10 +208,10 @@ return $default(_that.empresaId,_that.promoDtoId,_that.nombre,_that.fechaDesde,_
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function(@JsonKey(name: 'EMPRESA_ID')  String empresaId, @JsonKey(name: 'PROMO_DTO_ID')  String promoDtoId, @JsonKey(name: 'NOMBRE')  String nombre, @JsonKey(name: 'FECHA_DESDE')  DateTime fechaDesde, @JsonKey(name: 'FECHA_HASTA')  DateTime? fechaHasta, @JsonKey(name: 'DIVISA_ID')  String divisaId, @JsonKey(name: 'LAST_UPDATED')  DateTime lastUpdated, @JsonKey(name: 'DELETED')  String deleted)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function(@JsonKey(name: 'EMPRESA_ID')  String empresaId, @JsonKey(name: 'PROMO_DTO_ID')  String promoDtoId, @JsonKey(name: 'NOMBRE')  String nombre, @JsonKey(name: 'FECHA_DESDE')  DateTime fechaDesde, @JsonKey(name: 'FECHA_HASTA')  DateTime? fechaHasta, @JsonKey(name: 'DIVISA_ID')  String divisaId, @JsonKey(name: 'LAST_UPDATED')  DateTime lastUpdated, @JsonKey(name: 'VISIBLE_SN')  String visibleSN, @JsonKey(name: 'DELETED')  String deleted)?  $default,) {final _that = this;
 switch (_that) {
 case _PromoDtoCabDTO() when $default != null:
-return $default(_that.empresaId,_that.promoDtoId,_that.nombre,_that.fechaDesde,_that.fechaHasta,_that.divisaId,_that.lastUpdated,_that.deleted);case _:
+return $default(_that.empresaId,_that.promoDtoId,_that.nombre,_that.fechaDesde,_that.fechaHasta,_that.divisaId,_that.lastUpdated,_that.visibleSN,_that.deleted);case _:
   return null;
 
 }
@@ -217,7 +223,7 @@ return $default(_that.empresaId,_that.promoDtoId,_that.nombre,_that.fechaDesde,_
 @JsonSerializable()
 
 class _PromoDtoCabDTO extends PromoDtoCabDTO {
-  const _PromoDtoCabDTO({@JsonKey(name: 'EMPRESA_ID') required this.empresaId, @JsonKey(name: 'PROMO_DTO_ID') required this.promoDtoId, @JsonKey(name: 'NOMBRE') required this.nombre, @JsonKey(name: 'FECHA_DESDE') required this.fechaDesde, @JsonKey(name: 'FECHA_HASTA') this.fechaHasta, @JsonKey(name: 'DIVISA_ID') required this.divisaId, @JsonKey(name: 'LAST_UPDATED') required this.lastUpdated, @JsonKey(name: 'DELETED') this.deleted = 'N'}): super._();
+  const _PromoDtoCabDTO({@JsonKey(name: 'EMPRESA_ID') required this.empresaId, @JsonKey(name: 'PROMO_DTO_ID') required this.promoDtoId, @JsonKey(name: 'NOMBRE') required this.nombre, @JsonKey(name: 'FECHA_DESDE') required this.fechaDesde, @JsonKey(name: 'FECHA_HASTA') this.fechaHasta, @JsonKey(name: 'DIVISA_ID') required this.divisaId, @JsonKey(name: 'LAST_UPDATED') required this.lastUpdated, @JsonKey(name: 'VISIBLE_SN') required this.visibleSN, @JsonKey(name: 'DELETED') this.deleted = 'N'}): super._();
   factory _PromoDtoCabDTO.fromJson(Map<String, dynamic> json) => _$PromoDtoCabDTOFromJson(json);
 
 @override@JsonKey(name: 'EMPRESA_ID') final  String empresaId;
@@ -227,6 +233,7 @@ class _PromoDtoCabDTO extends PromoDtoCabDTO {
 @override@JsonKey(name: 'FECHA_HASTA') final  DateTime? fechaHasta;
 @override@JsonKey(name: 'DIVISA_ID') final  String divisaId;
 @override@JsonKey(name: 'LAST_UPDATED') final  DateTime lastUpdated;
+@override@JsonKey(name: 'VISIBLE_SN') final  String visibleSN;
 @override@JsonKey(name: 'DELETED') final  String deleted;
 
 /// Create a copy of PromoDtoCabDTO
@@ -242,16 +249,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _PromoDtoCabDTO&&(identical(other.empresaId, empresaId) || other.empresaId == empresaId)&&(identical(other.promoDtoId, promoDtoId) || other.promoDtoId == promoDtoId)&&(identical(other.nombre, nombre) || other.nombre == nombre)&&(identical(other.fechaDesde, fechaDesde) || other.fechaDesde == fechaDesde)&&(identical(other.fechaHasta, fechaHasta) || other.fechaHasta == fechaHasta)&&(identical(other.divisaId, divisaId) || other.divisaId == divisaId)&&(identical(other.lastUpdated, lastUpdated) || other.lastUpdated == lastUpdated)&&(identical(other.deleted, deleted) || other.deleted == deleted));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _PromoDtoCabDTO&&(identical(other.empresaId, empresaId) || other.empresaId == empresaId)&&(identical(other.promoDtoId, promoDtoId) || other.promoDtoId == promoDtoId)&&(identical(other.nombre, nombre) || other.nombre == nombre)&&(identical(other.fechaDesde, fechaDesde) || other.fechaDesde == fechaDesde)&&(identical(other.fechaHasta, fechaHasta) || other.fechaHasta == fechaHasta)&&(identical(other.divisaId, divisaId) || other.divisaId == divisaId)&&(identical(other.lastUpdated, lastUpdated) || other.lastUpdated == lastUpdated)&&(identical(other.visibleSN, visibleSN) || other.visibleSN == visibleSN)&&(identical(other.deleted, deleted) || other.deleted == deleted));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,empresaId,promoDtoId,nombre,fechaDesde,fechaHasta,divisaId,lastUpdated,deleted);
+int get hashCode {
+    return Object.hash(runtimeType,empresaId,promoDtoId,nombre,fechaDesde,fechaHasta,divisaId,lastUpdated,visibleSN,deleted);
+}
 
 @override
 String toString() {
-  return 'PromoDtoCabDTO(empresaId: $empresaId, promoDtoId: $promoDtoId, nombre: $nombre, fechaDesde: $fechaDesde, fechaHasta: $fechaHasta, divisaId: $divisaId, lastUpdated: $lastUpdated, deleted: $deleted)';
+    return 'PromoDtoCabDTO(empresaId: $empresaId, promoDtoId: $promoDtoId, nombre: $nombre, fechaDesde: $fechaDesde, fechaHasta: $fechaHasta, divisaId: $divisaId, lastUpdated: $lastUpdated, visibleSN: $visibleSN, deleted: $deleted)';
 }
 
 
@@ -262,7 +271,7 @@ abstract mixin class _$PromoDtoCabDTOCopyWith<$Res> implements $PromoDtoCabDTOCo
   factory _$PromoDtoCabDTOCopyWith(_PromoDtoCabDTO value, $Res Function(_PromoDtoCabDTO) _then) = __$PromoDtoCabDTOCopyWithImpl;
 @override @useResult
 $Res call({
-@JsonKey(name: 'EMPRESA_ID') String empresaId,@JsonKey(name: 'PROMO_DTO_ID') String promoDtoId,@JsonKey(name: 'NOMBRE') String nombre,@JsonKey(name: 'FECHA_DESDE') DateTime fechaDesde,@JsonKey(name: 'FECHA_HASTA') DateTime? fechaHasta,@JsonKey(name: 'DIVISA_ID') String divisaId,@JsonKey(name: 'LAST_UPDATED') DateTime lastUpdated,@JsonKey(name: 'DELETED') String deleted
+@JsonKey(name: 'EMPRESA_ID') String empresaId,@JsonKey(name: 'PROMO_DTO_ID') String promoDtoId,@JsonKey(name: 'NOMBRE') String nombre,@JsonKey(name: 'FECHA_DESDE') DateTime fechaDesde,@JsonKey(name: 'FECHA_HASTA') DateTime? fechaHasta,@JsonKey(name: 'DIVISA_ID') String divisaId,@JsonKey(name: 'LAST_UPDATED') DateTime lastUpdated,@JsonKey(name: 'VISIBLE_SN') String visibleSN,@JsonKey(name: 'DELETED') String deleted
 });
 
 
@@ -279,7 +288,7 @@ class __$PromoDtoCabDTOCopyWithImpl<$Res>
 
 /// Create a copy of PromoDtoCabDTO
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? empresaId = null,Object? promoDtoId = null,Object? nombre = null,Object? fechaDesde = null,Object? fechaHasta = freezed,Object? divisaId = null,Object? lastUpdated = null,Object? deleted = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? empresaId = null,Object? promoDtoId = null,Object? nombre = null,Object? fechaDesde = null,Object? fechaHasta = freezed,Object? divisaId = null,Object? lastUpdated = null,Object? visibleSN = null,Object? deleted = null,}) {
   return _then(_PromoDtoCabDTO(
 empresaId: null == empresaId ? _self.empresaId : empresaId // ignore: cast_nullable_to_non_nullable
 as String,promoDtoId: null == promoDtoId ? _self.promoDtoId : promoDtoId // ignore: cast_nullable_to_non_nullable
@@ -288,7 +297,8 @@ as String,fechaDesde: null == fechaDesde ? _self.fechaDesde : fechaDesde // igno
 as DateTime,fechaHasta: freezed == fechaHasta ? _self.fechaHasta : fechaHasta // ignore: cast_nullable_to_non_nullable
 as DateTime?,divisaId: null == divisaId ? _self.divisaId : divisaId // ignore: cast_nullable_to_non_nullable
 as String,lastUpdated: null == lastUpdated ? _self.lastUpdated : lastUpdated // ignore: cast_nullable_to_non_nullable
-as DateTime,deleted: null == deleted ? _self.deleted : deleted // ignore: cast_nullable_to_non_nullable
+as DateTime,visibleSN: null == visibleSN ? _self.visibleSN : visibleSN // ignore: cast_nullable_to_non_nullable
+as String,deleted: null == deleted ? _self.deleted : deleted // ignore: cast_nullable_to_non_nullable
 as String,
   ));
 }

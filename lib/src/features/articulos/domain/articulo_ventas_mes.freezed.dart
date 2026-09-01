@@ -26,16 +26,21 @@ $ArticuloVentasMesCopyWith<ArticuloVentasMes> get copyWith => _$ArticuloVentasMe
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ArticuloVentasMes&&(identical(other.mes, mes) || other.mes == mes)&&(identical(other.unidadesAnyo, unidadesAnyo) || other.unidadesAnyo == unidadesAnyo)&&(identical(other.unidadesAnyo_1, unidadesAnyo_1) || other.unidadesAnyo_1 == unidadesAnyo_1)&&(identical(other.unidadesAnyo_2, unidadesAnyo_2) || other.unidadesAnyo_2 == unidadesAnyo_2)&&(identical(other.unidadesAnyo_3, unidadesAnyo_3) || other.unidadesAnyo_3 == unidadesAnyo_3)&&(identical(other.unidadesAnyo_4, unidadesAnyo_4) || other.unidadesAnyo_4 == unidadesAnyo_4)&&(identical(other.unidadesAnyoTodos, unidadesAnyoTodos) || other.unidadesAnyoTodos == unidadesAnyoTodos)&&(identical(other.unidadesAnyoTodos_1, unidadesAnyoTodos_1) || other.unidadesAnyoTodos_1 == unidadesAnyoTodos_1)&&(identical(other.unidadesAnyoTodos_2, unidadesAnyoTodos_2) || other.unidadesAnyoTodos_2 == unidadesAnyoTodos_2)&&(identical(other.unidadesAnyoTodos_3, unidadesAnyoTodos_3) || other.unidadesAnyoTodos_3 == unidadesAnyoTodos_3)&&(identical(other.unidadesAnyoTodos_4, unidadesAnyoTodos_4) || other.unidadesAnyoTodos_4 == unidadesAnyoTodos_4));
+  final _this = this as ArticuloVentasMes;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ArticuloVentasMes&&(identical(other.mes, _this.mes) || other.mes == _this.mes)&&(identical(other.unidadesAnyo, _this.unidadesAnyo) || other.unidadesAnyo == _this.unidadesAnyo)&&(identical(other.unidadesAnyo_1, _this.unidadesAnyo_1) || other.unidadesAnyo_1 == _this.unidadesAnyo_1)&&(identical(other.unidadesAnyo_2, _this.unidadesAnyo_2) || other.unidadesAnyo_2 == _this.unidadesAnyo_2)&&(identical(other.unidadesAnyo_3, _this.unidadesAnyo_3) || other.unidadesAnyo_3 == _this.unidadesAnyo_3)&&(identical(other.unidadesAnyo_4, _this.unidadesAnyo_4) || other.unidadesAnyo_4 == _this.unidadesAnyo_4)&&(identical(other.unidadesAnyoTodos, _this.unidadesAnyoTodos) || other.unidadesAnyoTodos == _this.unidadesAnyoTodos)&&(identical(other.unidadesAnyoTodos_1, _this.unidadesAnyoTodos_1) || other.unidadesAnyoTodos_1 == _this.unidadesAnyoTodos_1)&&(identical(other.unidadesAnyoTodos_2, _this.unidadesAnyoTodos_2) || other.unidadesAnyoTodos_2 == _this.unidadesAnyoTodos_2)&&(identical(other.unidadesAnyoTodos_3, _this.unidadesAnyoTodos_3) || other.unidadesAnyoTodos_3 == _this.unidadesAnyoTodos_3)&&(identical(other.unidadesAnyoTodos_4, _this.unidadesAnyoTodos_4) || other.unidadesAnyoTodos_4 == _this.unidadesAnyoTodos_4));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,mes,unidadesAnyo,unidadesAnyo_1,unidadesAnyo_2,unidadesAnyo_3,unidadesAnyo_4,unidadesAnyoTodos,unidadesAnyoTodos_1,unidadesAnyoTodos_2,unidadesAnyoTodos_3,unidadesAnyoTodos_4);
+int get hashCode {
+  final _this = this as ArticuloVentasMes;
+  return Object.hash(runtimeType,_this.mes,_this.unidadesAnyo,_this.unidadesAnyo_1,_this.unidadesAnyo_2,_this.unidadesAnyo_3,_this.unidadesAnyo_4,_this.unidadesAnyoTodos,_this.unidadesAnyoTodos_1,_this.unidadesAnyoTodos_2,_this.unidadesAnyoTodos_3,_this.unidadesAnyoTodos_4);
+}
 
 @override
 String toString() {
-  return 'ArticuloVentasMes(mes: $mes, unidadesAnyo: $unidadesAnyo, unidadesAnyo_1: $unidadesAnyo_1, unidadesAnyo_2: $unidadesAnyo_2, unidadesAnyo_3: $unidadesAnyo_3, unidadesAnyo_4: $unidadesAnyo_4, unidadesAnyoTodos: $unidadesAnyoTodos, unidadesAnyoTodos_1: $unidadesAnyoTodos_1, unidadesAnyoTodos_2: $unidadesAnyoTodos_2, unidadesAnyoTodos_3: $unidadesAnyoTodos_3, unidadesAnyoTodos_4: $unidadesAnyoTodos_4)';
+  final _this = this as ArticuloVentasMes;
+  return 'ArticuloVentasMes(mes: ${_this.mes}, unidadesAnyo: ${_this.unidadesAnyo}, unidadesAnyo_1: ${_this.unidadesAnyo_1}, unidadesAnyo_2: ${_this.unidadesAnyo_2}, unidadesAnyo_3: ${_this.unidadesAnyo_3}, unidadesAnyo_4: ${_this.unidadesAnyo_4}, unidadesAnyoTodos: ${_this.unidadesAnyoTodos}, unidadesAnyoTodos_1: ${_this.unidadesAnyoTodos_1}, unidadesAnyoTodos_2: ${_this.unidadesAnyoTodos_2}, unidadesAnyoTodos_3: ${_this.unidadesAnyoTodos_3}, unidadesAnyoTodos_4: ${_this.unidadesAnyoTodos_4})';
 }
 
 
@@ -242,16 +247,18 @@ _$ArticuloVentasMesCopyWith<_ArticuloVentasMes> get copyWith => __$ArticuloVenta
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ArticuloVentasMes&&(identical(other.mes, mes) || other.mes == mes)&&(identical(other.unidadesAnyo, unidadesAnyo) || other.unidadesAnyo == unidadesAnyo)&&(identical(other.unidadesAnyo_1, unidadesAnyo_1) || other.unidadesAnyo_1 == unidadesAnyo_1)&&(identical(other.unidadesAnyo_2, unidadesAnyo_2) || other.unidadesAnyo_2 == unidadesAnyo_2)&&(identical(other.unidadesAnyo_3, unidadesAnyo_3) || other.unidadesAnyo_3 == unidadesAnyo_3)&&(identical(other.unidadesAnyo_4, unidadesAnyo_4) || other.unidadesAnyo_4 == unidadesAnyo_4)&&(identical(other.unidadesAnyoTodos, unidadesAnyoTodos) || other.unidadesAnyoTodos == unidadesAnyoTodos)&&(identical(other.unidadesAnyoTodos_1, unidadesAnyoTodos_1) || other.unidadesAnyoTodos_1 == unidadesAnyoTodos_1)&&(identical(other.unidadesAnyoTodos_2, unidadesAnyoTodos_2) || other.unidadesAnyoTodos_2 == unidadesAnyoTodos_2)&&(identical(other.unidadesAnyoTodos_3, unidadesAnyoTodos_3) || other.unidadesAnyoTodos_3 == unidadesAnyoTodos_3)&&(identical(other.unidadesAnyoTodos_4, unidadesAnyoTodos_4) || other.unidadesAnyoTodos_4 == unidadesAnyoTodos_4));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _ArticuloVentasMes&&(identical(other.mes, mes) || other.mes == mes)&&(identical(other.unidadesAnyo, unidadesAnyo) || other.unidadesAnyo == unidadesAnyo)&&(identical(other.unidadesAnyo_1, unidadesAnyo_1) || other.unidadesAnyo_1 == unidadesAnyo_1)&&(identical(other.unidadesAnyo_2, unidadesAnyo_2) || other.unidadesAnyo_2 == unidadesAnyo_2)&&(identical(other.unidadesAnyo_3, unidadesAnyo_3) || other.unidadesAnyo_3 == unidadesAnyo_3)&&(identical(other.unidadesAnyo_4, unidadesAnyo_4) || other.unidadesAnyo_4 == unidadesAnyo_4)&&(identical(other.unidadesAnyoTodos, unidadesAnyoTodos) || other.unidadesAnyoTodos == unidadesAnyoTodos)&&(identical(other.unidadesAnyoTodos_1, unidadesAnyoTodos_1) || other.unidadesAnyoTodos_1 == unidadesAnyoTodos_1)&&(identical(other.unidadesAnyoTodos_2, unidadesAnyoTodos_2) || other.unidadesAnyoTodos_2 == unidadesAnyoTodos_2)&&(identical(other.unidadesAnyoTodos_3, unidadesAnyoTodos_3) || other.unidadesAnyoTodos_3 == unidadesAnyoTodos_3)&&(identical(other.unidadesAnyoTodos_4, unidadesAnyoTodos_4) || other.unidadesAnyoTodos_4 == unidadesAnyoTodos_4));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,mes,unidadesAnyo,unidadesAnyo_1,unidadesAnyo_2,unidadesAnyo_3,unidadesAnyo_4,unidadesAnyoTodos,unidadesAnyoTodos_1,unidadesAnyoTodos_2,unidadesAnyoTodos_3,unidadesAnyoTodos_4);
+int get hashCode {
+    return Object.hash(runtimeType,mes,unidadesAnyo,unidadesAnyo_1,unidadesAnyo_2,unidadesAnyo_3,unidadesAnyo_4,unidadesAnyoTodos,unidadesAnyoTodos_1,unidadesAnyoTodos_2,unidadesAnyoTodos_3,unidadesAnyoTodos_4);
+}
 
 @override
 String toString() {
-  return 'ArticuloVentasMes(mes: $mes, unidadesAnyo: $unidadesAnyo, unidadesAnyo_1: $unidadesAnyo_1, unidadesAnyo_2: $unidadesAnyo_2, unidadesAnyo_3: $unidadesAnyo_3, unidadesAnyo_4: $unidadesAnyo_4, unidadesAnyoTodos: $unidadesAnyoTodos, unidadesAnyoTodos_1: $unidadesAnyoTodos_1, unidadesAnyoTodos_2: $unidadesAnyoTodos_2, unidadesAnyoTodos_3: $unidadesAnyoTodos_3, unidadesAnyoTodos_4: $unidadesAnyoTodos_4)';
+    return 'ArticuloVentasMes(mes: $mes, unidadesAnyo: $unidadesAnyo, unidadesAnyo_1: $unidadesAnyo_1, unidadesAnyo_2: $unidadesAnyo_2, unidadesAnyo_3: $unidadesAnyo_3, unidadesAnyo_4: $unidadesAnyo_4, unidadesAnyoTodos: $unidadesAnyoTodos, unidadesAnyoTodos_1: $unidadesAnyoTodos_1, unidadesAnyoTodos_2: $unidadesAnyoTodos_2, unidadesAnyoTodos_3: $unidadesAnyoTodos_3, unidadesAnyoTodos_4: $unidadesAnyoTodos_4)';
 }
 
 

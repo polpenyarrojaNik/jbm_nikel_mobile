@@ -26,16 +26,21 @@ $DefaultListParamsCopyWith<DefaultListParams> get copyWith => _$DefaultListParam
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is DefaultListParams&&(identical(other.page, page) || other.page == page)&&(identical(other.searchText, searchText) || other.searchText == searchText)&&(identical(other.searchPotenciales, searchPotenciales) || other.searchPotenciales == searchPotenciales)&&(identical(other.entityId, entityId) || other.entityId == entityId));
+  final _this = this as DefaultListParams;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is DefaultListParams&&(identical(other.page, _this.page) || other.page == _this.page)&&(identical(other.searchText, _this.searchText) || other.searchText == _this.searchText)&&(identical(other.searchPotenciales, _this.searchPotenciales) || other.searchPotenciales == _this.searchPotenciales)&&(identical(other.entityId, _this.entityId) || other.entityId == _this.entityId));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,page,searchText,searchPotenciales,entityId);
+int get hashCode {
+  final _this = this as DefaultListParams;
+  return Object.hash(runtimeType,_this.page,_this.searchText,_this.searchPotenciales,_this.entityId);
+}
 
 @override
 String toString() {
-  return 'DefaultListParams(page: $page, searchText: $searchText, searchPotenciales: $searchPotenciales, entityId: $entityId)';
+  final _this = this as DefaultListParams;
+  return 'DefaultListParams(page: ${_this.page}, searchText: ${_this.searchText}, searchPotenciales: ${_this.searchPotenciales}, entityId: ${_this.entityId})';
 }
 
 
@@ -228,16 +233,18 @@ _$DefaultListParamsCopyWith<_DefaultListParams> get copyWith => __$DefaultListPa
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _DefaultListParams&&(identical(other.page, page) || other.page == page)&&(identical(other.searchText, searchText) || other.searchText == searchText)&&(identical(other.searchPotenciales, searchPotenciales) || other.searchPotenciales == searchPotenciales)&&(identical(other.entityId, entityId) || other.entityId == entityId));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _DefaultListParams&&(identical(other.page, page) || other.page == page)&&(identical(other.searchText, searchText) || other.searchText == searchText)&&(identical(other.searchPotenciales, searchPotenciales) || other.searchPotenciales == searchPotenciales)&&(identical(other.entityId, entityId) || other.entityId == entityId));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,page,searchText,searchPotenciales,entityId);
+int get hashCode {
+    return Object.hash(runtimeType,page,searchText,searchPotenciales,entityId);
+}
 
 @override
 String toString() {
-  return 'DefaultListParams(page: $page, searchText: $searchText, searchPotenciales: $searchPotenciales, entityId: $entityId)';
+    return 'DefaultListParams(page: $page, searchText: $searchText, searchPotenciales: $searchPotenciales, entityId: $entityId)';
 }
 
 

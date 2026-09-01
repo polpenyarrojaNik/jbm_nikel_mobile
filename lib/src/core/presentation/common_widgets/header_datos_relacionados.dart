@@ -5,10 +5,12 @@ class HeaderDatosRelacionados extends StatelessWidget {
     super.key,
     required this.entityId,
     this.subtitle,
+    this.footer,
   });
 
   final String entityId;
   final String? subtitle;
+  final String? footer;
 
   @override
   Widget build(BuildContext context) {
@@ -29,6 +31,12 @@ class HeaderDatosRelacionados extends StatelessWidget {
             Text(
               subtitle!,
               style: Theme.of(context).textTheme.bodyMedium,
+              overflow: TextOverflow.ellipsis,
+            ),
+          if (footer != null)
+            Text(
+              footer!,
+              style: Theme.of(context).textTheme.bodySmall,
               overflow: TextOverflow.ellipsis,
             ),
         ],

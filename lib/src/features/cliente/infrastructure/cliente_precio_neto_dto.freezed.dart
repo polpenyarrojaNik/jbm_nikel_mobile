@@ -29,16 +29,21 @@ $ClientePrecioNetoDTOCopyWith<ClientePrecioNetoDTO> get copyWith => _$ClientePre
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ClientePrecioNetoDTO&&(identical(other.clienteId, clienteId) || other.clienteId == clienteId)&&(identical(other.articuloId, articuloId) || other.articuloId == articuloId)&&(identical(other.cantidadDesde, cantidadDesde) || other.cantidadDesde == cantidadDesde)&&(identical(other.precio, precio) || other.precio == precio)&&(identical(other.tipoPrecio, tipoPrecio) || other.tipoPrecio == tipoPrecio)&&(identical(other.dtoAdicional, dtoAdicional) || other.dtoAdicional == dtoAdicional)&&(identical(other.lastUpdated, lastUpdated) || other.lastUpdated == lastUpdated)&&(identical(other.deleted, deleted) || other.deleted == deleted));
+  final _this = this as ClientePrecioNetoDTO;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ClientePrecioNetoDTO&&(identical(other.clienteId, _this.clienteId) || other.clienteId == _this.clienteId)&&(identical(other.articuloId, _this.articuloId) || other.articuloId == _this.articuloId)&&(identical(other.cantidadDesde, _this.cantidadDesde) || other.cantidadDesde == _this.cantidadDesde)&&(identical(other.precio, _this.precio) || other.precio == _this.precio)&&(identical(other.tipoPrecio, _this.tipoPrecio) || other.tipoPrecio == _this.tipoPrecio)&&(identical(other.dtoAdicional, _this.dtoAdicional) || other.dtoAdicional == _this.dtoAdicional)&&(identical(other.lastUpdated, _this.lastUpdated) || other.lastUpdated == _this.lastUpdated)&&(identical(other.deleted, _this.deleted) || other.deleted == _this.deleted));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,clienteId,articuloId,cantidadDesde,precio,tipoPrecio,dtoAdicional,lastUpdated,deleted);
+int get hashCode {
+  final _this = this as ClientePrecioNetoDTO;
+  return Object.hash(runtimeType,_this.clienteId,_this.articuloId,_this.cantidadDesde,_this.precio,_this.tipoPrecio,_this.dtoAdicional,_this.lastUpdated,_this.deleted);
+}
 
 @override
 String toString() {
-  return 'ClientePrecioNetoDTO(clienteId: $clienteId, articuloId: $articuloId, cantidadDesde: $cantidadDesde, precio: $precio, tipoPrecio: $tipoPrecio, dtoAdicional: $dtoAdicional, lastUpdated: $lastUpdated, deleted: $deleted)';
+  final _this = this as ClientePrecioNetoDTO;
+  return 'ClientePrecioNetoDTO(clienteId: ${_this.clienteId}, articuloId: ${_this.articuloId}, cantidadDesde: ${_this.cantidadDesde}, precio: ${_this.precio}, tipoPrecio: ${_this.tipoPrecio}, dtoAdicional: ${_this.dtoAdicional}, lastUpdated: ${_this.lastUpdated}, deleted: ${_this.deleted})';
 }
 
 
@@ -242,16 +247,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ClientePrecioNetoDTO&&(identical(other.clienteId, clienteId) || other.clienteId == clienteId)&&(identical(other.articuloId, articuloId) || other.articuloId == articuloId)&&(identical(other.cantidadDesde, cantidadDesde) || other.cantidadDesde == cantidadDesde)&&(identical(other.precio, precio) || other.precio == precio)&&(identical(other.tipoPrecio, tipoPrecio) || other.tipoPrecio == tipoPrecio)&&(identical(other.dtoAdicional, dtoAdicional) || other.dtoAdicional == dtoAdicional)&&(identical(other.lastUpdated, lastUpdated) || other.lastUpdated == lastUpdated)&&(identical(other.deleted, deleted) || other.deleted == deleted));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _ClientePrecioNetoDTO&&(identical(other.clienteId, clienteId) || other.clienteId == clienteId)&&(identical(other.articuloId, articuloId) || other.articuloId == articuloId)&&(identical(other.cantidadDesde, cantidadDesde) || other.cantidadDesde == cantidadDesde)&&(identical(other.precio, precio) || other.precio == precio)&&(identical(other.tipoPrecio, tipoPrecio) || other.tipoPrecio == tipoPrecio)&&(identical(other.dtoAdicional, dtoAdicional) || other.dtoAdicional == dtoAdicional)&&(identical(other.lastUpdated, lastUpdated) || other.lastUpdated == lastUpdated)&&(identical(other.deleted, deleted) || other.deleted == deleted));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,clienteId,articuloId,cantidadDesde,precio,tipoPrecio,dtoAdicional,lastUpdated,deleted);
+int get hashCode {
+    return Object.hash(runtimeType,clienteId,articuloId,cantidadDesde,precio,tipoPrecio,dtoAdicional,lastUpdated,deleted);
+}
 
 @override
 String toString() {
-  return 'ClientePrecioNetoDTO(clienteId: $clienteId, articuloId: $articuloId, cantidadDesde: $cantidadDesde, precio: $precio, tipoPrecio: $tipoPrecio, dtoAdicional: $dtoAdicional, lastUpdated: $lastUpdated, deleted: $deleted)';
+    return 'ClientePrecioNetoDTO(clienteId: $clienteId, articuloId: $articuloId, cantidadDesde: $cantidadDesde, precio: $precio, tipoPrecio: $tipoPrecio, dtoAdicional: $dtoAdicional, lastUpdated: $lastUpdated, deleted: $deleted)';
 }
 
 

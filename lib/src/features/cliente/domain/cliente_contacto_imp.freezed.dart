@@ -26,16 +26,21 @@ $ClienteContactoImpCopyWith<ClienteContactoImp> get copyWith => _$ClienteContact
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ClienteContactoImp&&(identical(other.id, id) || other.id == id)&&(identical(other.fecha, fecha) || other.fecha == fecha)&&(identical(other.usuarioId, usuarioId) || other.usuarioId == usuarioId)&&(identical(other.clienteId, clienteId) || other.clienteId == clienteId)&&(identical(other.contactoId, contactoId) || other.contactoId == contactoId)&&(identical(other.observaciones, observaciones) || other.observaciones == observaciones)&&(identical(other.nombre, nombre) || other.nombre == nombre)&&(identical(other.apellido1, apellido1) || other.apellido1 == apellido1)&&(identical(other.apellido2, apellido2) || other.apellido2 == apellido2)&&(identical(other.telefono1, telefono1) || other.telefono1 == telefono1)&&(identical(other.telefono2, telefono2) || other.telefono2 == telefono2)&&(identical(other.email, email) || other.email == email)&&(identical(other.enviado, enviado) || other.enviado == enviado)&&(identical(other.borrar, borrar) || other.borrar == borrar));
+  final _this = this as ClienteContactoImp;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ClienteContactoImp&&(identical(other.id, _this.id) || other.id == _this.id)&&(identical(other.fecha, _this.fecha) || other.fecha == _this.fecha)&&(identical(other.usuarioId, _this.usuarioId) || other.usuarioId == _this.usuarioId)&&(identical(other.clienteId, _this.clienteId) || other.clienteId == _this.clienteId)&&(identical(other.contactoId, _this.contactoId) || other.contactoId == _this.contactoId)&&(identical(other.observaciones, _this.observaciones) || other.observaciones == _this.observaciones)&&(identical(other.nombre, _this.nombre) || other.nombre == _this.nombre)&&(identical(other.apellido1, _this.apellido1) || other.apellido1 == _this.apellido1)&&(identical(other.apellido2, _this.apellido2) || other.apellido2 == _this.apellido2)&&(identical(other.telefono1, _this.telefono1) || other.telefono1 == _this.telefono1)&&(identical(other.telefono2, _this.telefono2) || other.telefono2 == _this.telefono2)&&(identical(other.email, _this.email) || other.email == _this.email)&&(identical(other.enviado, _this.enviado) || other.enviado == _this.enviado)&&(identical(other.borrar, _this.borrar) || other.borrar == _this.borrar));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,id,fecha,usuarioId,clienteId,contactoId,observaciones,nombre,apellido1,apellido2,telefono1,telefono2,email,enviado,borrar);
+int get hashCode {
+  final _this = this as ClienteContactoImp;
+  return Object.hash(runtimeType,_this.id,_this.fecha,_this.usuarioId,_this.clienteId,_this.contactoId,_this.observaciones,_this.nombre,_this.apellido1,_this.apellido2,_this.telefono1,_this.telefono2,_this.email,_this.enviado,_this.borrar);
+}
 
 @override
 String toString() {
-  return 'ClienteContactoImp(id: $id, fecha: $fecha, usuarioId: $usuarioId, clienteId: $clienteId, contactoId: $contactoId, observaciones: $observaciones, nombre: $nombre, apellido1: $apellido1, apellido2: $apellido2, telefono1: $telefono1, telefono2: $telefono2, email: $email, enviado: $enviado, borrar: $borrar)';
+  final _this = this as ClienteContactoImp;
+  return 'ClienteContactoImp(id: ${_this.id}, fecha: ${_this.fecha}, usuarioId: ${_this.usuarioId}, clienteId: ${_this.clienteId}, contactoId: ${_this.contactoId}, observaciones: ${_this.observaciones}, nombre: ${_this.nombre}, apellido1: ${_this.apellido1}, apellido2: ${_this.apellido2}, telefono1: ${_this.telefono1}, telefono2: ${_this.telefono2}, email: ${_this.email}, enviado: ${_this.enviado}, borrar: ${_this.borrar})';
 }
 
 
@@ -248,16 +253,18 @@ _$ClienteContactoImpCopyWith<_ClienteContactoImp> get copyWith => __$ClienteCont
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ClienteContactoImp&&(identical(other.id, id) || other.id == id)&&(identical(other.fecha, fecha) || other.fecha == fecha)&&(identical(other.usuarioId, usuarioId) || other.usuarioId == usuarioId)&&(identical(other.clienteId, clienteId) || other.clienteId == clienteId)&&(identical(other.contactoId, contactoId) || other.contactoId == contactoId)&&(identical(other.observaciones, observaciones) || other.observaciones == observaciones)&&(identical(other.nombre, nombre) || other.nombre == nombre)&&(identical(other.apellido1, apellido1) || other.apellido1 == apellido1)&&(identical(other.apellido2, apellido2) || other.apellido2 == apellido2)&&(identical(other.telefono1, telefono1) || other.telefono1 == telefono1)&&(identical(other.telefono2, telefono2) || other.telefono2 == telefono2)&&(identical(other.email, email) || other.email == email)&&(identical(other.enviado, enviado) || other.enviado == enviado)&&(identical(other.borrar, borrar) || other.borrar == borrar));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _ClienteContactoImp&&(identical(other.id, id) || other.id == id)&&(identical(other.fecha, fecha) || other.fecha == fecha)&&(identical(other.usuarioId, usuarioId) || other.usuarioId == usuarioId)&&(identical(other.clienteId, clienteId) || other.clienteId == clienteId)&&(identical(other.contactoId, contactoId) || other.contactoId == contactoId)&&(identical(other.observaciones, observaciones) || other.observaciones == observaciones)&&(identical(other.nombre, nombre) || other.nombre == nombre)&&(identical(other.apellido1, apellido1) || other.apellido1 == apellido1)&&(identical(other.apellido2, apellido2) || other.apellido2 == apellido2)&&(identical(other.telefono1, telefono1) || other.telefono1 == telefono1)&&(identical(other.telefono2, telefono2) || other.telefono2 == telefono2)&&(identical(other.email, email) || other.email == email)&&(identical(other.enviado, enviado) || other.enviado == enviado)&&(identical(other.borrar, borrar) || other.borrar == borrar));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,id,fecha,usuarioId,clienteId,contactoId,observaciones,nombre,apellido1,apellido2,telefono1,telefono2,email,enviado,borrar);
+int get hashCode {
+    return Object.hash(runtimeType,id,fecha,usuarioId,clienteId,contactoId,observaciones,nombre,apellido1,apellido2,telefono1,telefono2,email,enviado,borrar);
+}
 
 @override
 String toString() {
-  return 'ClienteContactoImp(id: $id, fecha: $fecha, usuarioId: $usuarioId, clienteId: $clienteId, contactoId: $contactoId, observaciones: $observaciones, nombre: $nombre, apellido1: $apellido1, apellido2: $apellido2, telefono1: $telefono1, telefono2: $telefono2, email: $email, enviado: $enviado, borrar: $borrar)';
+    return 'ClienteContactoImp(id: $id, fecha: $fecha, usuarioId: $usuarioId, clienteId: $clienteId, contactoId: $contactoId, observaciones: $observaciones, nombre: $nombre, apellido1: $apellido1, apellido2: $apellido2, telefono1: $telefono1, telefono2: $telefono2, email: $email, enviado: $enviado, borrar: $borrar)';
 }
 
 

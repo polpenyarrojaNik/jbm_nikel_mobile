@@ -26,16 +26,21 @@ $ArticuloVentasClienteCopyWith<ArticuloVentasCliente> get copyWith => _$Articulo
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ArticuloVentasCliente&&(identical(other.clienteId, clienteId) || other.clienteId == clienteId)&&(identical(other.nombreCliente, nombreCliente) || other.nombreCliente == nombreCliente)&&(identical(other.importeAnyo, importeAnyo) || other.importeAnyo == importeAnyo)&&(identical(other.importeAnyo_1, importeAnyo_1) || other.importeAnyo_1 == importeAnyo_1)&&(identical(other.importeAnyo_2, importeAnyo_2) || other.importeAnyo_2 == importeAnyo_2)&&(identical(other.importeAnyo_3, importeAnyo_3) || other.importeAnyo_3 == importeAnyo_3)&&(identical(other.importeAnyo_4, importeAnyo_4) || other.importeAnyo_4 == importeAnyo_4)&&(identical(other.cantidadAnyo, cantidadAnyo) || other.cantidadAnyo == cantidadAnyo)&&(identical(other.cantidadAnyo_1, cantidadAnyo_1) || other.cantidadAnyo_1 == cantidadAnyo_1)&&(identical(other.cantidadAnyo_2, cantidadAnyo_2) || other.cantidadAnyo_2 == cantidadAnyo_2)&&(identical(other.cantidadAnyo_3, cantidadAnyo_3) || other.cantidadAnyo_3 == cantidadAnyo_3)&&(identical(other.cantidadAnyo_4, cantidadAnyo_4) || other.cantidadAnyo_4 == cantidadAnyo_4));
+  final _this = this as ArticuloVentasCliente;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ArticuloVentasCliente&&(identical(other.clienteId, _this.clienteId) || other.clienteId == _this.clienteId)&&(identical(other.nombreCliente, _this.nombreCliente) || other.nombreCliente == _this.nombreCliente)&&(identical(other.importeAnyo, _this.importeAnyo) || other.importeAnyo == _this.importeAnyo)&&(identical(other.importeAnyo_1, _this.importeAnyo_1) || other.importeAnyo_1 == _this.importeAnyo_1)&&(identical(other.importeAnyo_2, _this.importeAnyo_2) || other.importeAnyo_2 == _this.importeAnyo_2)&&(identical(other.importeAnyo_3, _this.importeAnyo_3) || other.importeAnyo_3 == _this.importeAnyo_3)&&(identical(other.importeAnyo_4, _this.importeAnyo_4) || other.importeAnyo_4 == _this.importeAnyo_4)&&(identical(other.cantidadAnyo, _this.cantidadAnyo) || other.cantidadAnyo == _this.cantidadAnyo)&&(identical(other.cantidadAnyo_1, _this.cantidadAnyo_1) || other.cantidadAnyo_1 == _this.cantidadAnyo_1)&&(identical(other.cantidadAnyo_2, _this.cantidadAnyo_2) || other.cantidadAnyo_2 == _this.cantidadAnyo_2)&&(identical(other.cantidadAnyo_3, _this.cantidadAnyo_3) || other.cantidadAnyo_3 == _this.cantidadAnyo_3)&&(identical(other.cantidadAnyo_4, _this.cantidadAnyo_4) || other.cantidadAnyo_4 == _this.cantidadAnyo_4));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,clienteId,nombreCliente,importeAnyo,importeAnyo_1,importeAnyo_2,importeAnyo_3,importeAnyo_4,cantidadAnyo,cantidadAnyo_1,cantidadAnyo_2,cantidadAnyo_3,cantidadAnyo_4);
+int get hashCode {
+  final _this = this as ArticuloVentasCliente;
+  return Object.hash(runtimeType,_this.clienteId,_this.nombreCliente,_this.importeAnyo,_this.importeAnyo_1,_this.importeAnyo_2,_this.importeAnyo_3,_this.importeAnyo_4,_this.cantidadAnyo,_this.cantidadAnyo_1,_this.cantidadAnyo_2,_this.cantidadAnyo_3,_this.cantidadAnyo_4);
+}
 
 @override
 String toString() {
-  return 'ArticuloVentasCliente(clienteId: $clienteId, nombreCliente: $nombreCliente, importeAnyo: $importeAnyo, importeAnyo_1: $importeAnyo_1, importeAnyo_2: $importeAnyo_2, importeAnyo_3: $importeAnyo_3, importeAnyo_4: $importeAnyo_4, cantidadAnyo: $cantidadAnyo, cantidadAnyo_1: $cantidadAnyo_1, cantidadAnyo_2: $cantidadAnyo_2, cantidadAnyo_3: $cantidadAnyo_3, cantidadAnyo_4: $cantidadAnyo_4)';
+  final _this = this as ArticuloVentasCliente;
+  return 'ArticuloVentasCliente(clienteId: ${_this.clienteId}, nombreCliente: ${_this.nombreCliente}, importeAnyo: ${_this.importeAnyo}, importeAnyo_1: ${_this.importeAnyo_1}, importeAnyo_2: ${_this.importeAnyo_2}, importeAnyo_3: ${_this.importeAnyo_3}, importeAnyo_4: ${_this.importeAnyo_4}, cantidadAnyo: ${_this.cantidadAnyo}, cantidadAnyo_1: ${_this.cantidadAnyo_1}, cantidadAnyo_2: ${_this.cantidadAnyo_2}, cantidadAnyo_3: ${_this.cantidadAnyo_3}, cantidadAnyo_4: ${_this.cantidadAnyo_4})';
 }
 
 
@@ -244,16 +249,18 @@ _$ArticuloVentasClienteCopyWith<_ArticuloVentasCliente> get copyWith => __$Artic
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ArticuloVentasCliente&&(identical(other.clienteId, clienteId) || other.clienteId == clienteId)&&(identical(other.nombreCliente, nombreCliente) || other.nombreCliente == nombreCliente)&&(identical(other.importeAnyo, importeAnyo) || other.importeAnyo == importeAnyo)&&(identical(other.importeAnyo_1, importeAnyo_1) || other.importeAnyo_1 == importeAnyo_1)&&(identical(other.importeAnyo_2, importeAnyo_2) || other.importeAnyo_2 == importeAnyo_2)&&(identical(other.importeAnyo_3, importeAnyo_3) || other.importeAnyo_3 == importeAnyo_3)&&(identical(other.importeAnyo_4, importeAnyo_4) || other.importeAnyo_4 == importeAnyo_4)&&(identical(other.cantidadAnyo, cantidadAnyo) || other.cantidadAnyo == cantidadAnyo)&&(identical(other.cantidadAnyo_1, cantidadAnyo_1) || other.cantidadAnyo_1 == cantidadAnyo_1)&&(identical(other.cantidadAnyo_2, cantidadAnyo_2) || other.cantidadAnyo_2 == cantidadAnyo_2)&&(identical(other.cantidadAnyo_3, cantidadAnyo_3) || other.cantidadAnyo_3 == cantidadAnyo_3)&&(identical(other.cantidadAnyo_4, cantidadAnyo_4) || other.cantidadAnyo_4 == cantidadAnyo_4));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _ArticuloVentasCliente&&(identical(other.clienteId, clienteId) || other.clienteId == clienteId)&&(identical(other.nombreCliente, nombreCliente) || other.nombreCliente == nombreCliente)&&(identical(other.importeAnyo, importeAnyo) || other.importeAnyo == importeAnyo)&&(identical(other.importeAnyo_1, importeAnyo_1) || other.importeAnyo_1 == importeAnyo_1)&&(identical(other.importeAnyo_2, importeAnyo_2) || other.importeAnyo_2 == importeAnyo_2)&&(identical(other.importeAnyo_3, importeAnyo_3) || other.importeAnyo_3 == importeAnyo_3)&&(identical(other.importeAnyo_4, importeAnyo_4) || other.importeAnyo_4 == importeAnyo_4)&&(identical(other.cantidadAnyo, cantidadAnyo) || other.cantidadAnyo == cantidadAnyo)&&(identical(other.cantidadAnyo_1, cantidadAnyo_1) || other.cantidadAnyo_1 == cantidadAnyo_1)&&(identical(other.cantidadAnyo_2, cantidadAnyo_2) || other.cantidadAnyo_2 == cantidadAnyo_2)&&(identical(other.cantidadAnyo_3, cantidadAnyo_3) || other.cantidadAnyo_3 == cantidadAnyo_3)&&(identical(other.cantidadAnyo_4, cantidadAnyo_4) || other.cantidadAnyo_4 == cantidadAnyo_4));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,clienteId,nombreCliente,importeAnyo,importeAnyo_1,importeAnyo_2,importeAnyo_3,importeAnyo_4,cantidadAnyo,cantidadAnyo_1,cantidadAnyo_2,cantidadAnyo_3,cantidadAnyo_4);
+int get hashCode {
+    return Object.hash(runtimeType,clienteId,nombreCliente,importeAnyo,importeAnyo_1,importeAnyo_2,importeAnyo_3,importeAnyo_4,cantidadAnyo,cantidadAnyo_1,cantidadAnyo_2,cantidadAnyo_3,cantidadAnyo_4);
+}
 
 @override
 String toString() {
-  return 'ArticuloVentasCliente(clienteId: $clienteId, nombreCliente: $nombreCliente, importeAnyo: $importeAnyo, importeAnyo_1: $importeAnyo_1, importeAnyo_2: $importeAnyo_2, importeAnyo_3: $importeAnyo_3, importeAnyo_4: $importeAnyo_4, cantidadAnyo: $cantidadAnyo, cantidadAnyo_1: $cantidadAnyo_1, cantidadAnyo_2: $cantidadAnyo_2, cantidadAnyo_3: $cantidadAnyo_3, cantidadAnyo_4: $cantidadAnyo_4)';
+    return 'ArticuloVentasCliente(clienteId: $clienteId, nombreCliente: $nombreCliente, importeAnyo: $importeAnyo, importeAnyo_1: $importeAnyo_1, importeAnyo_2: $importeAnyo_2, importeAnyo_3: $importeAnyo_3, importeAnyo_4: $importeAnyo_4, cantidadAnyo: $cantidadAnyo, cantidadAnyo_1: $cantidadAnyo_1, cantidadAnyo_2: $cantidadAnyo_2, cantidadAnyo_3: $cantidadAnyo_3, cantidadAnyo_4: $cantidadAnyo_4)';
 }
 
 

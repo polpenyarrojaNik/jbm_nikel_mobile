@@ -26,16 +26,21 @@ $RecomendacionProductoCopyWith<RecomendacionProducto> get copyWith => _$Recomend
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is RecomendacionProducto&&(identical(other.articuloId, articuloId) || other.articuloId == articuloId)&&(identical(other.descripcion, descripcion) || other.descripcion == descripcion)&&(identical(other.probabilidad, probabilidad) || other.probabilidad == probabilidad)&&(identical(other.motivo, motivo) || other.motivo == motivo));
+  final _this = this as RecomendacionProducto;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is RecomendacionProducto&&(identical(other.articuloId, _this.articuloId) || other.articuloId == _this.articuloId)&&(identical(other.descripcion, _this.descripcion) || other.descripcion == _this.descripcion)&&(identical(other.probabilidad, _this.probabilidad) || other.probabilidad == _this.probabilidad)&&(identical(other.motivo, _this.motivo) || other.motivo == _this.motivo));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,articuloId,descripcion,probabilidad,motivo);
+int get hashCode {
+  final _this = this as RecomendacionProducto;
+  return Object.hash(runtimeType,_this.articuloId,_this.descripcion,_this.probabilidad,_this.motivo);
+}
 
 @override
 String toString() {
-  return 'RecomendacionProducto(articuloId: $articuloId, descripcion: $descripcion, probabilidad: $probabilidad, motivo: $motivo)';
+  final _this = this as RecomendacionProducto;
+  return 'RecomendacionProducto(articuloId: ${_this.articuloId}, descripcion: ${_this.descripcion}, probabilidad: ${_this.probabilidad}, motivo: ${_this.motivo})';
 }
 
 
@@ -228,16 +233,18 @@ _$RecomendacionProductoCopyWith<_RecomendacionProducto> get copyWith => __$Recom
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _RecomendacionProducto&&(identical(other.articuloId, articuloId) || other.articuloId == articuloId)&&(identical(other.descripcion, descripcion) || other.descripcion == descripcion)&&(identical(other.probabilidad, probabilidad) || other.probabilidad == probabilidad)&&(identical(other.motivo, motivo) || other.motivo == motivo));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _RecomendacionProducto&&(identical(other.articuloId, articuloId) || other.articuloId == articuloId)&&(identical(other.descripcion, descripcion) || other.descripcion == descripcion)&&(identical(other.probabilidad, probabilidad) || other.probabilidad == probabilidad)&&(identical(other.motivo, motivo) || other.motivo == motivo));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,articuloId,descripcion,probabilidad,motivo);
+int get hashCode {
+    return Object.hash(runtimeType,articuloId,descripcion,probabilidad,motivo);
+}
 
 @override
 String toString() {
-  return 'RecomendacionProducto(articuloId: $articuloId, descripcion: $descripcion, probabilidad: $probabilidad, motivo: $motivo)';
+    return 'RecomendacionProducto(articuloId: $articuloId, descripcion: $descripcion, probabilidad: $probabilidad, motivo: $motivo)';
 }
 
 

@@ -26,16 +26,21 @@ $ArticuloImagenCopyWith<ArticuloImagen> get copyWith => _$ArticuloImagenCopyWith
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ArticuloImagen&&(identical(other.articuloId, articuloId) || other.articuloId == articuloId)&&(identical(other.nombreArchivo, nombreArchivo) || other.nombreArchivo == nombreArchivo)&&(identical(other.url, url) || other.url == url));
+  final _this = this as ArticuloImagen;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ArticuloImagen&&(identical(other.articuloId, _this.articuloId) || other.articuloId == _this.articuloId)&&(identical(other.nombreArchivo, _this.nombreArchivo) || other.nombreArchivo == _this.nombreArchivo)&&(identical(other.url, _this.url) || other.url == _this.url));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,articuloId,nombreArchivo,url);
+int get hashCode {
+  final _this = this as ArticuloImagen;
+  return Object.hash(runtimeType,_this.articuloId,_this.nombreArchivo,_this.url);
+}
 
 @override
 String toString() {
-  return 'ArticuloImagen(articuloId: $articuloId, nombreArchivo: $nombreArchivo, url: $url)';
+  final _this = this as ArticuloImagen;
+  return 'ArticuloImagen(articuloId: ${_this.articuloId}, nombreArchivo: ${_this.nombreArchivo}, url: ${_this.url})';
 }
 
 
@@ -226,16 +231,18 @@ _$ArticuloImagenCopyWith<_ArticuloImagen> get copyWith => __$ArticuloImagenCopyW
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ArticuloImagen&&(identical(other.articuloId, articuloId) || other.articuloId == articuloId)&&(identical(other.nombreArchivo, nombreArchivo) || other.nombreArchivo == nombreArchivo)&&(identical(other.url, url) || other.url == url));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _ArticuloImagen&&(identical(other.articuloId, articuloId) || other.articuloId == articuloId)&&(identical(other.nombreArchivo, nombreArchivo) || other.nombreArchivo == nombreArchivo)&&(identical(other.url, url) || other.url == url));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,articuloId,nombreArchivo,url);
+int get hashCode {
+    return Object.hash(runtimeType,articuloId,nombreArchivo,url);
+}
 
 @override
 String toString() {
-  return 'ArticuloImagen(articuloId: $articuloId, nombreArchivo: $nombreArchivo, url: $url)';
+    return 'ArticuloImagen(articuloId: $articuloId, nombreArchivo: $nombreArchivo, url: $url)';
 }
 
 

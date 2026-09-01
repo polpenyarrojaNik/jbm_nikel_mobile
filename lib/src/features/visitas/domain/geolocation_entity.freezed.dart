@@ -26,16 +26,21 @@ $GeolocationEntityCopyWith<GeolocationEntity> get copyWith => _$GeolocationEntit
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is GeolocationEntity&&(identical(other.streetAddress1, streetAddress1) || other.streetAddress1 == streetAddress1)&&(identical(other.streetAddress2, streetAddress2) || other.streetAddress2 == streetAddress2)&&(identical(other.zipCode, zipCode) || other.zipCode == zipCode)&&(identical(other.city, city) || other.city == city)&&(identical(other.state, state) || other.state == state)&&(identical(other.country, country) || other.country == country));
+  final _this = this as GeolocationEntity;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is GeolocationEntity&&(identical(other.streetAddress1, _this.streetAddress1) || other.streetAddress1 == _this.streetAddress1)&&(identical(other.streetAddress2, _this.streetAddress2) || other.streetAddress2 == _this.streetAddress2)&&(identical(other.zipCode, _this.zipCode) || other.zipCode == _this.zipCode)&&(identical(other.city, _this.city) || other.city == _this.city)&&(identical(other.state, _this.state) || other.state == _this.state)&&(identical(other.country, _this.country) || other.country == _this.country));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,streetAddress1,streetAddress2,zipCode,city,state,country);
+int get hashCode {
+  final _this = this as GeolocationEntity;
+  return Object.hash(runtimeType,_this.streetAddress1,_this.streetAddress2,_this.zipCode,_this.city,_this.state,_this.country);
+}
 
 @override
 String toString() {
-  return 'GeolocationEntity(streetAddress1: $streetAddress1, streetAddress2: $streetAddress2, zipCode: $zipCode, city: $city, state: $state, country: $country)';
+  final _this = this as GeolocationEntity;
+  return 'GeolocationEntity(streetAddress1: ${_this.streetAddress1}, streetAddress2: ${_this.streetAddress2}, zipCode: ${_this.zipCode}, city: ${_this.city}, state: ${_this.state}, country: ${_this.country})';
 }
 
 
@@ -256,16 +261,18 @@ _$GeolocationEntityCopyWith<_GeolocationEntity> get copyWith => __$GeolocationEn
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _GeolocationEntity&&(identical(other.streetAddress1, streetAddress1) || other.streetAddress1 == streetAddress1)&&(identical(other.streetAddress2, streetAddress2) || other.streetAddress2 == streetAddress2)&&(identical(other.zipCode, zipCode) || other.zipCode == zipCode)&&(identical(other.city, city) || other.city == city)&&(identical(other.state, state) || other.state == state)&&(identical(other.country, country) || other.country == country));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _GeolocationEntity&&(identical(other.streetAddress1, streetAddress1) || other.streetAddress1 == streetAddress1)&&(identical(other.streetAddress2, streetAddress2) || other.streetAddress2 == streetAddress2)&&(identical(other.zipCode, zipCode) || other.zipCode == zipCode)&&(identical(other.city, city) || other.city == city)&&(identical(other.state, state) || other.state == state)&&(identical(other.country, country) || other.country == country));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,streetAddress1,streetAddress2,zipCode,city,state,country);
+int get hashCode {
+    return Object.hash(runtimeType,streetAddress1,streetAddress2,zipCode,city,state,country);
+}
 
 @override
 String toString() {
-  return 'GeolocationEntity(streetAddress1: $streetAddress1, streetAddress2: $streetAddress2, zipCode: $zipCode, city: $city, state: $state, country: $country)';
+    return 'GeolocationEntity(streetAddress1: $streetAddress1, streetAddress2: $streetAddress2, zipCode: $zipCode, city: $city, state: $state, country: $country)';
 }
 
 

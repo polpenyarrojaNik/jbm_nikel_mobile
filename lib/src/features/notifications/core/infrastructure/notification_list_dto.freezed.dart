@@ -29,16 +29,21 @@ $NotificationListDtoCopyWith<NotificationListDto> get copyWith => _$Notification
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is NotificationListDto&&(identical(other.notificacionId, notificacionId) || other.notificacionId == notificacionId)&&(identical(other.fecha, fecha) || other.fecha == fecha)&&(identical(other.leidoSN, leidoSN) || other.leidoSN == leidoSN)&&(identical(other.mensaje, mensaje) || other.mensaje == mensaje)&&(identical(other.tieneAdjuntoSN, tieneAdjuntoSN) || other.tieneAdjuntoSN == tieneAdjuntoSN));
+  final _this = this as NotificationListDto;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is NotificationListDto&&(identical(other.notificacionId, _this.notificacionId) || other.notificacionId == _this.notificacionId)&&(identical(other.fecha, _this.fecha) || other.fecha == _this.fecha)&&(identical(other.leidoSN, _this.leidoSN) || other.leidoSN == _this.leidoSN)&&(identical(other.mensaje, _this.mensaje) || other.mensaje == _this.mensaje)&&(identical(other.tieneAdjuntoSN, _this.tieneAdjuntoSN) || other.tieneAdjuntoSN == _this.tieneAdjuntoSN));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,notificacionId,fecha,leidoSN,mensaje,tieneAdjuntoSN);
+int get hashCode {
+  final _this = this as NotificationListDto;
+  return Object.hash(runtimeType,_this.notificacionId,_this.fecha,_this.leidoSN,_this.mensaje,_this.tieneAdjuntoSN);
+}
 
 @override
 String toString() {
-  return 'NotificationListDto(notificacionId: $notificacionId, fecha: $fecha, leidoSN: $leidoSN, mensaje: $mensaje, tieneAdjuntoSN: $tieneAdjuntoSN)';
+  final _this = this as NotificationListDto;
+  return 'NotificationListDto(notificacionId: ${_this.notificacionId}, fecha: ${_this.fecha}, leidoSN: ${_this.leidoSN}, mensaje: ${_this.mensaje}, tieneAdjuntoSN: ${_this.tieneAdjuntoSN})';
 }
 
 
@@ -236,16 +241,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _NotificationListDto&&(identical(other.notificacionId, notificacionId) || other.notificacionId == notificacionId)&&(identical(other.fecha, fecha) || other.fecha == fecha)&&(identical(other.leidoSN, leidoSN) || other.leidoSN == leidoSN)&&(identical(other.mensaje, mensaje) || other.mensaje == mensaje)&&(identical(other.tieneAdjuntoSN, tieneAdjuntoSN) || other.tieneAdjuntoSN == tieneAdjuntoSN));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _NotificationListDto&&(identical(other.notificacionId, notificacionId) || other.notificacionId == notificacionId)&&(identical(other.fecha, fecha) || other.fecha == fecha)&&(identical(other.leidoSN, leidoSN) || other.leidoSN == leidoSN)&&(identical(other.mensaje, mensaje) || other.mensaje == mensaje)&&(identical(other.tieneAdjuntoSN, tieneAdjuntoSN) || other.tieneAdjuntoSN == tieneAdjuntoSN));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,notificacionId,fecha,leidoSN,mensaje,tieneAdjuntoSN);
+int get hashCode {
+    return Object.hash(runtimeType,notificacionId,fecha,leidoSN,mensaje,tieneAdjuntoSN);
+}
 
 @override
 String toString() {
-  return 'NotificationListDto(notificacionId: $notificacionId, fecha: $fecha, leidoSN: $leidoSN, mensaje: $mensaje, tieneAdjuntoSN: $tieneAdjuntoSN)';
+    return 'NotificationListDto(notificacionId: $notificacionId, fecha: $fecha, leidoSN: $leidoSN, mensaje: $mensaje, tieneAdjuntoSN: $tieneAdjuntoSN)';
 }
 
 

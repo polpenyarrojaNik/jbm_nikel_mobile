@@ -29,16 +29,21 @@ $ArticuloSustitutivoDTOCopyWith<ArticuloSustitutivoDTO> get copyWith => _$Articu
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ArticuloSustitutivoDTO&&(identical(other.articuloId, articuloId) || other.articuloId == articuloId)&&(identical(other.articuloSustitutivoId, articuloSustitutivoId) || other.articuloSustitutivoId == articuloSustitutivoId)&&(identical(other.orden, orden) || other.orden == orden)&&(identical(other.lastUpdated, lastUpdated) || other.lastUpdated == lastUpdated)&&(identical(other.deleted, deleted) || other.deleted == deleted));
+  final _this = this as ArticuloSustitutivoDTO;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ArticuloSustitutivoDTO&&(identical(other.articuloId, _this.articuloId) || other.articuloId == _this.articuloId)&&(identical(other.articuloSustitutivoId, _this.articuloSustitutivoId) || other.articuloSustitutivoId == _this.articuloSustitutivoId)&&(identical(other.orden, _this.orden) || other.orden == _this.orden)&&(identical(other.lastUpdated, _this.lastUpdated) || other.lastUpdated == _this.lastUpdated)&&(identical(other.deleted, _this.deleted) || other.deleted == _this.deleted));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,articuloId,articuloSustitutivoId,orden,lastUpdated,deleted);
+int get hashCode {
+  final _this = this as ArticuloSustitutivoDTO;
+  return Object.hash(runtimeType,_this.articuloId,_this.articuloSustitutivoId,_this.orden,_this.lastUpdated,_this.deleted);
+}
 
 @override
 String toString() {
-  return 'ArticuloSustitutivoDTO(articuloId: $articuloId, articuloSustitutivoId: $articuloSustitutivoId, orden: $orden, lastUpdated: $lastUpdated, deleted: $deleted)';
+  final _this = this as ArticuloSustitutivoDTO;
+  return 'ArticuloSustitutivoDTO(articuloId: ${_this.articuloId}, articuloSustitutivoId: ${_this.articuloSustitutivoId}, orden: ${_this.orden}, lastUpdated: ${_this.lastUpdated}, deleted: ${_this.deleted})';
 }
 
 
@@ -236,16 +241,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ArticuloSustitutivoDTO&&(identical(other.articuloId, articuloId) || other.articuloId == articuloId)&&(identical(other.articuloSustitutivoId, articuloSustitutivoId) || other.articuloSustitutivoId == articuloSustitutivoId)&&(identical(other.orden, orden) || other.orden == orden)&&(identical(other.lastUpdated, lastUpdated) || other.lastUpdated == lastUpdated)&&(identical(other.deleted, deleted) || other.deleted == deleted));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _ArticuloSustitutivoDTO&&(identical(other.articuloId, articuloId) || other.articuloId == articuloId)&&(identical(other.articuloSustitutivoId, articuloSustitutivoId) || other.articuloSustitutivoId == articuloSustitutivoId)&&(identical(other.orden, orden) || other.orden == orden)&&(identical(other.lastUpdated, lastUpdated) || other.lastUpdated == lastUpdated)&&(identical(other.deleted, deleted) || other.deleted == deleted));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,articuloId,articuloSustitutivoId,orden,lastUpdated,deleted);
+int get hashCode {
+    return Object.hash(runtimeType,articuloId,articuloSustitutivoId,orden,lastUpdated,deleted);
+}
 
 @override
 String toString() {
-  return 'ArticuloSustitutivoDTO(articuloId: $articuloId, articuloSustitutivoId: $articuloSustitutivoId, orden: $orden, lastUpdated: $lastUpdated, deleted: $deleted)';
+    return 'ArticuloSustitutivoDTO(articuloId: $articuloId, articuloSustitutivoId: $articuloSustitutivoId, orden: $orden, lastUpdated: $lastUpdated, deleted: $deleted)';
 }
 
 

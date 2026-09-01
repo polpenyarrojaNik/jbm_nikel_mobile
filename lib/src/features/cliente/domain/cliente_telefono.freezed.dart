@@ -26,16 +26,21 @@ $ClienteTelefonoCopyWith<ClienteTelefono> get copyWith => _$ClienteTelefonoCopyW
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ClienteTelefono&&(identical(other.clienteId, clienteId) || other.clienteId == clienteId)&&(identical(other.nombre, nombre) || other.nombre == nombre)&&(identical(other.telefono, telefono) || other.telefono == telefono));
+  final _this = this as ClienteTelefono;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ClienteTelefono&&(identical(other.clienteId, _this.clienteId) || other.clienteId == _this.clienteId)&&(identical(other.nombre, _this.nombre) || other.nombre == _this.nombre)&&(identical(other.telefono, _this.telefono) || other.telefono == _this.telefono));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,clienteId,nombre,telefono);
+int get hashCode {
+  final _this = this as ClienteTelefono;
+  return Object.hash(runtimeType,_this.clienteId,_this.nombre,_this.telefono);
+}
 
 @override
 String toString() {
-  return 'ClienteTelefono(clienteId: $clienteId, nombre: $nombre, telefono: $telefono)';
+  final _this = this as ClienteTelefono;
+  return 'ClienteTelefono(clienteId: ${_this.clienteId}, nombre: ${_this.nombre}, telefono: ${_this.telefono})';
 }
 
 
@@ -226,16 +231,18 @@ _$ClienteTelefonoCopyWith<_ClienteTelefono> get copyWith => __$ClienteTelefonoCo
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ClienteTelefono&&(identical(other.clienteId, clienteId) || other.clienteId == clienteId)&&(identical(other.nombre, nombre) || other.nombre == nombre)&&(identical(other.telefono, telefono) || other.telefono == telefono));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _ClienteTelefono&&(identical(other.clienteId, clienteId) || other.clienteId == clienteId)&&(identical(other.nombre, nombre) || other.nombre == nombre)&&(identical(other.telefono, telefono) || other.telefono == telefono));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,clienteId,nombre,telefono);
+int get hashCode {
+    return Object.hash(runtimeType,clienteId,nombre,telefono);
+}
 
 @override
 String toString() {
-  return 'ClienteTelefono(clienteId: $clienteId, nombre: $nombre, telefono: $telefono)';
+    return 'ClienteTelefono(clienteId: $clienteId, nombre: $nombre, telefono: $telefono)';
 }
 
 

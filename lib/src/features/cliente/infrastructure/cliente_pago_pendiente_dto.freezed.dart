@@ -29,16 +29,21 @@ $ClientePagoPendienteDTOCopyWith<ClientePagoPendienteDTO> get copyWith => _$Clie
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ClientePagoPendienteDTO&&(identical(other.clienteId, clienteId) || other.clienteId == clienteId)&&(identical(other.efectoId, efectoId) || other.efectoId == efectoId)&&(identical(other.facutaId, facutaId) || other.facutaId == facutaId)&&(identical(other.fechaFactura, fechaFactura) || other.fechaFactura == fechaFactura)&&(identical(other.fechaExpiracion, fechaExpiracion) || other.fechaExpiracion == fechaExpiracion)&&(identical(other.metodoDeCobroId, metodoDeCobroId) || other.metodoDeCobroId == metodoDeCobroId)&&(identical(other.estadoCobroId, estadoCobroId) || other.estadoCobroId == estadoCobroId)&&(identical(other.importe, importe) || other.importe == importe)&&(identical(other.fechaExpiracionInicial, fechaExpiracionInicial) || other.fechaExpiracionInicial == fechaExpiracionInicial)&&(identical(other.vencidoJBM, vencidoJBM) || other.vencidoJBM == vencidoJBM)&&(identical(other.lastUpdated, lastUpdated) || other.lastUpdated == lastUpdated)&&(identical(other.deleted, deleted) || other.deleted == deleted));
+  final _this = this as ClientePagoPendienteDTO;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ClientePagoPendienteDTO&&(identical(other.clienteId, _this.clienteId) || other.clienteId == _this.clienteId)&&(identical(other.efectoId, _this.efectoId) || other.efectoId == _this.efectoId)&&(identical(other.facutaId, _this.facutaId) || other.facutaId == _this.facutaId)&&(identical(other.fechaFactura, _this.fechaFactura) || other.fechaFactura == _this.fechaFactura)&&(identical(other.fechaExpiracion, _this.fechaExpiracion) || other.fechaExpiracion == _this.fechaExpiracion)&&(identical(other.metodoDeCobroId, _this.metodoDeCobroId) || other.metodoDeCobroId == _this.metodoDeCobroId)&&(identical(other.estadoCobroId, _this.estadoCobroId) || other.estadoCobroId == _this.estadoCobroId)&&(identical(other.importe, _this.importe) || other.importe == _this.importe)&&(identical(other.fechaExpiracionInicial, _this.fechaExpiracionInicial) || other.fechaExpiracionInicial == _this.fechaExpiracionInicial)&&(identical(other.vencidoJBM, _this.vencidoJBM) || other.vencidoJBM == _this.vencidoJBM)&&(identical(other.lastUpdated, _this.lastUpdated) || other.lastUpdated == _this.lastUpdated)&&(identical(other.deleted, _this.deleted) || other.deleted == _this.deleted));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,clienteId,efectoId,facutaId,fechaFactura,fechaExpiracion,metodoDeCobroId,estadoCobroId,importe,fechaExpiracionInicial,vencidoJBM,lastUpdated,deleted);
+int get hashCode {
+  final _this = this as ClientePagoPendienteDTO;
+  return Object.hash(runtimeType,_this.clienteId,_this.efectoId,_this.facutaId,_this.fechaFactura,_this.fechaExpiracion,_this.metodoDeCobroId,_this.estadoCobroId,_this.importe,_this.fechaExpiracionInicial,_this.vencidoJBM,_this.lastUpdated,_this.deleted);
+}
 
 @override
 String toString() {
-  return 'ClientePagoPendienteDTO(clienteId: $clienteId, efectoId: $efectoId, facutaId: $facutaId, fechaFactura: $fechaFactura, fechaExpiracion: $fechaExpiracion, metodoDeCobroId: $metodoDeCobroId, estadoCobroId: $estadoCobroId, importe: $importe, fechaExpiracionInicial: $fechaExpiracionInicial, vencidoJBM: $vencidoJBM, lastUpdated: $lastUpdated, deleted: $deleted)';
+  final _this = this as ClientePagoPendienteDTO;
+  return 'ClientePagoPendienteDTO(clienteId: ${_this.clienteId}, efectoId: ${_this.efectoId}, facutaId: ${_this.facutaId}, fechaFactura: ${_this.fechaFactura}, fechaExpiracion: ${_this.fechaExpiracion}, metodoDeCobroId: ${_this.metodoDeCobroId}, estadoCobroId: ${_this.estadoCobroId}, importe: ${_this.importe}, fechaExpiracionInicial: ${_this.fechaExpiracionInicial}, vencidoJBM: ${_this.vencidoJBM}, lastUpdated: ${_this.lastUpdated}, deleted: ${_this.deleted})';
 }
 
 
@@ -250,16 +255,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ClientePagoPendienteDTO&&(identical(other.clienteId, clienteId) || other.clienteId == clienteId)&&(identical(other.efectoId, efectoId) || other.efectoId == efectoId)&&(identical(other.facutaId, facutaId) || other.facutaId == facutaId)&&(identical(other.fechaFactura, fechaFactura) || other.fechaFactura == fechaFactura)&&(identical(other.fechaExpiracion, fechaExpiracion) || other.fechaExpiracion == fechaExpiracion)&&(identical(other.metodoDeCobroId, metodoDeCobroId) || other.metodoDeCobroId == metodoDeCobroId)&&(identical(other.estadoCobroId, estadoCobroId) || other.estadoCobroId == estadoCobroId)&&(identical(other.importe, importe) || other.importe == importe)&&(identical(other.fechaExpiracionInicial, fechaExpiracionInicial) || other.fechaExpiracionInicial == fechaExpiracionInicial)&&(identical(other.vencidoJBM, vencidoJBM) || other.vencidoJBM == vencidoJBM)&&(identical(other.lastUpdated, lastUpdated) || other.lastUpdated == lastUpdated)&&(identical(other.deleted, deleted) || other.deleted == deleted));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _ClientePagoPendienteDTO&&(identical(other.clienteId, clienteId) || other.clienteId == clienteId)&&(identical(other.efectoId, efectoId) || other.efectoId == efectoId)&&(identical(other.facutaId, facutaId) || other.facutaId == facutaId)&&(identical(other.fechaFactura, fechaFactura) || other.fechaFactura == fechaFactura)&&(identical(other.fechaExpiracion, fechaExpiracion) || other.fechaExpiracion == fechaExpiracion)&&(identical(other.metodoDeCobroId, metodoDeCobroId) || other.metodoDeCobroId == metodoDeCobroId)&&(identical(other.estadoCobroId, estadoCobroId) || other.estadoCobroId == estadoCobroId)&&(identical(other.importe, importe) || other.importe == importe)&&(identical(other.fechaExpiracionInicial, fechaExpiracionInicial) || other.fechaExpiracionInicial == fechaExpiracionInicial)&&(identical(other.vencidoJBM, vencidoJBM) || other.vencidoJBM == vencidoJBM)&&(identical(other.lastUpdated, lastUpdated) || other.lastUpdated == lastUpdated)&&(identical(other.deleted, deleted) || other.deleted == deleted));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,clienteId,efectoId,facutaId,fechaFactura,fechaExpiracion,metodoDeCobroId,estadoCobroId,importe,fechaExpiracionInicial,vencidoJBM,lastUpdated,deleted);
+int get hashCode {
+    return Object.hash(runtimeType,clienteId,efectoId,facutaId,fechaFactura,fechaExpiracion,metodoDeCobroId,estadoCobroId,importe,fechaExpiracionInicial,vencidoJBM,lastUpdated,deleted);
+}
 
 @override
 String toString() {
-  return 'ClientePagoPendienteDTO(clienteId: $clienteId, efectoId: $efectoId, facutaId: $facutaId, fechaFactura: $fechaFactura, fechaExpiracion: $fechaExpiracion, metodoDeCobroId: $metodoDeCobroId, estadoCobroId: $estadoCobroId, importe: $importe, fechaExpiracionInicial: $fechaExpiracionInicial, vencidoJBM: $vencidoJBM, lastUpdated: $lastUpdated, deleted: $deleted)';
+    return 'ClientePagoPendienteDTO(clienteId: $clienteId, efectoId: $efectoId, facutaId: $facutaId, fechaFactura: $fechaFactura, fechaExpiracion: $fechaExpiracion, metodoDeCobroId: $metodoDeCobroId, estadoCobroId: $estadoCobroId, importe: $importe, fechaExpiracionInicial: $fechaExpiracionInicial, vencidoJBM: $vencidoJBM, lastUpdated: $lastUpdated, deleted: $deleted)';
 }
 
 

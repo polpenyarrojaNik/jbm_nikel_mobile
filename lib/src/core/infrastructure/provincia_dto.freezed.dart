@@ -29,16 +29,21 @@ $ProvinciaDTOCopyWith<ProvinciaDTO> get copyWith => _$ProvinciaDTOCopyWithImpl<P
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ProvinciaDTO&&(identical(other.paisId, paisId) || other.paisId == paisId)&&(identical(other.regionId, regionId) || other.regionId == regionId)&&(identical(other.provinciaId, provinciaId) || other.provinciaId == provinciaId)&&(identical(other.provincia, provincia) || other.provincia == provincia)&&(identical(other.lastUpdated, lastUpdated) || other.lastUpdated == lastUpdated)&&(identical(other.deleted, deleted) || other.deleted == deleted));
+  final _this = this as ProvinciaDTO;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ProvinciaDTO&&(identical(other.paisId, _this.paisId) || other.paisId == _this.paisId)&&(identical(other.regionId, _this.regionId) || other.regionId == _this.regionId)&&(identical(other.provinciaId, _this.provinciaId) || other.provinciaId == _this.provinciaId)&&(identical(other.provincia, _this.provincia) || other.provincia == _this.provincia)&&(identical(other.lastUpdated, _this.lastUpdated) || other.lastUpdated == _this.lastUpdated)&&(identical(other.deleted, _this.deleted) || other.deleted == _this.deleted));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,paisId,regionId,provinciaId,provincia,lastUpdated,deleted);
+int get hashCode {
+  final _this = this as ProvinciaDTO;
+  return Object.hash(runtimeType,_this.paisId,_this.regionId,_this.provinciaId,_this.provincia,_this.lastUpdated,_this.deleted);
+}
 
 @override
 String toString() {
-  return 'ProvinciaDTO(paisId: $paisId, regionId: $regionId, provinciaId: $provinciaId, provincia: $provincia, lastUpdated: $lastUpdated, deleted: $deleted)';
+  final _this = this as ProvinciaDTO;
+  return 'ProvinciaDTO(paisId: ${_this.paisId}, regionId: ${_this.regionId}, provinciaId: ${_this.provinciaId}, provincia: ${_this.provincia}, lastUpdated: ${_this.lastUpdated}, deleted: ${_this.deleted})';
 }
 
 
@@ -238,16 +243,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ProvinciaDTO&&(identical(other.paisId, paisId) || other.paisId == paisId)&&(identical(other.regionId, regionId) || other.regionId == regionId)&&(identical(other.provinciaId, provinciaId) || other.provinciaId == provinciaId)&&(identical(other.provincia, provincia) || other.provincia == provincia)&&(identical(other.lastUpdated, lastUpdated) || other.lastUpdated == lastUpdated)&&(identical(other.deleted, deleted) || other.deleted == deleted));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _ProvinciaDTO&&(identical(other.paisId, paisId) || other.paisId == paisId)&&(identical(other.regionId, regionId) || other.regionId == regionId)&&(identical(other.provinciaId, provinciaId) || other.provinciaId == provinciaId)&&(identical(other.provincia, provincia) || other.provincia == provincia)&&(identical(other.lastUpdated, lastUpdated) || other.lastUpdated == lastUpdated)&&(identical(other.deleted, deleted) || other.deleted == deleted));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,paisId,regionId,provinciaId,provincia,lastUpdated,deleted);
+int get hashCode {
+    return Object.hash(runtimeType,paisId,regionId,provinciaId,provincia,lastUpdated,deleted);
+}
 
 @override
 String toString() {
-  return 'ProvinciaDTO(paisId: $paisId, regionId: $regionId, provinciaId: $provinciaId, provincia: $provincia, lastUpdated: $lastUpdated, deleted: $deleted)';
+    return 'ProvinciaDTO(paisId: $paisId, regionId: $regionId, provinciaId: $provinciaId, provincia: $provincia, lastUpdated: $lastUpdated, deleted: $deleted)';
 }
 
 

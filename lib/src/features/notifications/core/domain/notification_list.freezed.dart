@@ -26,16 +26,21 @@ $NotificationListCopyWith<NotificationList> get copyWith => _$NotificationListCo
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is NotificationList&&(identical(other.notificationId, notificationId) || other.notificationId == notificationId)&&(identical(other.fecha, fecha) || other.fecha == fecha)&&(identical(other.leidoSN, leidoSN) || other.leidoSN == leidoSN)&&(identical(other.mensaje, mensaje) || other.mensaje == mensaje)&&(identical(other.tieneAdjuntoSN, tieneAdjuntoSN) || other.tieneAdjuntoSN == tieneAdjuntoSN));
+  final _this = this as NotificationList;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is NotificationList&&(identical(other.notificationId, _this.notificationId) || other.notificationId == _this.notificationId)&&(identical(other.fecha, _this.fecha) || other.fecha == _this.fecha)&&(identical(other.leidoSN, _this.leidoSN) || other.leidoSN == _this.leidoSN)&&(identical(other.mensaje, _this.mensaje) || other.mensaje == _this.mensaje)&&(identical(other.tieneAdjuntoSN, _this.tieneAdjuntoSN) || other.tieneAdjuntoSN == _this.tieneAdjuntoSN));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,notificationId,fecha,leidoSN,mensaje,tieneAdjuntoSN);
+int get hashCode {
+  final _this = this as NotificationList;
+  return Object.hash(runtimeType,_this.notificationId,_this.fecha,_this.leidoSN,_this.mensaje,_this.tieneAdjuntoSN);
+}
 
 @override
 String toString() {
-  return 'NotificationList(notificationId: $notificationId, fecha: $fecha, leidoSN: $leidoSN, mensaje: $mensaje, tieneAdjuntoSN: $tieneAdjuntoSN)';
+  final _this = this as NotificationList;
+  return 'NotificationList(notificationId: ${_this.notificationId}, fecha: ${_this.fecha}, leidoSN: ${_this.leidoSN}, mensaje: ${_this.mensaje}, tieneAdjuntoSN: ${_this.tieneAdjuntoSN})';
 }
 
 
@@ -230,16 +235,18 @@ _$NotificationListCopyWith<_NotificationList> get copyWith => __$NotificationLis
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _NotificationList&&(identical(other.notificationId, notificationId) || other.notificationId == notificationId)&&(identical(other.fecha, fecha) || other.fecha == fecha)&&(identical(other.leidoSN, leidoSN) || other.leidoSN == leidoSN)&&(identical(other.mensaje, mensaje) || other.mensaje == mensaje)&&(identical(other.tieneAdjuntoSN, tieneAdjuntoSN) || other.tieneAdjuntoSN == tieneAdjuntoSN));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _NotificationList&&(identical(other.notificationId, notificationId) || other.notificationId == notificationId)&&(identical(other.fecha, fecha) || other.fecha == fecha)&&(identical(other.leidoSN, leidoSN) || other.leidoSN == leidoSN)&&(identical(other.mensaje, mensaje) || other.mensaje == mensaje)&&(identical(other.tieneAdjuntoSN, tieneAdjuntoSN) || other.tieneAdjuntoSN == tieneAdjuntoSN));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,notificationId,fecha,leidoSN,mensaje,tieneAdjuntoSN);
+int get hashCode {
+    return Object.hash(runtimeType,notificationId,fecha,leidoSN,mensaje,tieneAdjuntoSN);
+}
 
 @override
 String toString() {
-  return 'NotificationList(notificationId: $notificationId, fecha: $fecha, leidoSN: $leidoSN, mensaje: $mensaje, tieneAdjuntoSN: $tieneAdjuntoSN)';
+    return 'NotificationList(notificationId: $notificationId, fecha: $fecha, leidoSN: $leidoSN, mensaje: $mensaje, tieneAdjuntoSN: $tieneAdjuntoSN)';
 }
 
 

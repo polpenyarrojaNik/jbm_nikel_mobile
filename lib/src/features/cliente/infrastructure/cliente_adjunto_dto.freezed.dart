@@ -29,16 +29,21 @@ $ClienteAdjuntoDTOCopyWith<ClienteAdjuntoDTO> get copyWith => _$ClienteAdjuntoDT
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ClienteAdjuntoDTO&&(identical(other.clienteId, clienteId) || other.clienteId == clienteId)&&(identical(other.nombreAdjunto, nombreAdjunto) || other.nombreAdjunto == nombreAdjunto));
+  final _this = this as ClienteAdjuntoDTO;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ClienteAdjuntoDTO&&(identical(other.clienteId, _this.clienteId) || other.clienteId == _this.clienteId)&&(identical(other.nombreAdjunto, _this.nombreAdjunto) || other.nombreAdjunto == _this.nombreAdjunto));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,clienteId,nombreAdjunto);
+int get hashCode {
+  final _this = this as ClienteAdjuntoDTO;
+  return Object.hash(runtimeType,_this.clienteId,_this.nombreAdjunto);
+}
 
 @override
 String toString() {
-  return 'ClienteAdjuntoDTO(clienteId: $clienteId, nombreAdjunto: $nombreAdjunto)';
+  final _this = this as ClienteAdjuntoDTO;
+  return 'ClienteAdjuntoDTO(clienteId: ${_this.clienteId}, nombreAdjunto: ${_this.nombreAdjunto})';
 }
 
 
@@ -230,16 +235,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ClienteAdjuntoDTO&&(identical(other.clienteId, clienteId) || other.clienteId == clienteId)&&(identical(other.nombreAdjunto, nombreAdjunto) || other.nombreAdjunto == nombreAdjunto));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _ClienteAdjuntoDTO&&(identical(other.clienteId, clienteId) || other.clienteId == clienteId)&&(identical(other.nombreAdjunto, nombreAdjunto) || other.nombreAdjunto == nombreAdjunto));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,clienteId,nombreAdjunto);
+int get hashCode {
+    return Object.hash(runtimeType,clienteId,nombreAdjunto);
+}
 
 @override
 String toString() {
-  return 'ClienteAdjuntoDTO(clienteId: $clienteId, nombreAdjunto: $nombreAdjunto)';
+    return 'ClienteAdjuntoDTO(clienteId: $clienteId, nombreAdjunto: $nombreAdjunto)';
 }
 
 

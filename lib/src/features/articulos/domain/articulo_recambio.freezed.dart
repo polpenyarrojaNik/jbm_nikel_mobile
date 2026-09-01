@@ -26,16 +26,21 @@ $ArticuloRecambioCopyWith<ArticuloRecambio> get copyWith => _$ArticuloRecambioCo
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ArticuloRecambio&&(identical(other.articuloId, articuloId) || other.articuloId == articuloId)&&(identical(other.id, id) || other.id == id)&&(identical(other.descripcion, descripcion) || other.descripcion == descripcion)&&(identical(other.cantidad, cantidad) || other.cantidad == cantidad)&&(identical(other.lastUpdated, lastUpdated) || other.lastUpdated == lastUpdated)&&(identical(other.deleted, deleted) || other.deleted == deleted));
+  final _this = this as ArticuloRecambio;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ArticuloRecambio&&(identical(other.articuloId, _this.articuloId) || other.articuloId == _this.articuloId)&&(identical(other.id, _this.id) || other.id == _this.id)&&(identical(other.descripcion, _this.descripcion) || other.descripcion == _this.descripcion)&&(identical(other.cantidad, _this.cantidad) || other.cantidad == _this.cantidad)&&(identical(other.lastUpdated, _this.lastUpdated) || other.lastUpdated == _this.lastUpdated)&&(identical(other.deleted, _this.deleted) || other.deleted == _this.deleted));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,articuloId,id,descripcion,cantidad,lastUpdated,deleted);
+int get hashCode {
+  final _this = this as ArticuloRecambio;
+  return Object.hash(runtimeType,_this.articuloId,_this.id,_this.descripcion,_this.cantidad,_this.lastUpdated,_this.deleted);
+}
 
 @override
 String toString() {
-  return 'ArticuloRecambio(articuloId: $articuloId, id: $id, descripcion: $descripcion, cantidad: $cantidad, lastUpdated: $lastUpdated, deleted: $deleted)';
+  final _this = this as ArticuloRecambio;
+  return 'ArticuloRecambio(articuloId: ${_this.articuloId}, id: ${_this.id}, descripcion: ${_this.descripcion}, cantidad: ${_this.cantidad}, lastUpdated: ${_this.lastUpdated}, deleted: ${_this.deleted})';
 }
 
 
@@ -232,16 +237,18 @@ _$ArticuloRecambioCopyWith<_ArticuloRecambio> get copyWith => __$ArticuloRecambi
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ArticuloRecambio&&(identical(other.articuloId, articuloId) || other.articuloId == articuloId)&&(identical(other.id, id) || other.id == id)&&(identical(other.descripcion, descripcion) || other.descripcion == descripcion)&&(identical(other.cantidad, cantidad) || other.cantidad == cantidad)&&(identical(other.lastUpdated, lastUpdated) || other.lastUpdated == lastUpdated)&&(identical(other.deleted, deleted) || other.deleted == deleted));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _ArticuloRecambio&&(identical(other.articuloId, articuloId) || other.articuloId == articuloId)&&(identical(other.id, id) || other.id == id)&&(identical(other.descripcion, descripcion) || other.descripcion == descripcion)&&(identical(other.cantidad, cantidad) || other.cantidad == cantidad)&&(identical(other.lastUpdated, lastUpdated) || other.lastUpdated == lastUpdated)&&(identical(other.deleted, deleted) || other.deleted == deleted));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,articuloId,id,descripcion,cantidad,lastUpdated,deleted);
+int get hashCode {
+    return Object.hash(runtimeType,articuloId,id,descripcion,cantidad,lastUpdated,deleted);
+}
 
 @override
 String toString() {
-  return 'ArticuloRecambio(articuloId: $articuloId, id: $id, descripcion: $descripcion, cantidad: $cantidad, lastUpdated: $lastUpdated, deleted: $deleted)';
+    return 'ArticuloRecambio(articuloId: $articuloId, id: $id, descripcion: $descripcion, cantidad: $cantidad, lastUpdated: $lastUpdated, deleted: $deleted)';
 }
 
 

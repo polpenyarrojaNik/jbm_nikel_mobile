@@ -29,16 +29,21 @@ $PedidoAlbaranDTOCopyWith<PedidoAlbaranDTO> get copyWith => _$PedidoAlbaranDTOCo
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is PedidoAlbaranDTO&&(identical(other.empresaId, empresaId) || other.empresaId == empresaId)&&(identical(other.pedidoVentaId, pedidoVentaId) || other.pedidoVentaId == pedidoVentaId)&&(identical(other.albaranId, albaranId) || other.albaranId == albaranId)&&(identical(other.fechaAlbaran, fechaAlbaran) || other.fechaAlbaran == fechaAlbaran)&&(identical(other.agencia, agencia) || other.agencia == agencia)&&(identical(other.trackId, trackId) || other.trackId == trackId)&&(identical(other.trackingEstadoId, trackingEstadoId) || other.trackingEstadoId == trackingEstadoId)&&(identical(other.lastUpdated, lastUpdated) || other.lastUpdated == lastUpdated)&&(identical(other.deleted, deleted) || other.deleted == deleted));
+  final _this = this as PedidoAlbaranDTO;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is PedidoAlbaranDTO&&(identical(other.empresaId, _this.empresaId) || other.empresaId == _this.empresaId)&&(identical(other.pedidoVentaId, _this.pedidoVentaId) || other.pedidoVentaId == _this.pedidoVentaId)&&(identical(other.albaranId, _this.albaranId) || other.albaranId == _this.albaranId)&&(identical(other.fechaAlbaran, _this.fechaAlbaran) || other.fechaAlbaran == _this.fechaAlbaran)&&(identical(other.agencia, _this.agencia) || other.agencia == _this.agencia)&&(identical(other.trackId, _this.trackId) || other.trackId == _this.trackId)&&(identical(other.trackingEstadoId, _this.trackingEstadoId) || other.trackingEstadoId == _this.trackingEstadoId)&&(identical(other.lastUpdated, _this.lastUpdated) || other.lastUpdated == _this.lastUpdated)&&(identical(other.deleted, _this.deleted) || other.deleted == _this.deleted));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,empresaId,pedidoVentaId,albaranId,fechaAlbaran,agencia,trackId,trackingEstadoId,lastUpdated,deleted);
+int get hashCode {
+  final _this = this as PedidoAlbaranDTO;
+  return Object.hash(runtimeType,_this.empresaId,_this.pedidoVentaId,_this.albaranId,_this.fechaAlbaran,_this.agencia,_this.trackId,_this.trackingEstadoId,_this.lastUpdated,_this.deleted);
+}
 
 @override
 String toString() {
-  return 'PedidoAlbaranDTO(empresaId: $empresaId, pedidoVentaId: $pedidoVentaId, albaranId: $albaranId, fechaAlbaran: $fechaAlbaran, agencia: $agencia, trackId: $trackId, trackingEstadoId: $trackingEstadoId, lastUpdated: $lastUpdated, deleted: $deleted)';
+  final _this = this as PedidoAlbaranDTO;
+  return 'PedidoAlbaranDTO(empresaId: ${_this.empresaId}, pedidoVentaId: ${_this.pedidoVentaId}, albaranId: ${_this.albaranId}, fechaAlbaran: ${_this.fechaAlbaran}, agencia: ${_this.agencia}, trackId: ${_this.trackId}, trackingEstadoId: ${_this.trackingEstadoId}, lastUpdated: ${_this.lastUpdated}, deleted: ${_this.deleted})';
 }
 
 
@@ -244,16 +249,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _PedidoAlbaranDTO&&(identical(other.empresaId, empresaId) || other.empresaId == empresaId)&&(identical(other.pedidoVentaId, pedidoVentaId) || other.pedidoVentaId == pedidoVentaId)&&(identical(other.albaranId, albaranId) || other.albaranId == albaranId)&&(identical(other.fechaAlbaran, fechaAlbaran) || other.fechaAlbaran == fechaAlbaran)&&(identical(other.agencia, agencia) || other.agencia == agencia)&&(identical(other.trackId, trackId) || other.trackId == trackId)&&(identical(other.trackingEstadoId, trackingEstadoId) || other.trackingEstadoId == trackingEstadoId)&&(identical(other.lastUpdated, lastUpdated) || other.lastUpdated == lastUpdated)&&(identical(other.deleted, deleted) || other.deleted == deleted));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _PedidoAlbaranDTO&&(identical(other.empresaId, empresaId) || other.empresaId == empresaId)&&(identical(other.pedidoVentaId, pedidoVentaId) || other.pedidoVentaId == pedidoVentaId)&&(identical(other.albaranId, albaranId) || other.albaranId == albaranId)&&(identical(other.fechaAlbaran, fechaAlbaran) || other.fechaAlbaran == fechaAlbaran)&&(identical(other.agencia, agencia) || other.agencia == agencia)&&(identical(other.trackId, trackId) || other.trackId == trackId)&&(identical(other.trackingEstadoId, trackingEstadoId) || other.trackingEstadoId == trackingEstadoId)&&(identical(other.lastUpdated, lastUpdated) || other.lastUpdated == lastUpdated)&&(identical(other.deleted, deleted) || other.deleted == deleted));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,empresaId,pedidoVentaId,albaranId,fechaAlbaran,agencia,trackId,trackingEstadoId,lastUpdated,deleted);
+int get hashCode {
+    return Object.hash(runtimeType,empresaId,pedidoVentaId,albaranId,fechaAlbaran,agencia,trackId,trackingEstadoId,lastUpdated,deleted);
+}
 
 @override
 String toString() {
-  return 'PedidoAlbaranDTO(empresaId: $empresaId, pedidoVentaId: $pedidoVentaId, albaranId: $albaranId, fechaAlbaran: $fechaAlbaran, agencia: $agencia, trackId: $trackId, trackingEstadoId: $trackingEstadoId, lastUpdated: $lastUpdated, deleted: $deleted)';
+    return 'PedidoAlbaranDTO(empresaId: $empresaId, pedidoVentaId: $pedidoVentaId, albaranId: $albaranId, fechaAlbaran: $fechaAlbaran, agencia: $agencia, trackId: $trackId, trackingEstadoId: $trackingEstadoId, lastUpdated: $lastUpdated, deleted: $deleted)';
 }
 
 

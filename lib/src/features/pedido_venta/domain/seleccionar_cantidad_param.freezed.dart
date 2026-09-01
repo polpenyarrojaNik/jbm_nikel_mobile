@@ -26,16 +26,21 @@ $SeleccionarCantidadParamCopyWith<SeleccionarCantidadParam> get copyWith => _$Se
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is SeleccionarCantidadParam&&(identical(other.pedidoVentaParam, pedidoVentaParam) || other.pedidoVentaParam == pedidoVentaParam)&&(identical(other.clienteId, clienteId) || other.clienteId == clienteId)&&(identical(other.articuloId, articuloId) || other.articuloId == articuloId)&&(identical(other.cantidad, cantidad) || other.cantidad == cantidad)&&(identical(other.precio, precio) || other.precio == precio)&&(identical(other.descuento1, descuento1) || other.descuento1 == descuento1)&&(identical(other.descuento2, descuento2) || other.descuento2 == descuento2)&&(identical(other.createdFromCliente, createdFromCliente) || other.createdFromCliente == createdFromCliente)&&(identical(other.posicionLinea, posicionLinea) || other.posicionLinea == posicionLinea)&&(identical(other.addNewLineaDesdeArticulo, addNewLineaDesdeArticulo) || other.addNewLineaDesdeArticulo == addNewLineaDesdeArticulo)&&(identical(other.recomendado, recomendado) || other.recomendado == recomendado));
+  final _this = this as SeleccionarCantidadParam;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is SeleccionarCantidadParam&&(identical(other.pedidoVentaParam, _this.pedidoVentaParam) || other.pedidoVentaParam == _this.pedidoVentaParam)&&(identical(other.clienteId, _this.clienteId) || other.clienteId == _this.clienteId)&&(identical(other.articuloId, _this.articuloId) || other.articuloId == _this.articuloId)&&(identical(other.cantidad, _this.cantidad) || other.cantidad == _this.cantidad)&&(identical(other.precio, _this.precio) || other.precio == _this.precio)&&(identical(other.descuento1, _this.descuento1) || other.descuento1 == _this.descuento1)&&(identical(other.descuento2, _this.descuento2) || other.descuento2 == _this.descuento2)&&(identical(other.createdFromCliente, _this.createdFromCliente) || other.createdFromCliente == _this.createdFromCliente)&&(identical(other.posicionLinea, _this.posicionLinea) || other.posicionLinea == _this.posicionLinea)&&(identical(other.addNewLineaDesdeArticulo, _this.addNewLineaDesdeArticulo) || other.addNewLineaDesdeArticulo == _this.addNewLineaDesdeArticulo)&&(identical(other.recomendado, _this.recomendado) || other.recomendado == _this.recomendado));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,pedidoVentaParam,clienteId,articuloId,cantidad,precio,descuento1,descuento2,createdFromCliente,posicionLinea,addNewLineaDesdeArticulo,recomendado);
+int get hashCode {
+  final _this = this as SeleccionarCantidadParam;
+  return Object.hash(runtimeType,_this.pedidoVentaParam,_this.clienteId,_this.articuloId,_this.cantidad,_this.precio,_this.descuento1,_this.descuento2,_this.createdFromCliente,_this.posicionLinea,_this.addNewLineaDesdeArticulo,_this.recomendado);
+}
 
 @override
 String toString() {
-  return 'SeleccionarCantidadParam(pedidoVentaParam: $pedidoVentaParam, clienteId: $clienteId, articuloId: $articuloId, cantidad: $cantidad, precio: $precio, descuento1: $descuento1, descuento2: $descuento2, createdFromCliente: $createdFromCliente, posicionLinea: $posicionLinea, addNewLineaDesdeArticulo: $addNewLineaDesdeArticulo, recomendado: $recomendado)';
+  final _this = this as SeleccionarCantidadParam;
+  return 'SeleccionarCantidadParam(pedidoVentaParam: ${_this.pedidoVentaParam}, clienteId: ${_this.clienteId}, articuloId: ${_this.articuloId}, cantidad: ${_this.cantidad}, precio: ${_this.precio}, descuento1: ${_this.descuento1}, descuento2: ${_this.descuento2}, createdFromCliente: ${_this.createdFromCliente}, posicionLinea: ${_this.posicionLinea}, addNewLineaDesdeArticulo: ${_this.addNewLineaDesdeArticulo}, recomendado: ${_this.recomendado})';
 }
 
 
@@ -251,16 +256,18 @@ _$SeleccionarCantidadParamCopyWith<_SeleccionarCantidadParam> get copyWith => __
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _SeleccionarCantidadParam&&(identical(other.pedidoVentaParam, pedidoVentaParam) || other.pedidoVentaParam == pedidoVentaParam)&&(identical(other.clienteId, clienteId) || other.clienteId == clienteId)&&(identical(other.articuloId, articuloId) || other.articuloId == articuloId)&&(identical(other.cantidad, cantidad) || other.cantidad == cantidad)&&(identical(other.precio, precio) || other.precio == precio)&&(identical(other.descuento1, descuento1) || other.descuento1 == descuento1)&&(identical(other.descuento2, descuento2) || other.descuento2 == descuento2)&&(identical(other.createdFromCliente, createdFromCliente) || other.createdFromCliente == createdFromCliente)&&(identical(other.posicionLinea, posicionLinea) || other.posicionLinea == posicionLinea)&&(identical(other.addNewLineaDesdeArticulo, addNewLineaDesdeArticulo) || other.addNewLineaDesdeArticulo == addNewLineaDesdeArticulo)&&(identical(other.recomendado, recomendado) || other.recomendado == recomendado));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _SeleccionarCantidadParam&&(identical(other.pedidoVentaParam, pedidoVentaParam) || other.pedidoVentaParam == pedidoVentaParam)&&(identical(other.clienteId, clienteId) || other.clienteId == clienteId)&&(identical(other.articuloId, articuloId) || other.articuloId == articuloId)&&(identical(other.cantidad, cantidad) || other.cantidad == cantidad)&&(identical(other.precio, precio) || other.precio == precio)&&(identical(other.descuento1, descuento1) || other.descuento1 == descuento1)&&(identical(other.descuento2, descuento2) || other.descuento2 == descuento2)&&(identical(other.createdFromCliente, createdFromCliente) || other.createdFromCliente == createdFromCliente)&&(identical(other.posicionLinea, posicionLinea) || other.posicionLinea == posicionLinea)&&(identical(other.addNewLineaDesdeArticulo, addNewLineaDesdeArticulo) || other.addNewLineaDesdeArticulo == addNewLineaDesdeArticulo)&&(identical(other.recomendado, recomendado) || other.recomendado == recomendado));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,pedidoVentaParam,clienteId,articuloId,cantidad,precio,descuento1,descuento2,createdFromCliente,posicionLinea,addNewLineaDesdeArticulo,recomendado);
+int get hashCode {
+    return Object.hash(runtimeType,pedidoVentaParam,clienteId,articuloId,cantidad,precio,descuento1,descuento2,createdFromCliente,posicionLinea,addNewLineaDesdeArticulo,recomendado);
+}
 
 @override
 String toString() {
-  return 'SeleccionarCantidadParam(pedidoVentaParam: $pedidoVentaParam, clienteId: $clienteId, articuloId: $articuloId, cantidad: $cantidad, precio: $precio, descuento1: $descuento1, descuento2: $descuento2, createdFromCliente: $createdFromCliente, posicionLinea: $posicionLinea, addNewLineaDesdeArticulo: $addNewLineaDesdeArticulo, recomendado: $recomendado)';
+    return 'SeleccionarCantidadParam(pedidoVentaParam: $pedidoVentaParam, clienteId: $clienteId, articuloId: $articuloId, cantidad: $cantidad, precio: $precio, descuento1: $descuento1, descuento2: $descuento2, createdFromCliente: $createdFromCliente, posicionLinea: $posicionLinea, addNewLineaDesdeArticulo: $addNewLineaDesdeArticulo, recomendado: $recomendado)';
 }
 
 
@@ -331,16 +338,21 @@ $SelectQuantityInitialDataCopyWith<SelectQuantityInitialData> get copyWith => _$
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is SelectQuantityInitialData&&(identical(other.articulo, articulo) || other.articulo == articulo)&&(identical(other.cliente, cliente) || other.cliente == cliente));
+  final _this = this as SelectQuantityInitialData;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is SelectQuantityInitialData&&(identical(other.articulo, _this.articulo) || other.articulo == _this.articulo)&&(identical(other.cliente, _this.cliente) || other.cliente == _this.cliente));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,articulo,cliente);
+int get hashCode {
+  final _this = this as SelectQuantityInitialData;
+  return Object.hash(runtimeType,_this.articulo,_this.cliente);
+}
 
 @override
 String toString() {
-  return 'SelectQuantityInitialData(articulo: $articulo, cliente: $cliente)';
+  final _this = this as SelectQuantityInitialData;
+  return 'SelectQuantityInitialData(articulo: ${_this.articulo}, cliente: ${_this.cliente})';
 }
 
 
@@ -547,16 +559,18 @@ _$SelectQuantityInitialDataCopyWith<_SelectQuantityInitialData> get copyWith => 
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _SelectQuantityInitialData&&(identical(other.articulo, articulo) || other.articulo == articulo)&&(identical(other.cliente, cliente) || other.cliente == cliente));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _SelectQuantityInitialData&&(identical(other.articulo, articulo) || other.articulo == articulo)&&(identical(other.cliente, cliente) || other.cliente == cliente));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,articulo,cliente);
+int get hashCode {
+    return Object.hash(runtimeType,articulo,cliente);
+}
 
 @override
 String toString() {
-  return 'SelectQuantityInitialData(articulo: $articulo, cliente: $cliente)';
+    return 'SelectQuantityInitialData(articulo: $articulo, cliente: $cliente)';
 }
 
 

@@ -29,16 +29,21 @@ $JBMHeadersCopyWith<JBMHeaders> get copyWith => _$JBMHeadersCopyWithImpl<JBMHead
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is JBMHeaders&&(identical(other.etag, etag) || other.etag == etag)&&(identical(other.maxPage, maxPage) || other.maxPage == maxPage)&&(identical(other.totalRows, totalRows) || other.totalRows == totalRows));
+  final _this = this as JBMHeaders;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is JBMHeaders&&(identical(other.etag, _this.etag) || other.etag == _this.etag)&&(identical(other.maxPage, _this.maxPage) || other.maxPage == _this.maxPage)&&(identical(other.totalRows, _this.totalRows) || other.totalRows == _this.totalRows));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,etag,maxPage,totalRows);
+int get hashCode {
+  final _this = this as JBMHeaders;
+  return Object.hash(runtimeType,_this.etag,_this.maxPage,_this.totalRows);
+}
 
 @override
 String toString() {
-  return 'JBMHeaders(etag: $etag, maxPage: $maxPage, totalRows: $totalRows)';
+  final _this = this as JBMHeaders;
+  return 'JBMHeaders(etag: ${_this.etag}, maxPage: ${_this.maxPage}, totalRows: ${_this.totalRows})';
 }
 
 
@@ -232,16 +237,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _JBMHeaders&&(identical(other.etag, etag) || other.etag == etag)&&(identical(other.maxPage, maxPage) || other.maxPage == maxPage)&&(identical(other.totalRows, totalRows) || other.totalRows == totalRows));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _JBMHeaders&&(identical(other.etag, etag) || other.etag == etag)&&(identical(other.maxPage, maxPage) || other.maxPage == maxPage)&&(identical(other.totalRows, totalRows) || other.totalRows == totalRows));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,etag,maxPage,totalRows);
+int get hashCode {
+    return Object.hash(runtimeType,etag,maxPage,totalRows);
+}
 
 @override
 String toString() {
-  return 'JBMHeaders(etag: $etag, maxPage: $maxPage, totalRows: $totalRows)';
+    return 'JBMHeaders(etag: $etag, maxPage: $maxPage, totalRows: $totalRows)';
 }
 
 

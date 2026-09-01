@@ -469,5 +469,7 @@
   "potential": "Potentiell",
   "filter": "Filter",
   "sent": "Gesendet",
-  "salesOrderSent": "Verkaufsauftrag gesendet"
+  "salesOrderSent": "Verkaufsauftrag gesendet",
+  "backorders": "Rückstände",
+  "buscarBackorders": "Rückstände suchen..."
 }

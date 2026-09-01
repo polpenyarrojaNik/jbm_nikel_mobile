@@ -21,7 +21,7 @@ mixin _$PedidoVentaEditPageControllerState {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is PedidoVentaEditPageControllerState);
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is PedidoVentaEditPageControllerState);
 }
 
 
@@ -30,7 +30,7 @@ int get hashCode => runtimeType.hashCode;
 
 @override
 String toString() {
-  return 'PedidoVentaEditPageControllerState()';
+    return 'PedidoVentaEditPageControllerState()';
 }
 
 
@@ -216,7 +216,7 @@ class _loading extends PedidoVentaEditPageControllerState {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _loading);
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _loading);
 }
 
 
@@ -225,7 +225,7 @@ int get hashCode => runtimeType.hashCode;
 
 @override
 String toString() {
-  return 'PedidoVentaEditPageControllerState.loading()';
+    return 'PedidoVentaEditPageControllerState.loading()';
 }
 
 
@@ -276,16 +276,18 @@ _$dataCopyWith<_data> get copyWith => __$dataCopyWithImpl<_data>(this, _$identit
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _data&&(identical(other.cliente, cliente) || other.cliente == cliente)&&(identical(other.clienteDireccion, clienteDireccion) || other.clienteDireccion == clienteDireccion)&&const DeepCollectionEquality().equals(other._pedidoVentaLinea, _pedidoVentaLinea)&&const DeepCollectionEquality().equals(other._recomendacionesProductoList, _recomendacionesProductoList)&&(identical(other.currentStep, currentStep) || other.currentStep == currentStep)&&(identical(other.observaciones, observaciones) || other.observaciones == observaciones)&&(identical(other.pedidoCliente, pedidoCliente) || other.pedidoCliente == pedidoCliente)&&(identical(other.oferta, oferta) || other.oferta == oferta)&&(identical(other.ofertaFechaHasta, ofertaFechaHasta) || other.ofertaFechaHasta == ofertaFechaHasta)&&(identical(other.isBorrador, isBorrador) || other.isBorrador == isBorrador));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _data&&(identical(other.cliente, cliente) || other.cliente == cliente)&&(identical(other.clienteDireccion, clienteDireccion) || other.clienteDireccion == clienteDireccion)&&const DeepCollectionEquality().equals(other.pedidoVentaLinea, _pedidoVentaLinea)&&const DeepCollectionEquality().equals(other.recomendacionesProductoList, _recomendacionesProductoList)&&(identical(other.currentStep, currentStep) || other.currentStep == currentStep)&&(identical(other.observaciones, observaciones) || other.observaciones == observaciones)&&(identical(other.pedidoCliente, pedidoCliente) || other.pedidoCliente == pedidoCliente)&&(identical(other.oferta, oferta) || other.oferta == oferta)&&(identical(other.ofertaFechaHasta, ofertaFechaHasta) || other.ofertaFechaHasta == ofertaFechaHasta)&&(identical(other.isBorrador, isBorrador) || other.isBorrador == isBorrador));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,cliente,clienteDireccion,const DeepCollectionEquality().hash(_pedidoVentaLinea),const DeepCollectionEquality().hash(_recomendacionesProductoList),currentStep,observaciones,pedidoCliente,oferta,ofertaFechaHasta,isBorrador);
+int get hashCode {
+    return Object.hash(runtimeType,cliente,clienteDireccion,const DeepCollectionEquality().hash(_pedidoVentaLinea),const DeepCollectionEquality().hash(_recomendacionesProductoList),currentStep,observaciones,pedidoCliente,oferta,ofertaFechaHasta,isBorrador);
+}
 
 @override
 String toString() {
-  return 'PedidoVentaEditPageControllerState.data(cliente: $cliente, clienteDireccion: $clienteDireccion, pedidoVentaLinea: $pedidoVentaLinea, recomendacionesProductoList: $recomendacionesProductoList, currentStep: $currentStep, observaciones: $observaciones, pedidoCliente: $pedidoCliente, oferta: $oferta, ofertaFechaHasta: $ofertaFechaHasta, isBorrador: $isBorrador)';
+    return 'PedidoVentaEditPageControllerState.data(cliente: $cliente, clienteDireccion: $clienteDireccion, pedidoVentaLinea: $pedidoVentaLinea, recomendacionesProductoList: $recomendacionesProductoList, currentStep: $currentStep, observaciones: $observaciones, pedidoCliente: $pedidoCliente, oferta: $oferta, ofertaFechaHasta: $ofertaFechaHasta, isBorrador: $isBorrador)';
 }
 
 
@@ -376,16 +378,18 @@ _$errorCopyWith<_error> get copyWith => __$errorCopyWithImpl<_error>(this, _$ide
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _error&&const DeepCollectionEquality().equals(other.error, error)&&(identical(other.stackTrace, stackTrace) || other.stackTrace == stackTrace));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _error&&const DeepCollectionEquality().equals(other.error, error)&&(identical(other.stackTrace, stackTrace) || other.stackTrace == stackTrace));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(error),stackTrace);
+int get hashCode {
+    return Object.hash(runtimeType,const DeepCollectionEquality().hash(error),stackTrace);
+}
 
 @override
 String toString() {
-  return 'PedidoVentaEditPageControllerState.error(error: $error, stackTrace: $stackTrace)';
+    return 'PedidoVentaEditPageControllerState.error(error: $error, stackTrace: $stackTrace)';
 }
 
 
@@ -437,7 +441,7 @@ class _deleted extends PedidoVentaEditPageControllerState {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _deleted);
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _deleted);
 }
 
 
@@ -446,7 +450,7 @@ int get hashCode => runtimeType.hashCode;
 
 @override
 String toString() {
-  return 'PedidoVentaEditPageControllerState.deleted()';
+    return 'PedidoVentaEditPageControllerState.deleted()';
 }
 
 
@@ -475,16 +479,18 @@ _$savedCopyWith<_saved> get copyWith => __$savedCopyWithImpl<_saved>(this, _$ide
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _saved&&(identical(other.pedidoVentaAppId, pedidoVentaAppId) || other.pedidoVentaAppId == pedidoVentaAppId)&&(identical(other.isBorrador, isBorrador) || other.isBorrador == isBorrador));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _saved&&(identical(other.pedidoVentaAppId, pedidoVentaAppId) || other.pedidoVentaAppId == pedidoVentaAppId)&&(identical(other.isBorrador, isBorrador) || other.isBorrador == isBorrador));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,pedidoVentaAppId,isBorrador);
+int get hashCode {
+    return Object.hash(runtimeType,pedidoVentaAppId,isBorrador);
+}
 
 @override
 String toString() {
-  return 'PedidoVentaEditPageControllerState.saved(pedidoVentaAppId: $pedidoVentaAppId, isBorrador: $isBorrador)';
+    return 'PedidoVentaEditPageControllerState.saved(pedidoVentaAppId: $pedidoVentaAppId, isBorrador: $isBorrador)';
 }
 
 
@@ -567,16 +573,18 @@ _$savedErrorCopyWith<_savedError> get copyWith => __$savedErrorCopyWithImpl<_sav
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _savedError&&(identical(other.cliente, cliente) || other.cliente == cliente)&&(identical(other.clienteDireccion, clienteDireccion) || other.clienteDireccion == clienteDireccion)&&const DeepCollectionEquality().equals(other._pedidoVentaLinea, _pedidoVentaLinea)&&const DeepCollectionEquality().equals(other._recomendacionesProductoList, _recomendacionesProductoList)&&(identical(other.currentStep, currentStep) || other.currentStep == currentStep)&&(identical(other.observaciones, observaciones) || other.observaciones == observaciones)&&(identical(other.pedidoCliente, pedidoCliente) || other.pedidoCliente == pedidoCliente)&&(identical(other.oferta, oferta) || other.oferta == oferta)&&(identical(other.ofertaFechaHasta, ofertaFechaHasta) || other.ofertaFechaHasta == ofertaFechaHasta)&&(identical(other.isBorrador, isBorrador) || other.isBorrador == isBorrador)&&const DeepCollectionEquality().equals(other.error, error)&&(identical(other.stackTrace, stackTrace) || other.stackTrace == stackTrace));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _savedError&&(identical(other.cliente, cliente) || other.cliente == cliente)&&(identical(other.clienteDireccion, clienteDireccion) || other.clienteDireccion == clienteDireccion)&&const DeepCollectionEquality().equals(other.pedidoVentaLinea, _pedidoVentaLinea)&&const DeepCollectionEquality().equals(other.recomendacionesProductoList, _recomendacionesProductoList)&&(identical(other.currentStep, currentStep) || other.currentStep == currentStep)&&(identical(other.observaciones, observaciones) || other.observaciones == observaciones)&&(identical(other.pedidoCliente, pedidoCliente) || other.pedidoCliente == pedidoCliente)&&(identical(other.oferta, oferta) || other.oferta == oferta)&&(identical(other.ofertaFechaHasta, ofertaFechaHasta) || other.ofertaFechaHasta == ofertaFechaHasta)&&(identical(other.isBorrador, isBorrador) || other.isBorrador == isBorrador)&&const DeepCollectionEquality().equals(other.error, error)&&(identical(other.stackTrace, stackTrace) || other.stackTrace == stackTrace));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,cliente,clienteDireccion,const DeepCollectionEquality().hash(_pedidoVentaLinea),const DeepCollectionEquality().hash(_recomendacionesProductoList),currentStep,observaciones,pedidoCliente,oferta,ofertaFechaHasta,isBorrador,const DeepCollectionEquality().hash(error),stackTrace);
+int get hashCode {
+    return Object.hash(runtimeType,cliente,clienteDireccion,const DeepCollectionEquality().hash(_pedidoVentaLinea),const DeepCollectionEquality().hash(_recomendacionesProductoList),currentStep,observaciones,pedidoCliente,oferta,ofertaFechaHasta,isBorrador,const DeepCollectionEquality().hash(error),stackTrace);
+}
 
 @override
 String toString() {
-  return 'PedidoVentaEditPageControllerState.savedError(cliente: $cliente, clienteDireccion: $clienteDireccion, pedidoVentaLinea: $pedidoVentaLinea, recomendacionesProductoList: $recomendacionesProductoList, currentStep: $currentStep, observaciones: $observaciones, pedidoCliente: $pedidoCliente, oferta: $oferta, ofertaFechaHasta: $ofertaFechaHasta, isBorrador: $isBorrador, error: $error, stackTrace: $stackTrace)';
+    return 'PedidoVentaEditPageControllerState.savedError(cliente: $cliente, clienteDireccion: $clienteDireccion, pedidoVentaLinea: $pedidoVentaLinea, recomendacionesProductoList: $recomendacionesProductoList, currentStep: $currentStep, observaciones: $observaciones, pedidoCliente: $pedidoCliente, oferta: $oferta, ofertaFechaHasta: $ofertaFechaHasta, isBorrador: $isBorrador, error: $error, stackTrace: $stackTrace)';
 }
 
 

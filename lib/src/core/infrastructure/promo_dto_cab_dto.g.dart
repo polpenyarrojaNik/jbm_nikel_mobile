@@ -17,6 +17,7 @@ _PromoDtoCabDTO _$PromoDtoCabDTOFromJson(Map<String, dynamic> json) =>
           : DateTime.parse(json['FECHA_HASTA'] as String),
       divisaId: json['DIVISA_ID'] as String,
       lastUpdated: DateTime.parse(json['LAST_UPDATED'] as String),
+      visibleSN: json['VISIBLE_SN'] as String,
       deleted: json['DELETED'] as String? ?? 'N',
     );
 
@@ -29,5 +30,6 @@ Map<String, dynamic> _$PromoDtoCabDTOToJson(_PromoDtoCabDTO instance) =>
       'FECHA_HASTA': instance.fechaHasta?.toIso8601String(),
       'DIVISA_ID': instance.divisaId,
       'LAST_UPDATED': instance.lastUpdated.toIso8601String(),
+      'VISIBLE_SN': instance.visibleSN,
       'DELETED': instance.deleted,
     };

@@ -26,16 +26,21 @@ $ClienteAdjuntoCopyWith<ClienteAdjunto> get copyWith => _$ClienteAdjuntoCopyWith
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ClienteAdjunto&&(identical(other.clienteId, clienteId) || other.clienteId == clienteId)&&(identical(other.nombreAdjunto, nombreAdjunto) || other.nombreAdjunto == nombreAdjunto));
+  final _this = this as ClienteAdjunto;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ClienteAdjunto&&(identical(other.clienteId, _this.clienteId) || other.clienteId == _this.clienteId)&&(identical(other.nombreAdjunto, _this.nombreAdjunto) || other.nombreAdjunto == _this.nombreAdjunto));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,clienteId,nombreAdjunto);
+int get hashCode {
+  final _this = this as ClienteAdjunto;
+  return Object.hash(runtimeType,_this.clienteId,_this.nombreAdjunto);
+}
 
 @override
 String toString() {
-  return 'ClienteAdjunto(clienteId: $clienteId, nombreAdjunto: $nombreAdjunto)';
+  final _this = this as ClienteAdjunto;
+  return 'ClienteAdjunto(clienteId: ${_this.clienteId}, nombreAdjunto: ${_this.nombreAdjunto})';
 }
 
 
@@ -224,16 +229,18 @@ _$ClienteAdjuntoCopyWith<_ClienteAdjunto> get copyWith => __$ClienteAdjuntoCopyW
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ClienteAdjunto&&(identical(other.clienteId, clienteId) || other.clienteId == clienteId)&&(identical(other.nombreAdjunto, nombreAdjunto) || other.nombreAdjunto == nombreAdjunto));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _ClienteAdjunto&&(identical(other.clienteId, clienteId) || other.clienteId == clienteId)&&(identical(other.nombreAdjunto, nombreAdjunto) || other.nombreAdjunto == nombreAdjunto));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,clienteId,nombreAdjunto);
+int get hashCode {
+    return Object.hash(runtimeType,clienteId,nombreAdjunto);
+}
 
 @override
 String toString() {
-  return 'ClienteAdjunto(clienteId: $clienteId, nombreAdjunto: $nombreAdjunto)';
+    return 'ClienteAdjunto(clienteId: $clienteId, nombreAdjunto: $nombreAdjunto)';
 }
 
 

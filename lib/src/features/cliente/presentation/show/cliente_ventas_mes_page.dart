@@ -22,14 +22,28 @@ class ClienteVentasMesPage extends ConsumerWidget {
     super.key,
     required this.clienteId,
     required this.nombreCliente,
+    required this.applyDireccionFilter,
+    this.direccionId,
+    this.nombreDireccion,
+    this.addressText,
   });
 
   final String clienteId;
+  final String? direccionId;
   final String? nombreCliente;
+  final String? nombreDireccion;
+  final String? addressText;
+  final bool applyDireccionFilter;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final state = ref.watch(clienteVentasMesListByIdProvider(clienteId));
+    final state = ref.watch(
+      clienteVentasMesListByIdProvider(
+        clienteId,
+        direccionId: direccionId,
+        applyDireccionFilter: applyDireccionFilter,
+      ),
+    );
     return Scaffold(
       appBar: CommonAppBar(
         titleText: (S.of(context).cliente_show_clienteVentasMes_titulo),
@@ -38,7 +52,8 @@ class ClienteVentasMesPage extends ConsumerWidget {
         children: [
           HeaderDatosRelacionados(
             entityId: '#$clienteId ${nombreCliente ?? ''}',
-            subtitle: null,
+            subtitle: applyDireccionFilter ? nombreDireccion : null,
+            footer: applyDireccionFilter ? addressText : null,
           ),
           const Gap(8),
           state.maybeWhen(

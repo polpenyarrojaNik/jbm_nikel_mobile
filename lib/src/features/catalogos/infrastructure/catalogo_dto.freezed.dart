@@ -29,16 +29,21 @@ $CatalogoDTOCopyWith<CatalogoDTO> get copyWith => _$CatalogoDTOCopyWithImpl<Cata
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is CatalogoDTO&&(identical(other.catalogoId, catalogoId) || other.catalogoId == catalogoId)&&(identical(other.nombre, nombre) || other.nombre == nombre)&&(identical(other.idiomaId, idiomaId) || other.idiomaId == idiomaId)&&(identical(other.tipoPrecioCatalogoId, tipoPrecioCatalogoId) || other.tipoPrecioCatalogoId == tipoPrecioCatalogoId)&&(identical(other.tipoPrecioCatalogoNombre, tipoPrecioCatalogoNombre) || other.tipoPrecioCatalogoNombre == tipoPrecioCatalogoNombre)&&(identical(other.tipoCatalogoId, tipoCatalogoId) || other.tipoCatalogoId == tipoCatalogoId)&&(identical(other.tagBusqueda, tagBusqueda) || other.tagBusqueda == tagBusqueda)&&(identical(other.orden, orden) || other.orden == orden)&&(identical(other.nombreFicheroPortada, nombreFicheroPortada) || other.nombreFicheroPortada == nombreFicheroPortada)&&(identical(other.nombreFicheroCatalogo, nombreFicheroCatalogo) || other.nombreFicheroCatalogo == nombreFicheroCatalogo)&&(identical(other.descarga, descarga) || other.descarga == descarga));
+  final _this = this as CatalogoDTO;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is CatalogoDTO&&(identical(other.catalogoId, _this.catalogoId) || other.catalogoId == _this.catalogoId)&&(identical(other.nombre, _this.nombre) || other.nombre == _this.nombre)&&(identical(other.idiomaId, _this.idiomaId) || other.idiomaId == _this.idiomaId)&&(identical(other.tipoPrecioCatalogoId, _this.tipoPrecioCatalogoId) || other.tipoPrecioCatalogoId == _this.tipoPrecioCatalogoId)&&(identical(other.tipoPrecioCatalogoNombre, _this.tipoPrecioCatalogoNombre) || other.tipoPrecioCatalogoNombre == _this.tipoPrecioCatalogoNombre)&&(identical(other.tipoCatalogoId, _this.tipoCatalogoId) || other.tipoCatalogoId == _this.tipoCatalogoId)&&(identical(other.tagBusqueda, _this.tagBusqueda) || other.tagBusqueda == _this.tagBusqueda)&&(identical(other.orden, _this.orden) || other.orden == _this.orden)&&(identical(other.nombreFicheroPortada, _this.nombreFicheroPortada) || other.nombreFicheroPortada == _this.nombreFicheroPortada)&&(identical(other.nombreFicheroCatalogo, _this.nombreFicheroCatalogo) || other.nombreFicheroCatalogo == _this.nombreFicheroCatalogo)&&(identical(other.descarga, _this.descarga) || other.descarga == _this.descarga));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,catalogoId,nombre,idiomaId,tipoPrecioCatalogoId,tipoPrecioCatalogoNombre,tipoCatalogoId,tagBusqueda,orden,nombreFicheroPortada,nombreFicheroCatalogo,descarga);
+int get hashCode {
+  final _this = this as CatalogoDTO;
+  return Object.hash(runtimeType,_this.catalogoId,_this.nombre,_this.idiomaId,_this.tipoPrecioCatalogoId,_this.tipoPrecioCatalogoNombre,_this.tipoCatalogoId,_this.tagBusqueda,_this.orden,_this.nombreFicheroPortada,_this.nombreFicheroCatalogo,_this.descarga);
+}
 
 @override
 String toString() {
-  return 'CatalogoDTO(catalogoId: $catalogoId, nombre: $nombre, idiomaId: $idiomaId, tipoPrecioCatalogoId: $tipoPrecioCatalogoId, tipoPrecioCatalogoNombre: $tipoPrecioCatalogoNombre, tipoCatalogoId: $tipoCatalogoId, tagBusqueda: $tagBusqueda, orden: $orden, nombreFicheroPortada: $nombreFicheroPortada, nombreFicheroCatalogo: $nombreFicheroCatalogo, descarga: $descarga)';
+  final _this = this as CatalogoDTO;
+  return 'CatalogoDTO(catalogoId: ${_this.catalogoId}, nombre: ${_this.nombre}, idiomaId: ${_this.idiomaId}, tipoPrecioCatalogoId: ${_this.tipoPrecioCatalogoId}, tipoPrecioCatalogoNombre: ${_this.tipoPrecioCatalogoNombre}, tipoCatalogoId: ${_this.tipoCatalogoId}, tagBusqueda: ${_this.tagBusqueda}, orden: ${_this.orden}, nombreFicheroPortada: ${_this.nombreFicheroPortada}, nombreFicheroCatalogo: ${_this.nombreFicheroCatalogo}, descarga: ${_this.descarga})';
 }
 
 
@@ -248,16 +253,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _CatalogoDTO&&(identical(other.catalogoId, catalogoId) || other.catalogoId == catalogoId)&&(identical(other.nombre, nombre) || other.nombre == nombre)&&(identical(other.idiomaId, idiomaId) || other.idiomaId == idiomaId)&&(identical(other.tipoPrecioCatalogoId, tipoPrecioCatalogoId) || other.tipoPrecioCatalogoId == tipoPrecioCatalogoId)&&(identical(other.tipoPrecioCatalogoNombre, tipoPrecioCatalogoNombre) || other.tipoPrecioCatalogoNombre == tipoPrecioCatalogoNombre)&&(identical(other.tipoCatalogoId, tipoCatalogoId) || other.tipoCatalogoId == tipoCatalogoId)&&(identical(other.tagBusqueda, tagBusqueda) || other.tagBusqueda == tagBusqueda)&&(identical(other.orden, orden) || other.orden == orden)&&(identical(other.nombreFicheroPortada, nombreFicheroPortada) || other.nombreFicheroPortada == nombreFicheroPortada)&&(identical(other.nombreFicheroCatalogo, nombreFicheroCatalogo) || other.nombreFicheroCatalogo == nombreFicheroCatalogo)&&(identical(other.descarga, descarga) || other.descarga == descarga));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _CatalogoDTO&&(identical(other.catalogoId, catalogoId) || other.catalogoId == catalogoId)&&(identical(other.nombre, nombre) || other.nombre == nombre)&&(identical(other.idiomaId, idiomaId) || other.idiomaId == idiomaId)&&(identical(other.tipoPrecioCatalogoId, tipoPrecioCatalogoId) || other.tipoPrecioCatalogoId == tipoPrecioCatalogoId)&&(identical(other.tipoPrecioCatalogoNombre, tipoPrecioCatalogoNombre) || other.tipoPrecioCatalogoNombre == tipoPrecioCatalogoNombre)&&(identical(other.tipoCatalogoId, tipoCatalogoId) || other.tipoCatalogoId == tipoCatalogoId)&&(identical(other.tagBusqueda, tagBusqueda) || other.tagBusqueda == tagBusqueda)&&(identical(other.orden, orden) || other.orden == orden)&&(identical(other.nombreFicheroPortada, nombreFicheroPortada) || other.nombreFicheroPortada == nombreFicheroPortada)&&(identical(other.nombreFicheroCatalogo, nombreFicheroCatalogo) || other.nombreFicheroCatalogo == nombreFicheroCatalogo)&&(identical(other.descarga, descarga) || other.descarga == descarga));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,catalogoId,nombre,idiomaId,tipoPrecioCatalogoId,tipoPrecioCatalogoNombre,tipoCatalogoId,tagBusqueda,orden,nombreFicheroPortada,nombreFicheroCatalogo,descarga);
+int get hashCode {
+    return Object.hash(runtimeType,catalogoId,nombre,idiomaId,tipoPrecioCatalogoId,tipoPrecioCatalogoNombre,tipoCatalogoId,tagBusqueda,orden,nombreFicheroPortada,nombreFicheroCatalogo,descarga);
+}
 
 @override
 String toString() {
-  return 'CatalogoDTO(catalogoId: $catalogoId, nombre: $nombre, idiomaId: $idiomaId, tipoPrecioCatalogoId: $tipoPrecioCatalogoId, tipoPrecioCatalogoNombre: $tipoPrecioCatalogoNombre, tipoCatalogoId: $tipoCatalogoId, tagBusqueda: $tagBusqueda, orden: $orden, nombreFicheroPortada: $nombreFicheroPortada, nombreFicheroCatalogo: $nombreFicheroCatalogo, descarga: $descarga)';
+    return 'CatalogoDTO(catalogoId: $catalogoId, nombre: $nombre, idiomaId: $idiomaId, tipoPrecioCatalogoId: $tipoPrecioCatalogoId, tipoPrecioCatalogoNombre: $tipoPrecioCatalogoNombre, tipoCatalogoId: $tipoCatalogoId, tagBusqueda: $tagBusqueda, orden: $orden, nombreFicheroPortada: $nombreFicheroPortada, nombreFicheroCatalogo: $nombreFicheroCatalogo, descarga: $descarga)';
 }
 
 

@@ -26,16 +26,21 @@ $AdjuntoParamCopyWith<AdjuntoParam> get copyWith => _$AdjuntoParamCopyWithImpl<A
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is AdjuntoParam&&(identical(other.id, id) || other.id == id)&&(identical(other.nombreArchivo, nombreArchivo) || other.nombreArchivo == nombreArchivo)&&(identical(other.descarga, descarga) || other.descarga == descarga));
+  final _this = this as AdjuntoParam;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is AdjuntoParam&&(identical(other.id, _this.id) || other.id == _this.id)&&(identical(other.nombreArchivo, _this.nombreArchivo) || other.nombreArchivo == _this.nombreArchivo)&&(identical(other.descarga, _this.descarga) || other.descarga == _this.descarga));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,id,nombreArchivo,descarga);
+int get hashCode {
+  final _this = this as AdjuntoParam;
+  return Object.hash(runtimeType,_this.id,_this.nombreArchivo,_this.descarga);
+}
 
 @override
 String toString() {
-  return 'AdjuntoParam(id: $id, nombreArchivo: $nombreArchivo, descarga: $descarga)';
+  final _this = this as AdjuntoParam;
+  return 'AdjuntoParam(id: ${_this.id}, nombreArchivo: ${_this.nombreArchivo}, descarga: ${_this.descarga})';
 }
 
 
@@ -226,16 +231,18 @@ _$AdjuntoParamCopyWith<_AdjuntoParam> get copyWith => __$AdjuntoParamCopyWithImp
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _AdjuntoParam&&(identical(other.id, id) || other.id == id)&&(identical(other.nombreArchivo, nombreArchivo) || other.nombreArchivo == nombreArchivo)&&(identical(other.descarga, descarga) || other.descarga == descarga));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _AdjuntoParam&&(identical(other.id, id) || other.id == id)&&(identical(other.nombreArchivo, nombreArchivo) || other.nombreArchivo == nombreArchivo)&&(identical(other.descarga, descarga) || other.descarga == descarga));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,id,nombreArchivo,descarga);
+int get hashCode {
+    return Object.hash(runtimeType,id,nombreArchivo,descarga);
+}
 
 @override
 String toString() {
-  return 'AdjuntoParam(id: $id, nombreArchivo: $nombreArchivo, descarga: $descarga)';
+    return 'AdjuntoParam(id: $id, nombreArchivo: $nombreArchivo, descarga: $descarga)';
 }
 
 
