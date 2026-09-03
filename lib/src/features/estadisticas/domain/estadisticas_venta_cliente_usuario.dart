@@ -11,6 +11,7 @@ abstract class EstadisticasVentaClienteUsuario
     required double anyo,
     required double mes,
     required String clienteId,
+    required String? direccionId,
     required String articuloId,
     double? unidades,
     Money? importe,

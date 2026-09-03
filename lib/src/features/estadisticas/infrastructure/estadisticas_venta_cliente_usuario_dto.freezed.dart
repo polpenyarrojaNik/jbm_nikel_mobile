@@ -16,7 +16,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$EstadisticasVentaClienteUsuarioDTO {
 
-@JsonKey(name: 'ANYO') double get anyo;@JsonKey(name: 'MES') double get mes;@JsonKey(name: 'CLIENTE_ID') String get clienteId;@JsonKey(name: 'ARTICULO_ID') String get articuloId;@JsonKey(name: 'UNIDADES') double? get unidades;@JsonKey(name: 'IMPORTE') double? get importe;@JsonKey(name: 'COSTE') double? get coste;@JsonKey(name: 'LAST_UPDATED') DateTime get lastUpdated;@JsonKey(name: 'DELETED') String get deleted;
+@JsonKey(name: 'ANYO') double get anyo;@JsonKey(name: 'MES') double get mes;@JsonKey(name: 'CLIENTE_ID') String get clienteId;@JsonKey(name: 'DIRECCION_ID') String? get direccionId;@JsonKey(name: 'ARTICULO_ID') String get articuloId;@JsonKey(name: 'UNIDADES') double? get unidades;@JsonKey(name: 'IMPORTE') double? get importe;@JsonKey(name: 'COSTE') double? get coste;@JsonKey(name: 'LAST_UPDATED') DateTime get lastUpdated;@JsonKey(name: 'DELETED') String get deleted;
 /// Create a copy of EstadisticasVentaClienteUsuarioDTO
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -30,20 +30,20 @@ $EstadisticasVentaClienteUsuarioDTOCopyWith<EstadisticasVentaClienteUsuarioDTO> 
 @override
 bool operator ==(Object other) {
   final _this = this as EstadisticasVentaClienteUsuarioDTO;
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is EstadisticasVentaClienteUsuarioDTO&&(identical(other.anyo, _this.anyo) || other.anyo == _this.anyo)&&(identical(other.mes, _this.mes) || other.mes == _this.mes)&&(identical(other.clienteId, _this.clienteId) || other.clienteId == _this.clienteId)&&(identical(other.articuloId, _this.articuloId) || other.articuloId == _this.articuloId)&&(identical(other.unidades, _this.unidades) || other.unidades == _this.unidades)&&(identical(other.importe, _this.importe) || other.importe == _this.importe)&&(identical(other.coste, _this.coste) || other.coste == _this.coste)&&(identical(other.lastUpdated, _this.lastUpdated) || other.lastUpdated == _this.lastUpdated)&&(identical(other.deleted, _this.deleted) || other.deleted == _this.deleted));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is EstadisticasVentaClienteUsuarioDTO&&(identical(other.anyo, _this.anyo) || other.anyo == _this.anyo)&&(identical(other.mes, _this.mes) || other.mes == _this.mes)&&(identical(other.clienteId, _this.clienteId) || other.clienteId == _this.clienteId)&&(identical(other.direccionId, _this.direccionId) || other.direccionId == _this.direccionId)&&(identical(other.articuloId, _this.articuloId) || other.articuloId == _this.articuloId)&&(identical(other.unidades, _this.unidades) || other.unidades == _this.unidades)&&(identical(other.importe, _this.importe) || other.importe == _this.importe)&&(identical(other.coste, _this.coste) || other.coste == _this.coste)&&(identical(other.lastUpdated, _this.lastUpdated) || other.lastUpdated == _this.lastUpdated)&&(identical(other.deleted, _this.deleted) || other.deleted == _this.deleted));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
 int get hashCode {
   final _this = this as EstadisticasVentaClienteUsuarioDTO;
-  return Object.hash(runtimeType,_this.anyo,_this.mes,_this.clienteId,_this.articuloId,_this.unidades,_this.importe,_this.coste,_this.lastUpdated,_this.deleted);
+  return Object.hash(runtimeType,_this.anyo,_this.mes,_this.clienteId,_this.direccionId,_this.articuloId,_this.unidades,_this.importe,_this.coste,_this.lastUpdated,_this.deleted);
 }
 
 @override
 String toString() {
   final _this = this as EstadisticasVentaClienteUsuarioDTO;
-  return 'EstadisticasVentaClienteUsuarioDTO(anyo: ${_this.anyo}, mes: ${_this.mes}, clienteId: ${_this.clienteId}, articuloId: ${_this.articuloId}, unidades: ${_this.unidades}, importe: ${_this.importe}, coste: ${_this.coste}, lastUpdated: ${_this.lastUpdated}, deleted: ${_this.deleted})';
+  return 'EstadisticasVentaClienteUsuarioDTO(anyo: ${_this.anyo}, mes: ${_this.mes}, clienteId: ${_this.clienteId}, direccionId: ${_this.direccionId}, articuloId: ${_this.articuloId}, unidades: ${_this.unidades}, importe: ${_this.importe}, coste: ${_this.coste}, lastUpdated: ${_this.lastUpdated}, deleted: ${_this.deleted})';
 }
 
 
@@ -54,7 +54,7 @@ abstract mixin class $EstadisticasVentaClienteUsuarioDTOCopyWith<$Res>  {
   factory $EstadisticasVentaClienteUsuarioDTOCopyWith(EstadisticasVentaClienteUsuarioDTO value, $Res Function(EstadisticasVentaClienteUsuarioDTO) _then) = _$EstadisticasVentaClienteUsuarioDTOCopyWithImpl;
 @useResult
 $Res call({
-@JsonKey(name: 'ANYO') double anyo,@JsonKey(name: 'MES') double mes,@JsonKey(name: 'CLIENTE_ID') String clienteId,@JsonKey(name: 'ARTICULO_ID') String articuloId,@JsonKey(name: 'UNIDADES') double? unidades,@JsonKey(name: 'IMPORTE') double? importe,@JsonKey(name: 'COSTE') double? coste,@JsonKey(name: 'LAST_UPDATED') DateTime lastUpdated,@JsonKey(name: 'DELETED') String deleted
+@JsonKey(name: 'ANYO') double anyo,@JsonKey(name: 'MES') double mes,@JsonKey(name: 'CLIENTE_ID') String clienteId,@JsonKey(name: 'DIRECCION_ID') String? direccionId,@JsonKey(name: 'ARTICULO_ID') String articuloId,@JsonKey(name: 'UNIDADES') double? unidades,@JsonKey(name: 'IMPORTE') double? importe,@JsonKey(name: 'COSTE') double? coste,@JsonKey(name: 'LAST_UPDATED') DateTime lastUpdated,@JsonKey(name: 'DELETED') String deleted
 });
 
 
@@ -71,12 +71,13 @@ class _$EstadisticasVentaClienteUsuarioDTOCopyWithImpl<$Res>
 
 /// Create a copy of EstadisticasVentaClienteUsuarioDTO
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? anyo = null,Object? mes = null,Object? clienteId = null,Object? articuloId = null,Object? unidades = freezed,Object? importe = freezed,Object? coste = freezed,Object? lastUpdated = null,Object? deleted = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? anyo = null,Object? mes = null,Object? clienteId = null,Object? direccionId = freezed,Object? articuloId = null,Object? unidades = freezed,Object? importe = freezed,Object? coste = freezed,Object? lastUpdated = null,Object? deleted = null,}) {
   return _then(EstadisticasVentaClienteUsuarioDTO(
 anyo: null == anyo ? _self.anyo : anyo // ignore: cast_nullable_to_non_nullable
 as double,mes: null == mes ? _self.mes : mes // ignore: cast_nullable_to_non_nullable
 as double,clienteId: null == clienteId ? _self.clienteId : clienteId // ignore: cast_nullable_to_non_nullable
-as String,articuloId: null == articuloId ? _self.articuloId : articuloId // ignore: cast_nullable_to_non_nullable
+as String,direccionId: freezed == direccionId ? _self.direccionId : direccionId // ignore: cast_nullable_to_non_nullable
+as String?,articuloId: null == articuloId ? _self.articuloId : articuloId // ignore: cast_nullable_to_non_nullable
 as String,unidades: freezed == unidades ? _self.unidades : unidades // ignore: cast_nullable_to_non_nullable
 as double?,importe: freezed == importe ? _self.importe : importe // ignore: cast_nullable_to_non_nullable
 as double?,coste: freezed == coste ? _self.coste : coste // ignore: cast_nullable_to_non_nullable
@@ -167,10 +168,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function(@JsonKey(name: 'ANYO')  double anyo, @JsonKey(name: 'MES')  double mes, @JsonKey(name: 'CLIENTE_ID')  String clienteId, @JsonKey(name: 'ARTICULO_ID')  String articuloId, @JsonKey(name: 'UNIDADES')  double? unidades, @JsonKey(name: 'IMPORTE')  double? importe, @JsonKey(name: 'COSTE')  double? coste, @JsonKey(name: 'LAST_UPDATED')  DateTime lastUpdated, @JsonKey(name: 'DELETED')  String deleted)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function(@JsonKey(name: 'ANYO')  double anyo, @JsonKey(name: 'MES')  double mes, @JsonKey(name: 'CLIENTE_ID')  String clienteId, @JsonKey(name: 'DIRECCION_ID')  String? direccionId, @JsonKey(name: 'ARTICULO_ID')  String articuloId, @JsonKey(name: 'UNIDADES')  double? unidades, @JsonKey(name: 'IMPORTE')  double? importe, @JsonKey(name: 'COSTE')  double? coste, @JsonKey(name: 'LAST_UPDATED')  DateTime lastUpdated, @JsonKey(name: 'DELETED')  String deleted)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _EstadisticasVentaClienteUsuarioDTO() when $default != null:
-return $default(_that.anyo,_that.mes,_that.clienteId,_that.articuloId,_that.unidades,_that.importe,_that.coste,_that.lastUpdated,_that.deleted);case _:
+return $default(_that.anyo,_that.mes,_that.clienteId,_that.direccionId,_that.articuloId,_that.unidades,_that.importe,_that.coste,_that.lastUpdated,_that.deleted);case _:
   return orElse();
 
 }
@@ -188,10 +189,10 @@ return $default(_that.anyo,_that.mes,_that.clienteId,_that.articuloId,_that.unid
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function(@JsonKey(name: 'ANYO')  double anyo, @JsonKey(name: 'MES')  double mes, @JsonKey(name: 'CLIENTE_ID')  String clienteId, @JsonKey(name: 'ARTICULO_ID')  String articuloId, @JsonKey(name: 'UNIDADES')  double? unidades, @JsonKey(name: 'IMPORTE')  double? importe, @JsonKey(name: 'COSTE')  double? coste, @JsonKey(name: 'LAST_UPDATED')  DateTime lastUpdated, @JsonKey(name: 'DELETED')  String deleted)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function(@JsonKey(name: 'ANYO')  double anyo, @JsonKey(name: 'MES')  double mes, @JsonKey(name: 'CLIENTE_ID')  String clienteId, @JsonKey(name: 'DIRECCION_ID')  String? direccionId, @JsonKey(name: 'ARTICULO_ID')  String articuloId, @JsonKey(name: 'UNIDADES')  double? unidades, @JsonKey(name: 'IMPORTE')  double? importe, @JsonKey(name: 'COSTE')  double? coste, @JsonKey(name: 'LAST_UPDATED')  DateTime lastUpdated, @JsonKey(name: 'DELETED')  String deleted)  $default,) {final _that = this;
 switch (_that) {
 case _EstadisticasVentaClienteUsuarioDTO():
-return $default(_that.anyo,_that.mes,_that.clienteId,_that.articuloId,_that.unidades,_that.importe,_that.coste,_that.lastUpdated,_that.deleted);case _:
+return $default(_that.anyo,_that.mes,_that.clienteId,_that.direccionId,_that.articuloId,_that.unidades,_that.importe,_that.coste,_that.lastUpdated,_that.deleted);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -208,10 +209,10 @@ return $default(_that.anyo,_that.mes,_that.clienteId,_that.articuloId,_that.unid
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function(@JsonKey(name: 'ANYO')  double anyo, @JsonKey(name: 'MES')  double mes, @JsonKey(name: 'CLIENTE_ID')  String clienteId, @JsonKey(name: 'ARTICULO_ID')  String articuloId, @JsonKey(name: 'UNIDADES')  double? unidades, @JsonKey(name: 'IMPORTE')  double? importe, @JsonKey(name: 'COSTE')  double? coste, @JsonKey(name: 'LAST_UPDATED')  DateTime lastUpdated, @JsonKey(name: 'DELETED')  String deleted)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function(@JsonKey(name: 'ANYO')  double anyo, @JsonKey(name: 'MES')  double mes, @JsonKey(name: 'CLIENTE_ID')  String clienteId, @JsonKey(name: 'DIRECCION_ID')  String? direccionId, @JsonKey(name: 'ARTICULO_ID')  String articuloId, @JsonKey(name: 'UNIDADES')  double? unidades, @JsonKey(name: 'IMPORTE')  double? importe, @JsonKey(name: 'COSTE')  double? coste, @JsonKey(name: 'LAST_UPDATED')  DateTime lastUpdated, @JsonKey(name: 'DELETED')  String deleted)?  $default,) {final _that = this;
 switch (_that) {
 case _EstadisticasVentaClienteUsuarioDTO() when $default != null:
-return $default(_that.anyo,_that.mes,_that.clienteId,_that.articuloId,_that.unidades,_that.importe,_that.coste,_that.lastUpdated,_that.deleted);case _:
+return $default(_that.anyo,_that.mes,_that.clienteId,_that.direccionId,_that.articuloId,_that.unidades,_that.importe,_that.coste,_that.lastUpdated,_that.deleted);case _:
   return null;
 
 }
@@ -223,12 +224,13 @@ return $default(_that.anyo,_that.mes,_that.clienteId,_that.articuloId,_that.unid
 @JsonSerializable()
 
 class _EstadisticasVentaClienteUsuarioDTO extends EstadisticasVentaClienteUsuarioDTO {
-  const _EstadisticasVentaClienteUsuarioDTO({@JsonKey(name: 'ANYO') required this.anyo, @JsonKey(name: 'MES') required this.mes, @JsonKey(name: 'CLIENTE_ID') required this.clienteId, @JsonKey(name: 'ARTICULO_ID') required this.articuloId, @JsonKey(name: 'UNIDADES') this.unidades, @JsonKey(name: 'IMPORTE') this.importe, @JsonKey(name: 'COSTE') this.coste, @JsonKey(name: 'LAST_UPDATED') required this.lastUpdated, @JsonKey(name: 'DELETED') this.deleted = 'N'}): super._();
+  const _EstadisticasVentaClienteUsuarioDTO({@JsonKey(name: 'ANYO') required this.anyo, @JsonKey(name: 'MES') required this.mes, @JsonKey(name: 'CLIENTE_ID') required this.clienteId, @JsonKey(name: 'DIRECCION_ID') this.direccionId, @JsonKey(name: 'ARTICULO_ID') required this.articuloId, @JsonKey(name: 'UNIDADES') this.unidades, @JsonKey(name: 'IMPORTE') this.importe, @JsonKey(name: 'COSTE') this.coste, @JsonKey(name: 'LAST_UPDATED') required this.lastUpdated, @JsonKey(name: 'DELETED') this.deleted = 'N'}): super._();
   factory _EstadisticasVentaClienteUsuarioDTO.fromJson(Map<String, dynamic> json) => _$EstadisticasVentaClienteUsuarioDTOFromJson(json);
 
 @override@JsonKey(name: 'ANYO') final  double anyo;
 @override@JsonKey(name: 'MES') final  double mes;
 @override@JsonKey(name: 'CLIENTE_ID') final  String clienteId;
+@override@JsonKey(name: 'DIRECCION_ID') final  String? direccionId;
 @override@JsonKey(name: 'ARTICULO_ID') final  String articuloId;
 @override@JsonKey(name: 'UNIDADES') final  double? unidades;
 @override@JsonKey(name: 'IMPORTE') final  double? importe;
@@ -249,18 +251,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-    return identical(this, other) || (other.runtimeType == runtimeType&&other is _EstadisticasVentaClienteUsuarioDTO&&(identical(other.anyo, anyo) || other.anyo == anyo)&&(identical(other.mes, mes) || other.mes == mes)&&(identical(other.clienteId, clienteId) || other.clienteId == clienteId)&&(identical(other.articuloId, articuloId) || other.articuloId == articuloId)&&(identical(other.unidades, unidades) || other.unidades == unidades)&&(identical(other.importe, importe) || other.importe == importe)&&(identical(other.coste, coste) || other.coste == coste)&&(identical(other.lastUpdated, lastUpdated) || other.lastUpdated == lastUpdated)&&(identical(other.deleted, deleted) || other.deleted == deleted));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _EstadisticasVentaClienteUsuarioDTO&&(identical(other.anyo, anyo) || other.anyo == anyo)&&(identical(other.mes, mes) || other.mes == mes)&&(identical(other.clienteId, clienteId) || other.clienteId == clienteId)&&(identical(other.direccionId, direccionId) || other.direccionId == direccionId)&&(identical(other.articuloId, articuloId) || other.articuloId == articuloId)&&(identical(other.unidades, unidades) || other.unidades == unidades)&&(identical(other.importe, importe) || other.importe == importe)&&(identical(other.coste, coste) || other.coste == coste)&&(identical(other.lastUpdated, lastUpdated) || other.lastUpdated == lastUpdated)&&(identical(other.deleted, deleted) || other.deleted == deleted));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
 int get hashCode {
-    return Object.hash(runtimeType,anyo,mes,clienteId,articuloId,unidades,importe,coste,lastUpdated,deleted);
+    return Object.hash(runtimeType,anyo,mes,clienteId,direccionId,articuloId,unidades,importe,coste,lastUpdated,deleted);
 }
 
 @override
 String toString() {
-    return 'EstadisticasVentaClienteUsuarioDTO(anyo: $anyo, mes: $mes, clienteId: $clienteId, articuloId: $articuloId, unidades: $unidades, importe: $importe, coste: $coste, lastUpdated: $lastUpdated, deleted: $deleted)';
+    return 'EstadisticasVentaClienteUsuarioDTO(anyo: $anyo, mes: $mes, clienteId: $clienteId, direccionId: $direccionId, articuloId: $articuloId, unidades: $unidades, importe: $importe, coste: $coste, lastUpdated: $lastUpdated, deleted: $deleted)';
 }
 
 
@@ -271,7 +273,7 @@ abstract mixin class _$EstadisticasVentaClienteUsuarioDTOCopyWith<$Res> implemen
   factory _$EstadisticasVentaClienteUsuarioDTOCopyWith(_EstadisticasVentaClienteUsuarioDTO value, $Res Function(_EstadisticasVentaClienteUsuarioDTO) _then) = __$EstadisticasVentaClienteUsuarioDTOCopyWithImpl;
 @override @useResult
 $Res call({
-@JsonKey(name: 'ANYO') double anyo,@JsonKey(name: 'MES') double mes,@JsonKey(name: 'CLIENTE_ID') String clienteId,@JsonKey(name: 'ARTICULO_ID') String articuloId,@JsonKey(name: 'UNIDADES') double? unidades,@JsonKey(name: 'IMPORTE') double? importe,@JsonKey(name: 'COSTE') double? coste,@JsonKey(name: 'LAST_UPDATED') DateTime lastUpdated,@JsonKey(name: 'DELETED') String deleted
+@JsonKey(name: 'ANYO') double anyo,@JsonKey(name: 'MES') double mes,@JsonKey(name: 'CLIENTE_ID') String clienteId,@JsonKey(name: 'DIRECCION_ID') String? direccionId,@JsonKey(name: 'ARTICULO_ID') String articuloId,@JsonKey(name: 'UNIDADES') double? unidades,@JsonKey(name: 'IMPORTE') double? importe,@JsonKey(name: 'COSTE') double? coste,@JsonKey(name: 'LAST_UPDATED') DateTime lastUpdated,@JsonKey(name: 'DELETED') String deleted
 });
 
 
@@ -288,12 +290,13 @@ class __$EstadisticasVentaClienteUsuarioDTOCopyWithImpl<$Res>
 
 /// Create a copy of EstadisticasVentaClienteUsuarioDTO
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? anyo = null,Object? mes = null,Object? clienteId = null,Object? articuloId = null,Object? unidades = freezed,Object? importe = freezed,Object? coste = freezed,Object? lastUpdated = null,Object? deleted = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? anyo = null,Object? mes = null,Object? clienteId = null,Object? direccionId = freezed,Object? articuloId = null,Object? unidades = freezed,Object? importe = freezed,Object? coste = freezed,Object? lastUpdated = null,Object? deleted = null,}) {
   return _then(_EstadisticasVentaClienteUsuarioDTO(
 anyo: null == anyo ? _self.anyo : anyo // ignore: cast_nullable_to_non_nullable
 as double,mes: null == mes ? _self.mes : mes // ignore: cast_nullable_to_non_nullable
 as double,clienteId: null == clienteId ? _self.clienteId : clienteId // ignore: cast_nullable_to_non_nullable
-as String,articuloId: null == articuloId ? _self.articuloId : articuloId // ignore: cast_nullable_to_non_nullable
+as String,direccionId: freezed == direccionId ? _self.direccionId : direccionId // ignore: cast_nullable_to_non_nullable
+as String?,articuloId: null == articuloId ? _self.articuloId : articuloId // ignore: cast_nullable_to_non_nullable
 as String,unidades: freezed == unidades ? _self.unidades : unidades // ignore: cast_nullable_to_non_nullable
 as double?,importe: freezed == importe ? _self.importe : importe // ignore: cast_nullable_to_non_nullable
 as double?,coste: freezed == coste ? _self.coste : coste // ignore: cast_nullable_to_non_nullable

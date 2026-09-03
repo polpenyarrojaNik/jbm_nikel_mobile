@@ -15,7 +15,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$EstadisticasVentaClienteUsuario {
 
- double get anyo; double get mes; String get clienteId; String get articuloId; double? get unidades; Money? get importe; Money? get coste; DateTime get lastUpdated; bool get deleted;
+ double get anyo; double get mes; String get clienteId; String? get direccionId; String get articuloId; double? get unidades; Money? get importe; Money? get coste; DateTime get lastUpdated; bool get deleted;
 /// Create a copy of EstadisticasVentaClienteUsuario
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -27,20 +27,20 @@ $EstadisticasVentaClienteUsuarioCopyWith<EstadisticasVentaClienteUsuario> get co
 @override
 bool operator ==(Object other) {
   final _this = this as EstadisticasVentaClienteUsuario;
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is EstadisticasVentaClienteUsuario&&(identical(other.anyo, _this.anyo) || other.anyo == _this.anyo)&&(identical(other.mes, _this.mes) || other.mes == _this.mes)&&(identical(other.clienteId, _this.clienteId) || other.clienteId == _this.clienteId)&&(identical(other.articuloId, _this.articuloId) || other.articuloId == _this.articuloId)&&(identical(other.unidades, _this.unidades) || other.unidades == _this.unidades)&&(identical(other.importe, _this.importe) || other.importe == _this.importe)&&(identical(other.coste, _this.coste) || other.coste == _this.coste)&&(identical(other.lastUpdated, _this.lastUpdated) || other.lastUpdated == _this.lastUpdated)&&(identical(other.deleted, _this.deleted) || other.deleted == _this.deleted));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is EstadisticasVentaClienteUsuario&&(identical(other.anyo, _this.anyo) || other.anyo == _this.anyo)&&(identical(other.mes, _this.mes) || other.mes == _this.mes)&&(identical(other.clienteId, _this.clienteId) || other.clienteId == _this.clienteId)&&(identical(other.direccionId, _this.direccionId) || other.direccionId == _this.direccionId)&&(identical(other.articuloId, _this.articuloId) || other.articuloId == _this.articuloId)&&(identical(other.unidades, _this.unidades) || other.unidades == _this.unidades)&&(identical(other.importe, _this.importe) || other.importe == _this.importe)&&(identical(other.coste, _this.coste) || other.coste == _this.coste)&&(identical(other.lastUpdated, _this.lastUpdated) || other.lastUpdated == _this.lastUpdated)&&(identical(other.deleted, _this.deleted) || other.deleted == _this.deleted));
 }
 
 
 @override
 int get hashCode {
   final _this = this as EstadisticasVentaClienteUsuario;
-  return Object.hash(runtimeType,_this.anyo,_this.mes,_this.clienteId,_this.articuloId,_this.unidades,_this.importe,_this.coste,_this.lastUpdated,_this.deleted);
+  return Object.hash(runtimeType,_this.anyo,_this.mes,_this.clienteId,_this.direccionId,_this.articuloId,_this.unidades,_this.importe,_this.coste,_this.lastUpdated,_this.deleted);
 }
 
 @override
 String toString() {
   final _this = this as EstadisticasVentaClienteUsuario;
-  return 'EstadisticasVentaClienteUsuario(anyo: ${_this.anyo}, mes: ${_this.mes}, clienteId: ${_this.clienteId}, articuloId: ${_this.articuloId}, unidades: ${_this.unidades}, importe: ${_this.importe}, coste: ${_this.coste}, lastUpdated: ${_this.lastUpdated}, deleted: ${_this.deleted})';
+  return 'EstadisticasVentaClienteUsuario(anyo: ${_this.anyo}, mes: ${_this.mes}, clienteId: ${_this.clienteId}, direccionId: ${_this.direccionId}, articuloId: ${_this.articuloId}, unidades: ${_this.unidades}, importe: ${_this.importe}, coste: ${_this.coste}, lastUpdated: ${_this.lastUpdated}, deleted: ${_this.deleted})';
 }
 
 
@@ -51,7 +51,7 @@ abstract mixin class $EstadisticasVentaClienteUsuarioCopyWith<$Res>  {
   factory $EstadisticasVentaClienteUsuarioCopyWith(EstadisticasVentaClienteUsuario value, $Res Function(EstadisticasVentaClienteUsuario) _then) = _$EstadisticasVentaClienteUsuarioCopyWithImpl;
 @useResult
 $Res call({
- double anyo, double mes, String clienteId, String articuloId, double? unidades, Money? importe, Money? coste, DateTime lastUpdated, bool deleted
+ double anyo, double mes, String clienteId, String? direccionId, String articuloId, double? unidades, Money? importe, Money? coste, DateTime lastUpdated, bool deleted
 });
 
 
@@ -68,12 +68,13 @@ class _$EstadisticasVentaClienteUsuarioCopyWithImpl<$Res>
 
 /// Create a copy of EstadisticasVentaClienteUsuario
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? anyo = null,Object? mes = null,Object? clienteId = null,Object? articuloId = null,Object? unidades = freezed,Object? importe = freezed,Object? coste = freezed,Object? lastUpdated = null,Object? deleted = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? anyo = null,Object? mes = null,Object? clienteId = null,Object? direccionId = freezed,Object? articuloId = null,Object? unidades = freezed,Object? importe = freezed,Object? coste = freezed,Object? lastUpdated = null,Object? deleted = null,}) {
   return _then(EstadisticasVentaClienteUsuario(
 anyo: null == anyo ? _self.anyo : anyo // ignore: cast_nullable_to_non_nullable
 as double,mes: null == mes ? _self.mes : mes // ignore: cast_nullable_to_non_nullable
 as double,clienteId: null == clienteId ? _self.clienteId : clienteId // ignore: cast_nullable_to_non_nullable
-as String,articuloId: null == articuloId ? _self.articuloId : articuloId // ignore: cast_nullable_to_non_nullable
+as String,direccionId: freezed == direccionId ? _self.direccionId : direccionId // ignore: cast_nullable_to_non_nullable
+as String?,articuloId: null == articuloId ? _self.articuloId : articuloId // ignore: cast_nullable_to_non_nullable
 as String,unidades: freezed == unidades ? _self.unidades : unidades // ignore: cast_nullable_to_non_nullable
 as double?,importe: freezed == importe ? _self.importe : importe // ignore: cast_nullable_to_non_nullable
 as Money?,coste: freezed == coste ? _self.coste : coste // ignore: cast_nullable_to_non_nullable
@@ -164,10 +165,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( double anyo,  double mes,  String clienteId,  String articuloId,  double? unidades,  Money? importe,  Money? coste,  DateTime lastUpdated,  bool deleted)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( double anyo,  double mes,  String clienteId,  String? direccionId,  String articuloId,  double? unidades,  Money? importe,  Money? coste,  DateTime lastUpdated,  bool deleted)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _EstadisticasVentaClienteUsuario() when $default != null:
-return $default(_that.anyo,_that.mes,_that.clienteId,_that.articuloId,_that.unidades,_that.importe,_that.coste,_that.lastUpdated,_that.deleted);case _:
+return $default(_that.anyo,_that.mes,_that.clienteId,_that.direccionId,_that.articuloId,_that.unidades,_that.importe,_that.coste,_that.lastUpdated,_that.deleted);case _:
   return orElse();
 
 }
@@ -185,10 +186,10 @@ return $default(_that.anyo,_that.mes,_that.clienteId,_that.articuloId,_that.unid
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( double anyo,  double mes,  String clienteId,  String articuloId,  double? unidades,  Money? importe,  Money? coste,  DateTime lastUpdated,  bool deleted)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( double anyo,  double mes,  String clienteId,  String? direccionId,  String articuloId,  double? unidades,  Money? importe,  Money? coste,  DateTime lastUpdated,  bool deleted)  $default,) {final _that = this;
 switch (_that) {
 case _EstadisticasVentaClienteUsuario():
-return $default(_that.anyo,_that.mes,_that.clienteId,_that.articuloId,_that.unidades,_that.importe,_that.coste,_that.lastUpdated,_that.deleted);case _:
+return $default(_that.anyo,_that.mes,_that.clienteId,_that.direccionId,_that.articuloId,_that.unidades,_that.importe,_that.coste,_that.lastUpdated,_that.deleted);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -205,10 +206,10 @@ return $default(_that.anyo,_that.mes,_that.clienteId,_that.articuloId,_that.unid
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( double anyo,  double mes,  String clienteId,  String articuloId,  double? unidades,  Money? importe,  Money? coste,  DateTime lastUpdated,  bool deleted)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( double anyo,  double mes,  String clienteId,  String? direccionId,  String articuloId,  double? unidades,  Money? importe,  Money? coste,  DateTime lastUpdated,  bool deleted)?  $default,) {final _that = this;
 switch (_that) {
 case _EstadisticasVentaClienteUsuario() when $default != null:
-return $default(_that.anyo,_that.mes,_that.clienteId,_that.articuloId,_that.unidades,_that.importe,_that.coste,_that.lastUpdated,_that.deleted);case _:
+return $default(_that.anyo,_that.mes,_that.clienteId,_that.direccionId,_that.articuloId,_that.unidades,_that.importe,_that.coste,_that.lastUpdated,_that.deleted);case _:
   return null;
 
 }
@@ -220,12 +221,13 @@ return $default(_that.anyo,_that.mes,_that.clienteId,_that.articuloId,_that.unid
 
 
 class _EstadisticasVentaClienteUsuario extends EstadisticasVentaClienteUsuario {
-  const _EstadisticasVentaClienteUsuario({required this.anyo, required this.mes, required this.clienteId, required this.articuloId, this.unidades, this.importe, this.coste, required this.lastUpdated, required this.deleted}): super._();
+  const _EstadisticasVentaClienteUsuario({required this.anyo, required this.mes, required this.clienteId, required this.direccionId, required this.articuloId, this.unidades, this.importe, this.coste, required this.lastUpdated, required this.deleted}): super._();
   
 
 @override final  double anyo;
 @override final  double mes;
 @override final  String clienteId;
+@override final  String? direccionId;
 @override final  String articuloId;
 @override final  double? unidades;
 @override final  Money? importe;
@@ -243,18 +245,18 @@ _$EstadisticasVentaClienteUsuarioCopyWith<_EstadisticasVentaClienteUsuario> get 
 
 @override
 bool operator ==(Object other) {
-    return identical(this, other) || (other.runtimeType == runtimeType&&other is _EstadisticasVentaClienteUsuario&&(identical(other.anyo, anyo) || other.anyo == anyo)&&(identical(other.mes, mes) || other.mes == mes)&&(identical(other.clienteId, clienteId) || other.clienteId == clienteId)&&(identical(other.articuloId, articuloId) || other.articuloId == articuloId)&&(identical(other.unidades, unidades) || other.unidades == unidades)&&(identical(other.importe, importe) || other.importe == importe)&&(identical(other.coste, coste) || other.coste == coste)&&(identical(other.lastUpdated, lastUpdated) || other.lastUpdated == lastUpdated)&&(identical(other.deleted, deleted) || other.deleted == deleted));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _EstadisticasVentaClienteUsuario&&(identical(other.anyo, anyo) || other.anyo == anyo)&&(identical(other.mes, mes) || other.mes == mes)&&(identical(other.clienteId, clienteId) || other.clienteId == clienteId)&&(identical(other.direccionId, direccionId) || other.direccionId == direccionId)&&(identical(other.articuloId, articuloId) || other.articuloId == articuloId)&&(identical(other.unidades, unidades) || other.unidades == unidades)&&(identical(other.importe, importe) || other.importe == importe)&&(identical(other.coste, coste) || other.coste == coste)&&(identical(other.lastUpdated, lastUpdated) || other.lastUpdated == lastUpdated)&&(identical(other.deleted, deleted) || other.deleted == deleted));
 }
 
 
 @override
 int get hashCode {
-    return Object.hash(runtimeType,anyo,mes,clienteId,articuloId,unidades,importe,coste,lastUpdated,deleted);
+    return Object.hash(runtimeType,anyo,mes,clienteId,direccionId,articuloId,unidades,importe,coste,lastUpdated,deleted);
 }
 
 @override
 String toString() {
-    return 'EstadisticasVentaClienteUsuario(anyo: $anyo, mes: $mes, clienteId: $clienteId, articuloId: $articuloId, unidades: $unidades, importe: $importe, coste: $coste, lastUpdated: $lastUpdated, deleted: $deleted)';
+    return 'EstadisticasVentaClienteUsuario(anyo: $anyo, mes: $mes, clienteId: $clienteId, direccionId: $direccionId, articuloId: $articuloId, unidades: $unidades, importe: $importe, coste: $coste, lastUpdated: $lastUpdated, deleted: $deleted)';
 }
 
 
@@ -265,7 +267,7 @@ abstract mixin class _$EstadisticasVentaClienteUsuarioCopyWith<$Res> implements 
   factory _$EstadisticasVentaClienteUsuarioCopyWith(_EstadisticasVentaClienteUsuario value, $Res Function(_EstadisticasVentaClienteUsuario) _then) = __$EstadisticasVentaClienteUsuarioCopyWithImpl;
 @override @useResult
 $Res call({
- double anyo, double mes, String clienteId, String articuloId, double? unidades, Money? importe, Money? coste, DateTime lastUpdated, bool deleted
+ double anyo, double mes, String clienteId, String? direccionId, String articuloId, double? unidades, Money? importe, Money? coste, DateTime lastUpdated, bool deleted
 });
 
 
@@ -282,12 +284,13 @@ class __$EstadisticasVentaClienteUsuarioCopyWithImpl<$Res>
 
 /// Create a copy of EstadisticasVentaClienteUsuario
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? anyo = null,Object? mes = null,Object? clienteId = null,Object? articuloId = null,Object? unidades = freezed,Object? importe = freezed,Object? coste = freezed,Object? lastUpdated = null,Object? deleted = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? anyo = null,Object? mes = null,Object? clienteId = null,Object? direccionId = freezed,Object? articuloId = null,Object? unidades = freezed,Object? importe = freezed,Object? coste = freezed,Object? lastUpdated = null,Object? deleted = null,}) {
   return _then(_EstadisticasVentaClienteUsuario(
 anyo: null == anyo ? _self.anyo : anyo // ignore: cast_nullable_to_non_nullable
 as double,mes: null == mes ? _self.mes : mes // ignore: cast_nullable_to_non_nullable
 as double,clienteId: null == clienteId ? _self.clienteId : clienteId // ignore: cast_nullable_to_non_nullable
-as String,articuloId: null == articuloId ? _self.articuloId : articuloId // ignore: cast_nullable_to_non_nullable
+as String,direccionId: freezed == direccionId ? _self.direccionId : direccionId // ignore: cast_nullable_to_non_nullable
+as String?,articuloId: null == articuloId ? _self.articuloId : articuloId // ignore: cast_nullable_to_non_nullable
 as String,unidades: freezed == unidades ? _self.unidades : unidades // ignore: cast_nullable_to_non_nullable
 as double?,importe: freezed == importe ? _self.importe : importe // ignore: cast_nullable_to_non_nullable
 as Money?,coste: freezed == coste ? _self.coste : coste // ignore: cast_nullable_to_non_nullable

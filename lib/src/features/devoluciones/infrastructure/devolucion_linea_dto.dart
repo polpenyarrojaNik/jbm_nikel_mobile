@@ -63,6 +63,7 @@ abstract class DevolucionLineaDTO
       cantidadRecibida: Value(cantidadRecibida),
       devolucionEstadoId: Value(devolucionEstadoId),
       devolucionMotivoId: Value(devolucionMotivoId),
+      observaciones: Value(observaciones),
       lastUpdated: Value(lastUpdated),
       deleted: Value(deleted),
     ).toColumns(nullToAbsent);
@@ -83,6 +84,7 @@ class DevolucionLineaTable extends Table {
       text().nullable().named('DEVOLUCION_ESTADO_ID')();
   TextColumn get devolucionMotivoId =>
       text().nullable().named('DEVOLUCION_MOTIVO_ID')();
+  TextColumn get observaciones => text().nullable().named('OBSERVACIONES')();
   DateTimeColumn get lastUpdated => dateTime().named('LAST_UPDATED')();
   TextColumn get deleted =>
       text().withDefault(const Constant('N')).named('DELETED')();

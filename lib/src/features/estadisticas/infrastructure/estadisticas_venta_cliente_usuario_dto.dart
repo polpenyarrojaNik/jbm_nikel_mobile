@@ -17,6 +17,7 @@ abstract class EstadisticasVentaClienteUsuarioDTO
     @JsonKey(name: 'ANYO') required double anyo,
     @JsonKey(name: 'MES') required double mes,
     @JsonKey(name: 'CLIENTE_ID') required String clienteId,
+    @JsonKey(name: 'DIRECCION_ID')  String? direccionId,
     @JsonKey(name: 'ARTICULO_ID') required String articuloId,
     @JsonKey(name: 'UNIDADES') double? unidades,
     @JsonKey(name: 'IMPORTE') double? importe,
@@ -35,6 +36,7 @@ abstract class EstadisticasVentaClienteUsuarioDTO
       anyo: Value(anyo),
       mes: Value(mes),
       clienteId: Value(clienteId),
+      direccionId: Value(direccionId),
       articuloId: Value(articuloId),
       unidades: Value(unidades),
       importe: Value(importe),
@@ -51,11 +53,12 @@ class EstadisticasClienteUsuarioVentasTable extends Table {
   String get tableName => 'ESTADISTICAS_VENTA';
 
   @override
-  Set<Column> get primaryKey => {anyo, mes, clienteId, articuloId};
+  Set<Column> get primaryKey => {anyo, mes, clienteId, direccionId, articuloId};
 
   RealColumn get anyo => real().named('ANYO')();
   RealColumn get mes => real().named('MES')();
   TextColumn get clienteId => text().named('CLIENTE_ID')();
+  TextColumn get direccionId => text().nullable().named('DIRECCION_ID')();
   TextColumn get articuloId => text().named('ARTICULO_ID')();
   RealColumn get unidades => real().nullable().named('UNIDADES')();
   RealColumn get importe => real().nullable().named('IMPORTE')();

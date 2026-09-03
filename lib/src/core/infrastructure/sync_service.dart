@@ -111,11 +111,11 @@ class SyncService {
 
   static final remoteDatabaseDateTimeEndpoint = Uri.http(
     'jbm-api.nikel.es',
-    '/api/v16/sync/db-datetime',
+    '/api/v17/sync/db-datetime',
   );
   static final remoteDatabaseDateTimeTestEndpoint = Uri.http(
     'jbm-api-test.nikel.es:8080',
-    '/api/v16/sync/db-datetime',
+    '/api/v17/sync/db-datetime',
   );
 
   static final remoteLogEndpoint = Uri.http(
@@ -468,8 +468,8 @@ class SyncService {
 
   Future<void> syncClientes() async {
     try {
-      await _syncTable<ClienteDTO>(
-        apiPath: 'api/v16/sync/clientes',
+      await _syncTable(
+        apiPath: 'api/v17/sync/clientes',
         tableInfo: _remoteDb.clienteTable,
         fromJson: (e) => ClienteDTO.fromJson(e),
       );
@@ -484,7 +484,7 @@ class SyncService {
   Future<void> syncClientesUsuario() async {
     try {
       await _syncTable(
-        apiPath: 'api/v16/sync/clientes-usuario',
+        apiPath: 'api/v17/sync/clientes-usuario',
         tableInfo: _remoteDb.clienteUsuarioTable,
         fromJson: (e) => ClienteUsuarioDTO.fromJson(e),
       );

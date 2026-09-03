@@ -31,6 +31,7 @@ abstract class DevolucionEstadoDTO
     @JsonKey(name: 'DESCRIPCION_RU') String? descripcionRU,
     @JsonKey(name: 'DESCRIPCION_CN') String? descripcionCN,
     @JsonKey(name: 'DESCRIPCION_EL') String? descripcionEL,
+    @JsonKey(name: 'DESCRIPCION_PL') String? descripcionPL,
     @JsonKey(name: 'LAST_UPDATED') required DateTime lastUpdated,
     @JsonKey(name: 'DELETED') @Default('N') String deleted,
   }) = _DevolucionEstadoDTO;
@@ -82,6 +83,7 @@ abstract class DevolucionEstadoDTO
       descripcionRU: Value(descripcionRU),
       descripcionCN: Value(descripcionCN),
       descripcionEL: Value(descripcionEL),
+      descripcionPL: Value(descripcionPL),
       lastUpdated: Value(lastUpdated),
       deleted: Value(deleted),
     ).toColumns(nullToAbsent);
@@ -111,6 +113,7 @@ class DevolucionEstadoTable extends Table {
   TextColumn get descripcionRU => text().nullable().named('DESCRIPCION_RU')();
   TextColumn get descripcionCN => text().nullable().named('DESCRIPCION_CN')();
   TextColumn get descripcionEL => text().nullable().named('DESCRIPCION_EL')();
+  TextColumn get descripcionPL => text().nullable().named('DESCRIPCION_PL')();
   DateTimeColumn get lastUpdated => dateTime().named('LAST_UPDATED')();
   TextColumn get deleted =>
       text().withDefault(const Constant('N')).named('DELETED')();

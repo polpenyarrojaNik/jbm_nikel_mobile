@@ -13,7 +13,6 @@ import '../../../../core/presentation/common_widgets/custom_search_app_bar.dart'
 import '../../../../core/presentation/common_widgets/error_message_widget.dart';
 import '../../../../core/presentation/common_widgets/header_datos_relacionados.dart';
 import '../../../../core/presentation/common_widgets/progress_indicator_widget.dart';
-import '../../../../core/presentation/theme/app_sizes.dart';
 import '../../../../core/routing/app_auto_router.dart';
 import '../../../pedido_venta/presentation/edit/pedido_venta_edit_page_controller.dart';
 import '../../domain/cliente_direccion.dart';
@@ -155,85 +154,105 @@ class ClienteDireccionTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: onTap,
-      child: Padding(
-        padding: kPaddingList,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                SizedBox(
-                  width: 50,
-                  child: (clienteDireccion.direccionId != null)
-                      ? Text(
-                          (clienteDireccion.direccionId!.length > 3)
-                              ? 'PRV'
-                              : clienteDireccion.direccionId!,
-                        )
-                      : null,
-                ),
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      if (clienteDireccion.nombre != null)
-                        Text(
-                          clienteDireccion.nombre!,
-                          style: Theme.of(context).textTheme.titleSmall,
+    return Material(
+      child: InkWell(
+        onTap: onTap,
+        child: Padding(
+          padding: const EdgeInsets.fromLTRB(16.0, 4.0, 8.0, 4.0),
+          child: Row(
+            children: [
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        SizedBox(
+                          width: 50,
+                          child: (clienteDireccion.direccionId != null)
+                              ? Text(
+                                  (clienteDireccion.direccionId!.length > 3)
+                                      ? 'PRV'
+                                      : clienteDireccion.direccionId!,
+                                )
+                              : null,
                         ),
-                      if (clienteDireccion.nombre != null) const Gap(4),
-                      if (clienteDireccion.direccion1 != null)
-                        Text(
-                          formatCustomerAddress(
-                            clienteDireccion.direccion1,
-                            clienteDireccion.codigoPostal,
-                            clienteDireccion.poblacion,
-                            clienteDireccion.provincia,
-                            clienteDireccion.pais,
-                          ),
-                          style: Theme.of(context).textTheme.bodySmall!,
-                        ),
-                      if ((!clienteDireccion.enviada &&
-                          clienteDireccion.deleted))
-                        Row(
-                          children: [
-                            Icon(
-                              Icons.error,
-                              color: Theme.of(context).colorScheme.error,
-                              size: 14,
-                            ),
-                            const Gap(4),
-                            Flexible(
-                              child: Text(
-                                S
-                                    .of(context)
-                                    .cliente_show_clienteDireccion_hayCambiosDeEnviar,
-                                style: Theme.of(context).textTheme.bodyMedium
-                                    ?.copyWith(
+                        Expanded(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              if (clienteDireccion.nombre != null)
+                                Text(
+                                  clienteDireccion.nombre!,
+                                  style: Theme.of(context).textTheme.titleSmall,
+                                ),
+                              if (clienteDireccion.nombre != null) const Gap(4),
+                              if (clienteDireccion.direccion1 != null)
+                                Text(
+                                  formatCustomerAddress(
+                                    clienteDireccion.direccion1,
+                                    clienteDireccion.codigoPostal,
+                                    clienteDireccion.poblacion,
+                                    clienteDireccion.provincia,
+                                    clienteDireccion.pais,
+                                  ),
+                                  style: Theme.of(context).textTheme.bodySmall!,
+                                ),
+                              if ((!clienteDireccion.enviada &&
+                                  clienteDireccion.deleted))
+                                Row(
+                                  children: [
+                                    Icon(
+                                      Icons.error,
                                       color: Theme.of(context)
                                           .colorScheme
                                           .error,
+                                      size: 14,
                                     ),
-                              ),
-                            ),
-                          ],
-                        ),
+                                    const Gap(2),
+                                    Flexible(
+                                      child: Text(
+                                        S
+                                            .of(context)
+                                            .cliente_show_clienteDireccion_hayCambiosDeEnviar,
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .bodyMedium
+                                            ?.copyWith(
+                                              color: Theme.of(context)
+                                                  .colorScheme
+                                                  .error,
+                                            ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
 
-                      if (clienteDireccion.tratada &&
-                          clienteImpParam.id != null)
-                        _CambiosPendientesDeTramitarListView(clienteImpParam),
-                    ],
-                  ),
+                              if (clienteDireccion.tratada &&
+                                  clienteImpParam.id != null)
+                                _CambiosPendientesDeTramitarListView(
+                                  clienteImpParam,
+                                ),
+                            ],
+                          ),
+                        ),
+                        if (!isFromPedido &&
+                            !(clienteDireccion.enviada &&
+                                !clienteDireccion.tratada))
+                          _ClienteDireccionActionButtons(clienteImpParam),
+                      ],
+                    ),
+                  ],
                 ),
-                if (!isFromPedido &&
-                    !(clienteDireccion.enviada && !clienteDireccion.tratada))
-                  _ClienteDireccionActionButtons(clienteImpParam),
-              ],
-            ),
-          ],
+              ),
+              IconButton(
+                visualDensity: VisualDensity.compact,
+                onPressed: onTap,
+                icon: const Icon(Icons.navigate_next),
+              ),
+            ],
+          ),
         ),
       ),
     );
@@ -288,7 +307,6 @@ class _ClienteDireccionActionButtons extends ConsumerWidget {
                 navigateToEditClienteDireccion(context, clienteImpParam),
             icon: const Icon(Icons.edit),
           ),
-          const Gap(4),
           deleteDireccionValue.maybeWhen(
             loading: () => const CircularProgressIndicator(strokeWidth: 2.5),
             orElse: () => IconButton(

@@ -4,7 +4,7 @@ import 'package:drift/drift.dart';
 import 'package:path/path.dart';
 import 'package:path_provider/path_provider.dart';
 
-const int kDatabaseRelease = 39;
+const int kDatabaseRelease = 40;
 
 Future<void> deleteRemoteDatabase() async {
   const remoteDatabaseName = 'jbm.sqlite';

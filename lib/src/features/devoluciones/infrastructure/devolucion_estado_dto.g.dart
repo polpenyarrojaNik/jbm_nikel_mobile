@@ -23,6 +23,7 @@ _DevolucionEstadoDTO _$DevolucionEstadoDTOFromJson(Map<String, dynamic> json) =>
       descripcionRU: json['DESCRIPCION_RU'] as String?,
       descripcionCN: json['DESCRIPCION_CN'] as String?,
       descripcionEL: json['DESCRIPCION_EL'] as String?,
+      descripcionPL: json['DESCRIPCION_PL'] as String?,
       lastUpdated: DateTime.parse(json['LAST_UPDATED'] as String),
       deleted: json['DELETED'] as String? ?? 'N',
     );
@@ -45,6 +46,7 @@ Map<String, dynamic> _$DevolucionEstadoDTOToJson(
   'DESCRIPCION_RU': instance.descripcionRU,
   'DESCRIPCION_CN': instance.descripcionCN,
   'DESCRIPCION_EL': instance.descripcionEL,
+  'DESCRIPCION_PL': instance.descripcionPL,
   'LAST_UPDATED': instance.lastUpdated.toIso8601String(),
   'DELETED': instance.deleted,
 };
