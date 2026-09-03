@@ -17,7 +17,7 @@ abstract class EstadisticasVentaClienteUsuarioDTO
     @JsonKey(name: 'ANYO') required double anyo,
     @JsonKey(name: 'MES') required double mes,
     @JsonKey(name: 'CLIENTE_ID') required String clienteId,
-    @JsonKey(name: 'DIRECCION_ID')  String? direccionId,
+    @JsonKey(name: 'DIRECCION_ID') String? direccionId,
     @JsonKey(name: 'ARTICULO_ID') required String articuloId,
     @JsonKey(name: 'UNIDADES') double? unidades,
     @JsonKey(name: 'IMPORTE') double? importe,
