@@ -461,7 +461,6 @@ class _VisitaFormState extends ConsumerState<_VisitaForm> {
                   widget.visitaEditScreenData.visita?.cliente ??
                   widget.visitaEditScreenData.createVisitaFromCliente,
               readOnly: widget.readOnly,
-              formKey: widget.formKey,
               onSelectedCliente: (newCliente) => setState(() {
                 widget.formKey.currentState?.patchValue({
                   'cliente': newCliente,
@@ -1005,13 +1004,11 @@ class SelectClienteWidget extends StatelessWidget {
     super.key,
     required this.initialValue,
     required this.readOnly,
-    required this.formKey,
     required this.onSelectedCliente,
   });
 
   final Cliente? initialValue;
   final bool readOnly;
-  final GlobalKey<FormBuilderState> formKey;
   final Function(Cliente? cliente) onSelectedCliente;
 
   @override
@@ -1027,6 +1024,7 @@ class SelectClienteWidget extends StatelessWidget {
               onPressed: () => onSelectedCliente(null),
               icon: const Icon(Icons.close),
             ),
+            errorText: clienteField.errorText,
           ),
           child: clienteField.value != null
               ? Text(
@@ -1035,6 +1033,9 @@ class SelectClienteWidget extends StatelessWidget {
               : Container(),
         ),
         initialValue: initialValue,
+        validator: FormBuilderValidators.compose([
+          FormBuilderValidators.required(),
+        ]),
       ),
     );
   }

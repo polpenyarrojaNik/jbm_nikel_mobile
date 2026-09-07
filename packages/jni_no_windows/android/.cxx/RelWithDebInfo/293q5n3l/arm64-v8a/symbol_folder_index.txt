@@ -1,0 +1,1 @@
+/Users/polpenarroja/Documents/Flutter Projects/jbm_nikel_mobile/build/jni/intermediates/cxx/RelWithDebInfo/293q5n3l/obj/arm64-v8a
