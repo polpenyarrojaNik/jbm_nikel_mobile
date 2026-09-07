@@ -953,7 +953,12 @@ class _StepSelectClienteDireccionContentState
                         focusNode: focusNode,
                       ),
                       if (direccionManual.value != null) ...[
-                        Container(
+                        ClienteDireccionTile(
+                          clienteDireccion: direccionManual.value!,
+                          clienteImpParam: ClienteImpParam(
+                            direccionManual.value!.clienteId,
+                          ),
+                          isFromPedido: true,
                           color:
                               (widget.clienteDireccion != null &&
                                   widget.clienteDireccion!.direccionId ==
@@ -961,18 +966,11 @@ class _StepSelectClienteDireccionContentState
                                   widget.clienteDireccion!.isManual)
                               ? Theme.of(context).colorScheme.secondaryContainer
                               : Colors.transparent,
-                          child: ClienteDireccionTile(
-                            clienteDireccion: direccionManual.value!,
-                            clienteImpParam: ClienteImpParam(
-                              direccionManual.value!.clienteId,
-                            ),
-                            isFromPedido: true,
-                            onTap: () => onSelectAddress(
-                              ref,
-                              direccionManual.value!,
-                              userSelectAnyAddress,
-                              direccionManual,
-                            ),
+                          onTap: () => onSelectAddress(
+                            ref,
+                            direccionManual.value!,
+                            userSelectAnyAddress,
+                            direccionManual,
                           ),
                         ),
 
@@ -984,7 +982,7 @@ class _StepSelectClienteDireccionContentState
                             shrinkWrap: true,
                             itemCount: clienteDireccionesList.length,
                             physics: const BouncingScrollPhysics(),
-                            itemBuilder: (context, i) => Container(
+                            itemBuilder: (context, i) => ClienteDireccionTile(
                               color:
                                   (widget.clienteDireccion != null &&
                                       widget.clienteDireccion!.direccionId ==
@@ -993,18 +991,16 @@ class _StepSelectClienteDireccionContentState
                                         .colorScheme
                                         .secondaryContainer
                                   : Colors.transparent,
-                              child: ClienteDireccionTile(
-                                clienteDireccion: clienteDireccionesList[i],
-                                clienteImpParam: ClienteImpParam(
-                                  clienteDireccionesList[i].clienteId,
-                                ),
-                                isFromPedido: true,
-                                onTap: () => onSelectAddress(
-                                  ref,
-                                  clienteDireccionesList[i],
-                                  userSelectAnyAddress,
-                                  direccionManual,
-                                ),
+                              clienteDireccion: clienteDireccionesList[i],
+                              clienteImpParam: ClienteImpParam(
+                                clienteDireccionesList[i].clienteId,
+                              ),
+                              isFromPedido: true,
+                              onTap: () => onSelectAddress(
+                                ref,
+                                clienteDireccionesList[i],
+                                userSelectAnyAddress,
+                                direccionManual,
                               ),
                             ),
                             separatorBuilder: (context, i) => const Divider(),

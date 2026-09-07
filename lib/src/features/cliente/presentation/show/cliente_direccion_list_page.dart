@@ -145,16 +145,19 @@ class ClienteDireccionTile extends StatelessWidget {
     required this.clienteImpParam,
     this.isFromPedido = false,
     required this.onTap,
+    this.color,
   });
 
   final ClienteDireccion clienteDireccion;
   final ClienteImpParam clienteImpParam;
   final bool isFromPedido;
   final Function() onTap;
+  final Color? color;
 
   @override
   Widget build(BuildContext context) {
     return Material(
+      color: color,
       child: InkWell(
         onTap: onTap,
         child: Padding(
