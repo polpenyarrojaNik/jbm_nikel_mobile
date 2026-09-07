@@ -121,16 +121,19 @@ class CatalogoRepository {
 
       final catalogoOrdenAbiertoList = await _getCatalogoOrdenDTOList();
 
-      catalogosList.sort(
-        (a, b) => _orderByCatalogos(
-          a,
-          b,
-          favoriteLocalList,
-          catalogoOrdenAbiertoList,
-        ),
-      );
+      final indexedCatalogosList = catalogosList.asMap().entries.toList()
+        ..sort(
+          (entryA, entryB) => _orderByCatalogos(
+            entryA.value,
+            entryB.value,
+            entryA.key,
+            entryB.key,
+            favoriteLocalList,
+            catalogoOrdenAbiertoList,
+          ),
+        );
 
-      return catalogosList;
+      return indexedCatalogosList.map((entry) => entry.value).toList();
     } on AppException catch (e, stackTrace) {
       return e.maybeWhen(
         orElse: () => Error.throwWithStackTrace(e, stackTrace),
@@ -466,6 +469,8 @@ class CatalogoRepository {
   int _orderByCatalogos(
     Catalogo a,
     Catalogo b,
+    int indexA,
+    int indexB,
     List<CatalogoDTO> favoriteLocalList,
     List<CatalogoOrdenDTO> catalogoOrdenList,
   ) {
@@ -480,18 +485,19 @@ class CatalogoRepository {
       catalogoOrdenList,
     );
 
-    if (priorityA == priorityB) {
-      if (priorityA == 1 || priorityA == 3) {
-        return _getFechaAbierto(
-          b.catalogoId,
-          catalogoOrdenList,
-        ).compareTo(_getFechaAbierto(a.catalogoId, catalogoOrdenList));
-      } else if (priorityA == 4 && priorityB == 4) {
-        return a.orden.compareTo(b.orden);
-      }
+    if (priorityA != priorityB) {
+      return priorityA.compareTo(priorityB);
     }
 
-    return priorityA.compareTo(priorityB);
+    if (priorityA == 1 || priorityA == 3) {
+      return _getFechaAbierto(
+        b.catalogoId,
+        catalogoOrdenList,
+      ).compareTo(_getFechaAbierto(a.catalogoId, catalogoOrdenList));
+    }
+
+    // Mismo prioridad y sin fecha de apertura relevante: conserva el orden original
+    return indexA.compareTo(indexB);
   }
 
   Map<String, String> _setCatalogoQueryParams({
