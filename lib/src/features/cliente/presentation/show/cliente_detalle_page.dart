@@ -4,6 +4,7 @@ import 'package:flutter_material_design_icons/flutter_material_design_icons.dart
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gap/gap.dart';
 import 'package:map_launcher/map_launcher.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../../../../../generated/l10n.dart';
 import '../../../../core/helpers/formatters.dart';
@@ -11,14 +12,29 @@ import '../../../../core/helpers/helpers.dart';
 import '../../../../core/presentation/common_widgets/async_value_widget.dart';
 import '../../../../core/presentation/common_widgets/column_field_text_detail.dart';
 import '../../../../core/presentation/common_widgets/common_app_bar.dart';
+import '../../../../core/presentation/common_widgets/common_compact_pill.dart';
 import '../../../../core/presentation/common_widgets/datos_extra_row.dart';
 import '../../../../core/presentation/common_widgets/mobile_custom_separatos.dart';
 import '../../../../core/presentation/common_widgets/progress_indicator_widget.dart';
 import '../../../../core/presentation/common_widgets/selectable_text_widget.dart';
 import '../../../../core/routing/app_auto_router.dart';
+import '../../domain/carrito_abandonado.dart';
 import '../../domain/cliente.dart';
 import '../../infrastructure/cliente_repository.dart';
 import '../common_widgets/cliente_status_chip.dart';
+
+part 'cliente_detalle_page.g.dart';
+
+@riverpod
+class ClienteCarritoAbandonadosController
+    extends _$ClienteCarritoAbandonadosController {
+  @override
+  Future<List<CarritoAbandonado>> build(String clienteId) {
+    return ref
+        .read(clienteRepositoryProvider)
+        .getClienteCarritosAbandonados(clienteId: clienteId);
+  }
+}
 
 @RoutePage()
 class ClienteDetallePage extends ConsumerWidget {
@@ -112,8 +128,8 @@ class _ClienteHeader extends ConsumerWidget {
     final colorScheme = Theme.of(context).colorScheme;
     final hasStatusDecoration = cliente.bloqueoOper || cliente.obsoleto;
 
-    final clienteTieneCarritosAbandonados = ref.watch(
-      clienteCarritosAbandonadosControllerProvider(cliente.id),
+    final clienteCarritosAbandonadosState = ref.watch(
+      clienteCarritoAbandonadosControllerProvider(cliente.id),
     );
 
     return Column(
@@ -306,9 +322,18 @@ class _ClienteHeader extends ConsumerWidget {
                   value: cliente.representante2Nombre!,
                   selectable: true,
                 ),
-              clienteTieneCarritosAbandonados.when(
-                data: (tieneCarritosAbandonados) => tieneCarritosAbandonados
-                    ? _CarritosAbandonadosAlert(clienteId: cliente.id)
+              clienteCarritosAbandonadosState.when(
+                data: (carritosAbandonadosList) =>
+                    carritosAbandonadosList.isNotEmpty
+                    ? ListView.separated(
+                        shrinkWrap: true,
+                        physics: const NeverScrollableScrollPhysics(),
+                        itemBuilder: (context, i) => CarritoAbandonadoListTile(
+                          carrito: carritosAbandonadosList[i],
+                        ),
+                        separatorBuilder: (context, i) => const Gap(2),
+                        itemCount: carritosAbandonadosList.length,
+                      )
                     : const SizedBox.shrink(),
                 error: (error, _) => const SizedBox.shrink(),
                 loading: () => const Center(child: ProgressIndicatorWidget()),
@@ -348,57 +373,6 @@ class _ClienteHeader extends ConsumerWidget {
         await availableMaps.first.show();
       }
     }
-  }
-}
-
-class _CarritosAbandonadosAlert extends StatelessWidget {
-  const _CarritosAbandonadosAlert({required this.clienteId});
-
-  final String clienteId;
-
-  @override
-  Widget build(BuildContext context) {
-    final colorScheme = Theme.of(context).colorScheme;
-
-    return Padding(
-      padding: const EdgeInsets.only(top: 8),
-      child: Material(
-        color: colorScheme.errorContainer,
-        borderRadius: BorderRadius.circular(8),
-        clipBehavior: Clip.antiAlias,
-        child: InkWell(
-          onTap: () => context.router.push(
-            ClienteCarritoAbandonadoListRoute(clienteId: clienteId),
-          ),
-          child: Container(
-            decoration: BoxDecoration(
-              border: Border.all(color: colorScheme.error, width: 1.5),
-              borderRadius: BorderRadius.circular(8),
-            ),
-            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
-            child: Row(
-              children: [
-                Icon(
-                  Icons.remove_shopping_cart_outlined,
-                  color: colorScheme.error,
-                ),
-                const Gap(12),
-                Expanded(
-                  child: Text(
-                    S.of(context).carritosAbandonados,
-                    style: Theme.of(context).textTheme.titleSmall?.copyWith(
-                      color: colorScheme.onErrorContainer,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ),
-                Icon(Icons.chevron_right, color: colorScheme.error),
-              ],
-            ),
-          ),
-        ),
-      ),
-    );
   }
 }
 
@@ -1278,6 +1252,128 @@ class _Consultas extends StatelessWidget {
               nombreCliente: cliente.nombreCliente,
             ),
           ),
+        ),
+      ],
+    );
+  }
+}
+
+class CarritoAbandonadoListTile extends StatelessWidget {
+  const CarritoAbandonadoListTile({super.key, required this.carrito});
+
+  final CarritoAbandonado carrito;
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+
+    return Material(
+      child: InkWell(
+        onTap: () => _onCarritoAbandonadoTap(context, carrito),
+        child: Card(
+          color: theme.colorScheme.errorContainer,
+          clipBehavior: Clip.antiAlias,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(8.0),
+            side: BorderSide(color: theme.colorScheme.error),
+          ),
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Row(
+              children: [
+                Icon(
+                  Icons.remove_shopping_cart_outlined,
+                  color: theme.colorScheme.onErrorContainer,
+                ),
+                const Gap(16),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            'ID: ${carrito.carritoId}',
+                            style: Theme.of(context).textTheme.titleSmall,
+                          ),
+                          CommonCompactPill(
+                            label: carrito.statusName,
+                            backgroundColor:
+                                carrito.status ==
+                                    CarritoAbandonadoStatus.pending
+                                ? null
+                                : Theme.of(context).colorScheme.errorContainer,
+                            foreGroundColor:
+                                carrito.status ==
+                                    CarritoAbandonadoStatus.pending
+                                ? null
+                                : Theme.of(context)
+                                      .colorScheme
+                                      .onErrorContainer,
+                          ),
+                        ],
+                      ),
+
+                      Text(
+                        carrito.contactName,
+                        style: Theme.of(context).textTheme.bodyMedium,
+                      ),
+                      Text(
+                        '${S.of(context).cartsLines}: ${carrito.lineas.length}',
+                        style: Theme.of(context).textTheme.bodyMedium,
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+void _onCarritoAbandonadoTap(BuildContext context, CarritoAbandonado carrito) {
+  showDialog(
+    context: context,
+    builder: (ctx) => CarritoAbandonadoLineasDialog(carrito: carrito),
+  );
+}
+
+class CarritoAbandonadoLineasDialog extends StatelessWidget {
+  const CarritoAbandonadoLineasDialog({super.key, required this.carrito});
+
+  final CarritoAbandonado carrito;
+
+  @override
+  Widget build(BuildContext context) {
+    return AlertDialog(
+      title: Text('${S.of(context).cartsLines} - ${carrito.carritoId}'),
+      scrollable: true,
+      content: SizedBox(
+        width: double.maxFinite,
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            for (var i = 0; i < carrito.lineas.length; i++) ...[
+              if (i > 0) const Divider(),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(carrito.lineas[i].articleId),
+                  Text('${carrito.lineas[i].quantity} ${S.of(context).unidad}'),
+                ],
+              ),
+            ],
+          ],
+        ),
+      ),
+      actions: [
+        TextButton(
+          onPressed: () => Navigator.of(context).pop(),
+          child: Text(S.of(context).close),
         ),
       ],
     );
