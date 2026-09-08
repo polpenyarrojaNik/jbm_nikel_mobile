@@ -8,6 +8,7 @@ import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:flutter_riverpod/experimental/mutation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gap/gap.dart';
+import 'package:markdown/markdown.dart' as md;
 import 'package:open_file/open_file.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 
@@ -18,9 +19,38 @@ import '../../../core/presentation/common_widgets/default_dropdown_separator_wid
 import '../../../core/presentation/common_widgets/error_message_widget.dart';
 import '../../../core/presentation/common_widgets/progress_indicator_widget.dart';
 import '../../../core/presentation/toasts.dart';
+import '../../../core/routing/app_auto_router.dart';
 import '../core/domain/notificacion_adjunto.dart';
 import '../core/infrastructure/notification_repository.dart';
 import 'notification_detail_controller.dart';
+
+const kAccionVerClientePrefix = 'accion:ver_cliente:';
+
+class NotificationAccionLinkBuilder extends MarkdownElementBuilder {
+  @override
+  Widget? visitElementAfterWithContext(
+    BuildContext context,
+    md.Element element,
+    TextStyle? preferredStyle,
+    TextStyle? parentStyle,
+  ) {
+    final href = element.attributes['href'];
+    if (href == null || !href.startsWith(kAccionVerClientePrefix)) {
+      return null;
+    }
+
+    final clienteId = href.substring(kAccionVerClientePrefix.length);
+
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 4),
+      child: TextButton(
+        onPressed: () =>
+            context.router.push(ClienteDetalleRoute(clienteId: clienteId)),
+        child: Text(element.textContent),
+      ),
+    );
+  }
+}
 
 final notificacionAdjuntoMutation = Mutation<File?>();
 
@@ -66,10 +96,11 @@ class NotificationDetailPage extends ConsumerWidget {
               ),
               Markdown(
                 onTapLink: (_, link, unknown) {
-                  if (link != null) {
+                  if (link != null && !link.startsWith('accion:')) {
                     launchUrlString(link);
                   }
                 },
+                builders: {'a': NotificationAccionLinkBuilder()},
                 shrinkWrap: true,
                 controller: scrollController,
                 data: notification.mensaje,

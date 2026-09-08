@@ -470,5 +470,8 @@
   "filter": "Filtrar",
   "salesOrderSent": "Pedido enviado",
   "backorders": "Pedidos em atraso",
-  "buscarBackorders": "Procurar pedidos em atraso..."
+  "buscarBackorders": "Procurar pedidos em atraso...",
+  "deleted": "Eliminado",
+  "carritosAbandonados": "Carrinhos abandonados",
+  "cartsLines": "Linhas do carrinho"
 }

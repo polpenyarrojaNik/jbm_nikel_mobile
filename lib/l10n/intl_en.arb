@@ -470,5 +470,8 @@
   "filter": "Filter",
   "salesOrderSent": "Sales order sent",
   "backorders": "Backorders",
-  "buscarBackorders": "Search backorders..."
+  "buscarBackorders": "Search backorders...",
+  "deleted": "Deleted",
+  "carritosAbandonados": "Abandoned carts",
+  "cartsLines": "Cart lines"
 }

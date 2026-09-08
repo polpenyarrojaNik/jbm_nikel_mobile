@@ -4459,6 +4459,26 @@ class S {
       args: [],
     );
   }
+
+  /// `Deleted`
+  String get deleted {
+    return Intl.message('Deleted', name: 'deleted', desc: '', args: []);
+  }
+
+  /// `Abandoned carts`
+  String get carritosAbandonados {
+    return Intl.message(
+      'Abandoned carts',
+      name: 'carritosAbandonados',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Cart lines`
+  String get cartsLines {
+    return Intl.message('Cart lines', name: 'cartsLines', desc: '', args: []);
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

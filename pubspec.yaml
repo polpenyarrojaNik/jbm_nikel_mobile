@@ -53,6 +53,7 @@ dependencies:
   latlong2: ^0.9.1
   logger: ^2.7.0
   map_launcher: ^6.0.0
+  markdown: ^7.3.1
   material_ui: ^1.1.0
   flutter_material_design_icons: ^3.1.0+7447
   money2: ^6.3.0

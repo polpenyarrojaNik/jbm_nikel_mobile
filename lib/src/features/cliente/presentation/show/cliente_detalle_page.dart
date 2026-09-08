@@ -13,6 +13,7 @@ import '../../../../core/presentation/common_widgets/column_field_text_detail.da
 import '../../../../core/presentation/common_widgets/common_app_bar.dart';
 import '../../../../core/presentation/common_widgets/datos_extra_row.dart';
 import '../../../../core/presentation/common_widgets/mobile_custom_separatos.dart';
+import '../../../../core/presentation/common_widgets/progress_indicator_widget.dart';
 import '../../../../core/presentation/common_widgets/selectable_text_widget.dart';
 import '../../../../core/routing/app_auto_router.dart';
 import '../../domain/cliente.dart';
@@ -34,25 +35,19 @@ class ClienteDetallePage extends ConsumerWidget {
     return Scaffold(
       appBar: CommonAppBar(
         titleText: (S.of(context).cliente_show_clienteDetalle_titulo),
-        actions: clienteValue.maybeWhen(
-          orElse: () => null,
-          data: (cliente) => cliente.bloqueoOper || cliente.obsoleto
-              ? null
-              : [
-                  IconButton(
-                    onPressed: () => navigateToCreatePedido(
-                      context: context,
-                      clienteId: clienteId,
-                    ),
-                    icon: const Icon(Icons.shopping_cart_outlined),
-                  ),
-                  IconButton(
-                    onPressed: () => navigateToCreateVisita(context, clienteId),
-                    icon: const Icon(Icons.group_add),
-                  ),
-                ],
-        ),
+        actions: [
+          IconButton(
+            onPressed: () =>
+                navigateToCreatePedido(context: context, clienteId: clienteId),
+            icon: const Icon(Icons.add_shopping_cart_outlined),
+          ),
+          IconButton(
+            onPressed: () => navigateToCreateVisita(context, clienteId),
+            icon: const Icon(Icons.group_add),
+          ),
+        ],
       ),
+
       body: AsyncValueWidget<Cliente>(
         value: clienteValue,
         onData: (cliente) => ListView(
@@ -107,15 +102,19 @@ class _ClienteInfoContainer extends StatelessWidget {
   }
 }
 
-class _ClienteHeader extends StatelessWidget {
+class _ClienteHeader extends ConsumerWidget {
   const _ClienteHeader({required this.cliente});
 
   final Cliente cliente;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final colorScheme = Theme.of(context).colorScheme;
     final hasStatusDecoration = cliente.bloqueoOper || cliente.obsoleto;
+
+    final clienteTieneCarritosAbandonados = ref.watch(
+      clienteCarritosAbandonadosControllerProvider(cliente.id),
+    );
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -307,6 +306,13 @@ class _ClienteHeader extends StatelessWidget {
                   value: cliente.representante2Nombre!,
                   selectable: true,
                 ),
+              clienteTieneCarritosAbandonados.when(
+                data: (tieneCarritosAbandonados) => tieneCarritosAbandonados
+                    ? _CarritosAbandonadosAlert(clienteId: cliente.id)
+                    : const SizedBox.shrink(),
+                error: (error, _) => const SizedBox.shrink(),
+                loading: () => const Center(child: ProgressIndicatorWidget()),
+              ),
             ],
           ),
         ),
@@ -342,6 +348,57 @@ class _ClienteHeader extends StatelessWidget {
         await availableMaps.first.show();
       }
     }
+  }
+}
+
+class _CarritosAbandonadosAlert extends StatelessWidget {
+  const _CarritosAbandonadosAlert({required this.clienteId});
+
+  final String clienteId;
+
+  @override
+  Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
+
+    return Padding(
+      padding: const EdgeInsets.only(top: 8),
+      child: Material(
+        color: colorScheme.errorContainer,
+        borderRadius: BorderRadius.circular(8),
+        clipBehavior: Clip.antiAlias,
+        child: InkWell(
+          onTap: () => context.router.push(
+            ClienteCarritoAbandonadoListRoute(clienteId: clienteId),
+          ),
+          child: Container(
+            decoration: BoxDecoration(
+              border: Border.all(color: colorScheme.error, width: 1.5),
+              borderRadius: BorderRadius.circular(8),
+            ),
+            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
+            child: Row(
+              children: [
+                Icon(
+                  Icons.remove_shopping_cart_outlined,
+                  color: colorScheme.error,
+                ),
+                const Gap(12),
+                Expanded(
+                  child: Text(
+                    S.of(context).carritosAbandonados,
+                    style: Theme.of(context).textTheme.titleSmall?.copyWith(
+                      color: colorScheme.onErrorContainer,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+                Icon(Icons.chevron_right, color: colorScheme.error),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
   }
 }
 

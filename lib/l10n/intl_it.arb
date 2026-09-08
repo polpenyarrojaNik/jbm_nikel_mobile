@@ -470,5 +470,8 @@
   "filter": "Filtra",
   "salesOrderSent": "Ordine inviato",
   "backorders": "Ordini in sospeso",
-  "buscarBackorders": "Cerca ordini in sospeso..."
+  "buscarBackorders": "Cerca ordini in sospeso...",
+  "deleted": "Eliminato",
+  "carritosAbandonados": "Carrelli abbandonati",
+  "cartsLines": "Righe del carrello"
 }

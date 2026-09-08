@@ -469,5 +469,8 @@
   "filter": "Filtrer",
   "salesOrderSent": "Commande envoyée",
   "backorders": "Commandes en attente",
-  "buscarBackorders": "Rechercher les commandes en attente..."
+  "buscarBackorders": "Rechercher les commandes en attente...",
+  "deleted": "Supprimé",
+  "carritosAbandonados": "Paniers abandonnés",
+  "cartsLines": "Lignes du panier"
 }

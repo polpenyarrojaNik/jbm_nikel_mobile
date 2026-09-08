@@ -181,6 +181,10 @@ class MessageLookup extends MessageLookupByLibrary {
     "cancel": MessageLookupByLibrary.simpleMessage("Cancelar"),
     "cancelar": MessageLookupByLibrary.simpleMessage("Cancelar"),
     "capacidad": MessageLookupByLibrary.simpleMessage("Capacidade"),
+    "carritosAbandonados": MessageLookupByLibrary.simpleMessage(
+      "Carrinhos abandonados",
+    ),
+    "cartsLines": MessageLookupByLibrary.simpleMessage("Linhas do carrinho"),
     "catalogos_index_buscarCatalogo": MessageLookupByLibrary.simpleMessage(
       "Buscar catálogos...",
     ),
@@ -572,6 +576,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "customerNotAvailableToSelect": MessageLookupByLibrary.simpleMessage(
       "Cliente não disponível para seleção",
     ),
+    "deleted": MessageLookupByLibrary.simpleMessage("Eliminado"),
     "discontinued": MessageLookupByLibrary.simpleMessage("DESCONTINUADO"),
     "downloadTemplate": MessageLookupByLibrary.simpleMessage(
       "Descarregar modelo",

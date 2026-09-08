@@ -145,6 +145,104 @@ abstract class _$ClienteById extends $AsyncNotifier<Cliente> {
   }
 }
 
+@ProviderFor(ClienteCarritosAbandonadosController)
+final clienteCarritosAbandonadosControllerProvider =
+    ClienteCarritosAbandonadosControllerFamily._();
+
+final class ClienteCarritosAbandonadosControllerProvider
+    extends $AsyncNotifierProvider<ClienteCarritosAbandonadosController, bool> {
+  ClienteCarritosAbandonadosControllerProvider._({
+    required ClienteCarritosAbandonadosControllerFamily super.from,
+    required String super.argument,
+  }) : super(
+         retry: null,
+         name: r'clienteCarritosAbandonadosControllerProvider',
+         isAutoDispose: true,
+         dependencies: null,
+         $allTransitiveDependencies: null,
+       );
+
+  @override
+  String debugGetCreateSourceHash() =>
+      _$clienteCarritosAbandonadosControllerHash();
+
+  @override
+  String toString() {
+    return r'clienteCarritosAbandonadosControllerProvider'
+        ''
+        '($argument)';
+  }
+
+  @$internal
+  @override
+  ClienteCarritosAbandonadosController create() =>
+      ClienteCarritosAbandonadosController();
+
+  @override
+  bool operator ==(Object other) {
+    return other is ClienteCarritosAbandonadosControllerProvider &&
+        other.argument == argument;
+  }
+
+  @override
+  int get hashCode {
+    return argument.hashCode;
+  }
+}
+
+String _$clienteCarritosAbandonadosControllerHash() =>
+    r'fee240715a97a85405467ff76945398b17025ea1';
+
+final class ClienteCarritosAbandonadosControllerFamily extends $Family
+    with
+        $ClassFamilyOverride<
+          ClienteCarritosAbandonadosController,
+          AsyncValue<bool>,
+          bool,
+          FutureOr<bool>,
+          String
+        > {
+  ClienteCarritosAbandonadosControllerFamily._()
+    : super(
+        retry: null,
+        name: r'clienteCarritosAbandonadosControllerProvider',
+        dependencies: null,
+        $allTransitiveDependencies: null,
+        isAutoDispose: true,
+      );
+
+  ClienteCarritosAbandonadosControllerProvider call(String clienteId) =>
+      ClienteCarritosAbandonadosControllerProvider._(
+        argument: clienteId,
+        from: this,
+      );
+
+  @override
+  String toString() => r'clienteCarritosAbandonadosControllerProvider';
+}
+
+abstract class _$ClienteCarritosAbandonadosController
+    extends $AsyncNotifier<bool> {
+  late final _$args = ref.$arg as String;
+  String get clienteId => _$args;
+
+  FutureOr<bool> build(String clienteId);
+  @$mustCallSuper
+  @override
+  WhenComplete runBuild() {
+    final ref = this.ref as $Ref<AsyncValue<bool>, bool>;
+    final element =
+        ref.element
+            as $ClassProviderElement<
+              AnyNotifier<AsyncValue<bool>, bool>,
+              AsyncValue<bool>,
+              Object?,
+              Object?
+            >;
+    return element.handleCreate(ref, () => build(_$args));
+  }
+}
+
 @ProviderFor(ClienteLastSyncDate)
 final clienteLastSyncDateProvider = ClienteLastSyncDateProvider._();
 

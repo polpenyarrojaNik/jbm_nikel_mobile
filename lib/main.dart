@@ -74,7 +74,13 @@ void main() async {
         });
       }
 
-      runApp(ProviderScope(child: const App()));
+      runApp(
+        ProviderScope(
+          child: const App(),
+          retry: (retryCount, error) =>
+              ProviderContainer.defaultRetry(retryCount, error, maxRetries: 3),
+        ),
+      );
 
       FlutterError.onError = (FlutterErrorDetails detalles) {
         FlutterError.presentError(detalles);

@@ -33,6 +33,7 @@ import '../../usuario/application/usuario_notifier.dart';
 import '../../usuario/domain/usuario.dart';
 import '../../visitas/domain/visita.dart';
 import '../../visitas/infrastructure/visita_repository.dart';
+import '../domain/carrito_abandonado.dart';
 import '../domain/cliente.dart';
 import '../domain/cliente_adjunto.dart';
 import '../domain/cliente_albaran.dart';
@@ -52,6 +53,7 @@ import '../domain/cliente_rappel.dart';
 import '../domain/cliente_telefono.dart';
 import '../domain/cliente_ventas_articulo.dart';
 import '../domain/cliente_ventas_mes.dart';
+import 'carrito_abandonado_dto.dart';
 import 'cliente_adjunto_dto.dart';
 import 'cliente_albaran_dto.dart';
 import 'cliente_contacto_dto.dart';
@@ -82,6 +84,18 @@ class ClienteById extends _$ClienteById {
   Future<Cliente> build(String clienteId) {
     final clienteRepository = ref.watch(clienteRepositoryProvider);
     return clienteRepository.getClienteById(clienteId: clienteId);
+  }
+}
+
+@riverpod
+class ClienteCarritosAbandonadosController
+    extends _$ClienteCarritosAbandonadosController {
+  @override
+  Future<bool> build(String clienteId) {
+    final clienteRepository = ref.read(clienteRepositoryProvider);
+    return clienteRepository.getClienteTieneCarritosAbandonados(
+      clienteId: clienteId,
+    );
   }
 }
 
@@ -2641,6 +2655,92 @@ GROUP BY ARTICULO_ID, DESCRIPCION
     return null;
   }
 
+  Future<bool> getClienteTieneCarritosAbandonados({
+    required String clienteId,
+  }) async {
+    final query = {'cliente_id': clienteId};
+
+    return await _remoteGetClienteTieneCarritoAbandonado(
+      requestUri: (usuario.test)
+          ? Uri.http(
+              dotenv.get('URL_TEST', fallback: 'localhost:3001'),
+              'api/v1/utils/tiene_carrito_abandonado',
+              query,
+            )
+          : Uri.https(
+              dotenv.get('URL', fallback: 'localhost:3001'),
+              'api/v1/utils/tiene_carrito_abandonado',
+              query,
+            ),
+      jsonDataSelector: (json) => json['data'],
+      provisionalToken: usuario.provisionalToken,
+    );
+  }
+
+  Future<List<CarritoAbandonado>> getClienteCarritosAbandonados({
+    required String clienteId,
+  }) async {
+    final query = {'cliente_id': clienteId};
+
+    final requestUri = (usuario.test)
+        ? Uri.http(
+            dotenv.get('URL_TEST', fallback: 'localhost:3001'),
+            'api/v1/utils/carrito_abandonado',
+            query,
+          )
+        : Uri.https(
+            dotenv.get('URL', fallback: 'localhost:3001'),
+            'api/v1/utils/carrito_abandonado',
+            query,
+          );
+
+    final clienteCarritoAbandonadoDTOList =
+        await _remoteGetClienteCarritoAbandonadoDto(
+          requestUri: requestUri,
+          jsonDataSelector: (json) => json['data'],
+          provisionalToken: usuario.provisionalToken,
+        );
+
+    return await Future.wait(
+      clienteCarritoAbandonadoDTOList.map((e) async {
+        final customerName = await _getClienteCustomerName(e.customerId);
+        final contactName = await _getClienteContactName(
+          e.customerId,
+          e.contactoId,
+        );
+        return e.toDomain(customerName: customerName, contactName: contactName);
+      }).toList(),
+    );
+  }
+
+  Future<bool> _remoteGetClienteTieneCarritoAbandonado({
+    required Uri requestUri,
+    required dynamic Function(dynamic json) jsonDataSelector,
+    required String provisionalToken,
+  }) async {
+    try {
+      final response = await _dio.getUri(
+        requestUri,
+        options: Options(
+          headers: {'authorization': 'Bearer $provisionalToken'},
+        ),
+      );
+      if (response.statusCode == 200) {
+        final data = jsonDataSelector(response.data) as bool;
+        return data;
+      }
+      throw AppException.restApiFailure(
+        response.statusCode ?? 400,
+        response.statusMessage ?? '',
+      );
+    } catch (e, stackTrace) {
+      Error.throwWithStackTrace(
+        getApiError(e, stackTrace, errorLogger),
+        stackTrace,
+      );
+    }
+  }
+
   Future<List<ClienteAlbaranDTO>> _remoteGetClienteAlbaranDto({
     required Uri requestUri,
     required dynamic Function(dynamic json) jsonDataSelector,
@@ -2780,5 +2880,60 @@ GROUP BY ARTICULO_ID, DESCRIPCION
     }
 
     return articuloDto.getDescriptionInLocalLanguage();
+  }
+
+  Future<List<CarritoAbandonadoDTO>> _remoteGetClienteCarritoAbandonadoDto({
+    required Uri requestUri,
+    required dynamic Function(dynamic json) jsonDataSelector,
+    required String provisionalToken,
+  }) async {
+    try {
+      final response = await _dio.getUri(
+        requestUri,
+        options: Options(
+          headers: {'authorization': 'Bearer $provisionalToken'},
+        ),
+      );
+      if (response.statusCode == 200) {
+        final data = jsonDataSelector(response.data) as List<dynamic>;
+        return data
+            .map(
+              (e) => CarritoAbandonadoDTO.fromJson(e as Map<String, dynamic>),
+            )
+            .toList();
+      }
+      throw AppException.restApiFailure(
+        response.statusCode ?? 400,
+        response.statusMessage ?? '',
+      );
+    } catch (e, stackTrace) {
+      Error.throwWithStackTrace(
+        getApiError(e, stackTrace, errorLogger),
+        stackTrace,
+      );
+    }
+  }
+
+  Future<String> _getClienteCustomerName(String customerId) async {
+    final clienteDto = await (_remoteDb.select(
+      _remoteDb.clienteTable,
+    )..where((tbl) => tbl.id.equals(customerId))).getSingleOrNull();
+
+    return clienteDto?.nombreCliente ?? customerId;
+  }
+
+  Future<String> _getClienteContactName(
+    String customerId,
+    String contactId,
+  ) async {
+    final contactoDto =
+        await (_remoteDb.select(_remoteDb.clienteContactoTable)..where(
+              (tbl) =>
+                  tbl.contactoId.equals(contactId) &
+                  tbl.clienteId.equals(customerId),
+            ))
+            .getSingleOrNull();
+
+    return contactoDto?.nombre ?? contactId;
   }
 }

@@ -471,5 +471,8 @@
   "sent": "Gesendet",
   "salesOrderSent": "Verkaufsauftrag gesendet",
   "backorders": "Rückstände",
-  "buscarBackorders": "Rückstände suchen..."
+  "buscarBackorders": "Rückstände suchen...",
+  "deleted": "Gelöscht",
+  "carritosAbandonados": "Verlassene Warenkörbe",
+  "cartsLines": "Warenkorbzeilen"
 }
