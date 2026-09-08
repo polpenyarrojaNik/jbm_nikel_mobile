@@ -473,5 +473,6 @@
   "buscarBackorders": "Search backorders...",
   "deleted": "Deleted",
   "carritosAbandonados": "Abandoned carts",
-  "cartsLines": "Cart lines"
+  "cartsLines": "Cart lines",
+  "shippingAddress": "Shipping address"
 }

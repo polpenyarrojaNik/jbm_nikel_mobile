@@ -4479,6 +4479,16 @@ class S {
   String get cartsLines {
     return Intl.message('Cart lines', name: 'cartsLines', desc: '', args: []);
   }
+
+  /// `Shipping address`
+  String get shippingAddress {
+    return Intl.message(
+      'Shipping address',
+      name: 'shippingAddress',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

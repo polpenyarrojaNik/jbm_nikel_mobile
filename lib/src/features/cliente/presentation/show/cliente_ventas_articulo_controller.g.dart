@@ -80,7 +80,12 @@ final class ClienteVentasArticuloIndexScreenPaginatedControllerProvider
   ClienteVentasArticuloIndexScreenPaginatedControllerProvider._({
     required ClienteVentasArticuloIndexScreenPaginatedControllerFamily
     super.from,
-    required String super.argument,
+    required ({
+      String clienteId,
+      String? direccionId,
+      bool applyDireccionFilter,
+    })
+    super.argument,
   }) : super(
          retry: null,
          name: r'clienteVentasArticuloIndexScreenPaginatedControllerProvider',
@@ -97,7 +102,7 @@ final class ClienteVentasArticuloIndexScreenPaginatedControllerProvider
   String toString() {
     return r'clienteVentasArticuloIndexScreenPaginatedControllerProvider'
         ''
-        '($argument)';
+        '$argument';
   }
 
   @$internal
@@ -119,7 +124,7 @@ final class ClienteVentasArticuloIndexScreenPaginatedControllerProvider
 }
 
 String _$clienteVentasArticuloIndexScreenPaginatedControllerHash() =>
-    r'047dbf7431b0c265a8e8cb8af4b1df060ac6c172';
+    r'e3bb10c576d325ad37c89fba8d62b0ba62d51690';
 
 final class ClienteVentasArticuloIndexScreenPaginatedControllerFamily
     extends $Family
@@ -129,7 +134,7 @@ final class ClienteVentasArticuloIndexScreenPaginatedControllerFamily
           AsyncValue<List<ClienteVentasArticulo>>,
           List<ClienteVentasArticulo>,
           FutureOr<List<ClienteVentasArticulo>>,
-          String
+          ({String clienteId, String? direccionId, bool applyDireccionFilter})
         > {
   ClienteVentasArticuloIndexScreenPaginatedControllerFamily._()
     : super(
@@ -142,8 +147,14 @@ final class ClienteVentasArticuloIndexScreenPaginatedControllerFamily
 
   ClienteVentasArticuloIndexScreenPaginatedControllerProvider call({
     required String clienteId,
+    String? direccionId,
+    bool applyDireccionFilter = false,
   }) => ClienteVentasArticuloIndexScreenPaginatedControllerProvider._(
-    argument: clienteId,
+    argument: (
+      clienteId: clienteId,
+      direccionId: direccionId,
+      applyDireccionFilter: applyDireccionFilter,
+    ),
     from: this,
   );
 
@@ -154,10 +165,22 @@ final class ClienteVentasArticuloIndexScreenPaginatedControllerFamily
 
 abstract class _$ClienteVentasArticuloIndexScreenPaginatedController
     extends $AsyncNotifier<List<ClienteVentasArticulo>> {
-  late final _$args = ref.$arg as String;
-  String get clienteId => _$args;
+  late final _$args =
+      ref.$arg
+          as ({
+            String clienteId,
+            String? direccionId,
+            bool applyDireccionFilter,
+          });
+  String get clienteId => _$args.clienteId;
+  String? get direccionId => _$args.direccionId;
+  bool get applyDireccionFilter => _$args.applyDireccionFilter;
 
-  FutureOr<List<ClienteVentasArticulo>> build({required String clienteId});
+  FutureOr<List<ClienteVentasArticulo>> build({
+    required String clienteId,
+    String? direccionId,
+    bool applyDireccionFilter = false,
+  });
   @$mustCallSuper
   @override
   WhenComplete runBuild() {
@@ -178,6 +201,13 @@ abstract class _$ClienteVentasArticuloIndexScreenPaginatedController
               Object?,
               Object?
             >;
-    return element.handleCreate(ref, () => build(clienteId: _$args));
+    return element.handleCreate(
+      ref,
+      () => build(
+        clienteId: _$args.clienteId,
+        direccionId: _$args.direccionId,
+        applyDireccionFilter: _$args.applyDireccionFilter,
+      ),
+    );
   }
 }

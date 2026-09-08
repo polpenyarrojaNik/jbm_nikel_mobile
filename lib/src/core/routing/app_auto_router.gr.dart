@@ -1474,6 +1474,72 @@ class ClienteDevolucionRouteArgs {
 }
 
 /// generated route for
+/// [ClienteDireccionDetailPage]
+class ClienteDireccionDetailRoute
+    extends PageRouteInfo<ClienteDireccionDetailRouteArgs> {
+  ClienteDireccionDetailRoute({
+    Key? key,
+    required ClienteDireccion clienteDireccion,
+    required String? nombreCliente,
+    List<PageRouteInfo>? children,
+  }) : super(
+         ClienteDireccionDetailRoute.name,
+         args: ClienteDireccionDetailRouteArgs(
+           key: key,
+           clienteDireccion: clienteDireccion,
+           nombreCliente: nombreCliente,
+         ),
+         initialChildren: children,
+       );
+
+  static const String name = 'ClienteDireccionDetailRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      final args = data.argsAs<ClienteDireccionDetailRouteArgs>();
+      return ClienteDireccionDetailPage(
+        key: args.key,
+        clienteDireccion: args.clienteDireccion,
+        nombreCliente: args.nombreCliente,
+      );
+    },
+  );
+}
+
+class ClienteDireccionDetailRouteArgs {
+  const ClienteDireccionDetailRouteArgs({
+    this.key,
+    required this.clienteDireccion,
+    required this.nombreCliente,
+  });
+
+  final Key? key;
+
+  final ClienteDireccion clienteDireccion;
+
+  final String? nombreCliente;
+
+  @override
+  String toString() {
+    return 'ClienteDireccionDetailRouteArgs{key: $key, clienteDireccion: $clienteDireccion, nombreCliente: $nombreCliente}';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
+    if (other is! ClienteDireccionDetailRouteArgs) return false;
+    return key == other.key &&
+        clienteDireccion == other.clienteDireccion &&
+        nombreCliente == other.nombreCliente;
+  }
+
+  @override
+  int get hashCode =>
+      key.hashCode ^ clienteDireccion.hashCode ^ nombreCliente.hashCode;
+}
+
+/// generated route for
 /// [ClienteDireccionEditPage]
 class ClienteDireccionEditRoute
     extends PageRouteInfo<ClienteDireccionEditRouteArgs> {
@@ -2234,6 +2300,10 @@ class ClienteVentasArticuloRoute
     Key? key,
     required String clienteId,
     required String? nombreCliente,
+    required bool applyDireccionFilter,
+    String? direccionId,
+    String? nombreDireccion,
+    String? addressText,
     List<PageRouteInfo>? children,
   }) : super(
          ClienteVentasArticuloRoute.name,
@@ -2241,6 +2311,10 @@ class ClienteVentasArticuloRoute
            key: key,
            clienteId: clienteId,
            nombreCliente: nombreCliente,
+           applyDireccionFilter: applyDireccionFilter,
+           direccionId: direccionId,
+           nombreDireccion: nombreDireccion,
+           addressText: addressText,
          ),
          initialChildren: children,
        );
@@ -2255,6 +2329,10 @@ class ClienteVentasArticuloRoute
         key: args.key,
         clienteId: args.clienteId,
         nombreCliente: args.nombreCliente,
+        applyDireccionFilter: args.applyDireccionFilter,
+        direccionId: args.direccionId,
+        nombreDireccion: args.nombreDireccion,
+        addressText: args.addressText,
       );
     },
   );
@@ -2265,6 +2343,10 @@ class ClienteVentasArticuloRouteArgs {
     this.key,
     required this.clienteId,
     required this.nombreCliente,
+    required this.applyDireccionFilter,
+    this.direccionId,
+    this.nombreDireccion,
+    this.addressText,
   });
 
   final Key? key;
@@ -2273,9 +2355,17 @@ class ClienteVentasArticuloRouteArgs {
 
   final String? nombreCliente;
 
+  final bool applyDireccionFilter;
+
+  final String? direccionId;
+
+  final String? nombreDireccion;
+
+  final String? addressText;
+
   @override
   String toString() {
-    return 'ClienteVentasArticuloRouteArgs{key: $key, clienteId: $clienteId, nombreCliente: $nombreCliente}';
+    return 'ClienteVentasArticuloRouteArgs{key: $key, clienteId: $clienteId, nombreCliente: $nombreCliente, applyDireccionFilter: $applyDireccionFilter, direccionId: $direccionId, nombreDireccion: $nombreDireccion, addressText: $addressText}';
   }
 
   @override
@@ -2284,12 +2374,22 @@ class ClienteVentasArticuloRouteArgs {
     if (other is! ClienteVentasArticuloRouteArgs) return false;
     return key == other.key &&
         clienteId == other.clienteId &&
-        nombreCliente == other.nombreCliente;
+        nombreCliente == other.nombreCliente &&
+        applyDireccionFilter == other.applyDireccionFilter &&
+        direccionId == other.direccionId &&
+        nombreDireccion == other.nombreDireccion &&
+        addressText == other.addressText;
   }
 
   @override
   int get hashCode =>
-      key.hashCode ^ clienteId.hashCode ^ nombreCliente.hashCode;
+      key.hashCode ^
+      clienteId.hashCode ^
+      nombreCliente.hashCode ^
+      applyDireccionFilter.hashCode ^
+      direccionId.hashCode ^
+      nombreDireccion.hashCode ^
+      addressText.hashCode;
 }
 
 /// generated route for

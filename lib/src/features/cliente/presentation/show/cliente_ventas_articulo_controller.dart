@@ -24,11 +24,17 @@ class ClienteVentasArticuloIndexScreenPaginatedController
   ClienteVentasArticuloIndexScreenPaginatedController();
 
   @override
-  Future<List<ClienteVentasArticulo>> build({required String clienteId}) {
+  Future<List<ClienteVentasArticulo>> build({
+    required String clienteId,
+    String? direccionId,
+    bool applyDireccionFilter = false,
+  }) {
     return ref
         .read(clienteRepositoryProvider)
         .getClienteVentasArticuloList(
           clienteId: clienteId,
+          direccionId: direccionId,
+          applyDireccionFilter: applyDireccionFilter,
           searchText: ref.watch(
             clienteVentasArticuloQueryParamsControllerProvider,
           ),

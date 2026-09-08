@@ -824,13 +824,19 @@ class ClienteRepository {
   Future<List<ClienteVentasArticulo>> getClienteVentasArticuloList({
     required String clienteId,
     required String searchText,
+    String? direccionId,
+    bool applyDireccionFilter = false,
   }) async {
     try {
       final idioma = Intl.getCurrentLocale();
       final query = await _remoteDb
           .customSelect(
-            _getVentasArticuloCustomSelect(searchText),
-            variables: [Variable(idioma), Variable(clienteId)],
+            _getVentasArticuloCustomSelect(searchText, applyDireccionFilter),
+            variables: [
+              Variable(idioma),
+              Variable(clienteId),
+              if (applyDireccionFilter) Variable(direccionId),
+            ],
             readsFrom: {_remoteDb.estadisticasClienteUsuarioVentasTable},
           )
           .get();
@@ -1096,7 +1102,10 @@ GROUP BY mes
     return select;
   }
 
-  String _getVentasArticuloCustomSelect(String searchText) {
+  String _getVentasArticuloCustomSelect(
+    String searchText,
+    bool applyDireccionFilter,
+  ) {
     final select =
         '''
 SELECT ARTICULO_ID
@@ -1140,6 +1149,7 @@ FROM (
     FROM estadisticas_venta ventas
       INNER JOIN articulos art ON ventas.articulo_id = art.articulo_id
     WHERE ventas.cliente_id = :clienteId
+       ${applyDireccionFilter ? 'AND ventas.direccion_id = :direccionId' : ''}
       AND ventas.anyo = strftime('%Y' ,DATE())
   UNION ALL
     SELECT ventas.ARTICULO_ID
@@ -1166,6 +1176,7 @@ FROM (
     FROM estadisticas_venta ventas
     INNER JOIN articulos art ON ventas.articulo_id = art.articulo_id
     WHERE ventas.cliente_id = :clienteId
+    ${applyDireccionFilter ? 'AND ventas.direccion_id = :direccionId' : ''}
       AND ventas.anyo = strftime('%Y' ,DATE()) - 1
   UNION ALL
     SELECT ventas.ARTICULO_ID
@@ -1192,6 +1203,7 @@ FROM (
     FROM estadisticas_venta ventas
     INNER JOIN articulos art ON ventas.articulo_id = art.articulo_id
     WHERE ventas.cliente_id = :clienteId
+    ${applyDireccionFilter ? 'AND ventas.direccion_id = :direccionId' : ''}
     AND ventas.anyo = strftime('%Y' ,DATE()) - 2
   UNION ALL
     SELECT ventas.ARTICULO_ID
@@ -1218,6 +1230,7 @@ FROM (
     FROM estadisticas_venta ventas
     INNER JOIN articulos art ON ventas.articulo_id = art.articulo_id
     WHERE ventas.cliente_id = :clienteId
+    ${applyDireccionFilter ? 'AND ventas.direccion_id = :direccionId' : ''}
     AND ventas.anyo = strftime('%Y' ,DATE()) - 3
 
   UNION ALL
@@ -1245,6 +1258,7 @@ FROM (
     FROM estadisticas_venta ventas
     INNER JOIN articulos art ON ventas.articulo_id = art.articulo_id
     WHERE ventas.cliente_id = :clienteId
+    ${applyDireccionFilter ? 'AND ventas.direccion_id = :direccionId' : ''}
     AND ventas.anyo = strftime('%Y' ,DATE()) - 4
   )
 WHERE ARTICULO_ID IS NOT NULL AND (ARTICULO_ID LIKE '%$searchText%'

@@ -23,10 +23,18 @@ class ClienteVentasArticuloPage extends ConsumerWidget {
     super.key,
     required this.clienteId,
     required this.nombreCliente,
+    required this.applyDireccionFilter,
+    this.direccionId,
+    this.nombreDireccion,
+    this.addressText,
   });
 
   final String clienteId;
   final String? nombreCliente;
+  final String? direccionId;
+  final String? nombreDireccion;
+  final bool applyDireccionFilter;
+  final String? addressText;
 
   final _debouncer = Debouncer(milliseconds: 500);
 
@@ -47,10 +55,17 @@ class ClienteVentasArticuloPage extends ConsumerWidget {
         children: [
           HeaderDatosRelacionados(
             entityId: '#$clienteId ${nombreCliente ?? ''}',
-            subtitle: null,
+            subtitle: applyDireccionFilter ? nombreDireccion : null,
+            footer: applyDireccionFilter ? addressText : null,
           ),
           const Gap(8),
-          VentasArticuloDataTable(clienteId: clienteId),
+          VentasArticuloDataTable(
+            clienteId: clienteId,
+            direccionId: direccionId,
+            nombreDireccion: nombreDireccion,
+            addressText: addressText,
+            applyDireccionFilter: applyDireccionFilter,
+          ),
         ],
       ),
     );
@@ -58,9 +73,20 @@ class ClienteVentasArticuloPage extends ConsumerWidget {
 }
 
 class VentasArticuloDataTable extends ConsumerStatefulWidget {
-  const VentasArticuloDataTable({super.key, required this.clienteId});
+  const VentasArticuloDataTable({
+    super.key,
+    required this.clienteId,
+    this.direccionId,
+    this.nombreDireccion,
+    this.addressText,
+    required this.applyDireccionFilter,
+  });
 
   final String clienteId;
+  final String? direccionId;
+  final String? nombreDireccion;
+  final String? addressText;
+  final bool applyDireccionFilter;
 
   @override
   ConsumerState<VentasArticuloDataTable> createState() =>
@@ -94,6 +120,8 @@ class _VentasArticuloDataTableState
     final state = ref.watch(
       clienteVentasArticuloIndexScreenPaginatedControllerProvider(
         clienteId: widget.clienteId,
+        direccionId: widget.direccionId,
+        applyDireccionFilter: widget.applyDireccionFilter,
       ),
     );
     return Expanded(

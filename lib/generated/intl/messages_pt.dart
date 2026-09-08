@@ -897,6 +897,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "settings_version": MessageLookupByLibrary.simpleMessage("Versão"),
     "share": MessageLookupByLibrary.simpleMessage("Compartilhar"),
     "sheetName": MessageLookupByLibrary.simpleMessage("Nome da folha"),
+    "shippingAddress": MessageLookupByLibrary.simpleMessage(
+      "Endereço de envio",
+    ),
     "sinResultados": MessageLookupByLibrary.simpleMessage("Sem resultados"),
     "sincConexion": MessageLookupByLibrary.simpleMessage("Sem conexão"),
     "splash_a": MessageLookupByLibrary.simpleMessage("para versão"),

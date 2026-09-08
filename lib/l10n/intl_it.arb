@@ -473,5 +473,6 @@
   "buscarBackorders": "Cerca ordini in sospeso...",
   "deleted": "Eliminato",
   "carritosAbandonados": "Carrelli abbandonati",
-  "cartsLines": "Righe del carrello"
+  "cartsLines": "Righe del carrello",
+  "shippingAddress": "Indirizzo di spedizione"
 }

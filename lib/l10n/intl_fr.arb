@@ -472,5 +472,6 @@
   "buscarBackorders": "Rechercher les commandes en attente...",
   "deleted": "Supprimé",
   "carritosAbandonados": "Paniers abandonnés",
-  "cartsLines": "Lignes du panier"
+  "cartsLines": "Lignes du panier",
+  "shippingAddress": "Adresse de livraison"
 }

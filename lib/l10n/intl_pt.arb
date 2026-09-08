@@ -473,5 +473,6 @@
   "buscarBackorders": "Procurar pedidos em atraso...",
   "deleted": "Eliminado",
   "carritosAbandonados": "Carrinhos abandonados",
-  "cartsLines": "Linhas do carrinho"
+  "cartsLines": "Linhas do carrinho",
+  "shippingAddress": "Endereço de envio"
 }

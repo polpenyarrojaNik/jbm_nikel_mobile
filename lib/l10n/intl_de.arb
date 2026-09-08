@@ -474,5 +474,6 @@
   "buscarBackorders": "Rückstände suchen...",
   "deleted": "Gelöscht",
   "carritosAbandonados": "Verlassene Warenkörbe",
-  "cartsLines": "Warenkorbzeilen"
+  "cartsLines": "Warenkorbzeilen",
+  "shippingAddress": "Lieferadresse"
 }

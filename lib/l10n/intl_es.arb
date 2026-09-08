@@ -472,5 +472,6 @@
   "buscarBackorders": "Buscar pedidos pendientes...",
   "deleted": "Eliminado",
   "carritosAbandonados": "Carritos abandonados",
-  "cartsLines": "Líneas del carrito"
+  "cartsLines": "Líneas del carrito",
+  "shippingAddress": "Dirección de envío"
 }

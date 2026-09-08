@@ -93,19 +93,9 @@ class _ClienteDireccionesListPageState
                           clientePais: widget.paisCliente,
                         ),
                         onTap: () => context.router.push(
-                          ClienteVentasMesRoute(
-                            clienteId: widget.clienteId,
+                          ClienteDireccionDetailRoute(
+                            clienteDireccion: clienteDireccionList[i],
                             nombreCliente: widget.nombreCliente,
-                            applyDireccionFilter: true,
-                            direccionId: clienteDireccionList[i].direccionId,
-                            nombreDireccion: clienteDireccionList[i].nombre,
-                            addressText: formatCustomerAddress(
-                              clienteDireccionList[i].direccion1,
-                              clienteDireccionList[i].codigoPostal,
-                              clienteDireccionList[i].poblacion,
-                              clienteDireccionList[i].provincia,
-                              clienteDireccionList[i].pais,
-                            ),
                           ),
                         ),
                       ),

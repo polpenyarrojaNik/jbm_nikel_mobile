@@ -34,6 +34,7 @@ import '../../features/cliente/presentation/show/cliente_descuento_page.dart';
 import '../../features/cliente/presentation/show/cliente_detalle_page.dart';
 import '../../features/cliente/presentation/show/cliente_devolucion_detalle_page.dart';
 import '../../features/cliente/presentation/show/cliente_devolucion_page.dart';
+import '../../features/cliente/presentation/show/cliente_direccion_detail_page.dart';
 import '../../features/cliente/presentation/show/cliente_direccion_edit_page.dart';
 import '../../features/cliente/presentation/show/cliente_direccion_list_page.dart';
 import '../../features/cliente/presentation/show/cliente_direccion_seleccionar_pais_page.dart';
@@ -147,8 +148,13 @@ class AppRouter extends RootStackRouter {
       path: '/cliente/:id/direcciones',
     ),
     AutoRoute(
-      page: ClienteDireccionEditRoute.page,
+      page: ClienteDireccionDetailRoute.page,
       path: '/cliente/:id/direcciones/:direccionId',
+      fullscreenDialog: true,
+    ),
+    AutoRoute(
+      page: ClienteDireccionEditRoute.page,
+      path: '/cliente/:id/direcciones/:direccionId/edit',
       fullscreenDialog: true,
     ),
     AutoRoute(
