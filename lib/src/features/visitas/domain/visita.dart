@@ -59,7 +59,7 @@ abstract class Visita with _$Visita {
 
   String getNombreMostrar() => isClienteProvisional
       ? (clienteProvisionalNombre ?? S.current.unknownCustomer)
-      : '#${cliente!.id} ${cliente?.nombreCliente ?? ''}';
+      : '#${cliente?.id ?? ''} ${cliente?.nombreCliente ?? ''}';
 
   bool get isGeolocalized => latitud != 0 && longitud != 0;
 }

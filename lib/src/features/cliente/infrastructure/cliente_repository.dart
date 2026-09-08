@@ -88,18 +88,6 @@ class ClienteById extends _$ClienteById {
 }
 
 @riverpod
-class ClienteCarritosAbandonadosController
-    extends _$ClienteCarritosAbandonadosController {
-  @override
-  Future<bool> build(String clienteId) {
-    final clienteRepository = ref.read(clienteRepositoryProvider);
-    return clienteRepository.getClienteTieneCarritosAbandonados(
-      clienteId: clienteId,
-    );
-  }
-}
-
-@riverpod
 class ClienteLastSyncDate extends _$ClienteLastSyncDate {
   @override
   Future<DateTime> build() {
@@ -2655,28 +2643,6 @@ GROUP BY ARTICULO_ID, DESCRIPCION
     return null;
   }
 
-  Future<bool> getClienteTieneCarritosAbandonados({
-    required String clienteId,
-  }) async {
-    final query = {'cliente_id': clienteId};
-
-    return await _remoteGetClienteTieneCarritoAbandonado(
-      requestUri: (usuario.test)
-          ? Uri.http(
-              dotenv.get('URL_TEST', fallback: 'localhost:3001'),
-              'api/v1/utils/tiene_carrito_abandonado',
-              query,
-            )
-          : Uri.https(
-              dotenv.get('URL', fallback: 'localhost:3001'),
-              'api/v1/utils/tiene_carrito_abandonado',
-              query,
-            ),
-      jsonDataSelector: (json) => json['data'],
-      provisionalToken: usuario.provisionalToken,
-    );
-  }
-
   Future<List<CarritoAbandonado>> getClienteCarritosAbandonados({
     required String clienteId,
   }) async {
@@ -2711,34 +2677,6 @@ GROUP BY ARTICULO_ID, DESCRIPCION
         return e.toDomain(customerName: customerName, contactName: contactName);
       }).toList(),
     );
-  }
-
-  Future<bool> _remoteGetClienteTieneCarritoAbandonado({
-    required Uri requestUri,
-    required dynamic Function(dynamic json) jsonDataSelector,
-    required String provisionalToken,
-  }) async {
-    try {
-      final response = await _dio.getUri(
-        requestUri,
-        options: Options(
-          headers: {'authorization': 'Bearer $provisionalToken'},
-        ),
-      );
-      if (response.statusCode == 200) {
-        final data = jsonDataSelector(response.data) as bool;
-        return data;
-      }
-      throw AppException.restApiFailure(
-        response.statusCode ?? 400,
-        response.statusMessage ?? '',
-      );
-    } catch (e, stackTrace) {
-      Error.throwWithStackTrace(
-        getApiError(e, stackTrace, errorLogger),
-        stackTrace,
-      );
-    }
   }
 
   Future<List<ClienteAlbaranDTO>> _remoteGetClienteAlbaranDto({

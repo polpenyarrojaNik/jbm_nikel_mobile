@@ -1111,63 +1111,6 @@ class ClienteArticulosTopListRouteArgs {
 }
 
 /// generated route for
-/// [ClienteCarritoAbandonadoListPage]
-class ClienteCarritoAbandonadoListRoute
-    extends PageRouteInfo<ClienteCarritoAbandonadoListRouteArgs> {
-  ClienteCarritoAbandonadoListRoute({
-    Key? key,
-    required String clienteId,
-    List<PageRouteInfo>? children,
-  }) : super(
-         ClienteCarritoAbandonadoListRoute.name,
-         args: ClienteCarritoAbandonadoListRouteArgs(
-           key: key,
-           clienteId: clienteId,
-         ),
-         initialChildren: children,
-       );
-
-  static const String name = 'ClienteCarritoAbandonadoListRoute';
-
-  static PageInfo page = PageInfo(
-    name,
-    builder: (data) {
-      final args = data.argsAs<ClienteCarritoAbandonadoListRouteArgs>();
-      return ClienteCarritoAbandonadoListPage(
-        key: args.key,
-        clienteId: args.clienteId,
-      );
-    },
-  );
-}
-
-class ClienteCarritoAbandonadoListRouteArgs {
-  const ClienteCarritoAbandonadoListRouteArgs({
-    this.key,
-    required this.clienteId,
-  });
-
-  final Key? key;
-
-  final String clienteId;
-
-  @override
-  String toString() {
-    return 'ClienteCarritoAbandonadoListRouteArgs{key: $key, clienteId: $clienteId}';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    if (identical(this, other)) return true;
-    if (other is! ClienteCarritoAbandonadoListRouteArgs) return false;
-    return key == other.key && clienteId == other.clienteId;
-  }
-
-  @override
-  int get hashCode => key.hashCode ^ clienteId.hashCode;
-}
-
-/// generated route for
 /// [ClienteContactoEditPage]
 class ClienteContactoEditRoute
     extends PageRouteInfo<ClienteContactoEditRouteArgs> {

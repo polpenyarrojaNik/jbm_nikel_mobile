@@ -28,7 +28,6 @@ import '../../features/cliente/presentation/index/cliente_lista_page.dart';
 import '../../features/cliente/presentation/show/cliente_adjunto_page.dart';
 import '../../features/cliente/presentation/show/cliente_albaran_page.dart';
 import '../../features/cliente/presentation/show/cliente_articulo_top_lista_page.dart';
-import '../../features/cliente/presentation/show/cliente_carrito_abandonado_list_page.dart';
 import '../../features/cliente/presentation/show/cliente_contacto_edit_page.dart';
 import '../../features/cliente/presentation/show/cliente_contacto_list_page.dart';
 import '../../features/cliente/presentation/show/cliente_descuento_page.dart';
@@ -133,10 +132,7 @@ class AppRouter extends RootStackRouter {
       page: ClienteContactoListRoute.page,
       path: '/cliente/:id/contactos',
     ),
-    AutoRoute(
-      page: ClienteCarritoAbandonadoListRoute.page,
-      path: '/cliente/:id/carritos-abandonados',
-    ),
+
     AutoRoute(
       page: ClienteContactoEditRoute.page,
       path: '/cliente/:id/contactos/:contactoId',
