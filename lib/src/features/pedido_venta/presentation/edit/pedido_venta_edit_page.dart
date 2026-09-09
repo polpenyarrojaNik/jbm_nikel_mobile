@@ -1177,13 +1177,15 @@ class StepArticuloListContent extends ConsumerWidget {
                         itemCount: pedidoVentaLineaList.length,
                         separatorBuilder: (context, i) => const Divider(),
                         itemBuilder: (context, i) => GestureDetector(
-                          onTap: () => updatePedidoVentaLinea(
-                            context,
-                            cliente!.id,
-                            pedidoVentaLineaList[i],
-                            i,
-                            pedidoLocalParam,
-                          ),
+                          onTap: (pedidoVentaLineaList[i].isPromo ?? false)
+                              ? null
+                              : () => updatePedidoVentaLinea(
+                                  context,
+                                  cliente!.id,
+                                  pedidoVentaLineaList[i],
+                                  i,
+                                  pedidoLocalParam,
+                                ),
                           child: Dismissible(
                             key: UniqueKey(),
                             background: const SliderBackround(),
@@ -1261,6 +1263,9 @@ class StepArticuloListContent extends ConsumerWidget {
       createdFromCliente: pedidoLocalParam.createPedidoFromClienteId != null,
       addNewLineaDesdeArticulo: false,
       recomendado: pedidoVentaLinea.aiRecomendado,
+      codPromo: pedidoVentaLinea.codPromo,
+      isPromo: pedidoVentaLinea.isPromo,
+      cantidadPromo: pedidoVentaLinea.cantidadPromo,
     );
     context.router.push(
       SeleccionarCantidadRoute(
@@ -1319,6 +1324,9 @@ class StepArticuloListContent extends ConsumerWidget {
         createdFromCliente: pedidoLocalParam.createPedidoFromClienteId != null,
         addNewLineaDesdeArticulo: false,
         recomendado: false,
+        codPromo: null,
+        isPromo: null,
+        cantidadPromo: null,
       );
 
       context.router.push(

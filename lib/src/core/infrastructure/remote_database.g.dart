@@ -23182,6 +23182,39 @@ class $PedidoVentaLineaTableTable extends PedidoVentaLineaTable
     type: DriftSqlType.int,
     requiredDuringInsert: true,
   );
+  static const VerificationMeta _codPromoMeta = const VerificationMeta(
+    'codPromo',
+  );
+  @override
+  late final GeneratedColumn<String> codPromo = GeneratedColumn<String>(
+    'COD_PROMO',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _cantidadPromoMeta = const VerificationMeta(
+    'cantidadPromo',
+  );
+  @override
+  late final GeneratedColumn<int> cantidadPromo = GeneratedColumn<int>(
+    'PROMO_CANTIDAD',
+    aliasedName,
+    true,
+    type: DriftSqlType.int,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _promoSNMeta = const VerificationMeta(
+    'promoSN',
+  );
+  @override
+  late final GeneratedColumn<String> promoSN = GeneratedColumn<String>(
+    'PROMO_SN',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
   static const VerificationMeta _lastUpdatedMeta = const VerificationMeta(
     'lastUpdated',
   );
@@ -23221,6 +23254,9 @@ class $PedidoVentaLineaTableTable extends PedidoVentaLineaTable
     pedidoLineaIdComponente,
     importeLinea,
     cantidadServida,
+    codPromo,
+    cantidadPromo,
+    promoSN,
     lastUpdated,
     deleted,
   ];
@@ -23362,6 +23398,27 @@ class $PedidoVentaLineaTableTable extends PedidoVentaLineaTable
     } else if (isInserting) {
       context.missing(_cantidadServidaMeta);
     }
+    if (data.containsKey('COD_PROMO')) {
+      context.handle(
+        _codPromoMeta,
+        codPromo.isAcceptableOrUnknown(data['COD_PROMO']!, _codPromoMeta),
+      );
+    }
+    if (data.containsKey('PROMO_CANTIDAD')) {
+      context.handle(
+        _cantidadPromoMeta,
+        cantidadPromo.isAcceptableOrUnknown(
+          data['PROMO_CANTIDAD']!,
+          _cantidadPromoMeta,
+        ),
+      );
+    }
+    if (data.containsKey('PROMO_SN')) {
+      context.handle(
+        _promoSNMeta,
+        promoSN.isAcceptableOrUnknown(data['PROMO_SN']!, _promoSNMeta),
+      );
+    }
     if (data.containsKey('LAST_UPDATED')) {
       context.handle(
         _lastUpdatedMeta,
@@ -23448,6 +23505,18 @@ class $PedidoVentaLineaTableTable extends PedidoVentaLineaTable
         DriftSqlType.int,
         data['${effectivePrefix}CANTIDAD_SERVIDA'],
       )!,
+      codPromo: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}COD_PROMO'],
+      ),
+      cantidadPromo: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}PROMO_CANTIDAD'],
+      ),
+      promoSN: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}PROMO_SN'],
+      ),
       lastUpdated: attachedDatabase.typeMapping.read(
         DriftSqlType.dateTime,
         data['${effectivePrefix}LAST_UPDATED'],
@@ -23481,6 +23550,9 @@ class PedidoVentaLineaTableCompanion
   final Value<String?> pedidoLineaIdComponente;
   final Value<double?> importeLinea;
   final Value<int> cantidadServida;
+  final Value<String?> codPromo;
+  final Value<int?> cantidadPromo;
+  final Value<String?> promoSN;
   final Value<DateTime> lastUpdated;
   final Value<String> deleted;
   final Value<int> rowid;
@@ -23499,6 +23571,9 @@ class PedidoVentaLineaTableCompanion
     this.pedidoLineaIdComponente = const Value.absent(),
     this.importeLinea = const Value.absent(),
     this.cantidadServida = const Value.absent(),
+    this.codPromo = const Value.absent(),
+    this.cantidadPromo = const Value.absent(),
+    this.promoSN = const Value.absent(),
     this.lastUpdated = const Value.absent(),
     this.deleted = const Value.absent(),
     this.rowid = const Value.absent(),
@@ -23518,6 +23593,9 @@ class PedidoVentaLineaTableCompanion
     this.pedidoLineaIdComponente = const Value.absent(),
     this.importeLinea = const Value.absent(),
     required int cantidadServida,
+    this.codPromo = const Value.absent(),
+    this.cantidadPromo = const Value.absent(),
+    this.promoSN = const Value.absent(),
     required DateTime lastUpdated,
     this.deleted = const Value.absent(),
     this.rowid = const Value.absent(),
@@ -23549,6 +23627,9 @@ class PedidoVentaLineaTableCompanion
     Expression<String>? pedidoLineaIdComponente,
     Expression<double>? importeLinea,
     Expression<int>? cantidadServida,
+    Expression<String>? codPromo,
+    Expression<int>? cantidadPromo,
+    Expression<String>? promoSN,
     Expression<DateTime>? lastUpdated,
     Expression<String>? deleted,
     Expression<int>? rowid,
@@ -23570,6 +23651,9 @@ class PedidoVentaLineaTableCompanion
         'PEDIDO_LINEA_ID_COMPONENTE': pedidoLineaIdComponente,
       if (importeLinea != null) 'TOTAL_LINEA': importeLinea,
       if (cantidadServida != null) 'CANTIDAD_SERVIDA': cantidadServida,
+      if (codPromo != null) 'COD_PROMO': codPromo,
+      if (cantidadPromo != null) 'PROMO_CANTIDAD': cantidadPromo,
+      if (promoSN != null) 'PROMO_SN': promoSN,
       if (lastUpdated != null) 'LAST_UPDATED': lastUpdated,
       if (deleted != null) 'DELETED': deleted,
       if (rowid != null) 'rowid': rowid,
@@ -23591,6 +23675,9 @@ class PedidoVentaLineaTableCompanion
     Value<String?>? pedidoLineaIdComponente,
     Value<double?>? importeLinea,
     Value<int>? cantidadServida,
+    Value<String?>? codPromo,
+    Value<int?>? cantidadPromo,
+    Value<String?>? promoSN,
     Value<DateTime>? lastUpdated,
     Value<String>? deleted,
     Value<int>? rowid,
@@ -23611,6 +23698,9 @@ class PedidoVentaLineaTableCompanion
           pedidoLineaIdComponente ?? this.pedidoLineaIdComponente,
       importeLinea: importeLinea ?? this.importeLinea,
       cantidadServida: cantidadServida ?? this.cantidadServida,
+      codPromo: codPromo ?? this.codPromo,
+      cantidadPromo: cantidadPromo ?? this.cantidadPromo,
+      promoSN: promoSN ?? this.promoSN,
       lastUpdated: lastUpdated ?? this.lastUpdated,
       deleted: deleted ?? this.deleted,
       rowid: rowid ?? this.rowid,
@@ -23664,6 +23754,15 @@ class PedidoVentaLineaTableCompanion
     if (cantidadServida.present) {
       map['CANTIDAD_SERVIDA'] = Variable<int>(cantidadServida.value);
     }
+    if (codPromo.present) {
+      map['COD_PROMO'] = Variable<String>(codPromo.value);
+    }
+    if (cantidadPromo.present) {
+      map['PROMO_CANTIDAD'] = Variable<int>(cantidadPromo.value);
+    }
+    if (promoSN.present) {
+      map['PROMO_SN'] = Variable<String>(promoSN.value);
+    }
     if (lastUpdated.present) {
       map['LAST_UPDATED'] = Variable<DateTime>(lastUpdated.value);
     }
@@ -23693,6 +23792,9 @@ class PedidoVentaLineaTableCompanion
           ..write('pedidoLineaIdComponente: $pedidoLineaIdComponente, ')
           ..write('importeLinea: $importeLinea, ')
           ..write('cantidadServida: $cantidadServida, ')
+          ..write('codPromo: $codPromo, ')
+          ..write('cantidadPromo: $cantidadPromo, ')
+          ..write('promoSN: $promoSN, ')
           ..write('lastUpdated: $lastUpdated, ')
           ..write('deleted: $deleted, ')
           ..write('rowid: $rowid')
@@ -49351,6 +49453,9 @@ typedef $$PedidoVentaLineaTableTableCreateCompanionBuilder =
       Value<String?> pedidoLineaIdComponente,
       Value<double?> importeLinea,
       required int cantidadServida,
+      Value<String?> codPromo,
+      Value<int?> cantidadPromo,
+      Value<String?> promoSN,
       required DateTime lastUpdated,
       Value<String> deleted,
       Value<int> rowid,
@@ -49371,6 +49476,9 @@ typedef $$PedidoVentaLineaTableTableUpdateCompanionBuilder =
       Value<String?> pedidoLineaIdComponente,
       Value<double?> importeLinea,
       Value<int> cantidadServida,
+      Value<String?> codPromo,
+      Value<int?> cantidadPromo,
+      Value<String?> promoSN,
       Value<DateTime> lastUpdated,
       Value<String> deleted,
       Value<int> rowid,
@@ -49452,6 +49560,21 @@ class $$PedidoVentaLineaTableTableFilterComposer
 
   ColumnFilters<int> get cantidadServida => $composableBuilder(
     column: $table.cantidadServida,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get codPromo => $composableBuilder(
+    column: $table.codPromo,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get cantidadPromo => $composableBuilder(
+    column: $table.cantidadPromo,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get promoSN => $composableBuilder(
+    column: $table.promoSN,
     builder: (column) => ColumnFilters(column),
   );
 
@@ -49545,6 +49668,21 @@ class $$PedidoVentaLineaTableTableOrderingComposer
     builder: (column) => ColumnOrderings(column),
   );
 
+  ColumnOrderings<String> get codPromo => $composableBuilder(
+    column: $table.codPromo,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get cantidadPromo => $composableBuilder(
+    column: $table.cantidadPromo,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get promoSN => $composableBuilder(
+    column: $table.promoSN,
+    builder: (column) => ColumnOrderings(column),
+  );
+
   ColumnOrderings<DateTime> get lastUpdated => $composableBuilder(
     column: $table.lastUpdated,
     builder: (column) => ColumnOrderings(column),
@@ -49629,6 +49767,17 @@ class $$PedidoVentaLineaTableTableAnnotationComposer
     builder: (column) => column,
   );
 
+  GeneratedColumn<String> get codPromo =>
+      $composableBuilder(column: $table.codPromo, builder: (column) => column);
+
+  GeneratedColumn<int> get cantidadPromo => $composableBuilder(
+    column: $table.cantidadPromo,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<String> get promoSN =>
+      $composableBuilder(column: $table.promoSN, builder: (column) => column);
+
   GeneratedColumn<DateTime> get lastUpdated => $composableBuilder(
     column: $table.lastUpdated,
     builder: (column) => column,
@@ -49698,6 +49847,9 @@ class $$PedidoVentaLineaTableTableTableManager
                 Value<String?> pedidoLineaIdComponente = const Value.absent(),
                 Value<double?> importeLinea = const Value.absent(),
                 Value<int> cantidadServida = const Value.absent(),
+                Value<String?> codPromo = const Value.absent(),
+                Value<int?> cantidadPromo = const Value.absent(),
+                Value<String?> promoSN = const Value.absent(),
                 Value<DateTime> lastUpdated = const Value.absent(),
                 Value<String> deleted = const Value.absent(),
                 Value<int> rowid = const Value.absent(),
@@ -49716,6 +49868,9 @@ class $$PedidoVentaLineaTableTableTableManager
                 pedidoLineaIdComponente: pedidoLineaIdComponente,
                 importeLinea: importeLinea,
                 cantidadServida: cantidadServida,
+                codPromo: codPromo,
+                cantidadPromo: cantidadPromo,
+                promoSN: promoSN,
                 lastUpdated: lastUpdated,
                 deleted: deleted,
                 rowid: rowid,
@@ -49736,6 +49891,9 @@ class $$PedidoVentaLineaTableTableTableManager
                 Value<String?> pedidoLineaIdComponente = const Value.absent(),
                 Value<double?> importeLinea = const Value.absent(),
                 required int cantidadServida,
+                Value<String?> codPromo = const Value.absent(),
+                Value<int?> cantidadPromo = const Value.absent(),
+                Value<String?> promoSN = const Value.absent(),
                 required DateTime lastUpdated,
                 Value<String> deleted = const Value.absent(),
                 Value<int> rowid = const Value.absent(),
@@ -49754,6 +49912,9 @@ class $$PedidoVentaLineaTableTableTableManager
                 pedidoLineaIdComponente: pedidoLineaIdComponente,
                 importeLinea: importeLinea,
                 cantidadServida: cantidadServida,
+                codPromo: codPromo,
+                cantidadPromo: cantidadPromo,
+                promoSN: promoSN,
                 lastUpdated: lastUpdated,
                 deleted: deleted,
                 rowid: rowid,

@@ -67,7 +67,7 @@ class LocalAppDatabase extends _$LocalAppDatabase {
   LocalAppDatabase.connect(super.connection) : test = false, super.connect();
   LocalAppDatabase.test() : test = true, super(NativeDatabase.memory());
   @override
-  int get schemaVersion => 20;
+  int get schemaVersion => 21;
 
   @override
   MigrationStrategy get migration {
@@ -364,6 +364,26 @@ class LocalAppDatabase extends _$LocalAppDatabase {
             pedidoVentaLineaLocalTable.aiRecomendado.name,
             'TEXT',
             defaultSqlLiteral: "'N'",
+          );
+        }
+        if (from < 21) {
+          await addColumnSafely(
+            m.database,
+            pedidoVentaLineaLocalTable.tableName,
+            pedidoVentaLineaLocalTable.codPromo.name,
+            'TEXT',
+          );
+          await addColumnSafely(
+            m.database,
+            pedidoVentaLineaLocalTable.tableName,
+            pedidoVentaLineaLocalTable.promoSN.name,
+            'TEXT',
+          );
+          await addColumnSafely(
+            m.database,
+            pedidoVentaLineaLocalTable.tableName,
+            pedidoVentaLineaLocalTable.cantidadPromo.name,
+            'NUMERIC',
           );
         }
       }),

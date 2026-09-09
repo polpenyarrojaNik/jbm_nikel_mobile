@@ -30,6 +30,9 @@ abstract class PedidoVentaLineaDTO
     String? pedidoLineaIdComponente,
     @JsonKey(name: 'TOTAL_LINEA') double? importeLinea,
     @JsonKey(name: 'CANTIDAD_SERVIDA') required int cantidadServida,
+    @JsonKey(name: 'COD_PROMO') required String? codPromo,
+    @JsonKey(name: 'PROMO_CANTIDAD') required int? cantidadPromo,
+    @JsonKey(name: 'PROMO_SN') required String? promoSN,
     @JsonKey(name: 'LAST_UPDATED') required DateTime lastUpdated,
     @JsonKey(name: 'DELETED') required String deleted,
   }) = _PedidoVentaLineaDTO;
@@ -70,6 +73,9 @@ abstract class PedidoVentaLineaDTO
       stockDisponible: stockDisponible,
       stockDisponibleSN: stockDisponible != null && stockDisponible > 0,
       aiRecomendado: aiRecomendado,
+      codPromo: codPromo,
+      isPromo: promoSN == null ? null : promoSN == 'S',
+      cantidadPromo: cantidadPromo,
       lastUpdated: lastUpdated,
       deleted: (deleted == 'S'),
     );
@@ -92,6 +98,9 @@ abstract class PedidoVentaLineaDTO
       pedidoLineaIdComponente: Value(pedidoLineaIdComponente),
       importeLinea: Value(importeLinea),
       cantidadServida: Value(cantidadServida),
+      codPromo: Value(codPromo),
+      promoSN: Value(promoSN),
+      cantidadPromo: Value(cantidadPromo),
       lastUpdated: Value(lastUpdated),
       deleted: Value(deleted),
     ).toColumns(nullToAbsent);
@@ -115,6 +124,9 @@ class PedidoVentaLineaTable extends Table {
       text().nullable().named('PEDIDO_LINEA_ID_COMPONENTE')();
   RealColumn get importeLinea => real().nullable().named('TOTAL_LINEA')();
   IntColumn get cantidadServida => integer().named('CANTIDAD_SERVIDA')();
+  TextColumn get codPromo => text().nullable().named('COD_PROMO')();
+  IntColumn get cantidadPromo => integer().nullable().named('PROMO_CANTIDAD')();
+  TextColumn get promoSN => text().nullable().named('PROMO_SN')();
   DateTimeColumn get lastUpdated => dateTime().named('LAST_UPDATED')();
   TextColumn get deleted =>
       text().withDefault(const Constant('N')).named('DELETED')();

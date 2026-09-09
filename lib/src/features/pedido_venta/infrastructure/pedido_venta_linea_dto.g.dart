@@ -22,6 +22,9 @@ _PedidoVentaLineaDTO _$PedidoVentaLineaDTOFromJson(Map<String, dynamic> json) =>
       pedidoLineaIdComponente: json['PEDIDO_LINEA_ID_COMPONENTE'] as String?,
       importeLinea: (json['TOTAL_LINEA'] as num?)?.toDouble(),
       cantidadServida: (json['CANTIDAD_SERVIDA'] as num).toInt(),
+      codPromo: json['COD_PROMO'] as String?,
+      cantidadPromo: (json['PROMO_CANTIDAD'] as num?)?.toInt(),
+      promoSN: json['PROMO_SN'] as String?,
       lastUpdated: DateTime.parse(json['LAST_UPDATED'] as String),
       deleted: json['DELETED'] as String,
     );
@@ -43,6 +46,9 @@ Map<String, dynamic> _$PedidoVentaLineaDTOToJson(
   'PEDIDO_LINEA_ID_COMPONENTE': instance.pedidoLineaIdComponente,
   'TOTAL_LINEA': instance.importeLinea,
   'CANTIDAD_SERVIDA': instance.cantidadServida,
+  'COD_PROMO': instance.codPromo,
+  'PROMO_CANTIDAD': instance.cantidadPromo,
+  'PROMO_SN': instance.promoSN,
   'LAST_UPDATED': instance.lastUpdated.toIso8601String(),
   'DELETED': instance.deleted,
 };

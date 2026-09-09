@@ -205,6 +205,9 @@ class _RecomendacionProductoListDialogState
       createdFromCliente: pedidoLocalParam.createPedidoFromClienteId != null,
       addNewLineaDesdeArticulo: false,
       recomendado: true,
+      codPromo: null,
+      cantidadPromo: null,
+      isPromo: null,
     );
 
     final added = await Navigator.push<bool>(

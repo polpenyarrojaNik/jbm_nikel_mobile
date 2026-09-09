@@ -450,6 +450,9 @@ class _SelecionarCantidadFormState
           importeLinea: importeLinea,
           cantidadPendiente: totalQuantity,
           aiRecomendado: widget.seleccionarCantidadParam.recomendado,
+          codPromo: widget.seleccionarCantidadParam.codPromo,
+          cantidadPromo: widget.seleccionarCantidadParam.cantidadPromo,
+          isPromo: widget.seleccionarCantidadParam.isPromo,
           lastUpdated: DateTime.now().toUtc(),
           deleted: false,
         );

@@ -1561,6 +1561,39 @@ class $PedidoVentaLineaLocalTableTable extends PedidoVentaLineaLocalTable
     type: DriftSqlType.string,
     requiredDuringInsert: true,
   );
+  static const VerificationMeta _codPromoMeta = const VerificationMeta(
+    'codPromo',
+  );
+  @override
+  late final GeneratedColumn<String> codPromo = GeneratedColumn<String>(
+    'COD_PROMO',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _cantidadPromoMeta = const VerificationMeta(
+    'cantidadPromo',
+  );
+  @override
+  late final GeneratedColumn<int> cantidadPromo = GeneratedColumn<int>(
+    'PROMO_CANTIDAD',
+    aliasedName,
+    true,
+    type: DriftSqlType.int,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _promoSNMeta = const VerificationMeta(
+    'promoSN',
+  );
+  @override
+  late final GeneratedColumn<String> promoSN = GeneratedColumn<String>(
+    'PROMO_SN',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
   @override
   List<GeneratedColumn> get $columns => [
     pedidoVentaAppId,
@@ -1581,6 +1614,9 @@ class $PedidoVentaLineaLocalTableTable extends PedidoVentaLineaLocalTable
     iva,
     pedidoLineaIdComponente,
     aiRecomendado,
+    codPromo,
+    cantidadPromo,
+    promoSN,
   ];
   @override
   String get aliasedName => _alias ?? actualTableName;
@@ -1757,6 +1793,27 @@ class $PedidoVentaLineaLocalTableTable extends PedidoVentaLineaLocalTable
     } else if (isInserting) {
       context.missing(_aiRecomendadoMeta);
     }
+    if (data.containsKey('COD_PROMO')) {
+      context.handle(
+        _codPromoMeta,
+        codPromo.isAcceptableOrUnknown(data['COD_PROMO']!, _codPromoMeta),
+      );
+    }
+    if (data.containsKey('PROMO_CANTIDAD')) {
+      context.handle(
+        _cantidadPromoMeta,
+        cantidadPromo.isAcceptableOrUnknown(
+          data['PROMO_CANTIDAD']!,
+          _cantidadPromoMeta,
+        ),
+      );
+    }
+    if (data.containsKey('PROMO_SN')) {
+      context.handle(
+        _promoSNMeta,
+        promoSN.isAcceptableOrUnknown(data['PROMO_SN']!, _promoSNMeta),
+      );
+    }
     return context;
   }
 
@@ -1840,6 +1897,18 @@ class $PedidoVentaLineaLocalTableTable extends PedidoVentaLineaLocalTable
         DriftSqlType.string,
         data['${effectivePrefix}AI_RECOMENDADO'],
       )!,
+      codPromo: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}COD_PROMO'],
+      ),
+      cantidadPromo: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}PROMO_CANTIDAD'],
+      ),
+      promoSN: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}PROMO_SN'],
+      ),
     );
   }
 
@@ -1869,6 +1938,9 @@ class PedidoVentaLineaLocalTableCompanion
   final Value<double> iva;
   final Value<String?> pedidoLineaIdComponente;
   final Value<String> aiRecomendado;
+  final Value<String?> codPromo;
+  final Value<int?> cantidadPromo;
+  final Value<String?> promoSN;
   final Value<int> rowid;
   const PedidoVentaLineaLocalTableCompanion({
     this.pedidoVentaAppId = const Value.absent(),
@@ -1889,6 +1961,9 @@ class PedidoVentaLineaLocalTableCompanion
     this.iva = const Value.absent(),
     this.pedidoLineaIdComponente = const Value.absent(),
     this.aiRecomendado = const Value.absent(),
+    this.codPromo = const Value.absent(),
+    this.cantidadPromo = const Value.absent(),
+    this.promoSN = const Value.absent(),
     this.rowid = const Value.absent(),
   });
   PedidoVentaLineaLocalTableCompanion.insert({
@@ -1910,6 +1985,9 @@ class PedidoVentaLineaLocalTableCompanion
     required double iva,
     this.pedidoLineaIdComponente = const Value.absent(),
     required String aiRecomendado,
+    this.codPromo = const Value.absent(),
+    this.cantidadPromo = const Value.absent(),
+    this.promoSN = const Value.absent(),
     this.rowid = const Value.absent(),
   }) : pedidoVentaAppId = Value(pedidoVentaAppId),
        pedidoVentaLineaAppId = Value(pedidoVentaLineaAppId),
@@ -1944,6 +2022,9 @@ class PedidoVentaLineaLocalTableCompanion
     Expression<double>? iva,
     Expression<String>? pedidoLineaIdComponente,
     Expression<String>? aiRecomendado,
+    Expression<String>? codPromo,
+    Expression<int>? cantidadPromo,
+    Expression<String>? promoSN,
     Expression<int>? rowid,
   }) {
     return RawValuesInsertable({
@@ -1966,6 +2047,9 @@ class PedidoVentaLineaLocalTableCompanion
       if (pedidoLineaIdComponente != null)
         'PEDIDO_LINEA_ID_COMPONENTE': pedidoLineaIdComponente,
       if (aiRecomendado != null) 'AI_RECOMENDADO': aiRecomendado,
+      if (codPromo != null) 'COD_PROMO': codPromo,
+      if (cantidadPromo != null) 'PROMO_CANTIDAD': cantidadPromo,
+      if (promoSN != null) 'PROMO_SN': promoSN,
       if (rowid != null) 'rowid': rowid,
     });
   }
@@ -1989,6 +2073,9 @@ class PedidoVentaLineaLocalTableCompanion
     Value<double>? iva,
     Value<String?>? pedidoLineaIdComponente,
     Value<String>? aiRecomendado,
+    Value<String?>? codPromo,
+    Value<int?>? cantidadPromo,
+    Value<String?>? promoSN,
     Value<int>? rowid,
   }) {
     return PedidoVentaLineaLocalTableCompanion(
@@ -2012,6 +2099,9 @@ class PedidoVentaLineaLocalTableCompanion
       pedidoLineaIdComponente:
           pedidoLineaIdComponente ?? this.pedidoLineaIdComponente,
       aiRecomendado: aiRecomendado ?? this.aiRecomendado,
+      codPromo: codPromo ?? this.codPromo,
+      cantidadPromo: cantidadPromo ?? this.cantidadPromo,
+      promoSN: promoSN ?? this.promoSN,
       rowid: rowid ?? this.rowid,
     );
   }
@@ -2075,6 +2165,15 @@ class PedidoVentaLineaLocalTableCompanion
     if (aiRecomendado.present) {
       map['AI_RECOMENDADO'] = Variable<String>(aiRecomendado.value);
     }
+    if (codPromo.present) {
+      map['COD_PROMO'] = Variable<String>(codPromo.value);
+    }
+    if (cantidadPromo.present) {
+      map['PROMO_CANTIDAD'] = Variable<int>(cantidadPromo.value);
+    }
+    if (promoSN.present) {
+      map['PROMO_SN'] = Variable<String>(promoSN.value);
+    }
     if (rowid.present) {
       map['rowid'] = Variable<int>(rowid.value);
     }
@@ -2102,6 +2201,9 @@ class PedidoVentaLineaLocalTableCompanion
           ..write('iva: $iva, ')
           ..write('pedidoLineaIdComponente: $pedidoLineaIdComponente, ')
           ..write('aiRecomendado: $aiRecomendado, ')
+          ..write('codPromo: $codPromo, ')
+          ..write('cantidadPromo: $cantidadPromo, ')
+          ..write('promoSN: $promoSN, ')
           ..write('rowid: $rowid')
           ..write(')'))
         .toString();
@@ -6842,6 +6944,9 @@ typedef $$PedidoVentaLineaLocalTableTableCreateCompanionBuilder =
       required double iva,
       Value<String?> pedidoLineaIdComponente,
       required String aiRecomendado,
+      Value<String?> codPromo,
+      Value<int?> cantidadPromo,
+      Value<String?> promoSN,
       Value<int> rowid,
     });
 typedef $$PedidoVentaLineaLocalTableTableUpdateCompanionBuilder =
@@ -6864,6 +6969,9 @@ typedef $$PedidoVentaLineaLocalTableTableUpdateCompanionBuilder =
       Value<double> iva,
       Value<String?> pedidoLineaIdComponente,
       Value<String> aiRecomendado,
+      Value<String?> codPromo,
+      Value<int?> cantidadPromo,
+      Value<String?> promoSN,
       Value<int> rowid,
     });
 
@@ -6963,6 +7071,21 @@ class $$PedidoVentaLineaLocalTableTableFilterComposer
 
   ColumnFilters<String> get aiRecomendado => $composableBuilder(
     column: $table.aiRecomendado,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get codPromo => $composableBuilder(
+    column: $table.codPromo,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get cantidadPromo => $composableBuilder(
+    column: $table.cantidadPromo,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get promoSN => $composableBuilder(
+    column: $table.promoSN,
     builder: (column) => ColumnFilters(column),
   );
 }
@@ -7065,6 +7188,21 @@ class $$PedidoVentaLineaLocalTableTableOrderingComposer
     column: $table.aiRecomendado,
     builder: (column) => ColumnOrderings(column),
   );
+
+  ColumnOrderings<String> get codPromo => $composableBuilder(
+    column: $table.codPromo,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get cantidadPromo => $composableBuilder(
+    column: $table.cantidadPromo,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get promoSN => $composableBuilder(
+    column: $table.promoSN,
+    builder: (column) => ColumnOrderings(column),
+  );
 }
 
 class $$PedidoVentaLineaLocalTableTableAnnotationComposer
@@ -7157,6 +7295,17 @@ class $$PedidoVentaLineaLocalTableTableAnnotationComposer
     column: $table.aiRecomendado,
     builder: (column) => column,
   );
+
+  GeneratedColumn<String> get codPromo =>
+      $composableBuilder(column: $table.codPromo, builder: (column) => column);
+
+  GeneratedColumn<int> get cantidadPromo => $composableBuilder(
+    column: $table.cantidadPromo,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<String> get promoSN =>
+      $composableBuilder(column: $table.promoSN, builder: (column) => column);
 }
 
 class $$PedidoVentaLineaLocalTableTableTableManager
@@ -7223,6 +7372,9 @@ class $$PedidoVentaLineaLocalTableTableTableManager
                 Value<double> iva = const Value.absent(),
                 Value<String?> pedidoLineaIdComponente = const Value.absent(),
                 Value<String> aiRecomendado = const Value.absent(),
+                Value<String?> codPromo = const Value.absent(),
+                Value<int?> cantidadPromo = const Value.absent(),
+                Value<String?> promoSN = const Value.absent(),
                 Value<int> rowid = const Value.absent(),
               }) => PedidoVentaLineaLocalTableCompanion(
                 pedidoVentaAppId: pedidoVentaAppId,
@@ -7243,6 +7395,9 @@ class $$PedidoVentaLineaLocalTableTableTableManager
                 iva: iva,
                 pedidoLineaIdComponente: pedidoLineaIdComponente,
                 aiRecomendado: aiRecomendado,
+                codPromo: codPromo,
+                cantidadPromo: cantidadPromo,
+                promoSN: promoSN,
                 rowid: rowid,
               ),
           createCompanionCallback:
@@ -7265,6 +7420,9 @@ class $$PedidoVentaLineaLocalTableTableTableManager
                 required double iva,
                 Value<String?> pedidoLineaIdComponente = const Value.absent(),
                 required String aiRecomendado,
+                Value<String?> codPromo = const Value.absent(),
+                Value<int?> cantidadPromo = const Value.absent(),
+                Value<String?> promoSN = const Value.absent(),
                 Value<int> rowid = const Value.absent(),
               }) => PedidoVentaLineaLocalTableCompanion.insert(
                 pedidoVentaAppId: pedidoVentaAppId,
@@ -7285,6 +7443,9 @@ class $$PedidoVentaLineaLocalTableTableTableManager
                 iva: iva,
                 pedidoLineaIdComponente: pedidoLineaIdComponente,
                 aiRecomendado: aiRecomendado,
+                codPromo: codPromo,
+                cantidadPromo: cantidadPromo,
+                promoSN: promoSN,
                 rowid: rowid,
               ),
           withReferenceMapper: (p0) => p0

@@ -21,6 +21,9 @@ abstract class SeleccionarCantidadParam with _$SeleccionarCantidadParam {
     required int posicionLinea,
     required bool addNewLineaDesdeArticulo,
     required bool recomendado,
+    required String? codPromo,
+    required int? cantidadPromo,
+    required bool? isPromo,
   }) = _SeleccionarCantidadParam;
 
   bool isUpdatingLinea() => cantidad != null;

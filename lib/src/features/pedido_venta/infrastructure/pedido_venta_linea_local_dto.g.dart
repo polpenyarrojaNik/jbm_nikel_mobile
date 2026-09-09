@@ -29,6 +29,9 @@ _PedidoVentaLineaLocalDTO _$PedidoVentaLineaLocalDTOFromJson(
   iva: (json['IVA'] as num).toDouble(),
   pedidoLineaComponenteId: json['PEDIDO_LINEA_ID_COMPONENTE'] as String?,
   aiRecomendado: json['AI_RECOMENDADO'] as String,
+  codPromo: json['COD_PROMO'] as String?,
+  cantidadPromo: (json['PROMO_CANTIDAD'] as num?)?.toInt(),
+  promoSN: json['PROMO_SN'] as String?,
 );
 
 Map<String, dynamic> _$PedidoVentaLineaLocalDTOToJson(
@@ -52,4 +55,7 @@ Map<String, dynamic> _$PedidoVentaLineaLocalDTOToJson(
   'IVA': instance.iva,
   'PEDIDO_LINEA_ID_COMPONENTE': instance.pedidoLineaComponenteId,
   'AI_RECOMENDADO': instance.aiRecomendado,
+  'COD_PROMO': instance.codPromo,
+  'PROMO_CANTIDAD': instance.cantidadPromo,
+  'PROMO_SN': instance.promoSN,
 };

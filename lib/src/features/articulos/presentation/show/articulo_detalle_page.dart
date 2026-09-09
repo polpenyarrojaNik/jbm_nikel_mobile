@@ -243,6 +243,9 @@ class AddArticleToBorradorButton extends ConsumerWidget {
           posicionLinea: posicionLinea,
           addNewLineaDesdeArticulo: true,
           recomendado: false,
+          codPromo: null,
+          cantidadPromo: null,
+          isPromo: null,
         ),
       ),
     );

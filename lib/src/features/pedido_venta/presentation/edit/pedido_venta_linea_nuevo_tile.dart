@@ -31,98 +31,102 @@ class PedidoVentaLineaNuevoTile extends ConsumerWidget {
         ),
       ),
     );
+    final isPromo = pedidoVentaLinea.isPromo ?? false;
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 16),
       color: (pedidoVentaLinea.pedidoLineaIdComponente != null)
           ? Theme.of(context).colorScheme.secondaryContainer
                 .withValues(alpha: 0.5)
-          : Colors.transparent,
-      child: IntrinsicHeight(
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            SizedBox(
-              width: 50,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [Text(pedidoVentaLinea.pedidoVentaLineaId!)],
+          : null,
+      child: Opacity(
+        opacity: isPromo ? 0.5 : 1,
+        child: IntrinsicHeight(
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              SizedBox(
+                width: 50,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [Text(pedidoVentaLinea.pedidoVentaLineaId!)],
+                ),
               ),
-            ),
-            Flexible(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      GestureDetector(
-                        behavior: HitTestBehavior.opaque,
-                        onTap: () => context.router.push(
-                          ArticuloDetalleRoute(
-                            articuloId: pedidoVentaLinea.articuloId,
+              Flexible(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        GestureDetector(
+                          behavior: HitTestBehavior.opaque,
+                          onTap: () => context.router.push(
+                            ArticuloDetalleRoute(
+                              articuloId: pedidoVentaLinea.articuloId,
+                            ),
+                          ),
+                          child: Text(
+                            pedidoVentaLinea.articuloId,
+                            style: Theme.of(context).textTheme.titleSmall
+                                ?.copyWith(
+                                  color: Theme.of(context).colorScheme.primary,
+                                ),
                           ),
                         ),
-                        child: Text(
-                          pedidoVentaLinea.articuloId,
-                          style: Theme.of(context).textTheme.titleSmall
-                              ?.copyWith(
-                                color: Theme.of(context).colorScheme.primary,
-                              ),
-                        ),
-                      ),
-                      Row(
-                        children: [
-                          Text(
-                            '${numberFormatCantidades(pedidoVentaLinea.cantidad)} ${S.of(context).unidad}',
-                            style: Theme.of(context).textTheme.titleSmall,
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                  Text(
-                    pedidoVentaLinea.articuloDescription,
-                    maxLines: 2,
-                    overflow: TextOverflow.ellipsis,
-                    style: Theme.of(context).textTheme.bodySmall,
-                  ),
-                  const Spacer(),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    crossAxisAlignment: CrossAxisAlignment.end,
-                    children: [
-                      Text(
-                        '${S.of(context).pedido_edit_lineaNuevoTile_precio} ${formatPrecioYDescuento(precio: pedidoVentaLinea.precioDivisa, tipoPrecio: pedidoVentaLinea.tipoPrecio, descuento1: pedidoVentaLinea.descuento1, descuento2: pedidoVentaLinea.descuento2, descuento3: pedidoVentaLinea.descuento3)}',
-                        style: Theme.of(context).textTheme.bodySmall,
-                      ),
-                      if (pedidoVentaLinea.importeLinea != null &&
-                          !pedidoVentaLinea.isComponente)
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.end,
+                        Row(
                           children: [
-                            Text(pedidoVentaLinea.importeLinea.toString()),
+                            Text(
+                              '${numberFormatCantidades(pedidoVentaLinea.cantidad)} ${S.of(context).unidad}',
+                              style: Theme.of(context).textTheme.titleSmall,
+                            ),
                           ],
                         ),
-                    ],
-                  ),
-                  if (pedidoVentaLinea.stockDisponible != null)
+                      ],
+                    ),
                     Text(
-                      '${S.of(context).pedido_edit_pedidoEdit_stockDisponible} ${pedidoVentaLinea.stockDisponible} ${S.of(context).unidad}',
+                      pedidoVentaLinea.articuloDescription,
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
                       style: Theme.of(context).textTheme.bodySmall,
                     ),
-                  articuloPrecioValue.maybeWhen(
-                    orElse: () => Container(),
-                    data: (ultimosPrecios) => ultimosPrecios != null
-                        ? Text(
-                            '${S.of(context).pedido_edit_pedidoEdit_ultimoPrecioDeCompra}:  ${formatPrecioYDescuento(precio: ultimosPrecios.precioDivisa, tipoPrecio: ultimosPrecios.tipoPrecio, descuento1: ultimosPrecios.descuento1, descuento2: ultimosPrecios.descuento2, descuento3: ultimosPrecios.descuento3)} (${numberFormatCantidades(ultimosPrecios.cantidad)} ${S.of(context).unidad})',
-                            style: Theme.of(context).textTheme.bodySmall,
-                          )
-                        : Container(),
-                  ),
-                ],
+                    const Spacer(),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      children: [
+                        Text(
+                          '${S.of(context).pedido_edit_lineaNuevoTile_precio} ${formatPrecioYDescuento(precio: pedidoVentaLinea.precioDivisa, tipoPrecio: pedidoVentaLinea.tipoPrecio, descuento1: pedidoVentaLinea.descuento1, descuento2: pedidoVentaLinea.descuento2, descuento3: pedidoVentaLinea.descuento3)}',
+                          style: Theme.of(context).textTheme.bodySmall,
+                        ),
+                        if (pedidoVentaLinea.importeLinea != null &&
+                            !pedidoVentaLinea.isComponente)
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.end,
+                            children: [
+                              Text(pedidoVentaLinea.importeLinea.toString()),
+                            ],
+                          ),
+                      ],
+                    ),
+                    if (pedidoVentaLinea.stockDisponible != null)
+                      Text(
+                        '${S.of(context).pedido_edit_pedidoEdit_stockDisponible} ${pedidoVentaLinea.stockDisponible} ${S.of(context).unidad}',
+                        style: Theme.of(context).textTheme.bodySmall,
+                      ),
+                    articuloPrecioValue.maybeWhen(
+                      orElse: () => Container(),
+                      data: (ultimosPrecios) => ultimosPrecios != null
+                          ? Text(
+                              '${S.of(context).pedido_edit_pedidoEdit_ultimoPrecioDeCompra}:  ${formatPrecioYDescuento(precio: ultimosPrecios.precioDivisa, tipoPrecio: ultimosPrecios.tipoPrecio, descuento1: ultimosPrecios.descuento1, descuento2: ultimosPrecios.descuento2, descuento3: ultimosPrecios.descuento3)} (${numberFormatCantidades(ultimosPrecios.cantidad)} ${S.of(context).unidad})',
+                              style: Theme.of(context).textTheme.bodySmall,
+                            )
+                          : Container(),
+                    ),
+                  ],
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

@@ -35,6 +35,9 @@ abstract class PedidoVentaLineaLocalDTO
     @JsonKey(name: 'PEDIDO_LINEA_ID_COMPONENTE')
     String? pedidoLineaComponenteId,
     @JsonKey(name: 'AI_RECOMENDADO') required String aiRecomendado,
+    @JsonKey(name: 'COD_PROMO') required String? codPromo,
+    @JsonKey(name: 'PROMO_CANTIDAD') required int? cantidadPromo,
+    @JsonKey(name: 'PROMO_SN') required String? promoSN,
   }) = _PedidoVentaLineaLocalDTO;
 
   factory PedidoVentaLineaLocalDTO.fromJson(Map<String, dynamic> json) =>
@@ -63,6 +66,11 @@ abstract class PedidoVentaLineaLocalDTO
       iva: pedidoVentaLinea.iva!,
       pedidoLineaComponenteId: pedidoVentaLinea.pedidoLineaIdComponente,
       aiRecomendado: pedidoVentaLinea.aiRecomendado ? 'S' : 'N',
+      codPromo: pedidoVentaLinea.codPromo,
+      cantidadPromo: pedidoVentaLinea.cantidadPromo,
+      promoSN: pedidoVentaLinea.isPromo == null
+          ? null
+          : (pedidoVentaLinea.isPromo! ? 'S' : 'N'),
     );
   }
 
@@ -90,6 +98,9 @@ abstract class PedidoVentaLineaLocalDTO
       cantidadPendiente: cantidad,
       lastUpdated: DateTime.now().toUtc(),
       aiRecomendado: aiRecomendado == 'S',
+      codPromo: codPromo,
+      cantidadPromo: cantidadPromo,
+      isPromo: promoSN == null ? null : promoSN == 'S',
       deleted: false,
     );
   }
@@ -115,6 +126,9 @@ abstract class PedidoVentaLineaLocalDTO
       iva: Value(iva),
       pedidoLineaIdComponente: Value(pedidoLineaComponenteId),
       aiRecomendado: Value(aiRecomendado),
+      codPromo: Value(codPromo),
+      cantidadPromo: Value(cantidadPromo),
+      promoSN: Value(promoSN),
     ).toColumns(nullToAbsent);
   }
 }
@@ -141,6 +155,9 @@ class PedidoVentaLineaLocalTable extends Table {
   TextColumn get pedidoLineaIdComponente =>
       text().nullable().named('PEDIDO_LINEA_ID_COMPONENTE')();
   TextColumn get aiRecomendado => text().named('AI_RECOMENDADO')();
+  TextColumn get codPromo => text().nullable().named('COD_PROMO')();
+  IntColumn get cantidadPromo => integer().nullable().named('PROMO_CANTIDAD')();
+  TextColumn get promoSN => text().nullable().named('PROMO_SN')();
   @override
   Set<Column> get primaryKey => {pedidoVentaAppId, pedidoVentaLineaAppId};
 

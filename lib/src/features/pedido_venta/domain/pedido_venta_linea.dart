@@ -31,6 +31,9 @@ abstract class PedidoVentaLinea with _$PedidoVentaLinea {
     required bool aiRecomendado,
     required int cantidadPendiente,
     required DateTime lastUpdated,
+    required String? codPromo,
+    required int? cantidadPromo,
+    required bool? isPromo,
     required bool deleted,
   }) = _PedidoVentaLinea;
 
