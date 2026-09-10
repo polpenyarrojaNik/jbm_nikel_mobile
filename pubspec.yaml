@@ -4,8 +4,8 @@ publish_to: "none"
 version: 1.2.134+208
 
 environment:
-  sdk: ^3.13.2
-  flutter: ^3.47.2
+  sdk: ^3.13.3
+  flutter: ^3.47.3
 
 dependencies:
   flutter_localizations:
@@ -17,14 +17,14 @@ dependencies:
   auto_route: ^11.1.0
   auto_updater: ^1.0.0
   cached_network_image: ^4.0.0
-  camera: ^0.12.0+2
+  camera: ^0.12.1
   csv: ^8.0.0
   data_table_2: ^3.0.0
   device_info_plus: ^13.2.0
-  dio: ^5.11.0
+  dio: ^5.11.1
   dotted_border: ^3.1.0
-  drift: ^2.34.3
-  excel_community: ^2.3.0
+  drift: ^2.35.0
+  excel_community: ^2.4.0
   fl_chart: ^1.2.0
   flash: ^3.1.1
   flex_color_scheme: ^8.4.0
@@ -34,9 +34,9 @@ dependencies:
   flutter_map: ^8.3.2
   flutter_map_location_marker: ^10.3.0
   flutter_markdown: ^0.7.7+1
-  flutter_riverpod: ^3.4.2
-  flutter_secure_storage: ^10.3.1
-  file_picker: ^12.1.2
+  flutter_riverpod: ^3.4.3
+  flutter_secure_storage: ^11.1.0
+  file_picker: ^12.2.0
   font_awesome_flutter: ^11.0.0
   form_builder_extra_fields: ^12.2.0
   form_builder_validators: ^11.3.0
@@ -51,10 +51,10 @@ dependencies:
   json_annotation: ^4.12.0
   jwt_decoder: ^2.0.1
   latlong2: ^0.9.1
-  logger: ^2.7.0
+  logger: ^2.8.0
   map_launcher: ^6.0.0
   markdown: ^7.3.1
-  material_ui: ^1.1.0
+  material_ui: ^1.2.0
   flutter_material_design_icons: ^3.1.0+7447
   money2: ^6.3.0
   open_file: ^4.0.0
@@ -62,13 +62,13 @@ dependencies:
   path_provider: ^2.1.6
   path: ^1.9.1
   reactive_forms: ^18.2.2
-  riverpod_annotation: ^4.0.6
+  riverpod_annotation: ^4.0.7
   share_plus: ^13.3.0
   shimmer: ^4.0.0
-  sentry_flutter: ^9.28.0
+  sentry_flutter: ^9.29.0
   sqlite3_flutter_libs: ^0.5.42
-  syncfusion_flutter_pdf: ^34.2.5
-  syncfusion_flutter_pdfviewer: ^34.2.5
+  syncfusion_flutter_pdf: ^34.2.7
+  syncfusion_flutter_pdfviewer: ^34.2.7
   upgrader: ^13.7.0
   url_launcher: ^6.3.2
   uuid: ^4.6.0
@@ -80,13 +80,13 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   auto_route_generator: ^10.6.0
-  build_runner: ^2.16.0
-  drift_dev: ^2.34.5
+  build_runner: ^2.16.1
+  drift_dev: ^2.35.0
   flutter_launcher_icons: ^0.14.4
   flutter_lints: ^6.0.0
   freezed: ^4.0.1
   json_serializable: ^6.14.1
-  riverpod_generator: ^4.0.8
+  riverpod_generator: ^4.0.9
   intl_utils: ^2.8.16
 
 dependency_overrides:
