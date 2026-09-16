@@ -1566,6 +1566,12 @@ class _ArticuloGrupoNetoSelectQuantityTile extends StatelessWidget {
             style: Theme.of(context).textTheme.bodyMedium
                 ?.copyWith(fontSize: 12),
           ),
+          if (articuloGrupoNeto.dto > 0)
+            Text(
+              '${articuloGrupoNeto.dto}%',
+              style: Theme.of(context).textTheme.bodySmall
+                  ?.copyWith(fontSize: 9),
+            ),
         ],
       ),
     );
