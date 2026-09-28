@@ -1,6 +1,6 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:material_ui/material_ui.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:material_ui/material_ui.dart';
 
 import '../../../../../generated/l10n.dart';
 import '../../../../core/helpers/formatters.dart';
@@ -32,12 +32,18 @@ class PedidoVentaLineaNuevoTile extends ConsumerWidget {
       ),
     );
     final isPromo = pedidoVentaLinea.isPromo ?? false;
+    final errorColor = Theme.of(context).colorScheme.error;
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 16),
-      color: (pedidoVentaLinea.pedidoLineaIdComponente != null)
-          ? Theme.of(context).colorScheme.secondaryContainer
-                .withValues(alpha: 0.5)
-          : null,
+      decoration: BoxDecoration(
+        color: (pedidoVentaLinea.pedidoLineaIdComponente != null)
+            ? Theme.of(context).colorScheme.secondaryContainer
+                  .withValues(alpha: 0.5)
+            : null,
+        border: pedidoVentaLinea.sinStock != null && pedidoVentaLinea.sinStock!
+            ? Border(left: BorderSide(color: errorColor, width: 4))
+            : null,
+      ),
       child: Opacity(
         opacity: isPromo ? 0.5 : 1,
         child: IntrinsicHeight(
@@ -75,6 +81,16 @@ class PedidoVentaLineaNuevoTile extends ConsumerWidget {
                         ),
                         Row(
                           children: [
+                            if (pedidoVentaLinea.sinStock != null &&
+                                pedidoVentaLinea.sinStock!)
+                              Padding(
+                                padding: const EdgeInsets.only(right: 4),
+                                child: Icon(
+                                  Icons.warning_amber_rounded,
+                                  size: 16,
+                                  color: errorColor,
+                                ),
+                              ),
                             Text(
                               '${numberFormatCantidades(pedidoVentaLinea.cantidad)} ${S.of(context).unidad}',
                               style: Theme.of(context).textTheme.titleSmall,
@@ -111,7 +127,14 @@ class PedidoVentaLineaNuevoTile extends ConsumerWidget {
                     if (pedidoVentaLinea.stockDisponible != null)
                       Text(
                         '${S.of(context).pedido_edit_pedidoEdit_stockDisponible} ${pedidoVentaLinea.stockDisponible} ${S.of(context).unidad}',
-                        style: Theme.of(context).textTheme.bodySmall,
+                        style:
+                            pedidoVentaLinea.sinStock != null &&
+                                pedidoVentaLinea.sinStock!
+                            ? Theme.of(context).textTheme.bodySmall?.copyWith(
+                                color: errorColor,
+                                fontWeight: FontWeight.bold,
+                              )
+                            : Theme.of(context).textTheme.bodySmall,
                       ),
                     articuloPrecioValue.maybeWhen(
                       orElse: () => Container(),

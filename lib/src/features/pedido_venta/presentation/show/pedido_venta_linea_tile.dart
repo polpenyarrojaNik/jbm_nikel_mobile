@@ -11,8 +11,14 @@ class PedidoVentaLineaTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final errorColor = Theme.of(context).colorScheme.error;
     return Container(
       padding: const EdgeInsets.all(4),
+      decoration: BoxDecoration(
+        border: pedidoVentaLinea.sinStock != null && pedidoVentaLinea.sinStock!
+            ? Border(left: BorderSide(color: errorColor, width: 4))
+            : null,
+      ),
       child: IntrinsicHeight(
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -47,6 +53,16 @@ class PedidoVentaLineaTile extends StatelessWidget {
                       ),
                       Row(
                         children: [
+                          if (pedidoVentaLinea.sinStock != null &&
+                              pedidoVentaLinea.sinStock!)
+                            Padding(
+                              padding: const EdgeInsets.only(right: 4),
+                              child: Icon(
+                                Icons.warning_amber_rounded,
+                                size: 16,
+                                color: errorColor,
+                              ),
+                            ),
                           Text(
                             '${numberFormatCantidades(pedidoVentaLinea.cantidad)} ${S.of(context).unidad}',
                             style: (!pedidoVentaLinea.isComponente)
@@ -87,6 +103,16 @@ class PedidoVentaLineaTile extends StatelessWidget {
                             ],
                           ),
                       ],
+                    ),
+                  if (pedidoVentaLinea.sinStock != null &&
+                      pedidoVentaLinea.sinStock! &&
+                      pedidoVentaLinea.stockDisponible != null)
+                    Text(
+                      '${S.of(context).pedido_edit_pedidoEdit_stockDisponible} ${pedidoVentaLinea.stockDisponible} ${S.of(context).unidad}',
+                      style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                        color: errorColor,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                   if (pedidoVentaLinea.cantidadPendiente != 0)
                     Text(

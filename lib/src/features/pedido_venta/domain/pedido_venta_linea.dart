@@ -38,4 +38,7 @@ abstract class PedidoVentaLinea with _$PedidoVentaLinea {
   }) = _PedidoVentaLinea;
 
   bool get isComponente => pedidoLineaIdComponente != null;
+
+  bool? get sinStock =>
+      stockDisponibleSN == null ? null : stockDisponibleSN == false;
 }

@@ -71,7 +71,7 @@ abstract class PedidoVentaLineaDTO
       iva: iva,
       cantidadPendiente: cantidad - cantidadServida,
       stockDisponible: stockDisponible,
-      stockDisponibleSN: stockDisponible != null && stockDisponible > 0,
+      stockDisponibleSN: stockDisponible == null ? null : stockDisponible > 0,
       aiRecomendado: aiRecomendado,
       codPromo: codPromo,
       isPromo: promoSN == null ? null : promoSN == 'S',
