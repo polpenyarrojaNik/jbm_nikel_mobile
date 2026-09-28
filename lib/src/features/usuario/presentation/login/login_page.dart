@@ -1,8 +1,9 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
+import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:gap/gap.dart';
-import 'package:reactive_forms/reactive_forms.dart';
 
 import '../../../../../generated/l10n.dart';
 import '../../../../core/exceptions/app_exception.dart';
@@ -23,18 +24,7 @@ class LoginPageState extends ConsumerState<LoginPage> {
   String username = '';
   String contrasenya = '';
 
-  final usuarioControl = FormControl<String>(validators: [Validators.required]);
-
-  FormGroup buildForm() => fb.group({
-    'usuario': usuarioControl,
-    'contrasenya': ['', Validators.required],
-  });
-
-  @override
-  void dispose() {
-    usuarioControl.dispose();
-    super.dispose();
-  }
+  final _formKey = GlobalKey<FormBuilderState>();
 
   @override
   Widget build(BuildContext context) {
@@ -59,9 +49,10 @@ class LoginPageState extends ConsumerState<LoginPage> {
         child: Center(
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 48.0),
-            child: ReactiveFormBuilder(
-              form: buildForm,
-              builder: (context, form, child) => SingleChildScrollView(
+            child: FormBuilder(
+              key: _formKey,
+              autovalidateMode: AutovalidateMode.disabled,
+              child: SingleChildScrollView(
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -86,30 +77,28 @@ class LoginPageState extends ConsumerState<LoginPage> {
                           .copyWith(fontWeight: FontWeight.bold),
                     ),
                     const Gap(16),
-                    ReactiveTextField<String>(
+                    FormBuilderTextField(
                       key: const ValueKey('usuario'),
-                      formControlName: 'usuario',
+                      name: 'usuario',
                       textCapitalization: TextCapitalization.characters,
-                      validationMessages: {
-                        ValidationMessage.required: (error) =>
-                            S.of(context).auth_loginPage_requerido,
-                      },
+                      validator: FormBuilderValidators.required(
+                        errorText: S.of(context).auth_loginPage_requerido,
+                      ),
                       textInputAction: TextInputAction.next,
                       decoration: AppDecoration.loginField(
                         S.of(context).auth_loginPage_usuario,
                       ),
                     ),
                     const Gap(16),
-                    ReactiveTextField<String>(
-                      formControlName: 'contrasenya',
+                    FormBuilderTextField(
+                      name: 'contrasenya',
                       obscureText: true,
                       textCapitalization: TextCapitalization.characters,
-                      validationMessages: {
-                        ValidationMessage.required: (error) =>
-                            S.of(context).auth_loginPage_requerido,
-                      },
+                      validator: FormBuilderValidators.required(
+                        errorText: S.of(context).auth_loginPage_requerido,
+                      ),
                       textInputAction: TextInputAction.done,
-                      onSubmitted: (_) => _submit(form, ref),
+                      onSubmitted: (_) => _submit(ref),
                       decoration: AppDecoration.loginField(
                         S.of(context).auth_loginPage_contrasena,
                       ),
@@ -118,7 +107,7 @@ class LoginPageState extends ConsumerState<LoginPage> {
                     state.maybeWhen(
                       orElse: () {
                         return PrimaryButton(
-                          onPressed: () => _submit(form, ref),
+                          onPressed: () => _submit(ref),
                           text: S.of(context).auth_loginPage_iniciarSesion,
                         );
                       },
@@ -144,16 +133,15 @@ class LoginPageState extends ConsumerState<LoginPage> {
     );
   }
 
-  Future<void> _submit(FormGroup form, WidgetRef ref) async {
-    if (form.valid) {
-      username = (form.control('usuario').value as String).toUpperCase();
-      contrasenya = (form.control('contrasenya').value as String).toUpperCase();
+  Future<void> _submit(WidgetRef ref) async {
+    final form = _formKey.currentState;
+    if (form != null && form.saveAndValidate()) {
+      username = (form.value['usuario'] as String).toUpperCase();
+      contrasenya = (form.value['contrasenya'] as String).toUpperCase();
 
       await ref
           .read(loginPageControllerProvider.notifier)
           .login(username: username, password: contrasenya);
-    } else {
-      form.markAllAsTouched();
     }
   }
 }

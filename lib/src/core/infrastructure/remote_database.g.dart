@@ -31956,7 +31956,19 @@ class $$ArticuloComponenteTableTableTableManager
                 rowid: rowid,
               ),
           withReferenceMapper: (p0) => p0
-              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
+              .map(
+                (e) => (
+                  e.readTable<
+                    $ArticuloComponenteTableTable,
+                    ArticuloComponenteDTO
+                  >(table),
+                  BaseReferences<
+                    _$RemoteAppDatabase,
+                    $ArticuloComponenteTableTable,
+                    ArticuloComponenteDTO
+                  >(db, table, e),
+                ),
+              )
               .toList(),
           prefetchHooksCallback: null,
         ),
@@ -32179,7 +32191,19 @@ class $$ArticuloEmpresaIvaTableTableTableManager
                 rowid: rowid,
               ),
           withReferenceMapper: (p0) => p0
-              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
+              .map(
+                (e) => (
+                  e.readTable<
+                    $ArticuloEmpresaIvaTableTable,
+                    ArticuloEmpresaIvaDTO
+                  >(table),
+                  BaseReferences<
+                    _$RemoteAppDatabase,
+                    $ArticuloEmpresaIvaTableTable,
+                    ArticuloEmpresaIvaDTO
+                  >(db, table, e),
+                ),
+              )
               .toList(),
           prefetchHooksCallback: null,
         ),
@@ -32486,7 +32510,19 @@ class $$ArticuloGrupoNetoTableTableTableManager
                 rowid: rowid,
               ),
           withReferenceMapper: (p0) => p0
-              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
+              .map(
+                (e) => (
+                  e.readTable<
+                    $ArticuloGrupoNetoTableTable,
+                    ArticuloGrupoNetoDTO
+                  >(table),
+                  BaseReferences<
+                    _$RemoteAppDatabase,
+                    $ArticuloGrupoNetoTableTable,
+                    ArticuloGrupoNetoDTO
+                  >(db, table, e),
+                ),
+              )
               .toList(),
           prefetchHooksCallback: null,
         ),
@@ -32810,7 +32846,19 @@ class $$ArticuloPrecioTarifaTableTableTableManager
                 rowid: rowid,
               ),
           withReferenceMapper: (p0) => p0
-              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
+              .map(
+                (e) => (
+                  e.readTable<
+                    $ArticuloPrecioTarifaTableTable,
+                    ArticuloPrecioTarifaDTO
+                  >(table),
+                  BaseReferences<
+                    _$RemoteAppDatabase,
+                    $ArticuloPrecioTarifaTableTable,
+                    ArticuloPrecioTarifaDTO
+                  >(db, table, e),
+                ),
+              )
               .toList(),
           prefetchHooksCallback: null,
         ),
@@ -33054,7 +33102,18 @@ class $$ArticuloRecambioTableTableTableManager
                 rowid: rowid,
               ),
           withReferenceMapper: (p0) => p0
-              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
+              .map(
+                (e) => (
+                  e.readTable<$ArticuloRecambioTableTable, ArticuloRecambioDTO>(
+                    table,
+                  ),
+                  BaseReferences<
+                    _$RemoteAppDatabase,
+                    $ArticuloRecambioTableTable,
+                    ArticuloRecambioDTO
+                  >(db, table, e),
+                ),
+              )
               .toList(),
           prefetchHooksCallback: null,
         ),
@@ -33279,7 +33338,19 @@ class $$ArticuloSustitutivoTableTableTableManager
                 rowid: rowid,
               ),
           withReferenceMapper: (p0) => p0
-              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
+              .map(
+                (e) => (
+                  e.readTable<
+                    $ArticuloSustitutivoTableTable,
+                    ArticuloSustitutivoDTO
+                  >(table),
+                  BaseReferences<
+                    _$RemoteAppDatabase,
+                    $ArticuloSustitutivoTableTable,
+                    ArticuloSustitutivoDTO
+                  >(db, table, e),
+                ),
+              )
               .toList(),
           prefetchHooksCallback: null,
         ),
@@ -33921,7 +33992,7 @@ class $$FamiliaTableTableTableManager
           withReferenceMapper: (p0) => p0
               .map(
                 (e) => (
-                  e.readTable(table),
+                  e.readTable<$FamiliaTableTable, FamiliaDTO>(table),
                   $$FamiliaTableTableReferences(db, table, e),
                 ),
               )
@@ -34650,7 +34721,7 @@ class $$SubfamiliaTableTableTableManager
           withReferenceMapper: (p0) => p0
               .map(
                 (e) => (
-                  e.readTable(table),
+                  e.readTable<$SubfamiliaTableTable, SubfamiliaDTO>(table),
                   $$SubfamiliaTableTableReferences(db, table, e),
                 ),
               )
@@ -36393,7 +36464,7 @@ class $$ArticuloTableTableTableManager
           withReferenceMapper: (p0) => p0
               .map(
                 (e) => (
-                  e.readTable(table),
+                  e.readTable<$ArticuloTableTable, ArticuloDTO>(table),
                   $$ArticuloTableTableReferences(db, table, e),
                 ),
               )
@@ -36774,7 +36845,18 @@ class $$ClienteContactoTableTableTableManager
                 rowid: rowid,
               ),
           withReferenceMapper: (p0) => p0
-              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
+              .map(
+                (e) => (
+                  e.readTable<$ClienteContactoTableTable, ClienteContactoDTO>(
+                    table,
+                  ),
+                  BaseReferences<
+                    _$RemoteAppDatabase,
+                    $ClienteContactoTableTable,
+                    ClienteContactoDTO
+                  >(db, table, e),
+                ),
+              )
               .toList(),
           prefetchHooksCallback: null,
         ),
@@ -37214,7 +37296,9 @@ class $$ClienteDescuentoTableTableTableManager
           withReferenceMapper: (p0) => p0
               .map(
                 (e) => (
-                  e.readTable(table),
+                  e.readTable<$ClienteDescuentoTableTable, ClienteDescuentoDTO>(
+                    table,
+                  ),
                   $$ClienteDescuentoTableTableReferences(db, table, e),
                 ),
               )
@@ -37984,7 +38068,7 @@ class $$PaisTableTableTableManager
           withReferenceMapper: (p0) => p0
               .map(
                 (e) => (
-                  e.readTable(table),
+                  e.readTable<$PaisTableTable, PaisDTO>(table),
                   $$PaisTableTableReferences(db, table, e),
                 ),
               )
@@ -38569,7 +38653,9 @@ class $$ClienteDireccionTableTableTableManager
           withReferenceMapper: (p0) => p0
               .map(
                 (e) => (
-                  e.readTable(table),
+                  e.readTable<$ClienteDireccionTableTable, ClienteDireccionDTO>(
+                    table,
+                  ),
                   $$ClienteDireccionTableTableReferences(db, table, e),
                 ),
               )
@@ -39101,7 +39187,19 @@ class $$ClienteEstadoPotencialTableTableTableManager
                 rowid: rowid,
               ),
           withReferenceMapper: (p0) => p0
-              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
+              .map(
+                (e) => (
+                  e.readTable<
+                    $ClienteEstadoPotencialTableTable,
+                    ClienteEstadoPotencialDTO
+                  >(table),
+                  BaseReferences<
+                    _$RemoteAppDatabase,
+                    $ClienteEstadoPotencialTableTable,
+                    ClienteEstadoPotencialDTO
+                  >(db, table, e),
+                ),
+              )
               .toList(),
           prefetchHooksCallback: null,
         ),
@@ -39347,7 +39445,18 @@ class $$ClienteGrupoNetoTableTableTableManager
                 rowid: rowid,
               ),
           withReferenceMapper: (p0) => p0
-              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
+              .map(
+                (e) => (
+                  e.readTable<$ClienteGrupoNetoTableTable, ClienteGrupoNetoDTO>(
+                    table,
+                  ),
+                  BaseReferences<
+                    _$RemoteAppDatabase,
+                    $ClienteGrupoNetoTableTable,
+                    ClienteGrupoNetoDTO
+                  >(db, table, e),
+                ),
+              )
               .toList(),
           prefetchHooksCallback: null,
         ),
@@ -40006,7 +40115,9 @@ class $$MetodoDeCobroTableTableTableManager
           withReferenceMapper: (p0) => p0
               .map(
                 (e) => (
-                  e.readTable(table),
+                  e.readTable<$MetodoDeCobroTableTable, MetodoDeCobroDTO>(
+                    table,
+                  ),
                   $$MetodoDeCobroTableTableReferences(db, table, e),
                 ),
               )
@@ -40515,7 +40626,10 @@ class $$ClientePagoPendienteTableTableTableManager
           withReferenceMapper: (p0) => p0
               .map(
                 (e) => (
-                  e.readTable(table),
+                  e.readTable<
+                    $ClientePagoPendienteTableTable,
+                    ClientePagoPendienteDTO
+                  >(table),
                   $$ClientePagoPendienteTableTableReferences(db, table, e),
                 ),
               )
@@ -40837,7 +40951,19 @@ class $$ClientePrecioNetoTableTableTableManager
                 rowid: rowid,
               ),
           withReferenceMapper: (p0) => p0
-              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
+              .map(
+                (e) => (
+                  e.readTable<
+                    $ClientePrecioNetoTableTable,
+                    ClientePrecioNetoDTO
+                  >(table),
+                  BaseReferences<
+                    _$RemoteAppDatabase,
+                    $ClientePrecioNetoTableTable,
+                    ClientePrecioNetoDTO
+                  >(db, table, e),
+                ),
+              )
               .toList(),
           prefetchHooksCallback: null,
         ),
@@ -41136,7 +41262,18 @@ class $$ClienteRappelTableTableTableManager
                 rowid: rowid,
               ),
           withReferenceMapper: (p0) => p0
-              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
+              .map(
+                (e) => (
+                  e.readTable<$ClienteRappelTableTable, ClienteRappelDTO>(
+                    table,
+                  ),
+                  BaseReferences<
+                    _$RemoteAppDatabase,
+                    $ClienteRappelTableTable,
+                    ClienteRappelDTO
+                  >(db, table, e),
+                ),
+              )
               .toList(),
           prefetchHooksCallback: null,
         ),
@@ -41825,7 +41962,7 @@ class $$DivisaTableTableTableManager
           withReferenceMapper: (p0) => p0
               .map(
                 (e) => (
-                  e.readTable(table),
+                  e.readTable<$DivisaTableTable, DivisaDTO>(table),
                   $$DivisaTableTableReferences(db, table, e),
                 ),
               )
@@ -42449,7 +42586,7 @@ class $$PlazoDeCobroTableTableTableManager
           withReferenceMapper: (p0) => p0
               .map(
                 (e) => (
-                  e.readTable(table),
+                  e.readTable<$PlazoDeCobroTableTable, PlazoDeCobroDTO>(table),
                   $$PlazoDeCobroTableTableReferences(db, table, e),
                 ),
               )
@@ -44289,7 +44426,7 @@ class $$ClienteTableTableTableManager
           withReferenceMapper: (p0) => p0
               .map(
                 (e) => (
-                  e.readTable(table),
+                  e.readTable<$ClienteTableTable, ClienteDTO>(table),
                   $$ClienteTableTableReferences(db, table, e),
                 ),
               )
@@ -44865,7 +45002,19 @@ class $$ClienteTipoPotencialTableTableTableManager
                 rowid: rowid,
               ),
           withReferenceMapper: (p0) => p0
-              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
+              .map(
+                (e) => (
+                  e.readTable<
+                    $ClienteTipoPotencialTableTable,
+                    ClienteTipoPotencialDTO
+                  >(table),
+                  BaseReferences<
+                    _$RemoteAppDatabase,
+                    $ClienteTipoPotencialTableTable,
+                    ClienteTipoPotencialDTO
+                  >(db, table, e),
+                ),
+              )
               .toList(),
           prefetchHooksCallback: null,
         ),
@@ -45064,7 +45213,18 @@ class $$ClienteUsuarioTableTableTableManager
                 rowid: rowid,
               ),
           withReferenceMapper: (p0) => p0
-              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
+              .map(
+                (e) => (
+                  e.readTable<$ClienteUsuarioTableTable, ClienteUsuarioDTO>(
+                    table,
+                  ),
+                  BaseReferences<
+                    _$RemoteAppDatabase,
+                    $ClienteUsuarioTableTable,
+                    ClienteUsuarioDTO
+                  >(db, table, e),
+                ),
+              )
               .toList(),
           prefetchHooksCallback: null,
         ),
@@ -45350,7 +45510,18 @@ class $$DescuentoGeneralTableTableTableManager
                 rowid: rowid,
               ),
           withReferenceMapper: (p0) => p0
-              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
+              .map(
+                (e) => (
+                  e.readTable<$DescuentoGeneralTableTable, DescuentoGeneralDTO>(
+                    table,
+                  ),
+                  BaseReferences<
+                    _$RemoteAppDatabase,
+                    $DescuentoGeneralTableTable,
+                    DescuentoGeneralDTO
+                  >(db, table, e),
+                ),
+              )
               .toList(),
           prefetchHooksCallback: null,
         ),
@@ -45848,7 +46019,18 @@ class $$DevolucionEstadoTableTableTableManager
                 rowid: rowid,
               ),
           withReferenceMapper: (p0) => p0
-              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
+              .map(
+                (e) => (
+                  e.readTable<$DevolucionEstadoTableTable, DevolucionEstadoDTO>(
+                    table,
+                  ),
+                  BaseReferences<
+                    _$RemoteAppDatabase,
+                    $DevolucionEstadoTableTable,
+                    DevolucionEstadoDTO
+                  >(db, table, e),
+                ),
+              )
               .toList(),
           prefetchHooksCallback: null,
         ),
@@ -46196,7 +46378,18 @@ class $$DevolucionLineaTableTableTableManager
                 rowid: rowid,
               ),
           withReferenceMapper: (p0) => p0
-              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
+              .map(
+                (e) => (
+                  e.readTable<$DevolucionLineaTableTable, DevolucionLineaDTO>(
+                    table,
+                  ),
+                  BaseReferences<
+                    _$RemoteAppDatabase,
+                    $DevolucionLineaTableTable,
+                    DevolucionLineaDTO
+                  >(db, table, e),
+                ),
+              )
               .toList(),
           prefetchHooksCallback: null,
         ),
@@ -46673,7 +46866,18 @@ class $$DevolucionMotivoTableTableTableManager
                 rowid: rowid,
               ),
           withReferenceMapper: (p0) => p0
-              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
+              .map(
+                (e) => (
+                  e.readTable<$DevolucionMotivoTableTable, DevolucionMotivoDTO>(
+                    table,
+                  ),
+                  BaseReferences<
+                    _$RemoteAppDatabase,
+                    $DevolucionMotivoTableTable,
+                    DevolucionMotivoDTO
+                  >(db, table, e),
+                ),
+              )
               .toList(),
           prefetchHooksCallback: null,
         ),
@@ -47150,7 +47354,16 @@ class $$DevolucionTableTableTableManager
                 rowid: rowid,
               ),
           withReferenceMapper: (p0) => p0
-              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
+              .map(
+                (e) => (
+                  e.readTable<$DevolucionTableTable, DevolucionDTO>(table),
+                  BaseReferences<
+                    _$RemoteAppDatabase,
+                    $DevolucionTableTable,
+                    DevolucionDTO
+                  >(db, table, e),
+                ),
+              )
               .toList(),
           prefetchHooksCallback: null,
         ),
@@ -47624,7 +47837,18 @@ class $$DevolucionTipoTableTableTableManager
                 rowid: rowid,
               ),
           withReferenceMapper: (p0) => p0
-              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
+              .map(
+                (e) => (
+                  e.readTable<$DevolucionTipoTableTable, DevolucionTipoDTO>(
+                    table,
+                  ),
+                  BaseReferences<
+                    _$RemoteAppDatabase,
+                    $DevolucionTipoTableTable,
+                    DevolucionTipoDTO
+                  >(db, table, e),
+                ),
+              )
               .toList(),
           prefetchHooksCallback: null,
         ),
@@ -47809,7 +48033,19 @@ class $$EstadisticasArticulosTopTableTableTableManager
                 rowid: rowid,
               ),
           withReferenceMapper: (p0) => p0
-              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
+              .map(
+                (e) => (
+                  e.readTable<
+                    $EstadisticasArticulosTopTableTable,
+                    EstadisitcasArticulosTopDTO
+                  >(table),
+                  BaseReferences<
+                    _$RemoteAppDatabase,
+                    $EstadisticasArticulosTopTableTable,
+                    EstadisitcasArticulosTopDTO
+                  >(db, table, e),
+                ),
+              )
               .toList(),
           prefetchHooksCallback: null,
         ),
@@ -48141,7 +48377,19 @@ class $$EstadisticasClienteUsuarioVentasTableTableTableManager
                 rowid: rowid,
               ),
           withReferenceMapper: (p0) => p0
-              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
+              .map(
+                (e) => (
+                  e.readTable<
+                    $EstadisticasClienteUsuarioVentasTableTable,
+                    EstadisticasVentaClienteUsuarioDTO
+                  >(table),
+                  BaseReferences<
+                    _$RemoteAppDatabase,
+                    $EstadisticasClienteUsuarioVentasTableTable,
+                    EstadisticasVentaClienteUsuarioDTO
+                  >(db, table, e),
+                ),
+              )
               .toList(),
           prefetchHooksCallback: null,
         ),
@@ -48529,7 +48777,19 @@ class $$EstadisticasUltimosPreciosTableTableTableManager
                 rowid: rowid,
               ),
           withReferenceMapper: (p0) => p0
-              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
+              .map(
+                (e) => (
+                  e.readTable<
+                    $EstadisticasUltimosPreciosTableTable,
+                    EstadisticasUltimosPreciosDTO
+                  >(table),
+                  BaseReferences<
+                    _$RemoteAppDatabase,
+                    $EstadisticasUltimosPreciosTableTable,
+                    EstadisticasUltimosPreciosDTO
+                  >(db, table, e),
+                ),
+              )
               .toList(),
           prefetchHooksCallback: null,
         ),
@@ -48826,7 +49086,18 @@ class $$PedidoAlbaranTableTableTableManager
                 rowid: rowid,
               ),
           withReferenceMapper: (p0) => p0
-              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
+              .map(
+                (e) => (
+                  e.readTable<$PedidoAlbaranTableTable, PedidoAlbaranDTO>(
+                    table,
+                  ),
+                  BaseReferences<
+                    _$RemoteAppDatabase,
+                    $PedidoAlbaranTableTable,
+                    PedidoAlbaranDTO
+                  >(db, table, e),
+                ),
+              )
               .toList(),
           prefetchHooksCallback: null,
         ),
@@ -49380,7 +49651,10 @@ class $$PedidoVentaEstadoTableTableTableManager
           withReferenceMapper: (p0) => p0
               .map(
                 (e) => (
-                  e.readTable(table),
+                  e.readTable<
+                    $PedidoVentaEstadoTableTable,
+                    PedidoVentaEstadoDTO
+                  >(table),
                   $$PedidoVentaEstadoTableTableReferences(db, table, e),
                 ),
               )
@@ -49920,7 +50194,18 @@ class $$PedidoVentaLineaTableTableTableManager
                 rowid: rowid,
               ),
           withReferenceMapper: (p0) => p0
-              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
+              .map(
+                (e) => (
+                  e.readTable<$PedidoVentaLineaTableTable, PedidoVentaLineaDTO>(
+                    table,
+                  ),
+                  BaseReferences<
+                    _$RemoteAppDatabase,
+                    $PedidoVentaLineaTableTable,
+                    PedidoVentaLineaDTO
+                  >(db, table, e),
+                ),
+              )
               .toList(),
           prefetchHooksCallback: null,
         ),
@@ -50795,7 +51080,7 @@ class $$PedidoVentaTableTableTableManager
           withReferenceMapper: (p0) => p0
               .map(
                 (e) => (
-                  e.readTable(table),
+                  e.readTable<$PedidoVentaTableTable, PedidoVentaDTO>(table),
                   $$PedidoVentaTableTableReferences(db, table, e),
                 ),
               )
@@ -51154,7 +51439,16 @@ class $$PromoDtoCabTableTableTableManager
                 rowid: rowid,
               ),
           withReferenceMapper: (p0) => p0
-              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
+              .map(
+                (e) => (
+                  e.readTable<$PromoDtoCabTableTable, PromoDtoCabDTO>(table),
+                  BaseReferences<
+                    _$RemoteAppDatabase,
+                    $PromoDtoCabTableTable,
+                    PromoDtoCabDTO
+                  >(db, table, e),
+                ),
+              )
               .toList(),
           prefetchHooksCallback: null,
         ),
@@ -51393,7 +51687,18 @@ class $$PromoDtoClienteTableTableTableManager
                 rowid: rowid,
               ),
           withReferenceMapper: (p0) => p0
-              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
+              .map(
+                (e) => (
+                  e.readTable<$PromoDtoClienteTableTable, PromoDtoClienteDTO>(
+                    table,
+                  ),
+                  BaseReferences<
+                    _$RemoteAppDatabase,
+                    $PromoDtoClienteTableTable,
+                    PromoDtoClienteDTO
+                  >(db, table, e),
+                ),
+              )
               .toList(),
           prefetchHooksCallback: null,
         ),
@@ -51689,7 +51994,16 @@ class $$PromoDtoLinTableTableTableManager
                 rowid: rowid,
               ),
           withReferenceMapper: (p0) => p0
-              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
+              .map(
+                (e) => (
+                  e.readTable<$PromoDtoLinTableTable, PromoDtoLineaDTO>(table),
+                  BaseReferences<
+                    _$RemoteAppDatabase,
+                    $PromoDtoLinTableTable,
+                    PromoDtoLineaDTO
+                  >(db, table, e),
+                ),
+              )
               .toList(),
           prefetchHooksCallback: null,
         ),
@@ -51922,7 +52236,16 @@ class $$ProvinciaTableTableTableManager
                 rowid: rowid,
               ),
           withReferenceMapper: (p0) => p0
-              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
+              .map(
+                (e) => (
+                  e.readTable<$ProvinciaTableTable, ProvinciaDTO>(table),
+                  BaseReferences<
+                    _$RemoteAppDatabase,
+                    $ProvinciaTableTable,
+                    ProvinciaDTO
+                  >(db, table, e),
+                ),
+              )
               .toList(),
           prefetchHooksCallback: null,
         ),
@@ -52317,7 +52640,16 @@ class $$SectorTableTableTableManager
                 rowid: rowid,
               ),
           withReferenceMapper: (p0) => p0
-              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
+              .map(
+                (e) => (
+                  e.readTable<$SectorTableTable, SectorDTO>(table),
+                  BaseReferences<
+                    _$RemoteAppDatabase,
+                    $SectorTableTable,
+                    SectorDTO
+                  >(db, table, e),
+                ),
+              )
               .toList(),
           prefetchHooksCallback: null,
         ),
@@ -52718,7 +53050,16 @@ class $$SubsectorTableTableTableManager
                 rowid: rowid,
               ),
           withReferenceMapper: (p0) => p0
-              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
+              .map(
+                (e) => (
+                  e.readTable<$SubsectorTableTable, SubsectorDTO>(table),
+                  BaseReferences<
+                    _$RemoteAppDatabase,
+                    $SubsectorTableTable,
+                    SubsectorDTO
+                  >(db, table, e),
+                ),
+              )
               .toList(),
           prefetchHooksCallback: null,
         ),
@@ -53188,7 +53529,18 @@ class $$TrackingEstadoTableTableTableManager
                 rowid: rowid,
               ),
           withReferenceMapper: (p0) => p0
-              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
+              .map(
+                (e) => (
+                  e.readTable<$TrackingEstadoTableTable, TrackingEstadoDTO>(
+                    table,
+                  ),
+                  BaseReferences<
+                    _$RemoteAppDatabase,
+                    $TrackingEstadoTableTable,
+                    TrackingEstadoDTO
+                  >(db, table, e),
+                ),
+              )
               .toList(),
           prefetchHooksCallback: null,
         ),
@@ -53384,7 +53736,18 @@ class $$UsuarioTarifaTableTableTableManager
                 rowid: rowid,
               ),
           withReferenceMapper: (p0) => p0
-              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
+              .map(
+                (e) => (
+                  e.readTable<$UsuarioTarifaTableTable, UsuarioTarifaDTO>(
+                    table,
+                  ),
+                  BaseReferences<
+                    _$RemoteAppDatabase,
+                    $UsuarioTarifaTableTable,
+                    UsuarioTarifaDTO
+                  >(db, table, e),
+                ),
+              )
               .toList(),
           prefetchHooksCallback: null,
         ),
@@ -53588,7 +53951,19 @@ class $$VisitaCompetenciaTableTableTableManager
                 rowid: rowid,
               ),
           withReferenceMapper: (p0) => p0
-              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
+              .map(
+                (e) => (
+                  e.readTable<
+                    $VisitaCompetenciaTableTable,
+                    VisitaCompetenciaDTO
+                  >(table),
+                  BaseReferences<
+                    _$RemoteAppDatabase,
+                    $VisitaCompetenciaTableTable,
+                    VisitaCompetenciaDTO
+                  >(db, table, e),
+                ),
+              )
               .toList(),
           prefetchHooksCallback: null,
         ),
@@ -53975,7 +54350,18 @@ class $$VisitaCompetidorTableTableTableManager
                 deleted: deleted,
               ),
           withReferenceMapper: (p0) => p0
-              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
+              .map(
+                (e) => (
+                  e.readTable<$VisitaCompetidorTableTable, VisitaCompetidorDTO>(
+                    table,
+                  ),
+                  BaseReferences<
+                    _$RemoteAppDatabase,
+                    $VisitaCompetidorTableTable,
+                    VisitaCompetidorDTO
+                  >(db, table, e),
+                ),
+              )
               .toList(),
           prefetchHooksCallback: null,
         ),
@@ -54362,7 +54748,19 @@ class $$VisitaMotivoNoVentaTableTableTableManager
                 deleted: deleted,
               ),
           withReferenceMapper: (p0) => p0
-              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
+              .map(
+                (e) => (
+                  e.readTable<
+                    $VisitaMotivoNoVentaTableTable,
+                    VisitaMotivoNoVentaDTO
+                  >(table),
+                  BaseReferences<
+                    _$RemoteAppDatabase,
+                    $VisitaMotivoNoVentaTableTable,
+                    VisitaMotivoNoVentaDTO
+                  >(db, table, e),
+                ),
+              )
               .toList(),
           prefetchHooksCallback: null,
         ),
@@ -54743,7 +55141,16 @@ class $$VisitaSectorTableTableTableManager
                 deleted: deleted,
               ),
           withReferenceMapper: (p0) => p0
-              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
+              .map(
+                (e) => (
+                  e.readTable<$VisitaSectorTableTable, VisitaSectorDTO>(table),
+                  BaseReferences<
+                    _$RemoteAppDatabase,
+                    $VisitaSectorTableTable,
+                    VisitaSectorDTO
+                  >(db, table, e),
+                ),
+              )
               .toList(),
           prefetchHooksCallback: null,
         ),
@@ -55426,7 +55833,16 @@ class $$VisitaTableTableTableManager
                 rowid: rowid,
               ),
           withReferenceMapper: (p0) => p0
-              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
+              .map(
+                (e) => (
+                  e.readTable<$VisitaTableTable, VisitaDTO>(table),
+                  BaseReferences<
+                    _$RemoteAppDatabase,
+                    $VisitaTableTable,
+                    VisitaDTO
+                  >(db, table, e),
+                ),
+              )
               .toList(),
           prefetchHooksCallback: null,
         ),

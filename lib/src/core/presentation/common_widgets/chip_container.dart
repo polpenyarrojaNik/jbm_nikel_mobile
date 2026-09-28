@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 
 class ChipContainer extends StatelessWidget {
   const ChipContainer({super.key, required this.text, required this.color});
