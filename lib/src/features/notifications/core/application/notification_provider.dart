@@ -1,18 +1,21 @@
 import 'package:flutter_riverpod/legacy.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
+import '../domain/have_notification.dart';
 import '../infrastructure/notification_repository.dart';
 
 part 'notification_provider.g.dart';
 
-final openNotificationProvider = StateProvider<String?>((ref) => null);
+final openNotificationProvider = StateProvider<HaveNotification?>(
+  (ref) => null,
+);
 
 final handledNotificationIdsProvider = StateProvider((ref) => <String>{});
 
 @riverpod
 class NotificationNotifier extends _$NotificationNotifier {
   @override
-  Future<String?> build(String titleScreen) async {
+  Future<HaveNotification?> build(String titleScreen) async {
     final notificationId = await ref
         .watch(notificationRepositoryProvider)
         .haveNotification();
@@ -28,6 +31,6 @@ class NotificationNotifier extends _$NotificationNotifier {
   }
 
   void clear() {
-    state = const AsyncData<String?>(null);
+    state = const AsyncData<HaveNotification?>(null);
   }
 }

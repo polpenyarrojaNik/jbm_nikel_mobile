@@ -1,8 +1,9 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:material_ui/material_ui.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:material_ui/material_ui.dart';
 
 import '../../../features/notifications/core/application/notification_provider.dart';
+import '../../../features/notifications/core/domain/have_notification.dart';
 import '../../routing/app_auto_router.dart';
 
 class IconMenuBadge extends ConsumerStatefulWidget {
@@ -20,31 +21,37 @@ class _IconMenuBadgeState extends ConsumerState<IconMenuBadge> {
   Widget build(BuildContext context) {
     final state = ref.watch(notificationProvider(widget.titleScreen));
 
-    ref.listen<AsyncValue<String?>>(
+    ref.listen<AsyncValue<HaveNotification?>>(
       notificationProvider(widget.titleScreen),
-      (_, state) => state.whenData((notificationId) async {
-        if (notificationId != null) {
+      (_, state) => state.whenData((haveNotification) async {
+        if (haveNotification != null) {
           if (ref.read(openNotificationProvider) != null) return;
 
           final handledIds = ref.read(handledNotificationIdsProvider);
-          if (handledIds.contains(notificationId)) {
+          if (handledIds.contains(haveNotification.notificationId)) {
             ref.read(notificationProvider(widget.titleScreen).notifier).clear();
             return;
           }
 
-          ref.read(openNotificationProvider.notifier).state = notificationId;
+          if (haveNotification.abrirSN) {
+            ref.read(openNotificationProvider.notifier).state =
+                haveNotification;
+            ref.read(notificationProvider(widget.titleScreen).notifier).clear();
+          }
+
           ref
               .read(handledNotificationIdsProvider.notifier)
-              .update((ids) => {...ids, notificationId});
-          ref.read(notificationProvider(widget.titleScreen).notifier).clear();
+              .update((ids) => {...ids, haveNotification.notificationId});
 
           try {
-            await context.router.push(
-              NotificationDetailRoute(
-                notificationId: notificationId,
-                titleFromOpenScreen: widget.titleScreen,
-              ),
-            );
+            if (haveNotification.abrirSN) {
+              await context.router.push(
+                NotificationDetailRoute(
+                  notificationId: haveNotification.notificationId,
+                  titleFromOpenScreen: widget.titleScreen,
+                ),
+              );
+            }
           } finally {
             if (mounted) {
               ref.read(openNotificationProvider.notifier).state = null;

@@ -13,7 +13,7 @@ part of 'notification_provider.dart';
 final notificationProvider = NotificationNotifierFamily._();
 
 final class NotificationNotifierProvider
-    extends $AsyncNotifierProvider<NotificationNotifier, String?> {
+    extends $AsyncNotifierProvider<NotificationNotifier, HaveNotification?> {
   NotificationNotifierProvider._({
     required NotificationNotifierFamily super.from,
     required String super.argument,
@@ -51,15 +51,15 @@ final class NotificationNotifierProvider
 }
 
 String _$notificationNotifierHash() =>
-    r'a004e739cdcfa7f41b9ea82674a37a0ae16c7816';
+    r'ed2ce20c8882fe1c02c989a0b9afc3a00d8427d1';
 
 final class NotificationNotifierFamily extends $Family
     with
         $ClassFamilyOverride<
           NotificationNotifier,
-          AsyncValue<String?>,
-          String?,
-          FutureOr<String?>,
+          AsyncValue<HaveNotification?>,
+          HaveNotification?,
+          FutureOr<HaveNotification?>,
           String
         > {
   NotificationNotifierFamily._()
@@ -78,20 +78,22 @@ final class NotificationNotifierFamily extends $Family
   String toString() => r'notificationProvider';
 }
 
-abstract class _$NotificationNotifier extends $AsyncNotifier<String?> {
+abstract class _$NotificationNotifier
+    extends $AsyncNotifier<HaveNotification?> {
   late final _$args = ref.$arg as String;
   String get titleScreen => _$args;
 
-  FutureOr<String?> build(String titleScreen);
+  FutureOr<HaveNotification?> build(String titleScreen);
   @$mustCallSuper
   @override
   WhenComplete runBuild() {
-    final ref = this.ref as $Ref<AsyncValue<String?>, String?>;
+    final ref =
+        this.ref as $Ref<AsyncValue<HaveNotification?>, HaveNotification?>;
     final element =
         ref.element
             as $ClassProviderElement<
-              AnyNotifier<AsyncValue<String?>, String?>,
-              AsyncValue<String?>,
+              AnyNotifier<AsyncValue<HaveNotification?>, HaveNotification?>,
+              AsyncValue<HaveNotification?>,
               Object?,
               Object?
             >;
