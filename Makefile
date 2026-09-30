@@ -1,9 +1,7 @@
 .PHONY: all run run_test install_pubspec upgrade_pubspec install_pubspec deploy_mobile icons run_dependency_validator run_build_runner watch_build_runner deploy_windows update_i18n help
 
 FLUTTER=puro flutter
-PURO_ENV=$(shell sed -n 's/.*"env"[[:space:]]*:[[:space:]]*"\([^"]*\)".*/\1/p' .puro.json)
-DART_BIN=$(HOME)/.puro/envs/$(PURO_ENV)/flutter/bin/cache/dart-sdk/bin/dart
-DART=$(DART_BIN) --suppress-analytics
+DART=puro dart --suppress-analytics
 RIMRAF=rimraf
 PERL=perl
 GIT=git
@@ -26,20 +24,15 @@ update_i18n: ## Update i18n files
 
 run_test: ## Runs all unit tests
 	@echo ":: Running unit tests..."
-	@$(FLUTTER) test || (echo "Error while running tests"; exit 1)
+	@$(FLUTTER) test
 
 format: ## Formats the code
 	@echo ":: Formatting code..."
-	@find lib -type f -name '*.dart' \
-		! -path 'lib/generated/*' \
-		! -name '*.g.dart' \
-		! -name '*.gr.dart' \
-		! -name '*.freezed.dart' \
-		-print0 | xargs -0 $(DART) format
+	@$(DART) run tool/format.dart
 
 lint: ## Lints the code
 	@echo ":: Verifying code..."
-	@$(DART) analyze . || (echo "Error in project"; exit 1)
+	@$(DART) analyze .
 
 create_icons: ## Create App icons
 	@echo ":: Creating App icons..."
@@ -91,12 +84,12 @@ deploy_mobile: format lint pub_get create_icons build_runner sentry_dart_plugin 
 	@$(FLUTTER) build appbundle
 
 
-deploy_windows: pub_get update_i18n build_runner sentry_dart_plugin format lint create_icons
-	@flutter_distributor release --name prod --jobs release-windows
+deploy_windows: pub_get update_i18n build_runner sentry_dart_plugin create_icons
+	@$(DART) run tool/puro_exec.dart flutter_distributor release --name prod --jobs release-windows
 	@for /f "delims=" %%i in ('dir /b /o-d dist\*') do ( \
 		set latest=%%i \
 		&& echo "Signing the latest version: %%i" \
-		&& flutter pub run auto_updater:sign_update .\dist\%%i\jbm_nikel_mobile-%%i-windows-setup.exe \
+		&& $(FLUTTER) pub run auto_updater:sign_update .\dist\%%i\jbm_nikel_mobile-%%i-windows-setup.exe \
 		&& exit /b  \
 	)
 	@endlocal
