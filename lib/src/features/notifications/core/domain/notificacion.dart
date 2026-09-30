@@ -11,6 +11,7 @@ abstract class Notificacion with _$Notificacion {
     required String notificationId,
     required DateTime fecha,
     required bool leidoSN,
+    required bool abrirSN,
     required String mensaje,
     required List<NotificationAdjunto> adjuntos,
   }) = _Notificacion;

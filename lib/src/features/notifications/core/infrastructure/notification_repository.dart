@@ -12,8 +12,10 @@ import '../../../../core/helpers/error_logger.dart';
 import '../../../../core/presentation/app.dart';
 import '../../../usuario/application/usuario_notifier.dart';
 import '../../../usuario/domain/usuario.dart';
+import '../domain/have_notification.dart';
 import '../domain/notificacion.dart';
 import '../domain/notification_list.dart';
+import 'have_notification_dto.dart';
 import 'notification_dto.dart';
 import 'notification_list_dto.dart';
 
@@ -119,25 +121,25 @@ class NotificationRepository {
     return notificationDto.toDomain();
   }
 
-  Future<String?> haveNotification() async {
+  Future<HaveNotification?> haveNotification() async {
     try {
-      final notificationId = await _remoteHaveNotification(
+      final haveNotificationDTO = await _remoteHaveNotification(
         requestUri: (user!.test)
             ? Uri.http(
                 dotenv.get('URL_TEST', fallback: 'localhost:3001'),
-                'api/v1/online/check_notificacion',
+                'api/v8/online/check_notificacion',
                 {'USER_ID': user!.id},
               )
             : Uri.https(
                 dotenv.get('URL', fallback: 'localhost:3001'),
-                'api/v1/online/check_notificacion',
+                'api/v8/online/check_notificacion',
                 {'USER_ID': user!.id},
               ),
-        jsonDataSelector: (json) => json['data'] as Map<String, dynamic>,
+        jsonDataSelector: (json) => json['data'] as Map<String, dynamic>?,
         provisionalToken: user!.provisionalToken,
       );
 
-      return notificationId;
+      return haveNotificationDTO?.toDomain();
     } catch (e) {
       log.e(e);
       return null;
@@ -238,7 +240,7 @@ class NotificationRepository {
     }
   }
 
-  Future<NotificationDto> _remoteNotificationById({
+  Future<NotificationDTO> _remoteNotificationById({
     required Uri requestUri,
     required Map<String, dynamic> Function(dynamic json) jsonDataSelector,
     required String provisionalToken,
@@ -252,7 +254,7 @@ class NotificationRepository {
       );
       if (response.statusCode == 200) {
         final data = jsonDataSelector(response.data);
-        return NotificationDto.fromJson(data);
+        return NotificationDTO.fromJson(data);
       }
       throw AppException.restApiFailure(
         response.statusCode ?? 400,
@@ -266,9 +268,9 @@ class NotificationRepository {
     }
   }
 
-  Future<String?> _remoteHaveNotification({
+  Future<HaveNotificationDTO?> _remoteHaveNotification({
     required Uri requestUri,
-    required Map<String, dynamic> Function(dynamic json) jsonDataSelector,
+    required Map<String, dynamic>? Function(dynamic json) jsonDataSelector,
     required String provisionalToken,
   }) async {
     try {
@@ -280,7 +282,7 @@ class NotificationRepository {
       );
       if (response.statusCode == 200) {
         final data = jsonDataSelector(response.data);
-        return data['notificacion_guid'] as String?;
+        return data != null ? HaveNotificationDTO.fromJson(data) : null;
       }
       throw AppException.restApiFailure(
         response.statusCode ?? 400,

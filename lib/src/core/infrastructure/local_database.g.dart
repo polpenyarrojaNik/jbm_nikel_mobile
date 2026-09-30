@@ -6896,7 +6896,16 @@ class $$VisitaLocalTableTableTableManager
                 rowid: rowid,
               ),
           withReferenceMapper: (p0) => p0
-              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
+              .map(
+                (e) => (
+                  e.readTable<$VisitaLocalTableTable, VisitaLocalDTO>(table),
+                  BaseReferences<
+                    _$LocalAppDatabase,
+                    $VisitaLocalTableTable,
+                    VisitaLocalDTO
+                  >(db, table, e),
+                ),
+              )
               .toList(),
           prefetchHooksCallback: null,
         ),
@@ -7449,7 +7458,19 @@ class $$PedidoVentaLineaLocalTableTableTableManager
                 rowid: rowid,
               ),
           withReferenceMapper: (p0) => p0
-              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
+              .map(
+                (e) => (
+                  e.readTable<
+                    $PedidoVentaLineaLocalTableTable,
+                    PedidoVentaLineaLocalDTO
+                  >(table),
+                  BaseReferences<
+                    _$LocalAppDatabase,
+                    $PedidoVentaLineaLocalTableTable,
+                    PedidoVentaLineaLocalDTO
+                  >(db, table, e),
+                ),
+              )
               .toList(),
           prefetchHooksCallback: null,
         ),
@@ -8070,7 +8091,18 @@ class $$PedidoVentaLocalTableTableTableManager
                 rowid: rowid,
               ),
           withReferenceMapper: (p0) => p0
-              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
+              .map(
+                (e) => (
+                  e.readTable<$PedidoVentaLocalTableTable, PedidoVentaLocalDTO>(
+                    table,
+                  ),
+                  BaseReferences<
+                    _$LocalAppDatabase,
+                    $PedidoVentaLocalTableTable,
+                    PedidoVentaLocalDTO
+                  >(db, table, e),
+                ),
+              )
               .toList(),
           prefetchHooksCallback: null,
         ),
@@ -8306,7 +8338,16 @@ class $$SyncDateTimeTableTableTableManager
                 visitaUltimaSync: visitaUltimaSync,
               ),
           withReferenceMapper: (p0) => p0
-              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
+              .map(
+                (e) => (
+                  e.readTable<$SyncDateTimeTableTable, SyncDateTimeDTO>(table),
+                  BaseReferences<
+                    _$LocalAppDatabase,
+                    $SyncDateTimeTableTable,
+                    SyncDateTimeDTO
+                  >(db, table, e),
+                ),
+              )
               .toList(),
           prefetchHooksCallback: null,
         ),
@@ -8655,7 +8696,16 @@ class $$LogTableTableTableManager
                 timestamp: timestamp,
               ),
           withReferenceMapper: (p0) => p0
-              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
+              .map(
+                (e) => (
+                  e.readTable<$LogTableTable, LogDTO>(table),
+                  BaseReferences<_$LocalAppDatabase, $LogTableTable, LogDTO>(
+                    db,
+                    table,
+                    e,
+                  ),
+                ),
+              )
               .toList(),
           prefetchHooksCallback: null,
         ),
@@ -8989,7 +9039,16 @@ class $$CatalogoFavoritoTableTableTableManager
                 descarga: descarga,
               ),
           withReferenceMapper: (p0) => p0
-              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
+              .map(
+                (e) => (
+                  e.readTable<$CatalogoFavoritoTableTable, CatalogoDTO>(table),
+                  BaseReferences<
+                    _$LocalAppDatabase,
+                    $CatalogoFavoritoTableTable,
+                    CatalogoDTO
+                  >(db, table, e),
+                ),
+              )
               .toList(),
           prefetchHooksCallback: null,
         ),
@@ -9383,7 +9442,19 @@ class $$ClienteContactoImpTableTableTableManager
                 rowid: rowid,
               ),
           withReferenceMapper: (p0) => p0
-              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
+              .map(
+                (e) => (
+                  e.readTable<
+                    $ClienteContactoImpTableTable,
+                    ClienteContactoImpDTO
+                  >(table),
+                  BaseReferences<
+                    _$LocalAppDatabase,
+                    $ClienteContactoImpTableTable,
+                    ClienteContactoImpDTO
+                  >(db, table, e),
+                ),
+              )
               .toList(),
           prefetchHooksCallback: null,
         ),
@@ -9800,7 +9871,19 @@ class $$ClienteDireccionImpTableTableTableManager
                 rowid: rowid,
               ),
           withReferenceMapper: (p0) => p0
-              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
+              .map(
+                (e) => (
+                  e.readTable<
+                    $ClienteDireccionImpTableTable,
+                    ClienteDireccionImpDTO
+                  >(table),
+                  BaseReferences<
+                    _$LocalAppDatabase,
+                    $ClienteDireccionImpTableTable,
+                    ClienteDireccionImpDTO
+                  >(db, table, e),
+                ),
+              )
               .toList(),
           prefetchHooksCallback: null,
         ),
@@ -9954,7 +10037,18 @@ class $$CatalogoOrdenTableTableTableManager
                 fechaAbierto: fechaAbierto,
               ),
           withReferenceMapper: (p0) => p0
-              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
+              .map(
+                (e) => (
+                  e.readTable<$CatalogoOrdenTableTable, CatalogoOrdenDTO>(
+                    table,
+                  ),
+                  BaseReferences<
+                    _$LocalAppDatabase,
+                    $CatalogoOrdenTableTable,
+                    CatalogoOrdenDTO
+                  >(db, table, e),
+                ),
+              )
               .toList(),
           prefetchHooksCallback: null,
         ),
@@ -10107,7 +10201,16 @@ class $$ClienteImpTableTableTableManager
                 rowid: rowid,
               ),
           withReferenceMapper: (p0) => p0
-              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
+              .map(
+                (e) => (
+                  e.readTable<$ClienteImpTableTable, ClienteImpDTO>(table),
+                  BaseReferences<
+                    _$LocalAppDatabase,
+                    $ClienteImpTableTable,
+                    ClienteImpDTO
+                  >(db, table, e),
+                ),
+              )
               .toList(),
           prefetchHooksCallback: null,
         ),
@@ -10273,7 +10376,19 @@ class $$VisitaCompetenciaLocalTableTableTableManager
                 rowid: rowid,
               ),
           withReferenceMapper: (p0) => p0
-              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
+              .map(
+                (e) => (
+                  e.readTable<
+                    $VisitaCompetenciaLocalTableTable,
+                    VisitaCompetenciaLocalDTO
+                  >(table),
+                  BaseReferences<
+                    _$LocalAppDatabase,
+                    $VisitaCompetenciaLocalTableTable,
+                    VisitaCompetenciaLocalDTO
+                  >(db, table, e),
+                ),
+              )
               .toList(),
           prefetchHooksCallback: null,
         ),

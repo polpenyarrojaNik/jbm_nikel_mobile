@@ -1,6 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flash/flash_helper.dart';
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
@@ -1566,6 +1566,12 @@ class _ArticuloGrupoNetoSelectQuantityTile extends StatelessWidget {
             style: Theme.of(context).textTheme.bodyMedium
                 ?.copyWith(fontSize: 12),
           ),
+          if (articuloGrupoNeto.dto > 0)
+            Text(
+              '${articuloGrupoNeto.dto}%',
+              style: Theme.of(context).textTheme.bodySmall
+                  ?.copyWith(fontSize: 9),
+            ),
         ],
       ),
     );

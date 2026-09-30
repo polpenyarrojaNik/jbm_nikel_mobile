@@ -1023,14 +1023,19 @@ class PedidoVentaRepository {
         ),
       );
 
-      final pedidoVentaLineaList = await query.map((row) {
+      final pedidoVentaLineaList = await query.asyncMap((row) async {
         final pedidoVentaLocalDTO = row.readTable(
           _localDb.pedidoVentaLocalTable,
         );
         final pedidoVentaLineaDTO = row.readTable(
           _localDb.pedidoVentaLineaLocalTable,
         );
-        return pedidoVentaLineaDTO.toDomain(
+
+        final stockDisponible = await _getStockDisponible(
+          pedidoVentaLineaDTO.articuloId,
+        );
+
+        final pedidoVentaLinea = pedidoVentaLineaDTO.toDomain(
           divisaId: pedidoVentaLocalDTO.divisaId!,
           importeLinea: getTotalLinea(
             precio: Precio(
@@ -1044,6 +1049,13 @@ class PedidoVentaRepository {
             descuento2: pedidoVentaLineaDTO.descuento2,
             descuento3: pedidoVentaLineaDTO.descuento3,
           ),
+        );
+
+        if (stockDisponible == null) return pedidoVentaLinea;
+
+        return pedidoVentaLinea.copyWith(
+          stockDisponible: stockDisponible,
+          stockDisponibleSN: stockDisponible > 0,
         );
       }).get();
 
