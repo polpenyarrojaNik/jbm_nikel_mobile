@@ -1,7 +1,7 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:material_ui/material_ui.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gap/gap.dart';
+import 'package:material_ui/material_ui.dart';
 
 import '../../../../../generated/l10n.dart';
 import '../../../../core/helpers/formatters.dart';
@@ -80,7 +80,7 @@ class ArticuloGrupoNetoTile extends StatelessWidget {
               Text(articuloGrupoNeto.grupoNetoId),
               Text(
                 formatPrecios(
-                  precio: articuloGrupoNeto.precio,
+                  precio: articuloGrupoNeto.precioCalculado,
                   tipoPrecio: articuloGrupoNeto.tipoPrecio,
                 ),
                 style: Theme.of(context).textTheme.bodyMedium?.copyWith(
@@ -94,7 +94,7 @@ class ArticuloGrupoNetoTile extends StatelessWidget {
             children: [
               if (articuloGrupoNeto.isPromo)
                 Text(
-                  '${articuloGrupoNeto.dto}%',
+                  '${formatPrecios(precio: articuloGrupoNeto.precio, tipoPrecio: articuloGrupoNeto.tipoPrecio)} - ${articuloGrupoNeto.dto}%',
                   style: Theme.of(context).textTheme.bodySmall,
                 )
               else
