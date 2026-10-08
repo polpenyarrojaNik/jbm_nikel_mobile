@@ -4549,6 +4549,56 @@ class S {
       args: [],
     );
   }
+
+  /// `Pop-up notifications`
+  String get settings_notificacionesPopup {
+    return Intl.message(
+      'Pop-up notifications',
+      name: 'settings_notificacionesPopup',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Choose which notification types should open automatically in a pop-up`
+  String get settings_notificacionesPopupDescripcion {
+    return Intl.message(
+      'Choose which notification types should open automatically in a pop-up',
+      name: 'settings_notificacionesPopupDescripcion',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `The change could not be saved`
+  String get settings_notificacionesPopupErrorGuardar {
+    return Intl.message(
+      'The change could not be saved',
+      name: 'settings_notificacionesPopupErrorGuardar',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Retry`
+  String get settings_notificacionesPopupReintentar {
+    return Intl.message(
+      'Retry',
+      name: 'settings_notificacionesPopupReintentar',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No notification types available`
+  String get settings_notificacionesPopupVacio {
+    return Intl.message(
+      'No notification types available',
+      name: 'settings_notificacionesPopupVacio',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

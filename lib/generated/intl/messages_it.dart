@@ -904,6 +904,20 @@ class MessageLookup extends MessageLookupByLibrary {
     "settings_nombre_usuario": MessageLookupByLibrary.simpleMessage(
       "Nome utente",
     ),
+    "settings_notificacionesPopup": MessageLookupByLibrary.simpleMessage(
+      "Notifiche popup",
+    ),
+    "settings_notificacionesPopupDescripcion":
+        MessageLookupByLibrary.simpleMessage(
+          "Scegli quali tipi di notifica aprire automaticamente in un popup",
+        ),
+    "settings_notificacionesPopupErrorGuardar":
+        MessageLookupByLibrary.simpleMessage("Impossibile salvare la modifica"),
+    "settings_notificacionesPopupReintentar":
+        MessageLookupByLibrary.simpleMessage("Riprova"),
+    "settings_notificacionesPopupVacio": MessageLookupByLibrary.simpleMessage(
+      "Nessun tipo di notifica disponibile",
+    ),
     "settings_reemplazarBaseDeDatos": MessageLookupByLibrary.simpleMessage(
       "Sostituisci database",
     ),

@@ -481,5 +481,10 @@
   "selectedFields": "selected fields",
   "extractedBusinessCardData": "Extracted business card data",
   "noDataExtractedFromBusinessCard": "No data extracted from business card",
-  "extractingDataFromBusinessCard": "Extracting data from business card"
+  "extractingDataFromBusinessCard": "Extracting data from business card",
+  "settings_notificacionesPopup": "Pop-up notifications",
+  "settings_notificacionesPopupDescripcion": "Choose which notification types should open automatically in a pop-up",
+  "settings_notificacionesPopupErrorGuardar": "The change could not be saved",
+  "settings_notificacionesPopupReintentar": "Retry",
+  "settings_notificacionesPopupVacio": "No notification types available"
 }

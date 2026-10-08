@@ -481,5 +481,10 @@
   "selectedFields": "campos seleccionados",
   "extractedBusinessCardData": "Dados do cartão extraídos",
   "noDataExtractedFromBusinessCard": "Nenhum dado extraído do cartão",
-  "extractingDataFromBusinessCard": "A extrair dados do cartão"
+  "extractingDataFromBusinessCard": "A extrair dados do cartão",
+  "settings_notificacionesPopup": "Notificações pop-up",
+  "settings_notificacionesPopupDescripcion": "Escolha que tipos de notificação devem abrir automaticamente num pop-up",
+  "settings_notificacionesPopupErrorGuardar": "Não foi possível guardar a alteração",
+  "settings_notificacionesPopupReintentar": "Tentar novamente",
+  "settings_notificacionesPopupVacio": "Não existem tipos de notificação disponíveis"
 }

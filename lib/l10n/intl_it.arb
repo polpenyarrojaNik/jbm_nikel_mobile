@@ -481,5 +481,10 @@
   "selectedFields": "campi selezionati",
   "extractedBusinessCardData": "Dati della scheda estratti",
   "noDataExtractedFromBusinessCard": "Nessun dato estratto dalla scheda",
-  "extractingDataFromBusinessCard": "Estrazione dei dati dalla scheda"
+  "extractingDataFromBusinessCard": "Estrazione dei dati dalla scheda",
+  "settings_notificacionesPopup": "Notifiche popup",
+  "settings_notificacionesPopupDescripcion": "Scegli quali tipi di notifica aprire automaticamente in un popup",
+  "settings_notificacionesPopupErrorGuardar": "Impossibile salvare la modifica",
+  "settings_notificacionesPopupReintentar": "Riprova",
+  "settings_notificacionesPopupVacio": "Nessun tipo di notifica disponibile"
 }

@@ -15,9 +15,13 @@ import '../../../usuario/domain/usuario.dart';
 import '../domain/have_notification.dart';
 import '../domain/notificacion.dart';
 import '../domain/notification_list.dart';
+import '../domain/notification_type.dart';
+import '../domain/notification_type_preference.dart';
 import 'have_notification_dto.dart';
 import 'notification_dto.dart';
 import 'notification_list_dto.dart';
+import 'notification_type_dto.dart';
+import 'notification_type_preference_dto.dart';
 
 part 'notification_repository.g.dart';
 
@@ -143,6 +147,101 @@ class NotificationRepository {
     } catch (e) {
       log.e(e);
       return null;
+    }
+  }
+
+  Uri _uri(String path, [Map<String, dynamic>? query]) => (user!.test)
+      ? Uri.http(
+          dotenv.get('URL_TEST', fallback: 'localhost:3001'),
+          path,
+          query,
+        )
+      : Uri.https(dotenv.get('URL', fallback: 'localhost:3001'), path, query);
+
+  Future<List<NotificationType>> getNotificationTypes() async {
+    try {
+      final response = await dio.getUri(
+        _uri('api/v8/online/notificacion_tipo'),
+        options: Options(
+          headers: {'authorization': 'Bearer ${user!.provisionalToken}'},
+        ),
+      );
+      if (response.statusCode == 200) {
+        final data = response.data['data'] as List<dynamic>;
+        return data
+            .map((e) => NotificationTypeDto.fromJson(e as Json).toDomain())
+            .toList();
+      }
+      throw AppException.restApiFailure(
+        response.statusCode ?? 400,
+        response.statusMessage ?? '',
+      );
+    } catch (e, stackTrace) {
+      Error.throwWithStackTrace(
+        getApiError(e, stackTrace, errorLogger),
+        stackTrace,
+      );
+    }
+  }
+
+  Future<List<NotificationTypePreference>>
+  getNotificationTypePreferences() async {
+    try {
+      final response = await dio.getUri(
+        _uri('api/v8/online/notificacion_tipo_empleado', {'USER_ID': user!.id}),
+        options: Options(
+          headers: {'authorization': 'Bearer ${user!.provisionalToken}'},
+        ),
+      );
+      if (response.statusCode == 200) {
+        final data = response.data['data'] as List<dynamic>;
+        return data
+            .map(
+              (e) =>
+                  NotificationTypePreferenceDTO.fromJson(e as Json).toDomain(),
+            )
+            .toList();
+      }
+      throw AppException.restApiFailure(
+        response.statusCode ?? 400,
+        response.statusMessage ?? '',
+      );
+    } catch (e, stackTrace) {
+      Error.throwWithStackTrace(
+        getApiError(e, stackTrace, errorLogger),
+        stackTrace,
+      );
+    }
+  }
+
+  /// Guarda en la API los tipos de notificación que el usuario quiere que se
+  /// abran en popup.
+  Future<void> saveNotificationTypePreferences(
+    List<NotificationTypePreference> preferences,
+  ) async {
+    try {
+      final response = await dio.patchUri(
+        _uri('api/v8/online/notificacion_tipo_empleado'),
+        options: Options(
+          headers: {'authorization': 'Bearer ${user!.provisionalToken}'},
+        ),
+        data: {
+          'USER_ID': user!.id,
+          'TIPOS': preferences
+              .map((e) => NotificationTypePreferenceDTO.fromDomain(e).toJson())
+              .toList(),
+        },
+      );
+      if (response.statusCode == 200) return;
+      throw AppException.restApiFailure(
+        response.statusCode ?? 400,
+        response.statusMessage ?? '',
+      );
+    } catch (e, stackTrace) {
+      Error.throwWithStackTrace(
+        getApiError(e, stackTrace, errorLogger),
+        stackTrace,
+      );
     }
   }
 

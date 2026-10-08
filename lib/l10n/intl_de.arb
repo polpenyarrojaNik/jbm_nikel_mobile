@@ -482,5 +482,10 @@
   "selectedFields": "ausgewählte Felder",
   "extractedBusinessCardData": "Extrahierte Visitenkartendaten",
   "noDataExtractedFromBusinessCard": "Keine Daten von der Visitenkarte extrahiert",
-  "extractingDataFromBusinessCard": "Daten von der Visitenkarte werden extrahiert"
+  "extractingDataFromBusinessCard": "Daten von der Visitenkarte werden extrahiert",
+  "settings_notificacionesPopup": "Pop-up-Benachrichtigungen",
+  "settings_notificacionesPopupDescripcion": "Wähle, welche Benachrichtigungstypen automatisch in einem Pop-up geöffnet werden",
+  "settings_notificacionesPopupErrorGuardar": "Die Änderung konnte nicht gespeichert werden",
+  "settings_notificacionesPopupReintentar": "Erneut versuchen",
+  "settings_notificacionesPopupVacio": "Keine Benachrichtigungstypen verfügbar"
 }
