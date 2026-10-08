@@ -1,14 +1,10 @@
 // ignore_for_file: prefer_single_quotes
 
 import 'dart:convert';
-import 'dart:io';
 
 import 'package:dio/dio.dart';
 import 'package:drift/drift.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
-import 'package:fpdart/fpdart.dart';
-import 'package:google_mlkit_entity_extraction/google_mlkit_entity_extraction.dart';
-import 'package:google_mlkit_text_recognition/google_mlkit_text_recognition.dart';
 import 'package:intl/intl.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
@@ -24,17 +20,11 @@ import '../../../core/infrastructure/remote_database.dart';
 import '../../../core/presentation/app.dart';
 import '../../usuario/application/usuario_notifier.dart';
 import '../../usuario/domain/usuario.dart';
-import '../domain/geolocation_entity.dart';
-import '../domain/image_form_data.dart';
-import '../domain/ocr_recognized_text.dart';
-import '../domain/recognized_text_type.dart';
 import '../domain/visita.dart';
 import '../domain/visita_competidor.dart';
 import '../domain/visita_id_param.dart';
 import '../domain/visita_motivos_no_venta.dart';
 import '../domain/visita_sector.dart';
-import '../presentation/edit/image_form_page.dart';
-import 'geolocation_entity_dto.dart';
 import 'visita_competencia_local_dto.dart';
 import 'visita_local_dto.dart';
 
@@ -928,233 +918,6 @@ class VisitaRepository {
     )).get();
 
     return visitaMotivosNoVentaDTOList.map((e) => e.toDomain()).toList();
-  }
-
-  Future<List<OcrRecognizedText>> reconginzedImage(File imageFile) async {
-    final ocrReconginzedTextList = <OcrRecognizedText>[];
-
-    final recognizedLines = <String>[];
-
-    final visionImage = InputImage.fromFile(imageFile);
-
-    final textRecognizer = TextRecognizer(script: TextRecognitionScript.latin);
-
-    final reconizedText = await textRecognizer.processImage(visionImage);
-
-    final entityExtractor = EntityExtractor(
-      language: EntityExtractorLanguage.spanish,
-    );
-
-    for (var block in reconizedText.blocks) {
-      for (var line in block.lines) {
-        recognizedLines.add(line.text);
-      }
-    }
-
-    for (var i = 0; i < recognizedLines.length; i++) {
-      final annotations = await entityExtractor.annotateText(
-        recognizedLines[i],
-      );
-
-      if (annotations.isNotEmpty) {
-        for (final annotation in annotations) {
-          for (final entity in annotation.entities) {
-            switch (entity.type) {
-              case EntityType.phone:
-                ocrReconginzedTextList.add(
-                  OcrRecognizedText(
-                    annotation.text,
-                    RecognizedTextType.telf,
-                    telfText: annotation.text,
-                  ),
-                );
-                break;
-              case EntityType.email:
-                ocrReconginzedTextList.add(
-                  OcrRecognizedText(
-                    annotation.text,
-                    RecognizedTextType.email,
-                    emailText: annotation.text,
-                  ),
-                );
-                break;
-              case EntityType.url:
-                ocrReconginzedTextList.add(
-                  OcrRecognizedText(
-                    annotation.text,
-                    RecognizedTextType.website,
-                    websiteText: annotation.text,
-                  ),
-                );
-                break;
-              case EntityType.address:
-                ocrReconginzedTextList.add(
-                  OcrRecognizedText(
-                    annotation.text,
-                    RecognizedTextType.address,
-                  ),
-                );
-                break;
-
-              default:
-                ocrReconginzedTextList.add(
-                  OcrRecognizedText(
-                    recognizedLines[i],
-                    RecognizedTextType.unknown,
-                  ),
-                );
-                break;
-            }
-          }
-        }
-      } else {
-        ocrReconginzedTextList.add(
-          OcrRecognizedText(recognizedLines[i], RecognizedTextType.unknown),
-        );
-      }
-    }
-
-    return ocrReconginzedTextList;
-  }
-
-  Future<Either<AppException, ImageFormData>> setImageFormData(
-    SetImageFromDataParam setImageFromDataParam,
-  ) async {
-    try {
-      final addressString = _getAddressString(setImageFromDataParam.address);
-
-      var imageFormData = ImageFormData(
-        name: setImageFromDataParam.name,
-        company: setImageFromDataParam.company,
-        cargo: setImageFromDataParam.cargo,
-        phoneList: setImageFromDataParam.phoneList,
-        email: setImageFromDataParam.email,
-        streetAddress1: addressString,
-        referenceStreetAddress: addressString,
-      );
-
-      if (addressString != null) {
-        final geolocationEntity = await getAddress(addressString);
-
-        if (geolocationEntity != null) {
-          imageFormData = imageFormData.copyWith(
-            streetAddress1: geolocationEntity.streetAddress1,
-            zipCode: geolocationEntity.zipCode,
-            city: geolocationEntity.city,
-            state: geolocationEntity.state,
-            country: geolocationEntity.country,
-          );
-        }
-      }
-      return right(imageFormData);
-    } catch (e) {
-      if (e is AppException) {
-        return left(e);
-      }
-      return left(AppException.unexpectedError());
-    }
-  }
-
-  Future<GeolocationEntity?> getAddress(String addressString) async {
-    try {
-      final geolocationEntityDTO = await _remoteGetSuggestionAddress(
-        addressString,
-      );
-
-      final paisDto =
-          await (_remoteDb.select(_remoteDb.paisTable)..where(
-                (tbl) => tbl.id.equals(geolocationEntityDTO.countryCode),
-              ))
-              .getSingleOrNull();
-
-      final provinciaDto =
-          await (_remoteDb.select(_remoteDb.provinciaTable)..where(
-                (tbl) =>
-                    tbl.paisId.equals(geolocationEntityDTO.countryCode) &
-                    tbl.provincia.equalsNullable(
-                      geolocationEntityDTO.advinistrativeLevels?.state,
-                    ),
-              ))
-              .getSingleOrNull();
-
-      return geolocationEntityDTO.toDomain(
-        provinciaDto?.toDomain(),
-        paisDto?.toDomain(),
-      );
-    } catch (e) {
-      return null;
-    }
-  }
-
-  Future<GeolocationEntityDTO> _remoteGetSuggestionAddress(
-    String addressString,
-  ) async {
-    try {
-      final requestUri = Uri.http(
-        dotenv.get('URL', fallback: 'localhost:3001'),
-        'api/v1/online/geo/address',
-        {'addressString': addressString},
-      );
-
-      final response = await _dio.getUri(
-        requestUri,
-        options: Options(
-          headers: {
-            'authorization': 'Bearer ${_usuario?.provisionalToken ?? ''}',
-          },
-        ),
-      );
-      if (response.statusCode == 200) {
-        final json = response.data['data'] as Map<String, dynamic>;
-
-        return GeolocationEntityDTO.fromJson(json);
-      }
-      throw AppException.restApiFailure(
-        response.statusCode ?? 400,
-        response.statusMessage ?? '',
-      );
-    } on DioException catch (e, stackTrace) {
-      String? errorDetalle;
-      if (e.isNoConnectionError) {
-        Error.throwWithStackTrace(
-          const AppException.notConnection(),
-          stackTrace,
-        );
-      }
-      final responseErrorJson = (e.response?.data is List<int>)
-          ? e.response?.statusMessage
-          : (e.response?.data['detalle'] ?? e.response?.data['message']);
-      if (responseErrorJson != null) {
-        errorDetalle = responseErrorJson as String?;
-
-        Error.throwWithStackTrace(
-          AppException.restApiFailure(
-            e.response?.statusCode ?? 400,
-            errorDetalle ?? '',
-          ),
-          stackTrace,
-        );
-      }
-      Error.throwWithStackTrace(
-        AppException.restApiFailure(
-          e.response?.statusCode ?? 400,
-          e.response?.statusMessage ?? '',
-        ),
-        stackTrace,
-      );
-    } catch (e) {
-      rethrow;
-    }
-  }
-
-  String? _getAddressString(List<String> addressList) {
-    var addressString = '';
-    for (var i = 0; i < addressList.length; i++) {
-      addressString += (i == addressList.length - 1)
-          ? addressList[i]
-          : '${addressList[i]}, ';
-    }
-    return addressString.isNotEmpty ? addressString : null;
   }
 
   Future<List<VisitaCompetidor>>

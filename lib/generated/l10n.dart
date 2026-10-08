@@ -4489,6 +4489,66 @@ class S {
       args: [],
     );
   }
+
+  /// `Do you want to capture another image?`
+  String get captureAnotherImageQuestion {
+    return Intl.message(
+      'Do you want to capture another image?',
+      name: 'captureAnotherImageQuestion',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Contact`
+  String get contacto {
+    return Intl.message('Contact', name: 'contacto', desc: '', args: []);
+  }
+
+  /// `of`
+  String get ofValue {
+    return Intl.message('of', name: 'ofValue', desc: '', args: []);
+  }
+
+  /// `selected fields`
+  String get selectedFields {
+    return Intl.message(
+      'selected fields',
+      name: 'selectedFields',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Extracted business card data`
+  String get extractedBusinessCardData {
+    return Intl.message(
+      'Extracted business card data',
+      name: 'extractedBusinessCardData',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No data extracted from business card`
+  String get noDataExtractedFromBusinessCard {
+    return Intl.message(
+      'No data extracted from business card',
+      name: 'noDataExtractedFromBusinessCard',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Extracting data from business card`
+  String get extractingDataFromBusinessCard {
+    return Intl.message(
+      'Extracting data from business card',
+      name: 'extractingDataFromBusinessCard',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

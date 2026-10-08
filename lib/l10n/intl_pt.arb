@@ -474,5 +474,12 @@
   "deleted": "Eliminado",
   "carritosAbandonados": "Carrinhos abandonados",
   "cartsLines": "Linhas do carrinho",
-  "shippingAddress": "Endereço de envio"
+  "shippingAddress": "Endereço de envio",
+  "captureAnotherImageQuestion": "Deseja capturar outra imagem?",
+  "contacto": "Contacto",
+  "ofValue": "de",
+  "selectedFields": "campos seleccionados",
+  "extractedBusinessCardData": "Dados do cartão extraídos",
+  "noDataExtractedFromBusinessCard": "Nenhum dado extraído do cartão",
+  "extractingDataFromBusinessCard": "A extrair dados do cartão"
 }

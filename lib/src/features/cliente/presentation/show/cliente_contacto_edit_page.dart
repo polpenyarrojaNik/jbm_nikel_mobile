@@ -2,23 +2,25 @@ import 'dart:io';
 
 import 'package:auto_route/auto_route.dart';
 import 'package:flash/flash_helper.dart';
-import 'package:material_ui/material_ui.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:gap/gap.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:uuid/uuid.dart';
 
 import '../../../../../generated/l10n.dart';
+import '../../../../core/domain/business_card_data.dart';
 import '../../../../core/exceptions/app_exception.dart';
 import '../../../../core/presentation/common_widgets/app_decoration.dart';
+import '../../../../core/presentation/common_widgets/business_card_extracted_data_dialog.dart';
+import '../../../../core/presentation/common_widgets/business_card_selected_data_dialog.dart';
 import '../../../../core/presentation/common_widgets/common_app_bar.dart';
 import '../../../../core/presentation/common_widgets/error_message_widget.dart';
 import '../../../../core/presentation/common_widgets/phone_text_form_field.dart';
 import '../../../../core/presentation/common_widgets/progress_indicator_widget.dart';
 import '../../../../core/routing/app_auto_router.dart';
 import '../../../usuario/application/usuario_notifier.dart';
-import '../../../visitas/domain/image_form_data.dart';
 import '../../domain/cliente_contacto.dart';
 import '../../domain/cliente_contacto_imp.dart';
 import '../../domain/cliente_contacto_imp_edit_page_data.dart';
@@ -328,29 +330,43 @@ class _ClienteContactoImpEditForm extends StatelessWidget {
     );
   }
 
-  void setContactValues(ImageFormData imageFormData) {
+  void setContactValues(BusinessCardData selectedBusinessCardData) {
     formKey.currentState?.patchValue({
-      'nombre': imageFormData.name,
-      'telefono': imageFormData.phoneList.isNotEmpty
-          ? imageFormData.phoneList[0]
-          : null,
-      'telefono2': imageFormData.phoneList.length > 1
-          ? imageFormData.phoneList[1]
-          : null,
-      'email': imageFormData.email,
+      'nombre': selectedBusinessCardData.contactName,
+      'apellido1': selectedBusinessCardData.contactSurname,
+      'telefono': selectedBusinessCardData.phone,
+      'email': selectedBusinessCardData.email,
     });
   }
 
   void scanBusinessCard(BuildContext context) async {
-    final imageFile = await context.router.push<File?>(CameraRoute());
+    final imageCameraList = await context.router.push<List<File>?>(
+      CameraRoute(maxImages: 2),
+    );
 
-    if (imageFile != null && context.mounted) {
-      final imageFormData = await context.router.push<ImageFormData?>(
-        ImageFormRoute(imageFile: imageFile, isFromCliente: true),
+    if (imageCameraList != null &&
+        imageCameraList.isNotEmpty &&
+        context.mounted) {
+      final initialBusinessCardData = await showDialog<BusinessCardData?>(
+        context: context,
+        builder: (ctx) => BusinessCardExtractedDataDialog(
+          imageFileList: imageCameraList,
+          dialogCxt: ctx,
+        ),
       );
 
-      if (imageFormData != null) {
-        setContactValues(imageFormData);
+      if (initialBusinessCardData != null && context.mounted) {
+        final selectedBusinessCardData = await showDialog<BusinessCardData?>(
+          context: context,
+          builder: (ctx) => BusinessCardSelectedDataDialog(
+            initialBusinessData: initialBusinessCardData,
+            dialogCxt: ctx,
+          ),
+        );
+
+        if (selectedBusinessCardData != null && context.mounted) {
+          setContactValues(selectedBusinessCardData);
+        }
       }
     }
   }

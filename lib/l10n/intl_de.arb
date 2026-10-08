@@ -475,5 +475,12 @@
   "deleted": "Gelöscht",
   "carritosAbandonados": "Verlassene Warenkörbe",
   "cartsLines": "Warenkorbzeilen",
-  "shippingAddress": "Lieferadresse"
+  "shippingAddress": "Lieferadresse",
+  "captureAnotherImageQuestion": "Möchten Sie ein weiteres Bild aufnehmen?",
+  "contacto": "Kontakt",
+  "ofValue": "von",
+  "selectedFields": "ausgewählte Felder",
+  "extractedBusinessCardData": "Extrahierte Visitenkartendaten",
+  "noDataExtractedFromBusinessCard": "Keine Daten von der Visitenkarte extrahiert",
+  "extractingDataFromBusinessCard": "Daten von der Visitenkarte werden extrahiert"
 }

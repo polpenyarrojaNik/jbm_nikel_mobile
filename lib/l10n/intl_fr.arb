@@ -473,5 +473,12 @@
   "deleted": "Supprimé",
   "carritosAbandonados": "Paniers abandonnés",
   "cartsLines": "Lignes du panier",
-  "shippingAddress": "Adresse de livraison"
+  "shippingAddress": "Adresse de livraison",
+  "captureAnotherImageQuestion": "Voulez-vous capturer une autre image ?",
+  "contacto": "Contact",
+  "ofValue": "de",
+  "selectedFields": "champs sélectionnés",
+  "extractedBusinessCardData": "Données de la carte extraites",
+  "noDataExtractedFromBusinessCard": "Aucune donnée extraite de la carte",
+  "extractingDataFromBusinessCard": "Extraction des données de la carte"
 }

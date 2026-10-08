@@ -3,7 +3,6 @@ import 'dart:io';
 
 import 'package:auto_route/auto_route.dart';
 import 'package:flash/flash_helper.dart';
-import 'package:material_ui/material_ui.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:flutter_riverpod/experimental/mutation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -13,10 +12,12 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:gap/gap.dart';
 import 'package:geolocator/geolocator.dart' as geolocator;
 import 'package:latlong2/latlong.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:uuid/uuid.dart';
 
 import '../../../../../generated/l10n.dart';
+import '../../../../core/domain/business_card_data.dart';
 import '../../../../core/domain/pais.dart';
 import '../../../../core/domain/provincia.dart';
 import '../../../../core/exceptions/app_exception.dart';
@@ -24,6 +25,8 @@ import '../../../../core/helpers/formatters.dart';
 import '../../../../core/helpers/helpers.dart';
 import '../../../../core/presentation/common_widgets/alert_dialogs.dart';
 import '../../../../core/presentation/common_widgets/app_form_builder_searchable_dropdown.dart';
+import '../../../../core/presentation/common_widgets/business_card_extracted_data_dialog.dart';
+import '../../../../core/presentation/common_widgets/business_card_selected_data_dialog.dart';
 import '../../../../core/presentation/common_widgets/common_app_bar.dart';
 import '../../../../core/presentation/common_widgets/error_message_widget.dart';
 import '../../../../core/presentation/common_widgets/progress_indicator_widget.dart';
@@ -32,7 +35,6 @@ import '../../../cliente/domain/cliente.dart';
 import '../../../cliente/domain/cliente_contacto.dart';
 import '../../../cliente/infrastructure/cliente_repository.dart';
 import '../../../usuario/application/usuario_notifier.dart';
-import '../../domain/image_form_data.dart';
 import '../../domain/visita.dart';
 import '../../domain/visita_competidor.dart';
 import '../../domain/visita_motivos_no_venta.dart';
@@ -941,6 +943,7 @@ class _ClienteProvisionalContainerState
               itemAsString: (item) => item.descripcion,
               compareFn: (i, s) => i.id == s.id,
             ),
+            const Gap(4),
             AppFormBuilderSearchableDropdown<Provincia>(
               name: 'provincia',
               initialValue: widget
@@ -970,30 +973,48 @@ class _ClienteProvisionalContainerState
     );
   }
 
-  void setPotentialValues(ImageFormData imageFormData) {
+  void setPotentialValues(BusinessCardData selectedBusinessCardData) {
     widget.formKey.currentState?.patchValue({
-      'nombre': imageFormData.company,
-      'email': imageFormData.email,
-      'telefono': imageFormData.phoneList[0],
-      'direccion1': imageFormData.streetAddress1,
-      'codigo_postal': imageFormData.zipCode,
-      'poblacion': imageFormData.city,
-      'pais': imageFormData.country?.descripcion,
-      'provincia': imageFormData.state?.provincia,
-      'contacto': imageFormData.name,
+      'nombre': selectedBusinessCardData.companyName,
+      'email': selectedBusinessCardData.email,
+      'telefono': selectedBusinessCardData.phone,
+      'direccion1': selectedBusinessCardData.streetAddress,
+      'codigo_postal': selectedBusinessCardData.zipCode,
+      'poblacion': selectedBusinessCardData.city,
+      'pais': selectedBusinessCardData.country,
+      'provincia': selectedBusinessCardData.province,
+      'contacto': selectedBusinessCardData.fullName,
     });
   }
 
   void scanBussinessCard(BuildContext context) async {
-    final imageFile = await context.router.push<File?>(const CameraRoute());
+    final imageCameraList = await context.router.push<List<File>?>(
+      CameraRoute(maxImages: 2),
+    );
 
-    if (imageFile != null && context.mounted) {
-      final imageFormData = await context.router.push<ImageFormData?>(
-        ImageFormRoute(imageFile: imageFile, isFromCliente: true),
+    if (imageCameraList != null &&
+        imageCameraList.isNotEmpty &&
+        context.mounted) {
+      final initialBusinessCardData = await showDialog<BusinessCardData?>(
+        context: context,
+        builder: (ctx) => BusinessCardExtractedDataDialog(
+          imageFileList: imageCameraList,
+          dialogCxt: ctx,
+        ),
       );
 
-      if (imageFormData != null) {
-        setPotentialValues(imageFormData);
+      if (initialBusinessCardData != null && context.mounted) {
+        final selectedBusinessCardData = await showDialog<BusinessCardData?>(
+          context: context,
+          builder: (ctx) => BusinessCardSelectedDataDialog(
+            initialBusinessData: initialBusinessCardData,
+            dialogCxt: ctx,
+          ),
+        );
+
+        if (selectedBusinessCardData != null && context.mounted) {
+          setPotentialValues(selectedBusinessCardData);
+        }
       }
     }
   }

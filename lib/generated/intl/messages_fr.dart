@@ -183,6 +183,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "cancel": MessageLookupByLibrary.simpleMessage("Annuler"),
     "cancelar": MessageLookupByLibrary.simpleMessage("Annuler"),
     "capacidad": MessageLookupByLibrary.simpleMessage("Capacité"),
+    "captureAnotherImageQuestion": MessageLookupByLibrary.simpleMessage(
+      "Voulez-vous capturer une autre image ?",
+    ),
     "carritosAbandonados": MessageLookupByLibrary.simpleMessage(
       "Paniers abandonnés",
     ),
@@ -583,6 +586,7 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "company": MessageLookupByLibrary.simpleMessage("Entreprise"),
     "competencia": MessageLookupByLibrary.simpleMessage("Concurrent"),
+    "contacto": MessageLookupByLibrary.simpleMessage("Contact"),
     "couldntValidateAddressMessage": MessageLookupByLibrary.simpleMessage(
       "Nous n’avons pas pu valider cette adresse. Elle peut contenir une erreur ou être incomplète. Voulez-vous continuer avant de la vérifier ?",
     ),
@@ -611,6 +615,12 @@ class MessageLookup extends MessageLookupByLibrary {
         ),
     "excelIsEmpty": MessageLookupByLibrary.simpleMessage(
       "Le fichier Excel est vide",
+    ),
+    "extractedBusinessCardData": MessageLookupByLibrary.simpleMessage(
+      "Données de la carte extraites",
+    ),
+    "extractingDataFromBusinessCard": MessageLookupByLibrary.simpleMessage(
+      "Extraction des données de la carte",
     ),
     "familia": MessageLookupByLibrary.simpleMessage("Famille"),
     "filter": MessageLookupByLibrary.simpleMessage("Filtrer"),
@@ -655,6 +665,9 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "name": MessageLookupByLibrary.simpleMessage("Nom"),
     "no": MessageLookupByLibrary.simpleMessage("Non"),
+    "noDataExtractedFromBusinessCard": MessageLookupByLibrary.simpleMessage(
+      "Aucune donnée extraite de la carte",
+    ),
     "noSeHaPodidoSincronizar": MessageLookupByLibrary.simpleMessage(
       "Ne peut pas se synchroniser correctement",
     ),
@@ -664,6 +677,7 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "notifications": MessageLookupByLibrary.simpleMessage(" notifications"),
     "numLineas": MessageLookupByLibrary.simpleMessage("Nb. Lignes"),
+    "ofValue": MessageLookupByLibrary.simpleMessage("de"),
     "ofertaRealziada": MessageLookupByLibrary.simpleMessage("Offre faite"),
     "paises_search_title": MessageLookupByLibrary.simpleMessage(
       "Rechercher un pays...",
@@ -888,6 +902,9 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "selectExcelFile": MessageLookupByLibrary.simpleMessage(
       "Sélectionner un fichier Excel",
+    ),
+    "selectedFields": MessageLookupByLibrary.simpleMessage(
+      "champs sélectionnés",
     ),
     "semanal": MessageLookupByLibrary.simpleMessage("Hebdomadaire"),
     "send": MessageLookupByLibrary.simpleMessage("Envoyer"),

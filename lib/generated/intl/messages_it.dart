@@ -183,6 +183,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "cancel": MessageLookupByLibrary.simpleMessage("Annulla"),
     "cancelar": MessageLookupByLibrary.simpleMessage("Annulla"),
     "capacidad": MessageLookupByLibrary.simpleMessage("Capacità"),
+    "captureAnotherImageQuestion": MessageLookupByLibrary.simpleMessage(
+      "Vuoi catturare un\'altra immagine?",
+    ),
     "carritosAbandonados": MessageLookupByLibrary.simpleMessage(
       "Carrelli abbandonati",
     ),
@@ -573,6 +576,7 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "company": MessageLookupByLibrary.simpleMessage("Azienda"),
     "competencia": MessageLookupByLibrary.simpleMessage("Concorrenza"),
+    "contacto": MessageLookupByLibrary.simpleMessage("Contatto"),
     "couldntValidateAddressMessage": MessageLookupByLibrary.simpleMessage(
       "Non è stato possibile convalidare questo indirizzo. Potrebbe contenere un errore o essere incompleto. Vuoi continuare prima di controllarlo?",
     ),
@@ -599,6 +603,12 @@ class MessageLookup extends MessageLookupByLibrary {
         ),
     "excelIsEmpty": MessageLookupByLibrary.simpleMessage(
       "Il file Excel è vuoto",
+    ),
+    "extractedBusinessCardData": MessageLookupByLibrary.simpleMessage(
+      "Dati della scheda estratti",
+    ),
+    "extractingDataFromBusinessCard": MessageLookupByLibrary.simpleMessage(
+      "Estrazione dei dati dalla scheda",
     ),
     "familia": MessageLookupByLibrary.simpleMessage("Famiglia"),
     "filter": MessageLookupByLibrary.simpleMessage("Filtra"),
@@ -645,6 +655,9 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "name": MessageLookupByLibrary.simpleMessage("Nome"),
     "no": MessageLookupByLibrary.simpleMessage("No"),
+    "noDataExtractedFromBusinessCard": MessageLookupByLibrary.simpleMessage(
+      "Nessun dato estratto dalla scheda",
+    ),
     "noSeHaPodidoSincronizar": MessageLookupByLibrary.simpleMessage(
       "Non è stato possibile sincronizzare correttamente",
     ),
@@ -654,6 +667,7 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "notifications": MessageLookupByLibrary.simpleMessage("Notifiche"),
     "numLineas": MessageLookupByLibrary.simpleMessage("N. Righe"),
+    "ofValue": MessageLookupByLibrary.simpleMessage("di"),
     "ofertaRealziada": MessageLookupByLibrary.simpleMessage(
       "Offerta effettuata",
     ),
@@ -877,6 +891,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "selectExcelFile": MessageLookupByLibrary.simpleMessage(
       "Seleziona file Excel",
     ),
+    "selectedFields": MessageLookupByLibrary.simpleMessage("campi selezionati"),
     "semanal": MessageLookupByLibrary.simpleMessage("Settimanale"),
     "send": MessageLookupByLibrary.simpleMessage("Invia"),
     "settings_cerrar_sesion": MessageLookupByLibrary.simpleMessage("Esci"),

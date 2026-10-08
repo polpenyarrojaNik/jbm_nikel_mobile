@@ -474,5 +474,12 @@
   "deleted": "Eliminato",
   "carritosAbandonados": "Carrelli abbandonati",
   "cartsLines": "Righe del carrello",
-  "shippingAddress": "Indirizzo di spedizione"
+  "shippingAddress": "Indirizzo di spedizione",
+  "captureAnotherImageQuestion": "Vuoi catturare un'altra immagine?",
+  "contacto": "Contatto",
+  "ofValue": "di",
+  "selectedFields": "campi selezionati",
+  "extractedBusinessCardData": "Dati della scheda estratti",
+  "noDataExtractedFromBusinessCard": "Nessun dato estratto dalla scheda",
+  "extractingDataFromBusinessCard": "Estrazione dei dati dalla scheda"
 }

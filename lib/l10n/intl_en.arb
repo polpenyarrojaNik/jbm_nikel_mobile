@@ -474,5 +474,12 @@
   "deleted": "Deleted",
   "carritosAbandonados": "Abandoned carts",
   "cartsLines": "Cart lines",
-  "shippingAddress": "Shipping address"
+  "shippingAddress": "Shipping address",
+  "captureAnotherImageQuestion": "Do you want to capture another image?",
+  "contacto": "Contact",
+  "ofValue": "of",
+  "selectedFields": "selected fields",
+  "extractedBusinessCardData": "Extracted business card data",
+  "noDataExtractedFromBusinessCard": "No data extracted from business card",
+  "extractingDataFromBusinessCard": "Extracting data from business card"
 }

@@ -179,6 +179,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
     "cancelar": MessageLookupByLibrary.simpleMessage("Cancel"),
     "capacidad": MessageLookupByLibrary.simpleMessage("Capacity"),
+    "captureAnotherImageQuestion": MessageLookupByLibrary.simpleMessage(
+      "Do you want to capture another image?",
+    ),
     "carritosAbandonados": MessageLookupByLibrary.simpleMessage(
       "Abandoned carts",
     ),
@@ -555,6 +558,7 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "company": MessageLookupByLibrary.simpleMessage("Company"),
     "competencia": MessageLookupByLibrary.simpleMessage("Competitor"),
+    "contacto": MessageLookupByLibrary.simpleMessage("Contact"),
     "couldntValidateAddressMessage": MessageLookupByLibrary.simpleMessage(
       "We couldn’t validate this address. It may contain an error or be incomplete. Do you want to continue before reviewing it?",
     ),
@@ -583,6 +587,12 @@ class MessageLookup extends MessageLookupByLibrary {
         ),
     "excelIsEmpty": MessageLookupByLibrary.simpleMessage(
       "The Excel file is empty",
+    ),
+    "extractedBusinessCardData": MessageLookupByLibrary.simpleMessage(
+      "Extracted business card data",
+    ),
+    "extractingDataFromBusinessCard": MessageLookupByLibrary.simpleMessage(
+      "Extracting data from business card",
     ),
     "familia": MessageLookupByLibrary.simpleMessage("Family"),
     "filter": MessageLookupByLibrary.simpleMessage("Filter"),
@@ -619,6 +629,9 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "name": MessageLookupByLibrary.simpleMessage("Name"),
     "no": MessageLookupByLibrary.simpleMessage("No"),
+    "noDataExtractedFromBusinessCard": MessageLookupByLibrary.simpleMessage(
+      "No data extracted from business card",
+    ),
     "noSeHaPodidoSincronizar": MessageLookupByLibrary.simpleMessage(
       "Can not synchronize correctly",
     ),
@@ -628,6 +641,7 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "notifications": MessageLookupByLibrary.simpleMessage(" Notifications"),
     "numLineas": MessageLookupByLibrary.simpleMessage("Num. Lines"),
+    "ofValue": MessageLookupByLibrary.simpleMessage("of"),
     "ofertaRealziada": MessageLookupByLibrary.simpleMessage("Offer released"),
     "paises_search_title": MessageLookupByLibrary.simpleMessage(
       "Search country...",
@@ -845,6 +859,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "selectExcelFile": MessageLookupByLibrary.simpleMessage(
       "Select Excel file",
     ),
+    "selectedFields": MessageLookupByLibrary.simpleMessage("selected fields"),
     "semanal": MessageLookupByLibrary.simpleMessage("Weekly"),
     "send": MessageLookupByLibrary.simpleMessage("Send"),
     "settings_cerrar_sesion": MessageLookupByLibrary.simpleMessage("Sign out"),
