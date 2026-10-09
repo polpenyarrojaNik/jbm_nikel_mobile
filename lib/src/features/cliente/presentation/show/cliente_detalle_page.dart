@@ -1,9 +1,9 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:material_ui/material_ui.dart';
 import 'package:flutter_material_design_icons/flutter_material_design_icons.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gap/gap.dart';
 import 'package:map_launcher/map_launcher.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../../../../../generated/l10n.dart';
@@ -234,7 +234,7 @@ class _ClienteHeader extends ConsumerWidget {
                         cliente.latitudPredeterminada,
                         cliente.longitudPredeterminada,
                       ),
-                      icon: Icon(MdiIcons.googleMaps),
+                      icon: Icon(MdiIcons.mapMarkerRadius),
                     ),
                   ],
                 ),
@@ -283,7 +283,7 @@ class _ClienteHeader extends ConsumerWidget {
                             cliente.latitudFiscal,
                             cliente.longitudFiscal,
                           ),
-                          icon: Icon(MdiIcons.googleMaps),
+                          icon: Icon(MdiIcons.mapMarkerRadius),
                         ),
                       ],
                     ),

@@ -1,9 +1,9 @@
 import 'dart:async';
 
 import 'package:auto_route/auto_route.dart';
-import 'package:material_ui/material_ui.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gap/gap.dart';
+import 'package:material_ui/material_ui.dart';
 
 import '../../../../generated/l10n.dart';
 import '../../../core/exceptions/app_exception.dart';
@@ -44,11 +44,13 @@ class _SplashPageState extends ConsumerState<SplashPage> {
                 .read(syncNotifierProvider.notifier)
                 .syncAllInCompute(initAppProcess: true),
           );
-          unawaited(
-            context.router.replace(
-              ArticuloListaRoute(isSearchArticuloForForm: false),
-            ),
-          );
+          if (context.mounted) {
+            unawaited(
+              context.router.replace(
+                ArticuloListaRoute(isSearchArticuloForForm: false),
+              ),
+            );
+          }
         },
         error: (e, _) {
           if (e is AppException) {
