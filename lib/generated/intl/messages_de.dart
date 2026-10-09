@@ -183,6 +183,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "cancel": MessageLookupByLibrary.simpleMessage("Abbrechen"),
     "cancelar": MessageLookupByLibrary.simpleMessage("Abbrechen"),
     "capacidad": MessageLookupByLibrary.simpleMessage("Kapazität"),
+    "captureAnotherImageQuestion": MessageLookupByLibrary.simpleMessage(
+      "Möchten Sie ein weiteres Bild aufnehmen?",
+    ),
     "carritosAbandonados": MessageLookupByLibrary.simpleMessage(
       "Verlassene Warenkörbe",
     ),
@@ -573,6 +576,7 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "company": MessageLookupByLibrary.simpleMessage("Unternehmen"),
     "competencia": MessageLookupByLibrary.simpleMessage("Wettbewerb"),
+    "contacto": MessageLookupByLibrary.simpleMessage("Kontakt"),
     "couldntValidateAddressMessage": MessageLookupByLibrary.simpleMessage(
       "Diese Adresse konnte nicht validiert werden. Sie enthält möglicherweise einen Fehler oder ist unvollständig. Möchten Sie fortfahren, bevor Sie sie überprüfen?",
     ),
@@ -601,6 +605,12 @@ class MessageLookup extends MessageLookupByLibrary {
         ),
     "excelIsEmpty": MessageLookupByLibrary.simpleMessage(
       "Die Excel-Datei ist leer",
+    ),
+    "extractedBusinessCardData": MessageLookupByLibrary.simpleMessage(
+      "Extrahierte Visitenkartendaten",
+    ),
+    "extractingDataFromBusinessCard": MessageLookupByLibrary.simpleMessage(
+      "Daten von der Visitenkarte werden extrahiert",
     ),
     "familia": MessageLookupByLibrary.simpleMessage("Familie"),
     "filter": MessageLookupByLibrary.simpleMessage("Filter"),
@@ -643,6 +653,9 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "name": MessageLookupByLibrary.simpleMessage("Name"),
     "no": MessageLookupByLibrary.simpleMessage("Nein"),
+    "noDataExtractedFromBusinessCard": MessageLookupByLibrary.simpleMessage(
+      "Keine Daten von der Visitenkarte extrahiert",
+    ),
     "noSeHaPodidoSincronizar": MessageLookupByLibrary.simpleMessage(
       "Synchronisierung fehlgeschlagen",
     ),
@@ -652,6 +665,7 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "notifications": MessageLookupByLibrary.simpleMessage("Benachrichtigungen"),
     "numLineas": MessageLookupByLibrary.simpleMessage("Anzahl Zeilen"),
+    "ofValue": MessageLookupByLibrary.simpleMessage("von"),
     "ofertaRealziada": MessageLookupByLibrary.simpleMessage("Angebot erstellt"),
     "paises_search_title": MessageLookupByLibrary.simpleMessage(
       "Land suchen...",
@@ -881,6 +895,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "selectExcelFile": MessageLookupByLibrary.simpleMessage(
       "Excel-Datei auswählen",
     ),
+    "selectedFields": MessageLookupByLibrary.simpleMessage(
+      "ausgewählte Felder",
+    ),
     "semanal": MessageLookupByLibrary.simpleMessage("Wöchentlich"),
     "send": MessageLookupByLibrary.simpleMessage("Senden"),
     "settings_cerrar_sesion": MessageLookupByLibrary.simpleMessage("Abmelden"),
@@ -892,6 +909,22 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "settings_nombre_usuario": MessageLookupByLibrary.simpleMessage(
       "Benutzername",
+    ),
+    "settings_notificacionesPopup": MessageLookupByLibrary.simpleMessage(
+      "Pop-up-Benachrichtigungen",
+    ),
+    "settings_notificacionesPopupDescripcion":
+        MessageLookupByLibrary.simpleMessage(
+          "Wähle, welche Benachrichtigungstypen automatisch in einem Pop-up geöffnet werden",
+        ),
+    "settings_notificacionesPopupErrorGuardar":
+        MessageLookupByLibrary.simpleMessage(
+          "Die Änderung konnte nicht gespeichert werden",
+        ),
+    "settings_notificacionesPopupReintentar":
+        MessageLookupByLibrary.simpleMessage("Erneut versuchen"),
+    "settings_notificacionesPopupVacio": MessageLookupByLibrary.simpleMessage(
+      "Keine Benachrichtigungstypen verfügbar",
     ),
     "settings_reemplazarBaseDeDatos": MessageLookupByLibrary.simpleMessage(
       "Datenbank ersetzen",

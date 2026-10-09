@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:auto_route/auto_route.dart';
 import 'package:material_ui/material_ui.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
@@ -68,7 +66,6 @@ import '../../features/usuario/domain/usuario.dart';
 import '../../features/usuario/presentation/login/login_page.dart';
 import '../../features/visitas/domain/visita_id_param.dart';
 import '../../features/visitas/presentation/edit/camera_page.dart';
-import '../../features/visitas/presentation/edit/image_form_page.dart';
 import '../../features/visitas/presentation/edit/visit_edit_page.dart';
 import '../../features/visitas/presentation/edit/visita_edit_select_contact_page.dart';
 import '../../features/visitas/presentation/index/visita_lista_page.dart';
@@ -265,11 +262,7 @@ class AppRouter extends RootStackRouter {
       transitionsBuilder: TransitionsBuilders.fadeIn,
       fullscreenDialog: true,
     ),
-    AutoRoute(
-      page: ImageFormRoute.page,
-      path: '/visita/edit/image_form',
-      fullscreenDialog: true,
-    ),
+
     AutoRoute(page: CatalogoListaRoute.page, path: '/catalogo'),
     AutoRoute(
       page: CatalogoPdfViewerRoute.page,

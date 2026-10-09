@@ -4489,6 +4489,116 @@ class S {
       args: [],
     );
   }
+
+  /// `Do you want to capture another image?`
+  String get captureAnotherImageQuestion {
+    return Intl.message(
+      'Do you want to capture another image?',
+      name: 'captureAnotherImageQuestion',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Contact`
+  String get contacto {
+    return Intl.message('Contact', name: 'contacto', desc: '', args: []);
+  }
+
+  /// `of`
+  String get ofValue {
+    return Intl.message('of', name: 'ofValue', desc: '', args: []);
+  }
+
+  /// `selected fields`
+  String get selectedFields {
+    return Intl.message(
+      'selected fields',
+      name: 'selectedFields',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Extracted business card data`
+  String get extractedBusinessCardData {
+    return Intl.message(
+      'Extracted business card data',
+      name: 'extractedBusinessCardData',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No data extracted from business card`
+  String get noDataExtractedFromBusinessCard {
+    return Intl.message(
+      'No data extracted from business card',
+      name: 'noDataExtractedFromBusinessCard',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Extracting data from business card`
+  String get extractingDataFromBusinessCard {
+    return Intl.message(
+      'Extracting data from business card',
+      name: 'extractingDataFromBusinessCard',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Pop-up notifications`
+  String get settings_notificacionesPopup {
+    return Intl.message(
+      'Pop-up notifications',
+      name: 'settings_notificacionesPopup',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Choose which notification types should open automatically in a pop-up`
+  String get settings_notificacionesPopupDescripcion {
+    return Intl.message(
+      'Choose which notification types should open automatically in a pop-up',
+      name: 'settings_notificacionesPopupDescripcion',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `The change could not be saved`
+  String get settings_notificacionesPopupErrorGuardar {
+    return Intl.message(
+      'The change could not be saved',
+      name: 'settings_notificacionesPopupErrorGuardar',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Retry`
+  String get settings_notificacionesPopupReintentar {
+    return Intl.message(
+      'Retry',
+      name: 'settings_notificacionesPopupReintentar',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No notification types available`
+  String get settings_notificacionesPopupVacio {
+    return Intl.message(
+      'No notification types available',
+      name: 'settings_notificacionesPopupVacio',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

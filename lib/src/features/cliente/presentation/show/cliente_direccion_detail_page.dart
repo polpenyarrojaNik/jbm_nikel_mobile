@@ -1,9 +1,9 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:material_ui/material_ui.dart';
 import 'package:flutter_material_design_icons/flutter_material_design_icons.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gap/gap.dart';
 import 'package:map_launcher/map_launcher.dart';
+import 'package:material_ui/material_ui.dart';
 
 import '../../../../../generated/l10n.dart';
 import '../../../../core/helpers/formatters.dart';
@@ -74,7 +74,7 @@ class ClienteDireccionDetailPage extends ConsumerWidget {
                           clienteDireccion.latitud,
                           clienteDireccion.longitud,
                         ),
-                        icon: Icon(MdiIcons.googleMaps),
+                        icon: Icon(MdiIcons.mapMarkerRadius),
                       ),
                     ],
                   ),

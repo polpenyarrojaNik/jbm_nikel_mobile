@@ -1,11 +1,11 @@
 name: jbm_nikel_mobile
 description: JBM Nikel Mobile
 publish_to: "none"
-version: 1.2.135+210
+version: 1.2.137+212
 
 environment:
-  sdk: ^3.13.4
-  flutter: ^3.47.5
+  sdk: ^3.13.5
+  flutter: ^3.47.6
 
 dependencies:
   flutter_localizations:
@@ -16,21 +16,22 @@ dependencies:
   archive: ^4.3.0
   auto_route: ^11.2.0
   auto_updater: ^1.0.0
-  cached_network_image: ^4.0.2
+  cached_network_image: ^4.0.4
   camera: ^0.12.1
   csv: ^8.0.0
   data_table_2: ^3.0.0
-  device_info_plus: ^13.2.0
+  device_info_plus: ^13.3.0
   dio: ^5.11.1
   dotted_border: ^3.1.0
-  drift: ^2.35.0
-  excel_community: ^2.4.1
+  drift: ^2.35.1
+  excel_community: ^2.5.2
   fl_chart: ^1.2.0
   flash: ^3.1.1
   flex_color_scheme: ^9.0.0
   flutter_dotenv: ^6.0.1
   flutter_form_builder: ^11.0.0
   flutter_hooks: ^0.21.3+1
+  hooks_riverpod: ^3.4.3
   flutter_map: ^8.3.2
   flutter_map_location_marker: ^10.3.0
   flutter_markdown: ^0.7.7+1
@@ -43,9 +44,7 @@ dependencies:
   fpdart: ^1.2.0
   freezed_annotation: ^3.1.0
   geolocator: ^14.1.1
-  google_fonts: ^8.2.1
-  google_mlkit_entity_extraction: ^0.17.1
-  google_mlkit_text_recognition: ^0.17.1
+  google_fonts: ^9.0.0
   image: ^4.10.1
   intl: ^0.20.3
   json_annotation: ^4.12.0
@@ -54,22 +53,22 @@ dependencies:
   logger: ^2.8.0
   map_launcher: ^6.0.0
   markdown: ^7.3.1
-  material_ui: ^1.4.0
+  material_ui: ^1.6.0
   flutter_material_design_icons: ^3.1.0+7447
   money2: ^6.3.0
   open_file: ^4.0.0
-  package_info_plus: ^10.2.1
+  package_info_plus: ^10.2.2
   path_provider: ^2.1.6
   path: ^1.9.1
   riverpod_annotation: ^4.0.7
-  share_plus: ^13.3.0
+  share_plus: ^13.3.1
   shimmer: ^4.0.0
   sentry_flutter: ^9.30.1
   sqlite3_flutter_libs: ^0.5.42
-  syncfusion_flutter_pdf: ^34.2.9
-  syncfusion_flutter_pdfviewer: ^34.2.9
+  syncfusion_flutter_pdf: ^35.1.39
+  syncfusion_flutter_pdfviewer: ^35.1.39
   upgrader: ^13.7.0
-  url_launcher: ^6.3.2
+  url_launcher: ^6.3.3
   uuid: ^4.6.0
   gap: ^3.0.1
   window_manager: ^0.5.2
@@ -81,7 +80,7 @@ dev_dependencies:
     sdk: flutter
   auto_route_generator: ^10.6.0
   build_runner: ^2.16.1
-  drift_dev: ^2.35.0
+  drift_dev: ^2.35.1
   flutter_launcher_icons: ^0.14.4
   flutter_lints: ^6.0.0
   freezed: ^4.0.1

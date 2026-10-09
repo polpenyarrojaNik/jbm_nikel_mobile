@@ -806,18 +806,46 @@ class BackorderListRouteArgs {
 
 /// generated route for
 /// [CameraPage]
-class CameraRoute extends PageRouteInfo<void> {
-  const CameraRoute({List<PageRouteInfo>? children})
-    : super(CameraRoute.name, initialChildren: children);
+class CameraRoute extends PageRouteInfo<CameraRouteArgs> {
+  CameraRoute({Key? key, required int maxImages, List<PageRouteInfo>? children})
+    : super(
+        CameraRoute.name,
+        args: CameraRouteArgs(key: key, maxImages: maxImages),
+        initialChildren: children,
+      );
 
   static const String name = 'CameraRoute';
 
   static PageInfo page = PageInfo(
     name,
     builder: (data) {
-      return const CameraPage();
+      final args = data.argsAs<CameraRouteArgs>();
+      return CameraPage(key: args.key, maxImages: args.maxImages);
     },
   );
+}
+
+class CameraRouteArgs {
+  const CameraRouteArgs({this.key, required this.maxImages});
+
+  final Key? key;
+
+  final int maxImages;
+
+  @override
+  String toString() {
+    return 'CameraRouteArgs{key: $key, maxImages: $maxImages}';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
+    if (other is! CameraRouteArgs) return false;
+    return key == other.key && maxImages == other.maxImages;
+  }
+
+  @override
+  int get hashCode => key.hashCode ^ maxImages.hashCode;
 }
 
 /// generated route for
@@ -2614,71 +2642,6 @@ class ExpedicionListRouteArgs {
 
   @override
   int get hashCode => key.hashCode;
-}
-
-/// generated route for
-/// [ImageFormPage]
-class ImageFormRoute extends PageRouteInfo<ImageFormRouteArgs> {
-  ImageFormRoute({
-    Key? key,
-    required File imageFile,
-    required bool isFromCliente,
-    List<PageRouteInfo>? children,
-  }) : super(
-         ImageFormRoute.name,
-         args: ImageFormRouteArgs(
-           key: key,
-           imageFile: imageFile,
-           isFromCliente: isFromCliente,
-         ),
-         initialChildren: children,
-       );
-
-  static const String name = 'ImageFormRoute';
-
-  static PageInfo page = PageInfo(
-    name,
-    builder: (data) {
-      final args = data.argsAs<ImageFormRouteArgs>();
-      return ImageFormPage(
-        key: args.key,
-        imageFile: args.imageFile,
-        isFromCliente: args.isFromCliente,
-      );
-    },
-  );
-}
-
-class ImageFormRouteArgs {
-  const ImageFormRouteArgs({
-    this.key,
-    required this.imageFile,
-    required this.isFromCliente,
-  });
-
-  final Key? key;
-
-  final File imageFile;
-
-  final bool isFromCliente;
-
-  @override
-  String toString() {
-    return 'ImageFormRouteArgs{key: $key, imageFile: $imageFile, isFromCliente: $isFromCliente}';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    if (identical(this, other)) return true;
-    if (other is! ImageFormRouteArgs) return false;
-    return key == other.key &&
-        imageFile == other.imageFile &&
-        isFromCliente == other.isFromCliente;
-  }
-
-  @override
-  int get hashCode =>
-      key.hashCode ^ imageFile.hashCode ^ isFromCliente.hashCode;
 }
 
 /// generated route for

@@ -181,6 +181,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "cancel": MessageLookupByLibrary.simpleMessage("Cancelar"),
     "cancelar": MessageLookupByLibrary.simpleMessage("Cancelar"),
     "capacidad": MessageLookupByLibrary.simpleMessage("Capacidade"),
+    "captureAnotherImageQuestion": MessageLookupByLibrary.simpleMessage(
+      "Deseja capturar outra imagem?",
+    ),
     "carritosAbandonados": MessageLookupByLibrary.simpleMessage(
       "Carrinhos abandonados",
     ),
@@ -569,6 +572,7 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "company": MessageLookupByLibrary.simpleMessage("Empresa"),
     "competencia": MessageLookupByLibrary.simpleMessage("Concorrente"),
+    "contacto": MessageLookupByLibrary.simpleMessage("Contacto"),
     "couldntValidateAddressMessage": MessageLookupByLibrary.simpleMessage(
       "Não foi possível validar este endereço. Ele pode conter um erro ou estar incompleto. Deseja continuar antes de o rever?",
     ),
@@ -597,6 +601,12 @@ class MessageLookup extends MessageLookupByLibrary {
         ),
     "excelIsEmpty": MessageLookupByLibrary.simpleMessage(
       "O arquivo Excel está vazio",
+    ),
+    "extractedBusinessCardData": MessageLookupByLibrary.simpleMessage(
+      "Dados do cartão extraídos",
+    ),
+    "extractingDataFromBusinessCard": MessageLookupByLibrary.simpleMessage(
+      "A extrair dados do cartão",
     ),
     "familia": MessageLookupByLibrary.simpleMessage("Desc. :"),
     "filter": MessageLookupByLibrary.simpleMessage("Filtrar"),
@@ -637,6 +647,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "motivoNoPedido": MessageLookupByLibrary.simpleMessage("Motivo não pedido"),
     "name": MessageLookupByLibrary.simpleMessage("Nome"),
     "no": MessageLookupByLibrary.simpleMessage("Não"),
+    "noDataExtractedFromBusinessCard": MessageLookupByLibrary.simpleMessage(
+      "Nenhum dado extraído do cartão",
+    ),
     "noSeHaPodidoSincronizar": MessageLookupByLibrary.simpleMessage(
       "Não consigo sincronizar corretamente",
     ),
@@ -646,6 +659,7 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "notifications": MessageLookupByLibrary.simpleMessage(" notificações"),
     "numLineas": MessageLookupByLibrary.simpleMessage("Num. Linhas"),
+    "ofValue": MessageLookupByLibrary.simpleMessage("de"),
     "ofertaRealziada": MessageLookupByLibrary.simpleMessage("Oferta feita"),
     "paises_search_title": MessageLookupByLibrary.simpleMessage(
       "Pesquisar país...",
@@ -865,6 +879,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "selectExcelFile": MessageLookupByLibrary.simpleMessage(
       "Selecionar ficheiro Excel",
     ),
+    "selectedFields": MessageLookupByLibrary.simpleMessage(
+      "campos seleccionados",
+    ),
     "semanal": MessageLookupByLibrary.simpleMessage("Semanalmente"),
     "send": MessageLookupByLibrary.simpleMessage("Enviar"),
     "settings_cerrar_sesion": MessageLookupByLibrary.simpleMessage(
@@ -878,6 +895,22 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "settings_nombre_usuario": MessageLookupByLibrary.simpleMessage(
       "Nome de usuário",
+    ),
+    "settings_notificacionesPopup": MessageLookupByLibrary.simpleMessage(
+      "Notificações pop-up",
+    ),
+    "settings_notificacionesPopupDescripcion":
+        MessageLookupByLibrary.simpleMessage(
+          "Escolha que tipos de notificação devem abrir automaticamente num pop-up",
+        ),
+    "settings_notificacionesPopupErrorGuardar":
+        MessageLookupByLibrary.simpleMessage(
+          "Não foi possível guardar a alteração",
+        ),
+    "settings_notificacionesPopupReintentar":
+        MessageLookupByLibrary.simpleMessage("Tentar novamente"),
+    "settings_notificacionesPopupVacio": MessageLookupByLibrary.simpleMessage(
+      "Não existem tipos de notificação disponíveis",
     ),
     "settings_reemplazarBaseDeDatos": MessageLookupByLibrary.simpleMessage(
       "Substituir banco de dados",

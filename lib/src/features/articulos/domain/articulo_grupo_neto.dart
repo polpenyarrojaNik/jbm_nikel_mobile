@@ -38,4 +38,6 @@ abstract class ArticuloGrupoNeto with _$ArticuloGrupoNeto {
     isPromo: true,
     dto: promoDtoLinDTO.dto,
   );
+
+  Money get precioCalculado => precio - (precio * dto / 100);
 }

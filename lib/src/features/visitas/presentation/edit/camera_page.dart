@@ -3,15 +3,19 @@ import 'dart:io';
 
 import 'package:auto_route/auto_route.dart';
 import 'package:camera/camera.dart';
-import 'package:material_ui/material_ui.dart';
 import 'package:image/image.dart' as img;
+import 'package:intl/intl.dart';
+import 'package:material_ui/material_ui.dart';
 
 import '../../../../../generated/l10n.dart';
 import '../../../../core/application/log_service.dart';
+import '../../../../core/presentation/common_widgets/progress_indicator_widget.dart';
 
 @RoutePage()
 class CameraPage extends StatefulWidget {
-  const CameraPage({super.key});
+  const CameraPage({super.key, required this.maxImages});
+
+  final int maxImages;
 
   @override
   CameraPageState createState() => CameraPageState();
@@ -20,11 +24,11 @@ class CameraPage extends StatefulWidget {
 class CameraPageState extends State<CameraPage> {
   late CameraController _controller;
   late Future<void> _initializeControllerFuture;
+  final List<File> _imageFileList = [];
 
   @override
   void initState() {
     super.initState();
-
     _initializeControllerFuture = getInitializeCamera();
   }
 
@@ -37,14 +41,13 @@ class CameraPageState extends State<CameraPage> {
   Future<void> getInitializeCamera() async {
     final cameras = await availableCameras();
 
-    _controller = CameraController(cameras[0], ResolutionPreset.high);
+    _controller = CameraController(cameras.first, ResolutionPreset.high);
 
     await _controller.initialize().catchError((e) {
       if (e is CameraException) {
         switch (e.code) {
-          case 'CameraAccessDenied':
           default:
-            // Handle camera errors here.
+            // Handle other errors here.
             break;
         }
       }
@@ -84,7 +87,7 @@ class CameraPageState extends State<CameraPage> {
                     ],
                   ),
                   floatingActionButton: FloatingActionButton(
-                    onPressed: () => onTakePicture(context),
+                    onPressed: () => _takePicture(),
                     child: const Icon(Icons.camera_alt),
                   ),
                 )
@@ -92,31 +95,33 @@ class CameraPageState extends State<CameraPage> {
                   appBar: AppBar(title: Text(S.of(context).camera)),
                   body: Container(
                     color: Colors.black,
-                    child: const Center(child: CircularProgressIndicator()),
+                    child: ProgressIndicatorWidget(),
                   ),
                 );
         }
-        return const Center(child: CircularProgressIndicator());
+        return ProgressIndicatorWidget();
       },
     );
   }
 
-  void onTakePicture(BuildContext context) async {
-    final imageFile = await _takePicture();
-    if (context.mounted && imageFile != null) {
-      unawaited(context.router.maybePop(imageFile));
-    }
-  }
-
-  Future<File?> _takePicture() async {
+  Future<void> _takePicture() async {
+    File? imageFile;
     if (!_controller.value.isInitialized) {
       log.d('Controller is not initialized');
-      return null;
     }
+
+    // Formatting Date and Time
+    final dateTimeStr = DateFormat.yMMMd()
+        .addPattern('-')
+        .add_Hms()
+        .format(DateTime.now())
+        .toString();
+
+    final formattedDateTime = dateTimeStr.replaceAll(' ', '');
+    log.d('Formatted: $formattedDateTime');
 
     if (_controller.value.isTakingPicture) {
       log.d('Processing is progress ...');
-      return null;
     }
 
     try {
@@ -152,10 +157,44 @@ class CameraPageState extends State<CameraPage> {
 
       await originalFile.writeAsBytes(img.encodeJpg(croppedImage));
 
-      return originalFile;
+      imageFile = originalFile;
     } on CameraException catch (e) {
-      log.e('Camera Exception: $e');
-      return null;
+      log.d('Camera Exception: $e');
+    }
+
+    if (imageFile == null) {
+      log.d('Error: imageFile is null');
+      return;
+    }
+
+    _imageFileList.add(imageFile);
+
+    if (!mounted) return;
+
+    if (_imageFileList.length >= widget.maxImages) {
+      unawaited(context.router.maybePop(_imageFileList));
+      return;
+    }
+
+    final takeAnotherPhoto = await showDialog<bool>(
+      context: context,
+      builder: (dialogCtx) => AlertDialog(
+        content: Text(S.of(dialogCtx).captureAnotherImageQuestion),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(dialogCtx, false),
+            child: Text(S.of(dialogCtx).no),
+          ),
+          TextButton(
+            onPressed: () => Navigator.pop(dialogCtx, true),
+            child: Text(S.of(dialogCtx).yes),
+          ),
+        ],
+      ),
+    );
+
+    if (takeAnotherPhoto != true && mounted) {
+      unawaited(context.router.maybePop(_imageFileList));
     }
   }
 }

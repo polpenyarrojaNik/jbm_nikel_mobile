@@ -473,5 +473,17 @@
   "deleted": "Supprimé",
   "carritosAbandonados": "Paniers abandonnés",
   "cartsLines": "Lignes du panier",
-  "shippingAddress": "Adresse de livraison"
+  "shippingAddress": "Adresse de livraison",
+  "captureAnotherImageQuestion": "Voulez-vous capturer une autre image ?",
+  "contacto": "Contact",
+  "ofValue": "de",
+  "selectedFields": "champs sélectionnés",
+  "extractedBusinessCardData": "Données de la carte extraites",
+  "noDataExtractedFromBusinessCard": "Aucune donnée extraite de la carte",
+  "extractingDataFromBusinessCard": "Extraction des données de la carte",
+  "settings_notificacionesPopup": "Notifications contextuelles",
+  "settings_notificacionesPopupDescripcion": "Choisissez les types de notification à ouvrir automatiquement dans une fenêtre contextuelle",
+  "settings_notificacionesPopupErrorGuardar": "Impossible d'enregistrer la modification",
+  "settings_notificacionesPopupReintentar": "Réessayer",
+  "settings_notificacionesPopupVacio": "Aucun type de notification disponible"
 }

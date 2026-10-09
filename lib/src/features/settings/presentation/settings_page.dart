@@ -26,6 +26,7 @@ import '../../usuario/application/usuario_notifier.dart';
 import '../infrastructure/settings_repository.dart';
 import 'delete_database_controller.dart';
 import 'delete_local_database_controller.dart';
+import 'notification_preferences_card.dart';
 import 'export_database_controller.dart';
 
 @RoutePage()
@@ -58,7 +59,7 @@ class SettingsPage extends ConsumerWidget {
         titleText: (S.of(context).settings_titulo),
         scaffoldKey: scaffoldKey,
       ),
-      body: Padding(
+      body: SingleChildScrollView(
         padding: const EdgeInsets.all(16.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -95,6 +96,11 @@ class SettingsPage extends ConsumerWidget {
               ),
               error: (e, _) => ErrorMessageWidget(e.toString()),
               loading: () => const ProgressIndicatorWidget(),
+            ),
+            const Gap(16),
+            stateSync.maybeWhen(
+              orElse: () => Container(),
+              synchronized: () => const NotificationPreferencesCard(),
             ),
             const Gap(16),
             stateSync.maybeWhen(

@@ -1,10 +1,10 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flash/flash_helper.dart';
-import 'package:material_ui/material_ui.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:gap/gap.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../../../../../generated/l10n.dart';
@@ -1560,7 +1560,7 @@ class _ArticuloGrupoNetoSelectQuantityTile extends StatelessWidget {
           ),
           Text(
             formatPrecios(
-              precio: articuloGrupoNeto.precio,
+              precio: articuloGrupoNeto.precioCalculado,
               tipoPrecio: articuloGrupoNeto.tipoPrecio,
             ),
             style: Theme.of(context).textTheme.bodyMedium
@@ -1568,7 +1568,7 @@ class _ArticuloGrupoNetoSelectQuantityTile extends StatelessWidget {
           ),
           if (articuloGrupoNeto.dto > 0)
             Text(
-              '${articuloGrupoNeto.dto}%',
+              '${formatPrecios(precio: articuloGrupoNeto.precio, tipoPrecio: articuloGrupoNeto.tipoPrecio)} - ${articuloGrupoNeto.dto}%',
               style: Theme.of(context).textTheme.bodySmall
                   ?.copyWith(fontSize: 9),
             ),
