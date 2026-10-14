@@ -13,7 +13,7 @@ dependencies:
   flutter:
     sdk: flutter
 
-  archive: ^4.3.0
+  archive: ^4.5.2
   auto_route: ^11.2.0
   auto_updater: ^1.0.0
   cached_network_image: ^4.0.4
@@ -23,8 +23,8 @@ dependencies:
   device_info_plus: ^13.3.0
   dio: ^5.11.1
   dotted_border: ^3.1.0
-  drift: ^2.35.1
-  excel_community: ^2.5.2
+  drift: ^2.35.2
+  excel_community: ^2.6.0
   fl_chart: ^1.2.0
   flash: ^3.1.1
   flex_color_scheme: ^9.0.0
@@ -45,7 +45,7 @@ dependencies:
   freezed_annotation: ^3.1.0
   geolocator: ^14.1.1
   google_fonts: ^9.0.0
-  image: ^4.10.1
+  image: ^4.12.0
   intl: ^0.20.3
   json_annotation: ^4.12.0
   jwt_decoder: ^2.0.1
@@ -63,17 +63,16 @@ dependencies:
   riverpod_annotation: ^4.0.7
   share_plus: ^13.3.1
   shimmer: ^4.0.0
-  sentry_flutter: ^9.30.1
+  sentry_flutter: ^10.0.0
   sqlite3_flutter_libs: ^0.5.42
-  syncfusion_flutter_pdf: ^35.1.39
-  syncfusion_flutter_pdfviewer: ^35.1.39
+  syncfusion_flutter_pdf: ^35.1.40
+  syncfusion_flutter_pdfviewer: ^35.1.40
   upgrader: ^13.7.0
   url_launcher: ^6.3.3
   uuid: ^4.6.0
   gap: ^3.0.1
   window_manager: ^0.5.2
 
-  cupertino_ui: any
 dev_dependencies:
   sentry_dart_plugin: ^3.4.0
   flutter_test:
@@ -86,19 +85,10 @@ dev_dependencies:
   freezed: ^4.0.1
   json_serializable: ^6.14.1
   riverpod_generator: ^4.0.9
-  intl_utils: ^2.8.16
+  intl_utils: ^2.8.17
 
 dependency_overrides:
   flutter_rotation_sensor: 0.2.0
-  # sentry_flutter 9.20.0 depends on jni for Android. The upstream jni
-  # Windows plugin requires a local JDK during CMake generation, so this local
-  # copy keeps Android support but does not register jni on Windows.
-  jni:
-    path: packages/jni_no_windows
-  # path_provider_android 2.3.0+ depends on jni_flutter, which requires
-  # jni ^1.0.0 — incompatible with the jni_no_windows override above (0.14.2
-  # API). Pin to the last version without that dependency.
-  path_provider_android: 2.2.23
 
 flutter_icons:
   android: true

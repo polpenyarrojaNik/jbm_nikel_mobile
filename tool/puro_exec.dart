@@ -35,15 +35,18 @@ String? _flutterBinDir() {
 
   final list = payload['environmentList'] as Map<String, dynamic>?;
   final selected = list?['projectEnvironment'] ?? list?['globalEnvironment'];
-  final environments = (list?['environments'] as List?)?.cast<Map>();
+  final environments = (list?['environments'] as List?)
+      ?.cast<Map<String, dynamic>>();
   if (selected == null || environments == null) return null;
 
   for (final environment in environments) {
     if (environment['name'] != selected) continue;
     final path = environment['path'] as String?;
     if (path == null) continue;
-    final bin = Directory('$path${Platform.pathSeparator}flutter'
-        '${Platform.pathSeparator}bin');
+    final bin = Directory(
+      '$path${Platform.pathSeparator}flutter'
+      '${Platform.pathSeparator}bin',
+    );
     return bin.existsSync() ? bin.path : null;
   }
   return null;

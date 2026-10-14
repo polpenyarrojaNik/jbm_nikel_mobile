@@ -1,7 +1,3 @@
-import 'dart:io';
-
-import 'package:cupertino_ui/cupertino_ui.dart';
-import 'package:flutter/foundation.dart';
 import 'package:material_ui/material_ui.dart';
 
 import '../../../../generated/l10n.dart';
@@ -16,42 +12,20 @@ Future<bool?> showAlertDialog({
   String? cancelActionText,
   String defaultActionText = 'OK',
 }) {
-  if (kIsWeb || !Platform.isIOS) {
-    return showDialog(
-      context: context,
-
-      barrierDismissible: false,
-      builder: (context) => AlertDialog(
-        title: Text(title),
-        content: content != null ? Text(content) : null,
-        actions: [
-          if (cancelActionText != null)
-            TextButton(
-              child: Text(cancelActionText),
-              onPressed: () => Navigator.of(context).pop(false),
-            ),
-          TextButton(
-            key: kDialogDefaultKey,
-            child: Text(defaultActionText),
-            onPressed: () => Navigator.of(context).pop(true),
-          ),
-        ],
-      ),
-    );
-  }
-  return showCupertinoDialog(
+  return showDialog(
     context: context,
+
     barrierDismissible: false,
-    builder: (context) => CupertinoAlertDialog(
+    builder: (context) => AlertDialog(
       title: Text(title),
       content: content != null ? Text(content) : null,
       actions: [
         if (cancelActionText != null)
-          CupertinoDialogAction(
+          TextButton(
             child: Text(cancelActionText),
             onPressed: () => Navigator.of(context).pop(false),
           ),
-        CupertinoDialogAction(
+        TextButton(
           key: kDialogDefaultKey,
           child: Text(defaultActionText),
           onPressed: () => Navigator.of(context).pop(true),

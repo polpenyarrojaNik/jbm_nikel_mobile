@@ -45,10 +45,10 @@ packages:
     dependency: "direct main"
     description:
       name: archive
-      sha256: "6c5bcd986e06b94e3c40244af471750840a3d2341d1f9763a1100a14add517b4"
+      sha256: "0d58d1fa1fddf6588251ccf2819f3fb3b6d0452c1b2813ac7413a05592bfbefe"
       url: "https://pub.dev"
     source: hosted
-    version: "4.3.0"
+    version: "4.5.2"
   args:
     dependency: transitive
     description:
@@ -346,7 +346,7 @@ packages:
     source: hosted
     version: "1.0.9"
   cupertino_ui:
-    dependency: "direct main"
+    dependency: transitive
     description:
       name: cupertino_ui
       sha256: c23816577a1280cff409e989541767887011f8f1d8c1863a794ed308af46f2a9
@@ -445,10 +445,10 @@ packages:
     dependency: "direct main"
     description:
       name: drift
-      sha256: a21a6a7a9e6a0bcabdf47a9af4247c556d38dc9bfe9f05c4fdf72a488bb57eab
+      sha256: ef9598e1785c18db37209e8554fc79aff94632209d384ec98984b9e3184af0f7
       url: "https://pub.dev"
     source: hosted
-    version: "2.35.1"
+    version: "2.35.2"
   drift_dev:
     dependency: "direct dev"
     description:
@@ -477,10 +477,10 @@ packages:
     dependency: "direct main"
     description:
       name: excel_community
-      sha256: e1b106970edbf0be7d4b4e0c3cd3ab60a0f264f1d296304a0a5cbc2d4e357e67
+      sha256: cb83aa4653f4a4e723f52b0ff77d623c1ca5f5bfcc2dc802b0400ddfc08e8ecd
       url: "https://pub.dev"
     source: hosted
-    version: "2.5.2"
+    version: "2.6.0"
   fake_async:
     dependency: transitive
     description:
@@ -1033,10 +1033,10 @@ packages:
     dependency: "direct main"
     description:
       name: image
-      sha256: a1e7f4951e538a568e14b856702afc9ae1d2f4b202daced8d22c1b9cd211ce89
+      sha256: "89ed75b2f8231fe676808c5564f9590d728024ded7ac782a7ed8474f1c95b72a"
       url: "https://pub.dev"
     source: hosted
-    version: "4.10.1"
+    version: "4.12.0"
   injector:
     dependency: transitive
     description:
@@ -1057,10 +1057,10 @@ packages:
     dependency: "direct dev"
     description:
       name: intl_utils
-      sha256: "9884221107cbdd8e50a0c9994e565aa7213787f4c31c6b600921f67945fe8e3d"
+      sha256: ae6a60b02eec9ee800557d08f219be0988084487ca914ffc2a15bec1359b869b
       url: "https://pub.dev"
     source: hosted
-    version: "2.8.16"
+    version: "2.8.17"
   io:
     dependency: transitive
     description:
@@ -1070,12 +1070,21 @@ packages:
     source: hosted
     version: "1.1.0"
   jni:
-    dependency: "direct overridden"
+    dependency: transitive
     description:
-      path: "packages/jni_no_windows"
-      relative: true
-    source: path
-    version: "0.14.2"
+      name: jni
+      sha256: f038e58b4dc2c9037f50e233175086337e0b305e356d28211bf55f21c504cbd3
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.0.3"
+  jni_util:
+    dependency: transitive
+    description:
+      name: jni_util
+      sha256: "1ba86da04a5f2bf18fde2edb235587e70c5b0fc5bd4ba955f46b00942c3fc35f"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.0.0"
   json_annotation:
     dependency: "direct main"
     description:
@@ -1405,7 +1414,7 @@ packages:
     source: hosted
     version: "2.1.6"
   path_provider_android:
-    dependency: "direct overridden"
+    dependency: transitive
     description:
       name: path_provider_android
       sha256: "149441ca6e4f38193b2e004c0ca6376a3d11f51fa5a77552d8bd4d2b0c0912ba"
@@ -1632,10 +1641,10 @@ packages:
     dependency: transitive
     description:
       name: sentry
-      sha256: "40a247686af64e497df29ab0de1303a20ca55a2e3c7c7e39b989fac47dcadf84"
+      sha256: "1c409bd2868210fcffd792a5a703d14049e019e30a705c7aa705a8985b92c114"
       url: "https://pub.dev"
     source: hosted
-    version: "9.30.1"
+    version: "10.0.0"
   sentry_dart_plugin:
     dependency: "direct dev"
     description:
@@ -1648,10 +1657,10 @@ packages:
     dependency: "direct main"
     description:
       name: sentry_flutter
-      sha256: bdd8897b38ce31185c42ed910628059c4eccbc0b0641213e8d1c63e2fda3f5a3
+      sha256: "9c6e25e3bbdea1f8d779fbc43fa941e078c23972cb8881d2ebd6b82343b80aee"
       url: "https://pub.dev"
     source: hosted
-    version: "9.30.1"
+    version: "10.0.0"
   share_plus:
     dependency: "direct main"
     description:
@@ -1901,74 +1910,74 @@ packages:
     dependency: transitive
     description:
       name: syncfusion_flutter_core
-      sha256: "58eb8e791756a6da3cce29889f0ff0caec93703ef5ef7c8467078428c508b22a"
+      sha256: fc9aaa3be966082b643233aa62510db669a5719b463fa25efd4c1ed2d35b16d7
       url: "https://pub.dev"
     source: hosted
-    version: "35.1.39"
+    version: "35.1.40"
   syncfusion_flutter_pdf:
     dependency: "direct main"
     description:
       name: syncfusion_flutter_pdf
-      sha256: dae02b759449910243be15b8f5e135766882420f68651fde3012ecb6fcee199b
+      sha256: c05012604a81c12c210b06753eccdb94416297f4f35df54d0498514b32f36e54
       url: "https://pub.dev"
     source: hosted
-    version: "35.1.39"
+    version: "35.1.40"
   syncfusion_flutter_pdfviewer:
     dependency: "direct main"
     description:
       name: syncfusion_flutter_pdfviewer
-      sha256: d592318f31a822e701015ee00bbe8bb2a17893b1354108d729076074c03d2a2b
+      sha256: fb9dad850aed94418cd99f5990b396e372a5d7d473741416a26c82482238676a
       url: "https://pub.dev"
     source: hosted
-    version: "35.1.39"
+    version: "35.1.40"
   syncfusion_flutter_signaturepad:
     dependency: transitive
     description:
       name: syncfusion_flutter_signaturepad
-      sha256: a35b218f6a68654732dbf6122ddd4aec09d8b015c0ef359282adb785a31a0d83
+      sha256: "7b35b8f36a46919d9a90e9ac647bc51fd367250c68a0520c6b55e7e03d202fa8"
       url: "https://pub.dev"
     source: hosted
-    version: "35.1.39"
+    version: "35.1.40"
   syncfusion_pdfviewer_linux:
     dependency: transitive
     description:
       name: syncfusion_pdfviewer_linux
-      sha256: dfa97783b9be858723abb9977ef1729341734a239ab85f970e80992b5486c544
+      sha256: "6335625c60c5b2663466119954e600e5e6f2c148a21c20ad490de04a7828f096"
       url: "https://pub.dev"
     source: hosted
-    version: "35.1.39"
+    version: "35.1.40"
   syncfusion_pdfviewer_macos:
     dependency: transitive
     description:
       name: syncfusion_pdfviewer_macos
-      sha256: "9f7eb863bbcfa9590af3036eb54d1975f3ee207926798fe453a969e970c665f0"
+      sha256: "1319fed4b504a9ca4369986bfbedbeba8a468af72c6c9af59e8331f3f2c16020"
       url: "https://pub.dev"
     source: hosted
-    version: "35.1.39"
+    version: "35.1.40"
   syncfusion_pdfviewer_platform_interface:
     dependency: transitive
     description:
       name: syncfusion_pdfviewer_platform_interface
-      sha256: "8a1fc1d53a823f6b6302d09d58bb84e8b766647266cec400ec49a6bfe1cf5315"
+      sha256: "4f2418de0527a9f77093219f69cafbb6291dc4e1a02ed80586ae5a6a8702d34f"
       url: "https://pub.dev"
     source: hosted
-    version: "35.1.39"
+    version: "35.1.40"
   syncfusion_pdfviewer_web:
     dependency: transitive
     description:
       name: syncfusion_pdfviewer_web
-      sha256: "847bc5b86e30f0d14b7d16631ebabc39a0707eb0dfe98231296f698acaa0314a"
+      sha256: "7a09cc5a8d1712f1f98cf0dfa0484a0de93cb7229f94eac655a73d2876835386"
       url: "https://pub.dev"
     source: hosted
-    version: "35.1.39"
+    version: "35.1.40"
   syncfusion_pdfviewer_windows:
     dependency: transitive
     description:
       name: syncfusion_pdfviewer_windows
-      sha256: b67b0803d8bac0121f0ed601ad0c0895df80f9ef9698220241c4ac1e9485693d
+      sha256: d5b108c2fd70feadc6655bf95bef5eeab4f8f75a3ecf924427e0fcd9b9b68019
       url: "https://pub.dev"
     source: hosted
-    version: "35.1.39"
+    version: "35.1.40"
   synchronized:
     dependency: transitive
     description:
