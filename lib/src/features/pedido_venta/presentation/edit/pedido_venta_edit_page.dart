@@ -1188,6 +1188,10 @@ class StepArticuloListContent extends ConsumerWidget {
                                 ),
                           child: Dismissible(
                             key: UniqueKey(),
+                            // Los regalos los gestiona el cálculo de promociones.
+                            direction: (pedidoVentaLineaList[i].isPromo ?? false)
+                                ? DismissDirection.none
+                                : DismissDirection.horizontal,
                             background: const SliderBackround(),
                             onDismissed: (_) => deletePedidoVentaLinea(
                               pedidoVentaLineaList[i],

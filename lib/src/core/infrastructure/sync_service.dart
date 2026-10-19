@@ -77,6 +77,11 @@ import 'log_repository.dart';
 import 'promo_dto_cab_dto.dart';
 import 'promo_dto_cliente_dto.dart';
 import 'promo_dto_lin_dto.dart';
+import 'promocion_art_promo_dto.dart';
+import 'promocion_art_regalo_dto.dart';
+import 'promocion_cab_dto.dart';
+import 'promocion_cliente_dto.dart';
+import 'promocion_pais_dto.dart';
 import 'provincia_dto.dart';
 import 'remote_database.dart';
 import 'remote_response.dart';
@@ -309,6 +314,11 @@ class SyncService {
       await syncPromoDtoCab();
       await syncPromoDtoCliente();
       await syncPromoDtoLin();
+      await syncPromocionCab();
+      await syncPromocionCliente();
+      await syncPromocionPais();
+      await syncPromocionArtPromo();
+      await syncPromocionArtRegalo();
     } catch (e) {
       await insetLog(level: 'I', message: 'Error promos sync');
 
@@ -2015,6 +2025,81 @@ class SyncService {
         apiPath: 'api/v1/sync/promo_dto_lin',
         tableInfo: _remoteDb.promoDtoLinTable,
         fromJson: (e) => PromoDtoLineaDTO.fromJson(e),
+      );
+    } on AppException catch (e) {
+      log.e(e.details);
+      rethrow;
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+  Future<void> syncPromocionCab() async {
+    try {
+      await _syncTable(
+        apiPath: 'api/v1/sync/promocion_cab',
+        tableInfo: _remoteDb.promocionCabTable,
+        fromJson: (e) => PromocionCabDTO.fromJson(e),
+      );
+    } on AppException catch (e) {
+      log.e(e.details);
+      rethrow;
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+  Future<void> syncPromocionCliente() async {
+    try {
+      await _syncTable(
+        apiPath: 'api/v1/sync/promocion_cliente',
+        tableInfo: _remoteDb.promocionClienteTable,
+        fromJson: (e) => PromocionClienteDTO.fromJson(e),
+      );
+    } on AppException catch (e) {
+      log.e(e.details);
+      rethrow;
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+  Future<void> syncPromocionPais() async {
+    try {
+      await _syncTable(
+        apiPath: 'api/v1/sync/promocion_pais',
+        tableInfo: _remoteDb.promocionPaisTable,
+        fromJson: (e) => PromocionPaisDTO.fromJson(e),
+      );
+    } on AppException catch (e) {
+      log.e(e.details);
+      rethrow;
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+  Future<void> syncPromocionArtPromo() async {
+    try {
+      await _syncTable(
+        apiPath: 'api/v1/sync/promocion_art_promo',
+        tableInfo: _remoteDb.promocionArtPromoTable,
+        fromJson: (e) => PromocionArtPromoDTO.fromJson(e),
+      );
+    } on AppException catch (e) {
+      log.e(e.details);
+      rethrow;
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+  Future<void> syncPromocionArtRegalo() async {
+    try {
+      await _syncTable(
+        apiPath: 'api/v1/sync/promocion_art_regalo',
+        tableInfo: _remoteDb.promocionArtRegaloTable,
+        fromJson: (e) => PromocionArtRegaloDTO.fromJson(e),
       );
     } on AppException catch (e) {
       log.e(e.details);

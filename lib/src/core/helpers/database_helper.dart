@@ -54,3 +54,13 @@ Future<bool> hasColumn(
   final rows = await db.customSelect('PRAGMA table_info($table);').get();
   return rows.any((r) => r.data['name'] == column);
 }
+
+Future<bool> hasTable(GeneratedDatabase db, String table) async {
+  final rows = await db
+      .customSelect(
+        "SELECT name FROM sqlite_master WHERE type = 'table' AND name = ?;",
+        variables: [Variable.withString(table)],
+      )
+      .get();
+  return rows.isNotEmpty;
+}
