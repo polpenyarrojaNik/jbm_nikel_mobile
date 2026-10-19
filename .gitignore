@@ -337,3 +337,6 @@ babelEdit/
 sentry.properties
 
 .vscode/
+
+# Muestra de pedidos del ERP (datos de clientes)
+test/fixtures/promociones_erp_muestra.json

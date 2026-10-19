@@ -393,6 +393,8 @@ class PedidoVentaEditPageController
       _ofertaFechaHasta,
       _isBorrador,
     );
+
+    _recalcularPromociones();
   }
 
   void updatePedidoVentaLinea({
@@ -416,6 +418,8 @@ class PedidoVentaEditPageController
       _ofertaFechaHasta,
       _isBorrador,
     );
+
+    _recalcularPromociones();
   }
 
   void deletePedidoVentaLinea({
@@ -438,6 +442,8 @@ class PedidoVentaEditPageController
       _ofertaFechaHasta,
       _isBorrador,
     );
+
+    _recalcularPromociones();
   }
 
   void setObservaciones(String? observaciones) {
@@ -614,5 +620,47 @@ class PedidoVentaEditPageController
       _ofertaFechaHasta,
       _isBorrador,
     );
+
+    _recalcularPromociones();
+  }
+
+  int _promocionesGeneracion = 0;
+
+  /// Aplica las promociones del ERP (artículos en promoción y regalos) sobre
+  /// las líneas actuales, igual que hace el ERP al guardar el pedido.
+  Future<void> _recalcularPromociones() async {
+    final cliente = _cliente;
+    if (cliente == null) return;
+    final generacion = ++_promocionesGeneracion;
+    try {
+      final lineas = await pedidoVentaRepository.aplicarPromociones(
+        clienteId: cliente.id,
+        pedidoVentaLineaList: List.of(pedidoVentaLineaList),
+      );
+      // Si mientras tanto ha cambiado el pedido, manda el cálculo más reciente.
+      if (!mounted || generacion != _promocionesGeneracion) return;
+      pedidoVentaLineaList = [
+        for (var i = 0; i < lineas.length; i++)
+          lineas[i].copyWith(
+            pedidoVentaLineaId: (i + 1).toString().padLeft(3, '0'),
+          ),
+      ];
+      state = PedidoVentaEditPageControllerState.data(
+        _cliente,
+        _clienteDireccion,
+        pedidoVentaLineaList,
+        _recomendacionesProductoList,
+        _currentStep,
+        _observaciones,
+        _pedidoCliente,
+        _oferta,
+        _ofertaFechaHasta,
+        _isBorrador,
+      );
+    } catch (err, stack) {
+      // Un fallo en las promociones no debe bloquear el pedido: se mantienen
+      // las líneas y el ERP recalculará las promociones al importarlo.
+      await Sentry.captureException(err, stackTrace: stack);
+    }
   }
 }

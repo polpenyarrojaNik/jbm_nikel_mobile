@@ -39,6 +39,7 @@ import '../domain/pedido_venta_estado.dart';
 import '../domain/pedido_venta_linea.dart';
 import '../domain/precio.dart';
 import '../domain/precio_promocion.dart';
+import '../domain/promocion_calculo.dart';
 import '../domain/recomendacion_producto.dart';
 import 'pedido_venta_linea_local_dto.dart';
 import 'pedido_venta_local_dto.dart';
@@ -1268,28 +1269,34 @@ class PedidoVentaRepository {
         tipoPrecio: precioNetoTarifa.tipoPrecio,
       );
 
-      // Precio Neto Cliente
+      // Precio Neto Cliente (con su dto adicional, como tarifa_venta_pkg)
       final precioNetoClienteUnitario = _getPrecioUnitario(
-        precio: precioNetoCliente.precio,
-        tipoPrecio: precioNetoCliente.tipoPrecio,
+        precio:
+            precioNetoCliente.precio.precio *
+            ((100 - precioNetoCliente.dtoAdicional) / 100),
+        tipoPrecio: precioNetoCliente.precio.tipoPrecio,
       );
 
-      // Precio Grupos Netos
+      // Precio Grupos Netos (con su dto adicional)
       final precioGrupoNetosUnitario = _getPrecioUnitario(
-        precio: precioGrupoNetos.precio,
-        tipoPrecio: precioGrupoNetos.tipoPrecio,
+        precio:
+            precioGrupoNetos.precio.precio *
+            ((100 - precioGrupoNetos.dtoAdicional) / 100),
+        tipoPrecio: precioGrupoNetos.precio.tipoPrecio,
       );
 
       // Cálculo precio neto
-      final precioNeto =
+      final precioNetoConDto =
           (precioGrupoNetosUnitario.isZero ||
               (!precioNetoClienteUnitario.isZero &&
                   precioNetoClienteUnitario <= precioGrupoNetosUnitario))
           ? precioNetoCliente
           : precioGrupoNetos;
+      final precioNeto = precioNetoConDto.precio;
+      final dtoAdicional = precioNetoConDto.dtoAdicional;
 
       final precioNetoUnitario = _getPrecioUnitario(
-        precio: precioNeto.precio,
+        precio: precioNeto.precio * ((100 - dtoAdicional) / 100),
         tipoPrecio: precioNeto.tipoPrecio,
       );
 
@@ -1328,7 +1335,7 @@ class PedidoVentaRepository {
         } else {
           precio = precioNeto.precio;
           tipoPrecio = precioNeto.tipoPrecio;
-          descuento1 = 0;
+          descuento1 = dtoAdicional;
         }
       } else {
         if (precioNetoUnitario.isZero ||
@@ -1347,9 +1354,17 @@ class PedidoVentaRepository {
             descuento1 = descuento;
           }
         } else {
-          precio = precioNeto.precio;
-          tipoPrecio = precioNeto.tipoPrecio;
-          descuento1 = 0;
+          // Precio neto, salvo que la promo sea inferior
+          if (promoDtoPrecioNetoUnitario.isPositive &&
+              promoDtoPrecioNetoUnitario < precioNetoUnitario) {
+            precio = precioPromoDto.precio;
+            tipoPrecio = precioPromoDto.tipoPrecio;
+            descuento1 = precioPromoDto.dto;
+          } else {
+            precio = precioNeto.precio;
+            tipoPrecio = precioNeto.tipoPrecio;
+            descuento1 = dtoAdicional;
+          }
         }
       }
     }
@@ -1362,6 +1377,263 @@ class PedidoVentaRepository {
       descuento3: descuento3,
       iva: iva,
     );
+  }
+
+  /// Aplica las promociones combinadas del ERP (artículos en promoción +
+  /// regalos) a las líneas del pedido, igual que hace el ERP al guardar
+  /// (uo_br_pedido_venta.of_tratar_articulos_promo + promocion_pkg).
+  ///
+  /// Devuelve las líneas sin regalos anteriores, re-preciadas si estaban en
+  /// promoción, con la promoción asignada y los regalos añadidos al final.
+  Future<List<PedidoVentaLinea>> aplicarPromociones({
+    required String clienteId,
+    required List<PedidoVentaLinea> pedidoVentaLineaList,
+    DateTime? fecha,
+  }) async {
+    final clienteDto = await (_remoteDb.select(
+      _remoteDb.clienteTable,
+    )..where((t) => t.id.equals(clienteId))).getSingleOrNull();
+    if (clienteDto == null) return pedidoVentaLineaList;
+
+    // 1. Limpiar: quitar regalos y devolver al precio de origen las líneas
+    //    que estaban en promoción (como si se eligieran de nuevo).
+    final lineas = <PedidoVentaLinea>[];
+    for (final linea in pedidoVentaLineaList) {
+      if (linea.isPromo ?? false) continue;
+      if (linea.codPromo == null) {
+        lineas.add(linea);
+      } else if (linea.isComponente) {
+        lineas.add(linea.copyWith(codPromo: null, cantidadPromo: 0));
+      } else {
+        final articuloPrecio = await getArticuloPrecio(
+          articuloId: linea.articuloId,
+          clienteId: clienteId,
+          cantidad: linea.cantidad,
+        );
+        lineas.add(
+          _lineaConPrecio(
+            linea,
+            precio: articuloPrecio.precio,
+            descuento1: articuloPrecio.descuento1,
+            descuento2: articuloPrecio.descuento2,
+            descuento3: articuloPrecio.descuento3,
+          ).copyWith(codPromo: null, cantidadPromo: 0),
+        );
+      }
+    }
+
+    // 2. Calcular.
+    final promociones = await _getPromocionesActivas(
+      clienteDto: clienteDto,
+      divisaId: clienteDto.divisaId ?? 'EU',
+      fecha: fecha ?? DateTime.now(),
+    );
+    if (promociones.isEmpty) return lineas;
+
+    final resultado = calcularPromociones(
+      promociones: promociones,
+      lineas: [
+        for (final linea in lineas)
+          LineaPromocionEntrada(
+            articuloId: linea.articuloId,
+            cantidad: linea.cantidad,
+            precioNetoUnitario: precioNetoUnitarioLinea(
+              precio: linea.precioDivisa.amount.toDecimal().toDouble(),
+              tipoPrecio: linea.tipoPrecio,
+              descuento1: linea.descuento1,
+              descuento2: linea.descuento2,
+              descuento3: linea.descuento3,
+            ),
+            participa: !linea.isComponente,
+          ),
+      ],
+    );
+
+    // 3. Volcar el resultado: precio de promoción sin descuentos (si la
+    //    promoción define precio) y regalos a precio 0 sin IVA.
+    final resultadoLineas = <PedidoVentaLinea>[];
+    for (var i = 0; i < lineas.length; i++) {
+      final asignada = resultado.asignadas[i];
+      if (asignada == null) {
+        resultadoLineas.add(lineas[i]);
+        continue;
+      }
+      var linea = lineas[i].copyWith(
+        codPromo: asignada.promoId,
+        cantidadPromo: asignada.promoCantidad,
+        isPromo: false,
+      );
+      if (asignada.precio != 0) {
+        linea = _lineaConPrecio(
+          linea,
+          precio: Precio(
+            precio: asignada.precio.toMoney(currencyId: linea.divisaId),
+            tipoPrecio: asignada.tipoPrecio,
+          ),
+        );
+      }
+      resultadoLineas.add(linea);
+    }
+
+    final divisaId = clienteDto.divisaId ?? 'EU';
+    final plantilla = lineas.isNotEmpty ? lineas.first : null;
+    for (final regalo in resultado.regalos) {
+      if (regalo.cantidad <= 0) continue;
+      final articuloDto = await getArticuloDTOById(
+        articuloId: regalo.articuloId,
+      );
+      resultadoLineas.add(
+        PedidoVentaLinea(
+          empresaId: plantilla?.empresaId,
+          pedidoId: plantilla?.pedidoId,
+          pedidoVentaAppId: plantilla?.pedidoVentaAppId,
+          articuloId: regalo.articuloId,
+          articuloDescription:
+              articuloDto?.getDescriptionInLocalLanguage() ??
+              regalo.articuloId,
+          cantidad: regalo.cantidad,
+          precioDivisa: 0.toMoney(currencyId: divisaId),
+          divisaId: divisaId,
+          tipoPrecio: 1,
+          descuento1: 0,
+          descuento2: 0,
+          descuento3: 0,
+          descuentoProntoPago: clienteDto.descuentoProntoPago,
+          stockDisponible: articuloDto?.stockDisponible,
+          stockDisponibleSN: articuloDto == null
+              ? null
+              : articuloDto.stockDisponible > 0,
+          fechaCliente: plantilla?.fechaCliente,
+          iva: 0,
+          importeLinea: 0.toMoney(currencyId: divisaId),
+          cantidadPendiente: regalo.cantidad,
+          aiRecomendado: false,
+          codPromo: regalo.promoId,
+          cantidadPromo: 0,
+          isPromo: true,
+          lastUpdated: DateTime.now().toUtc(),
+          deleted: false,
+        ),
+      );
+    }
+
+    return resultadoLineas;
+  }
+
+  PedidoVentaLinea _lineaConPrecio(
+    PedidoVentaLinea linea, {
+    required Precio precio,
+    double descuento1 = 0,
+    double descuento2 = 0,
+    double descuento3 = 0,
+  }) {
+    return linea.copyWith(
+      precioDivisa: precio.precio,
+      tipoPrecio: precio.tipoPrecio,
+      descuento1: descuento1,
+      descuento2: descuento2,
+      descuento3: descuento3,
+      importeLinea: getTotalLinea(
+        precio: precio,
+        cantidad: linea.cantidad,
+        descuento1: descuento1,
+        descuento2: descuento2,
+        descuento3: descuento3,
+      ),
+    );
+  }
+
+  /// promocion_cab_activa filtrada por divisa, cliente y país fiscal
+  /// (promocion_pkg.calcular_promocion).
+  Future<List<PromocionCombinada>> _getPromocionesActivas({
+    required ClienteDTO clienteDto,
+    required String divisaId,
+    required DateTime fecha,
+  }) async {
+    final hoy = DateTime(fecha.year, fecha.month, fecha.day);
+    DateTime dia(DateTime d) => DateTime(d.year, d.month, d.day);
+
+    final cabeceras = await (_remoteDb.select(
+      _remoteDb.promocionCabTable,
+    )..where((t) => t.divisaId.equals(divisaId))).get();
+
+    final promociones = <PromocionCombinada>[];
+    for (final cab in cabeceras) {
+      if (dia(cab.fechaDesde.toLocal()).isAfter(hoy)) continue;
+      if (cab.fechaHasta != null && dia(cab.fechaHasta!.toLocal()).isBefore(hoy)) {
+        continue;
+      }
+
+      final clientes = await (_remoteDb.select(_remoteDb.promocionClienteTable)
+            ..where(
+              (t) =>
+                  t.empresaId.equals(cab.empresaId) &
+                  t.promoId.equals(cab.promoId) &
+                  t.clienteId.isIn([clienteDto.id, '*']),
+            ))
+          .get();
+      final clienteActivo = promocionActivaPara(
+        incluido: clientes.any((c) => c.clienteId == clienteDto.id && c.tipo == 'I'),
+        todosIncluido: clientes.any((c) => c.clienteId == '*' && c.tipo == 'I'),
+        excluido: clientes.any((c) => c.clienteId == clienteDto.id && c.tipo == 'E'),
+      );
+      if (!clienteActivo) continue;
+
+      final paisId = clienteDto.paisFiscalId ?? '';
+      final paises = await (_remoteDb.select(_remoteDb.promocionPaisTable)
+            ..where(
+              (t) =>
+                  t.empresaId.equals(cab.empresaId) &
+                  t.promoId.equals(cab.promoId) &
+                  t.paisId.isIn([paisId, '*']),
+            ))
+          .get();
+      final paisActivo = promocionActivaPara(
+        incluido: paises.any((p) => p.paisId == paisId && p.tipo == 'I'),
+        todosIncluido: paises.any((p) => p.paisId == '*' && p.tipo == 'I'),
+        excluido: paises.any((p) => p.paisId == paisId && p.tipo == 'E'),
+      );
+      if (!paisActivo) continue;
+
+      final articulosPromo = await (_remoteDb.select(
+        _remoteDb.promocionArtPromoTable,
+      )..where(
+            (t) =>
+                t.empresaId.equals(cab.empresaId) &
+                t.promoId.equals(cab.promoId),
+          ))
+          .get();
+      final articulosRegalo = await (_remoteDb.select(
+        _remoteDb.promocionArtRegaloTable,
+      )..where(
+            (t) =>
+                t.empresaId.equals(cab.empresaId) &
+                t.promoId.equals(cab.promoId),
+          ))
+          .get();
+
+      promociones.add(
+        PromocionCombinada(
+          empresaId: cab.empresaId,
+          promoId: cab.promoId,
+          fechaDesde: cab.fechaDesde,
+          articulosPromo: [
+            for (final a in articulosPromo)
+              PromocionArticulo(
+                articuloId: a.articuloId,
+                cantidad: a.cantidad,
+                precio: a.precio,
+                tipoPrecio: a.tipoPrecio,
+              ),
+          ],
+          articulosRegalo: [
+            for (final r in articulosRegalo)
+              PromocionRegalo(articuloId: r.articuloId, cantidad: r.cantidad),
+          ],
+        ),
+      );
+    }
+    return promociones;
   }
 
   Future<bool> ofertaHaveAttachment(String pedidoVentaId) {
@@ -1768,7 +2040,7 @@ class PedidoVentaRepository {
         : Precio(precio: 0.toMoney(currencyId: divisaId), tipoPrecio: 1);
   }
 
-  Future<Precio> _getPrecioGrupoNeto({
+  Future<({Precio precio, double dtoAdicional})> _getPrecioGrupoNeto({
     required String clienteId,
     required String articuloId,
     required int cantidad,
@@ -1791,7 +2063,10 @@ class PedidoVentaRepository {
 
     final queryResult = await query.get();
     if (queryResult.isEmpty) {
-      return Precio(precio: 0.toMoney(currencyId: divisaId), tipoPrecio: 1);
+      return (
+        precio: Precio(precio: 0.toMoney(currencyId: divisaId), tipoPrecio: 1),
+        dtoAdicional: 0.0,
+      );
     }
     final minResult = queryResult.reduce((a, b) {
       final precioA = a.read(_remoteDb.articuloGrupoNetoTable.precio)!;
@@ -1811,19 +2086,23 @@ class PedidoVentaRepository {
           ? a
           : b;
     });
-    return Precio(
-      precio: (minResult.read(_remoteDb.articuloGrupoNetoTable.precio) ?? 0)
-          .toMoney(
-            currencyId: minResult.read(
-              _remoteDb.articuloGrupoNetoTable.divisaId,
+    return (
+      precio: Precio(
+        precio: (minResult.read(_remoteDb.articuloGrupoNetoTable.precio) ?? 0)
+            .toMoney(
+              currencyId: minResult.read(
+                _remoteDb.articuloGrupoNetoTable.divisaId,
+              ),
             ),
-          ),
-      tipoPrecio:
-          (minResult.read(_remoteDb.articuloGrupoNetoTable.tipoPrecio) ?? 1),
+        tipoPrecio:
+            (minResult.read(_remoteDb.articuloGrupoNetoTable.tipoPrecio) ?? 1),
+      ),
+      dtoAdicional:
+          minResult.read(_remoteDb.clienteGrupoNetoTable.dtoAdicional) ?? 0.0,
     );
   }
 
-  Future<Precio> _getPrecioClienteNeto({
+  Future<({Precio precio, double dtoAdicional})> _getPrecioClienteNeto({
     required String clienteId,
     required String articuloId,
     required int cantidad,
@@ -1856,17 +2135,29 @@ class PedidoVentaRepository {
             .getSingleOrNull();
 
     return (queryResult != null)
-        ? Precio(
-            precio: queryResult
-                .read(_remoteDb.clientePrecioNetoTable.precio)!
-                .toMoney(
-                  currencyId: queryResult.read(_remoteDb.clienteTable.divisaId),
-                ),
-            tipoPrecio: queryResult.read(
-              _remoteDb.clientePrecioNetoTable.tipoPrecio,
-            )!,
+        ? (
+            precio: Precio(
+              precio: queryResult
+                  .read(_remoteDb.clientePrecioNetoTable.precio)!
+                  .toMoney(
+                    currencyId: queryResult.read(
+                      _remoteDb.clienteTable.divisaId,
+                    ),
+                  ),
+              tipoPrecio: queryResult.read(
+                _remoteDb.clientePrecioNetoTable.tipoPrecio,
+              )!,
+            ),
+            dtoAdicional:
+                queryResult.read(
+                  _remoteDb.clientePrecioNetoTable.dtoAdicional,
+                ) ??
+                0.0,
           )
-        : Precio(precio: 0.toMoney(currencyId: divisaId), tipoPrecio: 1);
+        : (
+            precio: Precio(precio: 0.toMoney(currencyId: divisaId), tipoPrecio: 1),
+            dtoAdicional: 0.0,
+          );
   }
 
   Future<double> _getDescuentoCliente({
@@ -2766,7 +3057,7 @@ class PedidoVentaRepository {
               )
               ..orderBy([
                 OrderingTerm(
-                  expression: _remoteDb.promoDtoCabTable.fechaHasta,
+                  expression: _remoteDb.promoDtoCabTable.fechaDesde,
                   mode: OrderingMode.desc,
                 ),
                 OrderingTerm(

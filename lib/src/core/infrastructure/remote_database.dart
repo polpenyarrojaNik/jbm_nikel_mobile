@@ -49,12 +49,18 @@ import '../../features/visitas/infrastructure/visita_dto.dart';
 import '../../features/visitas/infrastructure/visita_motivos_no_venta_dto.dart';
 import '../../features/visitas/infrastructure/visita_sector_dto.dart';
 import '../domain/isolate_request.dart';
+import '../helpers/database_helper.dart';
 import 'divisa_dto.dart';
 import 'familia_dto.dart';
 import 'pais_dto.dart';
 import 'promo_dto_cab_dto.dart';
 import 'promo_dto_cliente_dto.dart';
 import 'promo_dto_lin_dto.dart';
+import 'promocion_art_promo_dto.dart';
+import 'promocion_art_regalo_dto.dart';
+import 'promocion_cab_dto.dart';
+import 'promocion_cliente_dto.dart';
+import 'promocion_pais_dto.dart';
 import 'provincia_dto.dart';
 import 'sector_dto.dart';
 import 'subfamilia_dto.dart';
@@ -135,6 +141,11 @@ const kRemoteDatabaseName = 'jbm.sqlite';
     PromoDtoCabTable,
     PromoDtoClienteTable,
     PromoDtoLinTable,
+    PromocionArtPromoTable,
+    PromocionArtRegaloTable,
+    PromocionCabTable,
+    PromocionClienteTable,
+    PromocionPaisTable,
     ProvinciaTable,
     SectorTable,
     SubfamiliaTable,
@@ -155,6 +166,28 @@ class RemoteAppDatabase extends _$RemoteAppDatabase {
   RemoteAppDatabase.test() : test = true, super(NativeDatabase.memory());
   @override
   int get schemaVersion => 41;
+
+  @override
+  MigrationStrategy get migration => MigrationStrategy(
+    beforeOpen: (details) async {
+      // La SQLite inicial (jbm.sqlite_vNN.zip) no incluye las tablas de las
+      // promociones del ERP: se crean aquí y se rellenan con la sincronización
+      // incremental (una tabla vacía se sincroniza completa).
+      final m = createMigrator();
+      final promocionTables = <TableInfo<Table, dynamic>>[
+        promocionCabTable,
+        promocionClienteTable,
+        promocionPaisTable,
+        promocionArtPromoTable,
+        promocionArtRegaloTable,
+      ];
+      for (final table in promocionTables) {
+        if (!await hasTable(this, table.actualTableName)) {
+          await m.createTable(table);
+        }
+      }
+    },
+  );
 }
 
 Future<DriftIsolate> _createDriftIsolate() async {

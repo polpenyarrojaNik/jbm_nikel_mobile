@@ -25977,6 +25977,1622 @@ class PromoDtoLinTableCompanion extends UpdateCompanion<PromoDtoLineaDTO> {
   }
 }
 
+class $PromocionArtPromoTableTable extends PromocionArtPromoTable
+    with TableInfo<$PromocionArtPromoTableTable, PromocionArtPromoDTO> {
+  @override
+  final GeneratedDatabase attachedDatabase;
+  final String? _alias;
+  $PromocionArtPromoTableTable(this.attachedDatabase, [this._alias]);
+  static const VerificationMeta _empresaIdMeta = const VerificationMeta(
+    'empresaId',
+  );
+  @override
+  late final GeneratedColumn<String> empresaId = GeneratedColumn<String>(
+    'empresa_id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _promoIdMeta = const VerificationMeta(
+    'promoId',
+  );
+  @override
+  late final GeneratedColumn<String> promoId = GeneratedColumn<String>(
+    'promo_id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _articuloIdMeta = const VerificationMeta(
+    'articuloId',
+  );
+  @override
+  late final GeneratedColumn<String> articuloId = GeneratedColumn<String>(
+    'articulo_id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _cantidadMeta = const VerificationMeta(
+    'cantidad',
+  );
+  @override
+  late final GeneratedColumn<int> cantidad = GeneratedColumn<int>(
+    'cantidad',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _precioMeta = const VerificationMeta('precio');
+  @override
+  late final GeneratedColumn<double> precio = GeneratedColumn<double>(
+    'precio',
+    aliasedName,
+    false,
+    type: DriftSqlType.double,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _tipoPrecioMeta = const VerificationMeta(
+    'tipoPrecio',
+  );
+  @override
+  late final GeneratedColumn<int> tipoPrecio = GeneratedColumn<int>(
+    'tipo_precio',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _lastUpdatedMeta = const VerificationMeta(
+    'lastUpdated',
+  );
+  @override
+  late final GeneratedColumn<DateTime> lastUpdated = GeneratedColumn<DateTime>(
+    'last_updated',
+    aliasedName,
+    false,
+    type: DriftSqlType.dateTime,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _deletedMeta = const VerificationMeta(
+    'deleted',
+  );
+  @override
+  late final GeneratedColumn<String> deleted = GeneratedColumn<String>(
+    'deleted',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+    defaultValue: const Constant('N'),
+  );
+  @override
+  List<GeneratedColumn> get $columns => [
+    empresaId,
+    promoId,
+    articuloId,
+    cantidad,
+    precio,
+    tipoPrecio,
+    lastUpdated,
+    deleted,
+  ];
+  @override
+  String get aliasedName => _alias ?? actualTableName;
+  @override
+  String get actualTableName => $name;
+  static const String $name = 'promocion_art_promo';
+  @override
+  VerificationContext validateIntegrity(
+    Insertable<PromocionArtPromoDTO> instance, {
+    bool isInserting = false,
+  }) {
+    final context = VerificationContext();
+    final data = instance.toColumns(true);
+    if (data.containsKey('empresa_id')) {
+      context.handle(
+        _empresaIdMeta,
+        empresaId.isAcceptableOrUnknown(data['empresa_id']!, _empresaIdMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_empresaIdMeta);
+    }
+    if (data.containsKey('promo_id')) {
+      context.handle(
+        _promoIdMeta,
+        promoId.isAcceptableOrUnknown(data['promo_id']!, _promoIdMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_promoIdMeta);
+    }
+    if (data.containsKey('articulo_id')) {
+      context.handle(
+        _articuloIdMeta,
+        articuloId.isAcceptableOrUnknown(data['articulo_id']!, _articuloIdMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_articuloIdMeta);
+    }
+    if (data.containsKey('cantidad')) {
+      context.handle(
+        _cantidadMeta,
+        cantidad.isAcceptableOrUnknown(data['cantidad']!, _cantidadMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_cantidadMeta);
+    }
+    if (data.containsKey('precio')) {
+      context.handle(
+        _precioMeta,
+        precio.isAcceptableOrUnknown(data['precio']!, _precioMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_precioMeta);
+    }
+    if (data.containsKey('tipo_precio')) {
+      context.handle(
+        _tipoPrecioMeta,
+        tipoPrecio.isAcceptableOrUnknown(data['tipo_precio']!, _tipoPrecioMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_tipoPrecioMeta);
+    }
+    if (data.containsKey('last_updated')) {
+      context.handle(
+        _lastUpdatedMeta,
+        lastUpdated.isAcceptableOrUnknown(
+          data['last_updated']!,
+          _lastUpdatedMeta,
+        ),
+      );
+    } else if (isInserting) {
+      context.missing(_lastUpdatedMeta);
+    }
+    if (data.containsKey('deleted')) {
+      context.handle(
+        _deletedMeta,
+        deleted.isAcceptableOrUnknown(data['deleted']!, _deletedMeta),
+      );
+    }
+    return context;
+  }
+
+  @override
+  Set<GeneratedColumn> get $primaryKey => {empresaId, promoId, articuloId};
+  @override
+  PromocionArtPromoDTO map(Map<String, dynamic> data, {String? tablePrefix}) {
+    final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
+    return PromocionArtPromoDTO(
+      empresaId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}empresa_id'],
+      )!,
+      promoId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}promo_id'],
+      )!,
+      articuloId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}articulo_id'],
+      )!,
+      cantidad: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}cantidad'],
+      )!,
+      precio: attachedDatabase.typeMapping.read(
+        DriftSqlType.double,
+        data['${effectivePrefix}precio'],
+      )!,
+      tipoPrecio: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}tipo_precio'],
+      )!,
+      lastUpdated: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}last_updated'],
+      )!,
+      deleted: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}deleted'],
+      )!,
+    );
+  }
+
+  @override
+  $PromocionArtPromoTableTable createAlias(String alias) {
+    return $PromocionArtPromoTableTable(attachedDatabase, alias);
+  }
+}
+
+class PromocionArtPromoTableCompanion
+    extends UpdateCompanion<PromocionArtPromoDTO> {
+  final Value<String> empresaId;
+  final Value<String> promoId;
+  final Value<String> articuloId;
+  final Value<int> cantidad;
+  final Value<double> precio;
+  final Value<int> tipoPrecio;
+  final Value<DateTime> lastUpdated;
+  final Value<String> deleted;
+  final Value<int> rowid;
+  const PromocionArtPromoTableCompanion({
+    this.empresaId = const Value.absent(),
+    this.promoId = const Value.absent(),
+    this.articuloId = const Value.absent(),
+    this.cantidad = const Value.absent(),
+    this.precio = const Value.absent(),
+    this.tipoPrecio = const Value.absent(),
+    this.lastUpdated = const Value.absent(),
+    this.deleted = const Value.absent(),
+    this.rowid = const Value.absent(),
+  });
+  PromocionArtPromoTableCompanion.insert({
+    required String empresaId,
+    required String promoId,
+    required String articuloId,
+    required int cantidad,
+    required double precio,
+    required int tipoPrecio,
+    required DateTime lastUpdated,
+    this.deleted = const Value.absent(),
+    this.rowid = const Value.absent(),
+  }) : empresaId = Value(empresaId),
+       promoId = Value(promoId),
+       articuloId = Value(articuloId),
+       cantidad = Value(cantidad),
+       precio = Value(precio),
+       tipoPrecio = Value(tipoPrecio),
+       lastUpdated = Value(lastUpdated);
+  static Insertable<PromocionArtPromoDTO> custom({
+    Expression<String>? empresaId,
+    Expression<String>? promoId,
+    Expression<String>? articuloId,
+    Expression<int>? cantidad,
+    Expression<double>? precio,
+    Expression<int>? tipoPrecio,
+    Expression<DateTime>? lastUpdated,
+    Expression<String>? deleted,
+    Expression<int>? rowid,
+  }) {
+    return RawValuesInsertable({
+      if (empresaId != null) 'empresa_id': empresaId,
+      if (promoId != null) 'promo_id': promoId,
+      if (articuloId != null) 'articulo_id': articuloId,
+      if (cantidad != null) 'cantidad': cantidad,
+      if (precio != null) 'precio': precio,
+      if (tipoPrecio != null) 'tipo_precio': tipoPrecio,
+      if (lastUpdated != null) 'last_updated': lastUpdated,
+      if (deleted != null) 'deleted': deleted,
+      if (rowid != null) 'rowid': rowid,
+    });
+  }
+
+  PromocionArtPromoTableCompanion copyWith({
+    Value<String>? empresaId,
+    Value<String>? promoId,
+    Value<String>? articuloId,
+    Value<int>? cantidad,
+    Value<double>? precio,
+    Value<int>? tipoPrecio,
+    Value<DateTime>? lastUpdated,
+    Value<String>? deleted,
+    Value<int>? rowid,
+  }) {
+    return PromocionArtPromoTableCompanion(
+      empresaId: empresaId ?? this.empresaId,
+      promoId: promoId ?? this.promoId,
+      articuloId: articuloId ?? this.articuloId,
+      cantidad: cantidad ?? this.cantidad,
+      precio: precio ?? this.precio,
+      tipoPrecio: tipoPrecio ?? this.tipoPrecio,
+      lastUpdated: lastUpdated ?? this.lastUpdated,
+      deleted: deleted ?? this.deleted,
+      rowid: rowid ?? this.rowid,
+    );
+  }
+
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    if (empresaId.present) {
+      map['empresa_id'] = Variable<String>(empresaId.value);
+    }
+    if (promoId.present) {
+      map['promo_id'] = Variable<String>(promoId.value);
+    }
+    if (articuloId.present) {
+      map['articulo_id'] = Variable<String>(articuloId.value);
+    }
+    if (cantidad.present) {
+      map['cantidad'] = Variable<int>(cantidad.value);
+    }
+    if (precio.present) {
+      map['precio'] = Variable<double>(precio.value);
+    }
+    if (tipoPrecio.present) {
+      map['tipo_precio'] = Variable<int>(tipoPrecio.value);
+    }
+    if (lastUpdated.present) {
+      map['last_updated'] = Variable<DateTime>(lastUpdated.value);
+    }
+    if (deleted.present) {
+      map['deleted'] = Variable<String>(deleted.value);
+    }
+    if (rowid.present) {
+      map['rowid'] = Variable<int>(rowid.value);
+    }
+    return map;
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('PromocionArtPromoTableCompanion(')
+          ..write('empresaId: $empresaId, ')
+          ..write('promoId: $promoId, ')
+          ..write('articuloId: $articuloId, ')
+          ..write('cantidad: $cantidad, ')
+          ..write('precio: $precio, ')
+          ..write('tipoPrecio: $tipoPrecio, ')
+          ..write('lastUpdated: $lastUpdated, ')
+          ..write('deleted: $deleted, ')
+          ..write('rowid: $rowid')
+          ..write(')'))
+        .toString();
+  }
+}
+
+class $PromocionArtRegaloTableTable extends PromocionArtRegaloTable
+    with TableInfo<$PromocionArtRegaloTableTable, PromocionArtRegaloDTO> {
+  @override
+  final GeneratedDatabase attachedDatabase;
+  final String? _alias;
+  $PromocionArtRegaloTableTable(this.attachedDatabase, [this._alias]);
+  static const VerificationMeta _empresaIdMeta = const VerificationMeta(
+    'empresaId',
+  );
+  @override
+  late final GeneratedColumn<String> empresaId = GeneratedColumn<String>(
+    'empresa_id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _promoIdMeta = const VerificationMeta(
+    'promoId',
+  );
+  @override
+  late final GeneratedColumn<String> promoId = GeneratedColumn<String>(
+    'promo_id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _articuloIdMeta = const VerificationMeta(
+    'articuloId',
+  );
+  @override
+  late final GeneratedColumn<String> articuloId = GeneratedColumn<String>(
+    'articulo_id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _cantidadMeta = const VerificationMeta(
+    'cantidad',
+  );
+  @override
+  late final GeneratedColumn<int> cantidad = GeneratedColumn<int>(
+    'cantidad',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _lastUpdatedMeta = const VerificationMeta(
+    'lastUpdated',
+  );
+  @override
+  late final GeneratedColumn<DateTime> lastUpdated = GeneratedColumn<DateTime>(
+    'last_updated',
+    aliasedName,
+    false,
+    type: DriftSqlType.dateTime,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _deletedMeta = const VerificationMeta(
+    'deleted',
+  );
+  @override
+  late final GeneratedColumn<String> deleted = GeneratedColumn<String>(
+    'deleted',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+    defaultValue: const Constant('N'),
+  );
+  @override
+  List<GeneratedColumn> get $columns => [
+    empresaId,
+    promoId,
+    articuloId,
+    cantidad,
+    lastUpdated,
+    deleted,
+  ];
+  @override
+  String get aliasedName => _alias ?? actualTableName;
+  @override
+  String get actualTableName => $name;
+  static const String $name = 'promocion_art_regalo';
+  @override
+  VerificationContext validateIntegrity(
+    Insertable<PromocionArtRegaloDTO> instance, {
+    bool isInserting = false,
+  }) {
+    final context = VerificationContext();
+    final data = instance.toColumns(true);
+    if (data.containsKey('empresa_id')) {
+      context.handle(
+        _empresaIdMeta,
+        empresaId.isAcceptableOrUnknown(data['empresa_id']!, _empresaIdMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_empresaIdMeta);
+    }
+    if (data.containsKey('promo_id')) {
+      context.handle(
+        _promoIdMeta,
+        promoId.isAcceptableOrUnknown(data['promo_id']!, _promoIdMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_promoIdMeta);
+    }
+    if (data.containsKey('articulo_id')) {
+      context.handle(
+        _articuloIdMeta,
+        articuloId.isAcceptableOrUnknown(data['articulo_id']!, _articuloIdMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_articuloIdMeta);
+    }
+    if (data.containsKey('cantidad')) {
+      context.handle(
+        _cantidadMeta,
+        cantidad.isAcceptableOrUnknown(data['cantidad']!, _cantidadMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_cantidadMeta);
+    }
+    if (data.containsKey('last_updated')) {
+      context.handle(
+        _lastUpdatedMeta,
+        lastUpdated.isAcceptableOrUnknown(
+          data['last_updated']!,
+          _lastUpdatedMeta,
+        ),
+      );
+    } else if (isInserting) {
+      context.missing(_lastUpdatedMeta);
+    }
+    if (data.containsKey('deleted')) {
+      context.handle(
+        _deletedMeta,
+        deleted.isAcceptableOrUnknown(data['deleted']!, _deletedMeta),
+      );
+    }
+    return context;
+  }
+
+  @override
+  Set<GeneratedColumn> get $primaryKey => {empresaId, promoId, articuloId};
+  @override
+  PromocionArtRegaloDTO map(Map<String, dynamic> data, {String? tablePrefix}) {
+    final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
+    return PromocionArtRegaloDTO(
+      empresaId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}empresa_id'],
+      )!,
+      promoId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}promo_id'],
+      )!,
+      articuloId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}articulo_id'],
+      )!,
+      cantidad: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}cantidad'],
+      )!,
+      lastUpdated: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}last_updated'],
+      )!,
+      deleted: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}deleted'],
+      )!,
+    );
+  }
+
+  @override
+  $PromocionArtRegaloTableTable createAlias(String alias) {
+    return $PromocionArtRegaloTableTable(attachedDatabase, alias);
+  }
+}
+
+class PromocionArtRegaloTableCompanion
+    extends UpdateCompanion<PromocionArtRegaloDTO> {
+  final Value<String> empresaId;
+  final Value<String> promoId;
+  final Value<String> articuloId;
+  final Value<int> cantidad;
+  final Value<DateTime> lastUpdated;
+  final Value<String> deleted;
+  final Value<int> rowid;
+  const PromocionArtRegaloTableCompanion({
+    this.empresaId = const Value.absent(),
+    this.promoId = const Value.absent(),
+    this.articuloId = const Value.absent(),
+    this.cantidad = const Value.absent(),
+    this.lastUpdated = const Value.absent(),
+    this.deleted = const Value.absent(),
+    this.rowid = const Value.absent(),
+  });
+  PromocionArtRegaloTableCompanion.insert({
+    required String empresaId,
+    required String promoId,
+    required String articuloId,
+    required int cantidad,
+    required DateTime lastUpdated,
+    this.deleted = const Value.absent(),
+    this.rowid = const Value.absent(),
+  }) : empresaId = Value(empresaId),
+       promoId = Value(promoId),
+       articuloId = Value(articuloId),
+       cantidad = Value(cantidad),
+       lastUpdated = Value(lastUpdated);
+  static Insertable<PromocionArtRegaloDTO> custom({
+    Expression<String>? empresaId,
+    Expression<String>? promoId,
+    Expression<String>? articuloId,
+    Expression<int>? cantidad,
+    Expression<DateTime>? lastUpdated,
+    Expression<String>? deleted,
+    Expression<int>? rowid,
+  }) {
+    return RawValuesInsertable({
+      if (empresaId != null) 'empresa_id': empresaId,
+      if (promoId != null) 'promo_id': promoId,
+      if (articuloId != null) 'articulo_id': articuloId,
+      if (cantidad != null) 'cantidad': cantidad,
+      if (lastUpdated != null) 'last_updated': lastUpdated,
+      if (deleted != null) 'deleted': deleted,
+      if (rowid != null) 'rowid': rowid,
+    });
+  }
+
+  PromocionArtRegaloTableCompanion copyWith({
+    Value<String>? empresaId,
+    Value<String>? promoId,
+    Value<String>? articuloId,
+    Value<int>? cantidad,
+    Value<DateTime>? lastUpdated,
+    Value<String>? deleted,
+    Value<int>? rowid,
+  }) {
+    return PromocionArtRegaloTableCompanion(
+      empresaId: empresaId ?? this.empresaId,
+      promoId: promoId ?? this.promoId,
+      articuloId: articuloId ?? this.articuloId,
+      cantidad: cantidad ?? this.cantidad,
+      lastUpdated: lastUpdated ?? this.lastUpdated,
+      deleted: deleted ?? this.deleted,
+      rowid: rowid ?? this.rowid,
+    );
+  }
+
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    if (empresaId.present) {
+      map['empresa_id'] = Variable<String>(empresaId.value);
+    }
+    if (promoId.present) {
+      map['promo_id'] = Variable<String>(promoId.value);
+    }
+    if (articuloId.present) {
+      map['articulo_id'] = Variable<String>(articuloId.value);
+    }
+    if (cantidad.present) {
+      map['cantidad'] = Variable<int>(cantidad.value);
+    }
+    if (lastUpdated.present) {
+      map['last_updated'] = Variable<DateTime>(lastUpdated.value);
+    }
+    if (deleted.present) {
+      map['deleted'] = Variable<String>(deleted.value);
+    }
+    if (rowid.present) {
+      map['rowid'] = Variable<int>(rowid.value);
+    }
+    return map;
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('PromocionArtRegaloTableCompanion(')
+          ..write('empresaId: $empresaId, ')
+          ..write('promoId: $promoId, ')
+          ..write('articuloId: $articuloId, ')
+          ..write('cantidad: $cantidad, ')
+          ..write('lastUpdated: $lastUpdated, ')
+          ..write('deleted: $deleted, ')
+          ..write('rowid: $rowid')
+          ..write(')'))
+        .toString();
+  }
+}
+
+class $PromocionCabTableTable extends PromocionCabTable
+    with TableInfo<$PromocionCabTableTable, PromocionCabDTO> {
+  @override
+  final GeneratedDatabase attachedDatabase;
+  final String? _alias;
+  $PromocionCabTableTable(this.attachedDatabase, [this._alias]);
+  static const VerificationMeta _empresaIdMeta = const VerificationMeta(
+    'empresaId',
+  );
+  @override
+  late final GeneratedColumn<String> empresaId = GeneratedColumn<String>(
+    'empresa_id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _promoIdMeta = const VerificationMeta(
+    'promoId',
+  );
+  @override
+  late final GeneratedColumn<String> promoId = GeneratedColumn<String>(
+    'promo_id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _nombreMeta = const VerificationMeta('nombre');
+  @override
+  late final GeneratedColumn<String> nombre = GeneratedColumn<String>(
+    'nombre',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _fechaDesdeMeta = const VerificationMeta(
+    'fechaDesde',
+  );
+  @override
+  late final GeneratedColumn<DateTime> fechaDesde = GeneratedColumn<DateTime>(
+    'fecha_desde',
+    aliasedName,
+    false,
+    type: DriftSqlType.dateTime,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _fechaHastaMeta = const VerificationMeta(
+    'fechaHasta',
+  );
+  @override
+  late final GeneratedColumn<DateTime> fechaHasta = GeneratedColumn<DateTime>(
+    'fecha_hasta',
+    aliasedName,
+    true,
+    type: DriftSqlType.dateTime,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _divisaIdMeta = const VerificationMeta(
+    'divisaId',
+  );
+  @override
+  late final GeneratedColumn<String> divisaId = GeneratedColumn<String>(
+    'divisa_id',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _lastUpdatedMeta = const VerificationMeta(
+    'lastUpdated',
+  );
+  @override
+  late final GeneratedColumn<DateTime> lastUpdated = GeneratedColumn<DateTime>(
+    'last_updated',
+    aliasedName,
+    false,
+    type: DriftSqlType.dateTime,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _deletedMeta = const VerificationMeta(
+    'deleted',
+  );
+  @override
+  late final GeneratedColumn<String> deleted = GeneratedColumn<String>(
+    'deleted',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+    defaultValue: const Constant('N'),
+  );
+  @override
+  List<GeneratedColumn> get $columns => [
+    empresaId,
+    promoId,
+    nombre,
+    fechaDesde,
+    fechaHasta,
+    divisaId,
+    lastUpdated,
+    deleted,
+  ];
+  @override
+  String get aliasedName => _alias ?? actualTableName;
+  @override
+  String get actualTableName => $name;
+  static const String $name = 'promocion_cab';
+  @override
+  VerificationContext validateIntegrity(
+    Insertable<PromocionCabDTO> instance, {
+    bool isInserting = false,
+  }) {
+    final context = VerificationContext();
+    final data = instance.toColumns(true);
+    if (data.containsKey('empresa_id')) {
+      context.handle(
+        _empresaIdMeta,
+        empresaId.isAcceptableOrUnknown(data['empresa_id']!, _empresaIdMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_empresaIdMeta);
+    }
+    if (data.containsKey('promo_id')) {
+      context.handle(
+        _promoIdMeta,
+        promoId.isAcceptableOrUnknown(data['promo_id']!, _promoIdMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_promoIdMeta);
+    }
+    if (data.containsKey('nombre')) {
+      context.handle(
+        _nombreMeta,
+        nombre.isAcceptableOrUnknown(data['nombre']!, _nombreMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_nombreMeta);
+    }
+    if (data.containsKey('fecha_desde')) {
+      context.handle(
+        _fechaDesdeMeta,
+        fechaDesde.isAcceptableOrUnknown(data['fecha_desde']!, _fechaDesdeMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_fechaDesdeMeta);
+    }
+    if (data.containsKey('fecha_hasta')) {
+      context.handle(
+        _fechaHastaMeta,
+        fechaHasta.isAcceptableOrUnknown(data['fecha_hasta']!, _fechaHastaMeta),
+      );
+    }
+    if (data.containsKey('divisa_id')) {
+      context.handle(
+        _divisaIdMeta,
+        divisaId.isAcceptableOrUnknown(data['divisa_id']!, _divisaIdMeta),
+      );
+    }
+    if (data.containsKey('last_updated')) {
+      context.handle(
+        _lastUpdatedMeta,
+        lastUpdated.isAcceptableOrUnknown(
+          data['last_updated']!,
+          _lastUpdatedMeta,
+        ),
+      );
+    } else if (isInserting) {
+      context.missing(_lastUpdatedMeta);
+    }
+    if (data.containsKey('deleted')) {
+      context.handle(
+        _deletedMeta,
+        deleted.isAcceptableOrUnknown(data['deleted']!, _deletedMeta),
+      );
+    }
+    return context;
+  }
+
+  @override
+  Set<GeneratedColumn> get $primaryKey => {empresaId, promoId};
+  @override
+  PromocionCabDTO map(Map<String, dynamic> data, {String? tablePrefix}) {
+    final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
+    return PromocionCabDTO(
+      empresaId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}empresa_id'],
+      )!,
+      promoId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}promo_id'],
+      )!,
+      nombre: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}nombre'],
+      )!,
+      fechaDesde: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}fecha_desde'],
+      )!,
+      fechaHasta: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}fecha_hasta'],
+      ),
+      divisaId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}divisa_id'],
+      ),
+      lastUpdated: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}last_updated'],
+      )!,
+      deleted: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}deleted'],
+      )!,
+    );
+  }
+
+  @override
+  $PromocionCabTableTable createAlias(String alias) {
+    return $PromocionCabTableTable(attachedDatabase, alias);
+  }
+}
+
+class PromocionCabTableCompanion extends UpdateCompanion<PromocionCabDTO> {
+  final Value<String> empresaId;
+  final Value<String> promoId;
+  final Value<String> nombre;
+  final Value<DateTime> fechaDesde;
+  final Value<DateTime?> fechaHasta;
+  final Value<String?> divisaId;
+  final Value<DateTime> lastUpdated;
+  final Value<String> deleted;
+  final Value<int> rowid;
+  const PromocionCabTableCompanion({
+    this.empresaId = const Value.absent(),
+    this.promoId = const Value.absent(),
+    this.nombre = const Value.absent(),
+    this.fechaDesde = const Value.absent(),
+    this.fechaHasta = const Value.absent(),
+    this.divisaId = const Value.absent(),
+    this.lastUpdated = const Value.absent(),
+    this.deleted = const Value.absent(),
+    this.rowid = const Value.absent(),
+  });
+  PromocionCabTableCompanion.insert({
+    required String empresaId,
+    required String promoId,
+    required String nombre,
+    required DateTime fechaDesde,
+    this.fechaHasta = const Value.absent(),
+    this.divisaId = const Value.absent(),
+    required DateTime lastUpdated,
+    this.deleted = const Value.absent(),
+    this.rowid = const Value.absent(),
+  }) : empresaId = Value(empresaId),
+       promoId = Value(promoId),
+       nombre = Value(nombre),
+       fechaDesde = Value(fechaDesde),
+       lastUpdated = Value(lastUpdated);
+  static Insertable<PromocionCabDTO> custom({
+    Expression<String>? empresaId,
+    Expression<String>? promoId,
+    Expression<String>? nombre,
+    Expression<DateTime>? fechaDesde,
+    Expression<DateTime>? fechaHasta,
+    Expression<String>? divisaId,
+    Expression<DateTime>? lastUpdated,
+    Expression<String>? deleted,
+    Expression<int>? rowid,
+  }) {
+    return RawValuesInsertable({
+      if (empresaId != null) 'empresa_id': empresaId,
+      if (promoId != null) 'promo_id': promoId,
+      if (nombre != null) 'nombre': nombre,
+      if (fechaDesde != null) 'fecha_desde': fechaDesde,
+      if (fechaHasta != null) 'fecha_hasta': fechaHasta,
+      if (divisaId != null) 'divisa_id': divisaId,
+      if (lastUpdated != null) 'last_updated': lastUpdated,
+      if (deleted != null) 'deleted': deleted,
+      if (rowid != null) 'rowid': rowid,
+    });
+  }
+
+  PromocionCabTableCompanion copyWith({
+    Value<String>? empresaId,
+    Value<String>? promoId,
+    Value<String>? nombre,
+    Value<DateTime>? fechaDesde,
+    Value<DateTime?>? fechaHasta,
+    Value<String?>? divisaId,
+    Value<DateTime>? lastUpdated,
+    Value<String>? deleted,
+    Value<int>? rowid,
+  }) {
+    return PromocionCabTableCompanion(
+      empresaId: empresaId ?? this.empresaId,
+      promoId: promoId ?? this.promoId,
+      nombre: nombre ?? this.nombre,
+      fechaDesde: fechaDesde ?? this.fechaDesde,
+      fechaHasta: fechaHasta ?? this.fechaHasta,
+      divisaId: divisaId ?? this.divisaId,
+      lastUpdated: lastUpdated ?? this.lastUpdated,
+      deleted: deleted ?? this.deleted,
+      rowid: rowid ?? this.rowid,
+    );
+  }
+
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    if (empresaId.present) {
+      map['empresa_id'] = Variable<String>(empresaId.value);
+    }
+    if (promoId.present) {
+      map['promo_id'] = Variable<String>(promoId.value);
+    }
+    if (nombre.present) {
+      map['nombre'] = Variable<String>(nombre.value);
+    }
+    if (fechaDesde.present) {
+      map['fecha_desde'] = Variable<DateTime>(fechaDesde.value);
+    }
+    if (fechaHasta.present) {
+      map['fecha_hasta'] = Variable<DateTime>(fechaHasta.value);
+    }
+    if (divisaId.present) {
+      map['divisa_id'] = Variable<String>(divisaId.value);
+    }
+    if (lastUpdated.present) {
+      map['last_updated'] = Variable<DateTime>(lastUpdated.value);
+    }
+    if (deleted.present) {
+      map['deleted'] = Variable<String>(deleted.value);
+    }
+    if (rowid.present) {
+      map['rowid'] = Variable<int>(rowid.value);
+    }
+    return map;
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('PromocionCabTableCompanion(')
+          ..write('empresaId: $empresaId, ')
+          ..write('promoId: $promoId, ')
+          ..write('nombre: $nombre, ')
+          ..write('fechaDesde: $fechaDesde, ')
+          ..write('fechaHasta: $fechaHasta, ')
+          ..write('divisaId: $divisaId, ')
+          ..write('lastUpdated: $lastUpdated, ')
+          ..write('deleted: $deleted, ')
+          ..write('rowid: $rowid')
+          ..write(')'))
+        .toString();
+  }
+}
+
+class $PromocionClienteTableTable extends PromocionClienteTable
+    with TableInfo<$PromocionClienteTableTable, PromocionClienteDTO> {
+  @override
+  final GeneratedDatabase attachedDatabase;
+  final String? _alias;
+  $PromocionClienteTableTable(this.attachedDatabase, [this._alias]);
+  static const VerificationMeta _empresaIdMeta = const VerificationMeta(
+    'empresaId',
+  );
+  @override
+  late final GeneratedColumn<String> empresaId = GeneratedColumn<String>(
+    'empresa_id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _promoIdMeta = const VerificationMeta(
+    'promoId',
+  );
+  @override
+  late final GeneratedColumn<String> promoId = GeneratedColumn<String>(
+    'promo_id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _clienteIdMeta = const VerificationMeta(
+    'clienteId',
+  );
+  @override
+  late final GeneratedColumn<String> clienteId = GeneratedColumn<String>(
+    'cliente_id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _tipoMeta = const VerificationMeta('tipo');
+  @override
+  late final GeneratedColumn<String> tipo = GeneratedColumn<String>(
+    'tipo',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _lastUpdatedMeta = const VerificationMeta(
+    'lastUpdated',
+  );
+  @override
+  late final GeneratedColumn<DateTime> lastUpdated = GeneratedColumn<DateTime>(
+    'last_updated',
+    aliasedName,
+    false,
+    type: DriftSqlType.dateTime,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _deletedMeta = const VerificationMeta(
+    'deleted',
+  );
+  @override
+  late final GeneratedColumn<String> deleted = GeneratedColumn<String>(
+    'deleted',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+    defaultValue: const Constant('N'),
+  );
+  @override
+  List<GeneratedColumn> get $columns => [
+    empresaId,
+    promoId,
+    clienteId,
+    tipo,
+    lastUpdated,
+    deleted,
+  ];
+  @override
+  String get aliasedName => _alias ?? actualTableName;
+  @override
+  String get actualTableName => $name;
+  static const String $name = 'promocion_cliente';
+  @override
+  VerificationContext validateIntegrity(
+    Insertable<PromocionClienteDTO> instance, {
+    bool isInserting = false,
+  }) {
+    final context = VerificationContext();
+    final data = instance.toColumns(true);
+    if (data.containsKey('empresa_id')) {
+      context.handle(
+        _empresaIdMeta,
+        empresaId.isAcceptableOrUnknown(data['empresa_id']!, _empresaIdMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_empresaIdMeta);
+    }
+    if (data.containsKey('promo_id')) {
+      context.handle(
+        _promoIdMeta,
+        promoId.isAcceptableOrUnknown(data['promo_id']!, _promoIdMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_promoIdMeta);
+    }
+    if (data.containsKey('cliente_id')) {
+      context.handle(
+        _clienteIdMeta,
+        clienteId.isAcceptableOrUnknown(data['cliente_id']!, _clienteIdMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_clienteIdMeta);
+    }
+    if (data.containsKey('tipo')) {
+      context.handle(
+        _tipoMeta,
+        tipo.isAcceptableOrUnknown(data['tipo']!, _tipoMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_tipoMeta);
+    }
+    if (data.containsKey('last_updated')) {
+      context.handle(
+        _lastUpdatedMeta,
+        lastUpdated.isAcceptableOrUnknown(
+          data['last_updated']!,
+          _lastUpdatedMeta,
+        ),
+      );
+    } else if (isInserting) {
+      context.missing(_lastUpdatedMeta);
+    }
+    if (data.containsKey('deleted')) {
+      context.handle(
+        _deletedMeta,
+        deleted.isAcceptableOrUnknown(data['deleted']!, _deletedMeta),
+      );
+    }
+    return context;
+  }
+
+  @override
+  Set<GeneratedColumn> get $primaryKey => {empresaId, promoId, clienteId};
+  @override
+  PromocionClienteDTO map(Map<String, dynamic> data, {String? tablePrefix}) {
+    final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
+    return PromocionClienteDTO(
+      empresaId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}empresa_id'],
+      )!,
+      promoId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}promo_id'],
+      )!,
+      clienteId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}cliente_id'],
+      )!,
+      tipo: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}tipo'],
+      )!,
+      lastUpdated: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}last_updated'],
+      )!,
+      deleted: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}deleted'],
+      )!,
+    );
+  }
+
+  @override
+  $PromocionClienteTableTable createAlias(String alias) {
+    return $PromocionClienteTableTable(attachedDatabase, alias);
+  }
+}
+
+class PromocionClienteTableCompanion
+    extends UpdateCompanion<PromocionClienteDTO> {
+  final Value<String> empresaId;
+  final Value<String> promoId;
+  final Value<String> clienteId;
+  final Value<String> tipo;
+  final Value<DateTime> lastUpdated;
+  final Value<String> deleted;
+  final Value<int> rowid;
+  const PromocionClienteTableCompanion({
+    this.empresaId = const Value.absent(),
+    this.promoId = const Value.absent(),
+    this.clienteId = const Value.absent(),
+    this.tipo = const Value.absent(),
+    this.lastUpdated = const Value.absent(),
+    this.deleted = const Value.absent(),
+    this.rowid = const Value.absent(),
+  });
+  PromocionClienteTableCompanion.insert({
+    required String empresaId,
+    required String promoId,
+    required String clienteId,
+    required String tipo,
+    required DateTime lastUpdated,
+    this.deleted = const Value.absent(),
+    this.rowid = const Value.absent(),
+  }) : empresaId = Value(empresaId),
+       promoId = Value(promoId),
+       clienteId = Value(clienteId),
+       tipo = Value(tipo),
+       lastUpdated = Value(lastUpdated);
+  static Insertable<PromocionClienteDTO> custom({
+    Expression<String>? empresaId,
+    Expression<String>? promoId,
+    Expression<String>? clienteId,
+    Expression<String>? tipo,
+    Expression<DateTime>? lastUpdated,
+    Expression<String>? deleted,
+    Expression<int>? rowid,
+  }) {
+    return RawValuesInsertable({
+      if (empresaId != null) 'empresa_id': empresaId,
+      if (promoId != null) 'promo_id': promoId,
+      if (clienteId != null) 'cliente_id': clienteId,
+      if (tipo != null) 'tipo': tipo,
+      if (lastUpdated != null) 'last_updated': lastUpdated,
+      if (deleted != null) 'deleted': deleted,
+      if (rowid != null) 'rowid': rowid,
+    });
+  }
+
+  PromocionClienteTableCompanion copyWith({
+    Value<String>? empresaId,
+    Value<String>? promoId,
+    Value<String>? clienteId,
+    Value<String>? tipo,
+    Value<DateTime>? lastUpdated,
+    Value<String>? deleted,
+    Value<int>? rowid,
+  }) {
+    return PromocionClienteTableCompanion(
+      empresaId: empresaId ?? this.empresaId,
+      promoId: promoId ?? this.promoId,
+      clienteId: clienteId ?? this.clienteId,
+      tipo: tipo ?? this.tipo,
+      lastUpdated: lastUpdated ?? this.lastUpdated,
+      deleted: deleted ?? this.deleted,
+      rowid: rowid ?? this.rowid,
+    );
+  }
+
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    if (empresaId.present) {
+      map['empresa_id'] = Variable<String>(empresaId.value);
+    }
+    if (promoId.present) {
+      map['promo_id'] = Variable<String>(promoId.value);
+    }
+    if (clienteId.present) {
+      map['cliente_id'] = Variable<String>(clienteId.value);
+    }
+    if (tipo.present) {
+      map['tipo'] = Variable<String>(tipo.value);
+    }
+    if (lastUpdated.present) {
+      map['last_updated'] = Variable<DateTime>(lastUpdated.value);
+    }
+    if (deleted.present) {
+      map['deleted'] = Variable<String>(deleted.value);
+    }
+    if (rowid.present) {
+      map['rowid'] = Variable<int>(rowid.value);
+    }
+    return map;
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('PromocionClienteTableCompanion(')
+          ..write('empresaId: $empresaId, ')
+          ..write('promoId: $promoId, ')
+          ..write('clienteId: $clienteId, ')
+          ..write('tipo: $tipo, ')
+          ..write('lastUpdated: $lastUpdated, ')
+          ..write('deleted: $deleted, ')
+          ..write('rowid: $rowid')
+          ..write(')'))
+        .toString();
+  }
+}
+
+class $PromocionPaisTableTable extends PromocionPaisTable
+    with TableInfo<$PromocionPaisTableTable, PromocionPaisDTO> {
+  @override
+  final GeneratedDatabase attachedDatabase;
+  final String? _alias;
+  $PromocionPaisTableTable(this.attachedDatabase, [this._alias]);
+  static const VerificationMeta _empresaIdMeta = const VerificationMeta(
+    'empresaId',
+  );
+  @override
+  late final GeneratedColumn<String> empresaId = GeneratedColumn<String>(
+    'empresa_id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _promoIdMeta = const VerificationMeta(
+    'promoId',
+  );
+  @override
+  late final GeneratedColumn<String> promoId = GeneratedColumn<String>(
+    'promo_id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _paisIdMeta = const VerificationMeta('paisId');
+  @override
+  late final GeneratedColumn<String> paisId = GeneratedColumn<String>(
+    'pais_id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _tipoMeta = const VerificationMeta('tipo');
+  @override
+  late final GeneratedColumn<String> tipo = GeneratedColumn<String>(
+    'tipo',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _lastUpdatedMeta = const VerificationMeta(
+    'lastUpdated',
+  );
+  @override
+  late final GeneratedColumn<DateTime> lastUpdated = GeneratedColumn<DateTime>(
+    'last_updated',
+    aliasedName,
+    false,
+    type: DriftSqlType.dateTime,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _deletedMeta = const VerificationMeta(
+    'deleted',
+  );
+  @override
+  late final GeneratedColumn<String> deleted = GeneratedColumn<String>(
+    'deleted',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+    defaultValue: const Constant('N'),
+  );
+  @override
+  List<GeneratedColumn> get $columns => [
+    empresaId,
+    promoId,
+    paisId,
+    tipo,
+    lastUpdated,
+    deleted,
+  ];
+  @override
+  String get aliasedName => _alias ?? actualTableName;
+  @override
+  String get actualTableName => $name;
+  static const String $name = 'promocion_pais';
+  @override
+  VerificationContext validateIntegrity(
+    Insertable<PromocionPaisDTO> instance, {
+    bool isInserting = false,
+  }) {
+    final context = VerificationContext();
+    final data = instance.toColumns(true);
+    if (data.containsKey('empresa_id')) {
+      context.handle(
+        _empresaIdMeta,
+        empresaId.isAcceptableOrUnknown(data['empresa_id']!, _empresaIdMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_empresaIdMeta);
+    }
+    if (data.containsKey('promo_id')) {
+      context.handle(
+        _promoIdMeta,
+        promoId.isAcceptableOrUnknown(data['promo_id']!, _promoIdMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_promoIdMeta);
+    }
+    if (data.containsKey('pais_id')) {
+      context.handle(
+        _paisIdMeta,
+        paisId.isAcceptableOrUnknown(data['pais_id']!, _paisIdMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_paisIdMeta);
+    }
+    if (data.containsKey('tipo')) {
+      context.handle(
+        _tipoMeta,
+        tipo.isAcceptableOrUnknown(data['tipo']!, _tipoMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_tipoMeta);
+    }
+    if (data.containsKey('last_updated')) {
+      context.handle(
+        _lastUpdatedMeta,
+        lastUpdated.isAcceptableOrUnknown(
+          data['last_updated']!,
+          _lastUpdatedMeta,
+        ),
+      );
+    } else if (isInserting) {
+      context.missing(_lastUpdatedMeta);
+    }
+    if (data.containsKey('deleted')) {
+      context.handle(
+        _deletedMeta,
+        deleted.isAcceptableOrUnknown(data['deleted']!, _deletedMeta),
+      );
+    }
+    return context;
+  }
+
+  @override
+  Set<GeneratedColumn> get $primaryKey => {empresaId, promoId, paisId};
+  @override
+  PromocionPaisDTO map(Map<String, dynamic> data, {String? tablePrefix}) {
+    final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
+    return PromocionPaisDTO(
+      empresaId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}empresa_id'],
+      )!,
+      promoId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}promo_id'],
+      )!,
+      paisId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}pais_id'],
+      )!,
+      tipo: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}tipo'],
+      )!,
+      lastUpdated: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}last_updated'],
+      )!,
+      deleted: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}deleted'],
+      )!,
+    );
+  }
+
+  @override
+  $PromocionPaisTableTable createAlias(String alias) {
+    return $PromocionPaisTableTable(attachedDatabase, alias);
+  }
+}
+
+class PromocionPaisTableCompanion extends UpdateCompanion<PromocionPaisDTO> {
+  final Value<String> empresaId;
+  final Value<String> promoId;
+  final Value<String> paisId;
+  final Value<String> tipo;
+  final Value<DateTime> lastUpdated;
+  final Value<String> deleted;
+  final Value<int> rowid;
+  const PromocionPaisTableCompanion({
+    this.empresaId = const Value.absent(),
+    this.promoId = const Value.absent(),
+    this.paisId = const Value.absent(),
+    this.tipo = const Value.absent(),
+    this.lastUpdated = const Value.absent(),
+    this.deleted = const Value.absent(),
+    this.rowid = const Value.absent(),
+  });
+  PromocionPaisTableCompanion.insert({
+    required String empresaId,
+    required String promoId,
+    required String paisId,
+    required String tipo,
+    required DateTime lastUpdated,
+    this.deleted = const Value.absent(),
+    this.rowid = const Value.absent(),
+  }) : empresaId = Value(empresaId),
+       promoId = Value(promoId),
+       paisId = Value(paisId),
+       tipo = Value(tipo),
+       lastUpdated = Value(lastUpdated);
+  static Insertable<PromocionPaisDTO> custom({
+    Expression<String>? empresaId,
+    Expression<String>? promoId,
+    Expression<String>? paisId,
+    Expression<String>? tipo,
+    Expression<DateTime>? lastUpdated,
+    Expression<String>? deleted,
+    Expression<int>? rowid,
+  }) {
+    return RawValuesInsertable({
+      if (empresaId != null) 'empresa_id': empresaId,
+      if (promoId != null) 'promo_id': promoId,
+      if (paisId != null) 'pais_id': paisId,
+      if (tipo != null) 'tipo': tipo,
+      if (lastUpdated != null) 'last_updated': lastUpdated,
+      if (deleted != null) 'deleted': deleted,
+      if (rowid != null) 'rowid': rowid,
+    });
+  }
+
+  PromocionPaisTableCompanion copyWith({
+    Value<String>? empresaId,
+    Value<String>? promoId,
+    Value<String>? paisId,
+    Value<String>? tipo,
+    Value<DateTime>? lastUpdated,
+    Value<String>? deleted,
+    Value<int>? rowid,
+  }) {
+    return PromocionPaisTableCompanion(
+      empresaId: empresaId ?? this.empresaId,
+      promoId: promoId ?? this.promoId,
+      paisId: paisId ?? this.paisId,
+      tipo: tipo ?? this.tipo,
+      lastUpdated: lastUpdated ?? this.lastUpdated,
+      deleted: deleted ?? this.deleted,
+      rowid: rowid ?? this.rowid,
+    );
+  }
+
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    if (empresaId.present) {
+      map['empresa_id'] = Variable<String>(empresaId.value);
+    }
+    if (promoId.present) {
+      map['promo_id'] = Variable<String>(promoId.value);
+    }
+    if (paisId.present) {
+      map['pais_id'] = Variable<String>(paisId.value);
+    }
+    if (tipo.present) {
+      map['tipo'] = Variable<String>(tipo.value);
+    }
+    if (lastUpdated.present) {
+      map['last_updated'] = Variable<DateTime>(lastUpdated.value);
+    }
+    if (deleted.present) {
+      map['deleted'] = Variable<String>(deleted.value);
+    }
+    if (rowid.present) {
+      map['rowid'] = Variable<int>(rowid.value);
+    }
+    return map;
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('PromocionPaisTableCompanion(')
+          ..write('empresaId: $empresaId, ')
+          ..write('promoId: $promoId, ')
+          ..write('paisId: $paisId, ')
+          ..write('tipo: $tipo, ')
+          ..write('lastUpdated: $lastUpdated, ')
+          ..write('deleted: $deleted, ')
+          ..write('rowid: $rowid')
+          ..write(')'))
+        .toString();
+  }
+}
+
 class $ProvinciaTableTable extends ProvinciaTable
     with TableInfo<$ProvinciaTableTable, ProvinciaDTO> {
   @override
@@ -31403,6 +33019,16 @@ abstract class _$RemoteAppDatabase extends GeneratedDatabase {
   late final $PromoDtoLinTableTable promoDtoLinTable = $PromoDtoLinTableTable(
     this,
   );
+  late final $PromocionArtPromoTableTable promocionArtPromoTable =
+      $PromocionArtPromoTableTable(this);
+  late final $PromocionArtRegaloTableTable promocionArtRegaloTable =
+      $PromocionArtRegaloTableTable(this);
+  late final $PromocionCabTableTable promocionCabTable =
+      $PromocionCabTableTable(this);
+  late final $PromocionClienteTableTable promocionClienteTable =
+      $PromocionClienteTableTable(this);
+  late final $PromocionPaisTableTable promocionPaisTable =
+      $PromocionPaisTableTable(this);
   late final $ProvinciaTableTable provinciaTable = $ProvinciaTableTable(this);
   late final $SectorTableTable sectorTable = $SectorTableTable(this);
   late final $SubsectorTableTable subsectorTable = $SubsectorTableTable(this);
@@ -31464,6 +33090,11 @@ abstract class _$RemoteAppDatabase extends GeneratedDatabase {
     promoDtoCabTable,
     promoDtoClienteTable,
     promoDtoLinTable,
+    promocionArtPromoTable,
+    promocionArtRegaloTable,
+    promocionCabTable,
+    promocionClienteTable,
+    promocionPaisTable,
     provinciaTable,
     sectorTable,
     subsectorTable,
@@ -52088,6 +53719,1335 @@ typedef $$PromoDtoLinTableTableProcessedTableManager =
       PromoDtoLineaDTO,
       PrefetchHooks Function()
     >;
+typedef $$PromocionArtPromoTableTableCreateCompanionBuilder =
+    PromocionArtPromoTableCompanion Function({
+      required String empresaId,
+      required String promoId,
+      required String articuloId,
+      required int cantidad,
+      required double precio,
+      required int tipoPrecio,
+      required DateTime lastUpdated,
+      Value<String> deleted,
+      Value<int> rowid,
+    });
+typedef $$PromocionArtPromoTableTableUpdateCompanionBuilder =
+    PromocionArtPromoTableCompanion Function({
+      Value<String> empresaId,
+      Value<String> promoId,
+      Value<String> articuloId,
+      Value<int> cantidad,
+      Value<double> precio,
+      Value<int> tipoPrecio,
+      Value<DateTime> lastUpdated,
+      Value<String> deleted,
+      Value<int> rowid,
+    });
+
+class $$PromocionArtPromoTableTableFilterComposer
+    extends Composer<_$RemoteAppDatabase, $PromocionArtPromoTableTable> {
+  $$PromocionArtPromoTableTableFilterComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnFilters<String> get empresaId => $composableBuilder(
+    column: $table.empresaId,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get promoId => $composableBuilder(
+    column: $table.promoId,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get articuloId => $composableBuilder(
+    column: $table.articuloId,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get cantidad => $composableBuilder(
+    column: $table.cantidad,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<double> get precio => $composableBuilder(
+    column: $table.precio,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get tipoPrecio => $composableBuilder(
+    column: $table.tipoPrecio,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<DateTime> get lastUpdated => $composableBuilder(
+    column: $table.lastUpdated,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get deleted => $composableBuilder(
+    column: $table.deleted,
+    builder: (column) => ColumnFilters(column),
+  );
+}
+
+class $$PromocionArtPromoTableTableOrderingComposer
+    extends Composer<_$RemoteAppDatabase, $PromocionArtPromoTableTable> {
+  $$PromocionArtPromoTableTableOrderingComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnOrderings<String> get empresaId => $composableBuilder(
+    column: $table.empresaId,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get promoId => $composableBuilder(
+    column: $table.promoId,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get articuloId => $composableBuilder(
+    column: $table.articuloId,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get cantidad => $composableBuilder(
+    column: $table.cantidad,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<double> get precio => $composableBuilder(
+    column: $table.precio,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get tipoPrecio => $composableBuilder(
+    column: $table.tipoPrecio,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<DateTime> get lastUpdated => $composableBuilder(
+    column: $table.lastUpdated,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get deleted => $composableBuilder(
+    column: $table.deleted,
+    builder: (column) => ColumnOrderings(column),
+  );
+}
+
+class $$PromocionArtPromoTableTableAnnotationComposer
+    extends Composer<_$RemoteAppDatabase, $PromocionArtPromoTableTable> {
+  $$PromocionArtPromoTableTableAnnotationComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  GeneratedColumn<String> get empresaId =>
+      $composableBuilder(column: $table.empresaId, builder: (column) => column);
+
+  GeneratedColumn<String> get promoId =>
+      $composableBuilder(column: $table.promoId, builder: (column) => column);
+
+  GeneratedColumn<String> get articuloId => $composableBuilder(
+    column: $table.articuloId,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<int> get cantidad =>
+      $composableBuilder(column: $table.cantidad, builder: (column) => column);
+
+  GeneratedColumn<double> get precio =>
+      $composableBuilder(column: $table.precio, builder: (column) => column);
+
+  GeneratedColumn<int> get tipoPrecio => $composableBuilder(
+    column: $table.tipoPrecio,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<DateTime> get lastUpdated => $composableBuilder(
+    column: $table.lastUpdated,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<String> get deleted =>
+      $composableBuilder(column: $table.deleted, builder: (column) => column);
+}
+
+class $$PromocionArtPromoTableTableTableManager
+    extends
+        RootTableManager<
+          _$RemoteAppDatabase,
+          $PromocionArtPromoTableTable,
+          PromocionArtPromoDTO,
+          $$PromocionArtPromoTableTableFilterComposer,
+          $$PromocionArtPromoTableTableOrderingComposer,
+          $$PromocionArtPromoTableTableAnnotationComposer,
+          $$PromocionArtPromoTableTableCreateCompanionBuilder,
+          $$PromocionArtPromoTableTableUpdateCompanionBuilder,
+          (
+            PromocionArtPromoDTO,
+            BaseReferences<
+              _$RemoteAppDatabase,
+              $PromocionArtPromoTableTable,
+              PromocionArtPromoDTO
+            >,
+          ),
+          PromocionArtPromoDTO,
+          PrefetchHooks Function()
+        > {
+  $$PromocionArtPromoTableTableTableManager(
+    _$RemoteAppDatabase db,
+    $PromocionArtPromoTableTable table,
+  ) : super(
+        TableManagerState(
+          db: db,
+          table: table,
+          createFilteringComposer: () =>
+              $$PromocionArtPromoTableTableFilterComposer(
+                $db: db,
+                $table: table,
+              ),
+          createOrderingComposer: () =>
+              $$PromocionArtPromoTableTableOrderingComposer(
+                $db: db,
+                $table: table,
+              ),
+          createComputedFieldComposer: () =>
+              $$PromocionArtPromoTableTableAnnotationComposer(
+                $db: db,
+                $table: table,
+              ),
+          updateCompanionCallback:
+              ({
+                Value<String> empresaId = const Value.absent(),
+                Value<String> promoId = const Value.absent(),
+                Value<String> articuloId = const Value.absent(),
+                Value<int> cantidad = const Value.absent(),
+                Value<double> precio = const Value.absent(),
+                Value<int> tipoPrecio = const Value.absent(),
+                Value<DateTime> lastUpdated = const Value.absent(),
+                Value<String> deleted = const Value.absent(),
+                Value<int> rowid = const Value.absent(),
+              }) => PromocionArtPromoTableCompanion(
+                empresaId: empresaId,
+                promoId: promoId,
+                articuloId: articuloId,
+                cantidad: cantidad,
+                precio: precio,
+                tipoPrecio: tipoPrecio,
+                lastUpdated: lastUpdated,
+                deleted: deleted,
+                rowid: rowid,
+              ),
+          createCompanionCallback:
+              ({
+                required String empresaId,
+                required String promoId,
+                required String articuloId,
+                required int cantidad,
+                required double precio,
+                required int tipoPrecio,
+                required DateTime lastUpdated,
+                Value<String> deleted = const Value.absent(),
+                Value<int> rowid = const Value.absent(),
+              }) => PromocionArtPromoTableCompanion.insert(
+                empresaId: empresaId,
+                promoId: promoId,
+                articuloId: articuloId,
+                cantidad: cantidad,
+                precio: precio,
+                tipoPrecio: tipoPrecio,
+                lastUpdated: lastUpdated,
+                deleted: deleted,
+                rowid: rowid,
+              ),
+          withReferenceMapper: (p0) => p0
+              .map(
+                (e) => (
+                  e.readTable<
+                    $PromocionArtPromoTableTable,
+                    PromocionArtPromoDTO
+                  >(table),
+                  BaseReferences<
+                    _$RemoteAppDatabase,
+                    $PromocionArtPromoTableTable,
+                    PromocionArtPromoDTO
+                  >(db, table, e),
+                ),
+              )
+              .toList(),
+          prefetchHooksCallback: null,
+        ),
+      );
+}
+
+typedef $$PromocionArtPromoTableTableProcessedTableManager =
+    ProcessedTableManager<
+      _$RemoteAppDatabase,
+      $PromocionArtPromoTableTable,
+      PromocionArtPromoDTO,
+      $$PromocionArtPromoTableTableFilterComposer,
+      $$PromocionArtPromoTableTableOrderingComposer,
+      $$PromocionArtPromoTableTableAnnotationComposer,
+      $$PromocionArtPromoTableTableCreateCompanionBuilder,
+      $$PromocionArtPromoTableTableUpdateCompanionBuilder,
+      (
+        PromocionArtPromoDTO,
+        BaseReferences<
+          _$RemoteAppDatabase,
+          $PromocionArtPromoTableTable,
+          PromocionArtPromoDTO
+        >,
+      ),
+      PromocionArtPromoDTO,
+      PrefetchHooks Function()
+    >;
+typedef $$PromocionArtRegaloTableTableCreateCompanionBuilder =
+    PromocionArtRegaloTableCompanion Function({
+      required String empresaId,
+      required String promoId,
+      required String articuloId,
+      required int cantidad,
+      required DateTime lastUpdated,
+      Value<String> deleted,
+      Value<int> rowid,
+    });
+typedef $$PromocionArtRegaloTableTableUpdateCompanionBuilder =
+    PromocionArtRegaloTableCompanion Function({
+      Value<String> empresaId,
+      Value<String> promoId,
+      Value<String> articuloId,
+      Value<int> cantidad,
+      Value<DateTime> lastUpdated,
+      Value<String> deleted,
+      Value<int> rowid,
+    });
+
+class $$PromocionArtRegaloTableTableFilterComposer
+    extends Composer<_$RemoteAppDatabase, $PromocionArtRegaloTableTable> {
+  $$PromocionArtRegaloTableTableFilterComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnFilters<String> get empresaId => $composableBuilder(
+    column: $table.empresaId,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get promoId => $composableBuilder(
+    column: $table.promoId,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get articuloId => $composableBuilder(
+    column: $table.articuloId,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get cantidad => $composableBuilder(
+    column: $table.cantidad,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<DateTime> get lastUpdated => $composableBuilder(
+    column: $table.lastUpdated,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get deleted => $composableBuilder(
+    column: $table.deleted,
+    builder: (column) => ColumnFilters(column),
+  );
+}
+
+class $$PromocionArtRegaloTableTableOrderingComposer
+    extends Composer<_$RemoteAppDatabase, $PromocionArtRegaloTableTable> {
+  $$PromocionArtRegaloTableTableOrderingComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnOrderings<String> get empresaId => $composableBuilder(
+    column: $table.empresaId,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get promoId => $composableBuilder(
+    column: $table.promoId,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get articuloId => $composableBuilder(
+    column: $table.articuloId,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get cantidad => $composableBuilder(
+    column: $table.cantidad,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<DateTime> get lastUpdated => $composableBuilder(
+    column: $table.lastUpdated,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get deleted => $composableBuilder(
+    column: $table.deleted,
+    builder: (column) => ColumnOrderings(column),
+  );
+}
+
+class $$PromocionArtRegaloTableTableAnnotationComposer
+    extends Composer<_$RemoteAppDatabase, $PromocionArtRegaloTableTable> {
+  $$PromocionArtRegaloTableTableAnnotationComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  GeneratedColumn<String> get empresaId =>
+      $composableBuilder(column: $table.empresaId, builder: (column) => column);
+
+  GeneratedColumn<String> get promoId =>
+      $composableBuilder(column: $table.promoId, builder: (column) => column);
+
+  GeneratedColumn<String> get articuloId => $composableBuilder(
+    column: $table.articuloId,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<int> get cantidad =>
+      $composableBuilder(column: $table.cantidad, builder: (column) => column);
+
+  GeneratedColumn<DateTime> get lastUpdated => $composableBuilder(
+    column: $table.lastUpdated,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<String> get deleted =>
+      $composableBuilder(column: $table.deleted, builder: (column) => column);
+}
+
+class $$PromocionArtRegaloTableTableTableManager
+    extends
+        RootTableManager<
+          _$RemoteAppDatabase,
+          $PromocionArtRegaloTableTable,
+          PromocionArtRegaloDTO,
+          $$PromocionArtRegaloTableTableFilterComposer,
+          $$PromocionArtRegaloTableTableOrderingComposer,
+          $$PromocionArtRegaloTableTableAnnotationComposer,
+          $$PromocionArtRegaloTableTableCreateCompanionBuilder,
+          $$PromocionArtRegaloTableTableUpdateCompanionBuilder,
+          (
+            PromocionArtRegaloDTO,
+            BaseReferences<
+              _$RemoteAppDatabase,
+              $PromocionArtRegaloTableTable,
+              PromocionArtRegaloDTO
+            >,
+          ),
+          PromocionArtRegaloDTO,
+          PrefetchHooks Function()
+        > {
+  $$PromocionArtRegaloTableTableTableManager(
+    _$RemoteAppDatabase db,
+    $PromocionArtRegaloTableTable table,
+  ) : super(
+        TableManagerState(
+          db: db,
+          table: table,
+          createFilteringComposer: () =>
+              $$PromocionArtRegaloTableTableFilterComposer(
+                $db: db,
+                $table: table,
+              ),
+          createOrderingComposer: () =>
+              $$PromocionArtRegaloTableTableOrderingComposer(
+                $db: db,
+                $table: table,
+              ),
+          createComputedFieldComposer: () =>
+              $$PromocionArtRegaloTableTableAnnotationComposer(
+                $db: db,
+                $table: table,
+              ),
+          updateCompanionCallback:
+              ({
+                Value<String> empresaId = const Value.absent(),
+                Value<String> promoId = const Value.absent(),
+                Value<String> articuloId = const Value.absent(),
+                Value<int> cantidad = const Value.absent(),
+                Value<DateTime> lastUpdated = const Value.absent(),
+                Value<String> deleted = const Value.absent(),
+                Value<int> rowid = const Value.absent(),
+              }) => PromocionArtRegaloTableCompanion(
+                empresaId: empresaId,
+                promoId: promoId,
+                articuloId: articuloId,
+                cantidad: cantidad,
+                lastUpdated: lastUpdated,
+                deleted: deleted,
+                rowid: rowid,
+              ),
+          createCompanionCallback:
+              ({
+                required String empresaId,
+                required String promoId,
+                required String articuloId,
+                required int cantidad,
+                required DateTime lastUpdated,
+                Value<String> deleted = const Value.absent(),
+                Value<int> rowid = const Value.absent(),
+              }) => PromocionArtRegaloTableCompanion.insert(
+                empresaId: empresaId,
+                promoId: promoId,
+                articuloId: articuloId,
+                cantidad: cantidad,
+                lastUpdated: lastUpdated,
+                deleted: deleted,
+                rowid: rowid,
+              ),
+          withReferenceMapper: (p0) => p0
+              .map(
+                (e) => (
+                  e.readTable<
+                    $PromocionArtRegaloTableTable,
+                    PromocionArtRegaloDTO
+                  >(table),
+                  BaseReferences<
+                    _$RemoteAppDatabase,
+                    $PromocionArtRegaloTableTable,
+                    PromocionArtRegaloDTO
+                  >(db, table, e),
+                ),
+              )
+              .toList(),
+          prefetchHooksCallback: null,
+        ),
+      );
+}
+
+typedef $$PromocionArtRegaloTableTableProcessedTableManager =
+    ProcessedTableManager<
+      _$RemoteAppDatabase,
+      $PromocionArtRegaloTableTable,
+      PromocionArtRegaloDTO,
+      $$PromocionArtRegaloTableTableFilterComposer,
+      $$PromocionArtRegaloTableTableOrderingComposer,
+      $$PromocionArtRegaloTableTableAnnotationComposer,
+      $$PromocionArtRegaloTableTableCreateCompanionBuilder,
+      $$PromocionArtRegaloTableTableUpdateCompanionBuilder,
+      (
+        PromocionArtRegaloDTO,
+        BaseReferences<
+          _$RemoteAppDatabase,
+          $PromocionArtRegaloTableTable,
+          PromocionArtRegaloDTO
+        >,
+      ),
+      PromocionArtRegaloDTO,
+      PrefetchHooks Function()
+    >;
+typedef $$PromocionCabTableTableCreateCompanionBuilder =
+    PromocionCabTableCompanion Function({
+      required String empresaId,
+      required String promoId,
+      required String nombre,
+      required DateTime fechaDesde,
+      Value<DateTime?> fechaHasta,
+      Value<String?> divisaId,
+      required DateTime lastUpdated,
+      Value<String> deleted,
+      Value<int> rowid,
+    });
+typedef $$PromocionCabTableTableUpdateCompanionBuilder =
+    PromocionCabTableCompanion Function({
+      Value<String> empresaId,
+      Value<String> promoId,
+      Value<String> nombre,
+      Value<DateTime> fechaDesde,
+      Value<DateTime?> fechaHasta,
+      Value<String?> divisaId,
+      Value<DateTime> lastUpdated,
+      Value<String> deleted,
+      Value<int> rowid,
+    });
+
+class $$PromocionCabTableTableFilterComposer
+    extends Composer<_$RemoteAppDatabase, $PromocionCabTableTable> {
+  $$PromocionCabTableTableFilterComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnFilters<String> get empresaId => $composableBuilder(
+    column: $table.empresaId,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get promoId => $composableBuilder(
+    column: $table.promoId,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get nombre => $composableBuilder(
+    column: $table.nombre,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<DateTime> get fechaDesde => $composableBuilder(
+    column: $table.fechaDesde,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<DateTime> get fechaHasta => $composableBuilder(
+    column: $table.fechaHasta,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get divisaId => $composableBuilder(
+    column: $table.divisaId,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<DateTime> get lastUpdated => $composableBuilder(
+    column: $table.lastUpdated,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get deleted => $composableBuilder(
+    column: $table.deleted,
+    builder: (column) => ColumnFilters(column),
+  );
+}
+
+class $$PromocionCabTableTableOrderingComposer
+    extends Composer<_$RemoteAppDatabase, $PromocionCabTableTable> {
+  $$PromocionCabTableTableOrderingComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnOrderings<String> get empresaId => $composableBuilder(
+    column: $table.empresaId,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get promoId => $composableBuilder(
+    column: $table.promoId,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get nombre => $composableBuilder(
+    column: $table.nombre,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<DateTime> get fechaDesde => $composableBuilder(
+    column: $table.fechaDesde,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<DateTime> get fechaHasta => $composableBuilder(
+    column: $table.fechaHasta,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get divisaId => $composableBuilder(
+    column: $table.divisaId,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<DateTime> get lastUpdated => $composableBuilder(
+    column: $table.lastUpdated,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get deleted => $composableBuilder(
+    column: $table.deleted,
+    builder: (column) => ColumnOrderings(column),
+  );
+}
+
+class $$PromocionCabTableTableAnnotationComposer
+    extends Composer<_$RemoteAppDatabase, $PromocionCabTableTable> {
+  $$PromocionCabTableTableAnnotationComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  GeneratedColumn<String> get empresaId =>
+      $composableBuilder(column: $table.empresaId, builder: (column) => column);
+
+  GeneratedColumn<String> get promoId =>
+      $composableBuilder(column: $table.promoId, builder: (column) => column);
+
+  GeneratedColumn<String> get nombre =>
+      $composableBuilder(column: $table.nombre, builder: (column) => column);
+
+  GeneratedColumn<DateTime> get fechaDesde => $composableBuilder(
+    column: $table.fechaDesde,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<DateTime> get fechaHasta => $composableBuilder(
+    column: $table.fechaHasta,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<String> get divisaId =>
+      $composableBuilder(column: $table.divisaId, builder: (column) => column);
+
+  GeneratedColumn<DateTime> get lastUpdated => $composableBuilder(
+    column: $table.lastUpdated,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<String> get deleted =>
+      $composableBuilder(column: $table.deleted, builder: (column) => column);
+}
+
+class $$PromocionCabTableTableTableManager
+    extends
+        RootTableManager<
+          _$RemoteAppDatabase,
+          $PromocionCabTableTable,
+          PromocionCabDTO,
+          $$PromocionCabTableTableFilterComposer,
+          $$PromocionCabTableTableOrderingComposer,
+          $$PromocionCabTableTableAnnotationComposer,
+          $$PromocionCabTableTableCreateCompanionBuilder,
+          $$PromocionCabTableTableUpdateCompanionBuilder,
+          (
+            PromocionCabDTO,
+            BaseReferences<
+              _$RemoteAppDatabase,
+              $PromocionCabTableTable,
+              PromocionCabDTO
+            >,
+          ),
+          PromocionCabDTO,
+          PrefetchHooks Function()
+        > {
+  $$PromocionCabTableTableTableManager(
+    _$RemoteAppDatabase db,
+    $PromocionCabTableTable table,
+  ) : super(
+        TableManagerState(
+          db: db,
+          table: table,
+          createFilteringComposer: () =>
+              $$PromocionCabTableTableFilterComposer($db: db, $table: table),
+          createOrderingComposer: () =>
+              $$PromocionCabTableTableOrderingComposer($db: db, $table: table),
+          createComputedFieldComposer: () =>
+              $$PromocionCabTableTableAnnotationComposer(
+                $db: db,
+                $table: table,
+              ),
+          updateCompanionCallback:
+              ({
+                Value<String> empresaId = const Value.absent(),
+                Value<String> promoId = const Value.absent(),
+                Value<String> nombre = const Value.absent(),
+                Value<DateTime> fechaDesde = const Value.absent(),
+                Value<DateTime?> fechaHasta = const Value.absent(),
+                Value<String?> divisaId = const Value.absent(),
+                Value<DateTime> lastUpdated = const Value.absent(),
+                Value<String> deleted = const Value.absent(),
+                Value<int> rowid = const Value.absent(),
+              }) => PromocionCabTableCompanion(
+                empresaId: empresaId,
+                promoId: promoId,
+                nombre: nombre,
+                fechaDesde: fechaDesde,
+                fechaHasta: fechaHasta,
+                divisaId: divisaId,
+                lastUpdated: lastUpdated,
+                deleted: deleted,
+                rowid: rowid,
+              ),
+          createCompanionCallback:
+              ({
+                required String empresaId,
+                required String promoId,
+                required String nombre,
+                required DateTime fechaDesde,
+                Value<DateTime?> fechaHasta = const Value.absent(),
+                Value<String?> divisaId = const Value.absent(),
+                required DateTime lastUpdated,
+                Value<String> deleted = const Value.absent(),
+                Value<int> rowid = const Value.absent(),
+              }) => PromocionCabTableCompanion.insert(
+                empresaId: empresaId,
+                promoId: promoId,
+                nombre: nombre,
+                fechaDesde: fechaDesde,
+                fechaHasta: fechaHasta,
+                divisaId: divisaId,
+                lastUpdated: lastUpdated,
+                deleted: deleted,
+                rowid: rowid,
+              ),
+          withReferenceMapper: (p0) => p0
+              .map(
+                (e) => (
+                  e.readTable<$PromocionCabTableTable, PromocionCabDTO>(table),
+                  BaseReferences<
+                    _$RemoteAppDatabase,
+                    $PromocionCabTableTable,
+                    PromocionCabDTO
+                  >(db, table, e),
+                ),
+              )
+              .toList(),
+          prefetchHooksCallback: null,
+        ),
+      );
+}
+
+typedef $$PromocionCabTableTableProcessedTableManager =
+    ProcessedTableManager<
+      _$RemoteAppDatabase,
+      $PromocionCabTableTable,
+      PromocionCabDTO,
+      $$PromocionCabTableTableFilterComposer,
+      $$PromocionCabTableTableOrderingComposer,
+      $$PromocionCabTableTableAnnotationComposer,
+      $$PromocionCabTableTableCreateCompanionBuilder,
+      $$PromocionCabTableTableUpdateCompanionBuilder,
+      (
+        PromocionCabDTO,
+        BaseReferences<
+          _$RemoteAppDatabase,
+          $PromocionCabTableTable,
+          PromocionCabDTO
+        >,
+      ),
+      PromocionCabDTO,
+      PrefetchHooks Function()
+    >;
+typedef $$PromocionClienteTableTableCreateCompanionBuilder =
+    PromocionClienteTableCompanion Function({
+      required String empresaId,
+      required String promoId,
+      required String clienteId,
+      required String tipo,
+      required DateTime lastUpdated,
+      Value<String> deleted,
+      Value<int> rowid,
+    });
+typedef $$PromocionClienteTableTableUpdateCompanionBuilder =
+    PromocionClienteTableCompanion Function({
+      Value<String> empresaId,
+      Value<String> promoId,
+      Value<String> clienteId,
+      Value<String> tipo,
+      Value<DateTime> lastUpdated,
+      Value<String> deleted,
+      Value<int> rowid,
+    });
+
+class $$PromocionClienteTableTableFilterComposer
+    extends Composer<_$RemoteAppDatabase, $PromocionClienteTableTable> {
+  $$PromocionClienteTableTableFilterComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnFilters<String> get empresaId => $composableBuilder(
+    column: $table.empresaId,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get promoId => $composableBuilder(
+    column: $table.promoId,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get clienteId => $composableBuilder(
+    column: $table.clienteId,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get tipo => $composableBuilder(
+    column: $table.tipo,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<DateTime> get lastUpdated => $composableBuilder(
+    column: $table.lastUpdated,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get deleted => $composableBuilder(
+    column: $table.deleted,
+    builder: (column) => ColumnFilters(column),
+  );
+}
+
+class $$PromocionClienteTableTableOrderingComposer
+    extends Composer<_$RemoteAppDatabase, $PromocionClienteTableTable> {
+  $$PromocionClienteTableTableOrderingComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnOrderings<String> get empresaId => $composableBuilder(
+    column: $table.empresaId,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get promoId => $composableBuilder(
+    column: $table.promoId,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get clienteId => $composableBuilder(
+    column: $table.clienteId,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get tipo => $composableBuilder(
+    column: $table.tipo,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<DateTime> get lastUpdated => $composableBuilder(
+    column: $table.lastUpdated,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get deleted => $composableBuilder(
+    column: $table.deleted,
+    builder: (column) => ColumnOrderings(column),
+  );
+}
+
+class $$PromocionClienteTableTableAnnotationComposer
+    extends Composer<_$RemoteAppDatabase, $PromocionClienteTableTable> {
+  $$PromocionClienteTableTableAnnotationComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  GeneratedColumn<String> get empresaId =>
+      $composableBuilder(column: $table.empresaId, builder: (column) => column);
+
+  GeneratedColumn<String> get promoId =>
+      $composableBuilder(column: $table.promoId, builder: (column) => column);
+
+  GeneratedColumn<String> get clienteId =>
+      $composableBuilder(column: $table.clienteId, builder: (column) => column);
+
+  GeneratedColumn<String> get tipo =>
+      $composableBuilder(column: $table.tipo, builder: (column) => column);
+
+  GeneratedColumn<DateTime> get lastUpdated => $composableBuilder(
+    column: $table.lastUpdated,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<String> get deleted =>
+      $composableBuilder(column: $table.deleted, builder: (column) => column);
+}
+
+class $$PromocionClienteTableTableTableManager
+    extends
+        RootTableManager<
+          _$RemoteAppDatabase,
+          $PromocionClienteTableTable,
+          PromocionClienteDTO,
+          $$PromocionClienteTableTableFilterComposer,
+          $$PromocionClienteTableTableOrderingComposer,
+          $$PromocionClienteTableTableAnnotationComposer,
+          $$PromocionClienteTableTableCreateCompanionBuilder,
+          $$PromocionClienteTableTableUpdateCompanionBuilder,
+          (
+            PromocionClienteDTO,
+            BaseReferences<
+              _$RemoteAppDatabase,
+              $PromocionClienteTableTable,
+              PromocionClienteDTO
+            >,
+          ),
+          PromocionClienteDTO,
+          PrefetchHooks Function()
+        > {
+  $$PromocionClienteTableTableTableManager(
+    _$RemoteAppDatabase db,
+    $PromocionClienteTableTable table,
+  ) : super(
+        TableManagerState(
+          db: db,
+          table: table,
+          createFilteringComposer: () =>
+              $$PromocionClienteTableTableFilterComposer(
+                $db: db,
+                $table: table,
+              ),
+          createOrderingComposer: () =>
+              $$PromocionClienteTableTableOrderingComposer(
+                $db: db,
+                $table: table,
+              ),
+          createComputedFieldComposer: () =>
+              $$PromocionClienteTableTableAnnotationComposer(
+                $db: db,
+                $table: table,
+              ),
+          updateCompanionCallback:
+              ({
+                Value<String> empresaId = const Value.absent(),
+                Value<String> promoId = const Value.absent(),
+                Value<String> clienteId = const Value.absent(),
+                Value<String> tipo = const Value.absent(),
+                Value<DateTime> lastUpdated = const Value.absent(),
+                Value<String> deleted = const Value.absent(),
+                Value<int> rowid = const Value.absent(),
+              }) => PromocionClienteTableCompanion(
+                empresaId: empresaId,
+                promoId: promoId,
+                clienteId: clienteId,
+                tipo: tipo,
+                lastUpdated: lastUpdated,
+                deleted: deleted,
+                rowid: rowid,
+              ),
+          createCompanionCallback:
+              ({
+                required String empresaId,
+                required String promoId,
+                required String clienteId,
+                required String tipo,
+                required DateTime lastUpdated,
+                Value<String> deleted = const Value.absent(),
+                Value<int> rowid = const Value.absent(),
+              }) => PromocionClienteTableCompanion.insert(
+                empresaId: empresaId,
+                promoId: promoId,
+                clienteId: clienteId,
+                tipo: tipo,
+                lastUpdated: lastUpdated,
+                deleted: deleted,
+                rowid: rowid,
+              ),
+          withReferenceMapper: (p0) => p0
+              .map(
+                (e) => (
+                  e.readTable<$PromocionClienteTableTable, PromocionClienteDTO>(
+                    table,
+                  ),
+                  BaseReferences<
+                    _$RemoteAppDatabase,
+                    $PromocionClienteTableTable,
+                    PromocionClienteDTO
+                  >(db, table, e),
+                ),
+              )
+              .toList(),
+          prefetchHooksCallback: null,
+        ),
+      );
+}
+
+typedef $$PromocionClienteTableTableProcessedTableManager =
+    ProcessedTableManager<
+      _$RemoteAppDatabase,
+      $PromocionClienteTableTable,
+      PromocionClienteDTO,
+      $$PromocionClienteTableTableFilterComposer,
+      $$PromocionClienteTableTableOrderingComposer,
+      $$PromocionClienteTableTableAnnotationComposer,
+      $$PromocionClienteTableTableCreateCompanionBuilder,
+      $$PromocionClienteTableTableUpdateCompanionBuilder,
+      (
+        PromocionClienteDTO,
+        BaseReferences<
+          _$RemoteAppDatabase,
+          $PromocionClienteTableTable,
+          PromocionClienteDTO
+        >,
+      ),
+      PromocionClienteDTO,
+      PrefetchHooks Function()
+    >;
+typedef $$PromocionPaisTableTableCreateCompanionBuilder =
+    PromocionPaisTableCompanion Function({
+      required String empresaId,
+      required String promoId,
+      required String paisId,
+      required String tipo,
+      required DateTime lastUpdated,
+      Value<String> deleted,
+      Value<int> rowid,
+    });
+typedef $$PromocionPaisTableTableUpdateCompanionBuilder =
+    PromocionPaisTableCompanion Function({
+      Value<String> empresaId,
+      Value<String> promoId,
+      Value<String> paisId,
+      Value<String> tipo,
+      Value<DateTime> lastUpdated,
+      Value<String> deleted,
+      Value<int> rowid,
+    });
+
+class $$PromocionPaisTableTableFilterComposer
+    extends Composer<_$RemoteAppDatabase, $PromocionPaisTableTable> {
+  $$PromocionPaisTableTableFilterComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnFilters<String> get empresaId => $composableBuilder(
+    column: $table.empresaId,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get promoId => $composableBuilder(
+    column: $table.promoId,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get paisId => $composableBuilder(
+    column: $table.paisId,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get tipo => $composableBuilder(
+    column: $table.tipo,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<DateTime> get lastUpdated => $composableBuilder(
+    column: $table.lastUpdated,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get deleted => $composableBuilder(
+    column: $table.deleted,
+    builder: (column) => ColumnFilters(column),
+  );
+}
+
+class $$PromocionPaisTableTableOrderingComposer
+    extends Composer<_$RemoteAppDatabase, $PromocionPaisTableTable> {
+  $$PromocionPaisTableTableOrderingComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnOrderings<String> get empresaId => $composableBuilder(
+    column: $table.empresaId,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get promoId => $composableBuilder(
+    column: $table.promoId,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get paisId => $composableBuilder(
+    column: $table.paisId,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get tipo => $composableBuilder(
+    column: $table.tipo,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<DateTime> get lastUpdated => $composableBuilder(
+    column: $table.lastUpdated,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get deleted => $composableBuilder(
+    column: $table.deleted,
+    builder: (column) => ColumnOrderings(column),
+  );
+}
+
+class $$PromocionPaisTableTableAnnotationComposer
+    extends Composer<_$RemoteAppDatabase, $PromocionPaisTableTable> {
+  $$PromocionPaisTableTableAnnotationComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  GeneratedColumn<String> get empresaId =>
+      $composableBuilder(column: $table.empresaId, builder: (column) => column);
+
+  GeneratedColumn<String> get promoId =>
+      $composableBuilder(column: $table.promoId, builder: (column) => column);
+
+  GeneratedColumn<String> get paisId =>
+      $composableBuilder(column: $table.paisId, builder: (column) => column);
+
+  GeneratedColumn<String> get tipo =>
+      $composableBuilder(column: $table.tipo, builder: (column) => column);
+
+  GeneratedColumn<DateTime> get lastUpdated => $composableBuilder(
+    column: $table.lastUpdated,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<String> get deleted =>
+      $composableBuilder(column: $table.deleted, builder: (column) => column);
+}
+
+class $$PromocionPaisTableTableTableManager
+    extends
+        RootTableManager<
+          _$RemoteAppDatabase,
+          $PromocionPaisTableTable,
+          PromocionPaisDTO,
+          $$PromocionPaisTableTableFilterComposer,
+          $$PromocionPaisTableTableOrderingComposer,
+          $$PromocionPaisTableTableAnnotationComposer,
+          $$PromocionPaisTableTableCreateCompanionBuilder,
+          $$PromocionPaisTableTableUpdateCompanionBuilder,
+          (
+            PromocionPaisDTO,
+            BaseReferences<
+              _$RemoteAppDatabase,
+              $PromocionPaisTableTable,
+              PromocionPaisDTO
+            >,
+          ),
+          PromocionPaisDTO,
+          PrefetchHooks Function()
+        > {
+  $$PromocionPaisTableTableTableManager(
+    _$RemoteAppDatabase db,
+    $PromocionPaisTableTable table,
+  ) : super(
+        TableManagerState(
+          db: db,
+          table: table,
+          createFilteringComposer: () =>
+              $$PromocionPaisTableTableFilterComposer($db: db, $table: table),
+          createOrderingComposer: () =>
+              $$PromocionPaisTableTableOrderingComposer($db: db, $table: table),
+          createComputedFieldComposer: () =>
+              $$PromocionPaisTableTableAnnotationComposer(
+                $db: db,
+                $table: table,
+              ),
+          updateCompanionCallback:
+              ({
+                Value<String> empresaId = const Value.absent(),
+                Value<String> promoId = const Value.absent(),
+                Value<String> paisId = const Value.absent(),
+                Value<String> tipo = const Value.absent(),
+                Value<DateTime> lastUpdated = const Value.absent(),
+                Value<String> deleted = const Value.absent(),
+                Value<int> rowid = const Value.absent(),
+              }) => PromocionPaisTableCompanion(
+                empresaId: empresaId,
+                promoId: promoId,
+                paisId: paisId,
+                tipo: tipo,
+                lastUpdated: lastUpdated,
+                deleted: deleted,
+                rowid: rowid,
+              ),
+          createCompanionCallback:
+              ({
+                required String empresaId,
+                required String promoId,
+                required String paisId,
+                required String tipo,
+                required DateTime lastUpdated,
+                Value<String> deleted = const Value.absent(),
+                Value<int> rowid = const Value.absent(),
+              }) => PromocionPaisTableCompanion.insert(
+                empresaId: empresaId,
+                promoId: promoId,
+                paisId: paisId,
+                tipo: tipo,
+                lastUpdated: lastUpdated,
+                deleted: deleted,
+                rowid: rowid,
+              ),
+          withReferenceMapper: (p0) => p0
+              .map(
+                (e) => (
+                  e.readTable<$PromocionPaisTableTable, PromocionPaisDTO>(
+                    table,
+                  ),
+                  BaseReferences<
+                    _$RemoteAppDatabase,
+                    $PromocionPaisTableTable,
+                    PromocionPaisDTO
+                  >(db, table, e),
+                ),
+              )
+              .toList(),
+          prefetchHooksCallback: null,
+        ),
+      );
+}
+
+typedef $$PromocionPaisTableTableProcessedTableManager =
+    ProcessedTableManager<
+      _$RemoteAppDatabase,
+      $PromocionPaisTableTable,
+      PromocionPaisDTO,
+      $$PromocionPaisTableTableFilterComposer,
+      $$PromocionPaisTableTableOrderingComposer,
+      $$PromocionPaisTableTableAnnotationComposer,
+      $$PromocionPaisTableTableCreateCompanionBuilder,
+      $$PromocionPaisTableTableUpdateCompanionBuilder,
+      (
+        PromocionPaisDTO,
+        BaseReferences<
+          _$RemoteAppDatabase,
+          $PromocionPaisTableTable,
+          PromocionPaisDTO
+        >,
+      ),
+      PromocionPaisDTO,
+      PrefetchHooks Function()
+    >;
 typedef $$ProvinciaTableTableCreateCompanionBuilder =
     ProvinciaTableCompanion Function({
       Value<String?> paisId,
@@ -56050,6 +59010,22 @@ class $RemoteAppDatabaseManager {
       $$PromoDtoClienteTableTableTableManager(_db, _db.promoDtoClienteTable);
   $$PromoDtoLinTableTableTableManager get promoDtoLinTable =>
       $$PromoDtoLinTableTableTableManager(_db, _db.promoDtoLinTable);
+  $$PromocionArtPromoTableTableTableManager get promocionArtPromoTable =>
+      $$PromocionArtPromoTableTableTableManager(
+        _db,
+        _db.promocionArtPromoTable,
+      );
+  $$PromocionArtRegaloTableTableTableManager get promocionArtRegaloTable =>
+      $$PromocionArtRegaloTableTableTableManager(
+        _db,
+        _db.promocionArtRegaloTable,
+      );
+  $$PromocionCabTableTableTableManager get promocionCabTable =>
+      $$PromocionCabTableTableTableManager(_db, _db.promocionCabTable);
+  $$PromocionClienteTableTableTableManager get promocionClienteTable =>
+      $$PromocionClienteTableTableTableManager(_db, _db.promocionClienteTable);
+  $$PromocionPaisTableTableTableManager get promocionPaisTable =>
+      $$PromocionPaisTableTableTableManager(_db, _db.promocionPaisTable);
   $$ProvinciaTableTableTableManager get provinciaTable =>
       $$ProvinciaTableTableTableManager(_db, _db.provinciaTable);
   $$SectorTableTableTableManager get sectorTable =>
