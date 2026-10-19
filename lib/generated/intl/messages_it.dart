@@ -766,6 +766,8 @@ class MessageLookup extends MessageLookupByLibrary {
         MessageLookupByLibrary.simpleMessage("Sconto 2"),
     "pedido_edit_selectQuantity_descuneto3":
         MessageLookupByLibrary.simpleMessage("Sconto 3"),
+    "pedido_edit_selectQuantity_fechaCliente":
+        MessageLookupByLibrary.simpleMessage("Data cliente"),
     "pedido_edit_selectQuantity_importe": MessageLookupByLibrary.simpleMessage(
       "Importo",
     ),

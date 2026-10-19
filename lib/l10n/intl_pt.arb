@@ -203,6 +203,7 @@
   "pedido_edit_selectQuantity_noPuedeEstarVacio": "Não pode estar vazio",
   "pedido_edit_selectQuantity_precio": "Preço",
   "pedido_edit_selectQuantity_seleccionarCantidad": "Selecione a quantidade",
+  "pedido_edit_selectQuantity_fechaCliente": "Data do cliente",
   "pedido_edit_selectQuantity_stockDisponible": "Stock disponível",
   "pedido_edit_selectQuantity_tieneQueSerMultiploDe": "Múltiplo de",
   "pedido_enviado": "Enviado",

@@ -124,6 +124,11 @@ class PedidoVentaLineaNuevoTile extends ConsumerWidget {
                           ),
                       ],
                     ),
+                    if (pedidoVentaLinea.fechaCliente != null)
+                      Text(
+                        '${S.of(context).pedido_edit_selectQuantity_fechaCliente}: ${dateFormatter(pedidoVentaLinea.fechaCliente!.toLocal().toIso8601String())}',
+                        style: Theme.of(context).textTheme.bodySmall,
+                      ),
                     if (pedidoVentaLinea.stockDisponible != null)
                       Text(
                         '${S.of(context).pedido_edit_pedidoEdit_stockDisponible} ${pedidoVentaLinea.stockDisponible} ${S.of(context).unidad}',

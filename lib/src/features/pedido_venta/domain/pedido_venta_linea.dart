@@ -42,4 +42,6 @@ abstract class PedidoVentaLinea with _$PedidoVentaLinea {
 
   bool? get sinStock =>
       stockDisponibleSN == null ? null : stockDisponibleSN == false;
+
+  bool get isEditable => !isComponente && cantidadPendiente > 0;
 }

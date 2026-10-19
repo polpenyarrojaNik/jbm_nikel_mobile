@@ -143,6 +143,8 @@ class _SelecionarCantidadFormState
   final paletController = TextEditingController();
   final precioController = TextEditingController();
   final descuento1Controller = TextEditingController();
+  final fechaClienteController = TextEditingController();
+  DateTime? fechaCliente;
   var totalQuantity = 0;
   var units = 0;
   var unitsCaja = 0;
@@ -159,6 +161,17 @@ class _SelecionarCantidadFormState
   @override
   void initState() {
     super.initState();
+    final fechaInicial = widget.seleccionarCantidadParam.fechaCliente;
+    if (fechaInicial != null) {
+      fechaCliente = DateUtils.dateOnly(fechaInicial.toLocal());
+    } else if (!widget.seleccionarCantidadParam.isUpdatingLinea()) {
+      fechaCliente = DateUtils.dateOnly(DateTime.now());
+    }
+    if (fechaCliente != null) {
+      fechaClienteController.text = dateFormatter(
+        fechaCliente!.toIso8601String(),
+      );
+    }
     setValoresIniciales();
     precioController.text = numberFormatDecimal(precio);
     unitsController.text = units.toString();
@@ -188,6 +201,7 @@ class _SelecionarCantidadFormState
     paletController.dispose();
     precioController.dispose();
     descuento1Controller.dispose();
+    fechaClienteController.dispose();
     super.dispose();
   }
 
@@ -331,6 +345,30 @@ class _SelecionarCantidadFormState
                       ),
                     ),
                   ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 16,
+                      vertical: 8,
+                    ),
+                    child: FormBuilderTextField(
+                      name: 'fechaCliente',
+                      readOnly: true,
+                      enabled: !widget.seleccionarCantidadParam.isComponente,
+                      controller: fechaClienteController,
+                      keyboardType: TextInputType.datetime,
+                      decoration: InputDecoration(
+                        labelText: S
+                            .of(context)
+                            .pedido_edit_selectQuantity_fechaCliente,
+                        suffixIcon: Icon(
+                          widget.seleccionarCantidadParam.isComponente
+                              ? Icons.lock_outline
+                              : Icons.calendar_today,
+                        ),
+                      ),
+                      onTap: selectFechaCliente,
+                    ),
+                  ),
                   stateArticuloPrecio.when(
                     initial: () => Container(),
                     error: (error, _) =>
@@ -379,6 +417,25 @@ class _SelecionarCantidadFormState
         child: const Icon(Icons.check),
       ),
     );
+  }
+
+  Future<void> selectFechaCliente() async {
+    final hoy = DateUtils.dateOnly(DateTime.now());
+    final selectedDate = await showDatePicker(
+      context: context,
+      initialDate: (fechaCliente != null && !fechaCliente!.isBefore(hoy))
+          ? fechaCliente!
+          : hoy,
+      firstDate: hoy,
+      lastDate: DateTime(hoy.year + 5),
+    );
+    if (selectedDate == null || !mounted) return;
+    setState(() {
+      fechaCliente = DateUtils.dateOnly(selectedDate);
+      fechaClienteController.text = dateFormatter(
+        fechaCliente!.toIso8601String(),
+      );
+    });
   }
 
   Future<void> navigateToCrearPedido(
@@ -453,6 +510,7 @@ class _SelecionarCantidadFormState
           codPromo: widget.seleccionarCantidadParam.codPromo,
           cantidadPromo: widget.seleccionarCantidadParam.cantidadPromo,
           isPromo: widget.seleccionarCantidadParam.isPromo,
+          fechaCliente: fechaCliente,
           lastUpdated: DateTime.now().toUtc(),
           deleted: false,
         );

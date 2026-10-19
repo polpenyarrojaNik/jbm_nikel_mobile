@@ -1266,6 +1266,8 @@ class StepArticuloListContent extends ConsumerWidget {
       codPromo: pedidoVentaLinea.codPromo,
       isPromo: pedidoVentaLinea.isPromo,
       cantidadPromo: pedidoVentaLinea.cantidadPromo,
+      fechaCliente: pedidoVentaLinea.fechaCliente,
+      isComponente: pedidoVentaLinea.isComponente,
     );
     context.router.push(
       SeleccionarCantidadRoute(

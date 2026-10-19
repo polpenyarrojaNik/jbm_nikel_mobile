@@ -287,6 +287,7 @@
   "pedido_edit_selectQuantity_importeLinea": "Importe línea",
   "pedido_edit_selectQuantity_importe": "Importe",
   "pedido_edit_selectQuantity_cantidadTotal": "Cantidad total",
+  "pedido_edit_selectQuantity_fechaCliente": "Fecha cliente",
   "pedido_edit_selectQuantity_stockDisponible": "Stock disponible:",
   "pedido_edit_selectQuantity_artiuclosSustitutivos": "Artículos sustitutivos:",
   "pedido_edit_selectQuantity_minimo": "Mínimo",

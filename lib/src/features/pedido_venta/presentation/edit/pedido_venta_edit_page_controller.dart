@@ -1,3 +1,4 @@
+import 'package:material_ui/material_ui.dart';
 import 'package:flutter_riverpod/legacy.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
@@ -399,9 +400,7 @@ class PedidoVentaEditPageController
     required PedidoVentaLinea pedidoVentaLinea,
     required int posicionActualizar,
   }) {
-    pedidoVentaLineaList[posicionActualizar] = pedidoVentaLinea.copyWith(
-      fechaCliente: pedidoVentaLineaList[posicionActualizar].fechaCliente,
-    );
+    pedidoVentaLineaList[posicionActualizar] = pedidoVentaLinea;
 
     state = PedidoVentaEditPageControllerState.data(
       _cliente,
@@ -595,6 +594,7 @@ class PedidoVentaEditPageController
         cantidadPromo: null,
         isPromo: null,
         aiRecomendado: false,
+        fechaCliente: DateUtils.dateOnly(DateTime.now()),
         lastUpdated: DateTime.now(),
         deleted: false,
       );

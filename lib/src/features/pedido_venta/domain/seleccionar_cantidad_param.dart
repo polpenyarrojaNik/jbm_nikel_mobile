@@ -24,6 +24,8 @@ abstract class SeleccionarCantidadParam with _$SeleccionarCantidadParam {
     required String? codPromo,
     required int? cantidadPromo,
     required bool? isPromo,
+    DateTime? fechaCliente,
+    @Default(false) bool isComponente,
   }) = _SeleccionarCantidadParam;
 
   bool isUpdatingLinea() => cantidad != null;

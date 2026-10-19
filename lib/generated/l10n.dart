@@ -2905,6 +2905,16 @@ class S {
     );
   }
 
+  /// `Customer date`
+  String get pedido_edit_selectQuantity_fechaCliente {
+    return Intl.message(
+      'Customer date',
+      name: 'pedido_edit_selectQuantity_fechaCliente',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Available stock:`
   String get pedido_edit_selectQuantity_stockDisponible {
     return Intl.message(

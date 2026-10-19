@@ -284,6 +284,7 @@
   "pedido_edit_selectQuantity_descuneto3": "Discount 3",
   "pedido_edit_selectQuantity_importeLinea": "Amount line",
   "pedido_edit_selectQuantity_importe": "Amount",
+  "pedido_edit_selectQuantity_fechaCliente": "Customer date",
   "pedido_edit_selectQuantity_stockDisponible": "Available stock:",
   "pedido_edit_selectQuantity_artiuclosSustitutivos": "Substitute articles:",
   "pedido_edit_selectQuantity_minimo": "Minimum",
