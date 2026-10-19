@@ -31,6 +31,7 @@ abstract class PedidoVentaLineaLocalDTO
     @JsonKey(name: 'DTO_PP') required double descuentoProntoPago,
     @JsonKey(name: 'STOCK_DISPONIBLE_SN') required String stockDisponibleSN,
     @JsonKey(name: 'F_DISPONIBLE') DateTime? fechaDisponible,
+    @JsonKey(name: 'F_CLIENTE') DateTime? fechaCliente,
     @JsonKey(name: 'IVA') required double iva,
     @JsonKey(name: 'PEDIDO_LINEA_ID_COMPONENTE')
     String? pedidoLineaComponenteId,
@@ -63,6 +64,7 @@ abstract class PedidoVentaLineaLocalDTO
       stockDisponibleSN: (pedidoVentaLinea.stockDisponibleSN ?? false)
           ? 'S'
           : 'N',
+      fechaCliente: pedidoVentaLinea.fechaCliente?.toUtc(),
       iva: pedidoVentaLinea.iva!,
       pedidoLineaComponenteId: pedidoVentaLinea.pedidoLineaIdComponente,
       aiRecomendado: pedidoVentaLinea.aiRecomendado ? 'S' : 'N',
@@ -94,6 +96,7 @@ abstract class PedidoVentaLineaLocalDTO
       importeLinea: importeLinea,
       stockDisponibleSN: (stockDisponibleSN == 'S'),
       fechaDisponible: fechaDisponible,
+      fechaCliente: fechaCliente?.toLocal(),
       iva: iva,
       cantidadPendiente: cantidad,
       lastUpdated: DateTime.now().toUtc(),
@@ -123,6 +126,7 @@ abstract class PedidoVentaLineaLocalDTO
       descuentoProntoPago: Value(descuentoProntoPago),
       stockDisponibleSN: Value(stockDisponibleSN),
       fechaDisponible: Value(fechaDisponible),
+      fechaCliente: Value(fechaCliente),
       iva: Value(iva),
       pedidoLineaIdComponente: Value(pedidoLineaComponenteId),
       aiRecomendado: Value(aiRecomendado),
@@ -152,6 +156,7 @@ class PedidoVentaLineaLocalTable extends Table {
   DateTimeColumn get fechaDisponible =>
       dateTime().nullable().named('F_DISPONIBLE')();
   RealColumn get iva => real().named('IVA')();
+  DateTimeColumn get fechaCliente => dateTime().nullable().named('F_CLIENTE')();
   TextColumn get pedidoLineaIdComponente =>
       text().nullable().named('PEDIDO_LINEA_ID_COMPONENTE')();
   TextColumn get aiRecomendado => text().named('AI_RECOMENDADO')();

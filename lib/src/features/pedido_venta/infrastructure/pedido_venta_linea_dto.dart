@@ -33,6 +33,7 @@ abstract class PedidoVentaLineaDTO
     @JsonKey(name: 'COD_PROMO') required String? codPromo,
     @JsonKey(name: 'PROMO_CANTIDAD') required int? cantidadPromo,
     @JsonKey(name: 'PROMO_SN') required String? promoSN,
+    @JsonKey(name: 'F_CLIENTE') DateTime? fechaCliente,
     @JsonKey(name: 'LAST_UPDATED') required DateTime lastUpdated,
     @JsonKey(name: 'DELETED') required String deleted,
   }) = _PedidoVentaLineaDTO;
@@ -78,6 +79,7 @@ abstract class PedidoVentaLineaDTO
       cantidadPromo: cantidadPromo,
       lastUpdated: lastUpdated,
       deleted: (deleted == 'S'),
+      fechaCliente: fechaCliente?.toLocal(),
     );
   }
 
@@ -103,6 +105,7 @@ abstract class PedidoVentaLineaDTO
       cantidadPromo: Value(cantidadPromo),
       lastUpdated: Value(lastUpdated),
       deleted: Value(deleted),
+      fechaCliente: Value(fechaCliente),
     ).toColumns(nullToAbsent);
   }
 }
@@ -130,6 +133,7 @@ class PedidoVentaLineaTable extends Table {
   DateTimeColumn get lastUpdated => dateTime().named('LAST_UPDATED')();
   TextColumn get deleted =>
       text().withDefault(const Constant('N')).named('DELETED')();
+  DateTimeColumn get fechaCliente => dateTime().nullable().named('F_CLIENTE')();
 
   @override
   Set<Column> get primaryKey => {pedidoId, empresaId, pedidoVentaLineaId};

@@ -26,6 +26,9 @@ _PedidoVentaLineaLocalDTO _$PedidoVentaLineaLocalDTOFromJson(
   fechaDisponible: json['F_DISPONIBLE'] == null
       ? null
       : DateTime.parse(json['F_DISPONIBLE'] as String),
+  fechaCliente: json['F_CLIENTE'] == null
+      ? null
+      : DateTime.parse(json['F_CLIENTE'] as String),
   iva: (json['IVA'] as num).toDouble(),
   pedidoLineaComponenteId: json['PEDIDO_LINEA_ID_COMPONENTE'] as String?,
   aiRecomendado: json['AI_RECOMENDADO'] as String,
@@ -52,6 +55,7 @@ Map<String, dynamic> _$PedidoVentaLineaLocalDTOToJson(
   'DTO_PP': instance.descuentoProntoPago,
   'STOCK_DISPONIBLE_SN': instance.stockDisponibleSN,
   'F_DISPONIBLE': instance.fechaDisponible?.toIso8601String(),
+  'F_CLIENTE': instance.fechaCliente?.toIso8601String(),
   'IVA': instance.iva,
   'PEDIDO_LINEA_ID_COMPONENTE': instance.pedidoLineaComponenteId,
   'AI_RECOMENDADO': instance.aiRecomendado,

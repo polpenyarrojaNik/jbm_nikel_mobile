@@ -23238,6 +23238,17 @@ class $PedidoVentaLineaTableTable extends PedidoVentaLineaTable
     requiredDuringInsert: false,
     defaultValue: const Constant('N'),
   );
+  static const VerificationMeta _fechaClienteMeta = const VerificationMeta(
+    'fechaCliente',
+  );
+  @override
+  late final GeneratedColumn<DateTime> fechaCliente = GeneratedColumn<DateTime>(
+    'F_CLIENTE',
+    aliasedName,
+    true,
+    type: DriftSqlType.dateTime,
+    requiredDuringInsert: false,
+  );
   @override
   List<GeneratedColumn> get $columns => [
     empresaId,
@@ -23259,6 +23270,7 @@ class $PedidoVentaLineaTableTable extends PedidoVentaLineaTable
     promoSN,
     lastUpdated,
     deleted,
+    fechaCliente,
   ];
   @override
   String get aliasedName => _alias ?? actualTableName;
@@ -23436,6 +23448,15 @@ class $PedidoVentaLineaTableTable extends PedidoVentaLineaTable
         deleted.isAcceptableOrUnknown(data['DELETED']!, _deletedMeta),
       );
     }
+    if (data.containsKey('F_CLIENTE')) {
+      context.handle(
+        _fechaClienteMeta,
+        fechaCliente.isAcceptableOrUnknown(
+          data['F_CLIENTE']!,
+          _fechaClienteMeta,
+        ),
+      );
+    }
     return context;
   }
 
@@ -23517,6 +23538,10 @@ class $PedidoVentaLineaTableTable extends PedidoVentaLineaTable
         DriftSqlType.string,
         data['${effectivePrefix}PROMO_SN'],
       ),
+      fechaCliente: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}F_CLIENTE'],
+      ),
       lastUpdated: attachedDatabase.typeMapping.read(
         DriftSqlType.dateTime,
         data['${effectivePrefix}LAST_UPDATED'],
@@ -23555,6 +23580,7 @@ class PedidoVentaLineaTableCompanion
   final Value<String?> promoSN;
   final Value<DateTime> lastUpdated;
   final Value<String> deleted;
+  final Value<DateTime?> fechaCliente;
   final Value<int> rowid;
   const PedidoVentaLineaTableCompanion({
     this.empresaId = const Value.absent(),
@@ -23576,6 +23602,7 @@ class PedidoVentaLineaTableCompanion
     this.promoSN = const Value.absent(),
     this.lastUpdated = const Value.absent(),
     this.deleted = const Value.absent(),
+    this.fechaCliente = const Value.absent(),
     this.rowid = const Value.absent(),
   });
   PedidoVentaLineaTableCompanion.insert({
@@ -23598,6 +23625,7 @@ class PedidoVentaLineaTableCompanion
     this.promoSN = const Value.absent(),
     required DateTime lastUpdated,
     this.deleted = const Value.absent(),
+    this.fechaCliente = const Value.absent(),
     this.rowid = const Value.absent(),
   }) : empresaId = Value(empresaId),
        pedidoId = Value(pedidoId),
@@ -23632,6 +23660,7 @@ class PedidoVentaLineaTableCompanion
     Expression<String>? promoSN,
     Expression<DateTime>? lastUpdated,
     Expression<String>? deleted,
+    Expression<DateTime>? fechaCliente,
     Expression<int>? rowid,
   }) {
     return RawValuesInsertable({
@@ -23656,6 +23685,7 @@ class PedidoVentaLineaTableCompanion
       if (promoSN != null) 'PROMO_SN': promoSN,
       if (lastUpdated != null) 'LAST_UPDATED': lastUpdated,
       if (deleted != null) 'DELETED': deleted,
+      if (fechaCliente != null) 'F_CLIENTE': fechaCliente,
       if (rowid != null) 'rowid': rowid,
     });
   }
@@ -23680,6 +23710,7 @@ class PedidoVentaLineaTableCompanion
     Value<String?>? promoSN,
     Value<DateTime>? lastUpdated,
     Value<String>? deleted,
+    Value<DateTime?>? fechaCliente,
     Value<int>? rowid,
   }) {
     return PedidoVentaLineaTableCompanion(
@@ -23703,6 +23734,7 @@ class PedidoVentaLineaTableCompanion
       promoSN: promoSN ?? this.promoSN,
       lastUpdated: lastUpdated ?? this.lastUpdated,
       deleted: deleted ?? this.deleted,
+      fechaCliente: fechaCliente ?? this.fechaCliente,
       rowid: rowid ?? this.rowid,
     );
   }
@@ -23769,6 +23801,9 @@ class PedidoVentaLineaTableCompanion
     if (deleted.present) {
       map['DELETED'] = Variable<String>(deleted.value);
     }
+    if (fechaCliente.present) {
+      map['F_CLIENTE'] = Variable<DateTime>(fechaCliente.value);
+    }
     if (rowid.present) {
       map['rowid'] = Variable<int>(rowid.value);
     }
@@ -23797,6 +23832,7 @@ class PedidoVentaLineaTableCompanion
           ..write('promoSN: $promoSN, ')
           ..write('lastUpdated: $lastUpdated, ')
           ..write('deleted: $deleted, ')
+          ..write('fechaCliente: $fechaCliente, ')
           ..write('rowid: $rowid')
           ..write(')'))
         .toString();
@@ -49732,6 +49768,7 @@ typedef $$PedidoVentaLineaTableTableCreateCompanionBuilder =
       Value<String?> promoSN,
       required DateTime lastUpdated,
       Value<String> deleted,
+      Value<DateTime?> fechaCliente,
       Value<int> rowid,
     });
 typedef $$PedidoVentaLineaTableTableUpdateCompanionBuilder =
@@ -49755,6 +49792,7 @@ typedef $$PedidoVentaLineaTableTableUpdateCompanionBuilder =
       Value<String?> promoSN,
       Value<DateTime> lastUpdated,
       Value<String> deleted,
+      Value<DateTime?> fechaCliente,
       Value<int> rowid,
     });
 
@@ -49859,6 +49897,11 @@ class $$PedidoVentaLineaTableTableFilterComposer
 
   ColumnFilters<String> get deleted => $composableBuilder(
     column: $table.deleted,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<DateTime> get fechaCliente => $composableBuilder(
+    column: $table.fechaCliente,
     builder: (column) => ColumnFilters(column),
   );
 }
@@ -49966,6 +50009,11 @@ class $$PedidoVentaLineaTableTableOrderingComposer
     column: $table.deleted,
     builder: (column) => ColumnOrderings(column),
   );
+
+  ColumnOrderings<DateTime> get fechaCliente => $composableBuilder(
+    column: $table.fechaCliente,
+    builder: (column) => ColumnOrderings(column),
+  );
 }
 
 class $$PedidoVentaLineaTableTableAnnotationComposer
@@ -50059,6 +50107,11 @@ class $$PedidoVentaLineaTableTableAnnotationComposer
 
   GeneratedColumn<String> get deleted =>
       $composableBuilder(column: $table.deleted, builder: (column) => column);
+
+  GeneratedColumn<DateTime> get fechaCliente => $composableBuilder(
+    column: $table.fechaCliente,
+    builder: (column) => column,
+  );
 }
 
 class $$PedidoVentaLineaTableTableTableManager
@@ -50126,6 +50179,7 @@ class $$PedidoVentaLineaTableTableTableManager
                 Value<String?> promoSN = const Value.absent(),
                 Value<DateTime> lastUpdated = const Value.absent(),
                 Value<String> deleted = const Value.absent(),
+                Value<DateTime?> fechaCliente = const Value.absent(),
                 Value<int> rowid = const Value.absent(),
               }) => PedidoVentaLineaTableCompanion(
                 empresaId: empresaId,
@@ -50147,6 +50201,7 @@ class $$PedidoVentaLineaTableTableTableManager
                 promoSN: promoSN,
                 lastUpdated: lastUpdated,
                 deleted: deleted,
+                fechaCliente: fechaCliente,
                 rowid: rowid,
               ),
           createCompanionCallback:
@@ -50170,6 +50225,7 @@ class $$PedidoVentaLineaTableTableTableManager
                 Value<String?> promoSN = const Value.absent(),
                 required DateTime lastUpdated,
                 Value<String> deleted = const Value.absent(),
+                Value<DateTime?> fechaCliente = const Value.absent(),
                 Value<int> rowid = const Value.absent(),
               }) => PedidoVentaLineaTableCompanion.insert(
                 empresaId: empresaId,
@@ -50191,6 +50247,7 @@ class $$PedidoVentaLineaTableTableTableManager
                 promoSN: promoSN,
                 lastUpdated: lastUpdated,
                 deleted: deleted,
+                fechaCliente: fechaCliente,
                 rowid: rowid,
               ),
           withReferenceMapper: (p0) => p0

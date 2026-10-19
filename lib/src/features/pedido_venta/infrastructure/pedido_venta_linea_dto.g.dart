@@ -25,6 +25,9 @@ _PedidoVentaLineaDTO _$PedidoVentaLineaDTOFromJson(Map<String, dynamic> json) =>
       codPromo: json['COD_PROMO'] as String?,
       cantidadPromo: (json['PROMO_CANTIDAD'] as num?)?.toInt(),
       promoSN: json['PROMO_SN'] as String?,
+      fechaCliente: json['F_CLIENTE'] == null
+          ? null
+          : DateTime.parse(json['F_CLIENTE'] as String),
       lastUpdated: DateTime.parse(json['LAST_UPDATED'] as String),
       deleted: json['DELETED'] as String,
     );
@@ -49,6 +52,7 @@ Map<String, dynamic> _$PedidoVentaLineaDTOToJson(
   'COD_PROMO': instance.codPromo,
   'PROMO_CANTIDAD': instance.cantidadPromo,
   'PROMO_SN': instance.promoSN,
+  'F_CLIENTE': instance.fechaCliente?.toIso8601String(),
   'LAST_UPDATED': instance.lastUpdated.toIso8601String(),
   'DELETED': instance.deleted,
 };

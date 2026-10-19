@@ -1539,6 +1539,17 @@ class $PedidoVentaLineaLocalTableTable extends PedidoVentaLineaLocalTable
     type: DriftSqlType.double,
     requiredDuringInsert: true,
   );
+  static const VerificationMeta _fechaClienteMeta = const VerificationMeta(
+    'fechaCliente',
+  );
+  @override
+  late final GeneratedColumn<DateTime> fechaCliente = GeneratedColumn<DateTime>(
+    'F_CLIENTE',
+    aliasedName,
+    true,
+    type: DriftSqlType.dateTime,
+    requiredDuringInsert: false,
+  );
   static const VerificationMeta _pedidoLineaIdComponenteMeta =
       const VerificationMeta('pedidoLineaIdComponente');
   @override
@@ -1612,6 +1623,7 @@ class $PedidoVentaLineaLocalTableTable extends PedidoVentaLineaLocalTable
     stockDisponibleSN,
     fechaDisponible,
     iva,
+    fechaCliente,
     pedidoLineaIdComponente,
     aiRecomendado,
     codPromo,
@@ -1773,6 +1785,15 @@ class $PedidoVentaLineaLocalTableTable extends PedidoVentaLineaLocalTable
     } else if (isInserting) {
       context.missing(_ivaMeta);
     }
+    if (data.containsKey('F_CLIENTE')) {
+      context.handle(
+        _fechaClienteMeta,
+        fechaCliente.isAcceptableOrUnknown(
+          data['F_CLIENTE']!,
+          _fechaClienteMeta,
+        ),
+      );
+    }
     if (data.containsKey('PEDIDO_LINEA_ID_COMPONENTE')) {
       context.handle(
         _pedidoLineaIdComponenteMeta,
@@ -1889,6 +1910,10 @@ class $PedidoVentaLineaLocalTableTable extends PedidoVentaLineaLocalTable
         DriftSqlType.dateTime,
         data['${effectivePrefix}F_DISPONIBLE'],
       ),
+      fechaCliente: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}F_CLIENTE'],
+      ),
       iva: attachedDatabase.typeMapping.read(
         DriftSqlType.double,
         data['${effectivePrefix}IVA'],
@@ -1936,6 +1961,7 @@ class PedidoVentaLineaLocalTableCompanion
   final Value<String> stockDisponibleSN;
   final Value<DateTime?> fechaDisponible;
   final Value<double> iva;
+  final Value<DateTime?> fechaCliente;
   final Value<String?> pedidoLineaIdComponente;
   final Value<String> aiRecomendado;
   final Value<String?> codPromo;
@@ -1959,6 +1985,7 @@ class PedidoVentaLineaLocalTableCompanion
     this.stockDisponibleSN = const Value.absent(),
     this.fechaDisponible = const Value.absent(),
     this.iva = const Value.absent(),
+    this.fechaCliente = const Value.absent(),
     this.pedidoLineaIdComponente = const Value.absent(),
     this.aiRecomendado = const Value.absent(),
     this.codPromo = const Value.absent(),
@@ -1983,6 +2010,7 @@ class PedidoVentaLineaLocalTableCompanion
     required String stockDisponibleSN,
     this.fechaDisponible = const Value.absent(),
     required double iva,
+    this.fechaCliente = const Value.absent(),
     this.pedidoLineaIdComponente = const Value.absent(),
     required String aiRecomendado,
     this.codPromo = const Value.absent(),
@@ -2020,6 +2048,7 @@ class PedidoVentaLineaLocalTableCompanion
     Expression<String>? stockDisponibleSN,
     Expression<DateTime>? fechaDisponible,
     Expression<double>? iva,
+    Expression<DateTime>? fechaCliente,
     Expression<String>? pedidoLineaIdComponente,
     Expression<String>? aiRecomendado,
     Expression<String>? codPromo,
@@ -2044,6 +2073,7 @@ class PedidoVentaLineaLocalTableCompanion
       if (stockDisponibleSN != null) 'STOCK_DISPONIBLE_SN': stockDisponibleSN,
       if (fechaDisponible != null) 'F_DISPONIBLE': fechaDisponible,
       if (iva != null) 'IVA': iva,
+      if (fechaCliente != null) 'F_CLIENTE': fechaCliente,
       if (pedidoLineaIdComponente != null)
         'PEDIDO_LINEA_ID_COMPONENTE': pedidoLineaIdComponente,
       if (aiRecomendado != null) 'AI_RECOMENDADO': aiRecomendado,
@@ -2071,6 +2101,7 @@ class PedidoVentaLineaLocalTableCompanion
     Value<String>? stockDisponibleSN,
     Value<DateTime?>? fechaDisponible,
     Value<double>? iva,
+    Value<DateTime?>? fechaCliente,
     Value<String?>? pedidoLineaIdComponente,
     Value<String>? aiRecomendado,
     Value<String?>? codPromo,
@@ -2096,6 +2127,7 @@ class PedidoVentaLineaLocalTableCompanion
       stockDisponibleSN: stockDisponibleSN ?? this.stockDisponibleSN,
       fechaDisponible: fechaDisponible ?? this.fechaDisponible,
       iva: iva ?? this.iva,
+      fechaCliente: fechaCliente ?? this.fechaCliente,
       pedidoLineaIdComponente:
           pedidoLineaIdComponente ?? this.pedidoLineaIdComponente,
       aiRecomendado: aiRecomendado ?? this.aiRecomendado,
@@ -2157,6 +2189,9 @@ class PedidoVentaLineaLocalTableCompanion
     if (iva.present) {
       map['IVA'] = Variable<double>(iva.value);
     }
+    if (fechaCliente.present) {
+      map['F_CLIENTE'] = Variable<DateTime>(fechaCliente.value);
+    }
     if (pedidoLineaIdComponente.present) {
       map['PEDIDO_LINEA_ID_COMPONENTE'] = Variable<String>(
         pedidoLineaIdComponente.value,
@@ -2199,6 +2234,7 @@ class PedidoVentaLineaLocalTableCompanion
           ..write('stockDisponibleSN: $stockDisponibleSN, ')
           ..write('fechaDisponible: $fechaDisponible, ')
           ..write('iva: $iva, ')
+          ..write('fechaCliente: $fechaCliente, ')
           ..write('pedidoLineaIdComponente: $pedidoLineaIdComponente, ')
           ..write('aiRecomendado: $aiRecomendado, ')
           ..write('codPromo: $codPromo, ')
@@ -6951,6 +6987,7 @@ typedef $$PedidoVentaLineaLocalTableTableCreateCompanionBuilder =
       required String stockDisponibleSN,
       Value<DateTime?> fechaDisponible,
       required double iva,
+      Value<DateTime?> fechaCliente,
       Value<String?> pedidoLineaIdComponente,
       required String aiRecomendado,
       Value<String?> codPromo,
@@ -6976,6 +7013,7 @@ typedef $$PedidoVentaLineaLocalTableTableUpdateCompanionBuilder =
       Value<String> stockDisponibleSN,
       Value<DateTime?> fechaDisponible,
       Value<double> iva,
+      Value<DateTime?> fechaCliente,
       Value<String?> pedidoLineaIdComponente,
       Value<String> aiRecomendado,
       Value<String?> codPromo,
@@ -7070,6 +7108,11 @@ class $$PedidoVentaLineaLocalTableTableFilterComposer
 
   ColumnFilters<double> get iva => $composableBuilder(
     column: $table.iva,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<DateTime> get fechaCliente => $composableBuilder(
+    column: $table.fechaCliente,
     builder: (column) => ColumnFilters(column),
   );
 
@@ -7188,6 +7231,11 @@ class $$PedidoVentaLineaLocalTableTableOrderingComposer
     builder: (column) => ColumnOrderings(column),
   );
 
+  ColumnOrderings<DateTime> get fechaCliente => $composableBuilder(
+    column: $table.fechaCliente,
+    builder: (column) => ColumnOrderings(column),
+  );
+
   ColumnOrderings<String> get pedidoLineaIdComponente => $composableBuilder(
     column: $table.pedidoLineaIdComponente,
     builder: (column) => ColumnOrderings(column),
@@ -7295,6 +7343,11 @@ class $$PedidoVentaLineaLocalTableTableAnnotationComposer
   GeneratedColumn<double> get iva =>
       $composableBuilder(column: $table.iva, builder: (column) => column);
 
+  GeneratedColumn<DateTime> get fechaCliente => $composableBuilder(
+    column: $table.fechaCliente,
+    builder: (column) => column,
+  );
+
   GeneratedColumn<String> get pedidoLineaIdComponente => $composableBuilder(
     column: $table.pedidoLineaIdComponente,
     builder: (column) => column,
@@ -7379,6 +7432,7 @@ class $$PedidoVentaLineaLocalTableTableTableManager
                 Value<String> stockDisponibleSN = const Value.absent(),
                 Value<DateTime?> fechaDisponible = const Value.absent(),
                 Value<double> iva = const Value.absent(),
+                Value<DateTime?> fechaCliente = const Value.absent(),
                 Value<String?> pedidoLineaIdComponente = const Value.absent(),
                 Value<String> aiRecomendado = const Value.absent(),
                 Value<String?> codPromo = const Value.absent(),
@@ -7402,6 +7456,7 @@ class $$PedidoVentaLineaLocalTableTableTableManager
                 stockDisponibleSN: stockDisponibleSN,
                 fechaDisponible: fechaDisponible,
                 iva: iva,
+                fechaCliente: fechaCliente,
                 pedidoLineaIdComponente: pedidoLineaIdComponente,
                 aiRecomendado: aiRecomendado,
                 codPromo: codPromo,
@@ -7427,6 +7482,7 @@ class $$PedidoVentaLineaLocalTableTableTableManager
                 required String stockDisponibleSN,
                 Value<DateTime?> fechaDisponible = const Value.absent(),
                 required double iva,
+                Value<DateTime?> fechaCliente = const Value.absent(),
                 Value<String?> pedidoLineaIdComponente = const Value.absent(),
                 required String aiRecomendado,
                 Value<String?> codPromo = const Value.absent(),
@@ -7450,6 +7506,7 @@ class $$PedidoVentaLineaLocalTableTableTableManager
                 stockDisponibleSN: stockDisponibleSN,
                 fechaDisponible: fechaDisponible,
                 iva: iva,
+                fechaCliente: fechaCliente,
                 pedidoLineaIdComponente: pedidoLineaIdComponente,
                 aiRecomendado: aiRecomendado,
                 codPromo: codPromo,

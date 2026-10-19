@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:io';
 
+import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 import 'package:material_ui/material_ui.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
@@ -22,6 +23,7 @@ void main() async {
       WidgetsFlutterBinding.ensureInitialized();
 
       await dotenv.load();
+      await _initSentry();
       Currencies().registerList(currencies);
 
       PaintingBinding.instance.imageCache.maximumSizeBytes = 50 << 20;
@@ -59,21 +61,6 @@ void main() async {
         }
       }
 
-      if (kReleaseMode) {
-        await SentryFlutter.init((options) {
-          options.dsn = dotenv.get('SENTRY_DNS');
-          options.environment = kReleaseMode ? 'prod' : 'dev';
-          options
-            ..considerInAppFramesByDefault = false
-            ..addInAppInclude('jbm_nikel_mobile');
-          options.beforeSend = (event, hint) async =>
-              _sentryBeforeSendOptions(event);
-          options.tracesSampleRate = 1;
-          options.enableAutoPerformanceTracing = false;
-          options.attachStacktrace = true;
-        });
-      }
-
       runApp(
         ProviderScope(
           child: const App(),
@@ -82,29 +69,8 @@ void main() async {
         ),
       );
 
-      FlutterError.onError = (FlutterErrorDetails detalles) {
-        FlutterError.presentError(detalles);
-        if (kReleaseMode) {
-          Sentry.captureException(
-            detalles.exception,
-            stackTrace: detalles.stack,
-            withScope: (scope) {
-              scope.setContexts('flutter_error', {
-                'library': detalles.library,
-                'context': detalles.context?.toDescription(),
-              });
-            },
-          );
-        }
-      };
+      // Los errores de build ya los reporta Sentry vía FlutterError.onError.
       ErrorWidget.builder = (FlutterErrorDetails detalles) {
-        if (kReleaseMode) {
-          Sentry.captureException(
-            detalles.exception,
-            stackTrace: detalles.stack,
-          );
-        }
-
         return Scaffold(
           appBar: AppBar(
             backgroundColor: Colors.red,
@@ -114,11 +80,12 @@ void main() async {
         );
       };
     },
-    (Object error, StackTrace stack) {
+    (Object error, StackTrace stack) async {
       // ignore: avoid_print
       print(error);
       if (kReleaseMode) {
-        Sentry.captureException(error, stackTrace: stack);
+        await Sentry.captureException(error, stackTrace: stack);
+        await Sentry.close();
       }
 
       exit(1);
@@ -132,8 +99,40 @@ Future<void> _setWindowManagerTerms() async {
   await windowManager.focus();
 }
 
-SentryEvent? _sentryBeforeSendOptions(SentryEvent event) {
+Future<void> _initSentry() async {
   if (!kReleaseMode) {
+    return;
+  }
+
+  await SentryFlutter.init((options) {
+    options
+      ..dsn = dotenv.get('SENTRY_DNS')
+      ..environment = 'prod'
+      ..sendDefaultPii = false
+      ..attachStacktrace = true
+      ..attachScreenshot = true
+      ..attachViewHierarchy = true
+      ..maxBreadcrumbs = 100
+      ..considerInAppFramesByDefault = false
+      ..addInAppInclude('jbm_nikel_mobile')
+      ..tracesSampleRate = 0.2
+      ..enableAutoPerformanceTracing = false
+      ..beforeSend = (event, hint) async => _sentryBeforeSend(event);
+  });
+}
+
+/// Descarta errores de conectividad (la app trabaja a menudo sin red),
+/// que son ruido y no bugs.
+SentryEvent? _sentryBeforeSend(SentryEvent event) {
+  final throwable = event.throwable;
+  if (throwable is SocketException || throwable is TimeoutException) {
+    return null;
+  }
+  if (throwable is DioException &&
+      (throwable.type == DioExceptionType.connectionError ||
+          throwable.type == DioExceptionType.connectionTimeout ||
+          throwable.type == DioExceptionType.sendTimeout ||
+          throwable.type == DioExceptionType.receiveTimeout)) {
     return null;
   }
 

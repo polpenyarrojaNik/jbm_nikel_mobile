@@ -399,7 +399,9 @@ class PedidoVentaEditPageController
     required PedidoVentaLinea pedidoVentaLinea,
     required int posicionActualizar,
   }) {
-    pedidoVentaLineaList[posicionActualizar] = pedidoVentaLinea;
+    pedidoVentaLineaList[posicionActualizar] = pedidoVentaLinea.copyWith(
+      fechaCliente: pedidoVentaLineaList[posicionActualizar].fechaCliente,
+    );
 
     state = PedidoVentaEditPageControllerState.data(
       _cliente,
@@ -529,6 +531,7 @@ class PedidoVentaEditPageController
         descuento3: pedidoVentaLineaList[i].descuento3,
         descuentoProntoPago: pedidoVentaLineaList[i].descuentoProntoPago,
         stockDisponibleSN: pedidoVentaLineaList[i].stockDisponibleSN,
+        fechaCliente: pedidoVentaLineaList[i].fechaCliente,
         iva: pedidoVentaLineaList[i].iva,
         importeLinea: pedidoVentaLineaList[i].importeLinea,
         cantidadPendiente: pedidoVentaLineaList[i].cantidad,
