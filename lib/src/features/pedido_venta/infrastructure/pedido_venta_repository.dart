@@ -1914,64 +1914,6 @@ class PedidoVentaRepository {
     }
   }
 
-  Future<void> updateFechaClienteLinea({
-    required PedidoVentaLinea linea,
-    required DateTime fechaCliente,
-  }) async {
-    try {
-      final pedidoId = linea.pedidoId!;
-      final empresaId = linea.empresaId;
-      final lineaId = linea.pedidoVentaLineaId!;
-      final fechaClienteUtc = fechaCliente.toUtc();
-
-      final requestUri = (usuario.test)
-          ? Uri.http(
-              dotenv.get('URL_TEST', fallback: 'localhost:3001'),
-              'api/v1/online/pedido/$pedidoId/$lineaId/fecha_cliente',
-            )
-          : Uri.https(
-              dotenv.get('URL', fallback: 'localhost:3001'),
-              'api/v1/online/pedido/$pedidoId/$lineaId/fecha_cliente',
-            );
-
-      final response = await _dio.putUri(
-        requestUri,
-        options: Options(
-          headers: {'authorization': 'Bearer ${usuario.provisionalToken}'},
-        ),
-        data: jsonEncode({
-          'F_CLIENTE': fechaClienteUtc.toUtc().toIso8601String(),
-          'EMPRESA_ID': empresaId,
-        }),
-      );
-      if (response.statusCode != 200) {
-        throw AppException.restApiFailure(
-          response.statusCode ?? 400,
-          response.statusMessage ?? '',
-        );
-      }
-
-      await (_remoteDb.update(_remoteDb.pedidoVentaLineaTable)..where(
-            (tbl) =>
-                tbl.pedidoId.equals(pedidoId) &
-                tbl.pedidoVentaLineaId.equals(lineaId) &
-                (linea.empresaId == null
-                    ? const Constant(true)
-                    : tbl.empresaId.equals(linea.empresaId!)),
-          ))
-          .write(
-            PedidoVentaLineaTableCompanion(
-              fechaCliente: Value(fechaClienteUtc),
-            ),
-          );
-    } catch (e, stackTrace) {
-      Error.throwWithStackTrace(
-        getApiError(e, stackTrace, errorLogger),
-        stackTrace,
-      );
-    }
-  }
-
   Future<PedidoVentaLocalDTO> _remoteCreatePedidoVenta(
     PedidoVentaLocalDTO pedidoVentaLocalDTO,
     List<PedidoVentaLineaLocalDTO> pedidoVentaLineaDTOList,

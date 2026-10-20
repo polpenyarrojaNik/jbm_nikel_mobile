@@ -1,4 +1,3 @@
-import 'dart:async';
 import 'dart:io';
 
 import 'package:auto_route/auto_route.dart';
@@ -24,7 +23,6 @@ import '../../../../core/routing/app_auto_router.dart';
 import '../../../usuario/application/usuario_notifier.dart';
 import '../../domain/pedido_local_param.dart';
 import '../../domain/pedido_venta.dart';
-import '../../domain/pedido_venta_linea.dart';
 import '../../infrastructure/pedido_venta_repository.dart';
 import '../edit/recomendacion_producto_alert_dialog.dart';
 import '../index/pedido_search_controller.dart';
@@ -400,34 +398,6 @@ class PedidoVentaLineaContainer extends ConsumerWidget {
 
   final PedidoLocalParam pedidoLocalParam;
 
-  Future<void> _editFechaCliente(
-    BuildContext context,
-    WidgetRef ref,
-    PedidoVentaLinea linea,
-  ) async {
-    final hoy = DateUtils.dateOnly(DateTime.now());
-    final actual = linea.fechaCliente?.toLocal();
-    final selectedDate = await showDatePicker(
-      context: context,
-      initialDate: (actual != null && !actual.isBefore(hoy)) ? actual : hoy,
-      firstDate: hoy,
-      lastDate: DateTime(hoy.year + 5),
-    );
-    if (selectedDate == null || !context.mounted) return;
-
-    try {
-      await ref
-          .read(pedidoVentaRepositoryProvider)
-          .updateFechaClienteLinea(
-            linea: linea,
-            fechaCliente: DateUtils.dateOnly(selectedDate),
-          );
-      ref.invalidate(getPedidoVentaLineaListProvider(pedidoLocalParam));
-    } catch (e) {
-      if (context.mounted) unawaited(showToast(e.toString(), context));
-    }
-  }
-
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final state = ref.watch(getPedidoVentaLineaListProvider(pedidoLocalParam));
@@ -448,15 +418,6 @@ class PedidoVentaLineaContainer extends ConsumerWidget {
                     physics: const NeverScrollableScrollPhysics(),
                     itemBuilder: (context, i) => PedidoVentaLineaTile(
                       pedidoVentaLinea: pedidoVentaLineaList[i],
-                      onFechaClienteTap:
-                          !pedidoLocalParam.isLocal &&
-                              !pedidoVentaLineaList[i].isComponente
-                          ? () => _editFechaCliente(
-                              context,
-                              ref,
-                              pedidoVentaLineaList[i],
-                            )
-                          : null,
                     ),
                     itemCount: pedidoVentaLineaList.length,
                   ),

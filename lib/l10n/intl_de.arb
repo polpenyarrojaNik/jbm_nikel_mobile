@@ -327,7 +327,7 @@
   "pedido_edit_selectQuantity_pallets": "Paletten",
   "pedido_edit_selectQuantity_precio": "Preis",
   "pedido_edit_selectQuantity_seleccionarCantidad": "Menge auswählen",
-  "pedido_edit_selectQuantity_fechaCliente": "Kundendatum",
+  "pedido_edit_selectQuantity_fechaCliente": "Gewünschtes Lieferdatum",
   "pedido_edit_selectQuantity_stockDisponible": "Verfügbarer Bestand:",
   "pedido_edit_selectQuantity_subcaja": "Unterkarton",
   "pedido_edit_selectQuantity_subcajas": "Unterkartons",

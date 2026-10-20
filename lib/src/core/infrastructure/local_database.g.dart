@@ -6079,6 +6079,214 @@ class VisitaCompetenciaLocalTableCompanion
   }
 }
 
+class $AppConfigTableTable extends AppConfigTable
+    with TableInfo<$AppConfigTableTable, AppConfigRow> {
+  @override
+  final GeneratedDatabase attachedDatabase;
+  final String? _alias;
+  $AppConfigTableTable(this.attachedDatabase, [this._alias]);
+  static const VerificationMeta _claveMeta = const VerificationMeta('clave');
+  @override
+  late final GeneratedColumn<String> clave = GeneratedColumn<String>(
+    'CLAVE',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _valorMeta = const VerificationMeta('valor');
+  @override
+  late final GeneratedColumn<String> valor = GeneratedColumn<String>(
+    'VALOR',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  @override
+  List<GeneratedColumn> get $columns => [clave, valor];
+  @override
+  String get aliasedName => _alias ?? actualTableName;
+  @override
+  String get actualTableName => $name;
+  static const String $name = 'APP_CONFIG';
+  @override
+  VerificationContext validateIntegrity(
+    Insertable<AppConfigRow> instance, {
+    bool isInserting = false,
+  }) {
+    final context = VerificationContext();
+    final data = instance.toColumns(true);
+    if (data.containsKey('CLAVE')) {
+      context.handle(
+        _claveMeta,
+        clave.isAcceptableOrUnknown(data['CLAVE']!, _claveMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_claveMeta);
+    }
+    if (data.containsKey('VALOR')) {
+      context.handle(
+        _valorMeta,
+        valor.isAcceptableOrUnknown(data['VALOR']!, _valorMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_valorMeta);
+    }
+    return context;
+  }
+
+  @override
+  Set<GeneratedColumn> get $primaryKey => {clave};
+  @override
+  AppConfigRow map(Map<String, dynamic> data, {String? tablePrefix}) {
+    final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
+    return AppConfigRow(
+      clave: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}CLAVE'],
+      )!,
+      valor: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}VALOR'],
+      )!,
+    );
+  }
+
+  @override
+  $AppConfigTableTable createAlias(String alias) {
+    return $AppConfigTableTable(attachedDatabase, alias);
+  }
+}
+
+class AppConfigRow extends DataClass implements Insertable<AppConfigRow> {
+  final String clave;
+  final String valor;
+  const AppConfigRow({required this.clave, required this.valor});
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    map['CLAVE'] = Variable<String>(clave);
+    map['VALOR'] = Variable<String>(valor);
+    return map;
+  }
+
+  AppConfigTableCompanion toCompanion(bool nullToAbsent) {
+    return AppConfigTableCompanion(clave: Value(clave), valor: Value(valor));
+  }
+
+  factory AppConfigRow.fromJson(
+    Map<String, dynamic> json, {
+    ValueSerializer? serializer,
+  }) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return AppConfigRow(
+      clave: serializer.fromJson<String>(json['clave']),
+      valor: serializer.fromJson<String>(json['valor']),
+    );
+  }
+  @override
+  Map<String, dynamic> toJson({ValueSerializer? serializer}) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return <String, dynamic>{
+      'clave': serializer.toJson<String>(clave),
+      'valor': serializer.toJson<String>(valor),
+    };
+  }
+
+  AppConfigRow copyWith({String? clave, String? valor}) =>
+      AppConfigRow(clave: clave ?? this.clave, valor: valor ?? this.valor);
+  AppConfigRow copyWithCompanion(AppConfigTableCompanion data) {
+    return AppConfigRow(
+      clave: data.clave.present ? data.clave.value : this.clave,
+      valor: data.valor.present ? data.valor.value : this.valor,
+    );
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('AppConfigRow(')
+          ..write('clave: $clave, ')
+          ..write('valor: $valor')
+          ..write(')'))
+        .toString();
+  }
+
+  @override
+  int get hashCode => Object.hash(clave, valor);
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      (other is AppConfigRow &&
+          other.clave == this.clave &&
+          other.valor == this.valor);
+}
+
+class AppConfigTableCompanion extends UpdateCompanion<AppConfigRow> {
+  final Value<String> clave;
+  final Value<String> valor;
+  final Value<int> rowid;
+  const AppConfigTableCompanion({
+    this.clave = const Value.absent(),
+    this.valor = const Value.absent(),
+    this.rowid = const Value.absent(),
+  });
+  AppConfigTableCompanion.insert({
+    required String clave,
+    required String valor,
+    this.rowid = const Value.absent(),
+  }) : clave = Value(clave),
+       valor = Value(valor);
+  static Insertable<AppConfigRow> custom({
+    Expression<String>? clave,
+    Expression<String>? valor,
+    Expression<int>? rowid,
+  }) {
+    return RawValuesInsertable({
+      if (clave != null) 'CLAVE': clave,
+      if (valor != null) 'VALOR': valor,
+      if (rowid != null) 'rowid': rowid,
+    });
+  }
+
+  AppConfigTableCompanion copyWith({
+    Value<String>? clave,
+    Value<String>? valor,
+    Value<int>? rowid,
+  }) {
+    return AppConfigTableCompanion(
+      clave: clave ?? this.clave,
+      valor: valor ?? this.valor,
+      rowid: rowid ?? this.rowid,
+    );
+  }
+
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    if (clave.present) {
+      map['CLAVE'] = Variable<String>(clave.value);
+    }
+    if (valor.present) {
+      map['VALOR'] = Variable<String>(valor.value);
+    }
+    if (rowid.present) {
+      map['rowid'] = Variable<int>(rowid.value);
+    }
+    return map;
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('AppConfigTableCompanion(')
+          ..write('clave: $clave, ')
+          ..write('valor: $valor, ')
+          ..write('rowid: $rowid')
+          ..write(')'))
+        .toString();
+  }
+}
+
 abstract class _$LocalAppDatabase extends GeneratedDatabase {
   _$LocalAppDatabase(QueryExecutor e) : super(e);
   _$LocalAppDatabase.connect(DatabaseConnection c) : super.connect(c);
@@ -6106,6 +6314,7 @@ abstract class _$LocalAppDatabase extends GeneratedDatabase {
   );
   late final $VisitaCompetenciaLocalTableTable visitaCompetenciaLocalTable =
       $VisitaCompetenciaLocalTableTable(this);
+  late final $AppConfigTableTable appConfigTable = $AppConfigTableTable(this);
   @override
   Iterable<TableInfo<Table, Object?>> get allTables =>
       allSchemaEntities.whereType<TableInfo<Table, Object?>>();
@@ -6122,6 +6331,7 @@ abstract class _$LocalAppDatabase extends GeneratedDatabase {
     catalogoOrdenTable,
     clienteImpTable,
     visitaCompetenciaLocalTable,
+    appConfigTable,
   ];
   @override
   DriftDatabaseOptions get options =>
@@ -10473,6 +10683,164 @@ typedef $$VisitaCompetenciaLocalTableTableProcessedTableManager =
       VisitaCompetenciaLocalDTO,
       PrefetchHooks Function()
     >;
+typedef $$AppConfigTableTableCreateCompanionBuilder =
+    AppConfigTableCompanion Function({
+      required String clave,
+      required String valor,
+      Value<int> rowid,
+    });
+typedef $$AppConfigTableTableUpdateCompanionBuilder =
+    AppConfigTableCompanion Function({
+      Value<String> clave,
+      Value<String> valor,
+      Value<int> rowid,
+    });
+
+class $$AppConfigTableTableFilterComposer
+    extends Composer<_$LocalAppDatabase, $AppConfigTableTable> {
+  $$AppConfigTableTableFilterComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnFilters<String> get clave => $composableBuilder(
+    column: $table.clave,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get valor => $composableBuilder(
+    column: $table.valor,
+    builder: (column) => ColumnFilters(column),
+  );
+}
+
+class $$AppConfigTableTableOrderingComposer
+    extends Composer<_$LocalAppDatabase, $AppConfigTableTable> {
+  $$AppConfigTableTableOrderingComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnOrderings<String> get clave => $composableBuilder(
+    column: $table.clave,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get valor => $composableBuilder(
+    column: $table.valor,
+    builder: (column) => ColumnOrderings(column),
+  );
+}
+
+class $$AppConfigTableTableAnnotationComposer
+    extends Composer<_$LocalAppDatabase, $AppConfigTableTable> {
+  $$AppConfigTableTableAnnotationComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  GeneratedColumn<String> get clave =>
+      $composableBuilder(column: $table.clave, builder: (column) => column);
+
+  GeneratedColumn<String> get valor =>
+      $composableBuilder(column: $table.valor, builder: (column) => column);
+}
+
+class $$AppConfigTableTableTableManager
+    extends
+        RootTableManager<
+          _$LocalAppDatabase,
+          $AppConfigTableTable,
+          AppConfigRow,
+          $$AppConfigTableTableFilterComposer,
+          $$AppConfigTableTableOrderingComposer,
+          $$AppConfigTableTableAnnotationComposer,
+          $$AppConfigTableTableCreateCompanionBuilder,
+          $$AppConfigTableTableUpdateCompanionBuilder,
+          (
+            AppConfigRow,
+            BaseReferences<
+              _$LocalAppDatabase,
+              $AppConfigTableTable,
+              AppConfigRow
+            >,
+          ),
+          AppConfigRow,
+          PrefetchHooks Function()
+        > {
+  $$AppConfigTableTableTableManager(
+    _$LocalAppDatabase db,
+    $AppConfigTableTable table,
+  ) : super(
+        TableManagerState(
+          db: db,
+          table: table,
+          createFilteringComposer: () =>
+              $$AppConfigTableTableFilterComposer($db: db, $table: table),
+          createOrderingComposer: () =>
+              $$AppConfigTableTableOrderingComposer($db: db, $table: table),
+          createComputedFieldComposer: () =>
+              $$AppConfigTableTableAnnotationComposer($db: db, $table: table),
+          updateCompanionCallback:
+              ({
+                Value<String> clave = const Value.absent(),
+                Value<String> valor = const Value.absent(),
+                Value<int> rowid = const Value.absent(),
+              }) => AppConfigTableCompanion(
+                clave: clave,
+                valor: valor,
+                rowid: rowid,
+              ),
+          createCompanionCallback:
+              ({
+                required String clave,
+                required String valor,
+                Value<int> rowid = const Value.absent(),
+              }) => AppConfigTableCompanion.insert(
+                clave: clave,
+                valor: valor,
+                rowid: rowid,
+              ),
+          withReferenceMapper: (p0) => p0
+              .map(
+                (e) => (
+                  e.readTable<$AppConfigTableTable, AppConfigRow>(table),
+                  BaseReferences<
+                    _$LocalAppDatabase,
+                    $AppConfigTableTable,
+                    AppConfigRow
+                  >(db, table, e),
+                ),
+              )
+              .toList(),
+          prefetchHooksCallback: null,
+        ),
+      );
+}
+
+typedef $$AppConfigTableTableProcessedTableManager =
+    ProcessedTableManager<
+      _$LocalAppDatabase,
+      $AppConfigTableTable,
+      AppConfigRow,
+      $$AppConfigTableTableFilterComposer,
+      $$AppConfigTableTableOrderingComposer,
+      $$AppConfigTableTableAnnotationComposer,
+      $$AppConfigTableTableCreateCompanionBuilder,
+      $$AppConfigTableTableUpdateCompanionBuilder,
+      (
+        AppConfigRow,
+        BaseReferences<_$LocalAppDatabase, $AppConfigTableTable, AppConfigRow>,
+      ),
+      AppConfigRow,
+      PrefetchHooks Function()
+    >;
 
 class $LocalAppDatabaseManager {
   final _$LocalAppDatabase _db;
@@ -10513,6 +10881,8 @@ class $LocalAppDatabaseManager {
         _db,
         _db.visitaCompetenciaLocalTable,
       );
+  $$AppConfigTableTableTableManager get appConfigTable =>
+      $$AppConfigTableTableTableManager(_db, _db.appConfigTable);
 }
 
 // **************************************************************************

@@ -8,13 +8,9 @@ class PedidoVentaLineaTile extends StatelessWidget {
   const PedidoVentaLineaTile({
     super.key,
     required this.pedidoVentaLinea,
-    this.onFechaClienteTap,
   });
 
   final PedidoVentaLinea pedidoVentaLinea;
-
-  /// Si no es null, la fecha cliente es editable directamente desde el tile.
-  final VoidCallback? onFechaClienteTap;
 
   @override
   Widget build(BuildContext context) {
@@ -121,26 +117,10 @@ class PedidoVentaLineaTile extends StatelessWidget {
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                  if (pedidoVentaLinea.fechaCliente != null ||
-                      pedidoVentaLinea.isEditable)
-                    InkWell(
-                      onTap: pedidoVentaLinea.isEditable
-                          ? onFechaClienteTap
-                          : null,
-                      child: Row(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          Text(
-                            '${S.of(context).pedido_edit_selectQuantity_fechaCliente}: ${pedidoVentaLinea.fechaCliente != null ? dateFormatter(pedidoVentaLinea.fechaCliente!.toLocal().toIso8601String()) : '-'}',
-                            style: Theme.of(context).textTheme.bodySmall,
-                          ),
-                          if (onFechaClienteTap != null &&
-                              pedidoVentaLinea.isEditable) ...[
-                            const SizedBox(width: 4),
-                            const Icon(Icons.edit_calendar, size: 16),
-                          ],
-                        ],
-                      ),
+                  if (pedidoVentaLinea.fechaCliente != null)
+                    Text(
+                      '${S.of(context).pedido_edit_selectQuantity_fechaCliente}: ${dateFormatter(pedidoVentaLinea.fechaCliente!.toLocal().toIso8601String())}',
+                      style: Theme.of(context).textTheme.bodySmall,
                     ),
                   if (pedidoVentaLinea.cantidadPendiente != 0)
                     Text(

@@ -200,7 +200,7 @@
   "pedido_edit_selectQuantity_noPuedeEstarVacio": "Ne peux pas être vide",
   "pedido_edit_selectQuantity_precio": "Prix",
   "pedido_edit_selectQuantity_seleccionarCantidad": "Sélectionner quantité",
-  "pedido_edit_selectQuantity_fechaCliente": "Date client",
+  "pedido_edit_selectQuantity_fechaCliente": "Date de livraison demandée",
   "pedido_edit_selectQuantity_stockDisponible": "Stock disponible:",
   "pedido_edit_selectQuantity_tieneQueSerMultiploDe": "Multiple de",
   "pedido_enviado": "Envoyé",

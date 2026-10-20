@@ -19,6 +19,7 @@ import '../../features/visitas/infrastructure/visita_competencia_local_dto.dart'
 import '../../features/visitas/infrastructure/visita_local_dto.dart';
 import '../domain/isolate_request.dart';
 import '../helpers/database_helper.dart';
+import 'app_config_table.dart';
 import 'log_dto.dart';
 import 'sync_datetime_dto.dart';
 
@@ -59,6 +60,7 @@ const kLocalDatabaseName = 'local_jbm.sqlite';
     CatalogoOrdenTable,
     ClienteImpTable,
     VisitaCompetenciaLocalTable,
+    AppConfigTable,
   ],
 )
 class LocalAppDatabase extends _$LocalAppDatabase {
@@ -67,7 +69,7 @@ class LocalAppDatabase extends _$LocalAppDatabase {
   LocalAppDatabase.connect(super.connection) : test = false, super.connect();
   LocalAppDatabase.test() : test = true, super(NativeDatabase.memory());
   @override
-  int get schemaVersion => 22;
+  int get schemaVersion => 23;
 
   @override
   MigrationStrategy get migration {
@@ -393,6 +395,9 @@ class LocalAppDatabase extends _$LocalAppDatabase {
             pedidoVentaLineaLocalTable.fechaCliente.name,
             'DATETIME',
           );
+        }
+        if (from < 23) {
+          await m.createTable(appConfigTable);
         }
       }),
     );

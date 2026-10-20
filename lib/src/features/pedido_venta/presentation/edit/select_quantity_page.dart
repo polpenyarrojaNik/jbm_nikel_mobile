@@ -23,6 +23,7 @@ import '../../../articulos/infrastructure/articulo_repository.dart';
 import '../../../cliente/domain/cliente.dart';
 import '../../../cliente/infrastructure/cliente_repository.dart';
 import '../../../usuario/application/usuario_notifier.dart';
+import '../../application/fecha_cliente_service.dart';
 import '../../domain/pedido_venta_linea.dart';
 import '../../domain/pedido_venta_linea_ultimos_precios_param.dart';
 import '../../domain/precio.dart';
@@ -145,6 +146,7 @@ class _SelecionarCantidadFormState
   final descuento1Controller = TextEditingController();
   final fechaClienteController = TextEditingController();
   DateTime? fechaCliente;
+  var fechaClienteManual = false;
   var totalQuantity = 0;
   var units = 0;
   var unitsCaja = 0;
@@ -165,7 +167,7 @@ class _SelecionarCantidadFormState
     if (fechaInicial != null) {
       fechaCliente = DateUtils.dateOnly(fechaInicial.toLocal());
     } else if (!widget.seleccionarCantidadParam.isUpdatingLinea()) {
-      fechaCliente = DateUtils.dateOnly(DateTime.now());
+      Future.microtask(recalcularFechaCliente);
     }
     if (fechaCliente != null) {
       fechaClienteController.text = dateFormatter(
@@ -388,8 +390,10 @@ class _SelecionarCantidadFormState
                             descuento1Controller: descuento1Controller,
                             descuento2: descuento2,
                             descuento3: articuloPrecio!.descuento3,
-                            setPrecio: (value) =>
-                                setState(() => precio = value),
+                            setPrecio: (value) {
+                              setState(() => precio = value);
+                              recalcularFechaCliente();
+                            },
                             setDescuento1: (value) =>
                                 setState(() => descuento1 = value),
                             setDescuento2: (value) =>
@@ -419,18 +423,45 @@ class _SelecionarCantidadFormState
     );
   }
 
+  /// Recalcula la fecha cliente según la hora límite guardada en local (sin
+  /// API). Si el usuario eligió la fecha a mano, se respeta.
+  Future<void> recalcularFechaCliente() async {
+    if (fechaClienteManual || widget.seleccionarCantidadParam.isComponente) {
+      return;
+    }
+    if (widget.seleccionarCantidadParam.isUpdatingLinea() &&
+        initialLoadingData) {
+      return;
+    }
+    final nuevaFecha = await ref
+        .read(fechaClienteServiceProvider)
+        .getFechaClientePorDefecto();
+    if (!mounted || fechaClienteManual) return;
+    setState(() {
+      fechaCliente = nuevaFecha;
+      fechaClienteController.text = dateFormatter(nuevaFecha.toIso8601String());
+    });
+  }
+
   Future<void> selectFechaCliente() async {
-    final hoy = DateUtils.dateOnly(DateTime.now());
+    // La fecha calculada por la hora límite es la mínima seleccionable.
+    final fechaMinima = await ref
+        .read(fechaClienteServiceProvider)
+        .getFechaClientePorDefecto();
+    if (!mounted) return;
+    final initialDate =
+        (fechaCliente != null && !fechaCliente!.isBefore(fechaMinima))
+        ? fechaCliente!
+        : fechaMinima;
     final selectedDate = await showDatePicker(
       context: context,
-      initialDate: (fechaCliente != null && !fechaCliente!.isBefore(hoy))
-          ? fechaCliente!
-          : hoy,
-      firstDate: hoy,
-      lastDate: DateTime(hoy.year + 5),
+      initialDate: initialDate,
+      firstDate: fechaMinima,
+      lastDate: DateTime(fechaMinima.year + 5),
     );
     if (selectedDate == null || !mounted) return;
     setState(() {
+      fechaClienteManual = true;
       fechaCliente = DateUtils.dateOnly(selectedDate);
       fechaClienteController.text = dateFormatter(
         fechaCliente!.toIso8601String(),
@@ -643,6 +674,7 @@ class _SelecionarCantidadFormState
   void setTotalQuantity() {
     final quantity = units + unitsCaja + unitsSubcaja + unitsPalet;
     setState(() => totalQuantity = quantity);
+    recalcularFechaCliente();
     ref
         .read(articuloPrecioProvider.notifier)
         .getArticuloPrecio(
@@ -1038,8 +1070,9 @@ class _UnitsFormField extends StatelessWidget {
           controller: unitsController,
           decoration: InputDecoration(
             labelText: S.of(context).pedido_edit_selectQuantity_unidades,
-            labelStyle: Theme.of(context).inputDecorationTheme.labelStyle
-                ?.copyWith(fontSize: 9),
+            labelStyle: Theme.of(
+              context,
+            ).inputDecorationTheme.labelStyle?.copyWith(fontSize: 9),
             errorStyle: Theme.of(context).textTheme.bodySmall?.copyWith(
               fontSize: 9,
               color: Theme.of(context).colorScheme.error,
@@ -1108,8 +1141,9 @@ class _CajaUnitsFormField extends StatelessWidget {
           controller: cajaController,
           decoration: InputDecoration(
             labelText: S.of(context).pedido_edit_selectQuantity_cajas,
-            labelStyle: Theme.of(context).inputDecorationTheme.labelStyle
-                ?.copyWith(fontSize: 9),
+            labelStyle: Theme.of(
+              context,
+            ).inputDecorationTheme.labelStyle?.copyWith(fontSize: 9),
             errorStyle: Theme.of(context).textTheme.bodySmall?.copyWith(
               fontSize: 9,
               color: Theme.of(context).colorScheme.error,
@@ -1178,8 +1212,9 @@ class _SubcajaUnitsFormField extends StatelessWidget {
               fontSize: 9,
               color: Theme.of(context).colorScheme.error,
             ),
-            labelStyle: Theme.of(context).inputDecorationTheme.labelStyle
-                ?.copyWith(fontSize: 9),
+            labelStyle: Theme.of(
+              context,
+            ).inputDecorationTheme.labelStyle?.copyWith(fontSize: 9),
           ),
           textAlign: TextAlign.right,
           validator: (value) => null,
@@ -1240,8 +1275,9 @@ class _PaletUnitsFormField extends StatelessWidget {
           controller: paletController,
           decoration: InputDecoration(
             labelText: S.of(context).pedido_edit_selectQuantity_pallets,
-            labelStyle: Theme.of(context).inputDecorationTheme.labelStyle
-                ?.copyWith(fontSize: 9),
+            labelStyle: Theme.of(
+              context,
+            ).inputDecorationTheme.labelStyle?.copyWith(fontSize: 9),
           ),
           validator: (value) => null,
           onChanged: (value) {
@@ -1602,16 +1638,18 @@ class _ArticuloGrupoNetoSelectQuantityTile extends StatelessWidget {
               Flexible(
                 child: Text(
                   articuloGrupoNeto.grupoNetoDescripcion,
-                  style: Theme.of(context).textTheme.bodySmall
-                      ?.copyWith(fontSize: 9),
+                  style: Theme.of(
+                    context,
+                  ).textTheme.bodySmall?.copyWith(fontSize: 9),
                 ),
               ),
               if (articuloGrupoNeto.cantidadDesde != 1) ...[
                 const Gap(4),
                 Text(
                   '≥ ${numberFormatCantidades(articuloGrupoNeto.cantidadDesde)} ${S.of(context).unidad}',
-                  style: Theme.of(context).textTheme.bodySmall
-                      ?.copyWith(fontSize: 9),
+                  style: Theme.of(
+                    context,
+                  ).textTheme.bodySmall?.copyWith(fontSize: 9),
                 ),
               ],
             ],
@@ -1621,14 +1659,16 @@ class _ArticuloGrupoNetoSelectQuantityTile extends StatelessWidget {
               precio: articuloGrupoNeto.precioCalculado,
               tipoPrecio: articuloGrupoNeto.tipoPrecio,
             ),
-            style: Theme.of(context).textTheme.bodyMedium
-                ?.copyWith(fontSize: 12),
+            style: Theme.of(
+              context,
+            ).textTheme.bodyMedium?.copyWith(fontSize: 12),
           ),
           if (articuloGrupoNeto.dto > 0)
             Text(
               '${formatPrecios(precio: articuloGrupoNeto.precio, tipoPrecio: articuloGrupoNeto.tipoPrecio)} - ${articuloGrupoNeto.dto}%',
-              style: Theme.of(context).textTheme.bodySmall
-                  ?.copyWith(fontSize: 9),
+              style: Theme.of(
+                context,
+              ).textTheme.bodySmall?.copyWith(fontSize: 9),
             ),
         ],
       ),
@@ -1656,16 +1696,18 @@ class _ArticuloPrecioTarifaSelectQuantityTile extends StatelessWidget {
               Flexible(
                 child: Text(
                   articuloPrecioTarifa.tarifaDescripcion!,
-                  style: Theme.of(context).textTheme.bodySmall
-                      ?.copyWith(fontSize: 9),
+                  style: Theme.of(
+                    context,
+                  ).textTheme.bodySmall?.copyWith(fontSize: 9),
                 ),
               ),
             if (articuloPrecioTarifa.cantidadDesde != 1) ...[
               const Gap(4),
               Text(
                 '≥ ${numberFormatCantidades(articuloPrecioTarifa.cantidadDesde)} ${S.of(context).unidad}',
-                style: Theme.of(context).textTheme.bodySmall
-                    ?.copyWith(fontSize: 9),
+                style: Theme.of(
+                  context,
+                ).textTheme.bodySmall?.copyWith(fontSize: 9),
               ),
             ],
           ],

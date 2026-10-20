@@ -67,6 +67,7 @@ import '../exceptions/app_exception.dart';
 import '../exceptions/get_api_error.dart';
 import '../helpers/error_logger.dart';
 import '../presentation/app.dart';
+import 'app_config_table.dart';
 import 'divisa_dto.dart';
 import 'familia_dto.dart';
 import 'jbm_headers.dart';
@@ -302,6 +303,7 @@ class SyncService {
       await syncProvincias();
       await syncSectores();
       await syncSubsectores();
+      await syncConfiguracion();
     } catch (e) {
       await insetLog(level: 'I', message: 'Error visits sync');
 
@@ -923,6 +925,45 @@ class SyncService {
       rethrow;
     } catch (e) {
       rethrow;
+    }
+  }
+
+  /// Descarga la configuración (p. ej. hora límite de pedidos) y la guarda en
+  /// la base local para poder usarla offline. Un fallo no interrumpe el sync.
+  Future<void> syncConfiguracion() async {
+    try {
+      const apiPath = 'api/v19/sync/fecha-limite-pedido';
+      final requestUri = (_usuario!.test)
+          ? Uri.http('jbm-api-test.nikel.es:8080', apiPath)
+          : Uri.https('jbm-api.nikel.es', apiPath);
+
+      final response = await _dio.getUri(
+        requestUri,
+        options: Options(
+          headers: {'authorization': 'Bearer ${_usuario.provisionalToken}'},
+        ),
+      );
+      if (response.statusCode != 200) {
+        throw AppException.restApiFailure(
+          response.statusCode ?? 500,
+          response.statusMessage ?? '',
+        );
+      }
+
+      final data = (response.data as Json)['data'] as Json;
+      final horaPedidosDia = data[kConfigHoraPedidosDia] as String?;
+      if (horaPedidosDia != null) {
+        await _localDb
+            .into(_localDb.appConfigTable)
+            .insertOnConflictUpdate(
+              AppConfigTableCompanion.insert(
+                clave: kConfigHoraPedidosDia,
+                valor: horaPedidosDia,
+              ),
+            );
+      }
+    } catch (e) {
+      log.e('Error syncConfiguracion: $e');
     }
   }
 
