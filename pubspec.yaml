@@ -43,7 +43,7 @@ dependencies:
   form_builder_validators: ^11.3.0
   fpdart: ^1.2.0
   freezed_annotation: ^3.1.0
-  geolocator: ^14.1.1
+  geolocator: ^14.1.2
   google_fonts: ^9.0.0
   image: ^4.12.0
   intl: ^0.20.3
@@ -51,9 +51,9 @@ dependencies:
   jwt_decoder: ^2.0.1
   latlong2: ^0.9.1
   logger: ^2.8.0
-  map_launcher: ^6.0.0
+  map_launcher: ^7.0.0
   markdown: ^7.3.1
-  material_ui: ^1.6.0
+  material_ui: ^1.7.0
   flutter_material_design_icons: ^3.1.0+7447
   money2: ^6.3.0
   open_file: ^4.0.0
@@ -63,10 +63,10 @@ dependencies:
   riverpod_annotation: ^4.0.7
   share_plus: ^13.3.1
   shimmer: ^4.0.0
-  sentry_flutter: ^10.0.0
+  sentry_flutter: ^10.1.0
   sqlite3_flutter_libs: ^0.5.42
-  syncfusion_flutter_pdf: ^35.1.40
-  syncfusion_flutter_pdfviewer: ^35.1.40
+  syncfusion_flutter_pdf: ^35.1.41
+  syncfusion_flutter_pdfviewer: ^35.1.41
   upgrader: ^13.7.0
   url_launcher: ^6.3.3
   uuid: ^4.6.0

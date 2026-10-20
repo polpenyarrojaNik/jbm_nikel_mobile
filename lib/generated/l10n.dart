@@ -2905,10 +2905,10 @@ class S {
     );
   }
 
-  /// `Customer date`
+  /// `Requested delivery date`
   String get pedido_edit_selectQuantity_fechaCliente {
     return Intl.message(
-      'Customer date',
+      'Requested delivery date',
       name: 'pedido_edit_selectQuantity_fechaCliente',
       desc: '',
       args: [],
