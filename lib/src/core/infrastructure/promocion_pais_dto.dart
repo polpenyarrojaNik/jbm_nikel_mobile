@@ -41,16 +41,16 @@ abstract class PromocionPaisDTO
 @UseRowClass(PromocionPaisDTO)
 class PromocionPaisTable extends Table {
   @override
-  String get tableName => 'promocion_pais';
+  String get tableName => 'PROMOCION_PAIS';
 
   @override
   Set<Column> get primaryKey => {empresaId, promoId, paisId};
 
-  TextColumn get empresaId => text().named('empresa_id')();
-  TextColumn get promoId => text().named('promo_id')();
-  TextColumn get paisId => text().named('pais_id')();
-  TextColumn get tipo => text().named('tipo')();
-  DateTimeColumn get lastUpdated => dateTime().named('last_updated')();
+  TextColumn get empresaId => text().named('EMPRESA_ID')();
+  TextColumn get promoId => text().named('PROMO_ID')();
+  TextColumn get paisId => text().named('PAIS_ID')();
+  TextColumn get tipo => text().named('TIPO')();
+  DateTimeColumn get lastUpdated => dateTime().named('LAST_UPDATED')();
   TextColumn get deleted =>
-      text().withDefault(const Constant('N')).named('deleted')();
+      text().withDefault(const Constant('N')).named('DELETED')();
 }

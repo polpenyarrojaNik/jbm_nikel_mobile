@@ -41,16 +41,16 @@ abstract class PromocionArtRegaloDTO
 @UseRowClass(PromocionArtRegaloDTO)
 class PromocionArtRegaloTable extends Table {
   @override
-  String get tableName => 'promocion_art_regalo';
+  String get tableName => 'PROMOCION_ART_REGALO';
 
   @override
   Set<Column> get primaryKey => {empresaId, promoId, articuloId};
 
-  TextColumn get empresaId => text().named('empresa_id')();
-  TextColumn get promoId => text().named('promo_id')();
-  TextColumn get articuloId => text().named('articulo_id')();
-  IntColumn get cantidad => integer().named('cantidad')();
-  DateTimeColumn get lastUpdated => dateTime().named('last_updated')();
+  TextColumn get empresaId => text().named('EMPRESA_ID')();
+  TextColumn get promoId => text().named('PROMO_ID')();
+  TextColumn get articuloId => text().named('ARTICULO_ID')();
+  IntColumn get cantidad => integer().named('CANTIDAD')();
+  DateTimeColumn get lastUpdated => dateTime().named('LAST_UPDATED')();
   TextColumn get deleted =>
-      text().withDefault(const Constant('N')).named('deleted')();
+      text().withDefault(const Constant('N')).named('DELETED')();
 }

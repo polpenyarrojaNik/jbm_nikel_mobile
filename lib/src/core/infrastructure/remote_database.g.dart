@@ -25988,7 +25988,7 @@ class $PromocionArtPromoTableTable extends PromocionArtPromoTable
   );
   @override
   late final GeneratedColumn<String> empresaId = GeneratedColumn<String>(
-    'empresa_id',
+    'EMPRESA_ID',
     aliasedName,
     false,
     type: DriftSqlType.string,
@@ -25999,7 +25999,7 @@ class $PromocionArtPromoTableTable extends PromocionArtPromoTable
   );
   @override
   late final GeneratedColumn<String> promoId = GeneratedColumn<String>(
-    'promo_id',
+    'PROMO_ID',
     aliasedName,
     false,
     type: DriftSqlType.string,
@@ -26010,7 +26010,7 @@ class $PromocionArtPromoTableTable extends PromocionArtPromoTable
   );
   @override
   late final GeneratedColumn<String> articuloId = GeneratedColumn<String>(
-    'articulo_id',
+    'ARTICULO_ID',
     aliasedName,
     false,
     type: DriftSqlType.string,
@@ -26021,7 +26021,7 @@ class $PromocionArtPromoTableTable extends PromocionArtPromoTable
   );
   @override
   late final GeneratedColumn<int> cantidad = GeneratedColumn<int>(
-    'cantidad',
+    'CANTIDAD',
     aliasedName,
     false,
     type: DriftSqlType.int,
@@ -26030,7 +26030,7 @@ class $PromocionArtPromoTableTable extends PromocionArtPromoTable
   static const VerificationMeta _precioMeta = const VerificationMeta('precio');
   @override
   late final GeneratedColumn<double> precio = GeneratedColumn<double>(
-    'precio',
+    'PRECIO',
     aliasedName,
     false,
     type: DriftSqlType.double,
@@ -26041,7 +26041,7 @@ class $PromocionArtPromoTableTable extends PromocionArtPromoTable
   );
   @override
   late final GeneratedColumn<int> tipoPrecio = GeneratedColumn<int>(
-    'tipo_precio',
+    'TIPO_PRECIO',
     aliasedName,
     false,
     type: DriftSqlType.int,
@@ -26052,7 +26052,7 @@ class $PromocionArtPromoTableTable extends PromocionArtPromoTable
   );
   @override
   late final GeneratedColumn<DateTime> lastUpdated = GeneratedColumn<DateTime>(
-    'last_updated',
+    'LAST_UPDATED',
     aliasedName,
     false,
     type: DriftSqlType.dateTime,
@@ -26063,7 +26063,7 @@ class $PromocionArtPromoTableTable extends PromocionArtPromoTable
   );
   @override
   late final GeneratedColumn<String> deleted = GeneratedColumn<String>(
-    'deleted',
+    'DELETED',
     aliasedName,
     false,
     type: DriftSqlType.string,
@@ -26085,7 +26085,7 @@ class $PromocionArtPromoTableTable extends PromocionArtPromoTable
   String get aliasedName => _alias ?? actualTableName;
   @override
   String get actualTableName => $name;
-  static const String $name = 'promocion_art_promo';
+  static const String $name = 'PROMOCION_ART_PROMO';
   @override
   VerificationContext validateIntegrity(
     Insertable<PromocionArtPromoDTO> instance, {
@@ -26093,69 +26093,69 @@ class $PromocionArtPromoTableTable extends PromocionArtPromoTable
   }) {
     final context = VerificationContext();
     final data = instance.toColumns(true);
-    if (data.containsKey('empresa_id')) {
+    if (data.containsKey('EMPRESA_ID')) {
       context.handle(
         _empresaIdMeta,
-        empresaId.isAcceptableOrUnknown(data['empresa_id']!, _empresaIdMeta),
+        empresaId.isAcceptableOrUnknown(data['EMPRESA_ID']!, _empresaIdMeta),
       );
     } else if (isInserting) {
       context.missing(_empresaIdMeta);
     }
-    if (data.containsKey('promo_id')) {
+    if (data.containsKey('PROMO_ID')) {
       context.handle(
         _promoIdMeta,
-        promoId.isAcceptableOrUnknown(data['promo_id']!, _promoIdMeta),
+        promoId.isAcceptableOrUnknown(data['PROMO_ID']!, _promoIdMeta),
       );
     } else if (isInserting) {
       context.missing(_promoIdMeta);
     }
-    if (data.containsKey('articulo_id')) {
+    if (data.containsKey('ARTICULO_ID')) {
       context.handle(
         _articuloIdMeta,
-        articuloId.isAcceptableOrUnknown(data['articulo_id']!, _articuloIdMeta),
+        articuloId.isAcceptableOrUnknown(data['ARTICULO_ID']!, _articuloIdMeta),
       );
     } else if (isInserting) {
       context.missing(_articuloIdMeta);
     }
-    if (data.containsKey('cantidad')) {
+    if (data.containsKey('CANTIDAD')) {
       context.handle(
         _cantidadMeta,
-        cantidad.isAcceptableOrUnknown(data['cantidad']!, _cantidadMeta),
+        cantidad.isAcceptableOrUnknown(data['CANTIDAD']!, _cantidadMeta),
       );
     } else if (isInserting) {
       context.missing(_cantidadMeta);
     }
-    if (data.containsKey('precio')) {
+    if (data.containsKey('PRECIO')) {
       context.handle(
         _precioMeta,
-        precio.isAcceptableOrUnknown(data['precio']!, _precioMeta),
+        precio.isAcceptableOrUnknown(data['PRECIO']!, _precioMeta),
       );
     } else if (isInserting) {
       context.missing(_precioMeta);
     }
-    if (data.containsKey('tipo_precio')) {
+    if (data.containsKey('TIPO_PRECIO')) {
       context.handle(
         _tipoPrecioMeta,
-        tipoPrecio.isAcceptableOrUnknown(data['tipo_precio']!, _tipoPrecioMeta),
+        tipoPrecio.isAcceptableOrUnknown(data['TIPO_PRECIO']!, _tipoPrecioMeta),
       );
     } else if (isInserting) {
       context.missing(_tipoPrecioMeta);
     }
-    if (data.containsKey('last_updated')) {
+    if (data.containsKey('LAST_UPDATED')) {
       context.handle(
         _lastUpdatedMeta,
         lastUpdated.isAcceptableOrUnknown(
-          data['last_updated']!,
+          data['LAST_UPDATED']!,
           _lastUpdatedMeta,
         ),
       );
     } else if (isInserting) {
       context.missing(_lastUpdatedMeta);
     }
-    if (data.containsKey('deleted')) {
+    if (data.containsKey('DELETED')) {
       context.handle(
         _deletedMeta,
-        deleted.isAcceptableOrUnknown(data['deleted']!, _deletedMeta),
+        deleted.isAcceptableOrUnknown(data['DELETED']!, _deletedMeta),
       );
     }
     return context;
@@ -26169,35 +26169,35 @@ class $PromocionArtPromoTableTable extends PromocionArtPromoTable
     return PromocionArtPromoDTO(
       empresaId: attachedDatabase.typeMapping.read(
         DriftSqlType.string,
-        data['${effectivePrefix}empresa_id'],
+        data['${effectivePrefix}EMPRESA_ID'],
       )!,
       promoId: attachedDatabase.typeMapping.read(
         DriftSqlType.string,
-        data['${effectivePrefix}promo_id'],
+        data['${effectivePrefix}PROMO_ID'],
       )!,
       articuloId: attachedDatabase.typeMapping.read(
         DriftSqlType.string,
-        data['${effectivePrefix}articulo_id'],
+        data['${effectivePrefix}ARTICULO_ID'],
       )!,
       cantidad: attachedDatabase.typeMapping.read(
         DriftSqlType.int,
-        data['${effectivePrefix}cantidad'],
+        data['${effectivePrefix}CANTIDAD'],
       )!,
       precio: attachedDatabase.typeMapping.read(
         DriftSqlType.double,
-        data['${effectivePrefix}precio'],
+        data['${effectivePrefix}PRECIO'],
       )!,
       tipoPrecio: attachedDatabase.typeMapping.read(
         DriftSqlType.int,
-        data['${effectivePrefix}tipo_precio'],
+        data['${effectivePrefix}TIPO_PRECIO'],
       )!,
       lastUpdated: attachedDatabase.typeMapping.read(
         DriftSqlType.dateTime,
-        data['${effectivePrefix}last_updated'],
+        data['${effectivePrefix}LAST_UPDATED'],
       )!,
       deleted: attachedDatabase.typeMapping.read(
         DriftSqlType.string,
-        data['${effectivePrefix}deleted'],
+        data['${effectivePrefix}DELETED'],
       )!,
     );
   }
@@ -26259,14 +26259,14 @@ class PromocionArtPromoTableCompanion
     Expression<int>? rowid,
   }) {
     return RawValuesInsertable({
-      if (empresaId != null) 'empresa_id': empresaId,
-      if (promoId != null) 'promo_id': promoId,
-      if (articuloId != null) 'articulo_id': articuloId,
-      if (cantidad != null) 'cantidad': cantidad,
-      if (precio != null) 'precio': precio,
-      if (tipoPrecio != null) 'tipo_precio': tipoPrecio,
-      if (lastUpdated != null) 'last_updated': lastUpdated,
-      if (deleted != null) 'deleted': deleted,
+      if (empresaId != null) 'EMPRESA_ID': empresaId,
+      if (promoId != null) 'PROMO_ID': promoId,
+      if (articuloId != null) 'ARTICULO_ID': articuloId,
+      if (cantidad != null) 'CANTIDAD': cantidad,
+      if (precio != null) 'PRECIO': precio,
+      if (tipoPrecio != null) 'TIPO_PRECIO': tipoPrecio,
+      if (lastUpdated != null) 'LAST_UPDATED': lastUpdated,
+      if (deleted != null) 'DELETED': deleted,
       if (rowid != null) 'rowid': rowid,
     });
   }
@@ -26299,28 +26299,28 @@ class PromocionArtPromoTableCompanion
   Map<String, Expression> toColumns(bool nullToAbsent) {
     final map = <String, Expression>{};
     if (empresaId.present) {
-      map['empresa_id'] = Variable<String>(empresaId.value);
+      map['EMPRESA_ID'] = Variable<String>(empresaId.value);
     }
     if (promoId.present) {
-      map['promo_id'] = Variable<String>(promoId.value);
+      map['PROMO_ID'] = Variable<String>(promoId.value);
     }
     if (articuloId.present) {
-      map['articulo_id'] = Variable<String>(articuloId.value);
+      map['ARTICULO_ID'] = Variable<String>(articuloId.value);
     }
     if (cantidad.present) {
-      map['cantidad'] = Variable<int>(cantidad.value);
+      map['CANTIDAD'] = Variable<int>(cantidad.value);
     }
     if (precio.present) {
-      map['precio'] = Variable<double>(precio.value);
+      map['PRECIO'] = Variable<double>(precio.value);
     }
     if (tipoPrecio.present) {
-      map['tipo_precio'] = Variable<int>(tipoPrecio.value);
+      map['TIPO_PRECIO'] = Variable<int>(tipoPrecio.value);
     }
     if (lastUpdated.present) {
-      map['last_updated'] = Variable<DateTime>(lastUpdated.value);
+      map['LAST_UPDATED'] = Variable<DateTime>(lastUpdated.value);
     }
     if (deleted.present) {
-      map['deleted'] = Variable<String>(deleted.value);
+      map['DELETED'] = Variable<String>(deleted.value);
     }
     if (rowid.present) {
       map['rowid'] = Variable<int>(rowid.value);
@@ -26356,7 +26356,7 @@ class $PromocionArtRegaloTableTable extends PromocionArtRegaloTable
   );
   @override
   late final GeneratedColumn<String> empresaId = GeneratedColumn<String>(
-    'empresa_id',
+    'EMPRESA_ID',
     aliasedName,
     false,
     type: DriftSqlType.string,
@@ -26367,7 +26367,7 @@ class $PromocionArtRegaloTableTable extends PromocionArtRegaloTable
   );
   @override
   late final GeneratedColumn<String> promoId = GeneratedColumn<String>(
-    'promo_id',
+    'PROMO_ID',
     aliasedName,
     false,
     type: DriftSqlType.string,
@@ -26378,7 +26378,7 @@ class $PromocionArtRegaloTableTable extends PromocionArtRegaloTable
   );
   @override
   late final GeneratedColumn<String> articuloId = GeneratedColumn<String>(
-    'articulo_id',
+    'ARTICULO_ID',
     aliasedName,
     false,
     type: DriftSqlType.string,
@@ -26389,7 +26389,7 @@ class $PromocionArtRegaloTableTable extends PromocionArtRegaloTable
   );
   @override
   late final GeneratedColumn<int> cantidad = GeneratedColumn<int>(
-    'cantidad',
+    'CANTIDAD',
     aliasedName,
     false,
     type: DriftSqlType.int,
@@ -26400,7 +26400,7 @@ class $PromocionArtRegaloTableTable extends PromocionArtRegaloTable
   );
   @override
   late final GeneratedColumn<DateTime> lastUpdated = GeneratedColumn<DateTime>(
-    'last_updated',
+    'LAST_UPDATED',
     aliasedName,
     false,
     type: DriftSqlType.dateTime,
@@ -26411,7 +26411,7 @@ class $PromocionArtRegaloTableTable extends PromocionArtRegaloTable
   );
   @override
   late final GeneratedColumn<String> deleted = GeneratedColumn<String>(
-    'deleted',
+    'DELETED',
     aliasedName,
     false,
     type: DriftSqlType.string,
@@ -26431,7 +26431,7 @@ class $PromocionArtRegaloTableTable extends PromocionArtRegaloTable
   String get aliasedName => _alias ?? actualTableName;
   @override
   String get actualTableName => $name;
-  static const String $name = 'promocion_art_regalo';
+  static const String $name = 'PROMOCION_ART_REGALO';
   @override
   VerificationContext validateIntegrity(
     Insertable<PromocionArtRegaloDTO> instance, {
@@ -26439,53 +26439,53 @@ class $PromocionArtRegaloTableTable extends PromocionArtRegaloTable
   }) {
     final context = VerificationContext();
     final data = instance.toColumns(true);
-    if (data.containsKey('empresa_id')) {
+    if (data.containsKey('EMPRESA_ID')) {
       context.handle(
         _empresaIdMeta,
-        empresaId.isAcceptableOrUnknown(data['empresa_id']!, _empresaIdMeta),
+        empresaId.isAcceptableOrUnknown(data['EMPRESA_ID']!, _empresaIdMeta),
       );
     } else if (isInserting) {
       context.missing(_empresaIdMeta);
     }
-    if (data.containsKey('promo_id')) {
+    if (data.containsKey('PROMO_ID')) {
       context.handle(
         _promoIdMeta,
-        promoId.isAcceptableOrUnknown(data['promo_id']!, _promoIdMeta),
+        promoId.isAcceptableOrUnknown(data['PROMO_ID']!, _promoIdMeta),
       );
     } else if (isInserting) {
       context.missing(_promoIdMeta);
     }
-    if (data.containsKey('articulo_id')) {
+    if (data.containsKey('ARTICULO_ID')) {
       context.handle(
         _articuloIdMeta,
-        articuloId.isAcceptableOrUnknown(data['articulo_id']!, _articuloIdMeta),
+        articuloId.isAcceptableOrUnknown(data['ARTICULO_ID']!, _articuloIdMeta),
       );
     } else if (isInserting) {
       context.missing(_articuloIdMeta);
     }
-    if (data.containsKey('cantidad')) {
+    if (data.containsKey('CANTIDAD')) {
       context.handle(
         _cantidadMeta,
-        cantidad.isAcceptableOrUnknown(data['cantidad']!, _cantidadMeta),
+        cantidad.isAcceptableOrUnknown(data['CANTIDAD']!, _cantidadMeta),
       );
     } else if (isInserting) {
       context.missing(_cantidadMeta);
     }
-    if (data.containsKey('last_updated')) {
+    if (data.containsKey('LAST_UPDATED')) {
       context.handle(
         _lastUpdatedMeta,
         lastUpdated.isAcceptableOrUnknown(
-          data['last_updated']!,
+          data['LAST_UPDATED']!,
           _lastUpdatedMeta,
         ),
       );
     } else if (isInserting) {
       context.missing(_lastUpdatedMeta);
     }
-    if (data.containsKey('deleted')) {
+    if (data.containsKey('DELETED')) {
       context.handle(
         _deletedMeta,
-        deleted.isAcceptableOrUnknown(data['deleted']!, _deletedMeta),
+        deleted.isAcceptableOrUnknown(data['DELETED']!, _deletedMeta),
       );
     }
     return context;
@@ -26499,27 +26499,27 @@ class $PromocionArtRegaloTableTable extends PromocionArtRegaloTable
     return PromocionArtRegaloDTO(
       empresaId: attachedDatabase.typeMapping.read(
         DriftSqlType.string,
-        data['${effectivePrefix}empresa_id'],
+        data['${effectivePrefix}EMPRESA_ID'],
       )!,
       promoId: attachedDatabase.typeMapping.read(
         DriftSqlType.string,
-        data['${effectivePrefix}promo_id'],
+        data['${effectivePrefix}PROMO_ID'],
       )!,
       articuloId: attachedDatabase.typeMapping.read(
         DriftSqlType.string,
-        data['${effectivePrefix}articulo_id'],
+        data['${effectivePrefix}ARTICULO_ID'],
       )!,
       cantidad: attachedDatabase.typeMapping.read(
         DriftSqlType.int,
-        data['${effectivePrefix}cantidad'],
+        data['${effectivePrefix}CANTIDAD'],
       )!,
       lastUpdated: attachedDatabase.typeMapping.read(
         DriftSqlType.dateTime,
-        data['${effectivePrefix}last_updated'],
+        data['${effectivePrefix}LAST_UPDATED'],
       )!,
       deleted: attachedDatabase.typeMapping.read(
         DriftSqlType.string,
-        data['${effectivePrefix}deleted'],
+        data['${effectivePrefix}DELETED'],
       )!,
     );
   }
@@ -26571,12 +26571,12 @@ class PromocionArtRegaloTableCompanion
     Expression<int>? rowid,
   }) {
     return RawValuesInsertable({
-      if (empresaId != null) 'empresa_id': empresaId,
-      if (promoId != null) 'promo_id': promoId,
-      if (articuloId != null) 'articulo_id': articuloId,
-      if (cantidad != null) 'cantidad': cantidad,
-      if (lastUpdated != null) 'last_updated': lastUpdated,
-      if (deleted != null) 'deleted': deleted,
+      if (empresaId != null) 'EMPRESA_ID': empresaId,
+      if (promoId != null) 'PROMO_ID': promoId,
+      if (articuloId != null) 'ARTICULO_ID': articuloId,
+      if (cantidad != null) 'CANTIDAD': cantidad,
+      if (lastUpdated != null) 'LAST_UPDATED': lastUpdated,
+      if (deleted != null) 'DELETED': deleted,
       if (rowid != null) 'rowid': rowid,
     });
   }
@@ -26605,22 +26605,22 @@ class PromocionArtRegaloTableCompanion
   Map<String, Expression> toColumns(bool nullToAbsent) {
     final map = <String, Expression>{};
     if (empresaId.present) {
-      map['empresa_id'] = Variable<String>(empresaId.value);
+      map['EMPRESA_ID'] = Variable<String>(empresaId.value);
     }
     if (promoId.present) {
-      map['promo_id'] = Variable<String>(promoId.value);
+      map['PROMO_ID'] = Variable<String>(promoId.value);
     }
     if (articuloId.present) {
-      map['articulo_id'] = Variable<String>(articuloId.value);
+      map['ARTICULO_ID'] = Variable<String>(articuloId.value);
     }
     if (cantidad.present) {
-      map['cantidad'] = Variable<int>(cantidad.value);
+      map['CANTIDAD'] = Variable<int>(cantidad.value);
     }
     if (lastUpdated.present) {
-      map['last_updated'] = Variable<DateTime>(lastUpdated.value);
+      map['LAST_UPDATED'] = Variable<DateTime>(lastUpdated.value);
     }
     if (deleted.present) {
-      map['deleted'] = Variable<String>(deleted.value);
+      map['DELETED'] = Variable<String>(deleted.value);
     }
     if (rowid.present) {
       map['rowid'] = Variable<int>(rowid.value);
@@ -26654,7 +26654,7 @@ class $PromocionCabTableTable extends PromocionCabTable
   );
   @override
   late final GeneratedColumn<String> empresaId = GeneratedColumn<String>(
-    'empresa_id',
+    'EMPRESA_ID',
     aliasedName,
     false,
     type: DriftSqlType.string,
@@ -26665,7 +26665,7 @@ class $PromocionCabTableTable extends PromocionCabTable
   );
   @override
   late final GeneratedColumn<String> promoId = GeneratedColumn<String>(
-    'promo_id',
+    'PROMO_ID',
     aliasedName,
     false,
     type: DriftSqlType.string,
@@ -26674,7 +26674,7 @@ class $PromocionCabTableTable extends PromocionCabTable
   static const VerificationMeta _nombreMeta = const VerificationMeta('nombre');
   @override
   late final GeneratedColumn<String> nombre = GeneratedColumn<String>(
-    'nombre',
+    'NOMBRE',
     aliasedName,
     false,
     type: DriftSqlType.string,
@@ -26685,7 +26685,7 @@ class $PromocionCabTableTable extends PromocionCabTable
   );
   @override
   late final GeneratedColumn<DateTime> fechaDesde = GeneratedColumn<DateTime>(
-    'fecha_desde',
+    'FECHA_DESDE',
     aliasedName,
     false,
     type: DriftSqlType.dateTime,
@@ -26696,7 +26696,7 @@ class $PromocionCabTableTable extends PromocionCabTable
   );
   @override
   late final GeneratedColumn<DateTime> fechaHasta = GeneratedColumn<DateTime>(
-    'fecha_hasta',
+    'FECHA_HASTA',
     aliasedName,
     true,
     type: DriftSqlType.dateTime,
@@ -26707,7 +26707,7 @@ class $PromocionCabTableTable extends PromocionCabTable
   );
   @override
   late final GeneratedColumn<String> divisaId = GeneratedColumn<String>(
-    'divisa_id',
+    'DIVISA_ID',
     aliasedName,
     true,
     type: DriftSqlType.string,
@@ -26718,7 +26718,7 @@ class $PromocionCabTableTable extends PromocionCabTable
   );
   @override
   late final GeneratedColumn<DateTime> lastUpdated = GeneratedColumn<DateTime>(
-    'last_updated',
+    'LAST_UPDATED',
     aliasedName,
     false,
     type: DriftSqlType.dateTime,
@@ -26729,7 +26729,7 @@ class $PromocionCabTableTable extends PromocionCabTable
   );
   @override
   late final GeneratedColumn<String> deleted = GeneratedColumn<String>(
-    'deleted',
+    'DELETED',
     aliasedName,
     false,
     type: DriftSqlType.string,
@@ -26751,7 +26751,7 @@ class $PromocionCabTableTable extends PromocionCabTable
   String get aliasedName => _alias ?? actualTableName;
   @override
   String get actualTableName => $name;
-  static const String $name = 'promocion_cab';
+  static const String $name = 'PROMOCION_CAB';
   @override
   VerificationContext validateIntegrity(
     Insertable<PromocionCabDTO> instance, {
@@ -26759,65 +26759,65 @@ class $PromocionCabTableTable extends PromocionCabTable
   }) {
     final context = VerificationContext();
     final data = instance.toColumns(true);
-    if (data.containsKey('empresa_id')) {
+    if (data.containsKey('EMPRESA_ID')) {
       context.handle(
         _empresaIdMeta,
-        empresaId.isAcceptableOrUnknown(data['empresa_id']!, _empresaIdMeta),
+        empresaId.isAcceptableOrUnknown(data['EMPRESA_ID']!, _empresaIdMeta),
       );
     } else if (isInserting) {
       context.missing(_empresaIdMeta);
     }
-    if (data.containsKey('promo_id')) {
+    if (data.containsKey('PROMO_ID')) {
       context.handle(
         _promoIdMeta,
-        promoId.isAcceptableOrUnknown(data['promo_id']!, _promoIdMeta),
+        promoId.isAcceptableOrUnknown(data['PROMO_ID']!, _promoIdMeta),
       );
     } else if (isInserting) {
       context.missing(_promoIdMeta);
     }
-    if (data.containsKey('nombre')) {
+    if (data.containsKey('NOMBRE')) {
       context.handle(
         _nombreMeta,
-        nombre.isAcceptableOrUnknown(data['nombre']!, _nombreMeta),
+        nombre.isAcceptableOrUnknown(data['NOMBRE']!, _nombreMeta),
       );
     } else if (isInserting) {
       context.missing(_nombreMeta);
     }
-    if (data.containsKey('fecha_desde')) {
+    if (data.containsKey('FECHA_DESDE')) {
       context.handle(
         _fechaDesdeMeta,
-        fechaDesde.isAcceptableOrUnknown(data['fecha_desde']!, _fechaDesdeMeta),
+        fechaDesde.isAcceptableOrUnknown(data['FECHA_DESDE']!, _fechaDesdeMeta),
       );
     } else if (isInserting) {
       context.missing(_fechaDesdeMeta);
     }
-    if (data.containsKey('fecha_hasta')) {
+    if (data.containsKey('FECHA_HASTA')) {
       context.handle(
         _fechaHastaMeta,
-        fechaHasta.isAcceptableOrUnknown(data['fecha_hasta']!, _fechaHastaMeta),
+        fechaHasta.isAcceptableOrUnknown(data['FECHA_HASTA']!, _fechaHastaMeta),
       );
     }
-    if (data.containsKey('divisa_id')) {
+    if (data.containsKey('DIVISA_ID')) {
       context.handle(
         _divisaIdMeta,
-        divisaId.isAcceptableOrUnknown(data['divisa_id']!, _divisaIdMeta),
+        divisaId.isAcceptableOrUnknown(data['DIVISA_ID']!, _divisaIdMeta),
       );
     }
-    if (data.containsKey('last_updated')) {
+    if (data.containsKey('LAST_UPDATED')) {
       context.handle(
         _lastUpdatedMeta,
         lastUpdated.isAcceptableOrUnknown(
-          data['last_updated']!,
+          data['LAST_UPDATED']!,
           _lastUpdatedMeta,
         ),
       );
     } else if (isInserting) {
       context.missing(_lastUpdatedMeta);
     }
-    if (data.containsKey('deleted')) {
+    if (data.containsKey('DELETED')) {
       context.handle(
         _deletedMeta,
-        deleted.isAcceptableOrUnknown(data['deleted']!, _deletedMeta),
+        deleted.isAcceptableOrUnknown(data['DELETED']!, _deletedMeta),
       );
     }
     return context;
@@ -26831,35 +26831,35 @@ class $PromocionCabTableTable extends PromocionCabTable
     return PromocionCabDTO(
       empresaId: attachedDatabase.typeMapping.read(
         DriftSqlType.string,
-        data['${effectivePrefix}empresa_id'],
+        data['${effectivePrefix}EMPRESA_ID'],
       )!,
       promoId: attachedDatabase.typeMapping.read(
         DriftSqlType.string,
-        data['${effectivePrefix}promo_id'],
+        data['${effectivePrefix}PROMO_ID'],
       )!,
       nombre: attachedDatabase.typeMapping.read(
         DriftSqlType.string,
-        data['${effectivePrefix}nombre'],
+        data['${effectivePrefix}NOMBRE'],
       )!,
       fechaDesde: attachedDatabase.typeMapping.read(
         DriftSqlType.dateTime,
-        data['${effectivePrefix}fecha_desde'],
+        data['${effectivePrefix}FECHA_DESDE'],
       )!,
       fechaHasta: attachedDatabase.typeMapping.read(
         DriftSqlType.dateTime,
-        data['${effectivePrefix}fecha_hasta'],
+        data['${effectivePrefix}FECHA_HASTA'],
       ),
       divisaId: attachedDatabase.typeMapping.read(
         DriftSqlType.string,
-        data['${effectivePrefix}divisa_id'],
+        data['${effectivePrefix}DIVISA_ID'],
       ),
       lastUpdated: attachedDatabase.typeMapping.read(
         DriftSqlType.dateTime,
-        data['${effectivePrefix}last_updated'],
+        data['${effectivePrefix}LAST_UPDATED'],
       )!,
       deleted: attachedDatabase.typeMapping.read(
         DriftSqlType.string,
-        data['${effectivePrefix}deleted'],
+        data['${effectivePrefix}DELETED'],
       )!,
     );
   }
@@ -26918,14 +26918,14 @@ class PromocionCabTableCompanion extends UpdateCompanion<PromocionCabDTO> {
     Expression<int>? rowid,
   }) {
     return RawValuesInsertable({
-      if (empresaId != null) 'empresa_id': empresaId,
-      if (promoId != null) 'promo_id': promoId,
-      if (nombre != null) 'nombre': nombre,
-      if (fechaDesde != null) 'fecha_desde': fechaDesde,
-      if (fechaHasta != null) 'fecha_hasta': fechaHasta,
-      if (divisaId != null) 'divisa_id': divisaId,
-      if (lastUpdated != null) 'last_updated': lastUpdated,
-      if (deleted != null) 'deleted': deleted,
+      if (empresaId != null) 'EMPRESA_ID': empresaId,
+      if (promoId != null) 'PROMO_ID': promoId,
+      if (nombre != null) 'NOMBRE': nombre,
+      if (fechaDesde != null) 'FECHA_DESDE': fechaDesde,
+      if (fechaHasta != null) 'FECHA_HASTA': fechaHasta,
+      if (divisaId != null) 'DIVISA_ID': divisaId,
+      if (lastUpdated != null) 'LAST_UPDATED': lastUpdated,
+      if (deleted != null) 'DELETED': deleted,
       if (rowid != null) 'rowid': rowid,
     });
   }
@@ -26958,28 +26958,28 @@ class PromocionCabTableCompanion extends UpdateCompanion<PromocionCabDTO> {
   Map<String, Expression> toColumns(bool nullToAbsent) {
     final map = <String, Expression>{};
     if (empresaId.present) {
-      map['empresa_id'] = Variable<String>(empresaId.value);
+      map['EMPRESA_ID'] = Variable<String>(empresaId.value);
     }
     if (promoId.present) {
-      map['promo_id'] = Variable<String>(promoId.value);
+      map['PROMO_ID'] = Variable<String>(promoId.value);
     }
     if (nombre.present) {
-      map['nombre'] = Variable<String>(nombre.value);
+      map['NOMBRE'] = Variable<String>(nombre.value);
     }
     if (fechaDesde.present) {
-      map['fecha_desde'] = Variable<DateTime>(fechaDesde.value);
+      map['FECHA_DESDE'] = Variable<DateTime>(fechaDesde.value);
     }
     if (fechaHasta.present) {
-      map['fecha_hasta'] = Variable<DateTime>(fechaHasta.value);
+      map['FECHA_HASTA'] = Variable<DateTime>(fechaHasta.value);
     }
     if (divisaId.present) {
-      map['divisa_id'] = Variable<String>(divisaId.value);
+      map['DIVISA_ID'] = Variable<String>(divisaId.value);
     }
     if (lastUpdated.present) {
-      map['last_updated'] = Variable<DateTime>(lastUpdated.value);
+      map['LAST_UPDATED'] = Variable<DateTime>(lastUpdated.value);
     }
     if (deleted.present) {
-      map['deleted'] = Variable<String>(deleted.value);
+      map['DELETED'] = Variable<String>(deleted.value);
     }
     if (rowid.present) {
       map['rowid'] = Variable<int>(rowid.value);
@@ -27015,7 +27015,7 @@ class $PromocionClienteTableTable extends PromocionClienteTable
   );
   @override
   late final GeneratedColumn<String> empresaId = GeneratedColumn<String>(
-    'empresa_id',
+    'EMPRESA_ID',
     aliasedName,
     false,
     type: DriftSqlType.string,
@@ -27026,7 +27026,7 @@ class $PromocionClienteTableTable extends PromocionClienteTable
   );
   @override
   late final GeneratedColumn<String> promoId = GeneratedColumn<String>(
-    'promo_id',
+    'PROMO_ID',
     aliasedName,
     false,
     type: DriftSqlType.string,
@@ -27037,7 +27037,7 @@ class $PromocionClienteTableTable extends PromocionClienteTable
   );
   @override
   late final GeneratedColumn<String> clienteId = GeneratedColumn<String>(
-    'cliente_id',
+    'CLIENTE_ID',
     aliasedName,
     false,
     type: DriftSqlType.string,
@@ -27046,7 +27046,7 @@ class $PromocionClienteTableTable extends PromocionClienteTable
   static const VerificationMeta _tipoMeta = const VerificationMeta('tipo');
   @override
   late final GeneratedColumn<String> tipo = GeneratedColumn<String>(
-    'tipo',
+    'TIPO',
     aliasedName,
     false,
     type: DriftSqlType.string,
@@ -27057,7 +27057,7 @@ class $PromocionClienteTableTable extends PromocionClienteTable
   );
   @override
   late final GeneratedColumn<DateTime> lastUpdated = GeneratedColumn<DateTime>(
-    'last_updated',
+    'LAST_UPDATED',
     aliasedName,
     false,
     type: DriftSqlType.dateTime,
@@ -27068,7 +27068,7 @@ class $PromocionClienteTableTable extends PromocionClienteTable
   );
   @override
   late final GeneratedColumn<String> deleted = GeneratedColumn<String>(
-    'deleted',
+    'DELETED',
     aliasedName,
     false,
     type: DriftSqlType.string,
@@ -27088,7 +27088,7 @@ class $PromocionClienteTableTable extends PromocionClienteTable
   String get aliasedName => _alias ?? actualTableName;
   @override
   String get actualTableName => $name;
-  static const String $name = 'promocion_cliente';
+  static const String $name = 'PROMOCION_CLIENTE';
   @override
   VerificationContext validateIntegrity(
     Insertable<PromocionClienteDTO> instance, {
@@ -27096,53 +27096,53 @@ class $PromocionClienteTableTable extends PromocionClienteTable
   }) {
     final context = VerificationContext();
     final data = instance.toColumns(true);
-    if (data.containsKey('empresa_id')) {
+    if (data.containsKey('EMPRESA_ID')) {
       context.handle(
         _empresaIdMeta,
-        empresaId.isAcceptableOrUnknown(data['empresa_id']!, _empresaIdMeta),
+        empresaId.isAcceptableOrUnknown(data['EMPRESA_ID']!, _empresaIdMeta),
       );
     } else if (isInserting) {
       context.missing(_empresaIdMeta);
     }
-    if (data.containsKey('promo_id')) {
+    if (data.containsKey('PROMO_ID')) {
       context.handle(
         _promoIdMeta,
-        promoId.isAcceptableOrUnknown(data['promo_id']!, _promoIdMeta),
+        promoId.isAcceptableOrUnknown(data['PROMO_ID']!, _promoIdMeta),
       );
     } else if (isInserting) {
       context.missing(_promoIdMeta);
     }
-    if (data.containsKey('cliente_id')) {
+    if (data.containsKey('CLIENTE_ID')) {
       context.handle(
         _clienteIdMeta,
-        clienteId.isAcceptableOrUnknown(data['cliente_id']!, _clienteIdMeta),
+        clienteId.isAcceptableOrUnknown(data['CLIENTE_ID']!, _clienteIdMeta),
       );
     } else if (isInserting) {
       context.missing(_clienteIdMeta);
     }
-    if (data.containsKey('tipo')) {
+    if (data.containsKey('TIPO')) {
       context.handle(
         _tipoMeta,
-        tipo.isAcceptableOrUnknown(data['tipo']!, _tipoMeta),
+        tipo.isAcceptableOrUnknown(data['TIPO']!, _tipoMeta),
       );
     } else if (isInserting) {
       context.missing(_tipoMeta);
     }
-    if (data.containsKey('last_updated')) {
+    if (data.containsKey('LAST_UPDATED')) {
       context.handle(
         _lastUpdatedMeta,
         lastUpdated.isAcceptableOrUnknown(
-          data['last_updated']!,
+          data['LAST_UPDATED']!,
           _lastUpdatedMeta,
         ),
       );
     } else if (isInserting) {
       context.missing(_lastUpdatedMeta);
     }
-    if (data.containsKey('deleted')) {
+    if (data.containsKey('DELETED')) {
       context.handle(
         _deletedMeta,
-        deleted.isAcceptableOrUnknown(data['deleted']!, _deletedMeta),
+        deleted.isAcceptableOrUnknown(data['DELETED']!, _deletedMeta),
       );
     }
     return context;
@@ -27156,27 +27156,27 @@ class $PromocionClienteTableTable extends PromocionClienteTable
     return PromocionClienteDTO(
       empresaId: attachedDatabase.typeMapping.read(
         DriftSqlType.string,
-        data['${effectivePrefix}empresa_id'],
+        data['${effectivePrefix}EMPRESA_ID'],
       )!,
       promoId: attachedDatabase.typeMapping.read(
         DriftSqlType.string,
-        data['${effectivePrefix}promo_id'],
+        data['${effectivePrefix}PROMO_ID'],
       )!,
       clienteId: attachedDatabase.typeMapping.read(
         DriftSqlType.string,
-        data['${effectivePrefix}cliente_id'],
+        data['${effectivePrefix}CLIENTE_ID'],
       )!,
       tipo: attachedDatabase.typeMapping.read(
         DriftSqlType.string,
-        data['${effectivePrefix}tipo'],
+        data['${effectivePrefix}TIPO'],
       )!,
       lastUpdated: attachedDatabase.typeMapping.read(
         DriftSqlType.dateTime,
-        data['${effectivePrefix}last_updated'],
+        data['${effectivePrefix}LAST_UPDATED'],
       )!,
       deleted: attachedDatabase.typeMapping.read(
         DriftSqlType.string,
-        data['${effectivePrefix}deleted'],
+        data['${effectivePrefix}DELETED'],
       )!,
     );
   }
@@ -27228,12 +27228,12 @@ class PromocionClienteTableCompanion
     Expression<int>? rowid,
   }) {
     return RawValuesInsertable({
-      if (empresaId != null) 'empresa_id': empresaId,
-      if (promoId != null) 'promo_id': promoId,
-      if (clienteId != null) 'cliente_id': clienteId,
-      if (tipo != null) 'tipo': tipo,
-      if (lastUpdated != null) 'last_updated': lastUpdated,
-      if (deleted != null) 'deleted': deleted,
+      if (empresaId != null) 'EMPRESA_ID': empresaId,
+      if (promoId != null) 'PROMO_ID': promoId,
+      if (clienteId != null) 'CLIENTE_ID': clienteId,
+      if (tipo != null) 'TIPO': tipo,
+      if (lastUpdated != null) 'LAST_UPDATED': lastUpdated,
+      if (deleted != null) 'DELETED': deleted,
       if (rowid != null) 'rowid': rowid,
     });
   }
@@ -27262,22 +27262,22 @@ class PromocionClienteTableCompanion
   Map<String, Expression> toColumns(bool nullToAbsent) {
     final map = <String, Expression>{};
     if (empresaId.present) {
-      map['empresa_id'] = Variable<String>(empresaId.value);
+      map['EMPRESA_ID'] = Variable<String>(empresaId.value);
     }
     if (promoId.present) {
-      map['promo_id'] = Variable<String>(promoId.value);
+      map['PROMO_ID'] = Variable<String>(promoId.value);
     }
     if (clienteId.present) {
-      map['cliente_id'] = Variable<String>(clienteId.value);
+      map['CLIENTE_ID'] = Variable<String>(clienteId.value);
     }
     if (tipo.present) {
-      map['tipo'] = Variable<String>(tipo.value);
+      map['TIPO'] = Variable<String>(tipo.value);
     }
     if (lastUpdated.present) {
-      map['last_updated'] = Variable<DateTime>(lastUpdated.value);
+      map['LAST_UPDATED'] = Variable<DateTime>(lastUpdated.value);
     }
     if (deleted.present) {
-      map['deleted'] = Variable<String>(deleted.value);
+      map['DELETED'] = Variable<String>(deleted.value);
     }
     if (rowid.present) {
       map['rowid'] = Variable<int>(rowid.value);
@@ -27311,7 +27311,7 @@ class $PromocionPaisTableTable extends PromocionPaisTable
   );
   @override
   late final GeneratedColumn<String> empresaId = GeneratedColumn<String>(
-    'empresa_id',
+    'EMPRESA_ID',
     aliasedName,
     false,
     type: DriftSqlType.string,
@@ -27322,7 +27322,7 @@ class $PromocionPaisTableTable extends PromocionPaisTable
   );
   @override
   late final GeneratedColumn<String> promoId = GeneratedColumn<String>(
-    'promo_id',
+    'PROMO_ID',
     aliasedName,
     false,
     type: DriftSqlType.string,
@@ -27331,7 +27331,7 @@ class $PromocionPaisTableTable extends PromocionPaisTable
   static const VerificationMeta _paisIdMeta = const VerificationMeta('paisId');
   @override
   late final GeneratedColumn<String> paisId = GeneratedColumn<String>(
-    'pais_id',
+    'PAIS_ID',
     aliasedName,
     false,
     type: DriftSqlType.string,
@@ -27340,7 +27340,7 @@ class $PromocionPaisTableTable extends PromocionPaisTable
   static const VerificationMeta _tipoMeta = const VerificationMeta('tipo');
   @override
   late final GeneratedColumn<String> tipo = GeneratedColumn<String>(
-    'tipo',
+    'TIPO',
     aliasedName,
     false,
     type: DriftSqlType.string,
@@ -27351,7 +27351,7 @@ class $PromocionPaisTableTable extends PromocionPaisTable
   );
   @override
   late final GeneratedColumn<DateTime> lastUpdated = GeneratedColumn<DateTime>(
-    'last_updated',
+    'LAST_UPDATED',
     aliasedName,
     false,
     type: DriftSqlType.dateTime,
@@ -27362,7 +27362,7 @@ class $PromocionPaisTableTable extends PromocionPaisTable
   );
   @override
   late final GeneratedColumn<String> deleted = GeneratedColumn<String>(
-    'deleted',
+    'DELETED',
     aliasedName,
     false,
     type: DriftSqlType.string,
@@ -27382,7 +27382,7 @@ class $PromocionPaisTableTable extends PromocionPaisTable
   String get aliasedName => _alias ?? actualTableName;
   @override
   String get actualTableName => $name;
-  static const String $name = 'promocion_pais';
+  static const String $name = 'PROMOCION_PAIS';
   @override
   VerificationContext validateIntegrity(
     Insertable<PromocionPaisDTO> instance, {
@@ -27390,53 +27390,53 @@ class $PromocionPaisTableTable extends PromocionPaisTable
   }) {
     final context = VerificationContext();
     final data = instance.toColumns(true);
-    if (data.containsKey('empresa_id')) {
+    if (data.containsKey('EMPRESA_ID')) {
       context.handle(
         _empresaIdMeta,
-        empresaId.isAcceptableOrUnknown(data['empresa_id']!, _empresaIdMeta),
+        empresaId.isAcceptableOrUnknown(data['EMPRESA_ID']!, _empresaIdMeta),
       );
     } else if (isInserting) {
       context.missing(_empresaIdMeta);
     }
-    if (data.containsKey('promo_id')) {
+    if (data.containsKey('PROMO_ID')) {
       context.handle(
         _promoIdMeta,
-        promoId.isAcceptableOrUnknown(data['promo_id']!, _promoIdMeta),
+        promoId.isAcceptableOrUnknown(data['PROMO_ID']!, _promoIdMeta),
       );
     } else if (isInserting) {
       context.missing(_promoIdMeta);
     }
-    if (data.containsKey('pais_id')) {
+    if (data.containsKey('PAIS_ID')) {
       context.handle(
         _paisIdMeta,
-        paisId.isAcceptableOrUnknown(data['pais_id']!, _paisIdMeta),
+        paisId.isAcceptableOrUnknown(data['PAIS_ID']!, _paisIdMeta),
       );
     } else if (isInserting) {
       context.missing(_paisIdMeta);
     }
-    if (data.containsKey('tipo')) {
+    if (data.containsKey('TIPO')) {
       context.handle(
         _tipoMeta,
-        tipo.isAcceptableOrUnknown(data['tipo']!, _tipoMeta),
+        tipo.isAcceptableOrUnknown(data['TIPO']!, _tipoMeta),
       );
     } else if (isInserting) {
       context.missing(_tipoMeta);
     }
-    if (data.containsKey('last_updated')) {
+    if (data.containsKey('LAST_UPDATED')) {
       context.handle(
         _lastUpdatedMeta,
         lastUpdated.isAcceptableOrUnknown(
-          data['last_updated']!,
+          data['LAST_UPDATED']!,
           _lastUpdatedMeta,
         ),
       );
     } else if (isInserting) {
       context.missing(_lastUpdatedMeta);
     }
-    if (data.containsKey('deleted')) {
+    if (data.containsKey('DELETED')) {
       context.handle(
         _deletedMeta,
-        deleted.isAcceptableOrUnknown(data['deleted']!, _deletedMeta),
+        deleted.isAcceptableOrUnknown(data['DELETED']!, _deletedMeta),
       );
     }
     return context;
@@ -27450,27 +27450,27 @@ class $PromocionPaisTableTable extends PromocionPaisTable
     return PromocionPaisDTO(
       empresaId: attachedDatabase.typeMapping.read(
         DriftSqlType.string,
-        data['${effectivePrefix}empresa_id'],
+        data['${effectivePrefix}EMPRESA_ID'],
       )!,
       promoId: attachedDatabase.typeMapping.read(
         DriftSqlType.string,
-        data['${effectivePrefix}promo_id'],
+        data['${effectivePrefix}PROMO_ID'],
       )!,
       paisId: attachedDatabase.typeMapping.read(
         DriftSqlType.string,
-        data['${effectivePrefix}pais_id'],
+        data['${effectivePrefix}PAIS_ID'],
       )!,
       tipo: attachedDatabase.typeMapping.read(
         DriftSqlType.string,
-        data['${effectivePrefix}tipo'],
+        data['${effectivePrefix}TIPO'],
       )!,
       lastUpdated: attachedDatabase.typeMapping.read(
         DriftSqlType.dateTime,
-        data['${effectivePrefix}last_updated'],
+        data['${effectivePrefix}LAST_UPDATED'],
       )!,
       deleted: attachedDatabase.typeMapping.read(
         DriftSqlType.string,
-        data['${effectivePrefix}deleted'],
+        data['${effectivePrefix}DELETED'],
       )!,
     );
   }
@@ -27521,12 +27521,12 @@ class PromocionPaisTableCompanion extends UpdateCompanion<PromocionPaisDTO> {
     Expression<int>? rowid,
   }) {
     return RawValuesInsertable({
-      if (empresaId != null) 'empresa_id': empresaId,
-      if (promoId != null) 'promo_id': promoId,
-      if (paisId != null) 'pais_id': paisId,
-      if (tipo != null) 'tipo': tipo,
-      if (lastUpdated != null) 'last_updated': lastUpdated,
-      if (deleted != null) 'deleted': deleted,
+      if (empresaId != null) 'EMPRESA_ID': empresaId,
+      if (promoId != null) 'PROMO_ID': promoId,
+      if (paisId != null) 'PAIS_ID': paisId,
+      if (tipo != null) 'TIPO': tipo,
+      if (lastUpdated != null) 'LAST_UPDATED': lastUpdated,
+      if (deleted != null) 'DELETED': deleted,
       if (rowid != null) 'rowid': rowid,
     });
   }
@@ -27555,22 +27555,22 @@ class PromocionPaisTableCompanion extends UpdateCompanion<PromocionPaisDTO> {
   Map<String, Expression> toColumns(bool nullToAbsent) {
     final map = <String, Expression>{};
     if (empresaId.present) {
-      map['empresa_id'] = Variable<String>(empresaId.value);
+      map['EMPRESA_ID'] = Variable<String>(empresaId.value);
     }
     if (promoId.present) {
-      map['promo_id'] = Variable<String>(promoId.value);
+      map['PROMO_ID'] = Variable<String>(promoId.value);
     }
     if (paisId.present) {
-      map['pais_id'] = Variable<String>(paisId.value);
+      map['PAIS_ID'] = Variable<String>(paisId.value);
     }
     if (tipo.present) {
-      map['tipo'] = Variable<String>(tipo.value);
+      map['TIPO'] = Variable<String>(tipo.value);
     }
     if (lastUpdated.present) {
-      map['last_updated'] = Variable<DateTime>(lastUpdated.value);
+      map['LAST_UPDATED'] = Variable<DateTime>(lastUpdated.value);
     }
     if (deleted.present) {
-      map['deleted'] = Variable<String>(deleted.value);
+      map['DELETED'] = Variable<String>(deleted.value);
     }
     if (rowid.present) {
       map['rowid'] = Variable<int>(rowid.value);
