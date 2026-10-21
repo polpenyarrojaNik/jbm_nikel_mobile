@@ -109,6 +109,29 @@ void main() {
       expect(r.asignadas[0]!.tipoPrecio, 100);
     });
 
+    test('precio manual por debajo del de promo: ni promoción ni regalos', () {
+      PromocionCombinada p() => promo(
+        'P1',
+        compra: [art('A', 2, precio: 10)],
+        regalo: [const PromocionRegalo(articuloId: 'G', cantidad: 1)],
+      );
+
+      final r = calcularPromociones(
+        promociones: [p()],
+        lineas: [linea('A', 2, neto: 8)],
+      );
+      expect(r.asignadas, isEmpty);
+      expect(r.regalos, isEmpty);
+
+      // La línea rebajada no suma cantidad: con 1 válida no llega a 2.
+      final mixta = calcularPromociones(
+        promociones: [p()],
+        lineas: [linea('A', 1, neto: 12), linea('A', 1, neto: 8)],
+      );
+      expect(mixta.asignadas, isEmpty);
+      expect(mixta.regalos, isEmpty);
+    });
+
     test('precio de promo 0: entra cualquier precio y no cambia el precio', () {
       final r = calcularPromociones(
         promociones: [
@@ -186,19 +209,35 @@ void main() {
   group('promocionActivaPara (incluido / * / excluido)', () {
     test('tabla de verdad del ERP', () {
       expect(
-        promocionActivaPara(incluido: true, todosIncluido: false, excluido: true),
+        promocionActivaPara(
+          incluido: true,
+          todosIncluido: false,
+          excluido: true,
+        ),
         isTrue,
       );
       expect(
-        promocionActivaPara(incluido: false, todosIncluido: true, excluido: true),
+        promocionActivaPara(
+          incluido: false,
+          todosIncluido: true,
+          excluido: true,
+        ),
         isFalse,
       );
       expect(
-        promocionActivaPara(incluido: false, todosIncluido: true, excluido: false),
+        promocionActivaPara(
+          incluido: false,
+          todosIncluido: true,
+          excluido: false,
+        ),
         isTrue,
       );
       expect(
-        promocionActivaPara(incluido: false, todosIncluido: false, excluido: false),
+        promocionActivaPara(
+          incluido: false,
+          todosIncluido: false,
+          excluido: false,
+        ),
         isFalse,
       );
     });

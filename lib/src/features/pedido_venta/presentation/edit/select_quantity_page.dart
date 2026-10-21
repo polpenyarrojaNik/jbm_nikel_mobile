@@ -511,6 +511,16 @@ class _SelecionarCantidadFormState
             articuloPrecio.divisaId,
           );
       if (minimumPrice == null) {
+        // Precio o descuento distinto del calculado = precio manual ('MN' en
+        // el ERP). La línea sale de su promoción para que aplicarPromociones
+        // no la devuelva al precio de tarifa: entrará de nuevo solo si el
+        // precio del usuario llega al precio de la promoción.
+        final precioManual =
+            precio !=
+                articuloPrecio.precio.precio.amount.toDecimal().toDouble() ||
+            descuento1 != articuloPrecio.descuento1;
+        final quitarPromo =
+            precioManual && !(widget.seleccionarCantidadParam.isPromo ?? false);
         final linea = PedidoVentaLinea(
           empresaId: widget.seleccionarCantidadParam.pedidoVentaParam.empresaId,
           pedidoId: widget.seleccionarCantidadParam.pedidoVentaParam.pedidoId,
@@ -538,8 +548,12 @@ class _SelecionarCantidadFormState
           importeLinea: importeLinea,
           cantidadPendiente: totalQuantity,
           aiRecomendado: widget.seleccionarCantidadParam.recomendado,
-          codPromo: widget.seleccionarCantidadParam.codPromo,
-          cantidadPromo: widget.seleccionarCantidadParam.cantidadPromo,
+          codPromo: quitarPromo
+              ? null
+              : widget.seleccionarCantidadParam.codPromo,
+          cantidadPromo: quitarPromo
+              ? 0
+              : widget.seleccionarCantidadParam.cantidadPromo,
           isPromo: widget.seleccionarCantidadParam.isPromo,
           fechaCliente: fechaCliente,
           lastUpdated: DateTime.now().toUtc(),
