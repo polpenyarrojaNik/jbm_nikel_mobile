@@ -1177,7 +1177,11 @@ class StepArticuloListContent extends ConsumerWidget {
                         itemCount: pedidoVentaLineaList.length,
                         separatorBuilder: (context, i) => const Divider(),
                         itemBuilder: (context, i) => GestureDetector(
-                          onTap: (pedidoVentaLineaList[i].isPromo ?? false)
+                          // Los componentes cuelgan de su línea padre y no se
+                          // editan por separado.
+                          onTap:
+                              (pedidoVentaLineaList[i].isPromo ?? false) ||
+                                  pedidoVentaLineaList[i].isComponente
                               ? null
                               : () => updatePedidoVentaLinea(
                                   context,

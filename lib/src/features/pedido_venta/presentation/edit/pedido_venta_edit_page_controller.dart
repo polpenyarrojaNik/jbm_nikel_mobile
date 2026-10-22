@@ -140,8 +140,11 @@ class PedidoVentaEditPageController
           pedidoVentaIdIsLocalParam: pedidoLocalParam,
         );
 
-        pedidoVentaLineaList = await pedidoVentaRepository
-            .getPedidoVentaLineaListById(pedidoLocalParam: pedidoLocalParam);
+        pedidoVentaLineaList = renumerarPedidoVentaLineas(
+          await pedidoVentaRepository.getPedidoVentaLineaListById(
+            pedidoLocalParam: pedidoLocalParam,
+          ),
+        );
 
         _cliente = await clienteRepository.getClienteById(
           clienteId: pedidoVenta.clienteId!,
@@ -379,7 +382,10 @@ class PedidoVentaEditPageController
   }
 
   void addPedidoVentaLinea({required PedidoVentaLinea newLinea}) {
-    pedidoVentaLineaList.add(newLinea);
+    pedidoVentaLineaList = renumerarPedidoVentaLineas([
+      ...pedidoVentaLineaList,
+      newLinea,
+    ]);
 
     state = PedidoVentaEditPageControllerState.data(
       _cliente,
@@ -403,6 +409,7 @@ class PedidoVentaEditPageController
     required int posicionActualizar,
   }) {
     pedidoVentaLineaList[posicionActualizar] = pedidoVentaLinea;
+    pedidoVentaLineaList = renumerarPedidoVentaLineas(pedidoVentaLineaList);
 
     state = PedidoVentaEditPageControllerState.data(
       _cliente,
@@ -426,7 +433,7 @@ class PedidoVentaEditPageController
   }) {
     pedidoVentaLineaList.remove(pedidoVentaLineaToDelete);
 
-    pedidoVentaLineaList = recalcularPedidoVentaLineaId();
+    pedidoVentaLineaList = renumerarPedidoVentaLineas(pedidoVentaLineaList);
 
     state = PedidoVentaEditPageControllerState.data(
       _cliente,
@@ -516,43 +523,6 @@ class PedidoVentaEditPageController
     );
   }
 
-  List<PedidoVentaLinea> recalcularPedidoVentaLineaId() {
-    final newPedidoVentaLineaList = <PedidoVentaLinea>[];
-
-    for (var i = 0; i < pedidoVentaLineaList.length; i++) {
-      final newPedidoVentaLinea = PedidoVentaLinea(
-        pedidoId: pedidoVentaLineaList[i].pedidoId,
-        empresaId: pedidoVentaLineaList[i].empresaId,
-        pedidoVentaAppId: pedidoVentaLineaList[i].pedidoVentaAppId,
-        pedidoVentaLineaId: (i + 1).toString().padLeft(3, '0'),
-        articuloId: pedidoVentaLineaList[i].articuloId,
-        articuloDescription: pedidoVentaLineaList[i].articuloDescription,
-        cantidad: pedidoVentaLineaList[i].cantidad,
-        precioDivisa: pedidoVentaLineaList[i].precioDivisa,
-        divisaId: pedidoVentaLineaList[i].divisaId,
-        tipoPrecio: pedidoVentaLineaList[i].tipoPrecio,
-        descuento1: pedidoVentaLineaList[i].descuento1,
-        descuento2: pedidoVentaLineaList[i].descuento2,
-        descuento3: pedidoVentaLineaList[i].descuento3,
-        descuentoProntoPago: pedidoVentaLineaList[i].descuentoProntoPago,
-        stockDisponibleSN: pedidoVentaLineaList[i].stockDisponibleSN,
-        fechaCliente: pedidoVentaLineaList[i].fechaCliente,
-        iva: pedidoVentaLineaList[i].iva,
-        importeLinea: pedidoVentaLineaList[i].importeLinea,
-        cantidadPendiente: pedidoVentaLineaList[i].cantidad,
-        aiRecomendado: pedidoVentaLineaList[i].aiRecomendado,
-        codPromo: pedidoVentaLineaList[i].codPromo,
-        isPromo: pedidoVentaLineaList[i].isPromo,
-        cantidadPromo: pedidoVentaLineaList[i].cantidadPromo,
-        lastUpdated: pedidoVentaLineaList[i].lastUpdated,
-        deleted: pedidoVentaLineaList[i].deleted,
-      );
-
-      newPedidoVentaLineaList.add(newPedidoVentaLinea);
-    }
-    return newPedidoVentaLineaList;
-  }
-
   void setRecomendacionProductoList(
     List<RecomendacionProducto>? recomendacionesProductoList,
   ) {
@@ -579,7 +549,6 @@ class PedidoVentaEditPageController
     for (var i = 0; i < pedidoImportLineas.length; i++) {
       final newPedidoVentaLinea = PedidoVentaLinea(
         pedidoVentaAppId: pedidoLocalParam.pedidoAppId,
-        pedidoVentaLineaId: (i + 1).toString().padLeft(3, '0'),
         articuloId: pedidoImportLineas[i].articuloId,
         articuloDescription: pedidoImportLineas[i].articuloDescription,
         cantidad: pedidoImportLineas[i].cantidad,
@@ -607,6 +576,7 @@ class PedidoVentaEditPageController
 
       pedidoVentaLineaList.add(newPedidoVentaLinea);
     }
+    pedidoVentaLineaList = renumerarPedidoVentaLineas(pedidoVentaLineaList);
 
     state = PedidoVentaEditPageControllerState.data(
       _cliente,
@@ -639,12 +609,7 @@ class PedidoVentaEditPageController
       );
       // Si mientras tanto ha cambiado el pedido, manda el cálculo más reciente.
       if (!mounted || generacion != _promocionesGeneracion) return;
-      pedidoVentaLineaList = [
-        for (var i = 0; i < lineas.length; i++)
-          lineas[i].copyWith(
-            pedidoVentaLineaId: (i + 1).toString().padLeft(3, '0'),
-          ),
-      ];
+      pedidoVentaLineaList = renumerarPedidoVentaLineas(lineas);
       state = PedidoVentaEditPageControllerState.data(
         _cliente,
         _clienteDireccion,

@@ -45,3 +45,27 @@ abstract class PedidoVentaLinea with _$PedidoVentaLinea {
 
   bool get isEditable => !isComponente && cantidadPendiente > 0;
 }
+
+/// Asigna LIN_APP_ID por posición (001, 002, ...) y actualiza las referencias
+/// de los componentes a la línea de la que cuelgan.
+List<PedidoVentaLinea> renumerarPedidoVentaLineas(
+  List<PedidoVentaLinea> lineas,
+) {
+  String nuevoId(int i) => (i + 1).toString().padLeft(3, '0');
+
+  final nuevosIds = <String, String>{
+    for (var i = 0; i < lineas.length; i++)
+      if (lineas[i].pedidoVentaLineaId != null)
+        lineas[i].pedidoVentaLineaId!: nuevoId(i),
+  };
+
+  return [
+    for (var i = 0; i < lineas.length; i++)
+      lineas[i].copyWith(
+        pedidoVentaLineaId: nuevoId(i),
+        pedidoLineaIdComponente:
+            nuevosIds[lineas[i].pedidoLineaIdComponente] ??
+            lineas[i].pedidoLineaIdComponente,
+      ),
+  ];
+}

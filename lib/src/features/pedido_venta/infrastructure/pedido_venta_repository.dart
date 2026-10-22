@@ -982,6 +982,9 @@ class PedidoVentaRepository {
       query.where(
         _remoteDb.pedidoVentaLineaTable.pedidoId.equals(pedidoVentaId),
       );
+      query.orderBy([
+        OrderingTerm.asc(_remoteDb.pedidoVentaLineaTable.pedidoVentaLineaId),
+      ]);
 
       return await query.asyncMap((row) async {
         final pedidoVentaDTO = row.readTable(_remoteDb.pedidoVentaTable);
@@ -1037,6 +1040,11 @@ class PedidoVentaRepository {
           pedidoVentaAppId,
         ),
       );
+      query.orderBy([
+        OrderingTerm.asc(
+          _localDb.pedidoVentaLineaLocalTable.pedidoVentaLineaAppId,
+        ),
+      ]);
 
       final pedidoVentaLineaList = await query.asyncMap((row) async {
         final pedidoVentaLocalDTO = row.readTable(
@@ -1138,9 +1146,10 @@ class PedidoVentaRepository {
       isBorrador,
     );
 
-    final pedidoVentaLineaLocalDTOList = pedidoVentaLineaList
-        .map((e) => PedidoVentaLineaLocalDTO.fromDomain(e))
-        .toList();
+    // Garantía final: lo que se guarda y se envía va numerado por posición.
+    final pedidoVentaLineaLocalDTOList = renumerarPedidoVentaLineas(
+      pedidoVentaLineaList,
+    ).map((e) => PedidoVentaLineaLocalDTO.fromDomain(e)).toList();
 
     await insertPedidoInDB(
       pedidoVentaLocalDTO,
@@ -1761,6 +1770,14 @@ class PedidoVentaRepository {
         await _localDb
             .into(_localDb.pedidoVentaLocalTable)
             .insertOnConflictUpdate(pedidoVentaLocalDTO);
+        // Las líneas guardadas antes que ya no están en el pedido (borradas,
+        // regalos que desaparecen...) quedarían duplicadas si no se eliminan.
+        await (_localDb.delete(_localDb.pedidoVentaLineaLocalTable)..where(
+              (tbl) => tbl.pedidoVentaAppId.equals(
+                pedidoVentaLocalDTO.pedidoVentaAppId,
+              ),
+            ))
+            .go();
         for (var i = 0; i < pedidoVentaLineaLocalDTOList.length; i++) {
           await _localDb
               .into(_localDb.pedidoVentaLineaLocalTable)
@@ -1814,8 +1831,9 @@ class PedidoVentaRepository {
         final res = CsvEncoder(fieldDelimiter: ';').convert(rows);
         log.d(res);
 
-        final csvFile = await File(join(getTempDirectory.path, fileName))
-            .create(recursive: true);
+        final csvFile = await File(
+          join(getTempDirectory.path, fileName),
+        ).create(recursive: true);
         await csvFile.writeAsString(res);
 
         return csvFile;

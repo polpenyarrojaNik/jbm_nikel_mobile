@@ -524,10 +524,6 @@ class _SelecionarCantidadFormState
         final linea = PedidoVentaLinea(
           empresaId: widget.seleccionarCantidadParam.pedidoVentaParam.empresaId,
           pedidoId: widget.seleccionarCantidadParam.pedidoVentaParam.pedidoId,
-          pedidoVentaLineaId:
-              (widget.seleccionarCantidadParam.posicionLinea + 1)
-                  .toString()
-                  .padLeft(3, '0'),
           pedidoVentaAppId:
               widget.seleccionarCantidadParam.pedidoVentaParam.pedidoAppId,
           articuloId: articulo.id,
