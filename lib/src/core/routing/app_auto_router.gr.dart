@@ -2645,6 +2645,50 @@ class ExpedicionListRouteArgs {
 }
 
 /// generated route for
+/// [InformeListaPage]
+class InformeListaRoute extends PageRouteInfo<InformeListaRouteArgs> {
+  InformeListaRoute({Key? key, List<PageRouteInfo>? children})
+    : super(
+        InformeListaRoute.name,
+        args: InformeListaRouteArgs(key: key),
+        initialChildren: children,
+      );
+
+  static const String name = 'InformeListaRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      final args = data.argsAs<InformeListaRouteArgs>(
+        orElse: () => const InformeListaRouteArgs(),
+      );
+      return InformeListaPage(key: args.key);
+    },
+  );
+}
+
+class InformeListaRouteArgs {
+  const InformeListaRouteArgs({this.key});
+
+  final Key? key;
+
+  @override
+  String toString() {
+    return 'InformeListaRouteArgs{key: $key}';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
+    if (other is! InformeListaRouteArgs) return false;
+    return key == other.key;
+  }
+
+  @override
+  int get hashCode => key.hashCode;
+}
+
+/// generated route for
 /// [LoginPage]
 class LoginRoute extends PageRouteInfo<void> {
   const LoginRoute({List<PageRouteInfo>? children})

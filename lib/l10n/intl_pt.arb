@@ -487,5 +487,8 @@
   "settings_notificacionesPopupDescripcion": "Escolha que tipos de notificação devem abrir automaticamente num pop-up",
   "settings_notificacionesPopupErrorGuardar": "Não foi possível guardar a alteração",
   "settings_notificacionesPopupReintentar": "Tentar novamente",
-  "settings_notificacionesPopupVacio": "Não existem tipos de notificação disponíveis"
+  "settings_notificacionesPopupVacio": "Não existem tipos de notificação disponíveis",
+  "informes": "Relatórios",
+  "informes_noSePuedeAbrir": "Não foi possível abrir o relatório",
+  "informes_buscarInformes": "Pesquisar relatórios"
 }

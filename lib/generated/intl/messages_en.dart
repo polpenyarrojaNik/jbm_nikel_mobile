@@ -610,6 +610,13 @@ class MessageLookup extends MessageLookupByLibrary {
     "importedRows": MessageLookupByLibrary.simpleMessage("Imported rows"),
     "importing": MessageLookupByLibrary.simpleMessage("Importing..."),
     "inactive": MessageLookupByLibrary.simpleMessage("Inactive"),
+    "informes": MessageLookupByLibrary.simpleMessage("Reports"),
+    "informes_buscarInformes": MessageLookupByLibrary.simpleMessage(
+      "Search reports",
+    ),
+    "informes_noSePuedeAbrir": MessageLookupByLibrary.simpleMessage(
+      "The report could not be opened",
+    ),
     "interesCliente": MessageLookupByLibrary.simpleMessage("Customer interest"),
     "introduceClaveDeNikel": MessageLookupByLibrary.simpleMessage(
       "Introduce Nikel key",

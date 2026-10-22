@@ -487,5 +487,8 @@
   "settings_notificacionesPopupDescripcion": "Scegli quali tipi di notifica aprire automaticamente in un popup",
   "settings_notificacionesPopupErrorGuardar": "Impossibile salvare la modifica",
   "settings_notificacionesPopupReintentar": "Riprova",
-  "settings_notificacionesPopupVacio": "Nessun tipo di notifica disponibile"
+  "settings_notificacionesPopupVacio": "Nessun tipo di notifica disponibile",
+  "informes": "Report",
+  "informes_noSePuedeAbrir": "Impossibile aprire il report",
+  "informes_buscarInformes": "Cerca report"
 }

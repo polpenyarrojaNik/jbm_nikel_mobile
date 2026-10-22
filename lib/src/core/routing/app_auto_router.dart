@@ -50,6 +50,7 @@ import '../../features/cliente_alrededor/presentation/clientes_alrededor_page.da
 import '../../features/devoluciones/domain/devolucion.dart';
 import '../../features/expediciones/presentation/expedicion_lista_page.dart';
 import '../../features/notifications/detail/notification_detail_page.dart';
+import '../../features/informes/presentation/informe_lista_page.dart';
 import '../../features/notifications/index/notification_list_page.dart';
 import '../../features/pedido_venta/domain/pedido_local_param.dart';
 import '../../features/pedido_venta/domain/pedido_venta_linea.dart';
@@ -206,6 +207,7 @@ class AppRouter extends RootStackRouter {
       fullscreenDialog: true,
     ),
     AutoRoute(page: ExpedicionListRoute.page, path: '/pedido_expedicion'),
+    AutoRoute(page: InformeListaRoute.page, path: '/informe'),
     AutoRoute(page: ArticuloListaRoute.page, path: '/articulo'),
     AutoRoute(page: ArticuloDetalleRoute.page, path: '/articulo/:id'),
     AutoRoute(

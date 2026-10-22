@@ -486,5 +486,8 @@
   "settings_notificacionesPopupDescripcion": "Choisissez les types de notification à ouvrir automatiquement dans une fenêtre contextuelle",
   "settings_notificacionesPopupErrorGuardar": "Impossible d'enregistrer la modification",
   "settings_notificacionesPopupReintentar": "Réessayer",
-  "settings_notificacionesPopupVacio": "Aucun type de notification disponible"
+  "settings_notificacionesPopupVacio": "Aucun type de notification disponible",
+  "informes": "Rapports",
+  "informes_noSePuedeAbrir": "Impossible d'ouvrir le rapport",
+  "informes_buscarInformes": "Rechercher des rapports"
 }

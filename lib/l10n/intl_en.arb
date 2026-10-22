@@ -487,5 +487,8 @@
   "settings_notificacionesPopupDescripcion": "Choose which notification types should open automatically in a pop-up",
   "settings_notificacionesPopupErrorGuardar": "The change could not be saved",
   "settings_notificacionesPopupReintentar": "Retry",
-  "settings_notificacionesPopupVacio": "No notification types available"
+  "settings_notificacionesPopupVacio": "No notification types available",
+  "informes": "Reports",
+  "informes_noSePuedeAbrir": "The report could not be opened",
+  "informes_buscarInformes": "Search reports"
 }

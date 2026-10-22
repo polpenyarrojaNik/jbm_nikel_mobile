@@ -623,6 +623,13 @@ class MessageLookup extends MessageLookupByLibrary {
     "importedRows": MessageLookupByLibrary.simpleMessage("Filas importadas"),
     "importing": MessageLookupByLibrary.simpleMessage("Importando..."),
     "inactive": MessageLookupByLibrary.simpleMessage("Inactivo"),
+    "informes": MessageLookupByLibrary.simpleMessage("Informes"),
+    "informes_buscarInformes": MessageLookupByLibrary.simpleMessage(
+      "Buscar informes",
+    ),
+    "informes_noSePuedeAbrir": MessageLookupByLibrary.simpleMessage(
+      "No se ha podido abrir el informe",
+    ),
     "interesCliente": MessageLookupByLibrary.simpleMessage(
       "Interés del cliente",
     ),

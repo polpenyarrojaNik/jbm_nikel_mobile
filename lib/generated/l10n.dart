@@ -4609,6 +4609,31 @@ class S {
       args: [],
     );
   }
+
+  /// `Reports`
+  String get informes {
+    return Intl.message('Reports', name: 'informes', desc: '', args: []);
+  }
+
+  /// `The report could not be opened`
+  String get informes_noSePuedeAbrir {
+    return Intl.message(
+      'The report could not be opened',
+      name: 'informes_noSePuedeAbrir',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Search reports`
+  String get informes_buscarInformes {
+    return Intl.message(
+      'Search reports',
+      name: 'informes_buscarInformes',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

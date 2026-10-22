@@ -96,6 +96,14 @@ class AppDrawer extends StatelessWidget {
             ),
           ),
           ListTile(
+            leading: Icon(MdiIcons.fileChartOutline, size: 30),
+            title: Text(S.of(context).informes),
+            onTap: () => context.router.pushAndPopUntil(
+              InformeListaRoute(),
+              predicate: (route) => false,
+            ),
+          ),
+          ListTile(
             leading: const Icon(Icons.notifications, size: 30),
             title: Text(S.of(context).notifications),
             onTap: () => context.router.pushAndPopUntil(

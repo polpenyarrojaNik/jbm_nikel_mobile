@@ -634,6 +634,13 @@ class MessageLookup extends MessageLookupByLibrary {
     "importedRows": MessageLookupByLibrary.simpleMessage("Importierte Zeilen"),
     "importing": MessageLookupByLibrary.simpleMessage("Wird importiert..."),
     "inactive": MessageLookupByLibrary.simpleMessage("Inaktiv"),
+    "informes": MessageLookupByLibrary.simpleMessage("Berichte"),
+    "informes_buscarInformes": MessageLookupByLibrary.simpleMessage(
+      "Berichte suchen",
+    ),
+    "informes_noSePuedeAbrir": MessageLookupByLibrary.simpleMessage(
+      "Der Bericht konnte nicht geöffnet werden",
+    ),
     "interesCliente": MessageLookupByLibrary.simpleMessage("Kundeninteresse"),
     "introduceClaveDeNikel": MessageLookupByLibrary.simpleMessage(
       "Geben Sie den Nikel-Schlüssel ein",

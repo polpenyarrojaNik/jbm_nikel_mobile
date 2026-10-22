@@ -1,6 +1,6 @@
-import 'package:material_ui/material_ui.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gap/gap.dart';
+import 'package:material_ui/material_ui.dart';
 
 import '../../../features/settings/infrastructure/settings_repository.dart';
 import '../../../features/usuario/application/usuario_notifier.dart';

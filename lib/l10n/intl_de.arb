@@ -488,5 +488,8 @@
   "settings_notificacionesPopupDescripcion": "Wähle, welche Benachrichtigungstypen automatisch in einem Pop-up geöffnet werden",
   "settings_notificacionesPopupErrorGuardar": "Die Änderung konnte nicht gespeichert werden",
   "settings_notificacionesPopupReintentar": "Erneut versuchen",
-  "settings_notificacionesPopupVacio": "Keine Benachrichtigungstypen verfügbar"
+  "settings_notificacionesPopupVacio": "Keine Benachrichtigungstypen verfügbar",
+  "informes": "Berichte",
+  "informes_noSePuedeAbrir": "Der Bericht konnte nicht geöffnet werden",
+  "informes_buscarInformes": "Berichte suchen"
 }
