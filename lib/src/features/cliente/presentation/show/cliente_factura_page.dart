@@ -161,7 +161,11 @@ class ClienteFacturaPaginationList extends ConsumerWidget {
           data: (facturaList) => facturaList.isNotEmpty
               ? Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                  child: ClienteFacturaListTile(clienteFactura: facturaList[i]),
+                  child: ClienteFacturaListTile(
+                    clienteFactura:
+                        facturaList[i %
+                            ClienteRepository.clienteAuxiliarPageSize],
+                  ),
                 )
               : const SinResultadosWidget(),
         );
@@ -270,8 +274,9 @@ class ClienteFacturaListTile extends ConsumerWidget {
 
     runMutationSafe(ref, openFacturaDocumentMutation, (tsx) async {
       final clienteFacturaDocumentControllerStateNotifier = tsx.get(
-        clienteFacturaDocumentControllerProvider(facturaId: adjuntoParam.id)
-            .notifier,
+        clienteFacturaDocumentControllerProvider(
+          facturaId: adjuntoParam.id,
+        ).notifier,
       );
 
       final result = await clienteFacturaDocumentControllerStateNotifier

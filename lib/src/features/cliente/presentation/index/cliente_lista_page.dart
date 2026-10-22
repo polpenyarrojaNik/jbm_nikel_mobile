@@ -207,35 +207,43 @@ class ClientesListViewWidget extends StatelessWidget {
                   )
                   .maybeWhen(
                     orElse: () => const ClienteListShimmer(),
-                    data: (clienteList) => ClienteListaTile(
-                      cliente: clienteList[i % ClienteRepository.pageSize],
-                      onTap:
-                          (isCreatedFromSalesOrder &&
-                              (clienteList[i % ClienteRepository.pageSize]
-                                      .bloqueoOper ||
-                                  clienteList[i % ClienteRepository.pageSize]
-                                      .obsoleto))
-                          ? () => context.showInfoBar(
-                              content: Text(
-                                S.of(context).customerNotAvailableToSelect,
-                              ),
-                            )
-                          : () {
-                              if (!isSearchClienteForFrom) {
-                                navigateToClienteDetalle(
-                                  context: context,
-                                  clienteId:
-                                      clienteList[i %
-                                              ClienteRepository.pageSize]
-                                          .id,
-                                );
-                              } else {
-                                context.router.maybePop(
-                                  clienteList[i % ClienteRepository.pageSize],
-                                );
-                              }
-                            },
-                    ),
+                    data: (clienteList) =>
+                        i % ClienteRepository.pageSize >= clienteList.length
+                        ? const ClienteListShimmer()
+                        : ClienteListaTile(
+                            cliente:
+                                clienteList[i % ClienteRepository.pageSize],
+                            onTap:
+                                (isCreatedFromSalesOrder &&
+                                    (clienteList[i % ClienteRepository.pageSize]
+                                            .bloqueoOper ||
+                                        clienteList[i %
+                                                ClienteRepository.pageSize]
+                                            .obsoleto))
+                                ? () => context.showInfoBar(
+                                    content: Text(
+                                      S
+                                          .of(context)
+                                          .customerNotAvailableToSelect,
+                                    ),
+                                  )
+                                : () {
+                                    if (!isSearchClienteForFrom) {
+                                      navigateToClienteDetalle(
+                                        context: context,
+                                        clienteId:
+                                            clienteList[i %
+                                                    ClienteRepository.pageSize]
+                                                .id,
+                                      );
+                                    } else {
+                                      context.router.maybePop(
+                                        clienteList[i %
+                                            ClienteRepository.pageSize],
+                                      );
+                                    }
+                                  },
+                          ),
                   ),
             ),
           ),

@@ -156,6 +156,10 @@ class FlutterMapContainer extends ConsumerStatefulWidget {
 
 class _FlutterMapContainerState extends ConsumerState<FlutterMapContainer> {
   final MapController mapController = MapController();
+  // Sin red los tiles fallan a menudo: se muestran vacíos en vez de lanzar
+  // ClientException (ruido en Sentry). Lo dispone el propio TileLayer.
+  // ignore: dispose-fields
+  final _tileProvider = NetworkTileProvider(silenceExceptions: true);
   late LatLng mapLatLng;
   late AlignOnUpdate _alignPositionOnUpdate;
   late StreamController<double?> _alignPositionStreamController;
@@ -230,6 +234,7 @@ class _FlutterMapContainerState extends ConsumerState<FlutterMapContainer> {
           urlTemplate: 'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
           userAgentPackageName: 'es.nikel.jbm.jbm_nikel_mobile',
           maxNativeZoom: 19,
+          tileProvider: _tileProvider,
         ),
         RichAttributionWidget(
           attributions: [TextSourceAttribution('© OpenStreetMap contributors')],

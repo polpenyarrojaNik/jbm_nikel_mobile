@@ -78,10 +78,11 @@ run_build_runner:
 watch_build_runner:
 	@$(DART) run build_runner watch --delete-conflicting-outputs
 
-deploy_mobile: format lint pub_get create_icons build_runner sentry_dart_plugin bump_version
+deploy_mobile: format lint pub_get create_icons build_runner bump_version
 	@echo "╠  Building the iOS/Android app"
 	@$(FLUTTER) build ipa
 	@$(FLUTTER) build appbundle
+	@$(MAKE) sentry_dart_plugin
 
 
 deploy_windows: pub_get update_i18n build_runner sentry_dart_plugin create_icons

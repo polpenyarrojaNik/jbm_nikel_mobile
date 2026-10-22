@@ -1339,7 +1339,7 @@ GROUP BY ARTICULO_ID, DESCRIPCION
       final query = _remoteDb
           .selectOnly(_remoteDb.estadisticasUltimosPreciosTable)
           .join([
-            leftOuterJoin(
+            innerJoin(
               _remoteDb.articuloTable,
               _remoteDb.articuloTable.id.equalsExp(
                 _remoteDb.estadisticasUltimosPreciosTable.articuloId,

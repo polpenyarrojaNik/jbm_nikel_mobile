@@ -64,21 +64,28 @@ class VisitaRepository {
     required String searchText,
   }) async {
     try {
-      final visitas = <Visita>[];
-      if (page == 0) {
-        final visitasLocal = await getVisitasLocal(
-          searchText: searchText,
-          usuarioId: _usuario!.id,
-        );
-        visitas.addAll(visitasLocal);
-      }
-      final visitasSync = await getVisitas(
-        usuarioId: _usuario!.id,
-        page: page,
+      // Cada página debe contener exactamente pageSize elementos de la
+      // secuencia combinada (locales primero, luego sincronizadas), ya que la
+      // lista indexa con i ~/ pageSize e i % pageSize.
+      final start = page * pageSize;
+      final visitasLocal = await getVisitasLocal(
         searchText: searchText,
+        usuarioId: _usuario!.id,
       );
+      final visitas = visitasLocal.skip(start).take(pageSize).toList();
 
-      visitas.addAll(visitasSync);
+      final remaining = pageSize - visitas.length;
+      if (remaining > 0) {
+        final remoteOffset = start - visitasLocal.length;
+        final visitasSync = await getVisitas(
+          usuarioId: _usuario.id,
+          limit: remaining,
+          offset: remoteOffset < 0 ? 0 : remoteOffset,
+          searchText: searchText,
+        );
+        visitas.addAll(visitasSync);
+      }
+
       return visitas;
     } catch (e, stackTrace) {
       Error.throwWithStackTrace(
@@ -123,7 +130,8 @@ class VisitaRepository {
 
       final visitas = await getVisitas(
         usuarioId: _usuario.id,
-        page: 0,
+        limit: pageSize,
+        offset: 0,
         searchText: '',
         clienteId: clienteId,
       );
@@ -473,7 +481,8 @@ class VisitaRepository {
 
   Future<List<Visita>> getVisitas({
     required String usuarioId,
-    required int page,
+    required int limit,
+    required int offset,
     required String searchText,
     String? clienteId,
   }) {
@@ -547,7 +556,7 @@ class VisitaRepository {
       query.where(_remoteDb.visitaTable.clienteId.equals(clienteId));
     }
 
-    query.limit(pageSize, offset: page * pageSize);
+    query.limit(limit, offset: offset);
 
     query.orderBy([OrderingTerm.desc(_remoteDb.visitaTable.fecha)]);
 

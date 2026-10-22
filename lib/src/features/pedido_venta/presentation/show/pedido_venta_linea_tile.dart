@@ -5,10 +5,7 @@ import '../../../../core/helpers/formatters.dart';
 import '../../domain/pedido_venta_linea.dart';
 
 class PedidoVentaLineaTile extends StatelessWidget {
-  const PedidoVentaLineaTile({
-    super.key,
-    required this.pedidoVentaLinea,
-  });
+  const PedidoVentaLineaTile({super.key, required this.pedidoVentaLinea});
 
   final PedidoVentaLinea pedidoVentaLinea;
 

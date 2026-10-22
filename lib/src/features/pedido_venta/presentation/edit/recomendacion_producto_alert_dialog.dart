@@ -219,13 +219,15 @@ class _RecomendacionProductoListDialogState
       ),
     );
 
-    if (context.mounted && added == true) {
-      setState(() {
-        currentRecomendacionesProductoList.remove(recomendacionProducto);
-        if (currentRecomendacionesProductoList.isEmpty) {
-          Navigator.pop(widget.dialogContext);
-        }
-      });
+    // `mounted` y no `context.mounted`: en un State, `context` lanza un
+    // null check si el widget ya se ha desmontado durante el await.
+    if (!mounted || added != true) return;
+    setState(() {
+      currentRecomendacionesProductoList.remove(recomendacionProducto);
+    });
+    if (currentRecomendacionesProductoList.isEmpty &&
+        widget.dialogContext.mounted) {
+      Navigator.pop(widget.dialogContext);
     }
   }
 }

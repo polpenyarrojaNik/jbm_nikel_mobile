@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'dart:isolate';
 
 import 'package:archive/archive.dart';
 import 'package:dio/dio.dart';
@@ -19,6 +20,29 @@ import 'local_database.dart';
 import 'remote_database.dart';
 
 part 'init_database_service.g.dart';
+
+void _extractZip(String zipPath, String outputDirPath) {
+  final inputStream = InputFileStream(zipPath);
+  try {
+    final archive = ZipDecoder().decodeStream(inputStream);
+
+    for (final file in archive) {
+      final outputPath = '$outputDirPath/${file.name}';
+
+      if (file.isFile) {
+        File(outputPath).createSync(recursive: true);
+
+        final outputStream = OutputFileStream(outputPath);
+        file.writeContent(outputStream);
+        outputStream.closeSync();
+      } else {
+        Directory(outputPath).createSync(recursive: true);
+      }
+    }
+  } finally {
+    inputStream.closeSync();
+  }
+}
 
 @riverpod
 InitDatabaseService initDatabaseService(Ref ref) {
@@ -69,28 +93,13 @@ class InitDatabaseService {
       if (!await _databaseFileExist(directory: directory)) {
         await _getRemoteInitialDatabase(directory: directory);
 
-        final zipFile = File('${directory.path}/jbm_sqlite.zip');
+        final zipPath = '${directory.path}/jbm_sqlite.zip';
+        final outputDirPath = directory.path;
 
-        final inputStream = InputFileStream(zipFile.path);
-        final archive = ZipDecoder().decodeStream(inputStream);
+        // La descompresión es síncrona y bloquea el hilo de UI, se ejecuta en otro isolate.
+        await Isolate.run(() => _extractZip(zipPath, outputDirPath));
 
-        for (final file in archive) {
-          final outputPath = '${directory.path}/${file.name}';
-
-          if (file.isFile) {
-            final outputFile = File(outputPath);
-            await outputFile.create(recursive: true);
-
-            final outputStream = OutputFileStream(outputPath);
-            file.writeContent(outputStream);
-            await outputStream.close();
-          } else {
-            await Directory(outputPath).create(recursive: true);
-          }
-        }
-
-        await inputStream.close();
-        await zipFile.delete();
+        await File(zipPath).delete();
 
         await _saveDataInPreferences();
       }

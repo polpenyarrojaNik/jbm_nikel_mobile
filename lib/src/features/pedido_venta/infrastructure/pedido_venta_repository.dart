@@ -195,22 +195,34 @@ class PedidoVentaRepository {
   }) async {
     final pedidoVentaList = <PedidoVenta>[];
 
-    if (page == 0) {
-      final pedidoVentaLocalList = await getPedidosVentaLocal(
-        searchText: searchText,
-        clienteId: clienteId,
-      );
+    // Los pedidos locales van delante de los sincronizados como una única
+    // lista, así cada página tiene exactamente pageSize elementos.
+    final start = page * pageSize;
+    final end = start + pageSize;
 
-      pedidoVentaList.addAll(pedidoVentaLocalList);
-    }
-
-    final syncPedidosVentaList = await getSyncPedidoVentaList(
-      page: page,
+    final pedidoVentaLocalList = await getPedidosVentaLocal(
       searchText: searchText,
       clienteId: clienteId,
-      pedidoVentaEstado: pedidoVentaEstado,
     );
-    pedidoVentaList.addAll(syncPedidosVentaList);
+    final localCount = pedidoVentaLocalList.length;
+
+    if (start < localCount) {
+      pedidoVentaList.addAll(
+        pedidoVentaLocalList.sublist(start, math.min(end, localCount)),
+      );
+    }
+
+    final syncLimit = end - math.max<int>(start, localCount);
+    if (syncLimit > 0) {
+      final syncPedidosVentaList = await getSyncPedidoVentaList(
+        offset: math.max(0, start - localCount),
+        limit: syncLimit,
+        searchText: searchText,
+        clienteId: clienteId,
+        pedidoVentaEstado: pedidoVentaEstado,
+      );
+      pedidoVentaList.addAll(syncPedidosVentaList);
+    }
     return pedidoVentaList;
   }
 
@@ -446,7 +458,8 @@ class PedidoVentaRepository {
       pedidoVentaListByCliente.addAll(pedidoVentaLocalList);
 
       final syncPedidosVentaList = await getSyncPedidoVentaList(
-        page: 0,
+        offset: 0,
+        limit: pageSize,
         searchText: '',
         clienteId: clienteId,
         pedidoVentaEstado: null,
@@ -462,7 +475,8 @@ class PedidoVentaRepository {
   }
 
   Future<List<PedidoVenta>> getSyncPedidoVentaList({
-    required int page,
+    required int offset,
+    required int limit,
     required String searchText,
     PedidoVentaEstado? pedidoVentaEstado,
     String? clienteId,
@@ -554,7 +568,7 @@ class PedidoVentaRepository {
       query.where(_remoteDb.pedidoVentaTable.clienteId.equals(clienteId));
     }
 
-    query.limit(pageSize, offset: page * pageSize);
+    query.limit(limit, offset: offset);
 
     query.orderBy([
       OrderingTerm.desc(_remoteDb.pedidoVentaTable.pedidoVentaDate),
@@ -1489,8 +1503,7 @@ class PedidoVentaRepository {
           pedidoVentaAppId: plantilla?.pedidoVentaAppId,
           articuloId: regalo.articuloId,
           articuloDescription:
-              articuloDto?.getDescriptionInLocalLanguage() ??
-              regalo.articuloId,
+              articuloDto?.getDescriptionInLocalLanguage() ?? regalo.articuloId,
           cantidad: regalo.cantidad,
           precioDivisa: 0.toMoney(currencyId: divisaId),
           divisaId: divisaId,
@@ -1560,34 +1573,39 @@ class PedidoVentaRepository {
     final promociones = <PromocionCombinada>[];
     for (final cab in cabeceras) {
       if (dia(cab.fechaDesde.toLocal()).isAfter(hoy)) continue;
-      if (cab.fechaHasta != null && dia(cab.fechaHasta!.toLocal()).isBefore(hoy)) {
+      if (cab.fechaHasta != null &&
+          dia(cab.fechaHasta!.toLocal()).isBefore(hoy)) {
         continue;
       }
 
-      final clientes = await (_remoteDb.select(_remoteDb.promocionClienteTable)
-            ..where(
-              (t) =>
-                  t.empresaId.equals(cab.empresaId) &
-                  t.promoId.equals(cab.promoId) &
-                  t.clienteId.isIn([clienteDto.id, '*']),
-            ))
-          .get();
+      final clientes =
+          await (_remoteDb.select(_remoteDb.promocionClienteTable)..where(
+                (t) =>
+                    t.empresaId.equals(cab.empresaId) &
+                    t.promoId.equals(cab.promoId) &
+                    t.clienteId.isIn([clienteDto.id, '*']),
+              ))
+              .get();
       final clienteActivo = promocionActivaPara(
-        incluido: clientes.any((c) => c.clienteId == clienteDto.id && c.tipo == 'I'),
+        incluido: clientes.any(
+          (c) => c.clienteId == clienteDto.id && c.tipo == 'I',
+        ),
         todosIncluido: clientes.any((c) => c.clienteId == '*' && c.tipo == 'I'),
-        excluido: clientes.any((c) => c.clienteId == clienteDto.id && c.tipo == 'E'),
+        excluido: clientes.any(
+          (c) => c.clienteId == clienteDto.id && c.tipo == 'E',
+        ),
       );
       if (!clienteActivo) continue;
 
       final paisId = clienteDto.paisFiscalId ?? '';
-      final paises = await (_remoteDb.select(_remoteDb.promocionPaisTable)
-            ..where(
-              (t) =>
-                  t.empresaId.equals(cab.empresaId) &
-                  t.promoId.equals(cab.promoId) &
-                  t.paisId.isIn([paisId, '*']),
-            ))
-          .get();
+      final paises =
+          await (_remoteDb.select(_remoteDb.promocionPaisTable)..where(
+                (t) =>
+                    t.empresaId.equals(cab.empresaId) &
+                    t.promoId.equals(cab.promoId) &
+                    t.paisId.isIn([paisId, '*']),
+              ))
+              .get();
       final paisActivo = promocionActivaPara(
         incluido: paises.any((p) => p.paisId == paisId && p.tipo == 'I'),
         todosIncluido: paises.any((p) => p.paisId == '*' && p.tipo == 'I'),
@@ -1595,22 +1613,20 @@ class PedidoVentaRepository {
       );
       if (!paisActivo) continue;
 
-      final articulosPromo = await (_remoteDb.select(
-        _remoteDb.promocionArtPromoTable,
-      )..where(
-            (t) =>
-                t.empresaId.equals(cab.empresaId) &
-                t.promoId.equals(cab.promoId),
-          ))
-          .get();
-      final articulosRegalo = await (_remoteDb.select(
-        _remoteDb.promocionArtRegaloTable,
-      )..where(
-            (t) =>
-                t.empresaId.equals(cab.empresaId) &
-                t.promoId.equals(cab.promoId),
-          ))
-          .get();
+      final articulosPromo =
+          await (_remoteDb.select(_remoteDb.promocionArtPromoTable)..where(
+                (t) =>
+                    t.empresaId.equals(cab.empresaId) &
+                    t.promoId.equals(cab.promoId),
+              ))
+              .get();
+      final articulosRegalo =
+          await (_remoteDb.select(_remoteDb.promocionArtRegaloTable)..where(
+                (t) =>
+                    t.empresaId.equals(cab.empresaId) &
+                    t.promoId.equals(cab.promoId),
+              ))
+              .get();
 
       promociones.add(
         PromocionCombinada(
@@ -2155,7 +2171,10 @@ class PedidoVentaRepository {
                 0.0,
           )
         : (
-            precio: Precio(precio: 0.toMoney(currencyId: divisaId), tipoPrecio: 1),
+            precio: Precio(
+              precio: 0.toMoney(currencyId: divisaId),
+              tipoPrecio: 1,
+            ),
             dtoAdicional: 0.0,
           );
   }

@@ -78,17 +78,14 @@ class ClienteVisitaListaTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // Las visitas locales aún no tienen `id` del ERP: se buscan por
+    // `visitaAppId` (ver VisitaRepository.getVisitaById).
+    final visitaId = visita.getIsLocal() ? visita.visitaAppId : visita.id;
     return GestureDetector(
       behavior: HitTestBehavior.opaque,
-      onTap: () => context.router.push(
-        VisitaDetalleRoute(
-          visitaIdIsLocalParam: VisitaIdIsLocalParam(
-            id: visita.id!,
-            isLocal: visita.getIsLocal(),
-            createVisitaFromClienteId: visita.cliente?.id,
-          ),
-        ),
-      ),
+      onTap: visitaId == null
+          ? null
+          : () => navigateToVisitaDetalle(context, visitaId),
       child: Container(
         color: Colors.transparent,
         padding: kPaddingList,
@@ -141,23 +138,27 @@ class ClienteVisitaListaTile extends StatelessWidget {
               ),
             ),
 
-            if (visita.id != null) ...[
+            if (visitaId != null) ...[
               const Gap(2),
 
               IconButton(
-                onPressed: () => context.router.push(
-                  VisitaDetalleRoute(
-                    visitaIdIsLocalParam: VisitaIdIsLocalParam(
-                      id: visita.id!,
-                      isLocal: visita.getIsLocal(),
-                      createVisitaFromClienteId: visita.cliente?.id,
-                    ),
-                  ),
-                ),
+                onPressed: () => navigateToVisitaDetalle(context, visitaId),
                 icon: Icon(Icons.chevron_right),
               ),
             ],
           ],
+        ),
+      ),
+    );
+  }
+
+  void navigateToVisitaDetalle(BuildContext context, String visitaId) {
+    context.router.push(
+      VisitaDetalleRoute(
+        visitaIdIsLocalParam: VisitaIdIsLocalParam(
+          id: visitaId,
+          isLocal: visita.getIsLocal(),
+          createVisitaFromClienteId: visita.cliente?.id,
         ),
       ),
     );

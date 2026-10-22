@@ -152,7 +152,9 @@ ResultadoPromociones calcularPromociones({
     if (!linea.participa || asignadas.containsKey(i)) return false;
     final precioPromo = _micros(art.precio);
     if (precioPromo == 0) return true;
-    if (art.tipoPrecio != 1 && art.tipoPrecio != 100 && art.tipoPrecio != 1000) {
+    if (art.tipoPrecio != 1 &&
+        art.tipoPrecio != 100 &&
+        art.tipoPrecio != 1000) {
       // get_precio_unitario devuelve 0 para un tpreu desconocido.
       return true;
     }
@@ -178,18 +180,22 @@ ResultadoPromociones calcularPromociones({
     for (final art in articulos) {
       var pendiente = art.cantidad * cantidadPromocion;
       // ORDER BY cant_art_ped DESC (empate: orden de línea).
-      final candidatas = [
-        for (var i = 0; i < lineas.length; i++)
-          if (esValida(i, art)) i,
-      ]..sort((a, b) {
-          final porCantidad = lineas[b].cantidad.compareTo(lineas[a].cantidad);
-          return porCantidad != 0 ? porCantidad : a.compareTo(b);
-        });
+      final candidatas =
+          [
+            for (var i = 0; i < lineas.length; i++)
+              if (esValida(i, art)) i,
+          ]..sort((a, b) {
+            final porCantidad = lineas[b].cantidad.compareTo(
+              lineas[a].cantidad,
+            );
+            return porCantidad != 0 ? porCantidad : a.compareTo(b);
+          });
       for (final i in candidatas) {
         if (pendiente <= 0) break;
         final cantidadLinea = lineas[i].cantidad;
-        final promoCantidad =
-            cantidadLinea <= pendiente ? cantidadLinea : pendiente;
+        final promoCantidad = cantidadLinea <= pendiente
+            ? cantidadLinea
+            : pendiente;
         asignadas[i] = LineaPromocionAsignada(
           promoId: promo.promoId,
           promoCantidad: promoCantidad,

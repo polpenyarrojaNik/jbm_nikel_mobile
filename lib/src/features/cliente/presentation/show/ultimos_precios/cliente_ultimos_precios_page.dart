@@ -79,10 +79,15 @@ class ClienteUltimosPreciosPage extends ConsumerWidget {
                     )
                     .maybeWhen(
                       orElse: () => const ArticuloListShimmer(),
-                      data: (ultimosPreciosList) => _UltimosPreciosTile(
-                        ultimosPrecios:
-                            ultimosPreciosList[i % ClienteRepository.pageSize],
-                      ),
+                      data: (ultimosPreciosList) {
+                        final index = i % ClienteRepository.pageSize;
+                        if (index >= ultimosPreciosList.length) {
+                          return const SizedBox.shrink();
+                        }
+                        return _UltimosPreciosTile(
+                          ultimosPrecios: ultimosPreciosList[index],
+                        );
+                      },
                     ),
                 separatorBuilder: (context, i) => const Divider(),
               ),

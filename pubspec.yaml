@@ -88,7 +88,7 @@ dev_dependencies:
   intl_utils: ^2.8.17
 
 dependency_overrides:
-  flutter_rotation_sensor: 0.2.0
+  flutter_rotation_sensor: 0.4.0
 
 flutter_icons:
   android: true
