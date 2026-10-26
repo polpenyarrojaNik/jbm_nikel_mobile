@@ -1837,9 +1837,8 @@ class PedidoVentaRepository {
         final res = CsvEncoder(fieldDelimiter: ';').convert(rows);
         log.d(res);
 
-        final csvFile = await File(
-          join(getTempDirectory.path, fileName),
-        ).create(recursive: true);
+        final csvFile = await File(join(getTempDirectory.path, fileName))
+            .create(recursive: true);
         await csvFile.writeAsString(res);
 
         return csvFile;

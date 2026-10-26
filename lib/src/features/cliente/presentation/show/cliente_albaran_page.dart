@@ -255,9 +255,8 @@ class ClienteAlbaranListTile extends ConsumerWidget {
                               codigoPostal: clienteAlbaran.zipCode,
                               poblacion: clienteAlbaran.poblacion,
                             ),
-                            style: Theme.of(
-                              context,
-                            ).textTheme.bodySmall?.copyWith(fontSize: 10),
+                            style: Theme.of(context).textTheme.bodySmall
+                                ?.copyWith(fontSize: 10),
                             maxLines: 2,
                             overflow: TextOverflow.ellipsis,
                           ),
@@ -266,9 +265,8 @@ class ClienteAlbaranListTile extends ConsumerWidget {
                               province: clienteAlbaran.provincia,
                               pais: clienteAlbaran.pais,
                             ),
-                            style: Theme.of(
-                              context,
-                            ).textTheme.bodySmall?.copyWith(fontSize: 10),
+                            style: Theme.of(context).textTheme.bodySmall
+                                ?.copyWith(fontSize: 10),
                           ),
                         ],
                       ),
@@ -301,9 +299,8 @@ class ClienteAlbaranListTile extends ConsumerWidget {
 
     runMutationSafe(ref, openDeliveryNoteDocumentMutation, (tsx) async {
       final clienteAlbaranDocumentControllerStateNotifier = tsx.get(
-        clienteAlbaranDocumentControllerProvider(
-          albaranId: adjuntoParam.id,
-        ).notifier,
+        clienteAlbaranDocumentControllerProvider(albaranId: adjuntoParam.id)
+            .notifier,
       );
 
       final result = await clienteAlbaranDocumentControllerStateNotifier

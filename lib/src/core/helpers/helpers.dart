@@ -1,11 +1,11 @@
 import 'dart:io';
 
 import 'package:file_picker/file_picker.dart';
-import 'package:material_ui/material_ui.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_material_design_icons/flutter_material_design_icons.dart';
 import 'package:flutter_riverpod/experimental/mutation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:flutter_material_design_icons/flutter_material_design_icons.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:path/path.dart' as p;
 import 'package:url_launcher/url_launcher.dart';
 
@@ -152,8 +152,7 @@ Future<String?> saveFromAssets(String filename, String mimeType) async {
   final uri = await FilePicker.saveFile(
     dialogTitle: S.current.saveAs,
     fileName: filename,
-    type: FileType.custom,
-    allowedExtensions: [mimeType],
+    mimeType: mimeType,
     bytes: bytes,
   );
 
@@ -161,20 +160,16 @@ Future<String?> saveFromAssets(String filename, String mimeType) async {
 }
 
 Future<String?> saveFileToDeviceDocuments(
-  File file, {
+  File file,
+  String mimeType, {
   String? fileName,
-  List<String>? allowedExtensions,
 }) async {
   final resolvedFileName = fileName ?? p.basename(file.path);
-  final extension = p.extension(resolvedFileName).replaceFirst('.', '');
-  final extensions =
-      allowedExtensions ?? (extension.isNotEmpty ? [extension] : null);
 
   final uri = await FilePicker.saveFile(
     dialogTitle: S.current.saveAs,
     fileName: resolvedFileName,
-    type: extensions == null ? FileType.any : FileType.custom,
-    allowedExtensions: extensions,
+    mimeType: mimeType,
     bytes: await file.readAsBytes(),
   );
 

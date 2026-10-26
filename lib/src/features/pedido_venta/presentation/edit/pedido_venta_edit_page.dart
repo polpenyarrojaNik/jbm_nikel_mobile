@@ -120,21 +120,20 @@ class _PedidoVentaEditPageState extends ConsumerState<PedidoVentaEditPage> {
         state.maybeWhen(
           saved: (pedidoVentaAppId, isBorrador) => onSavedOrSavedErrorMessage(),
           deleted: () => context.router.popUntilRouteWithName('/pedido'),
-          savedError:
-              (
-                cliente,
-                clienteDireccion,
-                pedidoVentaLineaList,
-                recomendacionesProductoList,
-                currentStep,
-                observaciones,
-                pedidoCliente,
-                oferta,
-                ofertaFechaHasta,
-                isBorrador,
-                _,
-                stackTrace,
-              ) => onSavedOrSavedErrorMessage(),
+          savedError: (
+            cliente,
+            clienteDireccion,
+            pedidoVentaLineaList,
+            recomendacionesProductoList,
+            currentStep,
+            observaciones,
+            pedidoCliente,
+            oferta,
+            ofertaFechaHasta,
+            isBorrador,
+            _,
+            stackTrace,
+          ) => onSavedOrSavedErrorMessage(),
 
           error: (error, _) => unawaited(
             context.showErrorBar(
@@ -326,9 +325,8 @@ class _PedidoVentaEditPageState extends ConsumerState<PedidoVentaEditPage> {
 
   void openFile(File csvFile) async {
     try {
-      final res = await OpenFile.open(
-        csvFile.path,
-      ).catchError((error, _) => throw error as Object);
+      final res = await OpenFile.open(csvFile.path)
+          .catchError((error, _) => throw error as Object);
 
       log.d(res.message);
     } catch (e) {
@@ -471,20 +469,16 @@ class PedidoVentaEditForm extends ConsumerWidget {
     BuildContext context,
     ISentrySpan transaction,
   ) async {
-    final result =
-        await showDialog(
-              barrierDismissible: false,
-              context: context,
-              builder: (ctx) {
-                return AskPopAlertDialog(
-                  contextDialog: ctx,
-                  text: S
-                      .of(ctx)
-                      .pedido_edit_askPopAlertDialog_seguroQuieresSales,
-                );
-              },
-            )
-            as bool?;
+    final result = await showDialog(
+      barrierDismissible: false,
+      context: context,
+      builder: (ctx) {
+        return AskPopAlertDialog(
+          contextDialog: ctx,
+          text: S.of(ctx).pedido_edit_askPopAlertDialog_seguroQuieresSales,
+        );
+      },
+    ) as bool?;
 
     if (result ?? false) {
       await transaction.finish();
@@ -993,9 +987,9 @@ class _StepSelectClienteDireccionContentState
                                   (widget.clienteDireccion != null &&
                                       widget.clienteDireccion!.direccionId ==
                                           clienteDireccionesList[i].direccionId)
-                                  ? Theme.of(
-                                      context,
-                                    ).colorScheme.secondaryContainer
+                                  ? Theme.of(context)
+                                        .colorScheme
+                                        .secondaryContainer
                                   : Colors.transparent,
                               clienteDireccion: clienteDireccionesList[i],
                               clienteImpParam: ClienteImpParam(
@@ -1066,9 +1060,8 @@ class _StepSelectClienteDireccionContentState
 
       ref
           .read(
-            pedidoVentaEditPageControllerProvider(
-              widget.pedidoLocalParam,
-            ).notifier,
+            pedidoVentaEditPageControllerProvider(widget.pedidoLocalParam)
+                .notifier,
           )
           .selectDireccion(clienteDireccion: newDireccionManual);
     }
@@ -1084,9 +1077,8 @@ class _StepSelectClienteDireccionContentState
         if (clienteDireccionesList[i].predeterminada) {
           ref
               .read(
-                pedidoVentaEditPageControllerProvider(
-                  widget.pedidoLocalParam,
-                ).notifier,
+                pedidoVentaEditPageControllerProvider(widget.pedidoLocalParam)
+                    .notifier,
               )
               .selectDireccion(clienteDireccion: clienteDireccionesList[i]);
           break;
@@ -1117,9 +1109,8 @@ class _StepSelectClienteDireccionContentState
       }
       ref
           .read(
-            pedidoVentaEditPageControllerProvider(
-              widget.pedidoLocalParam,
-            ).notifier,
+            pedidoVentaEditPageControllerProvider(widget.pedidoLocalParam)
+                .notifier,
           )
           .selectDireccion(
             clienteDireccion: isSameDireccionSelected ? null : clienteDireccion,
@@ -1503,9 +1494,8 @@ class _StepObservacionesContentState
 
     ref
         .read(
-          pedidoVentaEditPageControllerProvider(
-            widget.pedidoLocalParam,
-          ).notifier,
+          pedidoVentaEditPageControllerProvider(widget.pedidoLocalParam)
+              .notifier,
         )
         .setOfertaFechaHasta(selectedDate);
 
