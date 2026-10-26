@@ -191,6 +191,7 @@ class _SelecionarCantidadFormState
             articuloId: widget.articulo.id,
             clienteId: widget.seleccionarCantidadParam.clienteId,
             cantidad: totalQuantity,
+            divisaId: widget.seleccionarCantidadParam.divisaId,
           ),
     );
   }
@@ -691,6 +692,7 @@ class _SelecionarCantidadFormState
           articuloId: widget.articulo.id,
           clienteId: widget.seleccionarCantidadParam.clienteId,
           cantidad: totalQuantity,
+          divisaId: widget.seleccionarCantidadParam.divisaId,
         );
   }
 

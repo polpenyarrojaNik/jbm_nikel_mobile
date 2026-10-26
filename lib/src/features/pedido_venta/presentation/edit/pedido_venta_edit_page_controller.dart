@@ -146,9 +146,12 @@ class PedidoVentaEditPageController
           ),
         );
 
-        _cliente = await clienteRepository.getClienteById(
+        // El pedido/oferta conserva su divisa aunque la del cliente haya
+        // cambiado: totales, precios nuevos, promociones y guardado usan
+        // cliente.divisa, así que se fija a la del documento.
+        _cliente = (await clienteRepository.getClienteById(
           clienteId: pedidoVenta.clienteId!,
-        );
+        )).copyWith(divisa: pedidoVenta.divisa);
 
         _clienteDireccion = await clienteRepository
             .getClienteDireccionByDireccionId(
@@ -408,7 +411,37 @@ class PedidoVentaEditPageController
     required PedidoVentaLinea pedidoVentaLinea,
     required int posicionActualizar,
   }) {
-    pedidoVentaLineaList[posicionActualizar] = pedidoVentaLinea;
+    final lineaAnterior = pedidoVentaLineaList[posicionActualizar];
+    // La pantalla de cantidad crea la línea de nuevo: se conserva su número
+    // para que los componentes sigan colgando de ella.
+    pedidoVentaLineaList[posicionActualizar] = pedidoVentaLinea.copyWith(
+      pedidoVentaLineaId: lineaAnterior.pedidoVentaLineaId,
+      pedidoLineaIdComponente: lineaAnterior.pedidoLineaIdComponente,
+    );
+
+    // Como en el ERP (item_changed cant_art_ped): cada componente pasa a
+    // cantidad del kit × cantidad_componente, que aquí es la proporción actual.
+    if (lineaAnterior.pedidoVentaLineaId != null &&
+        lineaAnterior.cantidad > 0 &&
+        lineaAnterior.cantidad != pedidoVentaLinea.cantidad) {
+      for (var i = 0; i < pedidoVentaLineaList.length; i++) {
+        final componente = pedidoVentaLineaList[i];
+        if (componente.pedidoLineaIdComponente !=
+            lineaAnterior.pedidoVentaLineaId) {
+          continue;
+        }
+        final cantidad =
+            (componente.cantidad *
+                    pedidoVentaLinea.cantidad /
+                    lineaAnterior.cantidad)
+                .round();
+        pedidoVentaLineaList[i] = componente.copyWith(
+          cantidad: cantidad,
+          cantidadPendiente: cantidad,
+        );
+      }
+    }
+
     pedidoVentaLineaList = renumerarPedidoVentaLineas(pedidoVentaLineaList);
 
     state = PedidoVentaEditPageControllerState.data(
@@ -431,7 +464,16 @@ class PedidoVentaEditPageController
   void deletePedidoVentaLinea({
     required PedidoVentaLinea pedidoVentaLineaToDelete,
   }) {
+    // Como en el ERP: un componente solo se borra junto con su kit.
+    if (pedidoVentaLineaToDelete.isComponente) return;
+
     pedidoVentaLineaList.remove(pedidoVentaLineaToDelete);
+    final kitId = pedidoVentaLineaToDelete.pedidoVentaLineaId;
+    if (kitId != null) {
+      pedidoVentaLineaList.removeWhere(
+        (linea) => linea.pedidoLineaIdComponente == kitId,
+      );
+    }
 
     pedidoVentaLineaList = renumerarPedidoVentaLineas(pedidoVentaLineaList);
 
@@ -606,6 +648,7 @@ class PedidoVentaEditPageController
       final lineas = await pedidoVentaRepository.aplicarPromociones(
         clienteId: cliente.id,
         pedidoVentaLineaList: List.of(pedidoVentaLineaList),
+        divisaId: cliente.divisa?.id,
       );
       // Si mientras tanto ha cambiado el pedido, manda el cálculo más reciente.
       if (!mounted || generacion != _promocionesGeneracion) return;

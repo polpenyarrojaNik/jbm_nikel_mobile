@@ -13,6 +13,8 @@ abstract class SeleccionarCantidadParam with _$SeleccionarCantidadParam {
     required PedidoLocalParam pedidoVentaParam,
     required String clienteId,
     required String articuloId,
+    /// Divisa del pedido/oferta; si es null se usa la del cliente.
+    String? divisaId,
     int? cantidad,
     double? precio,
     double? descuento1,

@@ -1214,13 +1214,17 @@ class PedidoVentaRepository {
     }
   }
 
+  /// [divisaId] fuerza la divisa del documento (p. ej. al editar un pedido u
+  /// oferta en una divisa distinta a la actual del cliente).
   Future<ArticuloPrecio> getArticuloPrecio({
     required String articuloId,
     required String clienteId,
     required int cantidad,
+    String? divisaId,
   }) async {
     var precio = 0.toMoney();
-    var divisaId = 'EU';
+    final divisaDocumentoId = divisaId;
+    divisaId = divisaId ?? 'EU';
     var descuento1 = 0.0;
     const descuento2 = 0.0;
     const descuento3 = 0.0;
@@ -1233,7 +1237,7 @@ class PedidoVentaRepository {
     )..where((t) => t.id.equals(clienteId))).getSingleOrNull();
 
     if (clienteDto != null) {
-      divisaId = clienteDto.divisaId ?? 'EU';
+      divisaId = divisaDocumentoId ?? clienteDto.divisaId ?? 'EU';
       iva = await _getIvaClienteArticulo(
         articuloId: articuloId,
         clienteDto: clienteDto,
@@ -1411,12 +1415,14 @@ class PedidoVentaRepository {
   Future<List<PedidoVentaLinea>> aplicarPromociones({
     required String clienteId,
     required List<PedidoVentaLinea> pedidoVentaLineaList,
+    String? divisaId,
     DateTime? fecha,
   }) async {
     final clienteDto = await (_remoteDb.select(
       _remoteDb.clienteTable,
     )..where((t) => t.id.equals(clienteId))).getSingleOrNull();
     if (clienteDto == null) return pedidoVentaLineaList;
+    final divisaDocumentoId = divisaId ?? clienteDto.divisaId ?? 'EU';
 
     // 1. Limpiar: quitar regalos y devolver al precio de origen las líneas
     //    que estaban en promoción (como si se eligieran de nuevo).
@@ -1432,6 +1438,7 @@ class PedidoVentaRepository {
           articuloId: linea.articuloId,
           clienteId: clienteId,
           cantidad: linea.cantidad,
+          divisaId: divisaDocumentoId,
         );
         lineas.add(
           _lineaConPrecio(
@@ -1448,7 +1455,7 @@ class PedidoVentaRepository {
     // 2. Calcular.
     final promociones = await _getPromocionesActivas(
       clienteDto: clienteDto,
-      divisaId: clienteDto.divisaId ?? 'EU',
+      divisaId: divisaDocumentoId,
       fecha: fecha ?? DateTime.now(),
     );
     if (promociones.isEmpty) return lineas;
@@ -1498,7 +1505,6 @@ class PedidoVentaRepository {
       resultadoLineas.add(linea);
     }
 
-    final divisaId = clienteDto.divisaId ?? 'EU';
     final plantilla = lineas.isNotEmpty ? lineas.first : null;
     for (final regalo in resultado.regalos) {
       if (regalo.cantidad <= 0) continue;
@@ -1514,8 +1520,8 @@ class PedidoVentaRepository {
           articuloDescription:
               articuloDto?.getDescriptionInLocalLanguage() ?? regalo.articuloId,
           cantidad: regalo.cantidad,
-          precioDivisa: 0.toMoney(currencyId: divisaId),
-          divisaId: divisaId,
+          precioDivisa: 0.toMoney(currencyId: divisaDocumentoId),
+          divisaId: divisaDocumentoId,
           tipoPrecio: 1,
           descuento1: 0,
           descuento2: 0,
@@ -1527,7 +1533,7 @@ class PedidoVentaRepository {
               : articuloDto.stockDisponible > 0,
           fechaCliente: plantilla?.fechaCliente,
           iva: 0,
-          importeLinea: 0.toMoney(currencyId: divisaId),
+          importeLinea: 0.toMoney(currencyId: divisaDocumentoId),
           cantidadPendiente: regalo.cantidad,
           aiRecomendado: false,
           codPromo: regalo.promoId,

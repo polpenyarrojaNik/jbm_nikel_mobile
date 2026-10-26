@@ -44,6 +44,7 @@ class ArticuloPrecioController
     required String articuloId,
     required String clienteId,
     required int cantidad,
+    String? divisaId,
   }) async {
     state = const ArticuloPrecioControllerState.loading();
     try {
@@ -51,6 +52,7 @@ class ArticuloPrecioController
         articuloId: articuloId,
         clienteId: clienteId,
         cantidad: cantidad,
+        divisaId: divisaId,
       );
       state = ArticuloPrecioControllerState.data(articuloPrecio);
     } catch (e, stack) {
