@@ -90,7 +90,10 @@ class PedidoVentaDetallePage extends ConsumerWidget {
               if (!pedidoVenta.isLocal)
                 DescargarProformaButton(pedidoLocalParam: pedidoLocalParam),
               if (!pedidoVenta.isLocal && (pedidoVenta.oferta ?? false))
-                DescargarOfertaButton(pedidoLocalParam: pedidoLocalParam),
+                DescargarOfertaButton(
+                  pedidoLocalParam: pedidoLocalParam,
+                  empresaId: pedidoVenta.empresaId!,
+                ),
 
               if (pedidoVenta.isEditable) ...[
                 IconButton(
@@ -431,9 +434,14 @@ class PedidoVentaLineaContainer extends ConsumerWidget {
 }
 
 class DescargarOfertaButton extends ConsumerWidget {
-  const DescargarOfertaButton({super.key, required this.pedidoLocalParam});
+  const DescargarOfertaButton({
+    super.key,
+    required this.pedidoLocalParam,
+    required this.empresaId,
+  });
 
   final PedidoLocalParam pedidoLocalParam;
+  final String empresaId;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -448,27 +456,124 @@ class DescargarOfertaButton extends ConsumerWidget {
 
       data: (ofertaHaveAttachment) => ofertaHaveAttachment
           ? IconButton(
-              onPressed: () => _donwloadOfertaAttachment(ref, pedidoLocalParam),
+              onPressed: () => _donwloadOfertaAttachment(context, ref),
               icon: const Icon(Icons.picture_as_pdf),
             )
           : Container(),
     );
   }
 
-  void _donwloadOfertaAttachment(
+  Future<void> _donwloadOfertaAttachment(
+    BuildContext context,
     WidgetRef ref,
-    PedidoLocalParam pedidoLocalParam,
-  ) {
-    runMutationSafe(ref, pedidoVentaAdjuntoMutation, (tsx) async {
+  ) async {
+    final conImagenes = await _showConImagenesDialog(context);
+    if (conImagenes == null || !context.mounted) return;
+
+    await runMutationSafe(ref, pedidoVentaAdjuntoMutation, (tsx) async {
       final pedidoVentaByIdStateNotifier = tsx.get(
         pedidoVentaByIdProvider(pedidoLocalParam).notifier,
       );
 
       final result = await pedidoVentaByIdStateNotifier.getAdjuntoOferta(
         pedidoVentaId: pedidoLocalParam.pedidoId!,
+        empresaId: empresaId,
+        conImagenes: conImagenes,
       );
       return result;
     });
+  }
+
+  Future<bool?> _showConImagenesDialog(BuildContext context) {
+    return showDialog<bool>(
+      context: context,
+      builder: (dialogCtx) => AlertDialog(
+        icon: const Icon(Icons.picture_as_pdf_outlined, size: 32),
+        title: Text(S.of(dialogCtx).pedido_show_ofertaPdf_titulo),
+        content: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            Text(
+              S.of(dialogCtx).pedido_show_ofertaPdf_pregunta,
+              textAlign: TextAlign.center,
+            ),
+            const Gap(20),
+            _OfertaPdfOpcion(
+              icon: Icons.image_outlined,
+              label: S.of(dialogCtx).pedido_show_ofertaPdf_conImagenes,
+              destacada: true,
+              onTap: () => Navigator.of(dialogCtx).pop(true),
+            ),
+            const Gap(12),
+            _OfertaPdfOpcion(
+              icon: Icons.hide_image_outlined,
+              label: S.of(dialogCtx).pedido_show_ofertaPdf_sinImagenes,
+              onTap: () => Navigator.of(dialogCtx).pop(false),
+            ),
+          ],
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.of(dialogCtx).pop(),
+            child: Text(S.of(dialogCtx).cancelar),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class _OfertaPdfOpcion extends StatelessWidget {
+  const _OfertaPdfOpcion({
+    required this.icon,
+    required this.label,
+    required this.onTap,
+    this.destacada = false,
+  });
+
+  final IconData icon;
+  final String label;
+  final VoidCallback onTap;
+  final bool destacada;
+
+  @override
+  Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
+    final background = destacada
+        ? colorScheme.primaryContainer
+        : colorScheme.surfaceContainerHighest;
+    final foreground = destacada
+        ? colorScheme.onPrimaryContainer
+        : colorScheme.onSurfaceVariant;
+
+    return Material(
+      color: background,
+      borderRadius: BorderRadius.circular(16),
+      clipBehavior: Clip.antiAlias,
+      child: InkWell(
+        onTap: onTap,
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
+          child: Row(
+            children: [
+              Icon(icon, color: foreground),
+              const Gap(16),
+              Expanded(
+                child: Text(
+                  label,
+                  style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                    color: foreground,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+              ),
+              Icon(Icons.chevron_right, color: foreground),
+            ],
+          ),
+        ),
+      ),
+    );
   }
 }
 

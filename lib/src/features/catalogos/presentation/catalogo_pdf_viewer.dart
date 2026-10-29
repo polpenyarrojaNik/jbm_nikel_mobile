@@ -69,8 +69,8 @@ class _CatalogoPdfViewerPageState extends State<CatalogoPdfViewerPage> {
       final file = widget.adjuntoData.file!;
       final savedFileUri = await saveFileToDeviceDocuments(
         file,
+        'application/pdf',
         fileName: _getPdfFileName(file.path),
-        allowedExtensions: const ['pdf'],
       );
 
       if (!context.mounted || savedFileUri == null) {

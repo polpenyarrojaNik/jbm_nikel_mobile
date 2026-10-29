@@ -489,5 +489,9 @@
   "settings_notificacionesPopupVacio": "No hay tipos de notificación disponibles",
   "informes": "Informes",
   "informes_noSePuedeAbrir": "No se ha podido abrir el informe",
-  "informes_buscarInformes": "Buscar informes"
+  "informes_buscarInformes": "Buscar informes",
+  "pedido_show_ofertaPdf_titulo": "PDF de la oferta",
+  "pedido_show_ofertaPdf_pregunta": "¿Desea generar el PDF con imágenes?",
+  "pedido_show_ofertaPdf_conImagenes": "Con imágenes",
+  "pedido_show_ofertaPdf_sinImagenes": "Sin imágenes"
 }

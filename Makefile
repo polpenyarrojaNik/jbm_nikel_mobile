@@ -1,7 +1,7 @@
 .PHONY: all run run_test install_pubspec upgrade_pubspec install_pubspec deploy_mobile icons run_dependency_validator run_build_runner watch_build_runner deploy_windows update_i18n help
 
-FLUTTER=puro flutter
-DART=puro dart --suppress-analytics
+FLUTTER=fvm flutter
+DART=fvm dart --suppress-analytics
 RIMRAF=rimraf
 PERL=perl
 GIT=git

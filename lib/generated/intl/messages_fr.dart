@@ -835,6 +835,18 @@ class MessageLookup extends MessageLookupByLibrary {
     "pedido_index_reset": MessageLookupByLibrary.simpleMessage("Redémarrer"),
     "pedido_index_titulo": MessageLookupByLibrary.simpleMessage("Commandes"),
     "pedido_noEnviado": MessageLookupByLibrary.simpleMessage("Pas envoyé"),
+    "pedido_show_ofertaPdf_conImagenes": MessageLookupByLibrary.simpleMessage(
+      "Avec images",
+    ),
+    "pedido_show_ofertaPdf_pregunta": MessageLookupByLibrary.simpleMessage(
+      "Voulez-vous générer le PDF avec des images ?",
+    ),
+    "pedido_show_ofertaPdf_sinImagenes": MessageLookupByLibrary.simpleMessage(
+      "Sans images",
+    ),
+    "pedido_show_ofertaPdf_titulo": MessageLookupByLibrary.simpleMessage(
+      "PDF de l\'offre",
+    ),
     "pedido_show_pedidoVentaDetalle_albaranes":
         MessageLookupByLibrary.simpleMessage("Bons de livraisons"),
     "pedido_show_pedidoVentaDetalle_baseImponible":

@@ -14,7 +14,7 @@ import 'dart:io';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:jbm_nikel_mobile/src/features/pedido_venta/domain/promocion_calculo.dart';
 
-const _fixture = 'test/fixtures/promociones_erp_muestra.json';
+const kFixture = 'test/fixtures/promociones_erp_muestra.json';
 
 double _num(Object? v) => v == null || v == '' ? 0 : double.parse('$v');
 int _tipo(Object? tpreu) => switch (tpreu) {
@@ -24,7 +24,7 @@ int _tipo(Object? tpreu) => switch (tpreu) {
 };
 
 void main() {
-  final file = File(_fixture);
+  final file = File(kFixture);
 
   test(
     'promociones de la app == promociones grabadas por el ERP',
@@ -49,7 +49,9 @@ void main() {
         bool activa(List<Map<String, dynamic>> filas, String col, String v) =>
             promocionActivaPara(
               incluido: filas.any((r) => r[col] == v && r['TIPO'] == 'I'),
-              todosIncluido: filas.any((r) => r[col] == '*' && r['TIPO'] == 'I'),
+              todosIncluido: filas.any(
+                (r) => r[col] == '*' && r['TIPO'] == 'I',
+              ),
               excluido: filas.any((r) => r[col] == v && r['TIPO'] == 'E'),
             );
 
@@ -136,9 +138,12 @@ void main() {
         for (var i = 0; i < compradas.length; i++) {
           final l = compradas[i];
           final erpPromo = (l['COD_PROMO'] ?? '') == '' ? null : l['COD_PROMO'];
-          final erpCant = erpPromo == null ? 0 : _num(l['PROMO_CANTIDAD']).toInt();
+          final erpCant = erpPromo == null
+              ? 0
+              : _num(l['PROMO_CANTIDAD']).toInt();
           final app = r.asignadas[i];
-          if (app?.promoId != erpPromo || (app?.promoCantidad ?? 0) != erpCant) {
+          if (app?.promoId != erpPromo ||
+              (app?.promoCantidad ?? 0) != erpCant) {
             errores.add(
               'lin ${l['LIN_PED_CLI']} ${l['COD_ART']}: '
               'ERP $erpPromo/$erpCant  APP ${app?.promoId}/${app?.promoCantidad ?? 0}',
