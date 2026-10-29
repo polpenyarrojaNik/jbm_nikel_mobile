@@ -68,10 +68,18 @@ class PedidoVentaById extends _$PedidoVentaById {
     );
   }
 
-  Future<File?> getAdjuntoOferta({required String pedidoVentaId}) async {
+  Future<File?> getAdjuntoOferta({
+    required String pedidoVentaId,
+    required String empresaId,
+    required bool conImagenes,
+  }) async {
     final file = await ref
         .read(pedidoVentaRepositoryProvider)
-        .getAdjuntoOferta(pedidoVentaId: pedidoVentaId);
+        .getAdjuntoOferta(
+          pedidoVentaId: pedidoVentaId,
+          empresaId: empresaId,
+          conImagenes: conImagenes,
+        );
     return file;
   }
 
@@ -1675,11 +1683,21 @@ class PedidoVentaRepository {
     return _remotePedidoHaveProformaAdjunta(pedidoVentaId);
   }
 
-  Future<File?> getAdjuntoOferta({required String pedidoVentaId}) async {
+  Future<File?> getAdjuntoOferta({
+    required String pedidoVentaId,
+    required String empresaId,
+    required bool conImagenes,
+  }) async {
+    final query = {
+      'EMPRESA_ID': empresaId,
+      'IMAGENES': conImagenes ? 'S' : 'N',
+    };
+
     final data = await _remoteGetAttachment(
       requestUri: Uri.https(
         dotenv.get('URL', fallback: 'localhost:3001'),
-        'api/v1/online/adjunto/pedido/$pedidoVentaId/oferta',
+        'api/v1/online/pedido/$pedidoVentaId/oferta_pdf',
+        query,
       ),
       provisionalToken: usuario.provisionalToken,
     );

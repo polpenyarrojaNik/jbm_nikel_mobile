@@ -4634,6 +4634,46 @@ class S {
       args: [],
     );
   }
+
+  /// `Offer PDF`
+  String get pedido_show_ofertaPdf_titulo {
+    return Intl.message(
+      'Offer PDF',
+      name: 'pedido_show_ofertaPdf_titulo',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Do you want to generate the PDF with images?`
+  String get pedido_show_ofertaPdf_pregunta {
+    return Intl.message(
+      'Do you want to generate the PDF with images?',
+      name: 'pedido_show_ofertaPdf_pregunta',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `With images`
+  String get pedido_show_ofertaPdf_conImagenes {
+    return Intl.message(
+      'With images',
+      name: 'pedido_show_ofertaPdf_conImagenes',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Without images`
+  String get pedido_show_ofertaPdf_sinImagenes {
+    return Intl.message(
+      'Without images',
+      name: 'pedido_show_ofertaPdf_sinImagenes',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

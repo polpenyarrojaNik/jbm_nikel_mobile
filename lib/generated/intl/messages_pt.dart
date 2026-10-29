@@ -811,6 +811,18 @@ class MessageLookup extends MessageLookupByLibrary {
     "pedido_index_reset": MessageLookupByLibrary.simpleMessage("Redefinir"),
     "pedido_index_titulo": MessageLookupByLibrary.simpleMessage("Pedido"),
     "pedido_noEnviado": MessageLookupByLibrary.simpleMessage("Não enviado"),
+    "pedido_show_ofertaPdf_conImagenes": MessageLookupByLibrary.simpleMessage(
+      "Com imagens",
+    ),
+    "pedido_show_ofertaPdf_pregunta": MessageLookupByLibrary.simpleMessage(
+      "Deseja gerar o PDF com imagens?",
+    ),
+    "pedido_show_ofertaPdf_sinImagenes": MessageLookupByLibrary.simpleMessage(
+      "Sem imagens",
+    ),
+    "pedido_show_ofertaPdf_titulo": MessageLookupByLibrary.simpleMessage(
+      "PDF da oferta",
+    ),
     "pedido_show_pedidoVentaDetalle_albaranes":
         MessageLookupByLibrary.simpleMessage("Nota de entrega"),
     "pedido_show_pedidoVentaDetalle_baseImponible":

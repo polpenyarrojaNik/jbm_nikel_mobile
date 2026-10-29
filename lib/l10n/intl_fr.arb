@@ -489,5 +489,9 @@
   "settings_notificacionesPopupVacio": "Aucun type de notification disponible",
   "informes": "Rapports",
   "informes_noSePuedeAbrir": "Impossible d'ouvrir le rapport",
-  "informes_buscarInformes": "Rechercher des rapports"
+  "informes_buscarInformes": "Rechercher des rapports",
+  "pedido_show_ofertaPdf_titulo": "PDF de l'offre",
+  "pedido_show_ofertaPdf_pregunta": "Voulez-vous générer le PDF avec des images ?",
+  "pedido_show_ofertaPdf_conImagenes": "Avec images",
+  "pedido_show_ofertaPdf_sinImagenes": "Sans images"
 }

@@ -491,5 +491,9 @@
   "settings_notificacionesPopupVacio": "Keine Benachrichtigungstypen verfügbar",
   "informes": "Berichte",
   "informes_noSePuedeAbrir": "Der Bericht konnte nicht geöffnet werden",
-  "informes_buscarInformes": "Berichte suchen"
+  "informes_buscarInformes": "Berichte suchen",
+  "pedido_show_ofertaPdf_titulo": "Angebots-PDF",
+  "pedido_show_ofertaPdf_pregunta": "Möchten Sie das PDF mit Bildern erstellen?",
+  "pedido_show_ofertaPdf_conImagenes": "Mit Bildern",
+  "pedido_show_ofertaPdf_sinImagenes": "Ohne Bilder"
 }

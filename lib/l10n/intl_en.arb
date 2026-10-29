@@ -490,5 +490,9 @@
   "settings_notificacionesPopupVacio": "No notification types available",
   "informes": "Reports",
   "informes_noSePuedeAbrir": "The report could not be opened",
-  "informes_buscarInformes": "Search reports"
+  "informes_buscarInformes": "Search reports",
+  "pedido_show_ofertaPdf_titulo": "Offer PDF",
+  "pedido_show_ofertaPdf_pregunta": "Do you want to generate the PDF with images?",
+  "pedido_show_ofertaPdf_conImagenes": "With images",
+  "pedido_show_ofertaPdf_sinImagenes": "Without images"
 }
