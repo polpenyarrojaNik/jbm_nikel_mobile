@@ -1,7 +1,7 @@
 .PHONY: all run run_test install_pubspec upgrade_pubspec install_pubspec deploy_mobile icons run_dependency_validator run_build_runner watch_build_runner deploy_windows update_i18n help
 
-FLUTTER=puro flutter
-DART=puro dart --suppress-analytics
+FLUTTER=fvm flutter
+DART=fvm dart --suppress-analytics
 RIMRAF=rimraf
 PERL=perl
 GIT=git
@@ -86,7 +86,7 @@ deploy_mobile: format lint pub_get create_icons build_runner bump_version
 
 
 deploy_windows: pub_get update_i18n build_runner sentry_dart_plugin create_icons
-	@$(DART) run tool/puro_exec.dart flutter_distributor release --name prod --jobs release-windows
+	@fvm exec flutter_distributor release --name prod --jobs release-windows
 	@for /f "delims=" %%i in ('dir /b /o-d dist\*') do ( \
 		set latest=%%i \
 		&& echo "Signing the latest version: %%i" \
