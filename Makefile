@@ -86,7 +86,7 @@ deploy_mobile: format lint pub_get create_icons build_runner bump_version
 
 
 deploy_windows: pub_get update_i18n build_runner create_icons
-	@$(DART) run tool/puro_exec.dart flutter_distributor release --name prod --jobs release-windows
+	@$(DART) pub global run flutter_distributor release --name prod --jobs release-windows
 	@$(MAKE) sentry_dart_plugin
 	@for /f "delims=" %%i in ('dir /b /o-d dist\*') do ( \
 		set latest=%%i \
