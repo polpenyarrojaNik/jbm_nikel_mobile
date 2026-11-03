@@ -5,7 +5,7 @@ version: 1.2.139+214
 
 environment:
   sdk: ^3.13.7
-  flutter: ^3.47.8
+  flutter: ^3.47.9
 
 dependencies:
   flutter_localizations:
@@ -13,11 +13,11 @@ dependencies:
   flutter:
     sdk: flutter
 
-  archive: ^4.5.2
+  archive: ^4.6.0
   auto_route: ^11.2.0
   auto_updater: ^1.0.0
-  cached_network_image: ^4.0.5
-  camera: ^0.12.1
+  cached_network_image: ^4.0.6
+  camera: ^0.12.2
   csv: ^8.0.0
   data_table_2: ^3.0.0
   device_info_plus: ^13.3.0
@@ -36,7 +36,7 @@ dependencies:
   flutter_markdown: ^0.7.7+1
   flutter_riverpod: ^3.4.3
   flutter_secure_storage: ^11.2.0
-  file_picker: ^13.3.0
+  file_picker: ^13.3.2
   font_awesome_flutter: ^11.0.0
   form_builder_extra_fields: ^13.0.0
   form_builder_validators: ^11.3.0
@@ -52,9 +52,9 @@ dependencies:
   logger: ^2.8.0
   map_launcher: ^7.0.0
   markdown: ^7.3.1
-  material_ui: ^1.8.0
+  material_ui: ^1.9.0
   flutter_material_design_icons: ^3.1.0+7447
-  money2: ^6.3.0
+  money2: ^6.3.1
   open_file: ^4.0.0
   package_info_plus: ^10.2.2
   path_provider: ^2.1.6
@@ -62,15 +62,15 @@ dependencies:
   riverpod_annotation: ^4.0.7
   share_plus: ^13.3.1
   shimmer: ^4.0.0
-  sentry_flutter: ^10.2.0
+  sentry_flutter: ^10.3.0
   sqlite3_flutter_libs: ^0.5.42
-  syncfusion_flutter_pdf: ^35.1.41
-  syncfusion_flutter_pdfviewer: ^35.1.41
+  syncfusion_flutter_pdf: ^35.1.43
+  syncfusion_flutter_pdfviewer: ^35.1.43
   upgrader: ^13.7.0
   url_launcher: ^6.3.3
   uuid: ^4.6.0
   gap: ^3.0.1
-  window_manager: ^0.5.2
+  window_manager: ^0.6.0
 
 dev_dependencies:
   sentry_dart_plugin: ^3.4.0

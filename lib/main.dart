@@ -29,31 +29,37 @@ void main() async {
       PaintingBinding.instance.imageCache.maximumSizeBytes = 50 << 20;
 
       if (isDesktop) {
-        await windowManager.ensureInitialized();
+        final window = WindowManager.instance.getCurrent();
+        if (window != null) {
+          const windowsWidth = 1280.0;
+          const windowsHeight = 768.0;
 
-        const windowsWidth = 1280.0;
-        const windowsHeight = 768.0;
+          const windowsMaxWidth = 2560.0;
+          const windowsMaxHeight = 1440.0;
+          const windowsMinWidth = kDebugMode ? 375.0 : 640.0;
+          const windowsMinHeight = kDebugMode ? 480.0 : 640.0;
 
-        const windowsMaxWidth = 2560.0;
-        const windowsMaxHeight = 1440.0;
-        const windowsMinWidth = kDebugMode ? 375.0 : 640.0;
-        const windowsMinHeight = kDebugMode ? 480.0 : 640.0;
-
-        final windowOptions = WindowOptions(
-          size: Size(windowsWidth, windowsHeight), // +16, +39
-          center: true,
-          title: dotenv.get('APP_NAME'),
-          backgroundColor: Colors.transparent,
-          skipTaskbar: false,
-          titleBarStyle: TitleBarStyle.normal,
-          windowButtonVisibility: true,
-          minimumSize: Size(windowsMinWidth, windowsMinHeight), // 359
-          maximumSize: Size(windowsMaxWidth, windowsMaxHeight),
-        );
-        await windowManager.waitUntilReadyToShow(
-          windowOptions,
-          () => _setWindowManagerTerms(),
-        );
+          window
+            ..setSize(
+              const Size(windowsWidth, windowsHeight).toNative(), // +16, +39
+              false,
+            )
+            ..minimumSize = const Size(windowsMinWidth, windowsMinHeight)
+                .toNative() // 359
+            ..maximumSize = const Size(
+              windowsMaxWidth,
+              windowsMaxHeight,
+            ).toNative()
+            ..title = dotenv.get('APP_NAME')
+            ..backgroundColor = Colors.transparent.toNative()
+            ..isVisibleInTaskbar = true
+            ..titleBarStyle = TitleBarStyle.normal
+            ..isWindowControlButtonsVisible = true
+            ..isResizable = true
+            ..center()
+            ..show()
+            ..focus();
+        }
 
         if (supportsAutoUpdater) {
           final feedURL = dotenv.get('URL_APP_CAST');
@@ -91,12 +97,6 @@ void main() async {
       exit(1);
     },
   );
-}
-
-Future<void> _setWindowManagerTerms() async {
-  await windowManager.setResizable(true);
-  await windowManager.show();
-  await windowManager.focus();
 }
 
 Future<void> _initSentry() async {
