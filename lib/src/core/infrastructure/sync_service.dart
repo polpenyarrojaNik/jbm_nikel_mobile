@@ -1,14 +1,12 @@
 import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
-import 'dart:ui';
 
 import 'package:dio/dio.dart';
 import 'package:drift/drift.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
-import 'package:syncfusion_flutter_pdf/pdf.dart';
 
 import '../../core/infrastructure/pais_dto.dart';
 import '../../core/infrastructure/subfamilia_dto.dart';
@@ -66,6 +64,7 @@ import '../domain/log.dart';
 import '../exceptions/app_exception.dart';
 import '../exceptions/get_api_error.dart';
 import '../helpers/error_logger.dart';
+import '../helpers/pdf_watermark.dart';
 import '../presentation/app.dart';
 import 'app_config_table.dart';
 import 'divisa_dto.dart';
@@ -1853,21 +1852,7 @@ class SyncService {
       raf.writeFromSync(data);
       await raf.close();
 
-      final document = PdfDocument(inputBytes: await file.readAsBytes());
-
-      for (var i = 0; i < document.pages.count; i++) {
-        final pageSize = document.pages[i].size;
-        document.pages[i].graphics.drawString(
-          _usuario!.id,
-          PdfStandardFont(PdfFontFamily.helvetica, 9),
-          brush: PdfSolidBrush(PdfColor(105, 105, 105)),
-          bounds: Rect.fromLTWH(8, pageSize.height - 16, 50, 20),
-        );
-      }
-      final savedFile = await document.save();
-
-      await file.writeAsBytes(savedFile);
-      document.dispose();
+      await watermarkPdfFile(file.path, _usuario!.id);
 
       return file;
     } catch (e, stackTrace) {
