@@ -27,10 +27,14 @@ class NotificationNotifier extends _$NotificationNotifier {
     final notificationId = await ref
         .read(notificationRepositoryProvider)
         .haveNotification();
+    // El provider es autoDispose: si la pantalla se ha cerrado (o el provider
+    // se ha reconstruido) durante el await, ya no podemos tocar `state`.
+    if (!ref.mounted) return;
     state = AsyncData(notificationId);
   }
 
   void clear() {
+    if (!ref.mounted) return;
     state = const AsyncData<HaveNotification?>(null);
   }
 }
