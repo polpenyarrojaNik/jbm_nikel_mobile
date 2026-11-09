@@ -74,6 +74,11 @@ class _PedidoVentaEditDireccionManualPageState
     extends ConsumerState<PedidoVentaEditDireccionManualPage> {
   final _formKey = GlobalKey<FormBuilderState>();
 
+  // Evita que un doble toque en "guardar" lance dos _submit en paralelo: el
+  // segundo dejaría abierto un diálogo de sugerencia (Route<bool?>) y el
+  // maybePop(direccionManual) del primero lo cerraría con un ClienteDireccion.
+  bool _isSubmitting = false;
+
   @override
   Widget build(BuildContext context) {
     final state = ref.watch(direccionManualScreenControllerProvider);
@@ -84,7 +89,7 @@ class _PedidoVentaEditDireccionManualPageState
         actions: [
           IconButton(
             icon: const Icon(Icons.save),
-            onPressed: () => _submit(widget.isEdit),
+            onPressed: _isSubmitting ? null : () => _submit(widget.isEdit),
           ),
         ],
       ),
@@ -218,7 +223,17 @@ class _PedidoVentaEditDireccionManualPageState
     );
   }
 
-  void _submit(bool isEdit) async {
+  Future<void> _submit(bool isEdit) async {
+    if (_isSubmitting) return;
+    setState(() => _isSubmitting = true);
+    try {
+      await _doSubmit(isEdit);
+    } finally {
+      if (mounted) setState(() => _isSubmitting = false);
+    }
+  }
+
+  Future<void> _doSubmit(bool isEdit) async {
     if (_formKey.currentState?.saveAndValidate() ?? false) {
       var direccionManual = ClienteDireccion(
         clienteId: widget.cliente.id,
