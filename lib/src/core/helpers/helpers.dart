@@ -5,6 +5,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_material_design_icons/flutter_material_design_icons.dart';
 import 'package:flutter_riverpod/experimental/mutation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:map_launcher/map_launcher.dart';
 import 'package:material_ui/material_ui.dart';
 import 'package:path/path.dart' as p;
 import 'package:url_launcher/url_launcher.dart';
@@ -20,6 +21,44 @@ void navigateToEmailApp(String mail) async {
 void openPhoneCall(String phone) async {
   final params = Uri(scheme: 'tel', path: phone);
   await launchUrl(params, mode: LaunchMode.externalApplication);
+}
+
+/// Abre las coordenadas en la primera app de mapas que acepte el enlace.
+///
+/// iOS puede rechazar el enlace de Apple Maps (`MapLaunchFailure.exhausted`),
+/// así que se prueba la siguiente app y, como último recurso, Google Maps web.
+Future<void> openMapAtCoordinates({
+  required double latitude,
+  required double longitude,
+  String? title,
+  List<MapApp> preferredMaps = const [.google, .apple],
+}) async {
+  final marker = MapLauncher.marker(
+    Location.coords(latitude, longitude, title: title),
+  );
+
+  try {
+    final availableMaps = await marker.getSupportedMaps(preferredMaps);
+    for (final map in availableMaps) {
+      try {
+        await map.show();
+        return;
+      } on MapLaunchException catch (e) {
+        // `unknown`: no se sabe si la app llegó a abrirse; no reintentar
+        // para no abrir dos apps de mapas.
+        if (e.reason == MapLaunchFailure.unknown) return;
+        debugPrint('openMapAtCoordinates: $e');
+      }
+    }
+  } on Exception catch (e) {
+    debugPrint('openMapAtCoordinates: $e');
+  }
+
+  final webUri = Uri.https('www.google.com', '/maps/search/', {
+    'api': '1',
+    'query': '$latitude,$longitude',
+  });
+  await launchUrl(webUri, mode: LaunchMode.externalApplication);
 }
 
 IconData getIconFromFileName(String? fileName) {

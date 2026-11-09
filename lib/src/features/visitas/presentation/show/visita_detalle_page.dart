@@ -2,7 +2,6 @@ import 'package:auto_route/auto_route.dart';
 import 'package:material_ui/material_ui.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gap/gap.dart';
-import 'package:map_launcher/map_launcher.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../../../../../generated/l10n.dart';
@@ -238,13 +237,11 @@ class VisitaDetallePage extends ConsumerWidget {
     double latitud,
     double longitud,
   ) async {
-    final marker = MapLauncher.marker(
-      Location.coords(latitud, longitud, title: S.of(context).visitLocation),
+    await openMapAtCoordinates(
+      latitude: latitud,
+      longitude: longitud,
+      title: S.of(context).visitLocation,
+      preferredMaps: const [.apple, .google],
     );
-    final availableMaps = await marker.getSupportedMaps([.apple, .google]);
-
-    if (context.mounted && availableMaps.isNotEmpty) {
-      await availableMaps.first.show();
-    }
   }
 }

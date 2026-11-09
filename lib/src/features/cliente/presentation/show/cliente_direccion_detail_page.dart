@@ -2,11 +2,11 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter_material_design_icons/flutter_material_design_icons.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gap/gap.dart';
-import 'package:map_launcher/map_launcher.dart';
 import 'package:material_ui/material_ui.dart';
 
 import '../../../../../generated/l10n.dart';
 import '../../../../core/helpers/formatters.dart';
+import '../../../../core/helpers/helpers.dart';
 import '../../../../core/presentation/common_widgets/datos_extra_row.dart';
 import '../../../../core/presentation/common_widgets/mobile_custom_separatos.dart';
 import '../../../../core/routing/app_auto_router.dart';
@@ -98,13 +98,11 @@ class ClienteDireccionDetailPage extends ConsumerWidget {
     double? longitude,
   ) async {
     if (latitude != null && longitude != null) {
-      final marker = MapLauncher.marker(
-        Location.coords(latitude, longitude, title: nombre),
+      await openMapAtCoordinates(
+        latitude: latitude,
+        longitude: longitude,
+        title: nombre,
       );
-      final availableMaps = await marker.getSupportedMaps([.google, .apple]);
-      if (availableMaps.isNotEmpty) {
-        await availableMaps.first.show();
-      }
     }
   }
 }
