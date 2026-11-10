@@ -1475,12 +1475,14 @@ class PedidoVentaRepository {
           LineaPromocionEntrada(
             articuloId: linea.articuloId,
             cantidad: linea.cantidad,
+            // Igual que el ERP: el descuento 3 (descuento web) va a 0 al
+            // calcular el neto con el que se compara el precio de promoción.
             precioNetoUnitario: precioNetoUnitarioLinea(
               precio: linea.precioDivisa.amount.toDecimal().toDouble(),
               tipoPrecio: linea.tipoPrecio,
               descuento1: linea.descuento1,
               descuento2: linea.descuento2,
-              descuento3: linea.descuento3,
+              descuento3: 0,
             ),
             participa: !linea.isComponente,
           ),

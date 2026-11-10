@@ -125,7 +125,7 @@ void main() {
                   tipoPrecio: _tipo(l['TPREU']),
                   descuento1: _num(l['DTO1']),
                   descuento2: _num(l['DTO2']),
-                  descuento3: _num(l['DTO3']),
+                  descuento3: 0,
                 ),
                 participa:
                     (l['LIN_PED_CLI_COMPONENTE'] ?? '') == '' &&

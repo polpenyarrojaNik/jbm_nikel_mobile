@@ -63,7 +63,8 @@ class LineaPromocionEntrada {
   final String articuloId;
   final int cantidad;
 
-  /// f_importe_linea_neto(6, 1, precio, tpreu, dto1, dto2, dto3).
+  /// f_importe_linea_neto(6, 1, precio, tpreu, dto1, dto2, 0): el ERP pasa 0
+  /// como descuento 3 (descuento web), que no cuenta para la condición.
   final double precioNetoUnitario;
 
   /// false para componentes de kit (promo_sn 'C') y precios manuales ('M').
